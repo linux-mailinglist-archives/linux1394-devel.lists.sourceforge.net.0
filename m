@@ -2,53 +2,102 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FC2A2189A
-	for <lists+linux1394-devel@lfdr.de>; Fri, 17 May 2019 14:47:07 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 804402366C
+	for <lists+linux1394-devel@lfdr.de>; Mon, 20 May 2019 14:46:37 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1hRcGF-00072b-MU; Fri, 17 May 2019 12:46:55 +0000
+	id 1hShgR-0002dy-7r; Mon, 20 May 2019 12:46:27 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <sabrina@usbdrive.tech>) id 1hRcGE-00072U-2C
- for linux1394-devel@lists.sourceforge.net; Fri, 17 May 2019 12:46:54 +0000
+ (envelope-from <o-takashi@sakamocchi.jp>)
+ id 1hShgP-0002dY-6a; Mon, 20 May 2019 12:46:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Reply-To:From:Date:Message-ID:Subject:To:Sender:Cc:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+ From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=RsjizziAl8lsVAmuvY2m5QceZB59htRasJQFK28Ks8I=; b=RYYx6QnFhThnAPena53ufBgeRz
- 16gO9bNYjLmmrDj1D2qNMVi1n7TSDyjyAiXI0D9vJt3NfbEYxuqcUEdI16TXq3H7EM1rAjKBmOL79
- mR71lIy2D/Y4bjFyUJ80sq0BYfgNq5tdKI++Wk+FkOICqucI5vrfY/62+ZD4jBPd32jI=;
+ bh=OVzCm2w2GsS7NPag+N6tbJcadPLYb6Ek/DYLaOq7ORA=; b=dv+3ZQc3sO97+h0hTitmXs7Ntr
+ Ds5GL1C9PA9cZJt9eJA1YY5VQkD97wCVAOcz6Lx58y6zY+7wzUfUgADBHtvuztbPMzVw7RH1osrtU
+ KBq2OWp5fF+kstoJciK4EACy1779B7ezQ9y4z9N+TNmXTIFwtQUj+9GBeoO3LO8rhDnw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Reply-To:From:Date:
- Message-ID:Subject:To:Sender:Cc:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:
+ Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=RsjizziAl8lsVAmuvY2m5QceZB59htRasJQFK28Ks8I=; b=i
- GmTGEPcAcbVWzUBMx8VcoDEgpo0MOsJSc7uSO3sAdmCUNRC7urDTlGkG8KZWn+PUz+3FEEEFvFuww
- UGtTWGsX4pZrq+RvS7lb5i97U6zWCUCIiw88AXEJSVKCj2/vGrAnyV1CCp18BynyJxJWotBVCLRk+
- AXrtXNid/1pgqKSY=;
-Received: from 93521.net ([185.216.140.109] helo=gizmotribune.com)
- by sfi-mx-3.v28.lw.sourceforge.com with esmtp (Exim 4.90_1)
- id 1hRcGC-002ykE-LK
- for linux1394-devel@lists.sourceforge.net; Fri, 17 May 2019 12:46:53 +0000
-To: linux1394-devel@lists.sf.net
-Subject: USB drives with your logo printed and custom made
-Message-ID: <1ded4e5420fbfb8c707f4b1cedb89e4c@atlantalogowear.com>
-Date: Fri, 17 May 2019 13:40:38 +0200
-From: "Sabrina" <sabrina@usbdrive.tech>
+ List-Owner:List-Archive; bh=OVzCm2w2GsS7NPag+N6tbJcadPLYb6Ek/DYLaOq7ORA=; b=i
+ i6O4xKWNDRSiOPxo/Mc+vZAwrPGEuEp9ICQBl5ykSSTWBUmQmwdOUxOBMi3wTPUh+9g4RT7ajf5T2
+ EXmviH0TVAuJ7V9+dyaevxonMJ0MrhHawsyge9BVmp1fQfCYY9nFN/4giTbm2LzGSgEki11dlULUu
+ O1IZTbdttt8sKYzo=;
+Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
+ by sfi-mx-4.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ id 1hShg7-00ApKS-ND; Mon, 20 May 2019 12:46:25 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailout.west.internal (Postfix) with ESMTP id 3A0063A9;
+ Mon, 20 May 2019 08:27:33 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute1.internal (MEProxy); Mon, 20 May 2019 08:27:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
+ h=date:from:to:cc:subject:message-id:mime-version:content-type;
+ s=fm1; bh=OVzCm2w2GsS7NPag+N6tbJcadPLYb6Ek/DYLaOq7ORA=; b=mMdbd
+ S/BMFHRVt0PximAf4XfTin6mEKLI3zjJAYo1yMX9GD/8pShD3Q2kfF0UwSeszgqu
+ bqL2xaGz5cBafWcz31FIklhBix6IBcTJATCI5stXER9pfBla2y+Bet8s6VNYKvqP
+ J8Ds/Ulyk79gmMhVEiRrkjF3KyLnrMdUZnrUd3O3M0n2mxefWFgO8AIjtFcBTcN8
+ UHbLsJH/otcsCLclDzcD3zIcrgk5sqlZo3U5+8r37ye7UOLq/o/AbSf7iIX2S/uz
+ nQR879PjOoCtubN6XPps7HWSRrNINMimogYIDScZcbajQ5+kleWVWjwTN+uO4c5a
+ 7JLIUiTKMaWXgXZeA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:message-id
+ :mime-version:subject:to:x-me-proxy:x-me-proxy:x-me-sender
+ :x-me-sender:x-sasl-enc; s=fm2; bh=OVzCm2w2GsS7NPag+N6tbJcadPLYb
+ 6Ek/DYLaOq7ORA=; b=H9FJ6h6lz6qHBzJWwG184ZhM0CZaNnMlNMfGyxbsgSShY
+ dECd4eA+y4Ojr3viLtnfQyGs6WccDZJCHYTEreR4KJxJtVPPijiyYMfJ3SRuiMYt
+ ol4e1R7UGK9kx+Z7FB4Tc1pKwZ8a+iDLcZ9jc6yhTM/n0npN2f5SDbRmKL1oLIMV
+ RnQd12SwjspQDjn1fnTSwbKLNYwwvbOqttj9SEhq3Hb7N/Y/RwcSgFlrZTM/t2f/
+ 3Tp5oBq8cx/7tJYdLC4Te+k59JmcvehgubsFozP9jY+Q9y55ic2ExS+CGDIpblOg
+ t6Smj18enFfkb6hnSo67Xttd+k4wpk2OUaPEQvbXQ==
+X-ME-Sender: <xms:NJ3iXO0ncloH4CB6V0-APQj9TDlFVal1lj24Z2j_F8qUyT6jMfCakg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduuddruddtkedghedvucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvuffkgggtuggfsehttdertd
+ dtredvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
+ hhhisehsrghkrghmohgttghhihdrjhhpqeenucffohhmrghinhepkhgvrhhnvghlrdhorh
+ hgpdhgihhthhhusgdrtghomhenucfkphepudegrdefrdejhedrudekudenucfrrghrrghm
+ pehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphenuc
+ evlhhushhtvghrufhiiigvpedt
+X-ME-Proxy: <xmx:NJ3iXKugikIVRzfVRJBcDf4qYU6xh2wySvDR20fa0yN2fB9isO53GA>
+ <xmx:NJ3iXG4C1vrUAw5C_nuGwfG-00v9rYTjD6YP7zmRhoCuC0XYBmjjKA>
+ <xmx:NJ3iXDLlM-nfFUosRW1bfzWoS_fINpY88C0NeaYjyRh21_76JpYc7w>
+ <xmx:NJ3iXNVqnYir-RhIlcBcElm4-6ALJqAmB95qRXSCeS6DwRDVm91N_A>
+Received: from workstation (ae075181.dynamic.ppp.asahi-net.or.jp [14.3.75.181])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 440A28005B;
+ Mon, 20 May 2019 08:27:30 -0400 (EDT)
+Date: Mon, 20 May 2019 21:27:27 +0900
+From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+To: systemd-devel@lists.freedesktop.org
+Subject: udev: Access permission of fw character device in which fw node
+ includes unit handled by ALSA
+Message-ID: <20190520122724.GA14864@workstation>
+Mail-Followup-To: systemd-devel@lists.freedesktop.org,
+ alsa-devel@alsa-project.org, ffado-devel@lists.sourceforge.net,
+ linux1394-devel@lists.sourceforge.net, clemens@ladisch.de
 MIME-Version: 1.0
-X-Spam-Score: 1.0 (+)
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 1.0 USB_DRIVES             Trying to sell custom USB flash drives
-X-Headers-End: 1hRcGC-002ykE-LK
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+ 0.0 TIME_LIMIT_EXCEEDED    Exceeded time limit / deadline
+X-Headers-End: 1hShg7-00ApKS-ND
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,35 +110,91 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: sabrina@usbdrive.tech
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: alsa-devel@alsa-project.org, linux1394-devel@lists.sourceforge.net,
+ ffado-devel@lists.sourceforge.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-SGksCgpJIGRpZG7igJl0IGtub3cgaWYgeW91IGhhZCByZWNlaXZlZCBteSBlbWFpbCBmcm9tIGxh
-c3Qgd2Vlaz8KCkRvZXMgeW91ciBjb21wYW55IGhhdmUgYW55IHVwY29taW5nIGV2ZW50cywgY29u
-ZmVyZW5jZXMgb3IgcHJvbW90aW9uYWwKcHJvZHVjdCBuZWVkcz8KCldlIG1hbnVmYWN0dXJlIEFM
-TCBjdXN0b20gTE9HTyBhbmQgYnJhbmRlZCBwcm9kdWN0cyDigJMgb3ZlciAzMDAsMDAwIHRvCmNo
-b29zZSBmcm9tLgoKVGhlIG1vc3QgYXNrZWQgYWJvdXQgcHJvZHVjdCB0aGF0IHdlIG1ha2UsIGlz
-IHRoZSBjdXN0b20gcHJpbnRlZCBVU0IgZmxhc2gKZHJpdmVzIQpXZSBjYW4gcHJpbnQgeW91ciBs
-b2dvIG9uIHRoZW0gYW5kIGxvYWQgeW91ciBkaWdpdGFsIGltYWdlcywgdmlkZW9zIGFuZApmaWxl
-cyEKCklmIHlvdSBuZWVkIG1hcmtldGluZywgYWR2ZXJ0aXNpbmcsIGdpZnRzIG9yIGluY2VudGl2
-ZXMsIFVTQiBmbGFzaCBkcml2ZXMKYXJlIHRoZSBzb2x1dGlvbiEKCkhlcmUgaXMgd2hhdCB3ZSBp
-bmNsdWRlOgotQW55IHNpemUgbWVtb3J5IHlvdSBuZWVkOiA2NE1CIHVwIHRvIDEyOEdCCi1XZSB3
-aWxsIHByaW50IHlvdXIgbG9nbyBvbiBib3RoIHNpZGVzLCBqdXN0IGFzayEKLVZlcnkgTG93IE9y
-ZGVyIE1pbmltdW1zCi1OZWVkIHRoZW0gcXVpY2tseT8gIE5vdCBhIHByb2JsZW0sIHdlIG9mZmVy
-IFJ1c2ggU2VydmljZQoKTkVXOiAgIFdlIGNhbiBtYWtlIGEgY3VzdG9tIHNoYXBlZCBVU0IgZHJp
-dmUgdG8gbG9vayBsaWtlIHlvdXIgTG9nbyBvcgpwcm9kdWN0IQoKRW1haWwgb3ZlciBhIGNvcHkg
-b2YgeW91ciBsb2dvIGFuZCB3ZSB3aWxsIGNyZWF0ZSBhIGRlc2lnbiBtb2NrIHVwIGZvciB5b3UK
-YXQgbm8gY29zdCEKCk91ciBoaWdoZXIgbWVtb3J5IHNpemVzIGFyZSBhIHJlYWxseSBnb29kIG9w
-dGlvbiByaWdodCBub3chCgpBc2sgYWJvdXQgdGhlIOKAnERvdWJsZSBZb3VyIE1lbW9yeeKAnSB1
-cGdyYWRlIHByb21vdGlvbiBnb2luZyBvbiByaWdodApub3chCgpQcmljaW5nIGlzIGxvdyByaWdo
-dCBub3csIHNvIGxldCB1cyBrbm93IHdoYXQgeW91IG5lZWQgYW5kIHdlIHdpbGwgZ2V0IHlvdQph
-IHF1aWNrIHF1b3RlLgoKV2Ugd2lsbCBiZWF0IGFueSBjb21wZXRpdG9ycyBwcmljaW5nLCBzZW5k
-IHVzIHlvdXIgbGFzdCBpbnZvaWNlIGFuZCB3ZSB3aWxsCmJlYXQgaXQhCgpXZSBhbHdheXMgb2Zm
-ZXIgZ3JlYXQgcmF0ZXMgZm9yIHNjaG9vbHMgYW5kIG5vbnByb2ZpdHMgYXMgd2VsbC4KCkxldCB1
-cyBrbm93IHdoYXQgeW91IHdvdWxkIGxpa2UgcXVvdGVkPwoKUmVnYXJkcywKCgoKU2FicmluYSBN
-aWxsb25zCkN1c3RvbSBVU0IgQWNjb3VudCBNYW5hZ2VyCgoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCm1haWxpbmcgbGlzdCBsaW51eDEzOTQtZGV2ZWxA
-bGlzdHMuc291cmNlZm9yZ2UubmV0Cmh0dHBzOi8vbGlzdHMuc291cmNlZm9yZ2UubmV0L2xpc3Rz
-L2xpc3RpbmZvL2xpbnV4MTM5NC1kZXZlbAo=
+Hi all,
+
+I'm an ALSA developer, mainly committing to drivers for audio and
+music units on IEEE 1394 bus (yes, it's legacy FireWire). I have a
+concern about access permission for fw character device.
+
+In the last few years 9 drivers have been added to support 120 models
+around[1]. The drivers allow ALSA applications to transfer audio data
+frames and MIDI messages, but they expect userspace application to
+use fw character device for operations of the other functionalities
+such as physical volume controls.
+
+At present, for some models, udevd configures fw character device for
+good access permission to userspace applications. On the other hand,
+for the other models, udevd doesn't. In my opinion, for one half of
+supported models, fw character device is configured with root:root/0500.
+
+I'd like to change this inconvenience, changing group ownership of the
+special file to 'audio', and add ACL +uaccess when logging in.
+
+For your information, I prepare a repository including image of
+configuration ROM from supported devices[2]. At present, 80 images are
+added.  You can parse the image by crpp in linux-firewire-utils
+repository[3].
+
+At present I assume three options:
+
+1. Add entries into udev rules for each of device
+
+This is an enhancement of existent rules[4][5] and simple solution.
+But developers always take care of adding new entries when users suggests,
+perhaps.
+
+2. Reconfigure fw character device when ALSA firewire driver is attached
+   to unit
+
+IEEE 1394 specification refers to IEEE 1212 to represent device and its
+functionalities. Each device is represented as 'node' and its
+functionalities are represented as 'unit'. The information about 'node'
+and 'unit' is in configuration ROM.
+
+Linux firewire subsystem reads content of the ROM, parses
+it and adds fw character device to system for 'node', then binds in-kernel
+driver to 'unit'. Kevents for the node and unit are generated separately.
+
+If udevd handles unit kevent to seek binding driver then configures fw
+character device, developers don't need to maintain rule list. Although
+one node is allowed to have several units, nut the most of supported
+models have only one unit, except for Applie iSight[6].
+
+3. Fulfill hwdb to have supplemental information
+
+I'm not good at hwdb, but according to its name, hwdb is good to store
+device dependent information. If adding some hints to database and
+using the information, this issue might be solved.
+
+I'm happy to receive your comments to improve this situation.
+
+As a mockup of such control application, I wrote libhinawa[7] and
+hinawa-utils[8]. They're my (rough) private work and out of ALSA project,
+but for future I wish to propose better implementation to ALSA project
+as a control server program.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/sound/firewire/Kconfig
+[2] https://github.com/takaswie/am-config-roms/
+[3] https://github.com/cladisch/linux-firewire-utils
+[4] https://github.com/systemd/systemd/blob/master/rules/50-udev-default.rules.in
+[5] https://github.com/systemd/systemd/blob/master/src/login/70-uaccess.rules.m4
+    This rule refers to a rule optionally added by FFADO project.
+[6] This device has four units; IIDC, Audio, vendor-dependent and IRIS.
+[7] https://github.com/takaswie/libhinawa/
+[8] https://github.com/takaswie/hinawa-utils/
+
+
+Regards
+
+Takashi Sakamoto
+
+
+_______________________________________________
+mailing list linux1394-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/linux1394-devel
