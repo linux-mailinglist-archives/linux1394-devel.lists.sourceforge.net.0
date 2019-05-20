@@ -2,55 +2,55 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9306423691
-	for <lists+linux1394-devel@lfdr.de>; Mon, 20 May 2019 14:52:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 909B223BC4
+	for <lists+linux1394-devel@lfdr.de>; Mon, 20 May 2019 17:11:59 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1hShmT-0005II-3D; Mon, 20 May 2019 12:52:41 +0000
+	id 1hSjx8-0006hu-Qm; Mon, 20 May 2019 15:11:50 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <heather@usblogo.space>) id 1hShmR-0005Hu-PQ
- for linux1394-devel@lists.sourceforge.net; Mon, 20 May 2019 12:52:39 +0000
+ (envelope-from <heather@usblogo.space>) id 1hSjx7-0006hh-OC
+ for linux1394-devel@lists.sourceforge.net; Mon, 20 May 2019 15:11:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
  :Reply-To:From:Date:Message-ID:Subject:To:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=vTcL5Ms+RZEYzHJEEerkKavzDBMl6h2EoyT8kI4D3c8=; b=aQwhIZtcn1utWRcgJKLqvZir1N
- ME5Pjym2Lewvww4a1AGANPJXLgVKtqfQVoadAEWDqK663q+/ds+H+ltgb37E01cyzrzlmFPSdwXg5
- Psj1RCSeudigmbAmy2/gPIRCjm0eNpyksUBSuM70+B0Ir11PB1bfs1001tqsewi16RI8=;
+ bh=vTcL5Ms+RZEYzHJEEerkKavzDBMl6h2EoyT8kI4D3c8=; b=iHeTGWqqSBHsuLgvPZu+YwpkvV
+ s4gAlChF3K82tEObWFIfR0KjIz+QGWyOBDBipycIUcGtPFGNwTT2oWBMx6+s0VVYC+4yuma9ADplv
+ yZT8d4Io5qcWiGouwGcAE5/nNt6SKtIA2oPuIF7+eJ0V5xNcZGChIPmIZnF4rtw8E5FQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Reply-To:From:Date:
  Message-ID:Subject:To:Sender:Cc:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=vTcL5Ms+RZEYzHJEEerkKavzDBMl6h2EoyT8kI4D3c8=; b=K
- qoOGo7+lP//HDUufUvl2kzwTp/4a18+avV3G0t1XDUmXmlJOzA/573eji8XB+bbo1omzf4YblW2wl
- x8g79qJqzQ1e93sYxxfZ+cz19HJ0ZnLhBFONARb92iBgyFSmaq3OPImDkiLUhgqupGE6ZMe03KFIr
- IeOoU2LHUm/VvAAA=;
-Received: from [77.81.109.53] (helo=wolfgangdigital.com)
- by sfi-mx-4.v28.lw.sourceforge.com with esmtp (Exim 4.90_1)
- id 1hShmQ-00Aq8M-Lc
- for linux1394-devel@lists.sourceforge.net; Mon, 20 May 2019 12:52:39 +0000
-To: linux1394-devel@lists.sourceforge.net
-Subject: Printing for your logo
-Message-ID: <969c3b9bfeac4f4c24f90442bb37e35f@esquire.com>
-Date: Mon, 20 May 2019 14:55:10 +0200
+ List-Owner:List-Archive; bh=vTcL5Ms+RZEYzHJEEerkKavzDBMl6h2EoyT8kI4D3c8=; b=h
+ f4Xg7TsGiwQ8FAxxJTmOhhdZ5rayWenMvgtj28H2HTrNZVFYRhvQs+JcvPqYOlFXJisWmlA92OrTE
+ cDJAZRz0I/oSoEXCy4Iy1xq3rq3qIOb3STfX7XwiUHCuGzGJsQrzbPpILUXzjRJMLHg0FEvjH9rib
+ tHrZEo0/iaGoXjG4=;
+Received: from [45.35.221.60] (helo=wolfgangdigital.com)
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtp (Exim 4.90_1)
+ id 1hSjx6-00BavN-JH
+ for linux1394-devel@lists.sourceforge.net; Mon, 20 May 2019 15:11:49 +0000
+To: linux1394-devel@lists.sf.net
+Subject: Your logo need printing
+Message-ID: <55a759079e1e602afdb79ed5bdb46bae@esquire.com>
+Date: Mon, 20 May 2019 15:20:09 +0200
 From: "Heather" <heather@usblogo.space>
 MIME-Version: 1.0
-X-Spam-Score: 4.3 (++++)
+X-Spam-Score: 4.4 (++++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.9 SPF_HELO_SOFTFAIL      SPF: HELO does not match SPF record (softfail)
  1.0 RDNS_NONE Delivered to internal network by a host with no rDNS
  2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
- -0.1 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1hShmQ-00Aq8M-Lc
+ -0.0 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1hSjx6-00BavN-JH
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
