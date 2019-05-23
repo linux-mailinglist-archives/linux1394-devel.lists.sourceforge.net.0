@@ -2,60 +2,60 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DD5B2812A
-	for <lists+linux1394-devel@lfdr.de>; Thu, 23 May 2019 17:28:20 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E9E228133
+	for <lists+linux1394-devel@lfdr.de>; Thu, 23 May 2019 17:30:48 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1hTpdc-0007bH-20; Thu, 23 May 2019 15:28:12 +0000
+	id 1hTpg2-000113-Mn; Thu, 23 May 2019 15:30:42 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <ryan@tanschmidit.tech>) id 1hTpda-0007ar-IN
- for linux1394-devel@lists.sourceforge.net; Thu, 23 May 2019 15:28:10 +0000
+ (envelope-from <ryan@tanschmidit.tech>) id 1hTpg1-00010o-8a
+ for linux1394-devel@lists.sourceforge.net; Thu, 23 May 2019 15:30:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
  :Reply-To:From:Date:Message-ID:Subject:To:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=oTqv4sGLjhZKkw50UdsiRkG/bK42rWqKF4hjEd55BRc=; b=Az5+D55tkNn18zJFVmc58g/MBB
- NQdFDHNE723OrhnQTethcO5DJRC+RtmXGJnSMPjHJRKd2WZitzFjzSYv4Qpy8rSrxlNms/qeo/IhG
- 85kVRhxkXR6UKUDfDOL/5cxQanjjwhH/OvCkufFs9wIgH+fEYxuyRY7sYY2v2W8+48E4=;
+ bh=oTqv4sGLjhZKkw50UdsiRkG/bK42rWqKF4hjEd55BRc=; b=JquaAx9kZD0euEd/gulYVa1fnk
+ 7NcjJuql3jywn4SefeQ8Vb11sxSdboGQRJVENr5HpCnzKuaDL7hhm6AtttC57IA8SDN7cO7mqT6Xd
+ 81xtaNeIbSGMdWSCnvsGF4hALSwBmzbLqEjuSywbCGc9MhwyAoHR3hVztpkKIGLd/04Y=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Reply-To:From:Date:
  Message-ID:Subject:To:Sender:Cc:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=oTqv4sGLjhZKkw50UdsiRkG/bK42rWqKF4hjEd55BRc=; b=B
- K/Ix0H1hrS3cuWVSZKXDeGGz2HvOR++l3VGnNzbon4Mnw4BARTXiZJoEgdQYpgOTi5scyLYN41pKP
- w9QSu9V6xv1anu+Fh1H6Kfl6kWOhoCRmzS/GuKo11PRTxRh2A6H+kET944fYzZYQN0MGACE6bH3cd
- 1E26zpD78KWvJJ2g=;
+ List-Owner:List-Archive; bh=oTqv4sGLjhZKkw50UdsiRkG/bK42rWqKF4hjEd55BRc=; b=J
+ LEWbB7Acy3sZf6HH2+D86M5r0OujyzjDAh55GAKNSKizgheNzNKIBmPfT/DE5E5bqdo6AFzMwujmP
+ BTmZ5n/0Fv+X9nQKMh5zJcd75crg4p89LTeDwAj/9FK8MemhCtBxd5Ztru/RFXwwaLsF0xwiGIonp
+ cah4YIJ1AaBzRQho=;
 Received: from [198.23.132.45] (helo=timesharemyths.com)
- by sfi-mx-3.v28.lw.sourceforge.com with esmtp (Exim 4.90_1)
- id 1hTpdZ-002xeF-Ba
- for linux1394-devel@lists.sourceforge.net; Thu, 23 May 2019 15:28:10 +0000
-To: linux1394-devel@lists.sf.net
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.90_1)
+ id 1hTpg0-009ToG-7h
+ for linux1394-devel@lists.sourceforge.net; Thu, 23 May 2019 15:30:41 +0000
+To: linux1394-devel@lists.sourceforge.net
 Subject: Logo products for you
-Message-ID: <8ff30f8631fc47f746bfc6d8a7f2e044@lucastirepros.com>
+Message-ID: <3c2c8840f7b3b2811c0f2edececdcc40@lucastirepros.com>
 Date: Thu, 23 May 2019 13:57:07 +0200
 From: "Stacy" <ryan@tanschmidit.tech>
 MIME-Version: 1.0
 X-Helo-Check: bad, Forged Random Domain (timesharemyths.com)
-X-Spam-Score: 3.0 (+++)
+X-Spam-Score: 3.1 (+++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  0.5 VA_HELO_CHECK          Host Used Invalid or Forged HELO/EHLO
- 1.3 RCVD_IN_RP_RNBL        RBL: Relay in RNBL,
- https://senderscore.org/blacklistlookup/
- [198.23.132.45 listed in bl.score.senderscore.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  1.1 DATE_IN_PAST_03_06     Date: is 3 to 6 hours before Received: date
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 1.3 RCVD_IN_RP_RNBL        RBL: Relay in RNBL,
+ https://senderscore.org/blacklistlookup/
+ [198.23.132.45 listed in bl.score.senderscore.com]
  1.0 RDNS_NONE Delivered to internal network by a host with no rDNS
- -0.9 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1hTpdZ-002xeF-Ba
+ -0.8 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1hTpg0-009ToG-7h
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
