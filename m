@@ -2,59 +2,60 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFB2F2FFDF
-	for <lists+linux1394-devel@lfdr.de>; Thu, 30 May 2019 18:06:57 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0172035F91
+	for <lists+linux1394-devel@lfdr.de>; Wed,  5 Jun 2019 16:49:02 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1hWNZm-0003UR-AM; Thu, 30 May 2019 16:06:46 +0000
+	id 1hYXDd-0005CP-JU; Wed, 05 Jun 2019 14:48:49 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <schutz@walkeralextra.tech>) id 1hWNZl-0003UE-2x
- for linux1394-devel@lists.sourceforge.net; Thu, 30 May 2019 16:06:45 +0000
+ (envelope-from <schssereutz@aol.jp>) id 1hYXDc-0005CH-59
+ for linux1394-devel@lists.sourceforge.net; Wed, 05 Jun 2019 14:48:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
  :Reply-To:From:Date:Message-ID:Subject:To:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=WnjPPTf1163HbLAvZGX4EPOVF62WF+OSxlNh4fapIqg=; b=LLL8gBNXzO/90AgQWiZnWiHaR9
- 0xs7aq94MFGqpTuelLs3dAV/aTEQYz1laBwXM4P8kUnBBkvabQ39jGNn7stj0kfRCHMQEjsuUpxT1
- l8ScEqEk9J57rX1fok4lSxPm61Gw4wiwhp5twaN8pkbvCWdnXq1YF6NeJip+3AiZnULY=;
+ bh=WnjPPTf1163HbLAvZGX4EPOVF62WF+OSxlNh4fapIqg=; b=YVrwzzWnUkb/s8LWi6PJQ6YQ/Y
+ H9bMkY28XLIqy3vhm0rQ0KH7pNYzRMmqQbMy6Vj5+Zhrvuwbl9qhXLnu+5OqmWdibBLdY3nJpptKc
+ z2DcPUXZ5c2868LFUwm6fINj+GYwiA5caLUS3uCjPX/USdmVdXEVSbkwh9uP/CZTpro0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Reply-To:From:Date:
  Message-ID:Subject:To:Sender:Cc:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=WnjPPTf1163HbLAvZGX4EPOVF62WF+OSxlNh4fapIqg=; b=V
- m88rqmsG4ADCjwsZ/7QTZW6zXLPnL4SjN6JZAaxhdYThfpQiWk/z/o4v+rgGi3x+dWemYj6X2heSO
- E7AQ99OcaOGrWb08m6S+led/ZDnsvHP5XmGRP9dsQsewZYjjED7kS1ooxjE8DIJSRDS/y3vUnXhTm
- zZRs3/hHoKXorYxI=;
-Received: from [179.43.149.60] (helo=gizmodo.com)
- by sfi-mx-3.v28.lw.sourceforge.com with esmtp (Exim 4.90_1)
- id 1hWNZh-006reg-UN
- for linux1394-devel@lists.sourceforge.net; Thu, 30 May 2019 16:06:45 +0000
+ List-Owner:List-Archive; bh=WnjPPTf1163HbLAvZGX4EPOVF62WF+OSxlNh4fapIqg=; b=b
+ OFi4RFtPHFB/RfvHTTWmVSjN+hrl2PdDLVL33Dt+FFU0bubQ7bOZcUpM2yYt18+p7Y3BaaHrTw6e0
+ 8o0Vx8M8l1NTE94trVHfJOgEzQtxAy2IgaQtiKoTwYSGicPCKckhNXVJ34DEHNIrcCIArD+ZVEyUE
+ wqoOD4wX42ZNzUps=;
+Received: from [176.126.78.19] (helo=treehousetv.com)
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.90_1)
+ id 1hYXDa-0014GM-Vn
+ for linux1394-devel@lists.sourceforge.net; Wed, 05 Jun 2019 14:48:48 +0000
 To: linux1394-devel@lists.sf.net
 Subject: custom printed logo
-Message-ID: <830e1fb7cc349d097b42591096dca151@vecteezy.com>
-Date: Thu, 30 May 2019 17:33:57 +0200
-From: "Stacy" <schutz@walkeralextra.tech>
+Message-ID: <659cf54ba533f88627b18a376e69d913@vecteezy.com>
+Date: Wed, 05 Jun 2019 14:29:36 +0200
+From: "Stacy" <schssereutz@aol.jp>
 MIME-Version: 1.0
-X-Spam-Score: 5.4 (+++++)
+X-Spam-Score: 7.0 (+++++++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.4 NO_DNS_FOR_FROM        DNS: Envelope sender has no MX or A DNS records
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.8 DKIM_ADSP_NXDOMAIN     No valid author signature and domain not in DNS
- 0.0 SPF_HELO_FAIL          SPF: HELO does not match SPF record (fail)
- [SPF failed: Please see http://www.openspf.net/Why?s=helo; id=gizmodo.com;
- ip=179.43.149.60; r=util-malware-3.v13.lw.sourceforge.com]
+ 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
+ (schssereutz[at]aol.jp)
+ 0.7 SPF_NEUTRAL            SPF: sender does not match SPF record (neutral)
  1.0 RDNS_NONE Delivered to internal network by a host with no rDNS
- 2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
- 0.7 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1hWNZh-006reg-UN
+ 1.0 FREEMAIL_REPLYTO       Reply-To/From or Reply-To/body contain different
+ freemails
+ 1.0 SPOOFED_FREEM_REPTO_CHN Forged freemail sender with Chinese freemail
+ reply-to
+ 2.5 SPOOFED_FREEM_REPTO    Forged freemail sender with freemail reply-to
+ 0.8 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1hYXDa-0014GM-Vn
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
