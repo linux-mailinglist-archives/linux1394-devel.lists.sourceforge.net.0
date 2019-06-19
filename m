@@ -2,52 +2,52 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61F0C4BA68
-	for <lists+linux1394-devel@lfdr.de>; Wed, 19 Jun 2019 15:46:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C80B4BAC0
+	for <lists+linux1394-devel@lfdr.de>; Wed, 19 Jun 2019 16:07:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Type:Content-Transfer-Encoding:Cc:
 	Reply-To:From:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:To:Sender:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qE2s8B3t+cBk6cwNr3xDOF0EREmwtamb2un8D/LuL0w=; b=iptp79RYiWZamd3Aquo5zok38w
-	SAKj4XQBeLSs13/2oA8zDgOOovjNakUhP4mWwU5E7VlVgjEtrwqsg1Hp/69YtMLQI550WUJd+3wxi
-	rLv/aqdBfK1mbMwzXsZy49Kj7PBaq2w/1h5MvX2VHlKqU5nWVE6w1ckh0eRjw7L0u1GM=;
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	bh=qE2s8B3t+cBk6cwNr3xDOF0EREmwtamb2un8D/LuL0w=; b=flJBk+0xynVha0t5LyE/aI/XXi
+	zMup4ZLCpZEoqAngn85C9mAhD/DAoKvU2U5TI3+mpk5yva1TujzzIebN5Xu6SutaRjHhKaYSAFn8Z
+	qJGBPfLpsOp3B/gvjvOEFvuuyWfeAMHYkGDmDVlRRlgPs//4U3IdRcrhHuYowPw+Tpic=;
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1hdaue-0001NY-9z; Wed, 19 Jun 2019 13:46:08 +0000
+	id 1hdbEz-0003Fl-OC; Wed, 19 Jun 2019 14:07:09 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <ansitaksi@verizon.net>) id 1hdauc-0001NR-IU
- for linux1394-devel@lists.sourceforge.net; Wed, 19 Jun 2019 13:46:06 +0000
+ (envelope-from <ansitaksi@verizon.net>) id 1hdbEy-0003Fd-TP
+ for linux1394-devel@lists.sourceforge.net; Wed, 19 Jun 2019 14:07:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
  :Reply-To:From:Date:Message-ID:Subject:To:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=khjX2F0Qnybl0/AE6FGAI2jsCmDE8y9a6agNZS/t/TM=; b=V/UxRSw4XAyE1s18x/pTEz5Kxu
- 1YCbmdTA2l62A1qm/HQc4A8uoK1bQILZfzzdmqwW31v6DuK3m+AZ+iQVEWzVF61AHFdlHJdmiGZpm
- l+JnAsmeqvCwtFbg/Lbjx3DSZK8rhZi7JZM0malfpDf6GIWDsRT5Q0tOR3TEEGRCJGc4=;
+ bh=khjX2F0Qnybl0/AE6FGAI2jsCmDE8y9a6agNZS/t/TM=; b=De6ukoq/aru8QgFX9keiZj9Msr
+ ixcXcL6QNC9loj9VJ7iEpOWjwJ08Z42YiP3AUi2et5kacpyEATzly5hL5nDuAx4ajynYBvXcDBdJW
+ aiOKb6zLkv6rhOWzHh+FerA3paSlWYjqvsPIEruqS+4w5YPjzcL+IdAM7KRjOVObOsKs=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Reply-To:From:Date:
  Message-ID:Subject:To:Sender:Cc:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=khjX2F0Qnybl0/AE6FGAI2jsCmDE8y9a6agNZS/t/TM=; b=T
- +ExZbNH8SBnMPxaj+QELDOfofpXpjhLlDmttBYJfaMjTyTA53DKt9P4nGXhP62uGnDJI+LY7XlKBO
- oNppe8+MWD6rUiVHM3Il31iSYpy27HCpa4ftvtcuMDhxcmNBk6pKX0mVwEkGbY5fmEHcdG9Di9q3d
- 5qYuKrxIg6SiucbA=;
+ List-Owner:List-Archive; bh=khjX2F0Qnybl0/AE6FGAI2jsCmDE8y9a6agNZS/t/TM=; b=L
+ h9ovMJmfEQpZW12Gsti40FVvU3cfxg0uuw0e6XLfpLSwC1OD9Ue4w+VvUXmHMvwWvM0xuo0KpZ6Ly
+ qYD/EZ/uTlEOpunwcYz4FUqw6x8+wsp4RF9g676I2KnM2WjM1gEcdd7QiXCU7RiQ8y11Rw6CfJWeA
+ 7dt5hhVvQqnRzhOA=;
 Received: from [185.216.140.110] (helo=chulaseafood.com)
  by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.90_1)
- id 1hdaub-00HVTf-Fu
- for linux1394-devel@lists.sourceforge.net; Wed, 19 Jun 2019 13:46:06 +0000
-To: linux1394-devel@lists.sf.net
+ id 1hdbEx-00HWiC-6V
+ for linux1394-devel@lists.sourceforge.net; Wed, 19 Jun 2019 14:07:09 +0000
+To: linux1394-devel@lists.sourceforge.net
 Subject: =?UTF-8?B?wrcgICAgICAgICBjYW4geW91IGFzc2lzdCBtZT8=?=
-Message-ID: <fdb96bb6483a758aa242279ae1f5e62d@airkinglimited.com>
+Message-ID: <b51875f6f998471b575156a367bc591b@airkinglimited.com>
 Date: Wed, 19 Jun 2019 12:41:01 +0200
 MIME-Version: 1.0
 X-Spam-Score: 4.7 (++++)
@@ -57,11 +57,11 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  1.1 DATE_IN_PAST_03_06     Date: is 3 to 6 hours before Received: date
  0.0 SPF_HELO_FAIL          SPF: HELO does not match SPF record (fail)
  [SPF failed: Please see http://www.openspf.net/Why?s=helo; id=chulaseafood.com;
- ip=185.216.140.110; r=util-malware-1.v13.lw.sourceforge.com]
+ ip=185.216.140.110; r=util-malware-3.v13.lw.sourceforge.com]
  1.0 RDNS_NONE Delivered to internal network by a host with no rDNS
  2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
  -0.5 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1hdaub-00HVTf-Fu
+X-Headers-End: 1hdbEx-00HWiC-6V
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
