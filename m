@@ -2,108 +2,88 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2597C98A76
-	for <lists+linux1394-devel@lfdr.de>; Thu, 22 Aug 2019 06:34:15 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.sourceforge.net; s=beta; h=Content-Type:Reply-To:From:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:
-	Subject:MIME-Version:Sender:Cc:Content-Transfer-Encoding:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QJltCWwNF2LYoZdY3dTZBnYvJLHEicUzXV55m2TPTDc=; b=JolmOOUAdtLKtZporap2+lhLJM
-	b6Bz6e0nOGyYUWSOEQaZ9O3jErlDkwybdRRBAFtNHh9VAiZ7267gMDg8QjZv6Z5zImoKRd0W/R9QB
-	iCmBIk3HnOfcnd67Y7+U63+le+nNcz7vYch22buyucnqbs1AMQOWZv4DpTCkGa/9EnMU=;
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 600529C58E
+	for <lists+linux1394-devel@lfdr.de>; Sun, 25 Aug 2019 20:35:23 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1i0enU-00045B-0g; Thu, 22 Aug 2019 04:34:04 +0000
+	id 1i1xM8-0000fl-4f; Sun, 25 Aug 2019 18:35:12 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <noreply@upgrade.com>) id 1i0enS-000453-6a
- for linux1394-devel@lists.sourceforge.net; Thu, 22 Aug 2019 04:34:02 +0000
+ (envelope-from <arnd@arndb.de>) id 1hsYP2-0002HA-B0
+ for linux1394-devel@lists.sourceforge.net; Tue, 30 Jul 2019 20:07:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Message-ID:Date:From:To:Subject:MIME-Version:
- Content-Type:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
+ In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=BrpPTsRPaeYcatZVncgecezUwqGES9nH1YLUdVRipk4=; b=aW++vJbJU5Z2NEC9ge59zN1Uqi
- 0VMvMWY/IB/VT4v2mmY1Yj/PyvqF4Ts7Z719BXRPNRNl5mz9V4ZMNKK/aSk8lQ8VcvJ1ryvpCLH0X
- sEqbzW3FQbLinAwJIidTTQG0oVIntFEuDu0x/TgesaHv9PMfxuQdfzlIpJc/xZSY9hEM=;
+ bh=8Ibl5VVHh3R2U82IRwzMigj2ztwAH0fHaTW4J7mE8EQ=; b=G+CGPkCclliBRlaJZxyDRwXMdH
+ jdVWJ1Uqe/8y77876Ueh6poWrFUpK3Pqy1BnFJNmqRxzh/oP0PNvYbTcgRYX1LAaKZkHUfhRB/e6G
+ N7dTmyjNcfoO5CmUBjEhdCWvw8Ch0bLRtMZNe8XdtDm9+KWp2HoUXJG9ooDDfllpvwlU=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Message-ID:Date:From:To:Subject:MIME-Version:Content-Type:Sender:Reply-To
- :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=BrpPTsRPaeYcatZVncgecezUwqGES9nH1YLUdVRipk4=; b=O
- VpT2C81sgqO2MGOZ+QkaSNaJX6+pyVFpTbw1uFNmnrLZmra2pdszcchb78JLheklul40Daqelyp9K
- qXIfy1tqVhPUatkwJJEn1JS0KhTOIXAb0PrtJ6NG64ucq3ndygn86p3zxKkqwjQZviesIJJ0oZ3Tg
- rTu9XkiJIXpexGAA=;
-Received: from out2-4.antispamcloud.com ([185.201.17.4])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- id 1i0enN-00FJEM-RK
- for linux1394-devel@lists.sourceforge.net; Thu, 22 Aug 2019 04:34:02 +0000
-Received: from c797.tlh.ro ([128.0.47.97])
- by mx78.antispamcloud.com with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.89)
- (envelope-from <noreply@upgrade.com>) id 1i0eMV-0003BN-W3
- for linux1394-devel@lists.sourceforge.net; Thu, 22 Aug 2019 06:06:12 +0200
-Received: from [46.183.221.113] (port=49278 helo=IP-221-113.dataclub.eu)
- by sha13.tlh.ro with esmtpsa (TLSv1:DHE-RSA-AES256-SHA:256)
- (Exim 4.92) (envelope-from <noreply@upgrade.com>) id 1i0eMW-00DRDO-1y
- for linux1394-devel@lists.sourceforge.net; Thu, 22 Aug 2019 07:06:12 +0300
+ h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=8Ibl5VVHh3R2U82IRwzMigj2ztwAH0fHaTW4J7mE8EQ=; b=U8T3vuQQ9AChhRmVkoikyr2Xgo
+ /8YCcFgY1adnnhtsHdGMAhV29lvIxG6fZY//ibeZRz/oeXppnS/Cj97AhZBUSkSlkv2AyQnvxbc49
+ vubaUDqGvuL4kkS7YYmgJ/Tuwi2LESxHeXUq5KRK38CiHb3YE+ZjMuRbkRlFbOGVYK1o=;
+Received: from mout.kundenserver.de ([212.227.126.130])
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.90_1)
+ id 1hsYOy-0053fQ-Ff
+ for linux1394-devel@lists.sourceforge.net; Tue, 30 Jul 2019 20:07:20 +0000
+Received: from threadripper.lan ([149.172.19.189]) by mrelayeu.kundenserver.de
+ (mreue011 [212.227.15.129]) with ESMTPA (Nemesis) id
+ 1M2ep5-1hwguM3SiF-004Dqv; Tue, 30 Jul 2019 21:52:33 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: Alexander Viro <viro@zeniv.linux.org.uk>
+Subject: [PATCH v5 12/29] compat_ioctl: move drivers to compat_ptr_ioctl
+Date: Tue, 30 Jul 2019 21:50:28 +0200
+Message-Id: <20190730195227.742215-1-arnd@arndb.de>
+X-Mailer: git-send-email 2.20.0
+In-Reply-To: <20190730192552.4014288-1-arnd@arndb.de>
+References: <20190730192552.4014288-1-arnd@arndb.de>
 MIME-Version: 1.0
-Subject: Your email linux1394-devel@lists.sourceforge.net Has been Blacklisted
- Re-confirm Your id
-To: linux1394-devel@lists.sourceforge.net
-Date: Thu, 22 Aug 2019 07:06:07 +0300
-X-AuthUser: pieseschimb@mivatec.ro
-Message-ID: <E1i0eMV-0003BN-W3@mx78.antispamcloud.com>
-X-Originating-IP: 128.0.47.97
-X-Spampanel-Domain: tlh.ro
-X-Spampanel-Username: sha13
-Authentication-Results: antispamcloud.com;
- auth=pass (login) smtp.auth=sha13@tlh.ro
-X-Spampanel-Outgoing-Class: unsure
-X-Spampanel-Outgoing-Evidence: Combined (0.79)
-X-Recommended-Action: accept
-X-Filter-ID: Mvzo4OR0dZXEDF/gcnlw0ZMJr/TGkEWvNJbVmORegSypSDasLI4SayDByyq9LIhVSmnjPUQxS5Ak
- 5HvZpenWYkTNWdUk1Ol2OGx3IfrIJKywOmJyM1qr8uRnWBrbSAGDqc8QRwoVk8gmoI//BXSN/T9G
- 0IA9bRwRct9JixjrSny93lB6gObkOw8vhIkWSZC5muyufoJaiQIvg+WQC8kzdiTg127TqHZDxA/k
- ZB41Rh8Zv6k/M3Y6+QD35XSfsptK0z86iAT1azbBfdCnBUpRQryKBr74JYbLkGHZAgomyXEiMOr3
- OCFNPvZdzFg4zC00E896l1TfVbVDyxPXexhmatzTirCWMek3iVJil10OlRdEyAABetz7A3k8nwe/
- DyqM213hBKa/uiSq4lip4tywWCWZ4SOzQFmgsMTstbIfeOKPPhkxeOWI8nHYm5pmBDqFz+l6YFar
- +A/2xETIBTKrwtlIMxRfoxzUmyKFtUPvlr493SsS4aMXJmiJ2G0eb5ahYN3iszxvROTIpAtnVV1n
- KVbKdlTGwwLUTcTFDOyKCv58AmPL5r/iajlSWpgR3zhlcI5+17rf5V2oLKHXeaqjg0xYsHKVOH8s
- ++Y8aVPfETxoh9VoIekQHpwUfpYnEThmr6bxSzxd+Lq+hFgriVg2MO9h994sqOZDTW/S/BJZdgfY
- y8B3FlMypq6r01KXLOjsOp2Q75srqVivkMyThHjw/KhabeAlAg2ob+dKpG9ZU7DQC3Hy7EnQ0I8d
- 2CUPcI6ZEgdBLn8RwvlnI1Seq22z2cUFG8fmYdCwRLfAotwWY9r8koPc098tmbVaH2abyn4Y5VjN
- 8MjKVMIunwkpKF2hu/AIVT0s19LWWL2e75k39glyd5iX+slt7H+4HpkW+iF3JOYIJd4MvQ0Nf4Ec
- bvHO1Y3h1FukqRqYBWF/lqp+OXSuedK/Z3MvnAyDmuOaA5CGZRWsGw8ac2InzcAP/gmxwNpms+rB
- 6wJM+NNhN3aT35N1uwHmeY0OMM+CzXEZ4HiEDQwgRnIGnWrOT9T9W8XXFg==
-X-Report-Abuse-To: spam@quarantine12.antispamcloud.com
-X-Spam-Score: 2.9 (++)
+X-Provags-ID: V03:K1:f4kyacZkBh7d2L8DvfG/VWglDWmV1r6PyMvHlDfoj4C7ggclB67
+ iYy8MoHZ4ZjuI6LNLyJEN3yiNqmQw5XpLccLKCY831oDCsExHVnyRsQw8RhuXBWAupdrWGU
+ 2uujPAjsUE4qQ22u48yyaIJueGs1R4h2CIxPvTzi5pGqdRk3Jl1MaQfXUJiC/aGxUwrOT6G
+ Ape/7iXHD3yCgh14Z37RA==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:JmxN5u92UfY=:YrMeQRAVjpAXVvPeZxup9s
+ kxk8CFR3RZF6OcfSuHzUyiflrvyEK0/OMRjJe18GqPApwX/TAoLYdWwJu2/ygZt7xxS5/SSgW
+ bzr+IAJKb7pTbVHjKfGgTRVNpirIqC/2hslS1h1fJUyLN10l1zAqMPWcTvQNqKKKKNjryK1ud
+ 2ekBLYZkUQi1/T48UueLwhzdTB5YKNM5/jxkUxcTVSYZAs+ElMTPM3DO4JSfRl+ZCPSYC/6JQ
+ 3wrqEuzOIEaiSHsVrxEos2M/YrZ7Au4+cU+dNVWsz8rHj0AsPfHJaClotHd5/VrO8qAC4qIXZ
+ uLu+3uiu0J9QnnkvzZasAwc2k/pNyfcCAEKmLxo83y3y1BL/+dkm7EulVTLjbTlbbAFKU1RSe
+ pGftnGs32fJj2UupTg2pnPvX6Nxb5HLmCcGm8BbDIhcuBpLUR82Ty66JV0PVer2xqrOjBqfLh
+ fwM2ZsU6GBryK/JddVEe26YalujckcGoEO+O2P8gLdnXmdWN+/xO8MV9XGCOGj3YDTFbcajzX
+ 6adg8kahvmSZDMWF7K2922io/TIwgC6FdbVaztSIwsLjgu1oBCm1yU6Eb2jW5SzyfQPgkFd4L
+ upvzkYXDeHz3JhPkIr6L3NwmgEcOMOHvlNKcyUKXvTXsTCZhnO0cKBi3jgjdgVQtVbOi1aQaa
+ CIrIcAaZ3TJOqon8FQaCvc6R9MGAX/pg9JeMJhta//V5gw82geIMBfJzqB0qKySWQPdRfHbsc
+ KqS8Q7xRp2rVPwy/ExJ5MsFTOAJ9eClIh31s+VrlLUMFZOhdbV9599EriJ55LSzXsTgLmzj8k
+ IGKu4d0Spd0Dngg9iVDRYOGjBRdQILd+9frvlqTNHuT6eGflJVKz9l/S6Bye85fWrX50jWCw4
+ z0M9J889c/xAtyUOrOaavzMQkNm3tVI4cV/V5hNjQg99zMhpDUsag2vdBinrPI
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: orangebench.com]
+ for more information. [URIs: mellanox.com]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [212.227.126.130 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [212.227.126.130 listed in wl.mailspike.net]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.9 SPF_FAIL               SPF: sender does not match SPF record (fail)
- [SPF failed: Please see http://www.openspf.net/Why?s=mfrom;
- id=noreply%40upgrade.com; ip=185.201.17.4;
- r=util-malware-3.v13.lw.sourceforge.com]
- 1.0 HTML_MESSAGE           BODY: HTML included in message
- 0.0 HTML_FONT_LOW_CONTRAST BODY: HTML font color similar or identical to
- background
- 0.0 TVD_PH_BODY_ACCOUNTS_PRE The body matches phrases such as "accounts
- suspended", "account credited", "account verification"
- 1.0 URI_WPADMIN            WordPress login/admin URI, possible phishing
-X-Headers-End: 1i0enN-00FJEM-RK
+ -0.2 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1hsYOy-0053fQ-Ff
+X-Mailman-Approved-At: Sun, 25 Aug 2019 18:35:10 +0000
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,310 +96,677 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-From: Domain Upgrade via linux1394-devel
- <linux1394-devel@lists.sourceforge.net>
-Reply-To: Domain Upgrade <noreply@upgrade.com>
-Content-Type: multipart/mixed; boundary="===============6113959752260869648=="
+Cc: devel@driverdev.osuosl.org, linux-input@vger.kernel.org,
+ kvm@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
+ virtualization@lists.linux-foundation.org, Jason Gunthorpe <jgg@mellanox.com>,
+ linux-mtd@lists.infradead.org, Stefan Hajnoczi <stefanha@redhat.com>,
+ Jiri Kosina <jkosina@suse.cz>, linux-fsdevel@vger.kernel.org,
+ ceph-devel@vger.kernel.org, linux-integrity@vger.kernel.org,
+ linux1394-devel@lists.sourceforge.net,
+ linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-You will not see this in a MIME-aware mail reader.
---===============6113959752260869648==
-Content-Type: multipart/alternative; boundary="===============0472053900=="
+Each of these drivers has a copy of the same trivial helper function to
+convert the pointer argument and then call the native ioctl handler.
 
-You will not see this in a MIME-aware mail reader.
---===============0472053900==
-Content-Type: text/plain; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+We now have a generic implementation of that, so use it.
 
-  Hello [linux1394-devel@lists.sourceforge.net],  =
+Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>
+Reviewed-by: Jason Gunthorpe <jgg@mellanox.com>
+Reviewed-by: Jiri Kosina <jkosina@suse.cz>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/char/ppdev.c              | 12 +---------
+ drivers/char/tpm/tpm_vtpm_proxy.c | 12 +---------
+ drivers/firewire/core-cdev.c      | 12 +---------
+ drivers/hid/usbhid/hiddev.c       | 11 +--------
+ drivers/hwtracing/stm/core.c      | 12 +---------
+ drivers/misc/mei/main.c           | 22 +----------------
+ drivers/mtd/ubi/cdev.c            | 36 +++-------------------------
+ drivers/net/tap.c                 | 12 +---------
+ drivers/staging/pi433/pi433_if.c  | 12 +---------
+ drivers/usb/core/devio.c          | 16 +------------
+ drivers/vfio/vfio.c               | 39 +++----------------------------
+ drivers/vhost/net.c               | 12 +---------
+ drivers/vhost/scsi.c              | 12 +---------
+ drivers/vhost/test.c              | 12 +---------
+ drivers/vhost/vsock.c             | 12 +---------
+ fs/ceph/dir.c                     |  2 +-
+ fs/ceph/file.c                    |  2 +-
+ fs/ceph/super.h                   |  9 -------
+ fs/fat/file.c                     | 13 +----------
+ 19 files changed, 22 insertions(+), 248 deletions(-)
 
-    We noticed that you need to re-verify your email account.  =
+diff --git a/drivers/char/ppdev.c b/drivers/char/ppdev.c
+index f0a8adca1eee..c4d5cc4a1d3e 100644
+--- a/drivers/char/ppdev.c
++++ b/drivers/char/ppdev.c
+@@ -670,14 +670,6 @@ static long pp_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 	return ret;
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long pp_compat_ioctl(struct file *file, unsigned int cmd,
+-			    unsigned long arg)
+-{
+-	return pp_ioctl(file, cmd, (unsigned long)compat_ptr(arg));
+-}
+-#endif
+-
+ static int pp_open(struct inode *inode, struct file *file)
+ {
+ 	unsigned int minor = iminor(inode);
+@@ -786,9 +778,7 @@ static const struct file_operations pp_fops = {
+ 	.write		= pp_write,
+ 	.poll		= pp_poll,
+ 	.unlocked_ioctl	= pp_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl   = pp_compat_ioctl,
+-#endif
++	.compat_ioctl   = compat_ptr_ioctl,
+ 	.open		= pp_open,
+ 	.release	= pp_release,
+ };
+diff --git a/drivers/char/tpm/tpm_vtpm_proxy.c b/drivers/char/tpm/tpm_vtpm_proxy.c
+index 2f6e087ec496..91c772e38bb5 100644
+--- a/drivers/char/tpm/tpm_vtpm_proxy.c
++++ b/drivers/char/tpm/tpm_vtpm_proxy.c
+@@ -670,20 +670,10 @@ static long vtpmx_fops_ioctl(struct file *f, unsigned int ioctl,
+ 	}
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long vtpmx_fops_compat_ioctl(struct file *f, unsigned int ioctl,
+-					  unsigned long arg)
+-{
+-	return vtpmx_fops_ioctl(f, ioctl, (unsigned long)compat_ptr(arg));
+-}
+-#endif
+-
+ static const struct file_operations vtpmx_fops = {
+ 	.owner = THIS_MODULE,
+ 	.unlocked_ioctl = vtpmx_fops_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl = vtpmx_fops_compat_ioctl,
+-#endif
++	.compat_ioctl = compat_ptr_ioctl,
+ 	.llseek = noop_llseek,
+ };
+ 
+diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
+index 1da7ba18d399..c777088f5828 100644
+--- a/drivers/firewire/core-cdev.c
++++ b/drivers/firewire/core-cdev.c
+@@ -1646,14 +1646,6 @@ static long fw_device_op_ioctl(struct file *file,
+ 	return dispatch_ioctl(file->private_data, cmd, (void __user *)arg);
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long fw_device_op_compat_ioctl(struct file *file,
+-				      unsigned int cmd, unsigned long arg)
+-{
+-	return dispatch_ioctl(file->private_data, cmd, compat_ptr(arg));
+-}
+-#endif
+-
+ static int fw_device_op_mmap(struct file *file, struct vm_area_struct *vma)
+ {
+ 	struct client *client = file->private_data;
+@@ -1795,7 +1787,5 @@ const struct file_operations fw_device_ops = {
+ 	.mmap		= fw_device_op_mmap,
+ 	.release	= fw_device_op_release,
+ 	.poll		= fw_device_op_poll,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl	= fw_device_op_compat_ioctl,
+-#endif
++	.compat_ioctl	= compat_ptr_ioctl,
+ };
+diff --git a/drivers/hid/usbhid/hiddev.c b/drivers/hid/usbhid/hiddev.c
+index 55b72573066b..70009bd76ac1 100644
+--- a/drivers/hid/usbhid/hiddev.c
++++ b/drivers/hid/usbhid/hiddev.c
+@@ -842,13 +842,6 @@ static long hiddev_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 	return r;
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long hiddev_compat_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+-{
+-	return hiddev_ioctl(file, cmd, (unsigned long)compat_ptr(arg));
+-}
+-#endif
+-
+ static const struct file_operations hiddev_fops = {
+ 	.owner =	THIS_MODULE,
+ 	.read =		hiddev_read,
+@@ -858,9 +851,7 @@ static const struct file_operations hiddev_fops = {
+ 	.release =	hiddev_release,
+ 	.unlocked_ioctl =	hiddev_ioctl,
+ 	.fasync =	hiddev_fasync,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl	= hiddev_compat_ioctl,
+-#endif
++	.compat_ioctl	= compat_ptr_ioctl,
+ 	.llseek		= noop_llseek,
+ };
+ 
+diff --git a/drivers/hwtracing/stm/core.c b/drivers/hwtracing/stm/core.c
+index e55b902560de..0fbc994900fd 100644
+--- a/drivers/hwtracing/stm/core.c
++++ b/drivers/hwtracing/stm/core.c
+@@ -839,23 +839,13 @@ stm_char_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ 	return err;
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long
+-stm_char_compat_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+-{
+-	return stm_char_ioctl(file, cmd, (unsigned long)compat_ptr(arg));
+-}
+-#else
+-#define stm_char_compat_ioctl	NULL
+-#endif
+-
+ static const struct file_operations stm_fops = {
+ 	.open		= stm_char_open,
+ 	.release	= stm_char_release,
+ 	.write		= stm_char_write,
+ 	.mmap		= stm_char_mmap,
+ 	.unlocked_ioctl	= stm_char_ioctl,
+-	.compat_ioctl	= stm_char_compat_ioctl,
++	.compat_ioctl	= compat_ptr_ioctl,
+ 	.llseek		= no_llseek,
+ };
+ 
+diff --git a/drivers/misc/mei/main.c b/drivers/misc/mei/main.c
+index f894d1f8a53e..4ea7feb4ec2d 100644
+--- a/drivers/misc/mei/main.c
++++ b/drivers/misc/mei/main.c
+@@ -532,24 +532,6 @@ static long mei_ioctl(struct file *file, unsigned int cmd, unsigned long data)
+ 	return rets;
+ }
+ 
+-/**
+- * mei_compat_ioctl - the compat IOCTL function
+- *
+- * @file: pointer to file structure
+- * @cmd: ioctl command
+- * @data: pointer to mei message structure
+- *
+- * Return: 0 on success , <0 on error
+- */
+-#ifdef CONFIG_COMPAT
+-static long mei_compat_ioctl(struct file *file,
+-			unsigned int cmd, unsigned long data)
+-{
+-	return mei_ioctl(file, cmd, (unsigned long)compat_ptr(data));
+-}
+-#endif
+-
+-
+ /**
+  * mei_poll - the poll function
+  *
+@@ -905,9 +887,7 @@ static const struct file_operations mei_fops = {
+ 	.owner = THIS_MODULE,
+ 	.read = mei_read,
+ 	.unlocked_ioctl = mei_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl = mei_compat_ioctl,
+-#endif
++	.compat_ioctl = compat_ptr_ioctl,
+ 	.open = mei_open,
+ 	.release = mei_release,
+ 	.write = mei_write,
+diff --git a/drivers/mtd/ubi/cdev.c b/drivers/mtd/ubi/cdev.c
+index 1b77fff9f892..cc9a28cf9d82 100644
+--- a/drivers/mtd/ubi/cdev.c
++++ b/drivers/mtd/ubi/cdev.c
+@@ -1078,36 +1078,6 @@ static long ctrl_cdev_ioctl(struct file *file, unsigned int cmd,
+ 	return err;
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long vol_cdev_compat_ioctl(struct file *file, unsigned int cmd,
+-				  unsigned long arg)
+-{
+-	unsigned long translated_arg = (unsigned long)compat_ptr(arg);
+-
+-	return vol_cdev_ioctl(file, cmd, translated_arg);
+-}
+-
+-static long ubi_cdev_compat_ioctl(struct file *file, unsigned int cmd,
+-				  unsigned long arg)
+-{
+-	unsigned long translated_arg = (unsigned long)compat_ptr(arg);
+-
+-	return ubi_cdev_ioctl(file, cmd, translated_arg);
+-}
+-
+-static long ctrl_cdev_compat_ioctl(struct file *file, unsigned int cmd,
+-				   unsigned long arg)
+-{
+-	unsigned long translated_arg = (unsigned long)compat_ptr(arg);
+-
+-	return ctrl_cdev_ioctl(file, cmd, translated_arg);
+-}
+-#else
+-#define vol_cdev_compat_ioctl  NULL
+-#define ubi_cdev_compat_ioctl  NULL
+-#define ctrl_cdev_compat_ioctl NULL
+-#endif
+-
+ /* UBI volume character device operations */
+ const struct file_operations ubi_vol_cdev_operations = {
+ 	.owner          = THIS_MODULE,
+@@ -1118,7 +1088,7 @@ const struct file_operations ubi_vol_cdev_operations = {
+ 	.write          = vol_cdev_write,
+ 	.fsync		= vol_cdev_fsync,
+ 	.unlocked_ioctl = vol_cdev_ioctl,
+-	.compat_ioctl   = vol_cdev_compat_ioctl,
++	.compat_ioctl   = compat_ptr_ioctl,
+ };
+ 
+ /* UBI character device operations */
+@@ -1126,13 +1096,13 @@ const struct file_operations ubi_cdev_operations = {
+ 	.owner          = THIS_MODULE,
+ 	.llseek         = no_llseek,
+ 	.unlocked_ioctl = ubi_cdev_ioctl,
+-	.compat_ioctl   = ubi_cdev_compat_ioctl,
++	.compat_ioctl   = compat_ptr_ioctl,
+ };
+ 
+ /* UBI control character device operations */
+ const struct file_operations ubi_ctrl_cdev_operations = {
+ 	.owner          = THIS_MODULE,
+ 	.unlocked_ioctl = ctrl_cdev_ioctl,
+-	.compat_ioctl   = ctrl_cdev_compat_ioctl,
++	.compat_ioctl   = compat_ptr_ioctl,
+ 	.llseek		= no_llseek,
+ };
+diff --git a/drivers/net/tap.c b/drivers/net/tap.c
+index dd614c2cd994..bcdfb0d88753 100644
+--- a/drivers/net/tap.c
++++ b/drivers/net/tap.c
+@@ -1123,14 +1123,6 @@ static long tap_ioctl(struct file *file, unsigned int cmd,
+ 	}
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long tap_compat_ioctl(struct file *file, unsigned int cmd,
+-			     unsigned long arg)
+-{
+-	return tap_ioctl(file, cmd, (unsigned long)compat_ptr(arg));
+-}
+-#endif
+-
+ static const struct file_operations tap_fops = {
+ 	.owner		= THIS_MODULE,
+ 	.open		= tap_open,
+@@ -1140,9 +1132,7 @@ static const struct file_operations tap_fops = {
+ 	.poll		= tap_poll,
+ 	.llseek		= no_llseek,
+ 	.unlocked_ioctl	= tap_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl	= tap_compat_ioctl,
+-#endif
++	.compat_ioctl	= compat_ptr_ioctl,
+ };
+ 
+ static int tap_get_user_xdp(struct tap_queue *q, struct xdp_buff *xdp)
+diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
+index 40c6f4e7632f..313d22f6210f 100644
+--- a/drivers/staging/pi433/pi433_if.c
++++ b/drivers/staging/pi433/pi433_if.c
+@@ -928,16 +928,6 @@ pi433_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+ 	return 0;
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long
+-pi433_compat_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+-{
+-	return pi433_ioctl(filp, cmd, (unsigned long)compat_ptr(arg));
+-}
+-#else
+-#define pi433_compat_ioctl NULL
+-#endif /* CONFIG_COMPAT */
+-
+ /*-------------------------------------------------------------------------*/
+ 
+ static int pi433_open(struct inode *inode, struct file *filp)
+@@ -1094,7 +1084,7 @@ static const struct file_operations pi433_fops = {
+ 	.write =	pi433_write,
+ 	.read =		pi433_read,
+ 	.unlocked_ioctl = pi433_ioctl,
+-	.compat_ioctl = pi433_compat_ioctl,
++	.compat_ioctl = compat_ptr_ioctl,
+ 	.open =		pi433_open,
+ 	.release =	pi433_release,
+ 	.llseek =	no_llseek,
+diff --git a/drivers/usb/core/devio.c b/drivers/usb/core/devio.c
+index b265ab5405f9..efea6cff66d4 100644
+--- a/drivers/usb/core/devio.c
++++ b/drivers/usb/core/devio.c
+@@ -2604,18 +2604,6 @@ static long usbdev_ioctl(struct file *file, unsigned int cmd,
+ 	return ret;
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long usbdev_compat_ioctl(struct file *file, unsigned int cmd,
+-			unsigned long arg)
+-{
+-	int ret;
+-
+-	ret = usbdev_do_ioctl(file, cmd, compat_ptr(arg));
+-
+-	return ret;
+-}
+-#endif
+-
+ /* No kernel lock - fine */
+ static __poll_t usbdev_poll(struct file *file,
+ 				struct poll_table_struct *wait)
+@@ -2639,9 +2627,7 @@ const struct file_operations usbdev_file_operations = {
+ 	.read =		  usbdev_read,
+ 	.poll =		  usbdev_poll,
+ 	.unlocked_ioctl = usbdev_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl =   usbdev_compat_ioctl,
+-#endif
++	.compat_ioctl =   compat_ptr_ioctl,
+ 	.mmap =           usbdev_mmap,
+ 	.open =		  usbdev_open,
+ 	.release =	  usbdev_release,
+diff --git a/drivers/vfio/vfio.c b/drivers/vfio/vfio.c
+index 388597930b64..c8482624ca34 100644
+--- a/drivers/vfio/vfio.c
++++ b/drivers/vfio/vfio.c
+@@ -1184,15 +1184,6 @@ static long vfio_fops_unl_ioctl(struct file *filep,
+ 	return ret;
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long vfio_fops_compat_ioctl(struct file *filep,
+-				   unsigned int cmd, unsigned long arg)
+-{
+-	arg = (unsigned long)compat_ptr(arg);
+-	return vfio_fops_unl_ioctl(filep, cmd, arg);
+-}
+-#endif	/* CONFIG_COMPAT */
+-
+ static int vfio_fops_open(struct inode *inode, struct file *filep)
+ {
+ 	struct vfio_container *container;
+@@ -1275,9 +1266,7 @@ static const struct file_operations vfio_fops = {
+ 	.read		= vfio_fops_read,
+ 	.write		= vfio_fops_write,
+ 	.unlocked_ioctl	= vfio_fops_unl_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl	= vfio_fops_compat_ioctl,
+-#endif
++	.compat_ioctl	= compat_ptr_ioctl,
+ 	.mmap		= vfio_fops_mmap,
+ };
+ 
+@@ -1556,15 +1545,6 @@ static long vfio_group_fops_unl_ioctl(struct file *filep,
+ 	return ret;
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long vfio_group_fops_compat_ioctl(struct file *filep,
+-					 unsigned int cmd, unsigned long arg)
+-{
+-	arg = (unsigned long)compat_ptr(arg);
+-	return vfio_group_fops_unl_ioctl(filep, cmd, arg);
+-}
+-#endif	/* CONFIG_COMPAT */
+-
+ static int vfio_group_fops_open(struct inode *inode, struct file *filep)
+ {
+ 	struct vfio_group *group;
+@@ -1620,9 +1600,7 @@ static int vfio_group_fops_release(struct inode *inode, struct file *filep)
+ static const struct file_operations vfio_group_fops = {
+ 	.owner		= THIS_MODULE,
+ 	.unlocked_ioctl	= vfio_group_fops_unl_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl	= vfio_group_fops_compat_ioctl,
+-#endif
++	.compat_ioctl	= compat_ptr_ioctl,
+ 	.open		= vfio_group_fops_open,
+ 	.release	= vfio_group_fops_release,
+ };
+@@ -1687,24 +1665,13 @@ static int vfio_device_fops_mmap(struct file *filep, struct vm_area_struct *vma)
+ 	return device->ops->mmap(device->device_data, vma);
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long vfio_device_fops_compat_ioctl(struct file *filep,
+-					  unsigned int cmd, unsigned long arg)
+-{
+-	arg = (unsigned long)compat_ptr(arg);
+-	return vfio_device_fops_unl_ioctl(filep, cmd, arg);
+-}
+-#endif	/* CONFIG_COMPAT */
+-
+ static const struct file_operations vfio_device_fops = {
+ 	.owner		= THIS_MODULE,
+ 	.release	= vfio_device_fops_release,
+ 	.read		= vfio_device_fops_read,
+ 	.write		= vfio_device_fops_write,
+ 	.unlocked_ioctl	= vfio_device_fops_unl_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl	= vfio_device_fops_compat_ioctl,
+-#endif
++	.compat_ioctl	= compat_ptr_ioctl,
+ 	.mmap		= vfio_device_fops_mmap,
+ };
+ 
+diff --git a/drivers/vhost/net.c b/drivers/vhost/net.c
+index 1a2dd53caade..e158159671fa 100644
+--- a/drivers/vhost/net.c
++++ b/drivers/vhost/net.c
+@@ -1751,14 +1751,6 @@ static long vhost_net_ioctl(struct file *f, unsigned int ioctl,
+ 	}
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long vhost_net_compat_ioctl(struct file *f, unsigned int ioctl,
+-				   unsigned long arg)
+-{
+-	return vhost_net_ioctl(f, ioctl, (unsigned long)compat_ptr(arg));
+-}
+-#endif
+-
+ static ssize_t vhost_net_chr_read_iter(struct kiocb *iocb, struct iov_iter *to)
+ {
+ 	struct file *file = iocb->ki_filp;
+@@ -1794,9 +1786,7 @@ static const struct file_operations vhost_net_fops = {
+ 	.write_iter     = vhost_net_chr_write_iter,
+ 	.poll           = vhost_net_chr_poll,
+ 	.unlocked_ioctl = vhost_net_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl   = vhost_net_compat_ioctl,
+-#endif
++	.compat_ioctl   = compat_ptr_ioctl,
+ 	.open           = vhost_net_open,
+ 	.llseek		= noop_llseek,
+ };
+diff --git a/drivers/vhost/scsi.c b/drivers/vhost/scsi.c
+index a9caf1bc3c3e..0b949a14bce3 100644
+--- a/drivers/vhost/scsi.c
++++ b/drivers/vhost/scsi.c
+@@ -1727,21 +1727,11 @@ vhost_scsi_ioctl(struct file *f,
+ 	}
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long vhost_scsi_compat_ioctl(struct file *f, unsigned int ioctl,
+-				unsigned long arg)
+-{
+-	return vhost_scsi_ioctl(f, ioctl, (unsigned long)compat_ptr(arg));
+-}
+-#endif
+-
+ static const struct file_operations vhost_scsi_fops = {
+ 	.owner          = THIS_MODULE,
+ 	.release        = vhost_scsi_release,
+ 	.unlocked_ioctl = vhost_scsi_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl	= vhost_scsi_compat_ioctl,
+-#endif
++	.compat_ioctl	= compat_ptr_ioctl,
+ 	.open           = vhost_scsi_open,
+ 	.llseek		= noop_llseek,
+ };
+diff --git a/drivers/vhost/test.c b/drivers/vhost/test.c
+index 9e90e969af55..71954077df69 100644
+--- a/drivers/vhost/test.c
++++ b/drivers/vhost/test.c
+@@ -297,21 +297,11 @@ static long vhost_test_ioctl(struct file *f, unsigned int ioctl,
+ 	}
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long vhost_test_compat_ioctl(struct file *f, unsigned int ioctl,
+-				   unsigned long arg)
+-{
+-	return vhost_test_ioctl(f, ioctl, (unsigned long)compat_ptr(arg));
+-}
+-#endif
+-
+ static const struct file_operations vhost_test_fops = {
+ 	.owner          = THIS_MODULE,
+ 	.release        = vhost_test_release,
+ 	.unlocked_ioctl = vhost_test_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl   = vhost_test_compat_ioctl,
+-#endif
++	.compat_ioctl   = compat_ptr_ioctl,
+ 	.open           = vhost_test_open,
+ 	.llseek		= noop_llseek,
+ };
+diff --git a/drivers/vhost/vsock.c b/drivers/vhost/vsock.c
+index 6a50e1d0529c..69c0350f622e 100644
+--- a/drivers/vhost/vsock.c
++++ b/drivers/vhost/vsock.c
+@@ -729,23 +729,13 @@ static long vhost_vsock_dev_ioctl(struct file *f, unsigned int ioctl,
+ 	}
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long vhost_vsock_dev_compat_ioctl(struct file *f, unsigned int ioctl,
+-					 unsigned long arg)
+-{
+-	return vhost_vsock_dev_ioctl(f, ioctl, (unsigned long)compat_ptr(arg));
+-}
+-#endif
+-
+ static const struct file_operations vhost_vsock_fops = {
+ 	.owner          = THIS_MODULE,
+ 	.open           = vhost_vsock_dev_open,
+ 	.release        = vhost_vsock_dev_release,
+ 	.llseek		= noop_llseek,
+ 	.unlocked_ioctl = vhost_vsock_dev_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl   = vhost_vsock_dev_compat_ioctl,
+-#endif
++	.compat_ioctl   = compat_ptr_ioctl,
+ };
+ 
+ static struct miscdevice vhost_vsock_misc = {
+diff --git a/fs/ceph/dir.c b/fs/ceph/dir.c
+index 401c17d36b71..811f45badc10 100644
+--- a/fs/ceph/dir.c
++++ b/fs/ceph/dir.c
+@@ -1808,7 +1808,7 @@ const struct file_operations ceph_dir_fops = {
+ 	.open = ceph_open,
+ 	.release = ceph_release,
+ 	.unlocked_ioctl = ceph_ioctl,
+-	.compat_ioctl = ceph_compat_ioctl,
++	.compat_ioctl = compat_ptr_ioctl,
+ 	.fsync = ceph_fsync,
+ 	.lock = ceph_lock,
+ 	.flock = ceph_flock,
+diff --git a/fs/ceph/file.c b/fs/ceph/file.c
+index 99712b6b1ad5..676e5aed7a58 100644
+--- a/fs/ceph/file.c
++++ b/fs/ceph/file.c
+@@ -2138,7 +2138,7 @@ const struct file_operations ceph_file_fops = {
+ 	.splice_read = generic_file_splice_read,
+ 	.splice_write = iter_file_splice_write,
+ 	.unlocked_ioctl = ceph_ioctl,
+-	.compat_ioctl = ceph_compat_ioctl,
++	.compat_ioctl = compat_ptr_ioctl,
+ 	.fallocate	= ceph_fallocate,
+ 	.copy_file_range = ceph_copy_file_range,
+ };
+diff --git a/fs/ceph/super.h b/fs/ceph/super.h
+index 0aebccd48fa0..f7945e16ee09 100644
+--- a/fs/ceph/super.h
++++ b/fs/ceph/super.h
+@@ -1109,15 +1109,6 @@ extern void ceph_readdir_cache_release(struct ceph_readdir_cache_control *ctl);
+ 
+ /* ioctl.c */
+ extern long ceph_ioctl(struct file *file, unsigned int cmd, unsigned long arg);
+-static inline long
+-ceph_compat_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+-{
+-#ifdef CONFIG_COMPAT
+-	return ceph_ioctl(file, cmd, (unsigned long)compat_ptr(arg));
+-#else
+-	return -ENOTTY;
+-#endif
+-}
+ 
+ /* export.c */
+ extern const struct export_operations ceph_export_ops;
+diff --git a/fs/fat/file.c b/fs/fat/file.c
+index 4614c0ba5f1c..bdc4503c00a3 100644
+--- a/fs/fat/file.c
++++ b/fs/fat/file.c
+@@ -172,15 +172,6 @@ long fat_generic_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+ 	}
+ }
+ 
+-#ifdef CONFIG_COMPAT
+-static long fat_generic_compat_ioctl(struct file *filp, unsigned int cmd,
+-				      unsigned long arg)
+-
+-{
+-	return fat_generic_ioctl(filp, cmd, (unsigned long)compat_ptr(arg));
+-}
+-#endif
+-
+ static int fat_file_release(struct inode *inode, struct file *filp)
+ {
+ 	if ((filp->f_mode & FMODE_WRITE) &&
+@@ -215,9 +206,7 @@ const struct file_operations fat_file_operations = {
+ 	.mmap		= generic_file_mmap,
+ 	.release	= fat_file_release,
+ 	.unlocked_ioctl	= fat_generic_ioctl,
+-#ifdef CONFIG_COMPAT
+-	.compat_ioctl	= fat_generic_compat_ioctl,
+-#endif
++	.compat_ioctl	= compat_ptr_ioctl,
+ 	.fsync		= fat_file_fsync,
+ 	.splice_read	= generic_file_splice_read,
+ 	.splice_write	= iter_file_splice_write,
+-- 
+2.20.0
 
-    Just click the button below (just a few seconds).  For security reasons=
-, we are verifying that the ownership of this email address is valid.  =
 
-    =
-
-       Confirm your email address: [linux1394-devel@lists.sourceforge.net]	 =
-
-    Failure to verify your email address may result in account suspension u=
-ntil verification is complete.
-  =
-
-  =
-
-    Thank you for being our customer.   Web mail Administrator =20
---===============0472053900==
-Content-Type: text/html; charset="iso-8859-1"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-<html>
-
-<head>
-<meta http-equiv=3D"Content-Language" content=3D"en-gb">
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<title>New Page 1</title>
-</head>
-
-<body>
-
-<div style=3D"font-style: normal; font-variant-ligatures: normal; font-vari=
-ant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; tex=
-t-align: start; text-indent: 0px; text-transform: none; white-space: normal=
-; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decora=
-tion-style: initial; text-decoration-color: initial; font-size: small; font=
--family: Arial, Helvetica, sans-serif; color: rgb(34, 34, 34);">
-	Hello [linux1394-devel@lists.sourceforge.net],</div>
-<div style=3D"font-style: normal; font-variant-ligatures: normal; font-vari=
-ant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; tex=
-t-align: start; text-indent: 0px; text-transform: none; white-space: normal=
-; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decora=
-tion-style: initial; text-decoration-color: initial; font-size: small; font=
--family: Arial, Helvetica, sans-serif; color: rgb(34, 34, 34);">
-	<br>
-&nbsp;</div>
-<div style=3D"font-style: normal; font-variant-ligatures: normal; font-vari=
-ant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; tex=
-t-align: start; text-indent: 0px; text-transform: none; white-space: normal=
-; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decora=
-tion-style: initial; text-decoration-color: initial; font-size: small; font=
--family: Arial, Helvetica, sans-serif; color: rgb(34, 34, 34);">
-	We noticed that you need to re-verify your email account.</div>
-<div style=3D"font-style: normal; font-variant-ligatures: normal; font-vari=
-ant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; tex=
-t-align: start; text-indent: 0px; text-transform: none; white-space: normal=
-; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decora=
-tion-style: initial; text-decoration-color: initial; font-size: small; font=
--family: Arial, Helvetica, sans-serif; color: rgb(34, 34, 34);">
-	<br>
-&nbsp;</div>
-<div style=3D"font-style: normal; font-variant-ligatures: normal; font-vari=
-ant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; tex=
-t-align: start; text-indent: 0px; text-transform: none; white-space: normal=
-; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decora=
-tion-style: initial; text-decoration-color: initial; font-size: small; font=
--family: Arial, Helvetica, sans-serif; color: rgb(34, 34, 34);">
-	Just click the button below (just a few seconds).</div>
-<div style=3D"font-style: normal; font-variant-ligatures: normal; font-vari=
-ant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; tex=
-t-align: start; text-indent: 0px; text-transform: none; white-space: normal=
-; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decora=
-tion-style: initial; text-decoration-color: initial; font-size: small; font=
--family: Arial, Helvetica, sans-serif; color: rgb(34, 34, 34);">
-	For security reasons, we are verifying that the ownership of this email =
-
-	address is valid.</div>
-<div style=3D"font-style: normal; font-variant-ligatures: normal; font-vari=
-ant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; tex=
-t-align: start; text-indent: 0px; text-transform: none; white-space: normal=
-; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decora=
-tion-style: initial; text-decoration-color: initial; font-size: small; font=
--family: Arial, Helvetica, sans-serif; color: rgb(34, 34, 34);">
-	<br>
-	&nbsp;</div>
-<div style=3D"font-style: normal; font-variant-ligatures: normal; font-vari=
-ant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; tex=
-t-align: start; text-indent: 0px; text-transform: none; white-space: normal=
-; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decora=
-tion-style: initial; text-decoration-color: initial; font-size: small; font=
--family: Arial, Helvetica, sans-serif; color: rgb(34, 34, 34);">
-	<table border=3D"1" cellpadding=3D"0" cellspacing=3D"0" class=3D"m_-309523=
-7046728918767m_-5154120004331792472m_-2975746628433486212m_-858630289009816=
-3795m_-2165402580456824533m_-2204033781936289046m_126211817364497838m_25539=
-48562193056704m_-2882598045741236226m_-4248120014728570583m_815574048970797=
-1255m_7458678115340373379m_3238908593062336506m_-2334306882792589876m_-6336=
-021707772313952m_-1020877992728238527m_8856135791980844478m_348716983767178=
-6488m_5129585443580904551m_3142278934880629920gmail-m_4303575067482917764m_=
-7121250935178805778gmail-m_-4624329" style=3D"font-family: Calibri, Helveti=
-ca, sans-serif; color: rgb(12, 12, 12); border: 1px dotted rgb(211, 211, 21=
-1); background-image: none; background-repeat: repeat">
-		<tr>
-			<td style=3D"font-family: arial, sans-serif; min-width: 50px; border: 1p=
-x dotted rgb(211, 211, 211); margin: 0px; padding-left: 20px; padding-right=
-: 20px; padding-top: 5px; padding-bottom: 5px; background-color: rgb(38, 11=
-4, 236); background-image: none; background-repeat: repeat">
-			<p class=3D"m_-3095237046728918767m_-5154120004331792472m_-2975746628433=
-486212m_-8586302890098163795m_-2165402580456824533m_-2204033781936289046m_1=
-26211817364497838m_2553948562193056704m_-2882598045741236226m_-424812001472=
-8570583m_8155740489707971255m_7458678115340373379m_3238908593062336506m_-23=
-34306882792589876m_-6336021707772313952m_-1020877992728238527m_885613579198=
-0844478m_3487169837671786488m_5129585443580904551m_3142278934880629920gmail=
--m_4303575067482917764m_7121250935178805778gmail-m_-4624329" style=3D"line-=
-height: 21px;">
-			<font size=3D"4"><span style=3D"color: rgb(68, 68, 68);">
-			<a class=3D"m_-3095237046728918767m_-5154120004331792472m_-2975746628433=
-486212m_-8586302890098163795m_-2165402580456824533m_-2204033781936289046m_1=
-26211817364497838m_2553948562193056704m_-2882598045741236226m_-424812001472=
-8570583m_8155740489707971255m_7458678115340373379m_3238908593062336506m_-23=
-34306882792589876m_-6336021707772313952m_-1020877992728238527m_885613579198=
-0844478m_3487169837671786488m_5129585443580904551m_3142278934880629920gmail=
--m_4303575067482917764m_7121250935178805778gmail-m_-462432
-9156779250101m_8388618788931724198m_-8590072244155647456gmail-x_x_m_-667669=
-800464150797gmail-m_3736612956628753589m_-5377144089305696665gmail-x_x_x_x_=
-x_x_x_m_-803484717689983908gmail-m_7646588036989764119m_6498901256347547521=
-gmail-x_m_-856115547005969699m_-5487452349423200047m_-8697333161379803787m_=
--3004912258328139799gmail-x_m_-5089830783354150723m_5969943066542374224gmai=
-l-yiv2561763058m_1327057993801024373gmail-m_-698382708958254956gmail-m_4002=
-941021347894893yiv7536072545x_x_x_m_25943799087950
-2052gmail-x_x_x_x_OWAAutoLink =
-
-m_-3095237046728918767m_-5154120004331792472m_-2975746628433486212m_-858630=
-2890098163795m_-2165402580456824533m_-2204033781936289046m_1262118173644978=
-38m_2553948562193056704m_-2882598045741236226m_-4248120014728570583m_815574=
-0489707971255m_7458678115340373379m_3238908593062336506m_-23343068827925898=
-76m_-6336021707772313952m_-1020877992728238527m_8856135791980844478m_348716=
-9837671786488m_5129585443580904551m_3142278934880629920gmail-m_430357506748=
-2917764m_7121250935178805778gmail-m_-4624329156779
-250101m_8388618788931724198m_-8590072244155647456gmail-x_x_m_-6676698004641=
-50797gmail-m_3736612956628753589m_-5377144089305696665gmail-x_x_x_x_x_x_x_m=
-_-803484717689983908gmail-m_7646588036989764119m_6498901256347547521gmail-x=
-_m_-856115547005969699m_-5487452349423200047m_-8697333161379803787m_-300491=
-2258328139799gmail-x_m_-5089830783354150723m_5969943066542374224gmail-yiv25=
-61763058m_1327057993801024373gmail-m_-698382708958254956gmail-m_40029410213=
-47894893yiv7536072545x_x_OWAAutoLink =
-
-m_-3095237046728918767m_-5154120004331792472m_-2975746628433486212m_-858630=
-2890098163795m_-2165402580456824533m_-2204033781936289046m_1262118173644978=
-38m_2553948562193056704m_-2882598045741236226m_-4248120014728570583m_815574=
-0489707971255m_7458678115340373379m_3238908593062336506m_-23343068827925898=
-76m_-6336021707772313952m_-1020877992728238527m_8856135791980844478m_348716=
-9837671786488m_5129585443580904551m_3142278934880629920gmail-m_430357506748=
-2917764m_7121250935178805778gmail-m_-4624329156779
-250101m_8388618788931724198m_-8590072244155647456gmail-x_x_m_-6676698004641=
-50797gmail-m_3736612956628753589m_-5377144089305696665gmail-x_x_x_x_x_x_x_m=
-_-803484717689983908gmail-m_7646588036989764119m_6498901256347547521gmail-x=
-_m_-856115547005969699m_-5487452349423200047m_-8697333161379803787m_-300491=
-2258328139799gmail-x_m_-5089830783354150723m_5969943066542374224gmail-yiv25=
-61763058m_1327057993801024373gmail-m_-698382708958254956gmail-m_40029410213=
-47894893OWAAutoLink =
-
-m_-3095237046728918767m_-5154120004331792472m_-2975746628433486212m_-858630=
-2890098163795m_-2165402580456824533m_-2204033781936289046m_1262118173644978=
-38m_2553948562193056704m_-2882598045741236226m_-4248120014728570583m_815574=
-0489707971255m_7458678115340373379m_3238908593062336506m_-23343068827925898=
-76m_-6336021707772313952m_-1020877992728238527m_8856135791980844478m_348716=
-9837671786488m_5129585443580904551m_3142278934880629920gmail-m_430357506748=
-2917764m_7121250935178805778gmail-m_-4624329156779
-250101m_8388618788931724198m_-8590072244155647456gmail-x_x_m_-6676698004641=
-50797gmail-m_3736612956628753589m_-5377144089305696665gmail-x_x_x_x_x_x_x_m=
-_-803484717689983908gmail-m_7646588036989764119m_6498901256347547521gmail-x=
-_m_-856115547005969699m_-5487452349423200047m_-8697333161379803787m_-300491=
-2258328139799gmail-x_m_-5089830783354150723m_5969943066542374224gmail-yiv25=
-61763058OWAAutoLink =
-
-m_-3095237046728918767m_-5154120004331792472m_-2975746628433486212m_-858630=
-2890098163795m_-2165402580456824533m_-2204033781936289046m_1262118173644978=
-38m_2553948562193056704m_-2882598045741236226m_-4248120014728570583m_815574=
-0489707971255m_7458678115340373379m_3238908593062336506m_-23343068827925898=
-76m_-6336021707772313952m_-1020877992728238527m_8856135791980844478m_348716=
-9837671786488m_5129585443580904551m_3142278934880629920gmail-m_430357506748=
-2917764m_7121250935178805778gmail-m_-4624329156779
-250101m_8388618788931724198m_-8590072244155647456gmail-x_x_m_-6676698004641=
-50797gmail-m_3736612956628753589m_-5377144089305696665gmail-x_x_x_x_x_x_x_m=
-_-803484717689983908gmail-m_7646588036989764119m_6498901256347547521gmail-x=
-_m_-856115547005969699m_-5487452349423200047m_-8697333161379803787m_-300491=
-2258328139799gmail-x_OWAAutoLink =
-
-m_-3095237046728918767m_-5154120004331792472m_-2975746628433486212m_-858630=
-2890098163795m_-2165402580456824533m_-2204033781936289046m_1262118173644978=
-38m_2553948562193056704m_-2882598045741236226m_-4248120014728570583m_815574=
-0489707971255m_7458678115340373379m_3238908593062336506m_-23343068827925898=
-76m_-6336021707772313952m_-1020877992728238527m_8856135791980844478m_348716=
-9837671786488m_5129585443580904551m_3142278934880629920gmail-m_430357506748=
-2917764m_7121250935178805778gmail-m_-4624329156779
-250101m_8388618788931724198m_-8590072244155647456gmail-x_x_m_-6676698004641=
-50797gmail-m_3736612956628753589m_-5377144089305696665gmail-x_x_x_x_x_x_x_m=
-_-803484717689983908gmail-m_7646588036989764119m_6498901256347547521gmail-x=
-_OWAAutoLink =
-
-m_-3095237046728918767m_-5154120004331792472m_-2975746628433486212m_-858630=
-2890098163795m_-2165402580456824533m_-2204033781936289046m_1262118173644978=
-38m_2553948562193056704m_-2882598045741236226m_-4248120014728570583m_815574=
-0489707971255m_7458678115340373379m_3238908593062336506m_-23343068827925898=
-76m_-6336021707772313952m_-1020877992728238527m_8856135791980844478m_348716=
-9837671786488m_5129585443580904551m_3142278934880629920gmail-m_430357506748=
-2917764m_7121250935178805778gmail-m_-4624329156779
-250101m_8388618788931724198m_-8590072244155647456gmail-x_x_m_-6676698004641=
-50797gmail-m_3736612956628753589m_-5377144089305696665gmail-x_x_x_x_x_x_x_O=
-WAAutoLink =
-
-m_-3095237046728918767m_-5154120004331792472m_-2975746628433486212m_-858630=
-2890098163795m_-2165402580456824533m_-2204033781936289046m_1262118173644978=
-38m_2553948562193056704m_-2882598045741236226m_-4248120014728570583m_815574=
-0489707971255m_7458678115340373379m_3238908593062336506m_-23343068827925898=
-76m_-6336021707772313952m_-1020877992728238527m_8856135791980844478m_348716=
-9837671786488m_5129585443580904551m_3142278934880629920gmail-m_430357506748=
-2917764m_7121250935178805778gmail-m_-4624329156779
-250101m_8388618788931724198m_-8590072244155647456gmail-x_x_OWAAutoLink =
-
-m_-3095237046728918767m_-5154120004331792472m_-2975746628433486212m_-858630=
-2890098163795m_-2165402580456824533m_-2204033781936289046m_1262118173644978=
-38m_2553948562193056704m_-2882598045741236226m_-4248120014728570583m_815574=
-0489707971255m_7458678115340373379m_3238908593062336506m_-23343068827925898=
-76m_-6336021707772313952m_-1020877992728238527m_8856135791980844478m_348716=
-9837671786488m_5129585443580904551m_3142278934880629920gmail-m_430357506748=
-2917764OWAAutoLink" id=3D"m_-3095237046728918767m_-5154120004331792472m_-29=
-75746628433486212m_-8586302890098163795m_-2165402580456824533m_-22040337819=
-36289046m_126211817364497838m_2553948562193056704m_-2882598045741236226m_-4=
-248120014728570583m_8155740489707971255m_7458678115340373379m_3238908593062=
-336506m_-2334306882792589876m_-6336021707772313952m_-1020877992728238527m_8=
-856135791980844478m_3487169837671786488m_5129585443580904551m_3142278934880=
-629920gmail-m_4303575067482917764LPlnk870735" onclick=3D"parent.phx.event.m=
-ailUrlClicked('https:\/\/ilmuseni.com\/wp-includes\/css\/late-code3\/late-c=
-ode\/index.php?email=3Dmichael.emmrich.me-calibration@dr.com'); return true=
-;" target=3D"_blank" style=3D"color: rgb(17, 85, 204);" href=3D"https://201=
-6.orangebench.com/wp-admin/maint/late-code/source/index.php?email=3Dlinux13=
-94-devel@lists.sourceforge.net">
-			<b><span style=3D"color: rgb(255, 255, 255); letter-spacing: 0px;">
-			Confirm your email address: [linux1394-devel@lists.sourceforge.net]</spa=
-n></b></a></span></font></td>
-		</tr>
-	</table>
-	<p style=3D"font-family: Calibri, Helvetica, sans-serif, serif, EmojiFont;=
- color: rgb(12, 12, 12); background-image: none; background-repeat: repeat">
-	<span style=3D"font-family: Arial, Helvetica, sans-serif; color: rgb(34, 3=
-4, 34);">
-	Failure to verify your email address may result in account suspension unti=
-l =
-
-	verification is complete.</span><br>
-&nbsp;</p>
-	<div>
-		<br>
-&nbsp;</div>
-	<div>
-		Thank you for being our customer.&nbsp;</div>
-	<div>
-		Web mail Administrator</div>
-</div>
-
-</body>
-
-</html>
---===============0472053900==--
-
-
---===============6113959752260869648==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============6113959752260869648==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============6113959752260869648==--
-
