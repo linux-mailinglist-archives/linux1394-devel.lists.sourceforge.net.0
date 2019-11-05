@@ -2,64 +2,64 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDA33ED2B8
-	for <lists+linux1394-devel@lfdr.de>; Sun,  3 Nov 2019 10:22:37 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 363F1EFDA1
+	for <lists+linux1394-devel@lfdr.de>; Tue,  5 Nov 2019 13:49:54 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1iRC5a-00085z-Aa; Sun, 03 Nov 2019 09:22:26 +0000
+	id 1iRyHI-0007A4-UX; Tue, 05 Nov 2019 12:49:44 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <choimj@isd.co.kr>) id 1iRC5Y-00085l-Tn
- for linux1394-devel@lists.sourceforge.net; Sun, 03 Nov 2019 09:22:24 +0000
+ (envelope-from <stefanr@s5r6.in-berlin.de>) id 1iRyHH-00079x-PC
+ for linux1394-devel@lists.sourceforge.net; Tue, 05 Nov 2019 12:49:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Subject:Message-ID:To:Reply-To:From:Date:Sender:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ :References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=CjFBLg4feocA67R7Snn9hTAVTjuyOGDS6JZdh5yPjk4=; b=B9hvEb6Evbn60DdTBIHfMcD2lS
- zknf+21alQcePFngj0i7M4qskHXaXvZ+ELsvOGaK5LRL9o1cucbGIht+6TNp6zoNHh+Y0dQLRmBDF
- Fa9K/fVfLZdoRbo62B8/CcSScgRXNShcVcOY8/17ciZjsZBbD/AX4VO4r2iuLnPQbYNM=;
+ bh=YaYX7RffdaU4nRFsB7K8NSWbMHMqNQtUQMQenQaBBk0=; b=PWrpY0pBA7zoAPkTn52+khmpQ/
+ +VGl1Esg+eKGovNX5FPkoEPJZn2qHltI3mu0T7U8vWa8uCmCLQ2MVoBoeUSPDJCMwlK/Xgd+frP3e
+ hkWHFGIXeD1HROy22X7UPZuifuCpXs33T9a3nOcmc7bH80uNGPp1LDHBBKYr487w1dbQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Message-ID:To
- :Reply-To:From:Date:Sender:Cc:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=CjFBLg4feocA67R7Snn9hTAVTjuyOGDS6JZdh5yPjk4=; b=B
- heN6UhKNh2jJAXJC10GhgF7npNBZiROADyssCT1O5b1R9YIcNHrfDRUNBLhUq2ONoB3kB+PTxbafr
- k71FXwdzHbJd5HlpafFwIHXXiJgkSEL6WeSaqXEUFwumsvRAx9Cll+v3o1Thc5eMq6c0lvDKP8aI9
- 8kwlDlRA7Cwclxjw=;
-Received: from [211.53.128.215] (helo=MAIL.isd.co.kr)
- by sfi-mx-3.v28.lw.sourceforge.com with esmtps
- (TLSv1:ECDHE-RSA-AES256-SHA:256) (Exim 4.92.2) id 1iRC5X-00FqEJ-Nz
- for linux1394-devel@lists.sourceforge.net; Sun, 03 Nov 2019 09:22:24 +0000
-Received: from 192.168.1.163 (217.217.179.17) by MAIL.isd.co.kr (10.10.10.22)
- with Microsoft SMTP Server id 14.3.123.3;
- Sun, 3 Nov 2019 18:22:06 +0900
-Date: Sun, 3 Nov 2019 10:22:02 +0100
-From: Peter Wong <choimj@isd.co.kr>
-To: <linux1394-devel@lists.sourceforge.net>
-Message-ID: <27139638.69148.1572772927745.JavaMail.cash@webmail.isd.co.kr>
-Subject: Your opportunity
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:
+ In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=YaYX7RffdaU4nRFsB7K8NSWbMHMqNQtUQMQenQaBBk0=; b=Iu9ZV0/olPg6u3VwvIGm0AqXUL
+ cevYevMlRb1ejm2Yx07wGH/b4sqoXHzkD/i4zmSVE7MUyv819NeErEhrB+6VZxVjTRwWv3FcddEOw
+ p8Ae2lMmNQvaP8uvqbUaj6RhwGImX83ReXzJMN4XRQLK2unxyakev9NCgAMiMIGlCGi0=;
+Received: from einhorn-mail.in-berlin.de ([217.197.80.20])
+ by sfi-mx-4.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1iRyHF-000sTh-M3
+ for linux1394-devel@lists.sourceforge.net; Tue, 05 Nov 2019 12:49:43 +0000
+X-Envelope-From: stefanr@s5r6.in-berlin.de
+Received: from authenticated.user (localhost [127.0.0.1]) by
+ einhorn.in-berlin.de with ESMTPSA id xA5CV9mi024948
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Tue, 5 Nov 2019 13:31:17 +0100
+Date: Tue, 5 Nov 2019 13:31:06 +0100
+From: Stefan Richter <stefanr@s5r6.in-berlin.de>
+To: Forest Crossman <cyrozap@gmail.com>
+Subject: Re: [PATCH] firewire: ohci: Fix misc. spelling/whitespace issues
+Message-ID: <20191105133106.19e25b0d@kant>
+In-Reply-To: <20191026082029.10358-1-cyrozap@gmail.com>
+References: <20191026082029.10358-1-cyrozap@gmail.com>
+X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-Originating-IP: [217.217.179.17]
-X-Spam-Score: 5.9 (+++++)
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 1.3 RCVD_IN_RP_RNBL        RBL: Relay in RNBL,
- https://senderscore.org/blacklistlookup/
- [211.53.128.215 listed in bl.score.senderscore.com]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: arcgraph.de]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_REPLYTO_END_DIGIT Reply-To freemail username ends in digit
- (pw178484[at]gmail.com)
- 1.0 RDNS_NONE Delivered to internal network by a host with no rDNS
- 2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
- -0.1 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1iRC5X-00FqEJ-Nz
+X-Headers-End: 1iRyHF-000sTh-M3
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,24 +72,51 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: Peter Wong <pw178484@gmail.com>
+Cc: linux1394-devel@lists.sourceforge.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Greetings,
+On Oct 26 Forest Crossman wrote:
+> These are just some inconsequential spelling and whitespace issues I
+> found while studying the driver.
+> 
+> Signed-off-by: Forest Crossman <cyrozap@gmail.com>
+> ---
+>  drivers/firewire/ohci.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
+> index 522f3addb5bd..50d49dc09d69 100644
+> --- a/drivers/firewire/ohci.c
+> +++ b/drivers/firewire/ohci.c
+> @@ -448,7 +448,7 @@ static const char *evts[] = {
+>  	[0x0c] = "-reserved-",		[0x0d] = "-reserved-",
+>  	[0x0e] = "evt_unknown",		[0x0f] = "evt_flushed",
+>  	[0x10] = "-reserved-",		[0x11] = "ack_complete",
+> -	[0x12] = "ack_pending ",	[0x13] = "-reserved-",
+> +	[0x12] = "ack_pending",		[0x13] = "-reserved-",
 
-Find attached email very confidential. reply for more details
+I think this space aligns it with ack_complete lines.
+I'll check later this week.
 
-Thanks.
-Peter Wong
+>  	[0x14] = "ack_busy_X",		[0x15] = "ack_busy_A",
+>  	[0x16] = "ack_busy_B",		[0x17] = "-reserved-",
+>  	[0x18] = "-reserved-",		[0x19] = "-reserved-",
+> @@ -1281,7 +1281,7 @@ struct driver_data {
+>  };
+>  
+>  /*
+> - * This function apppends a packet to the DMA queue for transmission.
+> + * This function appends a packet to the DMA queue for transmission.
+>   * Must always be called with the ochi->lock held to ensure proper
+>   * generation handling and locking around packet queue manipulation.
+>   */
 
-
-
-
-----------------------------------------------------
-This email was sent by the shareware version of Postman Professional.
-
+-- 
+Stefan Richter
+-======---== =-== --=-=
+http://arcgraph.de/sr/
 
 
 _______________________________________________
