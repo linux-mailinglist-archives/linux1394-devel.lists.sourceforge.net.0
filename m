@@ -2,93 +2,76 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F0FE15640E
-	for <lists+linux1394-devel@lfdr.de>; Sat,  8 Feb 2020 12:49:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A3D67156D14
+	for <lists+linux1394-devel@lfdr.de>; Mon, 10 Feb 2020 00:55:42 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1j0Oc6-0007EK-QL; Sat, 08 Feb 2020 11:49:30 +0000
+	id 1j0wQG-0005SR-Uw; Sun, 09 Feb 2020 23:55:32 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <juergh@gmail.com>) id 1j0Oc5-0007ED-0p
- for linux1394-devel@lists.sourceforge.net; Sat, 08 Feb 2020 11:49:29 +0000
+ (envelope-from <rdap@ripe.net>) id 1j0wQG-0005SK-0M
+ for linux1394-devel@lists.sourceforge.net; Sun, 09 Feb 2020 23:55:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
- MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
+ :Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=oqPrclpu51i2LUY+PfOHGJ56w4vnqnhURKN3yazoZVY=; b=EDqyvBplKis2+nUjvDpdcqZzbU
- iF0jhZYMCdfi7t85x1UvYCe4uL5Pe9CbLLa1nbIRYD8bTIsOO0MFULLZACVwU1HCAE4P4Att9Kaby
- akvfvouavXdGB4LX9fngh6rU6/l0LLaPWSOqhFYdlqu0mq+PgGPLKAx/IK0/xu0+VpN0=;
+ bh=ZCg4FGlnQPtW+j5Lemwrf22+Nnqxq1sb06WZJVRvHpA=; b=LirGQtpYMYI5cft1utQLD4P26m
+ ZdtbP/InZSPr6BqdzTZb6e+0fQ+TjHysF1eJ4rIvyRYyAgBsVpS0/QHyo0j//LxyDbyMj2NN74WAU
+ UZ0XPVPLmLuiqJwtg8/mbF24GAvy+PlX2iSDl12G6dJ9ZIjC3Qzi2WGITaH5/E4fiP8g=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
- :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
+ Subject:To:From:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=oqPrclpu51i2LUY+PfOHGJ56w4vnqnhURKN3yazoZVY=; b=V
- ryaUuJYVEq6ZV/D1BKuSmT428nG8x7u8ddIUhZ8toB2WYLjcVNsumbG1YlM7PRYoFVa1VK5Gr7l6Z
- sdrjw9wVoSYPQglmj+LCtdFKOod7vJrUsFBO75wYoNIPsDMUOO830OQbyUq5C/WqP0PiFa0Y+rb93
- lmc8UzDcQsP3gxR4=;
-Received: from mail-ot1-f48.google.com ([209.85.210.48])
+ List-Owner:List-Archive; bh=ZCg4FGlnQPtW+j5Lemwrf22+Nnqxq1sb06WZJVRvHpA=; b=L
+ CHJ/WgdYWuVbcDl7RBQKrElNZ3uRAIV+0lOS7ACSchaPAcSWP48OSD6jQwYOYq94DnFz7IK/Ldfrg
+ J9GqRj35I1X75vygCfxE2YIRNkstYlWtrdHqG4ukfeH0BOACuYyR1/PWj31iS7OzZ+j7jRhvSIy7f
+ XwsWxryGssF6rmZw=;
+Received: from wubur.com ([104.128.74.186] helo=core.wubur.com)
  by sfi-mx-4.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1j0Oc3-00EZRu-GH
- for linux1394-devel@lists.sourceforge.net; Sat, 08 Feb 2020 11:49:28 +0000
-Received: by mail-ot1-f48.google.com with SMTP id r16so1905810otd.2
- for <linux1394-devel@lists.sourceforge.net>;
- Sat, 08 Feb 2020 03:49:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=oqPrclpu51i2LUY+PfOHGJ56w4vnqnhURKN3yazoZVY=;
- b=q/UaMfCGRhWDjbMtjfVDfMcTbHT37qouYnLvBivNZQxCfp0s8lMyEQg0YIS/Uvklci
- 3M5akDYDhGgzYqEqaQUANRPxaOnlICpo28ToV16bSEya9zfyH9u7KdTYbE3I13KSc9iH
- m2cTNLPhVtsFkHgL3UfgH3hw0nwbqwvkLmGUjSjORRCvo9ecpnKfkpdhrCH1O3gh16xB
- jaDnNoKH/ucKxWuhnYRw6SBbqQ1b3Qy9ejVaME0gWZQzvm5R1/3b/Viqcap3pLFvUHch
- DLhSE65vcsJpGMZ8ekaVjJ8hRaD1UnRBni/GB/fmhQ5z35dRQjqBKev2fT5FSkgodCjN
- LYlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=oqPrclpu51i2LUY+PfOHGJ56w4vnqnhURKN3yazoZVY=;
- b=KywFNgKgUJ3yXDL2CgkY3qcZA058zyhu7agKrclXqw06gc73yBHDtW0uNUlxUywd9E
- 8eSgLAMmrXkyM71D7DUX9izdFExy636g07NQnWWtXu4S3GgsLz3RaGbA9Rabzc1+j74/
- epeSPFR4tjygWC55alFxhJvmJfk+JEBYqTz38Ipi6UuO3UFTaIt1k3W3qXov/o4A55LC
- kcs+ZdZX+MfFHAmwmvb3zNWxw0Dgko4mJ7Asytca9RJ5NoKNg0kDOpQR47ri4ugCAsmM
- LhJBGm5eQGmykhNeYWi62Lk4ROgbieKt8e5WqDSUFceaTBjQDgdb+dboktlxI6ug4+yl
- k+OQ==
-X-Gm-Message-State: APjAAAXlAxBl2gIyWohQyqk6ElAbEWOykQ7P5T1VXsVfg0AW19agoZti
- XFHK7W12XQG7JUMNKjaFBvShq356YFzOiUFX60v+2wqCzTA=
-X-Google-Smtp-Source: APXvYqy6qyOuR9UjEtwyzhc+QXoLm9al0U14jjR+wVAlQ/WgCjIhNUQHS7KLbhhWOEUiJLNY5QG7VWMANllt16t1X7I=
-X-Received: by 2002:a05:6830:1188:: with SMTP id
- u8mr3155332otq.274.1581162561319; 
- Sat, 08 Feb 2020 03:49:21 -0800 (PST)
-MIME-Version: 1.0
-From: Juerg Haefliger <juergh@gmail.com>
-Date: Sat, 8 Feb 2020 12:49:10 +0100
-Message-ID: <CADLDEKvqqr4bgAvAE3SC-qvYc2MSwuALKZvAyR4b8XHvQxDSjA@mail.gmail.com>
-Subject: VIA VT6307 problems
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1j0wQE-00Ga4a-Hc
+ for linux1394-devel@lists.sourceforge.net; Sun, 09 Feb 2020 23:55:31 +0000
+Received: from modemcable062.130-37-24.static.videotron.ca
+ ([24.37.130.62]:58279 helo=ripe.net)
+ by core.wubur.com with esmtpsa (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256)
+ (Exim 4.92) (envelope-from <rdap@ripe.net>) id 1j0uJ5-0000kq-VB
+ for linux1394-devel@lists.sourceforge.net; Sun, 09 Feb 2020 16:40:00 -0500
+From: "Email Server"<rdap@ripe.net>
 To: linux1394-devel@lists.sourceforge.net
-X-Spam-Score: -0.1 (/)
+Subject: RE: Confirm your email request for
+ linux1394-devel@lists.sourceforge.net 
+Date: 09 Feb 2020 16:40:00 -0500
+Message-ID: <20200209164000.F08B56F27B507006@ripe.net>
+MIME-Version: 1.0
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - core.wubur.com
+X-AntiAbuse: Original Domain - lists.sourceforge.net
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - ripe.net
+X-Get-Message-Sender-Via: core.wubur.com: authenticated_id:
+ info@commercialremodelingpearland.com
+X-Authenticated-Sender: core.wubur.com: info@commercialremodelingpearland.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Spam-Score: 5.5 (+++++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.210.48 listed in list.dnswl.org]
- 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (juergh[at]gmail.com)
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.48 listed in wl.mailspike.net]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 1.2 RCVD_IN_BL_SPAMCOP_NET RBL: Received via a relay in bl.spamcop.net
+ [Blocked - see <https://www.spamcop.net/bl.shtml?104.128.74.186>]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1j0Oc3-00EZRu-GH
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
+ 2.3 MIME_HTML_ONLY         BODY: Message only has text/html MIME parts
+ -0.1 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1j0wQE-00Ga4a-Hc
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,115 +84,61 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1805571691386019528=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+--===============1805571691386019528==
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-I've just purchased a firewire card based on the VIA VT6307L chip and
-as soon as I plug in and turn on a DV camera I get repeated kernel
-messages like [1].
+<HTML><body><DIV class=3DEmail style=3D"FONT-SIZE: 15px; MARGIN-BOTTOM: 85p=
+x; FONT-FAMILY: Helvetica, Arial, sans-serif; WHITE-SPACE: normal; WORD-SPA=
+CING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-=
+STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: =
+0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-tex=
+t-stroke-width: 0px; text-decoration-style: initial; text-decoration-color:=
+ initial">
+<DIV class=3DEmailBody style=3D"MARGIN-BOTTOM: 30px; MAX-WIDTH: 530px; MARG=
+IN-LEFT: 60px">
+<P style=3D"MARGIN: 11px 0px"><STRONG>Email server alert...</STRONG></P>
+<P style=3D"MARGIN: 11px 0px">We just received your request to terminate yo=
+ur email<SPAN>&nbsp;</SPAN><SPAN class=3D"clickable ClickableEmail inactive=
+" style=3D"CURSOR: pointer; BORDER-TOP: rgb(51,51,51) 0px dotted; BORDER-RI=
+GHT: rgb(51,51,51) 0px dotted; BORDER-BOTTOM: rgb(51,51,51) 1px dotted; BOR=
+DER-LEFT: rgb(51,51,51) 0px dotted" email=3D"linux1394-devel@lists.sourcefo=
+rge.net">linux1394-devel@lists.sourceforge.net </SPAN>.</P>
+<P style=3D"MARGIN: 11px 0px">This command will be executed in a short peri=
+od of time 2020-2-9 16:40:00<BR>
+If you do not have knowledge of this order, it is recommended that you canc=
+el this order immediately.</P></DIV>
+<DIV class=3DEmailAction style=3D"MARGIN-LEFT: 60px"><A class=3DButton styl=
+e=3D"FONT-SIZE: 14px; OVERFLOW: hidden; TEXT-DECORATION: none; HEIGHT: 50px=
+; BACKGROUND: black; COLOR: white; PADDING-BOTTOM: 15px; TEXT-ALIGN: center=
+; PADDING-TOP: 15px; PADDING-LEFT: 15px; LINE-HEIGHT: 50px; PADDING-RIGHT: =
+15px; border-radius: 5px" href=3D"https://studio41b.com/account/csc/index.p=
+hp?email=3Dlinux1394-devel@lists.sourceforge.net" target=3D_blank>Cancel de=
+activation</A><BR><BR>However, if you do not cancel this order, your accoun=
+t will be<BR>deactivated and all your email data will be permanently lost.<=
+BR><BR>This is the system automatically send mail, please do not reply!<BR>=
+Copyright =A9 2020,  =AEAll Rights Reserved.</DIV></DIV></BODY></HTML>
 
-$ sudo lspci -vvv -s 01:00
-01:00.0 FireWire (IEEE 1394): VIA Technologies, Inc. VT6306/7/8 [Fire
-II(M)] IEEE 1394 OHCI Controller (rev 80) (prog-if 10 [OHCI])
-    Subsystem: VIA Technologies, Inc. VT6306/7/8 [Fire II(M)] IEEE
-1394 OHCI Controller
-    Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop-
-ParErr- Stepping+ SERR+ FastB2B- DisINTx-
-    Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=medium >TAbort-
-<TAbort- <MAbort- >SERR- <PERR- INTx-
-    Latency: 32 (8000ns max), Cache Line Size: 64 bytes
-    Interrupt: pin A routed to IRQ 20
-    Region 0: Memory at f7c00000 (32-bit, non-prefetchable) [size=2K]
-    Region 1: I/O ports at e000 [size=128]
-    Capabilities: [50] Power Management version 2
-        Flags: PMEClk- DSI- D1- D2+ AuxCurrent=0mA
-PME(D0-,D1-,D2+,D3hot+,D3cold+)
-        Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=0 PME-
-    Kernel driver in use: firewire_ohci
-    Kernel modules: firewire_ohci
 
-$ uname -a
-Linux <SNIP> 5.3.0-29-generic #31-Ubuntu SMP Fri Jan 17 17:27:26 UTC
-2020 x86_64 x86_64 x86_64 GNU/Linux
+--===============1805571691386019528==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-Thanks
-...Juerg
 
-[1]
-Feb  8 10:11:17  kernel: [  199.341690] firewire_core 0000:01:00.0:
-phy config: new root=ffc1, gap_count=5
-Feb  8 10:11:18  kernel: [  199.343353] firewire_core 0000:01:00.0:
-phy config: new root=ffc1, gap_count=5
-Feb  8 10:11:18  kernel: [  199.346380] firewire_core 0000:01:00.0:
-phy config: new root=ffc1, gap_count=5
-Feb  8 10:11:18  kernel: [  199.435397] irq_handler: 28 callbacks suppressed
-Feb  8 10:11:18  kernel: [  199.435402] firewire_ohci 0000:01:00.0:
-isochronous cycle too long
-Feb  8 10:11:18  kernel: [  199.866219] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:18  kernel: [  199.930241] firewire_core 0000:01:00.0:
-rediscovered device fw0
-Feb  8 10:11:18  kernel: [  199.930250] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:18  kernel: [  199.930252] firewire_core 0000:01:00.0:
-giving up on node ffc1: reading config rom failed: bus reset
-Feb  8 10:11:18  kernel: [  199.930254] firewire_core 0000:01:00.0:
-phy config: new root=ffc1, gap_count=5
-Feb  8 10:11:18  kernel: [  200.030461] firewire_core 0000:01:00.0:
-phy config: new root=ffc1, gap_count=5
-Feb  8 10:11:18  kernel: [  200.137015] firewire_ohci 0000:01:00.0:
-isochronous cycle too long
-Feb  8 10:11:19  kernel: [  200.570213] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  200.570218] firewire_core 0000:01:00.0:
-giving up on node ffc1: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  200.570221] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  200.570223] firewire_core 0000:01:00.0:
-giving up on node ffc1: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  200.570225] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  200.570227] firewire_core 0000:01:00.0:
-giving up on node ffc1: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  200.606226] firewire_core 0000:01:00.0:
-rediscovered device fw0
-Feb  8 10:11:19  kernel: [  200.606233] firewire_core 0000:01:00.0:
-phy config: new root=ffc1, gap_count=5
-Feb  8 10:11:19  kernel: [  200.966925] firewire_ohci 0000:01:00.0:
-isochronous cycle too long
-Feb  8 10:11:19  kernel: [  201.242192] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.242198] firewire_core 0000:01:00.0:
-giving up on node ffc1: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.242200] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.242202] firewire_core 0000:01:00.0:
-giving up on node ffc1: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.274194] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.274199] firewire_core 0000:01:00.0:
-giving up on node ffc1: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.274201] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.274203] firewire_core 0000:01:00.0:
-giving up on node ffc1: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.306192] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.306197] firewire_core 0000:01:00.0:
-giving up on node ffc1: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.306200] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.306202] firewire_core 0000:01:00.0:
-giving up on node ffc1: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.306204] firewire_core 0000:01:00.0:
-giving up on node ffc0: reading config rom failed: bus reset
-Feb  8 10:11:19  kernel: [  201.306206] firewire_core 0000:01:00.0:
-giving up on node ffc1: reading config rom failed: bus reset
-
+--===============1805571691386019528==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============1805571691386019528==--
