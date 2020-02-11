@@ -2,47 +2,47 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64D9F159D2F
-	for <lists+linux1394-devel@lfdr.de>; Wed, 12 Feb 2020 00:28:31 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A9B7159D33
+	for <lists+linux1394-devel@lfdr.de>; Wed, 12 Feb 2020 00:30:12 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1j1ewz-0000qq-A4; Tue, 11 Feb 2020 23:28:17 +0000
+	id 1j1eyh-0006s2-QK; Tue, 11 Feb 2020 23:30:03 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <gustavo@embeddedor.com>) id 1j1ewx-0000qh-Il
- for linux1394-devel@lists.sourceforge.net; Tue, 11 Feb 2020 23:28:15 +0000
+ (envelope-from <gustavo@embeddedor.com>) id 1j1eyf-0006ru-V0
+ for linux1394-devel@lists.sourceforge.net; Tue, 11 Feb 2020 23:30:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
  From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=dlq1N3Fubvme0hsUEXmBUOOTkEBmRxGWUp1Spz2xoes=; b=jUNVah1gUzQZAhuTBVXevoMWAW
- 2JTyG9LqO/uP6BTAPqA/w5QAzZuyZnhRJ97pINbt5UJcgKPli5MEWGlNW//eANUl3IyRAjdX4NYMC
- 9kSrZH5rLeLCa2cfkORN4d41Wiq2Tb2zOSXrXgH8ur3RmUO9SNxAkDHjnHi0H7k+uW+0=;
+ bh=r6W7e99wqSxpJufs0pmZ8FH4EPi49mq2sFzO815awQ4=; b=OiYBHIrtqHXYntM+qqym+9FLPb
+ guUZU72hjLe4BSLsEJRmpPgxYYogY3IpQZ74GCvlkjHLL/rsoi9Fi19BF3v/t/YZK93ZC9iNCLthg
+ fiQUlevkJbffcpoMC0MP7QCl7yC9DC5+8SB5CCfmII0y9IPfMhYXcg6tk0pxudq+mf3o=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:
  Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
  :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=dlq1N3Fubvme0hsUEXmBUOOTkEBmRxGWUp1Spz2xoes=; b=V
- HCtAHM4bPz1EH1V3FqFppy7Yk5aiSqGW4oa+6nEuRg9M5GcJIRd8F4oaxT3pG+llSAYDORTErzst+
- H/b9Sg1Zcqt9htylLq58U5AqRQPzA4hPB+8lgjPAv6ebYr8q1srp0OnAHtTdck8qzh/spSbguwoUx
- AKoJq3XYXJ3+CGrI=;
-Received: from gateway31.websitewelcome.com ([192.185.143.47])
- by sfi-mx-3.v28.lw.sourceforge.com with esmtps
+ List-Owner:List-Archive; bh=r6W7e99wqSxpJufs0pmZ8FH4EPi49mq2sFzO815awQ4=; b=c
+ rB4VMkdtwHWZULDf/CM7zkxY6nz3VHcgl10i3ahv4VQb1xOizmq+NqhsI/sUQsAB9JMVA574cXwzV
+ K+vBH9/0idjTeD90p8tfJp6pPtPz60LdM5VBG4K1MzVNDp7RB/X68IGfoFm7Kv8a0SdU55g2ZXMyQ
+ eBFAsCqpoSsp8kNM=;
+Received: from gateway22.websitewelcome.com ([192.185.46.225])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1j1eww-000wRv-0g
- for linux1394-devel@lists.sourceforge.net; Tue, 11 Feb 2020 23:28:15 +0000
-Received: from cm10.websitewelcome.com (cm10.websitewelcome.com [100.42.49.4])
- by gateway31.websitewelcome.com (Postfix) with ESMTP id 278B66FD9C8
+ id 1j1eyc-0091aO-TE
+ for linux1394-devel@lists.sourceforge.net; Tue, 11 Feb 2020 23:30:01 +0000
+Received: from cm13.websitewelcome.com (cm13.websitewelcome.com [100.42.49.6])
+ by gateway22.websitewelcome.com (Postfix) with ESMTP id 67E093CBE
  for <linux1394-devel@lists.sourceforge.net>;
- Tue, 11 Feb 2020 17:04:19 -0600 (CST)
+ Tue, 11 Feb 2020 17:05:37 -0600 (CST)
 Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
- id 1eZnj9neIEfyq1eZnjJkaI; Tue, 11 Feb 2020 17:04:19 -0600
+ id 1eb3jeQp9RP4z1eb3j6Fwn; Tue, 11 Feb 2020 17:05:37 -0600
 X-Authority-Reason: nr=8
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=embeddedor.com; s=default; h=Content-Type:MIME-Version:Message-ID:Subject:
@@ -50,22 +50,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=dlq1N3Fubvme0hsUEXmBUOOTkEBmRxGWUp1Spz2xoes=; b=cgrquLM6s6/IT+C+Wi9m5OhnFR
- 8zdv7LDog2pwH+qIbPwt0S4CPL7Vy9OJXJGTlrY+eOPR3uV8e8dM+cxUVkDsNiJ9YonYhYn/6dtAy
- iOVWloeYjcwS5KKDgBB4j9ZCnF8s/eu794QmGcp5ermySwD5l5WK2foF7sI3+2XKFtLaAbRetw3bb
- qLyqK3w+rU3JZYVbnunBoFW/gvd+qEpG5kyte1b/IIaq74a7Y4s4C6/p01h4ZF+O56VZ3OW39hqoR
- rO7Ptj3/Auvvg9vTbaKeqYtXoav97uKAPumwq3cRovYy54a/KKxp16rP/+oLSMUOXFbU0/sSJHHCM
- B6s8Xhug==;
-Received: from [200.68.140.36] (port=28979 helo=embeddedor)
+ bh=r6W7e99wqSxpJufs0pmZ8FH4EPi49mq2sFzO815awQ4=; b=z9aOCVC2uJ4Xr1XmZn01NiP+GV
+ Q0R2flt6t9U23h95xgj7Yombr8L7FIcJ5DtOXkFjaY0/5hj6eRIrqdq4UznkQWE0q5BJNS7HLGkTG
+ lVP2GLTZ+BlvyIbP5N6McBQajtsnX5axvz+uEoHHibx353ZCCDvailIDtb3HcgM7xxZv45CKCsbsV
+ 2V3/dMK+Vh/Twg0NPJ7MLFA2UqLsqRDoAAN+pf6qRI7spN549Bl5Fdq16mT1THe/fzWa/sh+sAu9e
+ sipPrHp8E3REOjkFAjvh2dw6rikqKEyZOlw2hFSG3mHhesKJhtiJAdZ3QF17g8L/CuHQ88Baxwjks
+ c7uaWtsA==;
+Received: from [200.68.140.36] (port=4449 helo=embeddedor)
  by gator4166.hostgator.com with esmtpa (Exim 4.92)
  (envelope-from <gustavo@embeddedor.com>)
- id 1j1eZl-003Rge-LZ; Tue, 11 Feb 2020 17:04:17 -0600
-Date: Tue, 11 Feb 2020 17:06:52 -0600
+ id 1j1eb1-003SYa-Ll; Tue, 11 Feb 2020 17:05:35 -0600
+Date: Tue, 11 Feb 2020 17:08:10 -0600
 From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
 To: Stefan Richter <stefanr@s5r6.in-berlin.de>
-Subject: [PATCH] firewire: cdev: Replace zero-length array with
+Subject: [PATCH] firewire: ohci: Replace zero-length array with
  flexible-array member
-Message-ID: <20200211230652.GA11360@embeddedor>
+Message-ID: <20200211230810.GA12211@embeddedor>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.9.4 (2018-02-28)
@@ -78,13 +78,13 @@ X-AntiAbuse: Sender Address Domain - embeddedor.com
 X-BWhitelist: no
 X-Source-IP: 200.68.140.36
 X-Source-L: No
-X-Exim-ID: 1j1eZl-003Rge-LZ
+X-Exim-ID: 1j1eb1-003SYa-Ll
 X-Source: 
 X-Source-Args: 
 X-Source-Dir: 
-X-Source-Sender: (embeddedor) [200.68.140.36]:28979
+X-Source-Sender: (embeddedor) [200.68.140.36]:4449
 X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 2
+X-Email-Count: 5
 X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
 X-Local-Domain: yes
 X-Spam-Score: -0.2 (/)
@@ -93,9 +93,9 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: gnu.org]
+ for more information. [URIs: embeddedor.com]
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [192.185.143.47 listed in list.dnswl.org]
+ trust [192.185.46.225 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
@@ -104,7 +104,7 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
  -0.1 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1j1eww-000wRv-0g
+X-Headers-End: 1j1eyc-0091aO-TE
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -146,22 +146,22 @@ This issue was found with the help of Coccinelle.
 
 Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
 ---
- drivers/firewire/core-cdev.c | 2 +-
+ drivers/firewire/ohci.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-index 16a7045736a9..3626e06dedba 100644
---- a/drivers/firewire/core-cdev.c
-+++ b/drivers/firewire/core-cdev.c
-@@ -130,7 +130,7 @@ struct inbound_transaction_resource {
- struct descriptor_resource {
- 	struct client_resource resource;
- 	struct fw_descriptor descriptor;
--	u32 data[0];
-+	u32 data[];
+diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
+index 45c048751f3b..afc022b4246f 100644
+--- a/drivers/firewire/ohci.c
++++ b/drivers/firewire/ohci.c
+@@ -124,7 +124,7 @@ struct descriptor_buffer {
+ 	dma_addr_t buffer_bus;
+ 	size_t buffer_size;
+ 	size_t used;
+-	struct descriptor buffer[0];
++	struct descriptor buffer[];
  };
  
- struct iso_resource {
+ struct context {
 -- 
 2.25.0
 
