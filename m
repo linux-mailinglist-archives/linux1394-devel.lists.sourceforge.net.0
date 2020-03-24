@@ -2,86 +2,74 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17B7C19124E
-	for <lists+linux1394-devel@lfdr.de>; Tue, 24 Mar 2020 14:59:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9410E191289
+	for <lists+linux1394-devel@lfdr.de>; Tue, 24 Mar 2020 15:12:45 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1jGk5Q-0000mU-3U; Tue, 24 Mar 2020 13:59:20 +0000
+	id 1jGkIH-0001Lt-IF; Tue, 24 Mar 2020 14:12:37 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <hverkuil-cisco@xs4all.nl>) id 1jGk5O-0000mN-KN
- for linux1394-devel@lists.sourceforge.net; Tue, 24 Mar 2020 13:59:18 +0000
+ (envelope-from <laurent.pinchart@ideasonboard.com>)
+ id 1jGkIG-0001Ll-D9
+ for linux1394-devel@lists.sourceforge.net; Tue, 24 Mar 2020 14:12:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
- MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=i1Vyhy85C8Pjtqaww4XzYSuDfwl3ZOl0eP/5LlI1jGw=; b=BcVHKyqkn6qL5XQMfOWX2rGMZe
- iNHo00419r7mOITK60GPdzfkCv/E8HpiVjl6vE33eCX4hN2kSUihTNcnGVbvL3tdPttfXCRIfe3bM
- QQWH80AcJo9BpPJfAIHO17lHdmXmqAiCNeU0o+UJcBvU+x6zHSKsCFyZBtEe60hE+NvI=;
+ bh=f+uBKTHEGEJ2aui/vS5nM+gRWjZ101fT14SJTymKKGQ=; b=mFIkys3cG3+Mk8MSn0RjpxGzqp
+ 6MU/3ZgWFO/q/X++oekkR46xapXh23DAqz8al9Wv5jr19P+wGEQXKbyUo2qlppf12Oa01yRvbxcHw
+ 8kGMfNEjRKterhzQX4CgtlgyiyfzjpayNoRNGDbSHjTyQmWtUSDbsK6hXF6EcNE6buFw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
- Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:Content-ID:
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=i1Vyhy85C8Pjtqaww4XzYSuDfwl3ZOl0eP/5LlI1jGw=; b=IOVAgWwZpF/TNbjw+rzNRCzMYx
- rkUuCE2fYo7/T0cKAb/aOayd7dNRhwXOTq5Dloy+U2IC9o6lN+2bBG91RCsHSFveiLNDfZ5DiJ3/v
- GWAsjzhczVFbi87Y9JXmPvYJiV66TN8PNB2QJiFbS3JY/adnTMpKtTXxWFB2mAIH4xvY=;
-Received: from lb2-smtp-cloud8.xs4all.net ([194.109.24.25])
+ bh=f+uBKTHEGEJ2aui/vS5nM+gRWjZ101fT14SJTymKKGQ=; b=BR8VLl/YUUKYEwPAgqtgzFFM9X
+ 0aqA+rmmBudE/+cQxnO3PuK2/OkM6gFgNxRwNWYtTx2PEbPCl4MdS3sLdLcDZgw8nsk9boJepBhg/
+ el8f7T+UXqqBiCih5N2deWSwwOvIPZAUN8lR4wZZjDZp/ZQ/3d2nLCCWHGOXcztkFOEo=;
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jGk5J-00FEs2-PY
- for linux1394-devel@lists.sourceforge.net; Tue, 24 Mar 2020 13:59:18 +0000
-Received: from [192.168.2.10] ([46.9.234.233])
- by smtp-cloud8.xs4all.net with ESMTPA
- id Gk55jWfqrBr2bGk59jD6w9; Tue, 24 Mar 2020 14:59:05 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
- t=1585058345; bh=i1Vyhy85C8Pjtqaww4XzYSuDfwl3ZOl0eP/5LlI1jGw=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=qGQ5n+5JdPtLsyZ6NQQDAKlJ2vJOKV9oo9pqy57CcYa5JZRXXZm/0TJuBWe2bNnxa
- Msuyt4dl7alOZgU0oq+6FTiMh0abS84ZiSTx9sLO9hFhV7LiPiRpnBDcd6ludx9prD
- hG/mQwhbmExGqjtzgR3X3udn/d66PppGtbcPkXTUanplxU9/6xD8UQqr20RhjCvcuF
- c56wJy6ZWixaRNTFww5z7pCK4fxymVaDSA+XyJjRsXXvUq7p4B7g5N2fnwEmdtoyvR
- PkBdtnlW5nIZLmEKN+ZAmfUM0+8C2zk9M2pUn8dDbLbMgKqR+AbP1pqkEril2NteNr
- co3Y3aV+ftmyw==
+ id 1jGkI9-00FFTI-TV
+ for linux1394-devel@lists.sourceforge.net; Tue, 24 Mar 2020 14:12:36 +0000
+Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
+ [81.175.216.236])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id E027F308;
+ Tue, 24 Mar 2020 14:54:00 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1585058041;
+ bh=5EwyrEpHwQhVMFtEQLMKDk212Icg2AYy28CAPoRHtns=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=HZya7cYfGx8FvyBwSOWBRF1z+cH+joSf2X8/dRGTfCRSJJEL1CLc+r8KdF3WpL5tw
+ rHrHTD8UHaSSkTg+ilXbK5OoFztNA6WhLZ5/T9K5wNwDjdJcF4pgL6yR7e3Iid2/oB
+ LoorpAwbuPEjAwsXHswV9LTU6thrIKeijVyt9Hu4=
+Date: Tue, 24 Mar 2020 15:53:59 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Subject: Re: [PATCH v2 00/20] Reorganize media Kconfig
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Linux Doc Mailing List <linux-doc@vger.kernel.org>
+Message-ID: <20200324135359.GA21251@pendragon.ideasonboard.com>
 References: <cover.1585057134.git.mchehab+huawei@kernel.org>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <0e4b107c-eb85-9726-3e77-5999b9b6a0ef@xs4all.nl>
-Date: Tue, 24 Mar 2020 14:58:59 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
 MIME-Version: 1.0
+Content-Disposition: inline
 In-Reply-To: <cover.1585057134.git.mchehab+huawei@kernel.org>
-Content-Language: en-US
-X-CMAE-Envelope: MS4wfP4cqGhKIeS0FimdeveRcgl80EpBbtlA7sg79O+IkxaonxMIdaKxB/9OEamsKYJBhZkk8u7C/IjE6JRNen1zOtyZjUSNog6gaX7VpkpsVU6HPMYaFYSl
- OqDgukemedjK54x1HnYT1UbiHjrfX1WRCgJSWe9vSOB7r06lcnIFGPw0PoCXppLD0pdhFhVxdRUB8gJnVoFWUJWc+8j3fvhitBMAy8Ton9LjriAhbc5a4CBV
- iY9FxUzl3D74GOl4/QcIsrUOejJpOqe+IwoXkrZpDLCXvjqz/AR3Ui5e/tVRXGrmW7JPBlQ/jkFXpiJRyj/JuifsyeyilRnr+EL91ffazJEr71AZY7UX2Og5
- 1w4ikVnXwwpCYfEyNGO1cM1eL12owealIFqjwr7EOK8z/atgruwesnRbaetmVzHDXxBTLAxYRT828VjLucEh4MAVtCbj+o6dcS7lBjR67i6hOmSF7/6lt+sF
- PEtC4g2a1aigLplrp8cJAQzQFC6MtWZX70TdJN8a8axjxEwt+taELhFdnFK86RP+kjSBb6qJe6pXU4oc0UoKrAPKlNIMCR1v70bedJFsQt/l77Mx36n13UFc
- /7k=
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [194.109.24.25 listed in wl.mailspike.net]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1jGk5J-00FEs2-PY
+X-Headers-End: 1jGkI9-00FFTI-TV
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,28 +82,24 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: Jonathan Corbet <corbet@lwn.net>, linux-kernel@vger.kernel.org,
- Helen Koike <helen.koike@collabora.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+Cc: Jonathan Corbet <corbet@lwn.net>,
+ Linux Doc Mailing List <linux-doc@vger.kernel.org>,
+ linux-kernel@vger.kernel.org, Helen Koike <helen.koike@collabora.com>,
  Sakari Ailus <sakari.ailus@linux.intel.com>,
- Shuah Khan <skhan@linuxfoundation.org>, linux1394-devel@lists.sourceforge.net,
+ Shuah Khan <skhan@linuxfoundation.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux1394-devel@lists.sourceforge.net,
  Ezequiel Garcia <ezequiel@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On 3/24/20 2:42 PM, Mauro Carvalho Chehab wrote:
+Hi Mauro,
+
+Thank you for the patches.
+
+On Tue, Mar 24, 2020 at 02:42:53PM +0100, Mauro Carvalho Chehab wrote:
 > This patch series do lots of reorg at the media Kconfig options.
 > It also move test drivers from platform dir to a new one.
-
-You sent this to linux-doc, but you probably meant linux-media.
-
-Can you repost?
-
-Regards,
-
-	Hans
-
 > 
 > After this change, the main config is organized on menus, allowing to
 > select:
@@ -142,7 +126,14 @@ Regards,
 > 
 > Distros for PC/Laptops can enable everything but 
 > "Embedded devices (SoC)" and "Test drivers".
-> 
+
+How about a device such as the Intel IPU3 ? It's a SoC, and is present
+in laptops. Unlike the physical interface which is a fairly well defined
+way to categorize devices, creating artificial classes will always leave
+some devices without a home. We could have a capture card that supports
+both analog and digital TV. A digital TV capture card with an HDMI input
+can have a CEC device. Lots of combinations are possible.
+
 > Users can select just what they want, without bothering with
 > hundreds of options that he won't have any clue about their
 > meanings.
@@ -314,8 +305,11 @@ Regards,
 >  rename drivers/media/{platform => test_drivers}/vivid/vivid-vid-common.h (100%)
 >  rename drivers/media/{platform => test_drivers}/vivid/vivid-vid-out.c (100%)
 >  rename drivers/media/{platform => test_drivers}/vivid/vivid-vid-out.h (100%)
-> 
 
+-- 
+Regards,
+
+Laurent Pinchart
 
 
 _______________________________________________
