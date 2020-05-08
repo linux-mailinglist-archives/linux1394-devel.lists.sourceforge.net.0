@@ -2,74 +2,108 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7AA171C99B3
-	for <lists+linux1394-devel@lfdr.de>; Thu,  7 May 2020 20:48:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B2E91CB1FC
+	for <lists+linux1394-devel@lfdr.de>; Fri,  8 May 2020 16:41:00 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1jWlZT-0004Dx-Kt; Thu, 07 May 2020 18:48:35 +0000
+	id 1jX4BH-0005el-Gy; Fri, 08 May 2020 14:40:51 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <gustavoars@kernel.org>) id 1jWlZR-0004Dp-OE
- for linux1394-devel@lists.sourceforge.net; Thu, 07 May 2020 18:48:33 +0000
+ (envelope-from <dan.carpenter@oracle.com>) id 1jX4BF-0005ed-Jq
+ for linux1394-devel@lists.sourceforge.net; Fri, 08 May 2020 14:40:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
  From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=OaM+icsS4njrbTRTNSha+L9t6dIaVoD95WyVPHj1fgM=; b=e+UWtortH4DiLQUjpFKliv1Ky7
- MOC2voHn2zQ4comdEvy91BUBqaIgzQJxUEqZ8nM6KmGORU5X/FGGhk+Erg8kL6zpvLIvWvLyXCl5B
- 2Ombweh8OIBTqZbbdi9F0WXAGCL6Dr0P4n5yVF1E5fiYNcgtuWuUReWaVGPpsbsHkqx4=;
+ bh=B1c1c4b7hcwNQpIS66ZNy2hvCK33KO4bX3N1aBJuM1c=; b=lHFzr7PU/akDc0UcqirDq9J51z
+ +Uc+uQxAa2ExpS+9XbvYzMheHkD70mPyhIXTzVIZCmQ93oIllIRgYhw/gyh0N5mR128P0fVlwdBiv
+ +ZChMsK8RpugTxXsRQwdg+xohUmLFBocM5G1m61LfGyqQSTZR2bXiBhG+c9ZNUHxr/Bc=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:
  Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
  :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=OaM+icsS4njrbTRTNSha+L9t6dIaVoD95WyVPHj1fgM=; b=Y
- zJ8BEGfzcq1RcNTFRdLG2OFq5ESY9ww8GHeFED5JVXS+D383BdORwR9eQBMdaqQIxdhs8JAd8DQa7
- SGekjO0eH7f+xAL+TcFTouYV9L5bq3r70CQ8lEsqx97V+smjtkSd2wDhK1ql4A3SQWB2a9/k/+Rwc
- jRQ9mIfzcL7w12hU=;
-Received: from mail.kernel.org ([198.145.29.99])
+ List-Owner:List-Archive; bh=B1c1c4b7hcwNQpIS66ZNy2hvCK33KO4bX3N1aBJuM1c=; b=Q
+ 3io9Nhw+8FE2A3GDPIVnwwJNhk/oLf7ToDEbTFIgxq/AAKzEo4JONiGW2PP6Bpjc8go0TzQub2T2W
+ +TYQkrwk+DUVInGtUflqQsdNO5AZ/QZC5bTscXnAfagwgu3AVpsf0u2fKT84LWBXTPfnmhAOIPY7A
+ 7bI7tX6F9fAg9mEM=;
+Received: from userp2130.oracle.com ([156.151.31.86])
  by sfi-mx-3.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jWlZO-00BWXu-3b
- for linux1394-devel@lists.sourceforge.net; Thu, 07 May 2020 18:48:33 +0000
-Received: from embeddedor (unknown [189.207.59.248])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3705121BE5;
- Thu,  7 May 2020 18:48:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588877304;
- bh=4UwgB4pEdhhDwE0Vi3P7TXaWRto19eGF34jli3AKVNU=;
- h=Date:From:To:Cc:Subject:From;
- b=BFatDpXiYufb1iEB9KedA/kbpUg3ymmg4Z8Toa/K6ebGqNZQCYlUI0pm0zXDGt1UZ
- pIiVC0gj8ZUOLMfXY5ka9AfMdjP6+yxY44k+GMITgoDdHX2EzOvSVJi3FUoqlhaOsJ
- AFQVDBp4K88/MzM6HqsFckcb2xjq62RerQQpb72Q=
-Date: Thu, 7 May 2020 13:52:51 -0500
-From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+ id 1jX4BE-00Cehr-CD
+ for linux1394-devel@lists.sourceforge.net; Fri, 08 May 2020 14:40:49 +0000
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 048Ebmmb151195;
+ Fri, 8 May 2020 14:40:32 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
+ bh=B1c1c4b7hcwNQpIS66ZNy2hvCK33KO4bX3N1aBJuM1c=;
+ b=iBy3sM5gzqqO9TmCpG6EnnQDsryKuEu9BCc9Wl1tZ/U6DZR8IIV/Q1IHr7ERdefSRe1x
+ /qmlmoYLrCCUfMhC+Z5QWcORvPJC+jOKphHEe7zpFD/g1tCoo4Blj7Xbn/RVqrAS4uc8
+ Rb/mlNaiCth0NyPbN7HHOFKlJ8ZiUxD3lAu9CHKr9HRT1Y425wJ5gwuCv6CK+/yDjPAE
+ szwyutASWoLWN/fa8xLJYV9ESwLpUUvU6/bpzvob+7Jg77phEtZVai/NDqBgAzxk73e9
+ nfmsu8R1UdzsJIry7UtU7a5JSlA0BB7xOFRbFtp4nuAjkciP5fYkQwqKGjRiwC1f1S88 Nw== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2130.oracle.com with ESMTP id 30vtewub98-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 08 May 2020 14:40:32 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 048Eba9h145238;
+ Fri, 8 May 2020 14:40:31 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3020.oracle.com with ESMTP id 30vte02xpu-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 08 May 2020 14:40:31 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 048EeUww002334;
+ Fri, 8 May 2020 14:40:30 GMT
+Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 08 May 2020 07:40:29 -0700
+Date: Fri, 8 May 2020 17:40:22 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
 To: Stefan Richter <stefanr@s5r6.in-berlin.de>
-Subject: [PATCH] firewire: ohci: Replace zero-length array with flexible-array
-Message-ID: <20200507185251.GA14293@embeddedor>
+Subject: [PATCH] firewire: Using uninitialized values in node_probe()
+Message-ID: <20200508144022.GB410645@mwanda>
 MIME-Version: 1.0
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Spam-Score: -0.6 (/)
+X-Mailer: git-send-email haha only kidding
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9614
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ phishscore=0
+ bulkscore=0 malwarescore=0 suspectscore=0 adultscore=0 mlxscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2005080130
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9614
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ mlxscore=0 mlxlogscore=999
+ malwarescore=0 spamscore=0 priorityscore=1501 lowpriorityscore=0
+ impostorscore=0 suspectscore=0 adultscore=0 clxscore=1011 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2005080130
+X-Spam-Score: -0.5 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [156.151.31.86 listed in wl.mailspike.net]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
+ 0.0 UNPARSEABLE_RELAY Informational: message has unparseable relay lines
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
- -0.5 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1jWlZO-00BWXu-3b
+ -0.4 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1jX4BE-00Cehr-CD
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,120 +116,39 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
+Cc: kernel-janitors@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux1394-devel@lists.sourceforge.net, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The current codebase makes use of the zero-length array language
-extension to the C90 standard, but the preferred mechanism to declare
-variable-length types such as these ones is a flexible array member[1][2],
-introduced in C99:
+If fw_csr_string() returns -ENOENT, then "name" is uninitialized.  So
+then the "strlen(model_names[i]) <= name_len" is true because strlen()
+is unsigned and -ENOENT is type promoted to a very high positive value.
+Then the "strncmp(name, model_names[i], name_len)" uses uninitialized
+data because "name" is uninitialized.
 
-struct foo {
-        int stuff;
-        struct boo array[];
-};
-
-By making use of the mechanism above, we will get a compiler warning
-in case the flexible array does not occur last in the structure, which
-will help us prevent some kind of undefined behavior bugs from being
-inadvertently introduced[3] to the codebase from now on.
-
-Also, notice that, dynamic memory allocations won't be affected by
-this change:
-
-"Flexible array members have incomplete type, and so the sizeof operator
-may not be applied. As a quirk of the original implementation of
-zero-length arrays, sizeof evaluates to zero."[1]
-
-sizeof(flexible-array-member) triggers a warning because flexible array
-members have incomplete type[1]. There are some instances of code in
-which the sizeof operator is being incorrectly/erroneously applied to
-zero-length arrays and the result is zero. Such instances may be hiding
-some bugs. So, this work (flexible-array member conversions) will also
-help to get completely rid of those sorts of issues.
-
-This issue was found with the help of Coccinelle.
-
-[1] https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html
-[2] https://github.com/KSPP/linux/issues/21
-[3] commit 76497732932f ("cxgb3/l2t: Fix undefined behaviour")
-
-Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+Fixes: 92374e886c75 ("[media] firedtv: drop obsolete backend abstraction")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 ---
- drivers/firewire/core-cdev.c        |    2 +-
- drivers/firewire/core-transaction.c |    2 +-
- drivers/firewire/core.h             |    2 +-
- drivers/firewire/nosy.c             |    2 +-
- drivers/firewire/ohci.c             |    2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
+ drivers/media/firewire/firedtv-fw.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-index 6e291d8f3a27..e6fc20dff687 100644
---- a/drivers/firewire/core-cdev.c
-+++ b/drivers/firewire/core-cdev.c
-@@ -117,7 +117,7 @@ struct inbound_transaction_resource {
- struct descriptor_resource {
- 	struct client_resource resource;
- 	struct fw_descriptor descriptor;
--	u32 data[0];
-+	u32 data[];
- };
+diff --git a/drivers/media/firewire/firedtv-fw.c b/drivers/media/firewire/firedtv-fw.c
+index 97144734eb052..3f1ca40b9b987 100644
+--- a/drivers/media/firewire/firedtv-fw.c
++++ b/drivers/media/firewire/firedtv-fw.c
+@@ -272,6 +272,8 @@ static int node_probe(struct fw_unit *unit, const struct ieee1394_device_id *id)
  
- struct iso_resource {
-diff --git a/drivers/firewire/core-transaction.c b/drivers/firewire/core-transaction.c
-index 404a035f104d..439d918bbaaf 100644
---- a/drivers/firewire/core-transaction.c
-+++ b/drivers/firewire/core-transaction.c
-@@ -620,7 +620,7 @@ struct fw_request {
- 	u32 request_header[4];
- 	int ack;
- 	u32 length;
--	u32 data[0];
-+	u32 data[];
- };
- 
- static void free_response_callback(struct fw_packet *packet,
-diff --git a/drivers/firewire/core.h b/drivers/firewire/core.h
-index 4b0e4ee655a1..71d5f16f311c 100644
---- a/drivers/firewire/core.h
-+++ b/drivers/firewire/core.h
-@@ -191,7 +191,7 @@ struct fw_node {
- 	/* Upper layer specific data. */
- 	void *data;
- 
--	struct fw_node *ports[0];
-+	struct fw_node *ports[];
- };
- 
- static inline struct fw_node *fw_node_get(struct fw_node *node)
-diff --git a/drivers/firewire/nosy.c b/drivers/firewire/nosy.c
-index 6ca2f5ab6c57..5fd6a60b6741 100644
---- a/drivers/firewire/nosy.c
-+++ b/drivers/firewire/nosy.c
-@@ -52,7 +52,7 @@ struct pcl {
- 
- struct packet {
- 	unsigned int length;
--	char data[0];
-+	char data[];
- };
- 
- struct packet_buffer {
-diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
-index 33269316f111..54fdc39cd0bc 100644
---- a/drivers/firewire/ohci.c
-+++ b/drivers/firewire/ohci.c
-@@ -111,7 +111,7 @@ struct descriptor_buffer {
- 	dma_addr_t buffer_bus;
- 	size_t buffer_size;
- 	size_t used;
--	struct descriptor buffer[0];
-+	struct descriptor buffer[];
- };
- 
- struct context {
+ 	name_len = fw_csr_string(unit->directory, CSR_MODEL,
+ 				 name, sizeof(name));
++	if (name_len < 0)
++		return name_len;
+ 	for (i = ARRAY_SIZE(model_names); --i; )
+ 		if (strlen(model_names[i]) <= name_len &&
+ 		    strncmp(name, model_names[i], name_len) == 0)
+-- 
+2.26.2
 
 
 
