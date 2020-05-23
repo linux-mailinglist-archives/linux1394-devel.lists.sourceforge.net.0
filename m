@@ -2,101 +2,105 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83C651DEE7C
-	for <lists+linux1394-devel@lfdr.de>; Fri, 22 May 2020 19:45:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 794D31DF536
+	for <lists+linux1394-devel@lfdr.de>; Sat, 23 May 2020 08:36:24 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1jcBjB-0002ko-G8; Fri, 22 May 2020 17:45:01 +0000
+	id 1jcNla-0002Vc-5J; Sat, 23 May 2020 06:36:18 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <oscar.carter@gmx.com>) id 1jcBjA-0002kZ-81
- for linux1394-devel@lists.sourceforge.net; Fri, 22 May 2020 17:45:00 +0000
+ (envelope-from <greg@kroah.com>) id 1jcNlX-0002Uw-HF
+ for linux1394-devel@lists.sourceforge.net; Sat, 23 May 2020 06:36:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:Date:From:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=7erRvSoNhA31wmPB9BbJ7P0hKnwItvhoaIS4kuMC6eU=; b=ik+GPAp1MeM9NBZRdHvDFIeMHv
- nhDwbDg6vB1Jdhdv893V7JJthNcpWzaMkFoJiv2erbngKrPKhcOTqAbFojVSINdheiRD0Iea8CPkB
- EUJUlQPI4u5FDNAv8of92ZTiVD1J/pU4aDvcLM0oG+kCdPpvPjdtybxQ3TnFistM052w=;
+ bh=LrrYTVFkm9x5WAtV96l5QFTVfXK7jcQpg5sr70HsgwE=; b=Y8cGTl6j95lUI2TvOgxIdfirLN
+ 6JHPol/oB3bMis+otKuUzYjwWM0RiwOP4Cc3ybE6gV4d3qhhnbA1XyuuD4me622NlaI0whkle9b9V
+ KSPdbz27NG7QGGZTgwLSfWTj3qDlEFq42JsuYpgROPWdgzFu2vEnbikwDOJ98Cs6g2oE=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :Date:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=7erRvSoNhA31wmPB9BbJ7P0hKnwItvhoaIS4kuMC6eU=; b=VYqaL0dkRXJgYstAGz9Y1o73T0
- cEeDVZyBIgLB4Ee4jdDe0zQo5qTjCyCwhM9VZdZSrEQrr54A6+bfg+2CcIM0UuW7Z6Rca79Ckoy2b
- 5HL0yaLw5OZ+QJHMCNgvmi+NQ+xrlz4BxRAwLHo4oseqV/Ew72J4Tom9sLEnWxu8C6HI=;
-Received: from mout.gmx.net ([212.227.15.15])
+ bh=LrrYTVFkm9x5WAtV96l5QFTVfXK7jcQpg5sr70HsgwE=; b=ghlbXl3wBawpVUID5Jerf5WNw0
+ cknJtQN3hX2gOVLNWhCFY2ZAIxeTa264eaJp+baze5+aSuSnaq57kdvOd4zXOMmIAj7GCYeTMfvQD
+ PXRJHpjzK6bpuiWMfjSADMX90vgEZtbwiRoU7xsz0nJ45GyuprZm91HJQQoxw34sA4ng=;
+Received: from wnew1-smtp.messagingengine.com ([64.147.123.26])
  by sfi-mx-3.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jcBj8-002bA6-Et
- for linux1394-devel@lists.sourceforge.net; Fri, 22 May 2020 17:45:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1590169391;
- bh=7erRvSoNhA31wmPB9BbJ7P0hKnwItvhoaIS4kuMC6eU=;
- h=X-UI-Sender-Class:Date:From:To:Cc:Subject:References:In-Reply-To;
- b=Hjb4bMhdlR7sHNtV5d99R1eTX76MUX6R8s19tj8FxXmSqZm7UWLO3ZUNpjUo7IH2o
- h3bW8Xfb9O/dq0ewfIpoSfoDR+iULVdTEEaTuQpdOJgDNJ6zlv1k1v82zqJHSwKDCf
- aEtdaMHfhJenrWaYH8+6zqeH1tUdh9Y8OTnWl+/c=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from ubuntu ([83.52.229.196]) by mail.gmx.com (mrgmx004
- [212.227.17.184]) with ESMTPSA (Nemesis) id 1MEUzA-1jnmHF0YFG-00G09d; Fri, 22
- May 2020 19:43:11 +0200
-Date: Fri, 22 May 2020 19:43:08 +0200
-From: Oscar Carter <oscar.carter@gmx.com>
-To: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+ id 1jcNlV-003FFU-UX
+ for linux1394-devel@lists.sourceforge.net; Sat, 23 May 2020 06:36:15 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailnew.west.internal (Postfix) with ESMTP id B27D18CB;
+ Sat, 23 May 2020 02:10:24 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute1.internal (MEProxy); Sat, 23 May 2020 02:10:25 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
+ from:date:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm3; bh=LrrYTVFkm9x5WAtV96l5QFTVfXK
+ 7jcQpg5sr70HsgwE=; b=kAPKJBbB3e4aBtF2OcbBUICIud8yPLH22RFoStnp4e8
+ yDZXaIlUHk0hzMRsWVU1tHFiy4j0L0oLLRjDEWOTmhX/S/kyk3zo4JPIGMqvBvu/
+ pVHsRR8shbwejVVYYURo0N2WYAO0gpTmU1ZNWJ2HUmC1oVxu4P8anVPVK5dPa3D3
+ VCtDB+/zUbFUwYk4BMaqAjLO9JlrzQtA/2FPzETfMh6ca94xQ5B/gQDe0te1qzXw
+ /DdP9SgJLR7qZbBpupaF2rfmz2uUpswbVzE6RAxliD1hVZEC6Cxme/m7h+bltlXo
+ sgi1B50yNPN4u/lqaF3ofGVVEz6iGA+UFhvCDk9u8bg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=LrrYTV
+ Fkm9x5WAtV96l5QFTVfXK7jcQpg5sr70HsgwE=; b=o3LniShnRlpl+p+BDDClSJ
+ gFgFe65lkZbszodtwx+k48xiTCURwK42S+Fty6srSnJabd4skcMtn27IN77BBB4t
+ 0m6wvn6WSvufHru66KSihYcVKdZmLEv188Rj/+jHrpJRk7vef08ZiRmu6xJzZeUb
+ brmvvzvNucIVMlzSlDVdJOwBLrzodmiQwcIIvPxG2miwdgmgYaS1xK3qbGXy0b/B
+ 0gwn3JDRJH9RlFMvMAS5WoQy9X9IX7E6Zbaj4Oc+/Nc8SxPoasIiShar3D91kh21
+ l8/i2gHtlYm6pgY2gXS1A6QnKUZM07e1CXyuBXaMoKSP1JNtmNR25lY6c3PjWSTg
+ ==
+X-ME-Sender: <xms:T77IXlv6y-F4jWSN-g0qsuwh-D2FgNmSuQkyix1z2-REyP1dBZ1AQw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedruddugedguddttdcutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpefhfffvuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepghhrvghg
+ sehkrhhorghhrdgtohhmnecuggftrfgrthhtvghrnheptdehveeuieekuddvjefhlefgke
+ dugeeffeffjeetieefgfduveehfedvheeludfhnecukfhppeekfedrkeeirdekledruddt
+ jeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehgrh
+ gvgheskhhrohgrhhdrtghomh
+X-ME-Proxy: <xmx:T77IXud2oWQcXqtjJpYSLzcm7xfysXz80uywdWroCd0IuG6WeZsNvQ>
+ <xmx:T77IXoyC589Z7sLJ5OoU5m3ZDXiWXru70tkQEr2CPDnobSrWxGnt4Q>
+ <xmx:T77IXsPJz4o-qG0QNang-l9w2SYk8cE6fRSpM7EiEVXr9iU2A99IVg>
+ <xmx:UL7IXsVykN8rG8y8fgoGUWZ6glDMhYsF3Sub3bpYfEABCX_YO4a-ML45vUs>
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ by mail.messagingengine.com (Postfix) with ESMTPA id CFB1530664D9;
+ Sat, 23 May 2020 02:10:22 -0400 (EDT)
+From: greg@kroah.com
+Date: Sat, 23 May 2020 08:10:18 +0200
+To: Oscar Carter <oscar.carter@gmx.com>
 Subject: Re: [PATCH v2] firewire: Remove function callback casts
-Message-ID: <20200522174308.GB3059@ubuntu>
+Message-ID: <20200523061018.GA3131938@kroah.com>
 References: <20200519173425.4724-1-oscar.carter@gmx.com>
- <20200520061624.GA25690@workstation>
+ <20200520061624.GA25690@workstation> <20200522174308.GB3059@ubuntu>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200520061624.GA25690@workstation>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Provags-ID: V03:K1:jDAMWBN6i5llv7LuCYMCYADueBSFhw0jntdkKB6FtXgQAyx1hJ0
- UK/B3pkqK3wWld06+HtcL3GkrxXPNbPMNAqzx2IiY12Voy7K4SX+svFljoBoq5qXh/T7Rig
- z25dmI8qQlmwS63YSWgzLAI0IC/I/rDgLrfpj7LYiKY5vHVkg4mYH0yBuPPN1gBnQLtb+F/
- AguVGShVfnafJ5CncWSSg==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:GoeMsB1jtDE=:f9abdmhLj0xQdohvGCIalV
- RRr72hC0sw4q03hwh9q6iZsJqgjZL+erf6n/hPv891ZNZ0EmrMajxwVeV1piFHMEQ1PNxe9ZO
- R0CO+94Jkk6VaWfPzxD9WWVfMD1U4o4Q60bshu6W94Eb+DpNjgwzqbt8XaiXgu4xF/kxgi6AD
- jTnjNbZ/5YXPsL+VKZk7f1eEjyeJ49Vml8+aKYzKc+M+z1hMOIQFbTZcDK+2E0UPmx6rT7A5V
- 6DxS0MTInOhwCEMAldomHIUzDTGkCVGqLc7uqYH0u/t6ctXaoMXNdKVGyjKqDbjcHkYwdoenv
- 7Rlz1ho0CewPY8rdpdsRPCVNzQ3yAk63kjdEmJTlvK76723QOu8KuVG9KSjL85dCi0y1i0Up6
- mfUX8KdAyBqk3hf8STiJ6E9lf5bbWiGgN8BYDG3QvaaMi2YVbNqjbG/NgU2HZBBuo+2JZXKk/
- /RO6puoh0Woykd4I2glBIzHgoAn4Lm8BDBi1OY5/Chx1sKBTxYAqtmFW7KmNyq9zg7QSAKSze
- Lzdw+ZUtuDWpZgNWftZur8yIMd24KzXcT5VM26Vq4dwIFzYkbhyvr1d2Ui2z/8b4bV8rohOfW
- 32F+csIz3oVjEsS3MF0Qzd7nW6mBKSaQSPJ817BPh8aWgtqfx6jt2fbCPTNZR4xHli8rF2Kxc
- 4Z8cJSGrGyeUIw1GpWX1isqAVFz9P1kQBAgWPf1gg9o6gEJY01D49F5OJdOWBpOYV0MiRQP+j
- QGddvUqdWnbHx0kBirh/xHbESmUmMoWcnfCWBZF7Yxq89CSxY3NaFO8H/EIdn4wjyK5BMIM/o
- 6fFodZTD9HBhh7mJA0xto2tGLlexg1gcOxdERLm9d/idYGQz4D1847at8QQoHSjofFSlTJnIo
- TGv4kc770h463ljQXj5ail7euijbHEgqol3fyuxrS5r5ss4S8qDIgxVF0pjjKXvWauJ02QfFj
- m/9N/VKLX+uuZfnzAcDwFI0KxrH/Wf8m3KGiO16g5Jt+5tnbkKagWmBFtzL+s7fSGlC/bNXMx
- FfaAaWscHhBfqIf7OKdh4iagaUAftDCCttPxJuTLv7kgQsiN3VcrhMVZw+WWDVgo0bxORmirk
- Y0VTuutuRLEuSNhnNz0XNqyeNiKTtJ+lptB3svnF70r/OsHJYeypP3rd69hSDygUEhgAHpjVX
- K8/xowWz3py24xUVPm8BaobxgIuMgGrnIOw1/BGo/XnGZ4MM2390yOLpjMIepLDJ1bccAq4uj
- eatIuI5MNkUo7Kj9P
-X-Spam-Score: -0.1 (/)
+In-Reply-To: <20200522174308.GB3059@ubuntu>
+X-Spam-Score: -0.4 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (oscar.carter[at]gmx.com)
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [212.227.15.15 listed in wl.mailspike.net]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
- -0.1 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1jcBj8-002bA6-Et
+ -0.3 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1jcNlV-003FFU-UX
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,44 +114,34 @@ List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
 Cc: alsa-devel@alsa-project.org, linux1394-devel@lists.sourceforge.net,
- Oscar Carter <oscar.carter@gmx.com>, Kees Cook <keescook@chromium.org>,
- kernel-hardening@lists.openwall.com, linux-kernel@vger.kernel.org,
- Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>,
+ Kees Cook <keescook@chromium.org>, kernel-hardening@lists.openwall.com,
+ linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>,
+ stable <stable@vger.kernel.org>, Jaroslav Kysela <perex@perex.cz>,
  "Lev R . Oshvang ." <levonshe@gmail.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
-
-On Wed, May 20, 2020 at 03:16:24PM +0900, Takashi Sakamoto wrote:
+On Fri, May 22, 2020 at 07:43:08PM +0200, Oscar Carter wrote:
 > Hi,
->
-> I'm an author of ALSA firewire stack and thanks for the patch. I agree with
-> your intention to remove the cast of function callback toward CFI build.
->
-> Practically, the isochronous context with FW_ISO_CONTEXT_RECEIVE_MULTICHANNEL
-> is never used by in-kernel drivers. Here, I propose to leave current
-> kernel API (fw_iso_context_create() with fw_iso_callback_t) as is.
-> Alternatively, a new kernel API for the context (e.g.
-> fw_iso_mc_context_create() with fw_iso_mc_callback_t). This idea leaves
-> current drivers as is and the change is done inner firewire-core driver,
-> therefore existent kernel API is not changed.
->
-It sounds good to me.
+> 
+> On Wed, May 20, 2020 at 03:16:24PM +0900, Takashi Sakamoto wrote:
+> > Hi,
+> >
+> > I'm an author of ALSA firewire stack and thanks for the patch. I agree with
+> > your intention to remove the cast of function callback toward CFI build.
+> >
+> > Practically, the isochronous context with FW_ISO_CONTEXT_RECEIVE_MULTICHANNEL
+> > is never used by in-kernel drivers. Here, I propose to leave current
+> > kernel API (fw_iso_context_create() with fw_iso_callback_t) as is.
 
-> Later I post two patches for the proposal. I'd like you to review it and
-> I'm glad to receive your comments.
->
-I will take a look at your proposal. Thanks for your time and work.
->
-> Regards
->
-> Takashi Sakamoto
+If it's not used by anyone, why is it still there?  Can't we just delete
+it?
 
-Thanks,
-Oscar Carter
+thanks,
+
+greg k-h
 
 
 _______________________________________________
