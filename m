@@ -2,190 +2,101 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id D83791E666D
-	for <lists+linux1394-devel@lfdr.de>; Thu, 28 May 2020 17:41:31 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
-	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1jeKeq-0007p7-Bu; Thu, 28 May 2020 15:41:24 +0000
-Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <bootc@bootc.net>) id 1jeKeo-0007ot-P1
- for linux1394-devel@lists.sourceforge.net; Thu, 28 May 2020 15:41:22 +0000
+	by mail.lfdr.de (Postfix) with ESMTPS id E84911E67A6
+	for <lists+linux1394-devel@lfdr.de>; Thu, 28 May 2020 18:44:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
- MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	d=lists.sourceforge.net; s=beta; h=Content-Type:Reply-To:From:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:
+	References:Mime-Version:Date:To:Subject:Sender:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
+	bh=+oWYSUG3y7mVzVeBiDvNgVUw2iDPapEON7QQ1WxtxrY=; b=MI+MAKZ9Ep6HIKt//gilVoVE4J
+	cVth5xfPEs1XpdMBq0vRqcAZYLdCml19kKVUH0Vg1NfcKrHhLoxIMspy157W8vfCZ30zPeyUwsl64
+	maFsAP8MDX8K9AH/pXrfq3An/L9t58Hog0gEWaeZfjkNrnzHiIVI9EpWzkQhfZ1mrAa4=;
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
+	id 1jeLds-0005qV-8S; Thu, 28 May 2020 16:44:28 +0000
+Received: from [172.30.20.202] (helo=mx.sourceforge.net)
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from
+ <010101725c2b9501-4cd584f2-8339-4881-8a28-16703fd84b3f-000000@us-west-2.amazonses.com>)
+ id 1jeLdq-0005qC-Q3
+ for linux1394-devel@lists.sourceforge.net; Thu, 28 May 2020 16:44:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=sourceforge.net; s=x; h=Message-ID:References:Content-Type:Mime-Version:
+ Date:To:From:Subject:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=td003DFyixtDY6qWdGDWXt7aHufyht8GTRmfiOc/DXo=; b=bDh/ICcVP/Hpn5er7IfSv6HKvB
- lm1D20bjUEQOFVLUH7vLx7DiNzveefrumJxavQ7OwUGqQj31y0T5ksfrk9Xy/3uSgCpFAPARL/Zd0
- Kj7JOo54Zo8bSMOD6rBYZM7vrWXe+/M5CyCzJAbgy8llloHy50E/JW2NbcrkGBRyxt0Q=;
+ bh=lNhFd61W5c2i3/8Tnlv6vN3eiZgcMorTZDbkJo1xf+Q=; b=UAU2aMWuKj63ZTLwo2BYOtsd/M
+ zLO7d7Wn8B92eVrzCAnVbmP2oP/CbvNVbfcJUvWWFtYLpsiA6ov0SLRZd1v3pbpGToRvaARTOg/k+
+ TrJQM/VMQiNQ1ijc1oU6dCylBz5pZvvnTmxONiq9+ToU3rlNJr8tvPjBWdWcZbKyMJ/U=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
- Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=td003DFyixtDY6qWdGDWXt7aHufyht8GTRmfiOc/DXo=; b=IsJ2Ffsc4HX9dIfk8NaXCdt/jt
- 0Xt7JqNiw3K90ogXC+kj6Gj6T1AdSLj3e6XTfYYUjZ+5NWJa4FzP3/9MFGkfjDdZPskZ2ImmiQUFW
- pEfvYMjyC+F9pbcqjHh0SYw7xSN9HKpmxt8V/ipO6Lf0xK7Km4PaeKa0YrdWnXvIArqg=;
-Received: from wout3-smtp.messagingengine.com ([64.147.123.19])
- by sfi-mx-4.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1jeKem-001ehh-Oi
- for linux1394-devel@lists.sourceforge.net; Thu, 28 May 2020 15:41:22 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
- by mailout.west.internal (Postfix) with ESMTP id B06FAABA;
- Thu, 28 May 2020 11:16:57 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Thu, 28 May 2020 11:16:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootc.net; h=
- subject:to:cc:references:from:message-id:date:mime-version
- :in-reply-to:content-type:content-transfer-encoding; s=fm2; bh=t
- d003DFyixtDY6qWdGDWXt7aHufyht8GTRmfiOc/DXo=; b=Etdc4YUU69IE99nuG
- 3Zjzgos+3BKyj8EcQ1n9Ic8BahEemS4aHL5i92tzuajpC3uJZShDwKrX7hhPw+C4
- M76AsCF+Ca+Y6aR3lSAf4U8P2AW2i/xrHTFJ34wdQesJAPl8jkQCk3h/J4rtfBX3
- D1ljNzc1hP1+CkdmlYbTyvtsSnfdSqHFq8QjlOwffAn3CCJejEJq47tEk8ZU3GR/
- jZVgy3ojrH/A7+BhdSr2tS9vg+uvKKa/xLeCPXes0SBwIY5VhJOv9a4fk117yRRE
- tEumD8MblFP8qbt2g4GSSlk3ejSs/q1kSntnsir4PvJbmk8V2OoUG3wpG2Uj6ged
- 9NN9A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm2; bh=td003DFyixtDY6qWdGDWXt7aHufyht8GTRmfiOc/D
- Xo=; b=eGWvnwhjCkbY0Iy+8g0V02MLEqTKQp5rI4iZpxDt+7QWTA+as54C88qvd
- MjoOtOwyqDxQyacV9vdu9AhNELnlIGb4FeDers2b0WXXJldAKPtQ/IZNChkQHzQc
- aMqvBr2jyBJZTn6OEmxCpPI8y14VeBl+9LJsVS4uc+3u0Z79SDYqY5CZji30xVD6
- fi88Uw32iWoZ/dGP4ghqbVWA+HHzWLaa+mwd8LfqU7mrJPnbHiGBy9wPE0XeJDu7
- Y91wb0sPsy5ohguWWSHy/yS//URl6bNMjbIxROlTlT4u0uo+Wf+qYStKE2Gqb8ns
- DqTPSZPlZmk7mR3MHbWcdTjFa2BCA==
-X-ME-Sender: <xms:6NXPXqkoxWXG4okRtFNfhDir5vNCcpqWLdN_zHGKgWm1AMsPeAua_A>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedruddviedggeefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepuffvfhfhkffffgggjggtgfesthejredttdefjeenucfhrhhomhepvehhrhhi
- shcuuehoohhtuceosghoohhttgessghoohhttgdrnhgvtheqnecuggftrfgrthhtvghrnh
- eptedvkeekkefhheetlefhgfejleeiiedtkedtuefgjeeijeettedtieeujeejkeehnecu
- kfhppeekuddrudekjedrheehrdekkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrh
- grmhepmhgrihhlfhhrohhmpegsohhothgtsegsohhothgtrdhnvght
-X-ME-Proxy: <xmx:6NXPXh1CPMnNOj03LYWzAKvJuS6B0f7lYq727PaArUOqEgIhRVUIrQ>
- <xmx:6NXPXoqMKuIJvSvunz1O_AiAyMqIYgTVYdAACVxdSbgED5iELOQViw>
- <xmx:6NXPXuk-fQZ0RRffE0n0DNfAtjEVP7hSmYlCm9RnsJRjqP61ByADRQ>
- <xmx:6dXPXs_LpbXbBrOgQmmY79pTo6_s4chS2OZ8u-2Sy-BwVBnFevKT7w>
-Received: from [81.187.55.88] (ripley.boo.tc [81.187.55.88])
- by mail.messagingengine.com (Postfix) with ESMTPA id 1A479306218B;
- Thu, 28 May 2020 11:16:55 -0400 (EDT)
-Subject: Re: [PATCH] sbp-target: add the missed kfree() in an error path
-To: Bart Van Assche <bvanassche@acm.org>
-References: <20200528102056.911825-1-hslester96@gmail.com>
- <475e4f50-6d20-d653-8288-0676bc708bcc@acm.org>
-From: Chris Boot <bootc@bootc.net>
-Autocrypt: addr=bootc@bootc.net; prefer-encrypt=mutual; keydata=
- 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
- 1QBDj3S+cCP/8Pe5l3n1B7V4SkVPBQs/H/ClB6o=
-Message-ID: <dcb29beb-0996-a141-89af-ac9c9c5fd5c0@bootc.net>
-Date: Thu, 28 May 2020 16:16:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
-MIME-Version: 1.0
-In-Reply-To: <475e4f50-6d20-d653-8288-0676bc708bcc@acm.org>
-Content-Language: en-GB
-X-Spam-Score: -0.5 (/)
+ h=Message-ID:References:Content-Type:Mime-Version:Date:To:From:Subject:
+ Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=lNhFd61W5c2i3/8Tnlv6vN3eiZgcMorTZDbkJo1xf+Q=; b=E
+ ulZSygjxUWoSC9oz7jM9SI08oZBnBOwzJWvyV4CNWLToW17q5NF7kDSz/GxksmTqSn9tPw2B3U12p
+ 6J6HlrEtXjzGmmQZ+ZGTMGono0Mwa2TfkF6ryWaZHZmnidB2vUjQ+pkiLLD/qmCHvLM8luFTEzslc
+ gcFLGFUS5iUYMa/8=;
+Received: from a58-62.smtp-out.us-west-2.amazonses.com ([54.240.58.62])
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES128-SHA256:128) (Exim 4.92.2)
+ id 1jeLdp-00GHgH-B5
+ for linux1394-devel@lists.sourceforge.net; Thu, 28 May 2020 16:44:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+ s=sknkt525wmvsd5qrslvt4aisaznnhvir; d=konnectglobalmarketing.com;
+ t=1590684259;
+ h=Subject:From:To:Date:Mime-Version:Content-Type:References:Message-Id;
+ bh=lNhFd61W5c2i3/8Tnlv6vN3eiZgcMorTZDbkJo1xf+Q=;
+ b=HQNSjJhFBPFJ59Jl5SrMtr9BNbep5+U8dR0hiSsHWIZrcXYtH56Mt6QqJ/JuaL36
+ Y2t6RMzTVfjZLfDUI0kaW2uCdT31Ij+rfMP/8eFHDcyxhnPMeLldjU9+IXjFw+eiT4r
+ hIA84QVInIrCI7l2YG5yByMyt3iTolRbD+yjhvUY=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+ s=hsbnp7p3ensaochzwyq5wwmceodymuwv; d=amazonses.com; t=1590684259;
+ h=Subject:From:To:Date:Mime-Version:Content-Type:References:Message-Id:Feedback-ID;
+ bh=lNhFd61W5c2i3/8Tnlv6vN3eiZgcMorTZDbkJo1xf+Q=;
+ b=F5fmepWxe/aTqJUZRx5F5HgNTLVy41ikH2aljbii3X+sC9o3jrzKP/e9A3nV6VlD
+ HC0BvIWuekwkNPu/DtqbVE1AuA3aWNdhGDxWtC8w3nhiP+sqyKtS5EAxqvKJdZIS8Xl
+ YcG2rLz6O8hPNdsWtdRxrUp3qG/ceSdav239lI/g=
+Subject: RE: Proposal
+To: =?UTF-8?Q?linux1394-devel=40lists=2Esourceforge=2Enet?=
+ <linux1394-devel@lists.sourceforge.net>
+Date: Thu, 28 May 2020 16:44:19 +0000
+Mime-Version: 1.0
+References: <mail.f043ca8f-f052-43ea-98d4-bb5bc5d82092@storage.wm.amazon.com> 
+ <mail.f043ca8f-f052-43ea-98d4-bb5bc5d82092@storage.wm.amazon.com>
+X-Priority: 3 (Normal)
+X-Mailer: Amazon WorkMail
+Thread-Index: AdY1CR7nWPs2nha2R9a1bEP67O+5RA==
+Thread-Topic: RE: Proposal
+Message-ID: <010101725c2b9501-4cd584f2-8339-4881-8a28-16703fd84b3f-000000@us-west-2.amazonses.com>
+X-SES-Outgoing: 2020.05.28-54.240.58.62
+Feedback-ID: 1.us-west-2.An468LAV0jCjQDrDLvlZjeAthld7qrhZr+vow8irkvU=:AmazonSES
+X-Spam-Score: 1.2 (+)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: bootc.net]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [64.147.123.19 listed in wl.mailspike.net]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level mail
+ domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [54.240.58.62 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [54.240.58.62 listed in wl.mailspike.net]
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
- -0.4 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1jeKem-001ehh-Oi
+ -0.0 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1jeLdp-00GHgH-B5
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -198,40 +109,252 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-scsi@vger.kernel.org,
- "Martin K . Petersen" <martin.petersen@oracle.com>,
- Chuhong Yuan <hslester96@gmail.com>, linux-kernel@vger.kernel.org,
- Nicholas Bellinger <nab@linux-iscsi.org>, target-devel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+From: =?UTF-8?Q?Hailey_Jones?= via linux1394-devel
+ <linux1394-devel@lists.sourceforge.net>
+Reply-To: =?UTF-8?Q?Hailey_Jones?= <hailey@konnectglobalmarketing.com>
+Content-Type: multipart/mixed; boundary="===============1314506046147584628=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On 28/05/2020 15:53, Bart Van Assche wrote:
-> On 2020-05-28 03:20, Chuhong Yuan wrote:
->> sbp_fetch_command() forgets to call kfree() in an error path.
->> Add the missed call to fix it.
-> 
-> Hi Chris,
-> 
-> The changelog of the code under drivers/target/sbp makes we wonder
-> whether this driver has ever had any other users than its original
-> author. Do you agree with this? If so, do you want to keep this driver
-> in the kernel tree?
+This is a multi-part message in MIME format. Your mail reader does not
+understand MIME message format.
+--===============1314506046147584628==
+Content-Type: multipart/alternative; 
+ boundary="=_zF-PLvc9GLxMD-FJOPUGufCIjfEKB699AuuRY+HmABzYYgtB"
 
-Hi Bart,
+This is a multi-part message in MIME format. Your mail reader does not
+understand MIME message format.
+--=_zF-PLvc9GLxMD-FJOPUGufCIjfEKB699AuuRY+HmABzYYgtB
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-I think you might be right. I also don't have much time to maintain it
-these days and the hardware I had is long dead. It probably should be
-removed for everyone's sanity.
+Hi,
 
-Best regards,
-Chris
 
--- 
-Chris Boot
-bootc@bootc.net
+Did you get a chance to go through my previous email=3F=20
 
+
+Kindly let me know your target audience (Sectors, Job Titles & Geography)=
+ that you wish to target, so that I can get back with the counts, samples=
+ and pricing details for your review.=20
+
+=C2=A0
+Appreciate your response.
+
+=C2=A0
+Thanks,
+
+Hailey Jones - Marketing Executive
+
+=C2=A0
+=C2=A0
+Hi,
+
+=C2=A0
+Would you like to connect with key decision makers from the below sectors=
+;
+
+=C2=A0
+Manufacturing, Construction, Education, Retail, Healthcare, Energy, Utili=
+ties & Waste Treatment, Transportation, Banking & Finance, Media & Intern=
+et, Hospitality, etc.=20
+
+=C2=A0
+You can contact them via direct=C2=A0business emails or phone numbers=C2=A0=
+for your sales and marketing initiatives.=20
+
+=C2=A0
+We can also provide you contacts from companies currently using Altium
+
+Software.
+
+=C2=A0
+Kindly let me know the Sectors, Job Titles & Geography that you wish to t=
+arget, so that I can get back with the samples, counts and more details f=
+or your review.=20
+
+=C2=A0
+Looking forward to your response.
+
+=C2=A0
+Thanks,
+
+Hailey Jones - Marketing Executive
+
+=C2=A0
+Stay safe.
+
+Reply back =E2=80=9CPass=E2=80=9D for no further emails.
+
+=C2=A0
+
+--=_zF-PLvc9GLxMD-FJOPUGufCIjfEKB699AuuRY+HmABzYYgtB
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-mi=
+crosoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:wo=
+rd" xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D=
+"http://www.w3.org/TR/REC-html40"><head><META HTTP-EQUIV=3D"Content-Type"=
+ CONTENT=3D"text/html; charset=3Dus-ascii"><meta name=3DGenerator content=
+=3D"Microsoft Word 15 (filtered medium)"><style><!--
+/* Font Definitions */
+@font-face
+=09{font-family:"Cambria Math";
+=09panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+=09{font-family:Calibri;
+=09panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+=09{margin:0in;
+=09margin-bottom:.0001pt;
+=09font-size:11.0pt;
+=09font-family:"Calibri",sans-serif;}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+=09{mso-style-priority:1;
+=09margin:0in;
+=09margin-bottom:.0001pt;
+=09font-size:11.0pt;
+=09font-family:"Calibri",sans-serif;}
+p.xmsonormal, li.xmsonormal, div.xmsonormal
+=09{mso-style-name:x_msonormal;
+=09margin:0in;
+=09margin-bottom:.0001pt;
+=09font-size:12.0pt;
+=09font-family:"Times New Roman",serif;}
+=2EMsoChpDefault
+=09{mso-style-type:export-only;
+=09font-family:"Calibri",sans-serif;}
+=2EMsoPapDefault
+=09{mso-style-type:export-only;
+=09margin-bottom:8.0pt;
+=09line-height:107%;}
+@page WordSection1
+=09{size:8.5in 11.0in;
+=09margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+=09{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]--></head><body lang=3DEN-US><div class=3D=
+WordSection1><p class=3DMsoNormal><span style=3D'font-size:12.0pt;color:b=
+lack;background:white;mso-fareast-language:EN-IN'>Hi,</span></p><p class=3D=
+MsoNormal><span style=3D'font-size:12.0pt;color:black;background:white;ms=
+o-fareast-language:EN-IN'><br>Did you get a chance to go through my previ=
+ous email=3F </span></p><p class=3DMsoNormal><span style=3D'font-size:12.=
+0pt;color:black;background:white;mso-fareast-language:EN-IN'><br>Kindly l=
+et me know your target audience (</span><b><span lang=3DEN-IN style=3D'fo=
+nt-size:12.0pt;color:black;background:white;mso-fareast-language:EN-IN'>S=
+ectors,</span></b><span lang=3DEN-IN style=3D'font-size:12.0pt;color:blac=
+k;background:white;mso-fareast-language:EN-IN'> <b>Job Titles &amp; Geogr=
+aphy</b>) </span><span style=3D'font-size:12.0pt;color:black;background:w=
+hite;mso-fareast-language:EN-IN'>that you wish to target, so that I can g=
+et back with the <u>counts, samples and pricing</u> details for your revi=
+ew. </span></p><p class=3DMsoNormal><span style=3D'font-size:12.0pt;color=
+:black;background:white;mso-fareast-language:EN-IN'>&nbsp;</span></p><p c=
+lass=3DMsoNormal><span style=3D'font-size:12.0pt;color:black;background:w=
+hite;mso-fareast-language:EN-IN'>Appreciate your response.</span></p><p c=
+lass=3DMsoNormal><span style=3D'font-size:12.0pt;color:black;background:w=
+hite;mso-fareast-language:EN-IN'>&nbsp;</span></p><p class=3DMsoNormal><b=
+><i><span lang=3DEN-IN style=3D'font-size:12.0pt;color:black;background:w=
+hite;mso-fareast-language:EN-IN'>Thanks,</span></i></b><i><span lang=3DEN=
+-IN><o:p></o:p></span></i></p><p class=3DMsoNormal><b><i><span lang=3DEN-=
+IN style=3D'font-size:12.0pt;color:black'>Hailey Jones - Marketing Execut=
+ive</span></i></b><i><span lang=3DEN-IN><o:p></o:p></span></i></p><div st=
+yle=3D'mso-element:para-border-div;border:none;border-bottom:solid window=
+text 1.5pt;padding:0in 0in 1.0pt 0in;background:white'><p class=3DMsoNorm=
+al style=3D'background:white;border:none;padding:0in'><span style=3D'font=
+-size:12.0pt;color:black'><o:p>&nbsp;</o:p></span></p></div><p class=3DMs=
+oNormal style=3D'background:white'><span style=3D'font-size:12.0pt;color:=
+black'><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal style=3D'backgrou=
+nd:white'><span style=3D'font-size:12.0pt;color:black'>Hi,</span><span la=
+ng=3DIT><o:p></o:p></span></p><p class=3DMsoNormal style=3D'background:wh=
+ite'><span lang=3DIT><o:p>&nbsp;</o:p></span></p><p class=3DMsoNormal sty=
+le=3D'background:white'><span style=3D'font-size:12.0pt;color:black'>Woul=
+d you like to connect with key decision makers from<b> </b>the below sect=
+ors<b>;<o:p></o:p></b></span></p><p class=3DMsoNormal style=3D'background=
+:white'><b><span style=3D'font-size:12.0pt;color:black'><o:p>&nbsp;</o:p>=
+</span></b></p><p class=3DMsoNormal style=3D'background:white'><b><span l=
+ang=3DEN-IN style=3D'font-size:12.0pt;color:black;background:white'>Manuf=
+acturing, </span></b><b><span style=3D'font-size:12.0pt;color:black;backg=
+round:white'>Construction</span></b><b><span lang=3DEN-IN style=3D'font-s=
+ize:12.0pt;color:black;background:white'>, </span></b><b><span style=3D'f=
+ont-size:12.0pt;color:black;background:white'>Education</span></b><b><spa=
+n lang=3DEN-IN style=3D'font-size:12.0pt;color:black;background:white'>, =
+</span></b><b><span style=3D'font-size:12.0pt;color:black;background:whit=
+e'>Retail</span></b><b><span lang=3DEN-IN style=3D'font-size:12.0pt;color=
+:black;background:white'>, </span></b><b><span style=3D'font-size:12.0pt;=
+color:black;background:white'>Healthcare, Energy, Utilities &amp; Waste T=
+reatment, Transportation, Banking &amp; Finance,</span></b><span style=3D=
+'font-size:10.5pt;font-family:"Arial",sans-serif;color:#797D86;background=
+:white'> </span><b><span style=3D'font-size:12.0pt;color:black;background=
+:white'>Media &amp; Internet, Hospitality, </span></b><b><span lang=3DEN-=
+IN style=3D'font-size:12.0pt;color:black;background:white'>etc. <o:p></o:=
+p></span></b></p><p class=3DMsoNormal style=3D'background:white'><span st=
+yle=3D'font-size:12.0pt;color:black'>&nbsp;</span><span lang=3DIT><o:p></=
+o:p></span></p><p class=3DMsoNormal style=3D'background:white'><span styl=
+e=3D'font-size:12.0pt;color:black'>You can contact them via direct&nbsp;<=
+u>business emails or phone numbers</u>&nbsp;for your sales and marketing =
+initiatives. <o:p></o:p></span></p><p class=3DMsoNormal style=3D'backgrou=
+nd:white'><span style=3D'font-size:12.0pt;color:black'><o:p>&nbsp;</o:p><=
+/span></p><p class=3DMsoNormal style=3D'background:white'><span style=3D'=
+font-size:12.0pt;color:black'>We can also provide you contacts </span><sp=
+an style=3D'font-size:12.0pt;color:black;background:white;mso-fareast-lan=
+guage:EN-IN'>from companies currently using <b>Altium</b></span><b><span =
+lang=3DEN-IN style=3D'font-size:12.0pt;color:black;background:white;mso-f=
+areast-language:EN-IN'><o:p></o:p></span></b></p><p class=3DMsoNormal sty=
+le=3D'background:white'><b><span style=3D'font-size:12.0pt;color:black;ba=
+ckground:white;mso-fareast-language:EN-IN'>Software.</span></b><b><span l=
+ang=3DEN-IN style=3D'font-size:12.0pt;color:black;background:white;mso-fa=
+reast-language:EN-IN'><o:p></o:p></span></b></p><p class=3DMsoNormal styl=
+e=3D'background:white'><span lang=3DIT><o:p>&nbsp;</o:p></span></p><p cla=
+ss=3DMsoNoSpacing><span lang=3DEN-IN style=3D'font-size:12.0pt;color:blac=
+k;background:white;mso-fareast-language:EN-IN'>Kindly let me know the <b>=
+Sectors,</b> <b>Job Titles &amp; Geography</b> that you wish to target, s=
+o that I can get back with the <u>samples, counts </u>and more details fo=
+r your review. <o:p></o:p></span></p><p class=3DMsoNormal style=3D'backgr=
+ound:white'><span lang=3DIT><o:p>&nbsp;</o:p></span></p><p class=3DMsoNor=
+mal style=3D'background:white'><span style=3D'font-size:12.0pt'>Looking f=
+orward to your response.<o:p></o:p></span></p><p class=3DMsoNormal><span =
+lang=3DEN-IN style=3D'font-size:12.0pt;mso-fareast-language:EN-IN'><o:p>&=
+nbsp;</o:p></span></p><p class=3DMsoNormal><b><i><span lang=3DEN-IN style=
+=3D'font-size:12.0pt;color:black;background:white;mso-fareast-language:EN=
+-IN'>Thanks,</span></i></b><i><span lang=3DEN-IN><o:p></o:p></span></i></=
+p><p class=3DMsoNormal><b><i><span lang=3DEN-IN style=3D'font-size:12.0pt=
+;color:black'>Hailey Jones - Marketing Executive</span></i></b><i><span l=
+ang=3DEN-IN><o:p></o:p></span></i></p><p class=3Dxmsonormal><b><i><span l=
+ang=3DEN-IN style=3D'font-family:"Calibri",sans-serif;color:black'>&nbsp;=
+</span></i></b><span style=3D'font-size:11.0pt;font-family:"Calibri",sans=
+-serif'><o:p></o:p></span></p><p class=3Dxmsonormal><b><span lang=3DEN-IN=
+ style=3D'font-family:"Calibri",sans-serif;color:#A6A6A6'>Stay safe.</spa=
+n></b><span style=3D'font-size:11.0pt;font-family:"Calibri",sans-serif'><=
+o:p></o:p></span></p><p class=3Dxmsonormal><span lang=3DEN-IN style=3D'fo=
+nt-size:8.0pt;font-family:"Calibri",sans-serif;color:gray'>Reply back &#8=
+220;Pass&#8221; for no further emails.</span><span style=3D'font-size:11.=
+0pt;font-family:"Calibri",sans-serif'><o:p></o:p></span></p><p class=3DMs=
+oNormal><o:p>&nbsp;</o:p></p></div></body></html>
+--=_zF-PLvc9GLxMD-FJOPUGufCIjfEKB699AuuRY+HmABzYYgtB--
+
+
+--===============1314506046147584628==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============1314506046147584628==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============1314506046147584628==--
+
