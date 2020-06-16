@@ -2,103 +2,95 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB1F9202C05
-	for <lists+linux1394-devel@lfdr.de>; Sun, 21 Jun 2020 20:46:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BF05202C07
+	for <lists+linux1394-devel@lfdr.de>; Sun, 21 Jun 2020 20:46:34 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
 	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1jn4z1-0005db-Ef; Sun, 21 Jun 2020 18:46:23 +0000
+	id 1jn4z1-0005dh-Fr; Sun, 21 Jun 2020 18:46:23 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <hslester96@gmail.com>) id 1jeFf6-0000qW-Iq
- for linux1394-devel@lists.sourceforge.net; Thu, 28 May 2020 10:21:20 +0000
+ (envelope-from <James.Bottomley@HansenPartnership.com>)
+ id 1jlDbl-0004Hr-Ut
+ for linux1394-devel@lists.sourceforge.net; Tue, 16 Jun 2020 15:34:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Mime-Version:Content-Type
+ :References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=sw0rt0kzpIX/gUx8+hCgXRUMgtmjnf69jO+OqqsmVeg=; b=crPxFyvOXO0Y0mbEzD9o2+GGa2
- ILx3kahQtD8vKZEd39FQ7PTcVVaZylaU4cmtTdXuUzgXNF9CiH4wom5zP1xOSF3Ss+pBlbXyEm/P/
- 6U/2Y9pi0KC+8S6sxH6O2YXKRY1vC1QAfS3EckbZSspQc3/uGqj9I1VKj1ftFjZ4YBH0=;
+ bh=ouXNo7Y6nrpXqefTTdGKcSOBD/NGUgOGgs1OtOsYFZs=; b=B0zhD4WWLZ8A95QcR6SybOHYO7
+ pIQzN83FTtfjINrEcCglJ5aIMxMrfeepgLEHHllq1MgRoYCO3EwNVhm7jiO3ZMzjq+5ZyhuEvaxAY
+ /+AuHzlBzmUsm10yGGyAA3NyZRl2khRoey7/fU7WIkXSumS5XfbfkAO08tsrRZ/O16Oc=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From
- :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=sw0rt0kzpIX/gUx8+hCgXRUMgtmjnf69jO+OqqsmVeg=; b=W
- wenybrgTjDRtosIAEBnzJinM932fg/JxMinWi/IOPfLeA2ZwQqqwGqQgGNQ9jp7wf4QFBN599jyoo
- bRT6/51RHpldhXNvSwZB5YyMHRSQnCuc8M+m8q7oXVoE9okVZVcbK2q9HG1YKzhAVM+NoH51Wklvm
- UGxerqQ52iYcpXA4=;
-Received: from mail-pf1-f194.google.com ([209.85.210.194])
+ h=Content-Transfer-Encoding:Mime-Version:Content-Type:References:
+ In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=ouXNo7Y6nrpXqefTTdGKcSOBD/NGUgOGgs1OtOsYFZs=; b=D87KjC1gyJ1TFKuj9l3d2UN9+m
+ 2ua9G/x1EU95q3EgNeCSZNwxjoBPHe0Tbbq7YiY46lMtWd/JbpdYqlDtewT/OWQXoytgMZW/aSk9p
+ b9XH6V+wLAA5RaE1pFDH0IrfjEuePfEfF0vVOlWkIWg2E41MnGK+vN4whPEUQZNBpKqU=;
+Received: from bedivere.hansenpartnership.com ([66.63.167.143])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1jeFf4-00AeLr-GY
- for linux1394-devel@lists.sourceforge.net; Thu, 28 May 2020 10:21:20 +0000
-Received: by mail-pf1-f194.google.com with SMTP id 23so13329443pfy.8
- for <linux1394-devel@lists.sourceforge.net>;
- Thu, 28 May 2020 03:21:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=sw0rt0kzpIX/gUx8+hCgXRUMgtmjnf69jO+OqqsmVeg=;
- b=UtM8cW31AvkQC00j8DXuOSIp629fS3hCuVZFezqVeULbkTblEPhvk6Ey2Fx0Qxnm1k
- eP34hG0buqPe5K7WeGfOwz7sE/7ofmoOGKqBZeDq1SVptUBW+RHbEIqHK4kH4zoM3ikI
- 6Gr7P1OP9YmJZDnHE8xj4lgD/Aa5FQSJgevNB8GBCI3GZCQ9v+1qViC+tGIPFIZ0O4CW
- lLAPIdiqZTXFRwHlp4VKamYWM4JjMamCa932exOsrAbc+JaljC6bSKdjdaJVwAjnOZ2L
- lD4dgsSSntxzABZIeSuNi/zfJKAWME61JRPdDGgvfBryQzY6dh+zNnT6XOw5/6lSC3Dr
- s5CQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=sw0rt0kzpIX/gUx8+hCgXRUMgtmjnf69jO+OqqsmVeg=;
- b=qeW5DOijUBYA9PL7cyzaMUgLveCvpkFnJM3rg+zUlf6W8Uk7biZa7BhjAamBv3i37L
- VLmJxg3e16iQKHa3ol98C3BZDqaWZI+PgGGcRV+o9hLIC0nCGneHqz9biprL/zg8kGsf
- ksYaDtPT5Xxy7WanduFufuDM3vFndHUTb0PlNB6qMR1zrpQKwVgfR5ar5WwkVmEaaf9n
- ih/ffO2Yw9tiLhi82dqnVOnGH8Wwvpfm6INAM6xHnCO+HPDnQ2B1qqQx5Xgd7Qf+qbLr
- bUYZ47yzqNyLAWC4BP2Wu/kJOwgtRP8H/OC6bTshFkXxZ1u6tY78S4+Duubavk4aRwbG
- 9WuA==
-X-Gm-Message-State: AOAM532TSIOin0rf9Jhg6TLYvRJfgSRhcryarXef2TCiM4R4ph/NI4Tw
- ohdIAuptf1LeGzvtFRGM+b4=
-X-Google-Smtp-Source: ABdhPJzcLA0+TQPlgAm8Qs94D4yKVFqRRUBD1tklJ3GnQ1Zw51/zVWrAlHppT6eTOe4HIMuqeGm2kg==
-X-Received: by 2002:a62:1b87:: with SMTP id b129mr2370316pfb.162.1590661265781; 
- Thu, 28 May 2020 03:21:05 -0700 (PDT)
-Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([202.120.40.82])
- by smtp.gmail.com with ESMTPSA id g65sm370180pfb.61.2020.05.28.03.21.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 May 2020 03:21:05 -0700 (PDT)
-From: Chuhong Yuan <hslester96@gmail.com>
-To: 
-Subject: [PATCH] sbp-target: add the missed kfree() in an error path
-Date: Thu, 28 May 2020 18:20:56 +0800
-Message-Id: <20200528102056.911825-1-hslester96@gmail.com>
-X-Mailer: git-send-email 2.26.2
-MIME-Version: 1.0
-X-Spam-Score: 1.7 (+)
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1jlDbj-005SU7-Cl
+ for linux1394-devel@lists.sourceforge.net; Tue, 16 Jun 2020 15:34:41 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by bedivere.hansenpartnership.com (Postfix) with ESMTP id C71AB8EE1E9;
+ Tue, 16 Jun 2020 08:34:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=hansenpartnership.com;
+ s=20151216; t=1592321671;
+ bh=ajob1nvDrla9Bt+f3LFtU00Hic0WFbZIYozt4cm3MGM=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+ b=W1sBeQ80o/S7QYGmkg7NPKLODl9DIayewfvNHRL0KXkV4cKwIIId31zNmJSXEAOn8
+ PmIczVXVyJ+XHkmj/F4XEVAvG601VQw6E+e3d1SlKbqVhn8CvXKJZo57Nbz5w9m9k9
+ Fk0B2hGn7EnmgCplAjGFyBu8ncCam1gBtEW7wy9I=
+Received: from bedivere.hansenpartnership.com ([127.0.0.1])
+ by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id e-XsTU0ZWdDv; Tue, 16 Jun 2020 08:34:30 -0700 (PDT)
+Received: from jarvis (unknown [216.116.10.17])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id 4FE348EE188;
+ Tue, 16 Jun 2020 08:34:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=hansenpartnership.com;
+ s=20151216; t=1592321670;
+ bh=ajob1nvDrla9Bt+f3LFtU00Hic0WFbZIYozt4cm3MGM=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+ b=MYUprjVWr66NFNYQM4jxBy/5blzUQem+8Me7nmbSL8D6xUxpHQ1bYjYJWGDOSQFMP
+ 0TrdM6NHXmZUCNnf60cYcNDgiCRbFbF2pklcj6OPtPybkwoQ7Zez969xlVSVJzMk5+
+ XhrYEFkvrYKP8ysOE/5zvYdq13fP6HbGfoQDNx8k=
+Message-ID: <1592321667.4394.5.camel@HansenPartnership.com>
+Subject: Re: [PATCH] scsi: target/sbp: remove firewire SBP target driver
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+To: Johannes Thumshirn <Johannes.Thumshirn@wdc.com>, Bart Van Assche
+ <bvanassche@acm.org>, Finn Thain <fthain@telegraphics.com.au>, Chris Boot
+ <bootc@boo.tc>
+Date: Tue, 16 Jun 2020 08:34:27 -0700
+In-Reply-To: <SN4PR0401MB35982D889857E3C03E96E49D9B9D0@SN4PR0401MB3598.namprd04.prod.outlook.com>
+References: <01020172acd3d10f-3964f076-a820-43fc-9494-3f3946e9b7b5-000000@eu-west-1.amazonses.com>
+ <alpine.LNX.2.22.394.2006140934520.15@nippy.intranet>
+ <7ad14946-5c25-fc49-1e48-72d37a607832@boo.tc>
+ <alpine.LNX.2.22.394.2006150919110.8@nippy.intranet>
+ <8da0c285-d707-a3d2-063e-472af5cc560f@boo.tc>
+ <alpine.LNX.2.22.394.2006161929380.8@nippy.intranet>
+ <8cbab988-fba7-8e27-7faf-9f7aa36ca235@acm.org>
+ <SN4PR0401MB35982D889857E3C03E96E49D9B9D0@SN4PR0401MB3598.namprd04.prod.outlook.com>
+X-Mailer: Evolution 3.26.6 
+Mime-Version: 1.0
+X-Spam-Score: 0.2 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (hslester96[at]gmail.com)
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends in
- digit (hslester96[at]gmail.com)
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.194 listed in wl.mailspike.net]
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.210.194 listed in list.dnswl.org]
- 1.5 RCVD_IN_SORBS_WEB      RBL: SORBS: sender is an abusable web server
- [202.120.40.82 listed in dnsbl.sorbs.net]
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1jeFf4-00AeLr-GY
+ 0.1 DKIM_INVALID           DKIM or DK signature exists, but is not valid
+X-Headers-End: 1jlDbj-005SU7-Cl
 X-Mailman-Approved-At: Sun, 21 Jun 2020 18:46:21 +0000
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
@@ -112,41 +104,59 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, Chris Boot <bootc@bootc.net>,
- linux-scsi@vger.kernel.org, "Martin K . Petersen" <martin.petersen@oracle.com>,
- Chuhong Yuan <hslester96@gmail.com>, linux-kernel@vger.kernel.org,
- Nicholas Bellinger <nab@linux-iscsi.org>, target-devel@vger.kernel.org
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ Chuhong Yuan <hslester96@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Nicholas Bellinger <nab@linux-iscsi.org>,
+ "target-devel@vger.kernel.org" <target-devel@vger.kernel.org>,
+ "linux1394-devel@lists.sourceforge.net"
+ <linux1394-devel@lists.sourceforge.net>,
+ "linuxppc-dev@lists.ozlabs.org" <linuxppc-dev@lists.ozlabs.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-sbp_fetch_command() forgets to call kfree() in an error path.
-Add the missed call to fix it.
+On Tue, 2020-06-16 at 14:13 +0000, Johannes Thumshirn wrote:
+> On 16/06/2020 16:09, Bart Van Assche wrote:
+> > On 2020-06-16 02:42, Finn Thain wrote:
+> > > Martin said, "I'd appreciate a patch to remove it"
+> > > 
+> > > And Bart said, "do you want to keep this driver in the kernel
+> > > tree?"
+> > > 
+> > > AFAICT both comments are quite ambiguous. I don't see an
+> > > actionable request, just an expression of interest from people
+> > > doing their jobs.
+> > > 
+> > > Note well: there is no pay check associated with having a
+> > > MAINTAINERS file 
+> > > entry.
+> > 
+> > Hi Finn,
+> > 
+> > As far as I know the sbp driver only has had one user ever and that
+> > user is no longer user the sbp driver. So why to keep it in the
+> > kernel tree? Restoring a kernel driver can be easy - the first step
+> > is a "git revert".
+> 
+> Why not move the driver to drivers/staging for 2 or 3 kernel releases
+> and if noone steps up, delete it?
 
-Fixes: a511ce339780 ("sbp-target: Initial merge of firewire/ieee-1394 target mode support")
-Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
----
- drivers/target/sbp/sbp_target.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Because that's pretty much the worst of all worlds: If the driver is
+simply going orphaned it can stay where it is to avoid confusion.  If
+it's being removed, it's better to remove it from where it is because
+that makes the patch to restore it easy to find.
 
-diff --git a/drivers/target/sbp/sbp_target.c b/drivers/target/sbp/sbp_target.c
-index e4a9b9fe3dfb..504a755ea344 100644
---- a/drivers/target/sbp/sbp_target.c
-+++ b/drivers/target/sbp/sbp_target.c
-@@ -1128,8 +1128,10 @@ static int sbp_fetch_command(struct sbp_target_request *req)
- 				req->orb_pointer + sizeof(req->orb),
- 				req->cmd_buf + sizeof(req->orb.command_block),
- 				copy_len);
--		if (ret != RCODE_COMPLETE)
-+		if (ret != RCODE_COMPLETE) {
-+			kfree(req->cmd_buf);
- 			return -EIO;
-+		}
- 	}
- 
- 	return 0;
--- 
-2.26.2
+Chris, the thing is this: if this driver has just one user on a stable
+distro who complains about its removal six months to two years from
+now, Linus will descend on us from a great height (which won't matter
+to you, since you'll be long gone).  This makes everyone very wary of
+outright removal.  If you're really, really sure it has no users, it
+can be deleted, but if there's the slightest chance it has just one, it
+should get orphaned.
+
+James
 
 
 
