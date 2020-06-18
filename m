@@ -2,79 +2,68 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D0A51FCE3B
-	for <lists+linux1394-devel@lfdr.de>; Wed, 17 Jun 2020 15:17:33 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
-	Reply-To:From:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:Sender:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=iPv6uo65G0yJ217zf1G8l+b0oQDs4VrDkxz2Op5Jvdw=; b=f1iwu7XlMWoT+vRdW/ksH6n0zD
-	srpYadle6b840cdmRMBeaizwB5YbbxaVHAs8nmKvBJ6Lyinx1XZyVA0cIRBAk38E+LE8AK2hGQzSG
-	Sz5814blB0JC53pv+CaInHPaAPkBlZmHOl0Vlritm9NuhmJvxtC4kE6bbaYY9RI8jaTE=;
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id BA8741FDA58
+	for <lists+linux1394-devel@lfdr.de>; Thu, 18 Jun 2020 02:41:03 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1jlXwR-0002Rx-DH; Wed, 17 Jun 2020 13:17:23 +0000
+	id 1jlibu-0003Ke-SL; Thu, 18 Jun 2020 00:40:54 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <info@delivers-solutions.com>) id 1jlXwQ-0002Rr-Et
- for linux1394-devel@lists.sourceforge.net; Wed, 17 Jun 2020 13:17:22 +0000
+ (envelope-from <fthain@telegraphics.com.au>) id 1jlibt-0003KW-JW
+ for linux1394-devel@lists.sourceforge.net; Thu, 18 Jun 2020 00:40:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:References:Message-ID:
+ In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
+ :Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=nD2LXSFydu4gppR4zy4e9/bxCcFzCCQc/XbshKt3nVk=; b=AVdHSxf3HEMExoXiNAIdiKQ6TM
- 6pKfJjNEdfTXP6jOXeES2K7NHE0fH03JUgGo4NkRcARa4mS+xZe+X6SvE74Paj7dJZ61I+I3WvzhW
- v5R/C6VX4WBoUV+j6QoCb1lMbLdPbkoKnirvXTcmN/uRwdtJKtt2kolfzYvPWbnDqvp4=;
+ bh=sIllYvgGx50XjsR1Gy9Gx3RSl9ZNRzWW7RaUrtUh0Ls=; b=jR6TjF11rqj93gNjyVnPqgzVg0
+ PwMjmoG78fFS7KP7OvlvWM+SLLxsE1OrQBHGFPl+FpBh5KlpuJ14KRkyqIr44Ik2i/ySjdzj3dZHQ
+ aS/3IeJECvk3NHresSlgmfAqIzJCIX+MlXKdxO2tY/BssIPJP2DBYWnRhtkkEe2y69bw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
- Subject:To:From:Reply-To:Sender:Cc:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=nD2LXSFydu4gppR4zy4e9/bxCcFzCCQc/XbshKt3nVk=; b=H
- 4aPOU6yzeBtovIpqvU3jFqcnD/j62Z5pdoRzVcqt72CPdbVxpN6XFYcSN0Fjs+5qij1TCHtmdPZBZ
- 9c3luSbgOKuds+gUh0eymZU9EB8O3a3JFl9GHMPbZku6tn8srb0+INsm2Xp3nTmK8y9xPBgOSqmtH
- 4FC21tCsVsWMKjVI=;
-Received: from rdns4.delivers-solutions.com ([147.135.99.24])
- by sfi-mx-4.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
- id 1jlXwP-009OTH-5K
- for linux1394-devel@lists.sourceforge.net; Wed, 17 Jun 2020 13:17:22 +0000
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default;
- d=delivers-solutions.com; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=info@delivers-solutions.com; 
- bh=HfOzYHtXihvNe2PYgpNWZYop7xo=;
- b=n05/o/JUx0/yl0eT3EbZojgoVAYIU5SeV0veKXrWong7+tB6G2bbUKXB5L3ROMmhvyHrR7XQzi9P
- rsuyJIXwUN/K4jFnx+2D7Fb8MwvxQIbvSl2G8LuATVSnHDExdLXN2plxwDAMWZqbf4sSNH1M3LGu
- hcnHRnn07aeF9qIq26g=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=default;
- d=delivers-solutions.com; 
- b=srLhQydeORV7gVwE+Tt6nADK1e0fL4NtoRBA5s9sPlC4t3gSb/vKVbnep3fiaJFkhO+iH5iOi6qR
- YafnmawRg3D3yrpaTCYb1CZY+VJ9w3pRmAgZcFxqskdu+JwpmzPHPYx6z+ZrzRVojiot4J1GFjzx
- KSaoLWIlAiGNn40mMu8=;
-To: linux1394-devel@lists.sourceforge.net
-Subject: Receipt For Goods Available
-Date: 17 Jun 2020 15:17:14 +0200
-Message-ID: <20200617151714.7BA0E11520DF5039@delivers-solutions.com>
+ h=Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=sIllYvgGx50XjsR1Gy9Gx3RSl9ZNRzWW7RaUrtUh0Ls=; b=Ht8FgNXNPvffCOAznhj/bFZLTw
+ D3nH49e6lbfXFSkqrreRcwr7NWVsiIjNGOhY+X+xeJOybGeckDHKMwY70lSA1mcRQNyELWAEN1Hhp
+ nU8O8EGGpRiGE5IqqPsnGRwzsJeFFGOOBX4ERsF7Hxn2NHwrMIfC2ZbPEtm7Edb8vy5A=;
+Received: from kvm5.telegraphics.com.au ([98.124.60.144])
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
+ id 1jlibp-0070HF-6o
+ for linux1394-devel@lists.sourceforge.net; Thu, 18 Jun 2020 00:40:53 +0000
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by kvm5.telegraphics.com.au (Postfix) with ESMTP id 2C6062073E;
+ Wed, 17 Jun 2020 20:40:40 -0400 (EDT)
+Date: Thu, 18 Jun 2020 10:40:37 +1000 (AEST)
+From: Finn Thain <fthain@telegraphics.com.au>
+To: "Martin K. Petersen" <martin.petersen@oracle.com>
+Subject: Re: [PATCH] scsi: target/sbp: remove firewire SBP target driver
+In-Reply-To: <yq1366ul8o4.fsf@ca-mkp.ca.oracle.com>
+Message-ID: <alpine.LNX.2.22.394.2006180953320.8@nippy.intranet>
+References: <01020172acd3d10f-3964f076-a820-43fc-9494-3f3946e9b7b5-000000@eu-west-1.amazonses.com>
+ <alpine.LNX.2.22.394.2006140934520.15@nippy.intranet>
+ <7ad14946-5c25-fc49-1e48-72d37a607832@boo.tc>
+ <alpine.LNX.2.22.394.2006150919110.8@nippy.intranet>
+ <8da0c285-d707-a3d2-063e-472af5cc560f@boo.tc>
+ <alpine.LNX.2.22.394.2006161929380.8@nippy.intranet>
+ <8cbab988-fba7-8e27-7faf-9f7aa36ca235@acm.org>
+ <SN4PR0401MB35982D889857E3C03E96E49D9B9D0@SN4PR0401MB3598.namprd04.prod.outlook.com>
+ <1592321667.4394.5.camel@HansenPartnership.com>
+ <5e512185-45d1-61eb-9bec-91e9f9d53ea3@boo.tc>
+ <yq1366ul8o4.fsf@ca-mkp.ca.oracle.com>
 MIME-Version: 1.0
-X-Spam-Score: 1.7 (+)
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- 1.8 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1jlXwP-009OTH-5K
+ -0.1 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1jlibp-0070HF-6o
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,42 +76,80 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-From: info--- via linux1394-devel <linux1394-devel@lists.sourceforge.net>
-Reply-To: info@cocyflame.de
-Cc: info@delivers-solutions.com
+Cc: Bart Van Assche <bvanassche@acm.org>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ Johannes Thumshirn <Johannes.Thumshirn@wdc.com>,
+ Chuhong Yuan <hslester96@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Nicholas Bellinger <nab@linux-iscsi.org>,
+ James Bottomley <James.Bottomley@HansenPartnership.com>,
+ "target-devel@vger.kernel.org" <target-devel@vger.kernel.org>,
+ Chris Boot <bootc@boo.tc>, "linux1394-devel@lists.sourceforge.net"
+ <linux1394-devel@lists.sourceforge.net>,
+ "linuxppc-dev@lists.ozlabs.org" <linuxppc-dev@lists.ozlabs.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi
+On Tue, 16 Jun 2020, Martin K. Petersen wrote:
 
-Hope this mail finds you well.
+> 
+> However, keeping code around is not free.
 
-Our company have not bought your products before but due to 
-excess demand of it here, so we decided to go for it.
+Right. And removing code isn't free either, if it forces people to find 
+workarounds.
 
-I still have other request to make but there all in my 
-specification.
+> Core interfaces change frequently.  Nobody enjoys having to tweak host 
+> templates for 50 devices they have never even heard about.
 
-Please let me know if you still have stocks available.
+And yet some people seem to enjoy writing patches that are as trivial as 
+they are invasive...
 
+You seem to be making an argument for more automation here, not an 
+argument for less code. Or is there some upper bound to the size of the 
+kernel, that might be lifted by adding maintainers? (Can you deliver a 
+better product by adding more developers to your project?)
 
-Waiting for your reply
+> Also, we now live in a reality where there is a constant barrage of 
+> build bots and code analyzers sending mail. So the effective cost of 
+> keeping code around in the tree is going up.
 
- 
+But if maintenance cost rises due to good analysis, the value of the code 
+should rise too. So what's the problem? It seems to me that the real 
+problem is too many analyses that generate pedantic noise and no tangible 
+improvement in code quality or value.
 
+> I get a substantial amount of code analysis mail about drivers nobody 
+> have touched in a decade or more.
+> 
 
+When stable, mature code fails analysis, the analysis is also questionable 
+(in the absence of real examples).
 
-Warmest Regards,
+> Consequently, I am much more inclined to remove drivers than I have been 
+> in the past. But I am also very happy to bring them back if somebody 
+> uses them or - even better - are willing to step up and maintain them.
+> 
 
-Angela Wilpert
+You seem to be saying that 1) a driver should be removed when it no longer 
+meets the present threshold for code quality and 2) that a low quality 
+driver is eligible for re-addition because someone wants to use it.
+I don't think you can have it both ways.
 
-Sales Executives Dept
+> I don't particularly like the notion of a driver being orphaned because 
+> all that really means is that the driver transitions from being (at 
+> least partially) somebody else's problem to being mine and mine alone.
+> 
 
-HDT Sales & Merkating
-vasileos konstantinou 89 Paphos, Paphos, Cyprus
-Phone: +357 26 040001
+Yes it's your problem but only on a best-effort basis.
 
+Many issues detected by automatic analyzers can be fixed with automatic 
+code transformation tools. This kind of solution works tree-wide, so even 
+if some defect in your driver is "yours and yours alone", the solution 
+will probably come from others.
+
+This email, like yours, is just hand-waving. So feel free to ignore it or 
+(preferably) provide evidence of real defects.
 
 
 _______________________________________________
