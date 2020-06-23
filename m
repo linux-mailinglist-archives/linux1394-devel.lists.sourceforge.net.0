@@ -2,73 +2,68 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 20FC2202C06
-	for <lists+linux1394-devel@lfdr.de>; Sun, 21 Jun 2020 20:46:32 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 304E720495E
+	for <lists+linux1394-devel@lfdr.de>; Tue, 23 Jun 2020 07:55:58 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1jn4z1-0005do-HC; Sun, 21 Jun 2020 18:46:23 +0000
+	id 1jnbuN-00042N-Kb; Tue, 23 Jun 2020 05:55:47 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <fthain@telegraphics.com.au>) id 1jlNUX-0003SQ-Ed
- for linux1394-devel@lists.sourceforge.net; Wed, 17 Jun 2020 02:07:53 +0000
+ (envelope-from <karen@pei.com>) id 1jnbuM-00042E-BM
+ for linux1394-devel@lists.sourceforge.net; Tue, 23 Jun 2020 05:55:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:MIME-Version:References:Message-ID:
- In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
- :Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Message-Id:Date:Reply-To:MIME-Version:Content-Type:
+ To:Subject:From:Sender:Cc:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Hs6NFe2CDFVtjH2HijbZhlRUqU74fn08fX9dw89F6VI=; b=Yn4ikB4T5E+qb9fHtCUSGcjA9o
- LzxTvucy+uLsACMMRydX2WPKvEfNVqlpDZXJBZsCmpzXs1ba3IP1BK6wLQFOTxaotsrjCAy3nz2AW
- HGR+qRNLplpvjb/67Ko8FruDcb823rkOQRuyt34xJeMpchw9GEzU4evKZlUeU10WNjwA=;
+ bh=uw0RsKDq9t9QkMueYU8WYtrTZWz7kJ/2xsICkCg/p9k=; b=NdM4peYU3HRIuchfGqu/wZjNTx
+ YCoumkKi0HhSxpZCwyszq5k0zlngnBje9N2HQ0+cKFY2DLA+kzwiVCHNFbDRZF0fYuCTyt8PsfVqa
+ SOrCkpHsZkVCiJsCi9ykC6T7qP3yNqmr32/1qlbfTnBR2lEYByq4HeLZf8tsqGnLgmic=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=Hs6NFe2CDFVtjH2HijbZhlRUqU74fn08fX9dw89F6VI=; b=XLzCl3GZhPezMb6FSussV1ctl1
- rqW+9anHlCiG4040MxDTeexcwJWq3AFEexdXfWKFzuVfrHFfVIJbMeTk9xjZoBqwf50lZ922PT+id
- pfidzKJVCOFw3ZmCrvJltJML3bA/xm9yFkSU4NCpb+zp2CrekNtCnEvH+bjolZBdUlKo=;
-Received: from kvm5.telegraphics.com.au ([98.124.60.144])
- by sfi-mx-4.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
- id 1jlNUV-008m4Z-VX
- for linux1394-devel@lists.sourceforge.net; Wed, 17 Jun 2020 02:07:53 +0000
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by kvm5.telegraphics.com.au (Postfix) with ESMTP id 08FB82787E;
- Tue, 16 Jun 2020 22:07:38 -0400 (EDT)
-Date: Wed, 17 Jun 2020 12:07:40 +1000 (AEST)
-From: Finn Thain <fthain@telegraphics.com.au>
-To: Bart Van Assche <bvanassche@acm.org>
-Subject: Re: [PATCH] scsi: target/sbp: remove firewire SBP target driver
-In-Reply-To: <8cbab988-fba7-8e27-7faf-9f7aa36ca235@acm.org>
-Message-ID: <alpine.LNX.2.22.394.2006171104540.11@nippy.intranet>
-References: <01020172acd3d10f-3964f076-a820-43fc-9494-3f3946e9b7b5-000000@eu-west-1.amazonses.com>
- <alpine.LNX.2.22.394.2006140934520.15@nippy.intranet>
- <7ad14946-5c25-fc49-1e48-72d37a607832@boo.tc>
- <alpine.LNX.2.22.394.2006150919110.8@nippy.intranet>
- <8da0c285-d707-a3d2-063e-472af5cc560f@boo.tc>
- <alpine.LNX.2.22.394.2006161929380.8@nippy.intranet>
- <8cbab988-fba7-8e27-7faf-9f7aa36ca235@acm.org>
+ h=Message-Id:Date:Reply-To:MIME-Version:Content-Type:To:Subject:From:Sender
+ :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=uw0RsKDq9t9QkMueYU8WYtrTZWz7kJ/2xsICkCg/p9k=; b=B
+ QDnJbUb2Q8SIWZjjxf5R6emWWN4Bm9Rr+RA+PcxnRW5lyUSvxQnbEStp3GfppKqHtBPQ62w6+Ocya
+ HtNmcA8tbE1/YRRF19VWlTiOGiQZJefKzrhH3f8yBbca6YJZtjpOyhEPatOUpfLqT3qw2pEoSt+UZ
+ gbIkOleeFmuIxbaM=;
+Received: from smtp05.smtpout.orange.fr ([80.12.242.127]
+ helo=smtp.smtpout.orange.fr)
+ by sfi-mx-4.v28.lw.sourceforge.com with esmtps (TLSv1:DHE-RSA-AES128-SHA:128)
+ (Exim 4.92.2) id 1jnbuE-00Fe8R-Cg
+ for linux1394-devel@lists.sourceforge.net; Tue, 23 Jun 2020 05:55:45 +0000
+Received: from DESKTOP-Q5JCF6G ([193.253.199.87]) by mwinf5d62 with ME
+ id uVq6220091teA6x03VvT55; Tue, 23 Jun 2020 07:55:31 +0200
+X-ME-Helo: DESKTOP-Q5JCF6G
+X-ME-Date: Tue, 23 Jun 2020 07:55:31 +0200
+X-ME-IP: 193.253.199.87
+From: "Ms Karen Ngui" <karen@pei.com>
+Subject: To ~~~ linux1394-devel@lists.sourceforge.net
+To: <linux1394-devel@lists.sourceforge.net>
 MIME-Version: 1.0
-X-Spam-Score: 0.2 (/)
+Date: Mon, 22 Jun 2020 22:55:29 -0700
+Message-Id: <22262020065522ECC6EB768A$9F5A7D467D@DESKTOPQJCFG>
+X-Spam-Score: 5.7 (+++++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: linux-m68k.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 1.5 RCVD_IN_PSBL           RBL: Received via a relay in PSBL
+ [193.253.199.87 listed in psbl.surriel.com]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [80.12.242.127 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [80.12.242.127 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 URIBL_SBL_A Contains URL's A record listed in the Spamhaus SBL
- blocklist [URIs: www.mac.linux-m68k.org]
- 0.6 URIBL_SBL Contains an URL's NS IP listed in the Spamhaus SBL
- blocklist [URIs: www.mac.linux-m68k.org]
- -0.6 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1jlNUV-008m4Z-VX
-X-Mailman-Approved-At: Sun, 21 Jun 2020 18:46:21 +0000
+ 0.2 FREEMAIL_REPLYTO_END_DIGIT Reply-To freemail username ends in digit
+ (invoicekgnuii05[at]gmail.com)
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
+ 2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
+ 0.5 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1jnbuE-00Fe8R-Cg
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,58 +76,69 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
- linux-scsi@vger.kernel.org, Chuhong Yuan <hslester96@gmail.com>,
- linux-kernel@vger.kernel.org, Nicholas Bellinger <nab@linux-iscsi.org>,
- target-devel@vger.kernel.org, Chris Boot <bootc@boo.tc>,
- linux1394-devel@lists.sourceforge.net, linuxppc-dev@lists.ozlabs.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: invoicekgnuii05@gmail.com
+Content-Type: multipart/mixed; boundary="===============1766629916908267685=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Tue, 16 Jun 2020, Bart Van Assche wrote:
+This is a multi-part message in MIME format
 
-> 
-> As far as I know the sbp driver only has had one user ever and that user 
-> is no longer user the sbp driver.
+--===============1766629916908267685==
+Content-Type: multipart/alternative; boundary="j4F7bBZOtV1eFMCUjJ=_fx8rLbhVM51Z3b"
 
-So, you estimate the userbase at zero. Can you give a confidence level? 
-Actual measurement is hard because when end users encounter breakage, they 
-look for quick workarounds before they undertake post mortem, log 
-collection, bug reporting, mailing list discussions, analysis etc.
+This is a multi-part message in MIME format
 
-> So why to keep it in the kernel tree?
+--j4F7bBZOtV1eFMCUjJ=_fx8rLbhVM51Z3b
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Answer: for the same reason it was added to the tree.
 
-Here's a different question: "Why remove it from the kernel tree?"
+Kindly confirm if you got my business collaboration In-mail sent to yo=
+u via LinkedIn.
 
-If maintaining this code is a burden, is it not the kind of tax that all 
-developers/users pay to all developers/users? Does this driver impose an 
-unreasonably high burden for some reason?
+Thanks. Mrs. Ngui
 
-The growth of a maintenance burden in general has lead to the invention of 
-design patterns and tooling to minize it. So a good argument for removal 
-would describe the nature of the problem, because some driver deficiencies 
-can be fixed automatically, and some tooling deficiencies can compound an 
-otherwise insignificant or common driver deficiency.
+--j4F7bBZOtV1eFMCUjJ=_fx8rLbhVM51Z3b
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-There are spin-off benefits from legacy code besides process improvements. 
-Building and testing this sort of code has regularly revealed erroneous 
-corner cases in commits elsewhere like API changes and refactoring.
 
-Also, legacy code is used by new developers get experience in code 
-modernization. And it provides more training material for neural networks 
-that need to be taught to recognize patches that raise quality.
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-=
+8859-1">
+  <META name=3DGenerator content=3D10.90> <META name=3Dviewport conten=
+t=3D"width=3Ddevice-width, initial-scale=3D1"> <META name=3Dformat-det=
+ection content=3Dtelephone=3Dno><title>To ~~~ linux1394-devel@lists.so=
+urceforge.net</title>
+ </head>
+ <body style=3D"BACKGROUND-COLOR: #ffffff" bgColor=3D#ffffff> <P align=
+=3Dleft><FONT size=3D3 face=3DArial><FONT size=3D3 face=3DArial></FONT=
+><STRONG>Kindly check through email,&nbsp; I sent you a proposal via L=
+inkedIn on the 20th of last month...did you get the message?</STRONG><=
+/FONT></p><p align=3Dleft><FONT size=3D3 face=3DArial></FONT>&nbsp;</P=
+></body>
+ </html>
 
-Ten or twenty years ago, I doubt that anyone predicted these (and other) 
-spin-off benefits. If we can't predict the benefit, how will we project 
-the cost, and use that to justify deletion?
+--j4F7bBZOtV1eFMCUjJ=_fx8rLbhVM51Z3b--
 
-Please see also,
-http://www.mac.linux-m68k.org/docs/obsolete.php
 
+
+--===============1766629916908267685==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============1766629916908267685==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============1766629916908267685==--
+
+
