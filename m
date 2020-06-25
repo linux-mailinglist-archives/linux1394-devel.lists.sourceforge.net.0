@@ -2,57 +2,69 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 508C2207DA1
-	for <lists+linux1394-devel@lfdr.de>; Wed, 24 Jun 2020 22:45:26 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D90120A588
+	for <lists+linux1394-devel@lfdr.de>; Thu, 25 Jun 2020 21:16:22 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1joCGj-0000jd-KR; Wed, 24 Jun 2020 20:45:17 +0000
+	id 1joXM5-0008Hy-DZ; Thu, 25 Jun 2020 19:16:13 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <info@oxu.publicvm.com>) id 1joCGi-0000jW-23
- for linux1394-devel@lists.sourceforge.net; Wed, 24 Jun 2020 20:45:16 +0000
+ (envelope-from <christophe.jaillet@wanadoo.fr>) id 1joXM3-0008Hr-LJ
+ for linux1394-devel@lists.sourceforge.net; Thu, 25 Jun 2020 19:16:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Date:Subject:To:From:Reply-To:Message-ID:Sender:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
+ In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=LNj8M5d/s+f5hvvI7FB1YITgaIHaXPCccrw4cBMFbc0=; b=XY14nv+l67Yr6kDn4k3DpE7cLK
- AG7smFHUkTVXZLY4Hl4KsD07l/70JgY4KBQa7kjXgoSGiYHW02eVlaTiqJ+/o5j4BxyvgFYw/uUfn
- aXG3ypKr/s/wz2hW4EI2KQS1JkDAcQoFiGtOq8XXx0b0YYgCAKIn8jHxHIiE8lEsoA8k=;
+ bh=ypGhbkJJQHJ6ZuFGwSaaj6cwnUHmJwn9C2OGh8ttqXI=; b=lwG8P2C3ieof8z7XR6h4oEAc3a
+ 3xPfLdJOxWadLZC5OEx++9LQ/9Glbq+ZlgMpDBfec+IuY80zT/uzp1RvdVSU1d8ZXJV5tw56AsvqT
+ FcFOfsONcg3MmUmHFx+KhDwGwYHXkTZ8UDMDUWQ3pbsbjrbzFw0q3kFyKyyOoPIo30B8=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Subject:To:From:
- Reply-To:Message-ID:Sender:Cc:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=LNj8M5d/s+f5hvvI7FB1YITgaIHaXPCccrw4cBMFbc0=; b=R
- TtEr0BwjT6QV4bo7HNL894c609cF245nwqLfEy6wRpCPHrnhqiYURn31/3ofD2FnD/O9nGTkTNzOT
- Gadh+zHh255NkIPqL9l+0T5k2lLDK3rH+uEGesFsyP4yRNCu6CSKMc/K51/G5JwfzhsQqGKc9Qntp
- 2i+xD6PRCHvZ776o=;
-Received: from oxu.publicvm.com ([104.168.190.201])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
- id 1joCGg-00H1kZ-N5
- for linux1394-devel@lists.sourceforge.net; Wed, 24 Jun 2020 20:45:15 +0000
-Received: from WIN-UFVMAPBRAME (localhost [IPv6:::1])
- by oxu.publicvm.com (Postfix) with ESMTP id 843494B38F9
- for <linux1394-devel@lists.sourceforge.net>;
- Wed, 24 Jun 2020 20:44:58 +0000 (UTC)
-Message-ID: <038ed772-44006-0e029062185301@win-ufvmapbrame>
-From: "Michael Abert" <info@oxu.publicvm.com>
-To: linux1394-devel@lists.sourceforge.net
-Subject: Hallo 6/24/2020  9:44:57 PM
-Date: Wed, 24 Jun 2020 21:43:58 +0100
+ h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=ypGhbkJJQHJ6ZuFGwSaaj6cwnUHmJwn9C2OGh8ttqXI=; b=WA5ObwreLgjkGQDye4OoNHuqHf
+ a29vJ6e6rYbcx3cDjEgD8GX/SeC0qV6cA/ucJb+C+ONkIl5zFUJwY6STRhOfvfokui3U0GB1aYEmp
+ h3MO/aLNlb4TbyejdVgeP0R7v0quacRvRRAk8XX8ADBoN6LN3/n/QqITXJuolZYbgPe8=;
+Received: from smtp07.smtpout.orange.fr ([80.12.242.129]
+ helo=smtp.smtpout.orange.fr)
+ by sfi-mx-4.v28.lw.sourceforge.com with esmtps (TLSv1:DHE-RSA-AES128-SHA:128)
+ (Exim 4.92.2) id 1joXM1-0013bM-3a
+ for linux1394-devel@lists.sourceforge.net; Thu, 25 Jun 2020 19:16:11 +0000
+Received: from localhost.localdomain ([93.22.134.133]) by mwinf5d42 with ME
+ id vXFw2200S2sr5ud03XFxJK; Thu, 25 Jun 2020 21:16:00 +0200
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Thu, 25 Jun 2020 21:16:00 +0200
+X-ME-IP: 93.22.134.133
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: stefanr@s5r6.in-berlin.de,
+	krh@bitplanet.net,
+	hch@infradead.org
+Subject: [PATCH V2] firewire: nosy: Fix the amount of memory deallocated by
+ some 'pci_free_consistent' calls
+Date: Thu, 25 Jun 2020 21:15:54 +0200
+Message-Id: <20200625191554.941614-1-christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200624192325.940280-1-christophe.jaillet@wanadoo.fr>
+References: <20200624192325.940280-1-christophe.jaillet@wanadoo.fr>
 MIME-Version: 1.0
-X-Priority: 3
-X-Spam-Score: -0.0 (/)
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
-X-Headers-End: 1joCGg-00H1kZ-N5
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [80.12.242.129 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [80.12.242.129 listed in wl.mailspike.net]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+X-Headers-End: 1joXM1-0013bM-3a
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,41 +77,73 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: Michael Abert <michael.abert@pfl-kredit.com>
-Content-Type: multipart/mixed; boundary="===============2901568184446401402=="
+Cc: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ linux1394-devel@lists.sourceforge.net, kernel-janitors@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============2901568184446401402==
-Content-Type: text/plain
-Content-Transfer-Encoding: 8bit
+'lynx->pci_device' is allocated with a size of RCV_BUFFER_SIZE. This is to
+say (16 * 1024).
 
-Hallo linux1394-devel@lists.sourceforge.net
+Pass the same size when it is freed.
 
-Sehr geehrte Damen und Herren
+Fixes: 286468210d83 ("firewire: new driver: nosy - IEEE 1394 traffic sniffer")
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+v2: move the #define RCV_BUFFER_SIZE at the top of the file so that it is
+    defined when used in 'remove_card()'
+    Spotted by kernel test robot <lkp@intel.com>
+---
+ drivers/firewire/nosy.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Wir gewähren Darlehen in Höhe von 10.000,00 € bis 5 Mio. € mit einem Zinssatz von 2%
+diff --git a/drivers/firewire/nosy.c b/drivers/firewire/nosy.c
+index 5fd6a60b6741..2fe34a2ce7cc 100644
+--- a/drivers/firewire/nosy.c
++++ b/drivers/firewire/nosy.c
+@@ -36,6 +36,8 @@
+ 
+ static char driver_name[] = KBUILD_MODNAME;
+ 
++#define RCV_BUFFER_SIZE (16 * 1024)
++
+ /* this is the physical layout of a PCL, its size is 128 bytes */
+ struct pcl {
+ 	__le32 next;
+@@ -510,7 +512,7 @@ remove_card(struct pci_dev *dev)
+ 			    lynx->rcv_start_pcl, lynx->rcv_start_pcl_bus);
+ 	pci_free_consistent(lynx->pci_device, sizeof(struct pcl),
+ 			    lynx->rcv_pcl, lynx->rcv_pcl_bus);
+-	pci_free_consistent(lynx->pci_device, PAGE_SIZE,
++	pci_free_consistent(lynx->pci_device, RCV_BUFFER_SIZE,
+ 			    lynx->rcv_buffer, lynx->rcv_buffer_bus);
+ 
+ 	iounmap(lynx->registers);
+@@ -518,8 +520,6 @@ remove_card(struct pci_dev *dev)
+ 	lynx_put(lynx);
+ }
+ 
+-#define RCV_BUFFER_SIZE (16 * 1024)
+-
+ static int
+ add_card(struct pci_dev *dev, const struct pci_device_id *unused)
+ {
+@@ -668,7 +668,7 @@ add_card(struct pci_dev *dev, const struct pci_device_id *unused)
+ 		pci_free_consistent(lynx->pci_device, sizeof(struct pcl),
+ 				lynx->rcv_pcl, lynx->rcv_pcl_bus);
+ 	if (lynx->rcv_buffer)
+-		pci_free_consistent(lynx->pci_device, PAGE_SIZE,
++		pci_free_consistent(lynx->pci_device, RCV_BUFFER_SIZE,
+ 				lynx->rcv_buffer, lynx->rcv_buffer_bus);
+ 	iounmap(lynx->registers);
+ 
+-- 
+2.25.1
 
-Die Zinsen und die Laufzeiten sind sehr attraktiv (2%) und in punkto Sicherheit beschränken wir uns auf das absolute Minimum. Interessiert? Dann kontaktieren Sie uns doch für weitere Informationen per e-mail
 
-Michael Abert.
-
-
-
---===============2901568184446401402==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============2901568184446401402==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============2901568184446401402==--
