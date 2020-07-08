@@ -2,66 +2,68 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE944215FD0
-	for <lists+linux1394-devel@lfdr.de>; Mon,  6 Jul 2020 22:02:58 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id C005C21867D
+	for <lists+linux1394-devel@lfdr.de>; Wed,  8 Jul 2020 13:56:27 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1jsXKB-0008Ke-Au; Mon, 06 Jul 2020 20:02:47 +0000
+	id 1jt8gU-0005Kj-Al; Wed, 08 Jul 2020 11:56:18 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <qkfvusm@t-frog.com>) id 1jsXK9-0008KM-3M
- for linux1394-devel@lists.sourceforge.net; Mon, 06 Jul 2020 20:02:45 +0000
+ (envelope-from <grandmaster@al2klimov.de>) id 1jt8gT-0005KU-0q
+ for linux1394-devel@lists.sourceforge.net; Wed, 08 Jul 2020 11:56:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Date:Reply-To:Content-Type:To:Subject:From:Sender:
- Message-ID:Cc:MIME-Version:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=XP2JF3Do6ppa4PGuznz145axp4UYjkG+8EnD9M4blps=; b=nM+mzLPwCH/FDgH5w7T4qIzuSB
- MSWP+jtI/OYcB0jxMWipWFNOSekjqc1S+wuTw/X9TpCMYSLrU0pMF70qq9zNoHqY4L3xvcfiiQ9tL
- +db40WPpoqES/G6XCwehlbN5YzIavPkt9PXWrWmuYP7UI2jDQN/40RcK4ONgabbRaWAU=;
+ bh=bEWGFN+pq9iAsXs8VbZJbsYhkV96QPbzOFAWPQ4IdHI=; b=M7jBo4yMV+1NOkjgmn+UF6H/29
+ Wf/gdglba+BCd5g2HewijGA3m6b4rB90uV6ngpQmwW9SSHuOICx178F++umjf0ZX1jwUp/ZGP/hLE
+ 9OhJmMNXD3NaMZu2rrTIBtgkmvOzqTe6jJBv+GS+boXv3Tc4jmHtsHp1TF2AGHnAyvuw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Date:Reply-To:Content-Type:To:Subject:From:Sender:Message-ID:Cc:
- MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=XP2JF3Do6ppa4PGuznz145axp4UYjkG+8EnD9M4blps=; b=V04jmHkXPs2hkw6DSrBNNh9Dgq
- 3YzLRFPa5mB1r1edAQiyJf/D8INLJD/yISTDLaFUf0CtEnq8K3OCD1FSI+VGyWR7qPpfE6XqXj2Px
- GFyM/DjeIn7/dv98Om4Aw8FKcdu5eDDyZeUSPw3IN04WX3hIIr5tFNYXrafuOWwaLe4o=;
-Received: from www17349uj.sakura.ne.jp ([153.120.75.123] helo=openspur.org)
- by sfi-mx-3.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
- id 1jsXJr-009Zvt-Ma
- for linux1394-devel@lists.sourceforge.net; Mon, 06 Jul 2020 20:02:45 +0000
-Received: from mail.t-frog.com (unknown [172.245.92.122])
- by openspur.org (Postfix) with ESMTP id 2A3D0B8CE05;
- Sun,  5 Jul 2020 17:54:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=t-frog.com;
- s=default; t=1593971672;
- bh=XP2JF3Do6ppa4PGuznz145axp4UYjkG+8EnD9M4blps=;
- h=From:Subject:To:Reply-To:Date;
- b=n+TmGO9OZYlycAtPQCauIMQBbgsrpPbVrLX8HJyuJxeMD3OXdJzDffGWEz9Cb2jXA
- bUff8Up6L1k2NUSFHYa/SQx6TQqaHKQ0gltjcf66Kc+DD1uaB9h00hVuuKFX08h7w+
- YTUzcS7i2hHqmGQFbb+0fHqYvQDv5RTRqJBahKuU=
-From: Compramos seu =?ISO-8859-1?Q?cons=F3rcio?= <qkfvusm@t-frog.com>
-Subject: Precisando de dinheiro =?ISO-8859-1?Q?r=E1pido?= ? Nos compramos seu
- =?ISO-8859-1?Q?cons=F3rcio?= e pagamos =?ISO-8859-1?Q?=E0?= vista ..
-To: linux1394-devel@lists.sourceforge.net
-Date: Sun, 5 Jul 2020 19:54:31 +0200
-X-Spam-Score: -0.1 (/)
+ h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=bEWGFN+pq9iAsXs8VbZJbsYhkV96QPbzOFAWPQ4IdHI=; b=I
+ 5Joe9Ao/wy4Kjv3KlOLPUqvsy+ExW+yNuAaRd9t0Vpg+crdhc1dXrAuwwjAkv0YpsoPyLRnpm18lC
+ kJsoXYZy7RJBHI3elfbyOmwHQO34V1pS8zqapTA1Syj4wYBnQhTOqwyKfrdoMGKOIYfAm2pWSWr5E
+ ROiXWjNLxPP6Ypes=;
+Received: from smtp.al2klimov.de ([78.46.175.9])
+ by sfi-mx-4.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1jt8gL-00E7nR-G1
+ for linux1394-devel@lists.sourceforge.net; Wed, 08 Jul 2020 11:56:16 +0000
+Received: from authenticated-user (PRIMARY_HOSTNAME [PUBLIC_IP])
+ by smtp.al2klimov.de (Postfix) with ESMTPA id 5396EBC107;
+ Wed,  8 Jul 2020 11:56:02 +0000 (UTC)
+From: "Alexander A. Klimov" <grandmaster@al2klimov.de>
+To: stefanr@s5r6.in-berlin.de, linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] Replace HTTP links with HTTPS ones: FIREWIRE SUBSYSTEM
+Date: Wed,  8 Jul 2020 13:55:55 +0200
+Message-Id: <20200708115555.14210-1-grandmaster@al2klimov.de>
+MIME-Version: 1.0
+X-Spamd-Bar: +++++
+X-Spam-Level: *****
+Authentication-Results: smtp.al2klimov.de;
+ auth=pass smtp.auth=aklimov@al2klimov.de
+ smtp.mailfrom=grandmaster@al2klimov.de
+X-Spam-Score: -0.3 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: al2klimov.de]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- 0.0 TIME_LIMIT_EXCEEDED    Exceeded time limit / deadline
-X-Headers-End: 1jsXJr-009Zvt-Ma
+ 0.0 UNPARSEABLE_RELAY Informational: message has unparseable relay lines
+ -0.3 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1jt8gL-00E7nR-G1
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,47 +76,63 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: acessenossositeabaixo@gmail.com
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============4197893819081376066=="
+Cc: "Alexander A. Klimov" <grandmaster@al2klimov.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
-Message-Id: <E1jsXKB-0008Ke-Au@sfs-ml-4.v29.lw.sourceforge.com>
 
---===============4197893819081376066==
-Content-Type: text/plain
+Rationale:
+Reduces attack surface on kernel devs opening the links for MITM
+as HTTPS traffic is much harder to manipulate.
+
+Deterministic algorithm:
+For each file:
+  If not .svg:
+    For each line:
+      If doesn't contain `\bxmlns\b`:
+        For each link, `\bhttp://[^# \t\r\n]*(?:\w|/)`:
+	  If neither `\bgnu\.org/license`, nor `\bmozilla\.org/MPL\b`:
+            If both the HTTP and HTTPS versions
+            return 200 OK and serve the same content:
+              Replace HTTP with HTTPS.
+
+Signed-off-by: Alexander A. Klimov <grandmaster@al2klimov.de>
+---
+ Continuing my work started at 93431e0607e5.
+ See also: git log --oneline '--author=Alexander A. Klimov <grandmaster@al2klimov.de>' v5.7..master
+ (Actually letting a shell for loop submit all this stuff for me.)
+
+ If there are any URLs to be removed completely or at least not HTTPSified:
+ Just clearly say so and I'll *undo my change*.
+ See also: https://lkml.org/lkml/2020/6/27/64
+
+ If there are any valid, but yet not changed URLs:
+ See: https://lkml.org/lkml/2020/6/26/837
+
+ If you apply the patch, please let me know.
 
 
-NÓS COMPRAMOS SEU CONSÓRCIO | Compramos seu Consorcio sem Burocracia,
+ drivers/firewire/ohci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Contemplado ,Não Contemplado ,Em Atraso e Cancelado com mais de 30% pagos .Compramos de
-
-Caminhão, Imóveis e Automóvel, Compramos em todo Territorio Nacional.
-
-Acesse nosso site, e prontamente orientaremos você como ganhar dinheiro com o consórcio que você não quer mais:
-http://www.cotaunica.com.br/vendacota.html
-
-Nossa equipe, com anos de experiência, está pronta para ajudar você a ter o melhor ganho.
-
-Fale conosco agora mesmo:
-http://www.cotaunica.com.br/vendacota.html
-
-
-
---===============4197893819081376066==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
+index 54fdc39cd0bc..12703fbb99de 100644
+--- a/drivers/firewire/ohci.c
++++ b/drivers/firewire/ohci.c
+@@ -1827,7 +1827,7 @@ static int initiated_reset(struct fw_ohci *ohci)
+ 
+ /*
+  * TI TSB82AA2B and TSB12LV26 do not receive the selfID of a locally
+- * attached TSB41BA3D phy; see http://www.ti.com/litv/pdf/sllz059.
++ * attached TSB41BA3D phy; see https://www.ti.com/litv/pdf/sllz059.
+  * Construct the selfID from phy register contents.
+  */
+ static int find_and_insert_self_id(struct fw_ohci *ohci, int self_id_count)
+-- 
+2.27.0
 
 
---===============4197893819081376066==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============4197893819081376066==--
