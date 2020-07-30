@@ -2,105 +2,161 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E81D232A5E
-	for <lists+linux1394-devel@lfdr.de>; Thu, 30 Jul 2020 05:27:36 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id A276D2332B6
+	for <lists+linux1394-devel@lfdr.de>; Thu, 30 Jul 2020 15:10:10 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1k0zE5-0000e9-VJ; Thu, 30 Jul 2020 03:27:25 +0000
+	id 1k18Jt-0000Yy-NP; Thu, 30 Jul 2020 13:10:01 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <zhaoqianligood@gmail.com>) id 1k0zE4-0000dy-9W
- for linux1394-devel@lists.sourceforge.net; Thu, 30 Jul 2020 03:27:24 +0000
+ (envelope-from <gustavo@embeddedor.com>) id 1k18Js-0000Yc-SJ
+ for linux1394-devel@lists.sourceforge.net; Thu, 30 Jul 2020 13:10:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:Subject:From:References:Cc:To:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=SAwanaBh/g8SjyCF66Oh7kkXlY0ljlytzRLB3xpaxAQ=; b=i9QNjmEvGqONMqyWVCBuvzchKZ
- KPL9vS5ZBTSb+ZsXGaWV8UtYXs928FL7FkZDALZ29HBNKzhPu/7zs9ZvKfNjqJ5TsgzoIu41UTh6x
- 0FNVIjrY9jUnG87GBZNS74ZzjZL0UmhgMx4nCwecQ6DBXuETTrBzuW88Zc49Rl5555G0=;
+ bh=Z5uXuRI+aXgtQ1zcBbtoxXuoEsy13FiXL+bA4Jtl5F0=; b=IzerxFVdCs/uM9VptN4vPNr2YM
+ Kh81SdHSs+mlGH7Kmuk/GcHDJj3LWGntFGtgN2+47o0rjZH5V//d2JHfDAZa/sutoweq4GYvKL8ta
+ QyNszBFIs3RZ+Jo+KMHc1KOWAtFtiKEbWfdq7tj4LStoj82dedBUMUz/UTagbFiw0mI8=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:
- Subject:Cc:To:From:Sender:Reply-To:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=SAwanaBh/g8SjyCF66Oh7kkXlY0ljlytzRLB3xpaxAQ=; b=g
- 3NW/okgc6L44QcqfC8PL4tRZRcnMOaguvVR4fRob5W61yWk4hRcRh7pPJWOTx42FDSzQ1kKL5XWIX
- Z/1O8bgR83s5tI8H46z38d15LUt3AOEiRS4a+Eplh+JxzBse00CcPLHfNN6FNN8St1ddXeZ9XlWmZ
- Tmb+lfStWUU4pRMc=;
-Received: from mail-pf1-f194.google.com ([209.85.210.194])
- by sfi-mx-3.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1k0zE2-003tQM-TJ
- for linux1394-devel@lists.sourceforge.net; Thu, 30 Jul 2020 03:27:24 +0000
-Received: by mail-pf1-f194.google.com with SMTP id s26so14236772pfm.4
+ h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+ Message-ID:Subject:From:References:Cc:To:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=Z5uXuRI+aXgtQ1zcBbtoxXuoEsy13FiXL+bA4Jtl5F0=; b=OhWtz+lnHFa65h0s/AwWWwpHxB
+ IzZnkhcbw1cvS2/Vvhzvyslxm68jVlVOip+8kED6SHqD3k0nOboF8HJwmD91Wml3VxjjwJxsxn6eb
+ eeujuuhoQs6hXbWv0Y2UrvUZ0pMYZnaxmOFKeLvnesmGsNlrD9H/BezmpWAQaBUl97OE=;
+Received: from gateway21.websitewelcome.com ([192.185.45.31])
+ by sfi-mx-4.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1k18Jp-007GRz-C4
+ for linux1394-devel@lists.sourceforge.net; Thu, 30 Jul 2020 13:10:00 +0000
+Received: from cm11.websitewelcome.com (cm11.websitewelcome.com [100.42.49.5])
+ by gateway21.websitewelcome.com (Postfix) with ESMTP id 99F2E400C7751
  for <linux1394-devel@lists.sourceforge.net>;
- Wed, 29 Jul 2020 20:27:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SAwanaBh/g8SjyCF66Oh7kkXlY0ljlytzRLB3xpaxAQ=;
- b=WwfCkHiHKhrFKEuK3iBT93GceFrVkzz0g3zn8mRx7dg/jkd8ItPxPY+x6ZGivO2yET
- U5Q1Oxp+9yGd8lkJZS61YBYYvWA3ueWHTnBoof7UK9Pso5dXfa9ScakApH7yCFU4Eu+1
- ldGSMXpl7SQS+59I5zCGXX6jHiMLifa1m2P4XzItzuwKOsf7GsqVq5d3f3hg3P6oe1Wr
- eYsu5ZYg2FTGMGMZ5146JiyKqE7cFCmsVw7igih8XAPMejx9U9rJW82V5brLrcSGiQT8
- N4m4AfFpf+OrT3J0XBN+WaasogDFLGaoHDe14aO72Q6tn0gIXYV3El6jP9O3u4Pw/bq1
- VJAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=SAwanaBh/g8SjyCF66Oh7kkXlY0ljlytzRLB3xpaxAQ=;
- b=SrF6mxLj+TnMxilMgc7lntKfF1r2EO6nIG0YMJSz2sol7+q50pRkNj1uur9hp0pglp
- 1DG5SIpIB34aoSrUSYJGeCZLFVt8NahSB9iMKGc7h2syLYBIBG0s0s7XhsBRo9p3uhRr
- oDkiaE7q/Unzf+Kfe3x36dQl6IO1vdpB+9mzXktjJwuPS2uTS/b7Cxx9OzQdeuW0eD3w
- DJhB7bURCT6qVLmL/wV+RDVgbQRudRJ6bDYHW8qSSscNfdMdzvao+/QkMteit3NztBNW
- fC83U61ZyV/Reyqc5LiQrh2DPFrravNbArJy/XnHAeRRit80glPCRjUFnyQkPzFQymOu
- UuUQ==
-X-Gm-Message-State: AOAM531wo7X6vhNi8Rbx9JAv0DSSwWaRIKPicTnXCq7TfruyqpUh4OrO
- Z+bPRNA0zWKc2lE1AMO55yc=
-X-Google-Smtp-Source: ABdhPJw4ghy+Sz4YLvGxKK/Bl5/ZSNjGzvfmoaCh1n5F4gQ9xfmQDf7Tn1lLrJtkUC+BA9UV9m769A==
-X-Received: by 2002:a05:6a00:158b:: with SMTP id
- u11mr1186063pfk.92.1596079637350; 
- Wed, 29 Jul 2020 20:27:17 -0700 (PDT)
-Received: from builder-PowerEdge-R730xd.mioffice.cn ([209.9.72.212])
- by smtp.gmail.com with ESMTPSA id ml8sm3565836pjb.47.2020.07.29.20.27.15
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 29 Jul 2020 20:27:16 -0700 (PDT)
-From: Qianli Zhao <zhaoqianligood@gmail.com>
-To: stefanr@s5r6.in-berlin.de,
-	linux1394-devel@lists.sourceforge.net
-Subject: [PATCH] firewire: firewire-cdev.h: Avoid the use of one-element array
-Date: Thu, 30 Jul 2020 11:27:00 +0800
-Message-Id: <1596079620-20023-1-git-send-email-zhaoqianligood@gmail.com>
-X-Mailer: git-send-email 2.7.4
+ Thu, 30 Jul 2020 07:46:06 -0500 (CDT)
+Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
+ id 17wikwfC54KQc17wik2295; Thu, 30 Jul 2020 07:46:05 -0500
+X-Authority-Reason: nr=8
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:Subject:From:References:Cc:To:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=Z5uXuRI+aXgtQ1zcBbtoxXuoEsy13FiXL+bA4Jtl5F0=; b=f4yrzksuUtPBASWfmvqtozvNdn
+ dRW2EJksROcq9wnNrRcbM8R4CAVlzb9w7qIz7fGhSD7+DjDGsv8sQQmaY+qucBGyPsPD0gqE0gO39
+ CoxKszK6UhgiQE9oySp1G7h+aFoVJ+O0ud8BpIJYmyEwXZj+TGWR1iIBZ9Sj7Bt1W6BiJ66EFzefV
+ BbxbBWYTwIgDarNw2M0iXKAl5iQ3TnJuuiSZLAIVoMgm/0uIo/Gmlt+Q2KNhYSTlMDShrY1V+gKC7
+ Mn0YBvTnYPUkRmABWZfggfSYutSXTRUMiUAfAheTWv6iXUCYXdT+hRqPgcPqGfk3h6Bo6dBoS56am
+ qC+bSFpQ==;
+Received: from 187-162-31-110.static.axtel.net ([187.162.31.110]:33390
+ helo=[192.168.15.3])
+ by gator4166.hostgator.com with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.93)
+ (envelope-from <gustavo@embeddedor.com>)
+ id 1k17wf-00394J-On; Thu, 30 Jul 2020 07:46:01 -0500
+To: Qianli Zhao <zhaoqianligood@gmail.com>, stefanr@s5r6.in-berlin.de,
+ linux1394-devel@lists.sourceforge.net
+References: <1596079620-20023-1-git-send-email-zhaoqianligood@gmail.com>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Autocrypt: addr=gustavo@embeddedor.com; keydata=
+ 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
+ AP7RWS474w==
+Subject: Re: [PATCH] firewire: firewire-cdev.h: Avoid the use of one-element
+ array
+Message-ID: <d7d33292-99a3-cddf-629b-a71acd1a7bee@embeddedor.com>
+Date: Thu, 30 Jul 2020 07:52:03 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-Spam-Score: -0.1 (/)
+In-Reply-To: <1596079620-20023-1-git-send-email-zhaoqianligood@gmail.com>
+Content-Language: en-US
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
+X-AntiAbuse: Original Domain - lists.sourceforge.net
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - embeddedor.com
+X-BWhitelist: no
+X-Source-IP: 187.162.31.110
+X-Source-L: No
+X-Exim-ID: 1k17wf-00394J-On
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: 187-162-31-110.static.axtel.net ([192.168.15.3])
+ [187.162.31.110]:33390
+X-Source-Auth: gustavo@embeddedor.com
+X-Email-Count: 3
+X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
+X-Local-Domain: yes
+X-Spam-Score: -1.2 (-)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (zhaoqianligood[at]gmail.com)
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.194 listed in wl.mailspike.net]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [192.185.45.31 listed in list.dnswl.org]
  0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: wikipedia.org]
+ for more information. [URIs: kernelnewbies.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.210.194 listed in list.dnswl.org]
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1k0zE2-003tQM-TJ
+ -0.8 NICE_REPLY_A           Looks like a legit reply (A)
+ -0.3 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1k18Jp-007GRz-C4
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,44 +169,61 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: zhaoqianli@xiaomi.com, linux-kernel@vger.kernel.org, gustavo@embeddedor.com
+Cc: linux-kernel@vger.kernel.org, zhaoqianli@xiaomi.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-RnJvbTogUWlhbmxpIFpoYW8gPHpoYW9xaWFubGlAeGlhb21pLmNvbT4KClRoZXJlIGlzIGEgcmVn
-dWxhciBuZWVkIGluIHRoZSBrZXJuZWwgdG8gcHJvdmlkZSBhIHdheSB0byBkZWNsYXJlIGhhdmlu
-ZyBhCmR5bmFtaWNhbGx5IHNpemVkIHNldCBvZiB0cmFpbGluZyBlbGVtZW50cyBpbiBhIHN0cnVj
-dHVyZS4gS2VybmVsIGNvZGUgc2hvdWxkCmFsd2F5cyB1c2Ug4oCcZmxleGlibGUgYXJyYXkgbWVt
-YmVyc+KAnVsxXSBmb3IgdGhlc2UgY2FzZXMuIFRoZSBvbGRlciBzdHlsZSBvZgpvbmUtZWxlbWVu
-dCBvciB6ZXJvLWxlbmd0aCBhcnJheXMgc2hvdWxkIG5vIGxvbmdlciBiZSB1c2VkWzJdLgoKWzFd
-IGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL0ZsZXhpYmxlX2FycmF5X21lbWJlcgpbMl0g
-aHR0cHM6Ly9naXRodWIuY29tL0tTUFAvbGludXgvaXNzdWVzLzIxCgpTaWduZWQtb2ZmLWJ5OiBR
-aWFubGkgWmhhbyA8emhhb3FpYW5saUB4aWFvbWkuY29tPgotLS0KIGluY2x1ZGUvdWFwaS9saW51
-eC9maXJld2lyZS1jZGV2LmggfCAxMCArKysrKy0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgNSBpbnNl
-cnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2luY2x1ZGUvdWFwaS9saW51
-eC9maXJld2lyZS1jZGV2LmggYi9pbmNsdWRlL3VhcGkvbGludXgvZmlyZXdpcmUtY2Rldi5oCmlu
-ZGV4IDdlNWI1YzEuLjQ4N2RlODdmIDEwMDY0NAotLS0gYS9pbmNsdWRlL3VhcGkvbGludXgvZmly
-ZXdpcmUtY2Rldi5oCisrKyBiL2luY2x1ZGUvdWFwaS9saW51eC9maXJld2lyZS1jZGV2LmgKQEAg
-LTExOCw3ICsxMTgsNyBAQCBzdHJ1Y3QgZndfY2Rldl9ldmVudF9yZXNwb25zZSB7CiAJX191MzIg
-dHlwZTsKIAlfX3UzMiByY29kZTsKIAlfX3UzMiBsZW5ndGg7Ci0JX191MzIgZGF0YVswXTsKKwlf
-X3UzMiBkYXRhW107CiB9OwogCiAvKioKQEAgLTE0Miw3ICsxNDIsNyBAQCBzdHJ1Y3QgZndfY2Rl
-dl9ldmVudF9yZXF1ZXN0IHsKIAlfX3U2NCBvZmZzZXQ7CiAJX191MzIgaGFuZGxlOwogCV9fdTMy
-IGxlbmd0aDsKLQlfX3UzMiBkYXRhWzBdOworCV9fdTMyIGRhdGFbXTsKIH07CiAKIC8qKgpAQCAt
-MjA1LDcgKzIwNSw3IEBAIHN0cnVjdCBmd19jZGV2X2V2ZW50X3JlcXVlc3QyIHsKIAlfX3UzMiBn
-ZW5lcmF0aW9uOwogCV9fdTMyIGhhbmRsZTsKIAlfX3UzMiBsZW5ndGg7Ci0JX191MzIgZGF0YVsw
-XTsKKwlfX3UzMiBkYXRhW107CiB9OwogCiAvKioKQEAgLTM0NCw3ICszNDQsNyBAQCBzdHJ1Y3Qg
-ZndfY2Rldl9ldmVudF9pc29fcmVzb3VyY2UgewogICogQGRhdGE6CUluY29taW5nIGRhdGEKICAq
-CiAgKiBJZiBAdHlwZSBpcyAlRldfQ0RFVl9FVkVOVF9QSFlfUEFDS0VUX1NFTlQsIEBsZW5ndGgg
-aXMgMCBhbmQgQGRhdGEgZW1wdHksCi0gKiBleGNlcHQgaW4gY2FzZSBvZiBhIHBpbmcgcGFja2V0
-OiAgVGhlbiwgQGxlbmd0aCBpcyA0LCBhbmQgQGRhdGFbMF0gaXMgdGhlCisgKiBleGNlcHQgaW4g
-Y2FzZSBvZiBhIHBpbmcgcGFja2V0OiAgVGhlbiwgQGxlbmd0aCBpcyA0LCBhbmQgQGRhdGFbXSBp
-cyB0aGUKICAqIHBpbmcgdGltZSBpbiA0OS4xNTJNSHogY2xvY2tzIGlmIEByY29kZSBpcyAlUkNP
-REVfQ09NUExFVEUuCiAgKgogICogSWYgQHR5cGUgaXMgJUZXX0NERVZfRVZFTlRfUEhZX1BBQ0tF
-VF9SRUNFSVZFRCwgQGxlbmd0aCBpcyA4IGFuZCBAZGF0YQpAQCAtMzU1LDcgKzM1NSw3IEBAIHN0
-cnVjdCBmd19jZGV2X2V2ZW50X3BoeV9wYWNrZXQgewogCV9fdTMyIHR5cGU7CiAJX191MzIgcmNv
-ZGU7CiAJX191MzIgbGVuZ3RoOwotCV9fdTMyIGRhdGFbMF07CisJX191MzIgZGF0YVtdOwogfTsK
-IAogLyoqCi0tIAoyLjcuNAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwptYWlsaW5nIGxpc3QgbGludXgxMzk0LWRldmVsQGxpc3RzLnNvdXJjZWZvcmdl
-Lm5ldApodHRwczovL2xpc3RzLnNvdXJjZWZvcmdlLm5ldC9saXN0cy9saXN0aW5mby9saW51eDEz
-OTQtZGV2ZWwK
+Ck5BQ0shCgpQbGVhc2UsIHN0b3AgZG9pbmcgdGhpcy4gWW91IGNsZWFybHkgZG9uJ3Qga25vdyB3
+aGF0IHlvdSdyZSBkb2luZy4KWW91J3JlIGp1c3QgYmxpbmRseSBjb3B5aW5nL3Bhc3RpbmcgYWxs
+IHRoaXMuIFRoZSBzdWJqZWN0IGxpbmUKaGFzIG5vdGhpbmcgdG8gZG8gd2l0aCB3aGF0IHRoZSBw
+YXRjaCBkb2VzIGFuZCB3ZSBkb24ndCB3YW50CmFueSBvZiB0aGVzZSB0cmFuc2Zvcm1hdGlvbnMg
+aW4gVUFQSSBmb3Igbm93LgoKQXMgSSBhbHJlYWR5IHNhaWQgaGVyZToKaHR0cHM6Ly9sb3JlLmtl
+cm5lbC5vcmcvbGttbC85MGIyYzlmMy1jYzJiLWIyZTYtNTFlZi05OThkMmY3OTEyM2FAZW1iZWRk
+ZWRvci5jb20vCgpzdGFydCB3aXRoIGRyaXZlcnMvc3RhZ2luZy8gYW5kIGdldCBoYW5nIG9mIHRo
+ZSBrZXJuZWwgZGV2ZWxvcG1lbnQKcHJvY2VzcywgZmlyc3QuIFRoaXMgaXMgYSBncmVhdCBzb3Vy
+Y2UsIEkgZW5jb3VyYWdlIHlvdSB0byByZWFkIGl0CnRob3JvdWdobHk6Cmh0dHBzOi8va2VybmVs
+bmV3Ymllcy5vcmcvT3V0cmVhY2h5Zmlyc3RwYXRjaAoKSWYgeW91IHdhbnQgdG8gbGFuZCB5b3Vy
+IGZpcnN0IGtlcm5lbCBwYXRjaCwgYmxpbmRseSBjb3B5aW5nL3Bhc3RpbmcKc3R1ZmYgd2l0aG91
+dCBhY3R1YWxseSBwYXlpbmcgYXR0ZW50aW9uIHRvIHdoYXQgeW91J3JlIGRvaW5nLCBpcwpjZXJ0
+YWlubHkgbm90IHRoZSBiZXN0IHN0cmF0ZWd5IGFuZCB5b3Ugd29uJ3Qgc3RhcnQgd2l0aCB0aGUg
+cmlnaHQKZm9vdCBpbiB0ZXJtcyBvZiB5b3VyIHJlcHV0YXRpb24uIFN0b3AgdGhpcyBhbmQgZG8g
+dGhpbmdzIHJpZ2h0IGZyb20KdGhlIGJlZ2lubmluZy4KCi0tCkd1c3Rhdm8KCk9uIDcvMjkvMjAg
+MjI6MjcsIFFpYW5saSBaaGFvIHdyb3RlOgo+IEZyb206IFFpYW5saSBaaGFvIDx6aGFvcWlhbmxp
+QHhpYW9taS5jb20+Cj4gCj4gVGhlcmUgaXMgYSByZWd1bGFyIG5lZWQgaW4gdGhlIGtlcm5lbCB0
+byBwcm92aWRlIGEgd2F5IHRvIGRlY2xhcmUgaGF2aW5nIGEKPiBkeW5hbWljYWxseSBzaXplZCBz
+ZXQgb2YgdHJhaWxpbmcgZWxlbWVudHMgaW4gYSBzdHJ1Y3R1cmUuIEtlcm5lbCBjb2RlIHNob3Vs
+ZAo+IGFsd2F5cyB1c2Ug4oCcZmxleGlibGUgYXJyYXkgbWVtYmVyc+KAnVsxXSBmb3IgdGhlc2Ug
+Y2FzZXMuIFRoZSBvbGRlciBzdHlsZSBvZgo+IG9uZS1lbGVtZW50IG9yIHplcm8tbGVuZ3RoIGFy
+cmF5cyBzaG91bGQgbm8gbG9uZ2VyIGJlIHVzZWRbMl0uCj4gCj4gWzFdIGh0dHBzOi8vZW4ud2lr
+aXBlZGlhLm9yZy93aWtpL0ZsZXhpYmxlX2FycmF5X21lbWJlcgo+IFsyXSBodHRwczovL2dpdGh1
+Yi5jb20vS1NQUC9saW51eC9pc3N1ZXMvMjEKPiAKPiBTaWduZWQtb2ZmLWJ5OiBRaWFubGkgWmhh
+byA8emhhb3FpYW5saUB4aWFvbWkuY29tPgo+IC0tLQo+ICBpbmNsdWRlL3VhcGkvbGludXgvZmly
+ZXdpcmUtY2Rldi5oIHwgMTAgKysrKystLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRp
+b25zKCspLCA1IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL3VhcGkvbGlu
+dXgvZmlyZXdpcmUtY2Rldi5oIGIvaW5jbHVkZS91YXBpL2xpbnV4L2ZpcmV3aXJlLWNkZXYuaAo+
+IGluZGV4IDdlNWI1YzEuLjQ4N2RlODdmIDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvdWFwaS9saW51
+eC9maXJld2lyZS1jZGV2LmgKPiArKysgYi9pbmNsdWRlL3VhcGkvbGludXgvZmlyZXdpcmUtY2Rl
+di5oCj4gQEAgLTExOCw3ICsxMTgsNyBAQCBzdHJ1Y3QgZndfY2Rldl9ldmVudF9yZXNwb25zZSB7
+Cj4gIAlfX3UzMiB0eXBlOwo+ICAJX191MzIgcmNvZGU7Cj4gIAlfX3UzMiBsZW5ndGg7Cj4gLQlf
+X3UzMiBkYXRhWzBdOwo+ICsJX191MzIgZGF0YVtdOwo+ICB9Owo+ICAKPiAgLyoqCj4gQEAgLTE0
+Miw3ICsxNDIsNyBAQCBzdHJ1Y3QgZndfY2Rldl9ldmVudF9yZXF1ZXN0IHsKPiAgCV9fdTY0IG9m
+ZnNldDsKPiAgCV9fdTMyIGhhbmRsZTsKPiAgCV9fdTMyIGxlbmd0aDsKPiAtCV9fdTMyIGRhdGFb
+MF07Cj4gKwlfX3UzMiBkYXRhW107Cj4gIH07Cj4gIAo+ICAvKioKPiBAQCAtMjA1LDcgKzIwNSw3
+IEBAIHN0cnVjdCBmd19jZGV2X2V2ZW50X3JlcXVlc3QyIHsKPiAgCV9fdTMyIGdlbmVyYXRpb247
+Cj4gIAlfX3UzMiBoYW5kbGU7Cj4gIAlfX3UzMiBsZW5ndGg7Cj4gLQlfX3UzMiBkYXRhWzBdOwo+
+ICsJX191MzIgZGF0YVtdOwo+ICB9Owo+ICAKPiAgLyoqCj4gQEAgLTM0NCw3ICszNDQsNyBAQCBz
+dHJ1Y3QgZndfY2Rldl9ldmVudF9pc29fcmVzb3VyY2Ugewo+ICAgKiBAZGF0YToJSW5jb21pbmcg
+ZGF0YQo+ICAgKgo+ICAgKiBJZiBAdHlwZSBpcyAlRldfQ0RFVl9FVkVOVF9QSFlfUEFDS0VUX1NF
+TlQsIEBsZW5ndGggaXMgMCBhbmQgQGRhdGEgZW1wdHksCj4gLSAqIGV4Y2VwdCBpbiBjYXNlIG9m
+IGEgcGluZyBwYWNrZXQ6ICBUaGVuLCBAbGVuZ3RoIGlzIDQsIGFuZCBAZGF0YVswXSBpcyB0aGUK
+PiArICogZXhjZXB0IGluIGNhc2Ugb2YgYSBwaW5nIHBhY2tldDogIFRoZW4sIEBsZW5ndGggaXMg
+NCwgYW5kIEBkYXRhW10gaXMgdGhlCj4gICAqIHBpbmcgdGltZSBpbiA0OS4xNTJNSHogY2xvY2tz
+IGlmIEByY29kZSBpcyAlUkNPREVfQ09NUExFVEUuCj4gICAqCj4gICAqIElmIEB0eXBlIGlzICVG
+V19DREVWX0VWRU5UX1BIWV9QQUNLRVRfUkVDRUlWRUQsIEBsZW5ndGggaXMgOCBhbmQgQGRhdGEK
+PiBAQCAtMzU1LDcgKzM1NSw3IEBAIHN0cnVjdCBmd19jZGV2X2V2ZW50X3BoeV9wYWNrZXQgewo+
+ICAJX191MzIgdHlwZTsKPiAgCV9fdTMyIHJjb2RlOwo+ICAJX191MzIgbGVuZ3RoOwo+IC0JX191
+MzIgZGF0YVswXTsKPiArCV9fdTMyIGRhdGFbXTsKPiAgfTsKPiAgCj4gIC8qKgo+IAoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCm1haWxpbmcgbGlzdCBs
+aW51eDEzOTQtZGV2ZWxAbGlzdHMuc291cmNlZm9yZ2UubmV0Cmh0dHBzOi8vbGlzdHMuc291cmNl
+Zm9yZ2UubmV0L2xpc3RzL2xpc3RpbmZvL2xpbnV4MTM5NC1kZXZlbAo=
