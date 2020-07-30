@@ -2,100 +2,105 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D261232063
-	for <lists+linux1394-devel@lfdr.de>; Wed, 29 Jul 2020 16:31:44 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.sourceforge.net; s=beta; h=Content-Type:Reply-To:From:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:
-	References:Mime-Version:Date:To:Subject:Sender:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
-	bh=MPPhbwNlkJggFOkvFNiFNdWYEUe7OtRrFHs0I8+sHrs=; b=MpZV+uYofH0e7at2jKZMDf6sCu
-	1vhhNit6HwTKLv55udZE4xiXB5FXbEfDEJFNzEJqvo9GMIJ5tjRw6/tgJxVntbZ5SSxbhX8D+miO/
-	dQWD/KmM7tDiG53bLxcZOnojp0P6D5eHMC4cUYAv4g/SO5a9Bn8QliYyA0GndNNcmgF0=;
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E81D232A5E
+	for <lists+linux1394-devel@lfdr.de>; Thu, 30 Jul 2020 05:27:36 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1k0n7F-0006FE-MI; Wed, 29 Jul 2020 14:31:33 +0000
+	id 1k0zE5-0000e9-VJ; Thu, 30 Jul 2020 03:27:25 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from
- <010101739aebda1f-ed1eb4b9-fcfc-4897-a13f-9997b837841c-000000@us-west-2.amazonses.com>)
- id 1k0n7E-0006F6-4S
- for linux1394-devel@lists.sourceforge.net; Wed, 29 Jul 2020 14:31:32 +0000
+ (envelope-from <zhaoqianligood@gmail.com>) id 1k0zE4-0000dy-9W
+ for linux1394-devel@lists.sourceforge.net; Thu, 30 Jul 2020 03:27:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Message-ID:References:Content-Type:Mime-Version:
- Date:To:From:Subject:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
+ :Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:List-Id:List-Help:List-Unsubscribe:
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=iuNt+QWwiRojAUDl7FslRvOC8fgbKf0Q4yiaOuqCzC0=; b=gpMXXfHPlUuapPrq3Ycl7woMSQ
- yFKXwkyANO2CC9x8fOIJE7a9NwJXwCZsnGnPpMLOGmKxPgMSWaUdPoSYm5MGALdQRxkzOCZv3yuen
- AfQ2EtzN9CF5IOtPV1U6bC/HSe9K7h0hFzJV2LyQgbLLRoy8SIKd7BtGgCfvqut0hA+M=;
+ bh=SAwanaBh/g8SjyCF66Oh7kkXlY0ljlytzRLB3xpaxAQ=; b=i9QNjmEvGqONMqyWVCBuvzchKZ
+ KPL9vS5ZBTSb+ZsXGaWV8UtYXs928FL7FkZDALZ29HBNKzhPu/7zs9ZvKfNjqJ5TsgzoIu41UTh6x
+ 0FNVIjrY9jUnG87GBZNS74ZzjZL0UmhgMx4nCwecQ6DBXuETTrBzuW88Zc49Rl5555G0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Message-ID:References:Content-Type:Mime-Version:Date:To:From:Subject:
- Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=iuNt+QWwiRojAUDl7FslRvOC8fgbKf0Q4yiaOuqCzC0=; b=J
- ZQVmyaL/5DsjXRsT6WhNFWXDUryPdOQ1mIkuD+SKge0pfQWBDO85pYtqTyXb+xKcbZjZaN1K8Husn
- 4VLx4yLZoU5IxNnClYQFlvic567whCGYoOmDiQiXOPVEphYci/Mcrfk+lVjnWBq4cRWm8D3FsWCET
- czoNnweB6jQmZ/2I=;
-Received: from a58-47.smtp-out.us-west-2.amazonses.com ([54.240.58.47])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-SHA256:128) (Exim 4.92.2)
- id 1k0n7B-00DUFC-3q
- for linux1394-devel@lists.sourceforge.net; Wed, 29 Jul 2020 14:31:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
- s=sknkt525wmvsd5qrslvt4aisaznnhvir; d=konnectglobalmarketing.com;
- t=1596032014;
- h=Subject:From:To:Date:Mime-Version:Content-Type:References:Message-Id;
- bh=iuNt+QWwiRojAUDl7FslRvOC8fgbKf0Q4yiaOuqCzC0=;
- b=OkooWlXo4Gbx7tgBtJGcZPKUnVSdJcEYbKzH6BtQj8sdpXoiMxX0TU69jK4VKKvY
- i99Q1qf6kl1GjCR6TnTkxjQ3+pFKnvXk8UPQp4EWPbhq8kMRbXUu/MvkliRl1hWM4+H
- NRMVvYoLnO4lo+GFtwSVzzDjdTy1ZRTI+Tj9rRaI=
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
- s=hsbnp7p3ensaochzwyq5wwmceodymuwv; d=amazonses.com; t=1596032014;
- h=Subject:From:To:Date:Mime-Version:Content-Type:References:Message-Id:Feedback-ID;
- bh=iuNt+QWwiRojAUDl7FslRvOC8fgbKf0Q4yiaOuqCzC0=;
- b=mWaSY0pX3bOoOT4v+UEAJQxgLXmNVQCOW47VzLFoRmGdYlJQzOBIZYg0Bevh8Fy8
- GJkWll2Jo8gdGr083RoW/Y7SZshc7kPKtvDja4oVCREEoIaPnAjCAtm3N5+XALYJjQT
- 0wTtCkxTTLozZ+RwHUHgfCeLq3MAOdgaLZ+EID/E=
-Subject: Altium - Proposal
-To: =?UTF-8?Q?linux1394-devel=40lists=2Esourceforge=2Enet?=
- <linux1394-devel@lists.sourceforge.net>
-Date: Wed, 29 Jul 2020 14:13:34 +0000
-Mime-Version: 1.0
-References: <mail.73a9040e-9375-4f44-a8c3-5ccd67188457@storage.wm.amazon.com> 
- <mail.73a9040e-9375-4f44-a8c3-5ccd67188457@storage.wm.amazon.com>
-X-Priority: 3 (Normal)
-X-Mailer: Amazon WorkMail
-Thread-Index: AdZlsKU3/qbqithAQNCFWP+T5e18jQ==
-Thread-Topic: Altium - Proposal
-X-Wm-Sent-Timestamp: 1596032014
-Message-ID: <010101739aebda1f-ed1eb4b9-fcfc-4897-a13f-9997b837841c-000000@us-west-2.amazonses.com>
-X-SES-Outgoing: 2020.07.29-54.240.58.47
-Feedback-ID: 1.us-west-2.An468LAV0jCjQDrDLvlZjeAthld7qrhZr+vow8irkvU=:AmazonSES
-X-Spam-Score: 0.9 (/)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:
+ Subject:Cc:To:From:Sender:Reply-To:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=SAwanaBh/g8SjyCF66Oh7kkXlY0ljlytzRLB3xpaxAQ=; b=g
+ 3NW/okgc6L44QcqfC8PL4tRZRcnMOaguvVR4fRob5W61yWk4hRcRh7pPJWOTx42FDSzQ1kKL5XWIX
+ Z/1O8bgR83s5tI8H46z38d15LUt3AOEiRS4a+Eplh+JxzBse00CcPLHfNN6FNN8St1ddXeZ9XlWmZ
+ Tmb+lfStWUU4pRMc=;
+Received: from mail-pf1-f194.google.com ([209.85.210.194])
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
+ id 1k0zE2-003tQM-TJ
+ for linux1394-devel@lists.sourceforge.net; Thu, 30 Jul 2020 03:27:24 +0000
+Received: by mail-pf1-f194.google.com with SMTP id s26so14236772pfm.4
+ for <linux1394-devel@lists.sourceforge.net>;
+ Wed, 29 Jul 2020 20:27:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SAwanaBh/g8SjyCF66Oh7kkXlY0ljlytzRLB3xpaxAQ=;
+ b=WwfCkHiHKhrFKEuK3iBT93GceFrVkzz0g3zn8mRx7dg/jkd8ItPxPY+x6ZGivO2yET
+ U5Q1Oxp+9yGd8lkJZS61YBYYvWA3ueWHTnBoof7UK9Pso5dXfa9ScakApH7yCFU4Eu+1
+ ldGSMXpl7SQS+59I5zCGXX6jHiMLifa1m2P4XzItzuwKOsf7GsqVq5d3f3hg3P6oe1Wr
+ eYsu5ZYg2FTGMGMZ5146JiyKqE7cFCmsVw7igih8XAPMejx9U9rJW82V5brLrcSGiQT8
+ N4m4AfFpf+OrT3J0XBN+WaasogDFLGaoHDe14aO72Q6tn0gIXYV3El6jP9O3u4Pw/bq1
+ VJAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SAwanaBh/g8SjyCF66Oh7kkXlY0ljlytzRLB3xpaxAQ=;
+ b=SrF6mxLj+TnMxilMgc7lntKfF1r2EO6nIG0YMJSz2sol7+q50pRkNj1uur9hp0pglp
+ 1DG5SIpIB34aoSrUSYJGeCZLFVt8NahSB9iMKGc7h2syLYBIBG0s0s7XhsBRo9p3uhRr
+ oDkiaE7q/Unzf+Kfe3x36dQl6IO1vdpB+9mzXktjJwuPS2uTS/b7Cxx9OzQdeuW0eD3w
+ DJhB7bURCT6qVLmL/wV+RDVgbQRudRJ6bDYHW8qSSscNfdMdzvao+/QkMteit3NztBNW
+ fC83U61ZyV/Reyqc5LiQrh2DPFrravNbArJy/XnHAeRRit80glPCRjUFnyQkPzFQymOu
+ UuUQ==
+X-Gm-Message-State: AOAM531wo7X6vhNi8Rbx9JAv0DSSwWaRIKPicTnXCq7TfruyqpUh4OrO
+ Z+bPRNA0zWKc2lE1AMO55yc=
+X-Google-Smtp-Source: ABdhPJw4ghy+Sz4YLvGxKK/Bl5/ZSNjGzvfmoaCh1n5F4gQ9xfmQDf7Tn1lLrJtkUC+BA9UV9m769A==
+X-Received: by 2002:a05:6a00:158b:: with SMTP id
+ u11mr1186063pfk.92.1596079637350; 
+ Wed, 29 Jul 2020 20:27:17 -0700 (PDT)
+Received: from builder-PowerEdge-R730xd.mioffice.cn ([209.9.72.212])
+ by smtp.gmail.com with ESMTPSA id ml8sm3565836pjb.47.2020.07.29.20.27.15
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 29 Jul 2020 20:27:16 -0700 (PDT)
+From: Qianli Zhao <zhaoqianligood@gmail.com>
+To: stefanr@s5r6.in-berlin.de,
+	linux1394-devel@lists.sourceforge.net
+Subject: [PATCH] firewire: firewire-cdev.h: Avoid the use of one-element array
+Date: Thu, 30 Jul 2020 11:27:00 +0800
+Message-Id: <1596079620-20023-1-git-send-email-zhaoqianligood@gmail.com>
+X-Mailer: git-send-email 2.7.4
+MIME-Version: 1.0
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level mail
- domains are different
+ 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
+ (zhaoqianligood[at]gmail.com)
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.194 listed in wl.mailspike.net]
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: wikipedia.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [54.240.58.47 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [54.240.58.47 listed in wl.mailspike.net]
- 1.0 HTML_MESSAGE           BODY: HTML included in message
+ trust [209.85.210.194 listed in list.dnswl.org]
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1k0n7B-00DUFC-3q
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1k0zE2-003tQM-TJ
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,187 +113,44 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-From: =?UTF-8?Q?Kelsey_Cooper?= via linux1394-devel
- <linux1394-devel@lists.sourceforge.net>
-Reply-To: =?UTF-8?Q?Kelsey_Cooper?= <kelsey@konnectglobalmarketing.com>
-Content-Type: multipart/mixed; boundary="===============4065228934500644463=="
+Cc: zhaoqianli@xiaomi.com, linux-kernel@vger.kernel.org, gustavo@embeddedor.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-This is a multi-part message in MIME format. Your mail reader does not
-understand MIME message format.
---===============4065228934500644463==
-Content-Type: multipart/alternative; 
- boundary="=_ego8Y57pBfElzZiXlOwMQE0OJLt5riq6uMrximl0+geCqgeI"
-
-This is a multi-part message in MIME format. Your mail reader does not
-understand MIME message format.
---=_ego8Y57pBfElzZiXlOwMQE0OJLt5riq6uMrximl0+geCqgeI
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-=C2=A0
-Would you like to send in your Business Proposals/Newsletter to key decis=
-ion Makers from companies currently using Altium Software=3F
-
-=C2=A0
-Titles Like:=C2=A0 IT Decision Makers, C-level, Managers and other job ti=
-tles as per your requirement.=20
-
-=C2=A0
-Kindly let me know the Job Titles & Geography that you wish to target, so=
- that I can get back with the samples, counts and more details for your r=
-eview.=20
-
-=C2=A0
-We cater other Industry contacts such as: Manufacturing,=C2=A0Constructio=
-n,=C2=A0Education,=C2=A0Retail,=C2=A0Healthcare, Energy, Utilities & Wast=
-e Treatment, Transportation, etc.=20
-
-=C2=A0
-Looking forward to your response.
-
-=C2=A0
-Regards,
-
-Kelsey Cooper - Marketing Executive
-
-=C2=A0
-Stay safe.
-
-Reply back =E2=80=9CPass=E2=80=9D for no further emails.
-
-=C2=A0
-
---=_ego8Y57pBfElzZiXlOwMQE0OJLt5riq6uMrximl0+geCqgeI
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-mi=
-crosoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:wo=
-rd" xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D=
-"http://www.w3.org/TR/REC-html40"><head><META HTTP-EQUIV=3D"Content-Type"=
- CONTENT=3D"text/html; charset=3Dus-ascii"><meta name=3DGenerator content=
-=3D"Microsoft Word 15 (filtered medium)"><style><!--
-/* Font Definitions */
-@font-face
-=09{font-family:"Cambria Math";
-=09panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-=09{font-family:Calibri;
-=09panose-1:2 15 5 2 2 2 4 3 2 4;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-=09{margin:0in;
-=09margin-bottom:.0001pt;
-=09font-size:11.0pt;
-=09font-family:"Calibri",sans-serif;}
-p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
-=09{mso-style-priority:1;
-=09margin:0in;
-=09margin-bottom:.0001pt;
-=09font-size:11.0pt;
-=09font-family:"Calibri",sans-serif;}
-p.xmsonormal, li.xmsonormal, div.xmsonormal
-=09{mso-style-name:x_msonormal;
-=09margin:0in;
-=09margin-bottom:.0001pt;
-=09font-size:11.0pt;
-=09font-family:"Calibri",sans-serif;}
-=2EMsoChpDefault
-=09{mso-style-type:export-only;
-=09font-family:"Calibri",sans-serif;}
-=2EMsoPapDefault
-=09{mso-style-type:export-only;
-=09margin-bottom:8.0pt;
-=09line-height:107%;}
-@page WordSection1
-=09{size:8.5in 11.0in;
-=09margin:1.0in 1.0in 1.0in 1.0in;}
-div.WordSection1
-=09{page:WordSection1;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]--></head><body lang=3DEN-US><div class=3D=
-WordSection1><p class=3DMsoNormal><span lang=3DEN-IN style=3D'font-size:1=
-2.0pt;color:black;background:white'>Hi,</span></p><p class=3DMsoNormal><s=
-pan lang=3DEN-IN style=3D'font-size:12.0pt;color:black;background:white'>=
-&nbsp;</span></p><p class=3DMsoNormal><span style=3D'font-size:12.0pt'>Wo=
-uld you like to send in your Business Proposals/Newsletter to key decisio=
-n Makers<span style=3D'color:black;background:white'> </span></span><span=
- lang=3DEN-IN style=3D'font-size:12.0pt;color:black;background:white'>fro=
-m companies currently using<b> </b></span><b><span style=3D'font-size:12.=
-0pt;color:black;background:white'>Altium Software</span></b><b><span lang=
-=3DEN-IN style=3D'font-size:12.0pt;color:black;background:white'>=3F</spa=
-n></b><b><span style=3D'font-size:12.0pt;color:black;background:white'><o=
-:p></o:p></span></b></p><p class=3DMsoNormal><span lang=3DEN-IN style=3D'=
-font-size:12.0pt;color:black'>&nbsp;</span></p><p class=3DMsoNormal><u><s=
-pan lang=3DEN-IN style=3D'font-size:12.0pt;color:black'>Titles Like:</spa=
-n></u><b><span lang=3DEN-IN style=3D'font-size:12.0pt;color:black'>&nbsp;=
-</span></b><b><span lang=3DEN-IN style=3D'font-size:12.0pt;color:black;ba=
-ckground:white;mso-fareast-language:EN-IN'> </span></b><span lang=3DEN-IN=
- style=3D'font-size:12.0pt;color:black;background:white'>IT Decision Make=
-rs, C-level, Managers and other job titles as per your requirement. </spa=
-n></p><p class=3DMsoNormal><span lang=3DEN-IN style=3D'font-size:12.0pt;c=
-olor:black;background:white'>&nbsp;</span></p><p class=3DMsoNoSpacing><sp=
-an lang=3DEN-IN style=3D'font-size:12.0pt;color:black;background:white;ms=
-o-fareast-language:EN-IN'>Kindly let me know the <b>Job Titles &amp; Geog=
-raphy</b> that you wish to target, so that I can get back with the <u>sam=
-ples, counts </u>and more details for your review. </span></p><p class=3D=
-MsoNormal><span lang=3DEN-IN style=3D'font-size:12.0pt;color:black;backgr=
-ound:white'>&nbsp;</span></p><p class=3DMsoNormal><span lang=3DEN-IN styl=
-e=3D'font-size:12.0pt;color:black;background:white'>We cater other Indust=
-ry contacts such as: <b>Manufacturing,&nbsp;</b></span><b><span style=3D'=
-font-size:12.0pt;color:black;background:white'>Construction</span></b><b>=
-<span lang=3DEN-IN style=3D'font-size:12.0pt;color:black;background:white=
-'>,&nbsp;</span></b><b><span style=3D'font-size:12.0pt;color:black;backgr=
-ound:white'>Education</span></b><b><span lang=3DEN-IN style=3D'font-size:=
-12.0pt;color:black;background:white'>,&nbsp;</span></b><b><span style=3D'=
-font-size:12.0pt;color:black;background:white'>Retail</span></b><b><span =
-lang=3DEN-IN style=3D'font-size:12.0pt;color:black;background:white'>,&nb=
-sp;</span></b><b><span style=3D'font-size:12.0pt;color:black;background:w=
-hite'>Healthcare, Energy, Utilities &amp; Waste Treatment, Transportation=
-, </span></b><b><span lang=3DEN-IN style=3D'font-size:12.0pt;color:black;=
-background:white'>etc. </span></b></p><p class=3DMsoNormal><span lang=3DE=
-N-IN style=3D'font-size:12.0pt;color:black;background:white'>&nbsp;</span=
-></p><p class=3DMsoNormal style=3D'background:white'><span style=3D'font-=
-size:12.0pt'>Looking forward to your response.</span></p><p class=3DMsoNo=
-rmal><span lang=3DEN-IN style=3D'font-size:12.0pt;mso-fareast-language:EN=
--IN'>&nbsp;</span></p><p class=3Dxmsonormal><b><i><span lang=3DEN-IN styl=
-e=3D'font-size:12.0pt;color:black'>Regards,<o:p></o:p></span></i></b></p>=
-<p class=3Dxmsonormal><b><i><span style=3D'font-size:12.0pt;color:black'>=
-Kelsey Cooper </span></i></b><b><i><span lang=3DEN-IN style=3D'font-size:=
-12.0pt;color:black'>- Marketing Executive<o:p></o:p></span></i></b></p><p=
- class=3Dxmsonormal><b><i><span lang=3DEN-IN style=3D'color:black'>&nbsp;=
-</span></i></b><span style=3D'font-family:"Times New Roman",serif'><o:p><=
-/o:p></span></p><p class=3Dxmsonormal><b><span lang=3DEN-IN style=3D'colo=
-r:#BFBFBF'>Stay safe.</span></b><span lang=3DEN-AU><o:p></o:p></span></p>=
-<p class=3Dxmsonormal><span lang=3DEN-IN style=3D'font-size:8.0pt;color:#=
-D9D9D9'>Reply back &#8220;Pass&#8221; for no further emails.<o:p></o:p></=
-span></p><p class=3DMsoNormal><o:p>&nbsp;</o:p></p></div></body></html>
---=_ego8Y57pBfElzZiXlOwMQE0OJLt5riq6uMrximl0+geCqgeI--
-
-
---===============4065228934500644463==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============4065228934500644463==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-mailing list linux1394-devel@lists.sourceforge.net
-https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============4065228934500644463==--
-
+RnJvbTogUWlhbmxpIFpoYW8gPHpoYW9xaWFubGlAeGlhb21pLmNvbT4KClRoZXJlIGlzIGEgcmVn
+dWxhciBuZWVkIGluIHRoZSBrZXJuZWwgdG8gcHJvdmlkZSBhIHdheSB0byBkZWNsYXJlIGhhdmlu
+ZyBhCmR5bmFtaWNhbGx5IHNpemVkIHNldCBvZiB0cmFpbGluZyBlbGVtZW50cyBpbiBhIHN0cnVj
+dHVyZS4gS2VybmVsIGNvZGUgc2hvdWxkCmFsd2F5cyB1c2Ug4oCcZmxleGlibGUgYXJyYXkgbWVt
+YmVyc+KAnVsxXSBmb3IgdGhlc2UgY2FzZXMuIFRoZSBvbGRlciBzdHlsZSBvZgpvbmUtZWxlbWVu
+dCBvciB6ZXJvLWxlbmd0aCBhcnJheXMgc2hvdWxkIG5vIGxvbmdlciBiZSB1c2VkWzJdLgoKWzFd
+IGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL0ZsZXhpYmxlX2FycmF5X21lbWJlcgpbMl0g
+aHR0cHM6Ly9naXRodWIuY29tL0tTUFAvbGludXgvaXNzdWVzLzIxCgpTaWduZWQtb2ZmLWJ5OiBR
+aWFubGkgWmhhbyA8emhhb3FpYW5saUB4aWFvbWkuY29tPgotLS0KIGluY2x1ZGUvdWFwaS9saW51
+eC9maXJld2lyZS1jZGV2LmggfCAxMCArKysrKy0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgNSBpbnNl
+cnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2luY2x1ZGUvdWFwaS9saW51
+eC9maXJld2lyZS1jZGV2LmggYi9pbmNsdWRlL3VhcGkvbGludXgvZmlyZXdpcmUtY2Rldi5oCmlu
+ZGV4IDdlNWI1YzEuLjQ4N2RlODdmIDEwMDY0NAotLS0gYS9pbmNsdWRlL3VhcGkvbGludXgvZmly
+ZXdpcmUtY2Rldi5oCisrKyBiL2luY2x1ZGUvdWFwaS9saW51eC9maXJld2lyZS1jZGV2LmgKQEAg
+LTExOCw3ICsxMTgsNyBAQCBzdHJ1Y3QgZndfY2Rldl9ldmVudF9yZXNwb25zZSB7CiAJX191MzIg
+dHlwZTsKIAlfX3UzMiByY29kZTsKIAlfX3UzMiBsZW5ndGg7Ci0JX191MzIgZGF0YVswXTsKKwlf
+X3UzMiBkYXRhW107CiB9OwogCiAvKioKQEAgLTE0Miw3ICsxNDIsNyBAQCBzdHJ1Y3QgZndfY2Rl
+dl9ldmVudF9yZXF1ZXN0IHsKIAlfX3U2NCBvZmZzZXQ7CiAJX191MzIgaGFuZGxlOwogCV9fdTMy
+IGxlbmd0aDsKLQlfX3UzMiBkYXRhWzBdOworCV9fdTMyIGRhdGFbXTsKIH07CiAKIC8qKgpAQCAt
+MjA1LDcgKzIwNSw3IEBAIHN0cnVjdCBmd19jZGV2X2V2ZW50X3JlcXVlc3QyIHsKIAlfX3UzMiBn
+ZW5lcmF0aW9uOwogCV9fdTMyIGhhbmRsZTsKIAlfX3UzMiBsZW5ndGg7Ci0JX191MzIgZGF0YVsw
+XTsKKwlfX3UzMiBkYXRhW107CiB9OwogCiAvKioKQEAgLTM0NCw3ICszNDQsNyBAQCBzdHJ1Y3Qg
+ZndfY2Rldl9ldmVudF9pc29fcmVzb3VyY2UgewogICogQGRhdGE6CUluY29taW5nIGRhdGEKICAq
+CiAgKiBJZiBAdHlwZSBpcyAlRldfQ0RFVl9FVkVOVF9QSFlfUEFDS0VUX1NFTlQsIEBsZW5ndGgg
+aXMgMCBhbmQgQGRhdGEgZW1wdHksCi0gKiBleGNlcHQgaW4gY2FzZSBvZiBhIHBpbmcgcGFja2V0
+OiAgVGhlbiwgQGxlbmd0aCBpcyA0LCBhbmQgQGRhdGFbMF0gaXMgdGhlCisgKiBleGNlcHQgaW4g
+Y2FzZSBvZiBhIHBpbmcgcGFja2V0OiAgVGhlbiwgQGxlbmd0aCBpcyA0LCBhbmQgQGRhdGFbXSBp
+cyB0aGUKICAqIHBpbmcgdGltZSBpbiA0OS4xNTJNSHogY2xvY2tzIGlmIEByY29kZSBpcyAlUkNP
+REVfQ09NUExFVEUuCiAgKgogICogSWYgQHR5cGUgaXMgJUZXX0NERVZfRVZFTlRfUEhZX1BBQ0tF
+VF9SRUNFSVZFRCwgQGxlbmd0aCBpcyA4IGFuZCBAZGF0YQpAQCAtMzU1LDcgKzM1NSw3IEBAIHN0
+cnVjdCBmd19jZGV2X2V2ZW50X3BoeV9wYWNrZXQgewogCV9fdTMyIHR5cGU7CiAJX191MzIgcmNv
+ZGU7CiAJX191MzIgbGVuZ3RoOwotCV9fdTMyIGRhdGFbMF07CisJX191MzIgZGF0YVtdOwogfTsK
+IAogLyoqCi0tIAoyLjcuNAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwptYWlsaW5nIGxpc3QgbGludXgxMzk0LWRldmVsQGxpc3RzLnNvdXJjZWZvcmdl
+Lm5ldApodHRwczovL2xpc3RzLnNvdXJjZWZvcmdlLm5ldC9saXN0cy9saXN0aW5mby9saW51eDEz
+OTQtZGV2ZWwK
