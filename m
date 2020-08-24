@@ -2,88 +2,65 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F0662457DE
-	for <lists+linux1394-devel@lfdr.de>; Sun, 16 Aug 2020 16:14:15 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.sourceforge.net; s=beta; h=Content-Type:MIME-Version:Cc:Reply-To:From
-	:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Message-Id:Date:To:Subject:Sender:Content-Transfer-Encoding:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Hn+U7Q2D08ir7GLou8YJ7JIpXPaipMuaD58jFpOpOWY=; b=e/NjVC1+XcXfJfutmmNdb37YKa
-	9UNHhtnCbzT2cq4Kdb0ilEdCJ7fxSEmkp7ZHKkFZDT1OtQ+/JXhtAJl1jJQqBlW2vDU+zGNzBalS2
-	JurG4DsqlbtRPJk6ZTyeLkDaYfiOkzD9YNHl+tlVePOCrDouxi35R+Enmd4p8rcsBAIk=;
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 83B432506BC
+	for <lists+linux1394-devel@lfdr.de>; Mon, 24 Aug 2020 19:42:08 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1k7JQB-0007qo-7w; Sun, 16 Aug 2020 14:14:03 +0000
+	id 1kAGTl-0003Ri-Mm; Mon, 24 Aug 2020 17:41:57 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <vxoaosucyh@mocaman.net>) id 1k7JQ9-0007py-BV
- for linux1394-devel@lists.sourceforge.net; Sun, 16 Aug 2020 14:14:01 +0000
+ (envelope-from <fxohhdpcmv@lsi.ru>) id 1kAGTk-0003RY-Ep
+ for linux1394-devel@lists.sourceforge.net; Mon, 24 Aug 2020 17:41:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Message-Id:Date:Reply-To:To:Subject:From:Sender:Cc:
+ d=sourceforge.net; s=x; h=Message-ID:Date:Reply-To:To:Subject:From:Sender:Cc:
  MIME-Version:Content-Type:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=z9Bw4k1DAJBZgnlZe0FDTUzmi3RKzo8eeKl4eXZ+iRs=; b=G6maBhW+Pl1/DcUEbgzQ6d1ZDj
- N4uEjXIvqZgmQQ1rrliwF/iG/FuKivYl4COTvM/65m/ynL2bLm8p5WMR4dBNYgRmHKO7DpRd2OonF
- tLou//YdomtviuKZpAo3NfRRhSk04d1vp+R3MCf8D6jHAuYE+h/ME4ecr/6NF8coFYrU=;
+ bh=z9Bw4k1DAJBZgnlZe0FDTUzmi3RKzo8eeKl4eXZ+iRs=; b=aFg2ybofQEqd+g32wxiAEcVpIw
+ AUdnuyyzrPvzZoci7JHBCorZxBQzqVPH0foR81//gRM4K7U3jZZpJAtu4i62/BkFrWPZXQ75vA97w
+ tHCMh7WvT+h8n+NoSdZUsXm9JQo7rPzqSMFhMzkqiHXdvD1tte9bdpUQhnL9NhEY5Dj8=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Message-Id:Date:Reply-To:To:Subject:From:Sender:Cc:MIME-Version:
+ h=Message-ID:Date:Reply-To:To:Subject:From:Sender:Cc:MIME-Version:
  Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
  Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
  In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=z9Bw4k1DAJBZgnlZe0FDTUzmi3RKzo8eeKl4eXZ+iRs=; b=Fk+ANFvEh/wbAjGDJp5h9U8RF5
- ERiJGgYGXwAvwj/B5/FwHcc0JLXVos8IM9GLmYedzqL92qogJx5hsa/KNj5krwho8yh6Vv3H4uvXy
- 5+7XVLnrRNzSPRIyWN7LZWIWONgGOI85apHXad9ihz5wmFQNXcl3uWf4Qrmp3FARPl+Y=;
-Received: from [220.75.173.231] (helo=mail.mocaman.net)
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1k7JQ4-009EYL-4O
- for linux1394-devel@lists.sourceforge.net; Sun, 16 Aug 2020 14:14:01 +0000
-Received: from localhost (localhost [127.0.0.1])
- by mail.mocaman.net (Postfix) with ESMTP id E840B5B01612;
- Sun, 16 Aug 2020 21:06:49 +0900 (KST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.mocaman.net E840B5B01612
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mocaman.net;
- s=maildkim; t=1597579610;
- bh=z9Bw4k1DAJBZgnlZe0FDTUzmi3RKzo8eeKl4eXZ+iRs=;
- h=From:Subject:To:Reply-To:Date:From;
- b=JOAJSTvuH/JUD+YPrk0CDHcCDWZItVQ0R7HlFKF1N22CAxmOibh4onXIfaxQLIMUx
- pdVRPfE+oRB6bUlI81SHrPNqnnnAE3aljiZ2tc/GIRyASVE76EU6mR6mUMDArsljsh
- U+9AxS2yXWL9SNhOftnpybt+xHg7sFsJ65DHivvE=
-X-Virus-Scanned: amavisd-new at mocaman.net
-Received: from mail.mocaman.net ([127.0.0.1])
- by localhost (mail.mocaman.net [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EitgY5GCQ-Tg; Sun, 16 Aug 2020 21:06:19 +0900 (KST)
-Received: from mail.mocaman.net (mastersub [192.168.0.4])
- by mail.mocaman.net (Postfix) with ESMTP id 74A995B7261C;
- Wed, 12 Aug 2020 10:16:13 +0900 (KST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.mocaman.net 74A995B7261C
+ bh=z9Bw4k1DAJBZgnlZe0FDTUzmi3RKzo8eeKl4eXZ+iRs=; b=HfseQg0Tncd/KclA/Q7Ct0KeTs
+ CC0Nmpif8b6yB7jB0izqJUFk3fIP03UUSHRKLA+mSuh4N/N0M4e1qRaC3r+QqezMcEpuR8WsPIy0c
+ STgVT7Cw2FSXVfZRsjMNrWL2pZDqshpCvNK8k5TbXhXpASuPP4Ze5tXqwHvOtvF2mZ6E=;
+Received: from mail.lsi.ru ([212.58.192.30] helo=lsi.ru)
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
+ id 1kAGTi-00HGSg-6L
+ for linux1394-devel@lists.sourceforge.net; Mon, 24 Aug 2020 17:41:56 +0000
+Received: from [172.106.174.251] (HELO mail.lsi.ru)
+ by lsi.ru (CommuniGate Pro SMTP 5.2.14)
+ with ESMTP id 656143155; Mon, 24 Aug 2020 20:29:33 +0300
+From: "BOOM DE VENDAS" <fxohhdpcmv@lsi.ru>
 Subject: Divulgue para =?ISO-8859-1?Q?at=E9?= 200 =?ISO-8859-1?Q?MILH=D5ES?=
  DE EMAILS - Boom de vendas
 To: linux1394-devel@lists.sourceforge.net
-Date: Wed, 12 Aug 2020 03:16:15 +0200
-Message-Id: <20200816120650.E840B5B01612@mail.mocaman.net>
-X-Spam-Score: 3.4 (+++)
+Date: Mon, 24 Aug 2020 19:29:34 +0200
+Message-ID: <auto-000656143155@lsi.ru>
+X-Spam-Score: 5.4 (+++++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 1.0 HK_RANDOM_FROM         From username looks random
+ 0.6 HK_RANDOM_ENVFROM      Envelope sender username looks random
+ 1.3 RCVD_IN_RP_RNBL        RBL: Relay in RNBL,
+ https://senderscore.org/blacklistlookup/
+ [212.58.192.30 listed in bl.score.senderscore.com]
+ 0.0 RCVD_IN_MSPIKE_L3      RBL: Low reputation (-3)
+ [212.58.192.30 listed in bl.mailspike.net]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- 1.0 RDNS_NONE Delivered to internal network by a host with no rDNS
+ 0.0 RCVD_IN_MSPIKE_BL      Mailspike blacklisted
  2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
  0.0 T_FILL_THIS_FORM_SHORT Fill in a short form with personal information
-X-Headers-End: 1k7JQ4-009EYL-4O
+X-Headers-End: 1kAGTi-00HGSg-6L
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,15 +73,12 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-From: BOOM DE VENDAS via linux1394-devel
- <linux1394-devel@lists.sourceforge.net>
-Reply-To: contactarinteresse@gmail.com
-Cc: BOOM DE VENDAS <vxoaosucyh@mocaman.net>
+Reply-To: contactardados@gmail.com
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0036540367822044410=="
+Content-Type: multipart/mixed; boundary="===============8620880407372324905=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============0036540367822044410==
+--===============8620880407372324905==
 Content-Type: text/plain
 
 
@@ -164,14 +138,14 @@ Skype:
 corbettsoftware
 
 
---===============0036540367822044410==
+--===============8620880407372324905==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============0036540367822044410==
+--===============8620880407372324905==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -181,4 +155,4 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============0036540367822044410==--
+--===============8620880407372324905==--
