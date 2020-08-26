@@ -2,90 +2,70 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id A23BA25282E
-	for <lists+linux1394-devel@lfdr.de>; Wed, 26 Aug 2020 09:07:07 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 17791253433
+	for <lists+linux1394-devel@lfdr.de>; Wed, 26 Aug 2020 18:00:19 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1kApWM-0005MY-2Q; Wed, 26 Aug 2020 07:06:58 +0000
+	id 1kAxqM-0000Dy-9K; Wed, 26 Aug 2020 16:00:10 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from
- <bounces+4948103-df75-linux1394-devel=lists.sourceforge.net@sendgrid.net>)
- id 1kApWK-0005MN-BN
- for linux1394-devel@lists.sourceforge.net; Wed, 26 Aug 2020 07:06:56 +0000
+ (envelope-from <support@respector.by>) id 1kAxqI-0000Df-BI
+ for linux1394-devel@lists.sourceforge.net; Wed, 26 Aug 2020 16:00:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
+ :Message-ID:Reply-To:From:Date:Subject:To:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=31y0CLfGCgV1bX23Ut1l2E/ZDMW2+7SKKbokNPNwHrs=; b=aS/NMgW2q2OpON9YOXUCzIAt8m
- bGfz+TirMlxpSV3RlU35ptWHs5l5bGJqg7SDMH1Np5KiAjDPIj6me+eAc38P//S5GcwAEbXOdqFNp
- glJm7bjeNgQazwI6xkZste6tJVj0E61yTKl1IihcHr8HS7rMtH2PdWNgP7QGH6es+61o=;
+ bh=ID/UxVpaDLPOw3g2VV6igw5r+i1opNklAO+67Z4bZDM=; b=icftj5RycFnDfS/G7CK9zrGNXU
+ R6AK1wRzBcWB/5uyfUNOCqlWQ3gmO+u7DW42/wYufJ7AfzfLshvog2/KsvCKxVCEk82xexeZLPgxZ
+ V5xR+EbBLWOn/PMp7Fv2+U/HGCiLIfRUZZCkwNQt8ZDqcEp5WI1BL7tvnvswUBZ9t9Yw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
- Subject:To:From:Reply-To:Sender:Cc:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Reply-To:
+ From:Date:Subject:To:Sender:Cc:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=31y0CLfGCgV1bX23Ut1l2E/ZDMW2+7SKKbokNPNwHrs=; b=N
- kdCF7egDXBz/NfZ9WSkdHBvMtCFaNG3MBrthCC8MF50tB/npA6cc08yMhbJRyXU1dUrUwO5X6W7mZ
- GDCt4RQZNb1HwggO1Vsx0XnCETttA6QT4HmyAhZQ5kMSW2M8SKJzOcfWWPDXGezC/rSgke4iDV4Ak
- rEbylDftwug85svc=;
-Received: from wrqvpnpf.outbound-mail.sendgrid.net ([149.72.50.63])
- by sfi-mx-4.v28.lw.sourceforge.com with esmtps
+ List-Owner:List-Archive; bh=ID/UxVpaDLPOw3g2VV6igw5r+i1opNklAO+67Z4bZDM=; b=P
+ JM90uIpBLaFNnbZM2xGxgWKSHHkyghkLHobSGtct/DJLkO2XFHMd6rk4bUZLhLdEj0pUJCruQsLB2
+ 1nZVYLESLppVphGFJ6S0RWd1i7xhOG1Ivo+rYccTyUpkJzTDFtNvD/wKSkAoRSZbxUMN6sLLKqeJm
+ WA9HwZY4ypOiOWqw=;
+Received: from [185.179.83.124] (helo=www.respector.by)
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1kApWJ-006db7-65
- for linux1394-devel@lists.sourceforge.net; Wed, 26 Aug 2020 07:06:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.net; 
- h=reply-to:from:to:subject:mime-version:content-type:content-transfer-encoding;
- s=smtpapi; bh=31y0CLfGCgV1bX23Ut1l2E/ZDMW2+7SKKbokNPNwHrs=; b=fZ
- VJJGXd17W554dMiRUTFb1UW++HSCzqoDQT/AtLaDMRz1zfE7fUMmRniN03ljFw3p
- 6TbFgMNc18LWWM3ERVA4KFP2BwbxVM6VZHkeIRSosDvOmdZJsWcNujCCnlwp1SFO
- uNynFZ/XoFsv1LcfotGpmGkSD3n4ZvmwYMDG1/c54=
-Received: by filter2040p1mdw1.sendgrid.net with SMTP id
- filter2040p1mdw1-19302-5F460A09-B
- 2020-08-26 07:06:49.233029072 +0000 UTC m=+28211.366679815
-Received: from mail.com (unknown)
- by ismtpd0023p1las1.sendgrid.net (SG) with ESMTP id 7Y-WneJ7Sy6WFYY2FAyMVA
- for <linux1394-devel@lists.sourceforge.net>;
- Wed, 26 Aug 2020 07:06:49.036 +0000 (UTC)
-From: Richard Wahl<wahl-Richy@mail.com>
+ id 1kAxqE-004AXw-4q
+ for linux1394-devel@lists.sourceforge.net; Wed, 26 Aug 2020 16:00:05 +0000
+Received: from respector by www.respector.by with local (Exim 4.92)
+ (envelope-from <support@respector.by>) id 1kAuhO-0003Nl-Pp
+ for linux1394-devel@lists.sourceforge.net; Wed, 26 Aug 2020 15:38:42 +0300
 To: linux1394-devel@lists.sourceforge.net
-Subject: DONATION
-Date: Wed, 26 Aug 2020 07:06:49 +0000 (UTC)
-Message-ID: <20200826070648.8FAA9A10E5BF7965@mail.com>
+Subject: Auszeichnungen gewinnen
+X-PHP-Originating-Script: 507:oro.php
+Date: Wed, 26 Aug 2020 15:38:42 +0300
+From: El Gordo de la Primitiva Lotterien Spanien <support@respector.by>
+Message-ID: <b5913641fee7d95f57f4c445d80420c9@respector.by>
 MIME-Version: 1.0
-X-SG-EID: Pi9w8YTZchD2AGqRTKxcX/hvrtAIswiOm2Mb1qxwhorJ2gK7BB4dIUgR+dfk5XY8apYA+FBmKqV6Ps
- DvEjGaXLaA3vVjhh0qdk8gG+BmGt6VYi8e+lCp2AcZj7JZM0z92y+XmEhvgd7m3G7JgHdoGJNUWV38
- FERjbB85grSbLCyh2DxhYY3r0pYqEIxYGymSsDNoDmDoPiJ9EMh4D0CdXo4gtI02fqIiKGp6SoaIqp
- c=
-X-Spam-Score: 3.6 (+++)
+X-Spam-Score: 7.6 (+++++++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 1.2 RCVD_IN_BL_SPAMCOP_NET RBL: Received via a relay in bl.spamcop.net
- [Blocked - see <https://www.spamcop.net/bl.shtml?149.72.50.63>]
- 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (wahl-richy[at]mail.com)
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level mail
- domains are different
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: spainmail.com]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- 0.0 RCVD_IN_MSPIKE_L3      RBL: Low reputation (-3)
- [149.72.50.63 listed in bl.mailspike.net]
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and EnvelopeFrom
- freemail headers are different
- 0.0 UNPARSEABLE_RELAY Informational: message has unparseable relay lines
- 0.0 RCVD_IN_MSPIKE_BL      Mailspike blacklisted
+ 1.1 DATE_IN_PAST_03_06     Date: is 3 to 6 hours before Received: date
+ 1.0 RDNS_NONE Delivered to internal network by a host with no rDNS
+ 1.0 HK_LOTTO               No description available.
  0.0 LOTS_OF_MONEY          Huge... sums of money
- 2.7 FROM_MISSP_FREEMAIL    From misspaced + freemail provider
- -0.9 AWL AWL: Adjusted score from AWL reputation of From: address
-X-Headers-End: 1kApWJ-006db7-65
+ 2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
+ 0.0 T_FILL_THIS_FORM_SHORT Fill in a short form with personal information
+ 2.5 MONEY_FORM_SHORT       Lots of money if you fill out a short form
+ 0.0 T_FILL_THIS_FORM_FRAUD_PHISH Answer suspicious question(s)
+ -0.5 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1kAxqE-004AXw-4q
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,25 +78,98 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: adelenbreton@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: beratergabriel.sp@consultant.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hello linux1394-devel,
-
-you have a donation of $3,000,000.00 ( 3 million dollars).
-My name is Richard Wahl from the united states. I won the America 
-lottery worth $533 million and I am donating a portion of it to 
-just 10 lucky people and a few Orphanage homes as a memorandum of 
-goodwill to humanity. and also as a way of assistance over the 
-COVID 19 Pandemic.
-If you are a recipient of this mail linux1394-
-devel@lists.sourceforge.net  contact me on  
-adelenebreton@gmail.com for more details and claim. I may be very 
-busy but I will take out time to respond to you.
-
-
-_______________________________________________
-mailing list linux1394-devel@lists.sourceforge.net
-https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+RWwgR29yZG8gZGUgbGEgUHJpbWl0aXZhIExvdHRlcmllbiBTcGFuaWVuIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgCkFkcmVzc2U6IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgCkNhbGxlIGRlbCBQcsOtbmNp
+cGUgZGUgVmVyZ2FyYSwgMzgsIDI4MDAxIE1hZHJpZCBFc3Bhw7FhIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIApFIG1haWw6
+XWFuc3BydWNoZ2V3aW5uLm1tdC5lc0BzcGFpbm1haWwuY29tXQpLb250YWt0IGF1Zm5laG1lbiB1
+bnRlcjpdICAzNDYwMiA4MTAgMTg1IGZheCAgMzQ5MzU0NTc0OTBdCkFrdGVuemVpY2hlbjpdUDA5
+LzAxLzAyLzIwMjAuXQpMb3NudW1tZXI6XSBFU1AgNDQ0Ny8xMTQ2NDExODgwMjAxXQrCoERhdHVt
+OiAxOC8wOC8yMDIwCsKgCsKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgCkhhbGxvLCDCoCDCoCDCoCDCoCAK
+ICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICBPRkZJWklFTExFIE1JVFRFSUxVTkcsCsKg
+CkRpZXNlIEVsIEdvcmRvIGRlIGxhIFByaW1pdGl2YSBTb21tZXIgQm9uYW56YSDCoExvdHRlcmll
+IHd1cmRlIMKgIHVuZCBNaW5pc3RlcmlvIGRlIEluZHVzdHJpYSwgQ29tZXJjaW8geSBUdXJpc21v
+IMKgZ2VzcG9uc2VydCB1bSBUb3VyaXNtdXMgaW4gRXNwYcOxYSDCoHp1IGbDtnJkZXJuLgrCoApX
+aXIgc2luZCBlcmZyZXV0IElobmVuIG1pdCB6dSB0ZWlsZW4sIGRhc3MgZGllIEdld2lubmVyIGRl
+cyBTb25kZXIgU3BhbmlzaCBUb3VyaXNtdXMgUHJvbW90aW9uYWwgRHJhdyBiZWthbm50IGdlZ2Vi
+ZW4gd29yZGVuIHNpbmQuIERpZSBvZmZpemllbGxlIExpc3RlIGRlciBHZXdpbm5lciDCoGVyc2No
+aWVuIGFtIMKgU2Ftc3RhZyBkZXIgMjIvMDcvMjAyMC4gCsKgCklocmUgZW1haWwgYWRyZXNzZSDC
+oG1pdCBkZXIgYW5ow6RuZ2VuZGVuIExvc251bW1lcjogRVNQIDQ0NDcvMTE0NjQxMTg4MDIwMSDC
+oHVuZCBtaXQgZGVyIFNlcmllbm51bW1lcjogRVNQLzAxODgxMS0yMDIwIHpvZyBkaWUgR2zDvGNr
+c251bW1lcjogNi4xNi4xOC4zMy40Ny41MSBCb251OjI5LEVsIEdvcmRvIGRlIGxhIFByaW1pdGl2
+YSDCoExvdHRlcmllIMKgNiAvNDkgaW4gZGVyIDMuIEthdGVnb3JpZS4KwqAKU2llIHNpbmQgZGFt
+aXQgZ2V3aW5uZXIgdm9uOiDigqw5OTEsMDAwLjAwIEV1cm8uIERpZSBTdW1tZSBlcmdpYnQgc2lj
+aCBhdXMgZWluZXIgR2V3aW5uYXVzc2Now7x0dHVuZyB2b246IOKCrDY5MzcsMDAwLjAwIEV1cm8s
+IGRpZSBkdXJjaCBkaWUgZXJzdGVuIHNpZWJlbiAoNykgR2V3aW5uZXIgYXVzIGRlciBnbGVpY2hl
+biBLYXRlZ29yaWUgZ2V0ZWlsdCB3dXJkZS4gwqBEaXIgZ2V3aW5uIGlzdCBiZWkgZWluZXIgc2lj
+aGVyaGVpdHNmaXJtYSBoaW50ZXJsZWd0IHVuZCBpbiBpaHJlbiBuYW1lbi9lbWFpbCDCoHZlcnNp
+Y2hlcnQuIHVtIGtlaW5lIGtvbXBsaWthdGlvbmVuIGJlaSBkZXIgYWJ3aWNrbHVuZyBkZXIgemFo
+bHVuZyB6dSB2ZXJ1cnNhY2hlbiBiaXR0ZW4gd2lyIHNpZSBkaWVzZSBvZmZpemllbGxlIG1pdHRl
+aWx1bmcgLCBkaXNrcmV0IHp1IGJlaGFuZGVsbi4sZXMgaXN0IGVpbiB0ZWlsIHVuc2VyZXMgc2lj
+aGVyaGVpdHNwcm90b2tvbGxzIHVuZCBnYXJhbnRpZXJ0IGlobmVuIGVpbmVuIHJlaWJ1bmdzbG9z
+ZW4gQWJsYXVmLgrCoApBbGxlIGdld2lubmVyIHd1cmRlbiBwZXIgY29tcHV0ZXIgYXVzIFVybGF1
+YnNob3RlbHMsIEZsdWdnZXNlbGxzY2hhZnRlbiB1bmQgUmVpc2Viw7xyb3MgbWFpbGVuIERhdGVu
+IHZvbiBmw7xuZiBNaWxsaW9uZW4gKDUwMDAwMDApIEVtYWlsIGFkcmVzc2VuIGF1c2dld8OkaGx0
+LCBhbHMgdGVpbCB1bnNlcmVyIEludGVybmF0aW9uYWxlbiB0b3VyaXNtdXMgcHJvbW90aW9uIHBy
+b2dyYW1tcywgd2VsY2hlcyB3aXIgZWlubWFsIGltIGphaHIgdmVyYW5zdGFsdGVuIHVtIFRvdXJp
+c211cyBpbiBTcGFuaWVuIHp1IGbDtnJkZXJuLgrCoApCaXR0ZSBrb250YWt0aWVyZW4gc2llIHVu
+c2VyZW4gYXVzbGFuZHMgc2FjaGJlYXJiZWl0ZXIgSGVyciBHYWJyaWVsIMKgYmVpIGRlciBzaWNo
+ZXJoZWl0c2Zpcm1hIFNhbnRhbHVjaWEgU2ljaGVyaGVpdHNmaXJtYTpQZXIgRW1haWwgYW46YmVy
+YXRlcmdhYnJpZWwuc3BAY29uc3VsdGFudC5jb20gb2RlciBhbnJ1ZmVuOiAzNCA2MDIgODEwIDE4
+NSAmIEZheDogIDM0IDkzMSA3MCAyMTIwLCB1bSBJaHIgR2VsZCBzY2huZWxsIHp1IGJla29tbWVu
+LgrCoApEZW5rZW4gU2llIGRhcmFuLCBqZWRlciBnZXdpbm5hbnNwcnVjaCBtdXNzIGJpcyB6dW0g
+MjIvOS8yMDIwIEFuZ2VtZWxkZXRlIHNlaW4uIEplZGVyIG5pY2h0IGFuZ2VtZWxkZXQgR2V3aW5u
+YW5zcHJ1Y2ggdmVyZsOkbGx0IHVuZCBnZWh0IHp1cnVjayBhbiBkYXMgU3BhbmlzY2hlIFN0YWF0
+c2thc3NlLgrCoCAKV0lDSFRJRzogdW0gdmVyesO2Z2VydW5nZW4gdW5kIGtvbXBsaWthdGlvbmVu
+IHp1IHZlcm1laWRlbiwgYml0dGUgaW1tZXIgQWt0ZW56ZWljaGVuIGFuZ2ViZW4uIMKgQW5iZWkg
+ZWluIGFubWVsZGVmb3JtdWxhciwgYml0dGUgYXVzZsO8bGxlbiB1bmQgenVyw7xjayBQZXIgZW1h
+aWwgYW46YmVyYXRlcmdhYnJpZWwuc3BAY29uc3VsdGFudC5jb20gb2RlciBhbnJ1ZmVuOiAgMzQg
+NjAyIDgxMDE4NSAmIEZheDogIDM0IDkzMSA3MCAyMTIwIGRpZSBzaWNoZXJoZWl0c2Zpcm1hIFNh
+bnRhbHVjaWEgU2ljaGVyaGVpdHNmaXJtYS4KwqAKSEVSWkxJQ0hFTiBHTFVDS1dVTlNDSOKApiEK
+TWl0IGZyZXVuZGxpY2hlbiBHcsO8w59lbgpNQVJJQSBISURBTEdPClZJWkVQUsOEU0lERU5USU4K
+wqAKQsOcUk8sU0FOVEFMVUNJQSBTRUdVUk9TIFMuQSBFc3Bhw7FhIApQbGF6YSBFc3Bhw7FhLCAx
+NSAtIC0xNiDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoApNYWRyaWQs
+IDI4MDA4IEVzcGHDsWEKwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAK
+wqAKQU5NRUxERUZPUk1VTEFSIFpVUiBHRVdJTk5BTlNQUlVDSFMKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fIApCaXR0ZSBmw7xsbGVuIFNpZSBkYXMgRm9ybXVs
+YXIgc29yZ2bDpGx0aWcgYXVzIHVuZCBzZW5kZW4gZXMgcGVyIGUgbWFpbDpzYW50YWx1Y2lhLnNn
+LmVzQHNwYWlubWFpbC5jb20gYW4gZGVyIFNhbnRhbHVjaWEgU2ljaGVyaGVpdHNmaXJtYSBtaXQg
+S29waWUgSWhyZXMgUGVyc29uYWxhdXN3ZWlzZXMgb2RlciBSZWlzZXBhc3Nlcy4KwqAKR0VXSU5O
+QkVUUkFHOl9fX19fIEFLVEVOWkVJQ0hFTiBfX19fX19fX19fCk5BTUU6X19fX19fX19fX19fIFZP
+Uk5BTUU6X19fX19fX19fX19fX19fX18KR0VCVVJUU0RBVFVNOl9fX19fTkFUSU9OQUxJVEFUX19f
+X19fX19fX19fXwpMT1NOVU1NRVI6X19fX19fX19fX18gR0zDnENLU1pBSExFTiBfX19fX19fXwpT
+VFJBU1NFOl9fX19fX19fX19fX19fXyBOVU1NRVI6X19fX19fX19fX19fXwpXT0hOT1JUOl9fX19f
+IFBPU1RMRUlUWkFITF9fX19fTEFORCBfX19fX19fXwpEaXJla3RlciBLb250YWt0IEUtTWFpbF9f
+X19fX19fX19fX19fX19fX19fXwpURUxFRk9OOl9fX19fX19fX18gSEFORFk6X19fX19fX19fXyBG
+QVg6X19fX18KQkVSVUY6X19fX18gRkFNSUxJRU5TVEFORDpfX19fXyhHRVNDSExFQ0hUKV9fXyDC
+oCDCoArCoApXRUxDSEUgWkFITFVOR1NGT1JNIEJFVk9SWlVHRU4gU0lFPyDCoChBKSBCQU5Lw5xC
+RVJXRUlTVU5HOiDCoChCKSBCQVJTQ0hFQ0sgwqAKQkFOS0RBVEVOIFNJTkQgTlVSIE5PVFdFTkRJ
+RyBXRU5OIFNJRSBTSUNIIEbDnFIgRUlORSBCQU5Lw5xCRVJXRUlTVU5HIEVOVFNDSElFREVOIEhB
+QkVOLgrCoApOQU1FIERFUyBHRUxESU5TVElUVVRTOl9fX19fX19fX19fX19fCktPTlRPTlVNTUVS
+Ol9fX19fX19fX19fX19fX19fX19fX19fXyAKSUJBTjpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkJBTksgQUREUkVTUzpfX19fX19fX19fX19fX19fX19fX19fX18KCsKgCsKgIMKgICBF
+UktMw4RSVU5HIERFUyBCRUfDnE5TVElHVEVOCklDSCBfX19fX19fX19fX19fX19fX19fX19fX19f
+X19CRVNUw4RUSUdFIEhJRVJNSVQsIERBU1MgQUxMRSBJTkZPUk1BVElPTkVOLCBLT1JSRUtUIFNJ
+TkQsIFVORCBESUUgVkVSQU5TVEFMVEVSIERFUiBFbCBTUEFOSVNIIExPVFRFUlkgLyBTQU5UQUxV
+Q0lBIFNJQ0hFUkhFSVRTRklSTUEgTklDSFQgVkVSQU5UV09SVExJQ0ggR0VNQUNIVCBXRVJERU4s
+IFdFTk4gRVMgWlUgRUlORVIgVU5CRVJFQ0hUSUdURU4gWkFITFVORyBEVVJDSCBVTkdFTkFVRSBJ
+TkZPUk1BVElPTkVOLCBESUUgSUNIIElOIERJRVNFTSBGT1JNVUxBUiBBTkdFQkUgS09NTVQuREFT
+UyAxMCUgUFJPVklTSU9OIERFUiBTQU5UQSBMVUNJQSBTRUNVUklUWSBDT01QQU5ZIEdFSD9SRU4s
+IFNPQkFMRCBTSUUgSUhSRU4gR0VXSU5OIEZPTkRTIEVSSEFMVEVOLiBESUVTRSBaRUhOIFBST1pF
+TlQgV0VSREVOIElITkVOIFNPRk9SVCBaVVLDnENLR0VHRUJFTiwgU0lFIEVSSEFMVEVOIElIUkVO
+IEdFV0lOTiBBVUYgSUhSRU0gS09OVE8uIChBQ0hUVU5HIFdpciBiaXR0ZW4gU2llLCBhdWYgZGll
+c2UgRS1NYWlsLUFkcmVzc2UgenUgYW50d29ydGVuKHNhbnRhbHVjaWEuc2cuZXNAc3BhaW5tYWls
+LmNvbSkgQsOcUk8tS09OVE9JTkZPUk1BVElPTkVOLUlCQU4gRVMxNyAyMTAwIDU2MjQgMTEwMiAw
+MDExIDc3MTkgU1dJRlQgQ09ERTogQ0FJWEVTQkJYWFguIMKgS09OVE9OQU1FLExBIFBMQUNJVEEg
+REVMIE1JUkFET1IgUy5MIFNQQUlOLgpVcmhlYmVycmVjaHTCqSAyMDAyLTIwMjAgTXVsdGktU3Rh
+YXQgTG90dGVyaWUgVmVyYmFuZC4gQWxsZSBSZWNodGUKCgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KbWFpbGluZyBsaXN0IGxpbnV4MTM5NC1kZXZlbEBs
+aXN0cy5zb3VyY2Vmb3JnZS5uZXQKaHR0cHM6Ly9saXN0cy5zb3VyY2Vmb3JnZS5uZXQvbGlzdHMv
+bGlzdGluZm8vbGludXgxMzk0LWRldmVsCg==
