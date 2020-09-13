@@ -2,63 +2,93 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28000263F65
-	for <lists+linux1394-devel@lfdr.de>; Thu, 10 Sep 2020 10:10:23 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 56838268124
+	for <lists+linux1394-devel@lfdr.de>; Sun, 13 Sep 2020 22:19:57 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1kGHeb-0005jO-RX; Thu, 10 Sep 2020 08:10:01 +0000
+	id 1kHYTK-0005Q1-Qg; Sun, 13 Sep 2020 20:19:38 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <wiqfooj@smartfile.co.kr>) id 1kGHea-0005j4-Ph
- for linux1394-devel@lists.sourceforge.net; Thu, 10 Sep 2020 08:10:00 +0000
+ (envelope-from <support@gulsumkaymaz.com.tr>) id 1kHYTJ-0005Pk-Ju
+ for linux1394-devel@lists.sourceforge.net; Sun, 13 Sep 2020 20:19:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Date:Reply-To:To:Subject:From:Message-Id:Sender:Cc:
- MIME-Version:Content-Type:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
+ :Message-ID:Reply-To:From:Date:Subject:To:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=z9Bw4k1DAJBZgnlZe0FDTUzmi3RKzo8eeKl4eXZ+iRs=; b=HsTbey9bPCywPHwXmgAoxrgySI
- M4ow+pPpkAI4aH9DXBTgaxOO8rXVIzcrNldqSz2CqjuwyUW8TCfTDOKry1u3I2rH33ayrIWJ2KTNK
- JGTb31jourFdZMZA8XB1fT5xdW5gQk0K2xxGYgp7gMboR/DdE5/iTYIWW8yVvPT9umBk=;
+ bh=OxCVyWLXeHjXrD6pbTXx74+GEy5l9sivXf5lG5bkHfI=; b=KE1ENi+K695H1bmVI3iAHEyzIo
+ +l+cA7wCrZLqTFXz+sROewlCNdoURAcq27PxFuwWCiQVvRomN2RU0Uctnlfn9MSgsEailAdHVeFVq
+ aKebGa/iQVas75T5V5FMej9SFl0RM2+h0vHZKMDa/+bd7xO3F1NGE2PJpdVf7Ro5KwYY=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Date:Reply-To:To:Subject:From:Message-Id:Sender:Cc:MIME-Version:
- Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=z9Bw4k1DAJBZgnlZe0FDTUzmi3RKzo8eeKl4eXZ+iRs=; b=IxspCEtFaZxISfaPNuEt87Ze4z
- +EGSU4ahThjsDpLbRXPKc0NCjyXpUD7B6dRO80+P8jWh0Dp1MXVpJYxNIFreu6TD1WNVyxdD25PA5
- foFvpMbFj0wFmCJ2oYvf1BqsWL2dAIHrQdclW9DsY62nXh9WKgPnTPpcvSTESKprBuak=;
-Received: from mail.smartfile.co.kr ([211.56.156.157])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1kGHeK-001kzV-H6
- for linux1394-devel@lists.sourceforge.net; Thu, 10 Sep 2020 08:10:00 +0000
-Received: from mail.smartfile.co.kr (192-227-128-133-host.colocrossing.com
- [192.227.128.133] (may be forged))
- by mail.smartfile.co.kr (8.14.4/8.14.4) with ESMTP id 0899UqAo029682;
- Wed, 9 Sep 2020 18:30:53 +0900
-Message-Id: <202009090930.0899UqAo029682@mail.smartfile.co.kr>
-From: "BOOM DE VENDAS" <wiqfooj@smartfile.co.kr>
-Subject: Divulgue para =?ISO-8859-1?Q?at=E9?= 200 =?ISO-8859-1?Q?MILH=D5ES?=
- DE EMAILS - Boom de vendas
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Reply-To:
+ From:Date:Subject:To:Sender:Cc:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=OxCVyWLXeHjXrD6pbTXx74+GEy5l9sivXf5lG5bkHfI=; b=A
+ lt2WoxshU/KGLIBFSi2sXFssN15qeBvvOBuOdwfkVxngxZDthr0Mu7QmPH1sh2mkvdNWV6LEB9tog
+ G7C9mNVuKMBbDOp+IJoDSOS9psGT7Wod4XjUzvWaNoWAxgjl7iGR2wRg5PoSOJe34g9Af5qdMjNDL
+ oXKi7PJe5A1Ftj8A=;
+Received: from 195-154-167-57.rev.poneytelecom.eu ([195.154.167.57]
+ helo=iskasoft.local) by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
+ id 1kHYTH-0088hq-7P
+ for linux1394-devel@lists.sourceforge.net; Sun, 13 Sep 2020 20:19:37 +0000
+Received: from iskasoft.local (localhost.localdomain [127.0.0.1])
+ by iskasoft.local (Postfix) with ESMTP id 7A8E1CEC12FE
+ for <linux1394-devel@lists.sourceforge.net>;
+ Sun, 13 Sep 2020 23:01:43 +0300 (+03)
+Authentication-Results: iskasoft.local;
+ spf=pass (sender IP is 127.0.0.1) smtp.mailfrom=support@gulsumkaymaz.com.tr
+ smtp.helo=iskasoft.local
+Received-SPF: pass (iskasoft.local: localhost is always allowed.)
+ client-ip=127.0.0.1; envelope-from=support@gulsumkaymaz.com.tr;
+ helo=iskasoft.local; 
+X-Spam-Flag: NO
+X-Spam-Score: 6.415
+X-Spam-Level: ******
+X-Spam-Status: No, score=6.415 tagged_above=-9999 required=7
+ tests=[BAYES_50=0.8, FREEMAIL_FORGED_REPLYTO=2.095, HK_LOTTO=1,
+ LOTS_OF_MONEY=0.001, MONEY_FORM_SHORT=2.499, NO_RELAYS=-0.001,
+ T_FILL_THIS_FORM_FRAUD_PHISH=0.01, T_FILL_THIS_FORM_SHORT=0.01,
+ URIBL_BLOCKED=0.001] autolearn=no autolearn_force=no
+Received: from iskasoft.local ([127.0.0.1])
+ by iskasoft.local (iskasoft.local [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5enoDo1RRmLM
+ for <linux1394-devel@lists.sourceforge.net>;
+ Sun, 13 Sep 2020 23:01:42 +0300 (+03)
+Received: by iskasoft.local (Postfix, from userid 10005)
+ id 24019CEC1A7D; Sun, 13 Sep 2020 22:43:42 +0300 (+03)
 To: linux1394-devel@lists.sourceforge.net
-Date: Wed, 9 Sep 2020 11:30:54 +0200
-X-Spam-Score: 6.1 (++++++)
+Subject: Auszeichnungen gewinnen
+Date: Sun, 13 Sep 2020 19:43:42 +0000
+From: El Gordo de la Primitiva Lotterien Spanien <support@gulsumkaymaz.com.tr>
+Message-ID: <f2177347ff1bdc66698d0576fb505408@gulsumkaymaz.com.tr>
+MIME-Version: 1.0
+X-Spam-Score: 3.0 (+++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 1.2 RCVD_IN_BL_SPAMCOP_NET RBL: Received via a relay in bl.spamcop.net
- [Blocked - see <https://www.spamcop.net/bl.shtml?192.227.128.133>]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: spainmail.com]
+ 0.0 TVD_RCVD_IP            Message was received from an IP address
+ -1.5 SPF_CHECK_PASS         SPF reports sender host as permitted sender for
+ sender-domain
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 1.0 HK_LOTTO               No description available.
+ 1.0 RDNS_DYNAMIC           Delivered to internal network by host with
+ dynamic-looking rDNS
+ 0.0 LOTS_OF_MONEY          Huge... sums of money
  2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
- 2.3 MAY_BE_FORGED          Relay IP's reverse DNS does not resolve to IP
  0.0 T_FILL_THIS_FORM_SHORT Fill in a short form with personal information
- 0.0 TIME_LIMIT_EXCEEDED    Exceeded time limit / deadline
-X-Headers-End: 1kGHeK-001kzV-H6
+ 0.0 MONEY_FORM_SHORT       Lots of money if you fill out a short form
+ 0.0 T_FILL_THIS_FORM_FRAUD_PHISH Answer suspicious question(s)
+X-Headers-End: 1kHYTH-0088hq-7P
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,86 +101,98 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: contactardados@gmail.com
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============6463312910405691294=="
+Reply-To: santalucia.sg.es@spainmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============6463312910405691294==
-Content-Type: text/plain
-
-
-Divulgue para até 200 MILHÕES DE EMAILS COM PREÇO DE CUSTO! BOOM DE VENDAS imediato!
-
-FALE COM A GENTE no WhatsApp: 22-99788-1694
-
-Você pode divulgar para todo o Brasil, ou você pode escolher as regiões e áreas de interesse que você deseja priorizar.
-A maior divulgação de todo o Brasil, com acompanhamento ONLINE dos resultados em tempo real, com Painel Online Exclusivo !
-
-Veja os detalhes:
-
-- Nós fazemos todo o trabalho para você.
-- Nós enviamos seu anúncio para até 200 milhões de emails.
-- Você pode escolher as áreas de seu maior interesse para prioridade nos envios.
-- Você acompanha online o andamento de todos os envios.
-- Se você não tiver o texto do anúncio, faremos para você sem custo adicional.
-
-Para fazer a campanha BOOM de vendas, responda esse email com os dados abaixo:
-
-----------------------------------------------------
-Nome:
-Email:
-Telefone:
-WhatsApp:
-Opção desejada:
-
-(  ) R$ 199 - Divulgação para 1 MILHÂO DE EMAILS
-(  ) R$ 299 - Divulgação para 5 MILHÕES DE EMAILS
-(  ) R$ 399 - Divulgação para 25 MILHÕES DE EMAILS
-(  ) R$ 599 - Divulgação para 50 MILHÕES DE EMAILS
-(  ) R$ 999 - Divulgação para 100 MILHÕES DE EMAILS
-(  ) R$ 1500 - Divulgação para 200 MILHÕES DE EMAILS
------------------------------------------------------
-
-Ou fale com a gente. Seguem abaixo nossos contatos:
-
-Por WhatsApp:
-22-99788-1694
-
-Por Skype:
-corbettsoftware
-
-----------------------------------------------------------------------------------
-
-Abraços dos amigos da
-
-Divulgarantia
-
-C O R B E T T
- D E S D E 1 9 9 8
-
-WhatsApp:
-22-99788-1694
-
-Skype:
-corbettsoftware
-
-
---===============6463312910405691294==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============6463312910405691294==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-mailing list linux1394-devel@lists.sourceforge.net
-https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============6463312910405691294==--
+RWwgR29yZG8gZGUgbGEgUHJpbWl0aXZhIExvdHRlcmllbiBTcGFuaWVuIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgCkFkcmVzc2U6IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgCkNhbGxlIGRlbCBQcsOtbmNp
+cGUgZGUgVmVyZ2FyYSwgMzgsIDI4MDAxIE1hZHJpZCBFc3Bhw7FhIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIApFIG1haWw6
+XWFuc3BydWNoZ2V3aW5uLm1tdC5lc0BzcGFpbm1haWwuY29tXQpLb250YWt0IGF1Zm5laG1lbiB1
+bnRlcjpdICAzNDYwMiA4MTAgMTg1IGZheCAgMzQ5MzU0NTc0OTBdCkFrdGVuemVpY2hlbjpdUDA5
+LzAxLzAyLzIwMjAuXQpMb3NudW1tZXI6XSBFU1AgNDQ0Ny8xMTQ2NDExODgwMjAxXQrCoERhdHVt
+OiAxMC8wOS8yMDIwCsKgCsKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgCkhhbGxvLCDCoCDCoCDCoCDCoCAK
+ICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgIE9GRklaSUVMTEUg
+TUlUVEVJTFVORywKwqAKRGllc2UgRWwgR29yZG8gZGUgbGEgUHJpbWl0aXZhIFNvbW1lciBCb25h
+bnphIMKgTG90dGVyaWUgd3VyZGUgwqAgdW5kIE1pbmlzdGVyaW8gZGUgSW5kdXN0cmlhLCBDb21l
+cmNpbyB5IFR1cmlzbW8gwqBnZXNwb25zZXJ0IHVtIFRvdXJpc211cyBpbiBFc3Bhw7FhIMKgenUg
+ZsO2cmRlcm4uCsKgCldpciBzaW5kIGVyZnJldXQgSWhuZW4gbWl0IHp1IHRlaWxlbiwgZGFzcyBk
+aWUgR2V3aW5uZXIgZGVzIFNvbmRlciBTcGFuaXNoIFRvdXJpc211cyBQcm9tb3Rpb25hbCBEcmF3
+IGJla2FubnQgZ2VnZWJlbiB3b3JkZW4gc2luZC4gRGllIG9mZml6aWVsbGUgTGlzdGUgZGVyIEdl
+d2lubmVyIMKgZXJzY2hpZW4gYW0gwqBTYW1zdGFnIGRlciAyMi8wOC8yMDIwLiAKwqAKSWhyZSBl
+bWFpbCBhZHJlc3NlIMKgbWl0IGRlciBhbmjDpG5nZW5kZW4gTG9zbnVtbWVyOiBFU1AgNDQ0Ny8x
+MTQ2NDExODgwMjAxIMKgdW5kIG1pdCBkZXIgU2VyaWVubnVtbWVyOiBFU1AvMDE4ODExLTIwMjAg
+em9nIGRpZSBHbMO8Y2tzbnVtbWVyOiA2LjE2LjE4LjMzLjQ3LjUxIEJvbnU6MjksRWwgR29yZG8g
+ZGUgbGEgUHJpbWl0aXZhIMKgTG90dGVyaWUgwqA2IC80OSBpbiBkZXIgMy4gS2F0ZWdvcmllLgrC
+oApTaWUgc2luZCBkYW1pdCBnZXdpbm5lciB2b246IOKCrDk5MSwwMDAuMDAgRXVyby4gRGllIFN1
+bW1lIGVyZ2lidCBzaWNoIGF1cyBlaW5lciBHZXdpbm5hdXNzY2jDvHR0dW5nIHZvbjog4oKsNjkz
+NywwMDAuMDAgRXVybywgZGllIGR1cmNoIGRpZSBlcnN0ZW4gc2llYmVuICg3KSBHZXdpbm5lciBh
+dXMgZGVyIGdsZWljaGVuIEthdGVnb3JpZSBnZXRlaWx0IHd1cmRlLiDCoERpciBnZXdpbm4gaXN0
+IGJlaSBlaW5lciBzaWNoZXJoZWl0c2Zpcm1hIGhpbnRlcmxlZ3QgdW5kIGluIGlocmVuIG5hbWVu
+L2VtYWlsIMKgdmVyc2ljaGVydC4gdW0ga2VpbmUga29tcGxpa2F0aW9uZW4gYmVpIGRlciBhYndp
+Y2tsdW5nIGRlciB6YWhsdW5nIHp1IHZlcnVyc2FjaGVuIGJpdHRlbiB3aXIgc2llIGRpZXNlIG9m
+Zml6aWVsbGUgbWl0dGVpbHVuZyAsIGRpc2tyZXQgenUgYmVoYW5kZWxuLixlcyBpc3QgZWluIHRl
+aWwgdW5zZXJlcyBzaWNoZXJoZWl0c3Byb3Rva29sbHMgdW5kIGdhcmFudGllcnQgaWhuZW4gZWlu
+ZW4gcmVpYnVuZ3Nsb3NlbiBBYmxhdWYuCsKgCkFsbGUgZ2V3aW5uZXIgd3VyZGVuIHBlciBjb21w
+dXRlciBhdXMgVXJsYXVic2hvdGVscywgRmx1Z2dlc2VsbHNjaGFmdGVuIHVuZCBSZWlzZWLDvHJv
+cyBtYWlsZW4gRGF0ZW4gdm9uIGbDvG5mIE1pbGxpb25lbiAoNTAwMDAwMCkgRW1haWwgYWRyZXNz
+ZW4gYXVzZ2V3w6RobHQsIGFscyB0ZWlsIHVuc2VyZXIgSW50ZXJuYXRpb25hbGVuIHRvdXJpc211
+cyBwcm9tb3Rpb24gcHJvZ3JhbW1zLCB3ZWxjaGVzIHdpciBlaW5tYWwgaW0gamFociB2ZXJhbnN0
+YWx0ZW4gdW0gVG91cmlzbXVzIGluIFNwYW5pZW4genUgZsO2cmRlcm4uCsKgCkJpdHRlIGtvbnRh
+a3RpZXJlbiBzaWUgdW5zZXJlbiBhdXNsYW5kcyBzYWNoYmVhcmJlaXRlciBIZXJyIEdhYnJpZWwg
+wqBiZWkgZGVyIHNpY2hlcmhlaXRzZmlybWEgU2FudGFsdWNpYSBTaWNoZXJoZWl0c2Zpcm1hOlBl
+ciBFbWFpbCBhbjpiZXJhdGVyZ2FicmllbC5zcEBjb25zdWx0YW50LmNvbSBvZGVyIGFucnVmZW46
+IDM0IDYwMiA4MTAgMTg1ICYgRmF4OiAgMzQgOTMxIDcwIDIxMjAsIHVtIElociBHZWxkIHNjaG5l
+bGwgenUgYmVrb21tZW4uCsKgCkRlbmtlbiBTaWUgZGFyYW4sIGplZGVyIGdld2lubmFuc3BydWNo
+IG11c3MgYmlzIHp1bSAzMC85LzIwMjAgQW5nZW1lbGRldGUgc2Vpbi4gSmVkZXIgbmljaHQgYW5n
+ZW1lbGRldCBHZXdpbm5hbnNwcnVjaCB2ZXJmw6RsbHQgdW5kIGdlaHQgenVydWNrIGFuIGRhcyBT
+cGFuaXNjaGUgU3RhYXRza2Fzc2UuCsKgIApXSUNIVElHOiB1bSB2ZXJ6w7ZnZXJ1bmdlbiB1bmQg
+a29tcGxpa2F0aW9uZW4genUgdmVybWVpZGVuLCBiaXR0ZSBpbW1lciBBa3RlbnplaWNoZW4gYW5n
+ZWJlbi4gwqBBbmJlaSBlaW4gYW5tZWxkZWZvcm11bGFyLCBiaXR0ZSBhdXNmw7xsbGVuIHVuZCB6
+dXLDvGNrIFBlciBlbWFpbCBhbjpiZXJhdGVyZ2FicmllbC5zcEBjb25zdWx0YW50LmNvbSBvZGVy
+IGFucnVmZW46ICAzNCA2MDIgODEwMTg1ICYgRmF4OiAgMzQgOTMxIDcwIDIxMjAgZGllIHNpY2hl
+cmhlaXRzZmlybWEgU2FudGFsdWNpYSBTaWNoZXJoZWl0c2Zpcm1hLgrCoApIRVJaTElDSEVOIEdM
+VUNLV1VOU0NI4oCmIQpNaXQgZnJldW5kbGljaGVuIEdyw7zDn2VuCk1BUklBIEhJREFMR08KVkla
+RVBSw4RTSURFTlRJTgrCoApCw5xSTyxTQU5UQUxVQ0lBIFNFR1VST1MgUy5BIEVzcGHDsWEgClBs
+YXphIEVzcGHDsWEsIDE1IC0gLTE2IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgCk1hZHJpZCwgMjgwMDggRXNwYcOxYQrCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDC
+oCDCoCDCoCDCoCDCoArCoApBTk1FTERFRk9STVVMQVIgWlVSIEdFV0lOTkFOU1BSVUNIUwpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18gCkJpdHRlIGbDvGxsZW4g
+U2llIGRhcyBGb3JtdWxhciBzb3JnZsOkbHRpZyBhdXMgdW5kIHNlbmRlbiBlcyBwZXIgZSBtYWls
+OnNhbnRhbHVjaWEuc2cuZXNAc3BhaW5tYWlsLmNvbSBhbiBkZXIgU2FudGFsdWNpYSBTaWNoZXJo
+ZWl0c2Zpcm1hIG1pdCBLb3BpZSBJaHJlcyBQZXJzb25hbGF1c3dlaXNlcyBvZGVyIFJlaXNlcGFz
+c2VzLgrCoApHRVdJTk5CRVRSQUc6X19fX18gQUtURU5aRUlDSEVOIF9fX19fX19fX18KTkFNRTpf
+X19fX19fX19fX18gVk9STkFNRTpfX19fX19fX19fX19fX19fXwpHRUJVUlRTREFUVU06X19fX19O
+QVRJT05BTElUQVRfX19fX19fX19fX19fCkxPU05VTU1FUjpfX19fX19fX19fXyBHTMOcQ0tTWkFI
+TEVOIF9fX19fX19fClNUUkFTU0U6X19fX19fX19fX19fX19fIE5VTU1FUjpfX19fX19fX19fX19f
+CldPSE5PUlQ6X19fX18gUE9TVExFSVRaQUhMX19fX19MQU5EIF9fX19fX19fCkRpcmVrdGVyIEtv
+bnRha3QgRS1NYWlsX19fX19fX19fX19fX19fX19fX19fClRFTEVGT046X19fX19fX19fXyBIQU5E
+WTpfX19fX19fX19fIEZBWDpfX19fXwpCRVJVRjpfX19fXyBGQU1JTElFTlNUQU5EOl9fX19fKEdF
+U0NITEVDSFQpX19fIMKgIMKgCsKgCldFTENIRSBaQUhMVU5HU0ZPUk0gQkVWT1JaVUdFTiBTSUU/
+IMKgKEEpIEJBTkvDnEJFUldFSVNVTkc6IMKgKEIpIEJBUlNDSEVDSyDCoApCQU5LREFURU4gU0lO
+RCBOVVIgTk9UV0VORElHIFdFTk4gU0lFIFNJQ0ggRsOcUiBFSU5FIEJBTkvDnEJFUldFSVNVTkcg
+RU5UU0NISUVERU4gSEFCRU4uCsKgCk5BTUUgREVTIEdFTERJTlNUSVRVVFM6X19fX19fX19fX19f
+X18KS09OVE9OVU1NRVI6X19fX19fX19fX19fX19fX19fX19fX19fIApJQkFOOl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KQkFOSyBBRERSRVNTOl9fX19fX19fX19fX19fX19fX19fX19f
+XwoKwqAKwqAgwqAgIEVSS0zDhFJVTkcgREVTIEJFR8OcTlNUSUdURU4KSUNIIF9fX19fX19fX19f
+X19fX19fX19fX19fX19fX0JFU1TDhFRJR0UgSElFUk1JVCwgREFTUyBBTExFIElORk9STUFUSU9O
+RU4sIEtPUlJFS1QgU0lORCwgVU5EIERJRSBWRVJBTlNUQUxURVIgREVSIEVsIFNQQU5JU0ggTE9U
+VEVSWSAvIFNBTlRBTFVDSUEgU0lDSEVSSEVJVFNGSVJNQSBOSUNIVCBWRVJBTlRXT1JUTElDSCBH
+RU1BQ0hUIFdFUkRFTiwgV0VOTiBFUyBaVSBFSU5FUiBVTkJFUkVDSFRJR1RFTiBaQUhMVU5HIERV
+UkNIIFVOR0VOQVVFIElORk9STUFUSU9ORU4sIERJRSBJQ0ggSU4gRElFU0VNIEZPUk1VTEFSIEFO
+R0VCRSBLT01NVC5EQVNTIDEwJSBQUk9WSVNJT04gREVSIFNBTlRBIExVQ0lBIFNFQ1VSSVRZIENP
+TVBBTlkgR0VIP1JFTiwgU09CQUxEIFNJRSBJSFJFTiBHRVdJTk4gRk9ORFMgRVJIQUxURU4uIERJ
+RVNFIFpFSE4gUFJPWkVOVCBXRVJERU4gSUhORU4gU09GT1JUIFpVUsOcQ0tHRUdFQkVOLCBTSUUg
+RVJIQUxURU4gSUhSRU4gR0VXSU5OIEFVRiBJSFJFTSBLT05UTy4gKEFDSFRVTkcgV2lyIGJpdHRl
+biBTaWUsIGF1ZiBkaWVzZSBFLU1haWwtQWRyZXNzZSB6dSBhbnR3b3J0ZW4oc2FudGFsdWNpYS5z
+Zy5lc0BzcGFpbm1haWwuY29tKSBCw5xSTy1LT05UT0lORk9STUFUSU9ORU4tSUJBTiBFUzE3IDIx
+MDAgNTYyNCAxMTAyIDAwMTEgNzcxOSBTV0lGVCBDT0RFOiBDQUlYRVNCQlhYWC4gwqBLT05UT05B
+TUUsTEEgUExBQ0lUQSBERUwgTUlSQURPUiBTLkwgU1BBSU4uClVyaGViZXJyZWNodMKpIDIwMDIt
+MjAyMCBNdWx0aS1TdGFhdCBMb3R0ZXJpZSBWZXJiYW5kLiBBbGxlIFJlY2h0ZQoKCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwptYWlsaW5nIGxpc3QgbGlu
+dXgxMzk0LWRldmVsQGxpc3RzLnNvdXJjZWZvcmdlLm5ldApodHRwczovL2xpc3RzLnNvdXJjZWZv
+cmdlLm5ldC9saXN0cy9saXN0aW5mby9saW51eDEzOTQtZGV2ZWwK
