@@ -2,63 +2,61 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FE61291AB6
-	for <lists+linux1394-devel@lfdr.de>; Sun, 18 Oct 2020 21:26:58 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 346BA291AE9
+	for <lists+linux1394-devel@lfdr.de>; Sun, 18 Oct 2020 21:27:52 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1kUEKS-0004RA-Nj; Sun, 18 Oct 2020 19:26:52 +0000
+	id 1kUELK-0006Ki-CI; Sun, 18 Oct 2020 19:27:46 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <sashal@kernel.org>) id 1kUEKS-0004R0-8T
- for linux1394-devel@lists.sourceforge.net; Sun, 18 Oct 2020 19:26:52 +0000
+ (envelope-from <sashal@kernel.org>) id 1kUELI-0006Ka-IL
+ for linux1394-devel@lists.sourceforge.net; Sun, 18 Oct 2020 19:27:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
- In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=W6iXwKt5nur8ztl4pqpmYh5TnZKRXhp4cvCqsg/QSj4=; b=h9d8wPKlue69cUq2yP/ErDlhU7
- ztc10hJ7Zl5MbI4aSZ3MrnvVhP5zHM/auh1lI+rKUfSZ+ImL7+uMQnx7712Irka+o7lvOvs//sk3x
- 42ybutO8y7Klz4fGSVe7TZisHm8r3OQrHSTuSV6zhT+1LphdNZhsaZPz64ZT8jXPTcHE=;
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
- ;
- h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=W6iXwKt5nur8ztl4pqpmYh5TnZKRXhp4cvCqsg/QSj4=; b=U0Qk/tTwLFgXS53MSoLqs+kgr8
- 49Av+3uF1eEwGwtMo9fdw4zrolzVitUJiuqk8b/B/r5RxwpT7+4V/+icJnpD01TCfwVLgZORdF08f
- zjTOQlCJbQm8bS436wZtdSdZjK2VUmxR5dcXlLeIrBalooXNjmVyKSVHPdszI/rBBMVA=;
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=W6iXwKt5nur8ztl4pqpmYh5TnZKRXhp4cvCqsg/QSj4=; b=CpLmHdo3rfu7wA/wq2zlaa2pGQ
+ BuOBnVhG1gBbYActl3EYlnm3oNgMG5H5b/W/6oUxkMPSKFE00oIFBmw4xKauyZcuuh2/B95lUZpIC
+ bHWkhiI7KYYGp2ppydGxW2cpj/QthgK/Al48eeEEe6AQM+omBszbDgJ7WvnEB6HC6O9c=;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
+ ;
+ h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=W6iXwKt5nur8ztl4pqpmYh5TnZKRXhp4cvCqsg/QSj4=; b=L
+ kCxtRtZGxq/IQ6Qr9qkbssgQ+iwDql5bxz6jQorO91YA6+Ig8wC/ly2+WRtyzzys8+fywHf2lPlHh
+ fdXBZluBdb1+SJnou7BZUPpQCsgzDjVAJV1Ejg2lGne+upg42ZfFTLa8Wqnc56LaRGSkvONMh3Z7q
+ tb1cWfQMAKDUv0hg=;
 Received: from mail.kernel.org ([198.145.29.99])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1kUEKK-002tCd-EY
- for linux1394-devel@lists.sourceforge.net; Sun, 18 Oct 2020 19:26:52 +0000
+ id 1kUELG-002tOk-UJ
+ for linux1394-devel@lists.sourceforge.net; Sun, 18 Oct 2020 19:27:44 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1416A207DE;
- Sun, 18 Oct 2020 19:26:37 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6FD592226B;
+ Sun, 18 Oct 2020 19:27:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1603049199;
+ s=default; t=1603049250;
  bh=3BpnqO3HAOZZuIA352xBin6HwuuJeAgKkuyK8XOP52w=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=auvkWoWNHYIzNhRPg+cDjLUe+Pgn9ZtPaNNNd6+Ud/jlnbVCj7OUOicU9/gM9lzgG
- mZr4iHwh0qwLkVjC36aL8xMBHQmiK7IkId37xpxDI/SSET+fte8vTp2/9HLWjGvawp
- G2nKKspCQ6/tWEpy4nMqQl4BQsSsnN/LiZCLU6gU=
+ h=From:To:Cc:Subject:Date:From;
+ b=DoxjwVOHr1hRU60NNCCawHcp2Wpbf8PWiamkowQV5fu1YkQ7U9dJBSsB00Hw/dgg2
+ /k0lB+F1iS0ErMgtxFX4TF4AgfFrBZzy9sSqmebNG0hb63LH0dmQ0tKRQ0Ian9FLzm
+ j71QxnWyFceq1TEZH1Ai0DHiFKSC6qhsrcR24AqE=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.9 02/41] media: firewire: fix memory leak
-Date: Sun, 18 Oct 2020 15:25:56 -0400
-Message-Id: <20201018192635.4056198-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.4 01/33] media: firewire: fix memory leak
+Date: Sun, 18 Oct 2020 15:26:56 -0400
+Message-Id: <20201018192728.4056577-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201018192635.4056198-1-sashal@kernel.org>
-References: <20201018192635.4056198-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -68,7 +66,7 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: denx.de]
+ for more information. [URIs: xs4all.nl]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
@@ -77,7 +75,7 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
-X-Headers-End: 1kUEKK-002tCd-EY
+X-Headers-End: 1kUELG-002tOk-UJ
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
