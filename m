@@ -2,26 +2,26 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id E6E34291AA4
-	for <lists+linux1394-devel@lfdr.de>; Sun, 18 Oct 2020 21:25:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7FE61291AB6
+	for <lists+linux1394-devel@lfdr.de>; Sun, 18 Oct 2020 21:26:58 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1kUEJK-0004IS-JX; Sun, 18 Oct 2020 19:25:42 +0000
+	id 1kUEKS-0004RA-Nj; Sun, 18 Oct 2020 19:26:52 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <sashal@kernel.org>) id 1kUEJJ-0004IC-4V
- for linux1394-devel@lists.sourceforge.net; Sun, 18 Oct 2020 19:25:41 +0000
+ (envelope-from <sashal@kernel.org>) id 1kUEKS-0004R0-8T
+ for linux1394-devel@lists.sourceforge.net; Sun, 18 Oct 2020 19:26:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=W6iXwKt5nur8ztl4pqpmYh5TnZKRXhp4cvCqsg/QSj4=; b=hvaygJSwUgCzHxbwsa8dOIphjf
- yokGTZCmuo4DaMTKORDYOgauBrDc9Hn3DGzIQC3ONhjgINtNCjnJIRlWrh7hySrLuzpwog3Uy6nN7
- F8vfaN3sOw3fZdOpmq927KmqicxGqSngDWf1nM0GvyVSUWGS+P6yznDbKAE1IQFOMaLs=;
+ bh=W6iXwKt5nur8ztl4pqpmYh5TnZKRXhp4cvCqsg/QSj4=; b=h9d8wPKlue69cUq2yP/ErDlhU7
+ ztc10hJ7Zl5MbI4aSZ3MrnvVhP5zHM/auh1lI+rKUfSZ+ImL7+uMQnx7712Irka+o7lvOvs//sk3x
+ 42ybutO8y7Klz4fGSVe7TZisHm8r3OQrHSTuSV6zhT+1LphdNZhsaZPz64ZT8jXPTcHE=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
@@ -29,36 +29,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=W6iXwKt5nur8ztl4pqpmYh5TnZKRXhp4cvCqsg/QSj4=; b=NZhNSFGWFlFyo5xeWcFHvPh8Za
- ofCeTAELL5MOZStsYR2a4PZDzgqu3eHrrteyci1aaPI0DO51gPbyC/jw6QYVIB7oYs2QiQN9XKlV5
- AlCo21F6XDo3mS+HLDRaAM6wmWJA1ljpt9vAeighyTaunQ6ziFEfa0MKuauoXv7UyCic=;
+ bh=W6iXwKt5nur8ztl4pqpmYh5TnZKRXhp4cvCqsg/QSj4=; b=U0Qk/tTwLFgXS53MSoLqs+kgr8
+ 49Av+3uF1eEwGwtMo9fdw4zrolzVitUJiuqk8b/B/r5RxwpT7+4V/+icJnpD01TCfwVLgZORdF08f
+ zjTOQlCJbQm8bS436wZtdSdZjK2VUmxR5dcXlLeIrBalooXNjmVyKSVHPdszI/rBBMVA=;
 Received: from mail.kernel.org ([198.145.29.99])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1kUEJG-002tA6-Kx
- for linux1394-devel@lists.sourceforge.net; Sun, 18 Oct 2020 19:25:41 +0000
+ id 1kUEKK-002tCd-EY
+ for linux1394-devel@lists.sourceforge.net; Sun, 18 Oct 2020 19:26:52 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 471D2222C8;
- Sun, 18 Oct 2020 19:25:32 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1416A207DE;
+ Sun, 18 Oct 2020 19:26:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1603049133;
+ s=default; t=1603049199;
  bh=3BpnqO3HAOZZuIA352xBin6HwuuJeAgKkuyK8XOP52w=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=WDDdTqnDr2WFmWpWB/eZSOMgMMd0Hr959e028NRFZzteISHuaFdTHeL7vUJzHc/cL
- 4hEhY4eOYeUd/fGTXtghFUrIoqGvB7YaH1YISvW3cYqGoGHgdMwcisphBtR5DffUWs
- 6WylEkgAPtFlGBKUAOfOTmUum7Qzz4bGbnz/TVGU=
+ b=auvkWoWNHYIzNhRPg+cDjLUe+Pgn9ZtPaNNNd6+Ud/jlnbVCj7OUOicU9/gM9lzgG
+ mZr4iHwh0qwLkVjC36aL8xMBHQmiK7IkId37xpxDI/SSET+fte8vTp2/9HLWjGvawp
+ G2nKKspCQ6/tWEpy4nMqQl4BQsSsnN/LiZCLU6gU=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 02/52] media: firewire: fix memory leak
-Date: Sun, 18 Oct 2020 15:24:39 -0400
-Message-Id: <20201018192530.4055730-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.9 02/41] media: firewire: fix memory leak
+Date: Sun, 18 Oct 2020 15:25:56 -0400
+Message-Id: <20201018192635.4056198-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201018192530.4055730-1-sashal@kernel.org>
-References: <20201018192530.4055730-1-sashal@kernel.org>
+In-Reply-To: <20201018192635.4056198-1-sashal@kernel.org>
+References: <20201018192635.4056198-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -77,7 +77,7 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
-X-Headers-End: 1kUEJG-002tA6-Kx
+X-Headers-End: 1kUEKK-002tCd-EY
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
