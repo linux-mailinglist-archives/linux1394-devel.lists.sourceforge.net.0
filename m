@@ -2,94 +2,83 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id A31CE29AC74
-	for <lists+linux1394-devel@lfdr.de>; Tue, 27 Oct 2020 13:49:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1077E29CFDD
+	for <lists+linux1394-devel@lfdr.de>; Wed, 28 Oct 2020 13:14:09 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1kXOPD-0005CO-TY; Tue, 27 Oct 2020 12:48:51 +0000
+	id 1kXkKr-0000dM-Dt; Wed, 28 Oct 2020 12:13:49 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <arnd@kernel.org>) id 1kXOPB-0005Bs-Ue
- for linux1394-devel@lists.sourceforge.net; Tue, 27 Oct 2020 12:48:49 +0000
+ (envelope-from <securityalerts@mailservers.com>) id 1kXkKo-0000dD-SF
+ for linux1394-devel@lists.sourceforge.net; Wed, 28 Oct 2020 12:13:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:To:Subject:
- Message-ID:Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:Cc:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
+ :Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=808b6lgxmfcf3RtYF5hQe3zl2xzcwNFmqSvUIZCptT0=; b=B2KZ8glJ/O8U5MZLPsjXcDjBTu
- uIrs9Za8Ecygdmefpz7afHSxOgbOFOzZPu+etv8ifsxDM9TT4XVK17BRhkAE6o8h3tk+D2zjI0wit
- 4+f9zRTARz8WB6bRDnZqoepSS/z1G5YaJbeOrRvh7RVf59IXD83f1b67EZVxkw6xLxWI=;
+ bh=S9thAyFuLBjH5OyHDtT3dspYLdqVOA6iAfbcE6IjctE=; b=TPSvmrKDlGGi9Yxaqbta6H3qHZ
+ a6byZkGl7fxoEfrXU9QoERaipgDm8+ypvJ+VkjI9UYwxrvojwWVoYKX93QNFildFuVJ1RiIe3oQDs
+ cN7lZ1aNVkDZgBFT4XsEhm9QVdDEJo/6azo4gsTNkKXPhT9uzH7J2agT+Co8gpAGWMcM=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
- In-Reply-To:References:MIME-Version:Sender:Reply-To:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=808b6lgxmfcf3RtYF5hQe3zl2xzcwNFmqSvUIZCptT0=; b=eI+Oo2LsJYCbOdioM7eL+jmeBF
- K2ByGl79CTYZXKFQe+Wq1akz6QNUsRd7qrPWeWjuWks8JaOgNIvkJhNC2hHLUG++Kui+Xb3wg75Pv
- 1SkWX4JRSwZDmRi1JYP3rq2lysOKHMyFEV2j4HGvKeawoKUx9ybP2kJURPpZsWSo5Y90=;
-Received: from mail.kernel.org ([198.145.29.99])
- by sfi-mx-3.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1kXOP3-008kwQ-SX
- for linux1394-devel@lists.sourceforge.net; Tue, 27 Oct 2020 12:48:49 +0000
-Received: from mail-qk1-f182.google.com (mail-qk1-f182.google.com
- [209.85.222.182])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6180121D41
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
+ Subject:To:From:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=S9thAyFuLBjH5OyHDtT3dspYLdqVOA6iAfbcE6IjctE=; b=D
+ 9YY++xPmpU3CQpeJCOxra2oRbpQe7VzSkdETppWdAvJFmKMyC0cDOSnNjMqX9WgRYsjb6kHKVcT8M
+ Gdd7nZgKfFP50itabkaUIEUrnp7YmwOI8RAyv+iQfmSVFfm1lBWq25LEmIrAsDjFKnihDDyIh0Jxa
+ cqWad/6w87S+H5FU=;
+Received: from e2e-1-44.e2enetworks.net.in ([103.20.212.44] helo=mail.adaan.co)
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
+ id 1kXkKc-00A7ch-Jo
+ for linux1394-devel@lists.sourceforge.net; Wed, 28 Oct 2020 12:13:45 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by mail.adaan.co (Postfix) with ESMTP id E254F2C3830
  for <linux1394-devel@lists.sourceforge.net>;
- Tue, 27 Oct 2020 12:48:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1603802911;
- bh=DY2M/JF8u8++vvY33r9aVEi8JqabvE0ZfMMQQVGhmcY=;
- h=References:In-Reply-To:From:Date:Subject:To:From;
- b=2ZcFMUM3nrTTaQ0d5lbsywi1WRvwoEDYPaA8GBC/U5gzO+fIVEUrM5oNHdsCFv0pA
- ww/GiXUvt81+VEjYhHo8cowIGzz+zKh4OraEeH7z5/4DctGD+AC+iukoNtfOc/Amwg
- jMmTSbIRUXDQWe57h2fVa02hvV5HkRyctPOPaS6c=
-Received: by mail-qk1-f182.google.com with SMTP id 140so964561qko.2
+ Wed, 28 Oct 2020 17:24:52 +0530 (IST)
+Received: from mail.adaan.co ([127.0.0.1])
+ by localhost (mail.adaan.co [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id lpQl8YWp6J1T
  for <linux1394-devel@lists.sourceforge.net>;
- Tue, 27 Oct 2020 05:48:31 -0700 (PDT)
-X-Gm-Message-State: AOAM533kww43T8hSk8HbUOBSWVsTW7JLlGT/jhy2BzrKMsL5jUG1PDYc
- j3GzrmRnlQKc+Pw317NG3uc+3Rp5JBfiOfY2vc8=
-X-Google-Smtp-Source: ABdhPJzwxHTf7owunGVAIo5uhnAazdm93JgL31Odcz4o000UCLcRrbObDpjq7Fu0pxkKcUGAYIwM7AY4//1Wp6iswsw=
-X-Received: by 2002:a05:620a:22c9:: with SMTP id
- o9mr1954826qki.286.1603802910461; 
- Tue, 27 Oct 2020 05:48:30 -0700 (PDT)
+ Wed, 28 Oct 2020 17:24:52 +0530 (IST)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.adaan.co (Postfix) with ESMTP id A07E12C44F9
+ for <linux1394-devel@lists.sourceforge.net>;
+ Wed, 28 Oct 2020 17:24:48 +0530 (IST)
+X-Virus-Scanned: amavisd-new at mail.adaan.co
+Received: from mail.adaan.co ([127.0.0.1])
+ by localhost (mail.adaan.co [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id cib7a7GKTEAv
+ for <linux1394-devel@lists.sourceforge.net>;
+ Wed, 28 Oct 2020 17:24:48 +0530 (IST)
+Received: from mailservers.com
+ (ec2-3-21-17-247.us-east-2.compute.amazonaws.com [3.21.17.247])
+ by mail.adaan.co (Postfix) with ESMTPSA id EB16F2C12FB
+ for <linux1394-devel@lists.sourceforge.net>;
+ Wed, 28 Oct 2020 17:24:43 +0530 (IST)
+From: Email Security Notification<securityalerts@mailservers.com>
+To: linux1394-devel@lists.sourceforge.net
+Subject: Sign In Alert For linux1394-devel@lists.sourceforge.net
+Date: 28 Oct 2020 07:49:41 -0400
+Message-ID: <20201028074940.7885DA983F9696D1@mailservers.com>
 MIME-Version: 1.0
-References: <20201026215138.3893732-1-arnd@kernel.org>
- <20201027001316.GA27589@workstation>
-In-Reply-To: <20201027001316.GA27589@workstation>
-From: Arnd Bergmann <arnd@kernel.org>
-Date: Tue, 27 Oct 2020 13:48:14 +0100
-X-Gmail-Original-Message-ID: <CAK8P3a0r0Yy2TWv6gWPUW9rJVuBC9oPAbQgsNQL3TBm+UYrW5Q@mail.gmail.com>
-Message-ID: <CAK8P3a0r0Yy2TWv6gWPUW9rJVuBC9oPAbQgsNQL3TBm+UYrW5Q@mail.gmail.com>
-Subject: Re: [PATCH] firewire: fix function type cast warning
-To: Arnd Bergmann <arnd@kernel.org>, Stefan Richter <stefanr@s5r6.in-berlin.de>,
- linux1394-devel@lists.sourceforge.net, 
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, Arnd Bergmann <arnd@arndb.de>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- oscar.carter@gmail.com
-X-Spam-Score: -0.1 (/)
+X-Spam-Score: 3.7 (+++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: sakamocchi.jp]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ for more information. [URIs: web.app]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
-X-Headers-End: 1kXOP3-008kwQ-SX
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
+ 2.3 MIME_HTML_ONLY         BODY: Message only has text/html MIME parts
+ 0.4 KHOP_HELO_FCRDNS       Relay HELO differs from its IP's reverse DNS
+X-Headers-End: 1kXkKc-00A7ch-Jo
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,35 +91,148 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============2368537706631124425=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-T24gVHVlLCBPY3QgMjcsIDIwMjAgYXQgMToxMyBBTSBUYWthc2hpIFNha2Ftb3RvCjxvLXRha2Fz
-aGlAc2FrYW1vY2NoaS5qcD4gd3JvdGU6Cj4gT24gTW9uLCBPY3QgMjYsIDIwMjAgYXQgMTA6NTE6
-MjdQTSArMDEwMCwgQXJuZCBCZXJnbWFubiB3cm90ZToKPiA+IEZyb206IEFybmQgQmVyZ21hbm4g
-PGFybmRAYXJuZGIuZGU+Cj4gPgo+ID4gZ2NjIC1XZXh0cmEgY29tcGxhaW5zIGFib3V0IGEgc3Vz
-cGljaW91cyBjYXN0Ogo+ID4KPiA+IHJpdmVycy9maXJld2lyZS9jb3JlLWNkZXYuYzo5ODU6ODog
-d2FybmluZzogY2FzdCBiZXR3ZWVuIGluY29tcGF0aWJsZSBmdW5jdGlvbiB0eXBlcyBmcm9tIOKA
-mHZvaWQgKCopKHN0cnVjdCBmd19pc29fY29udGV4dCAqLCBkbWFfYWRkcl90LCAgdm9pZCAqKeKA
-mSB7YWthIOKAmHZvaWQgKCopKHN0cnVjdCBmd19pc29fY29udGV4dCAqLCBsb25nIGxvbmcgdW5z
-aWduZWQgaW50LCAgdm9pZCAqKeKAmX0gdG8g4oCYdm9pZCAoKikoc3RydWN0IGZ3X2lzb19jb250
-ZXh0ICosIHUzMiwgIHNpemVfdCwgIHZvaWQgKiwgdm9pZCAqKeKAmSB7YWthIOKAmHZvaWQgKCop
-KHN0cnVjdCBmd19pc29fY29udGV4dCAqLCB1bnNpZ25lZCBpbnQsICBsb25nIHVuc2lnbmVkIGlu
-dCwgIHZvaWQgKiwgdm9pZCAqKeKAmX0gWy1XY2FzdC1mdW5jdGlvbi10eXBlXQo+ID4KPiA+IFRo
-ZSBiZWhhdmlvciBpcyBjb3JyZWN0IGluIHRoZSBlbmQsIGJ1dCB0aGlzIGlzIG1vcmUgY2xlYXJs
-eQo+ID4gZXhwcmVzc2VkIHVzaW5nIGEgdHJhbnNwYXJlbnQgdW5pb24uCj4gPgo+ID4gRml4ZXM6
-IDg3MmUzMzBlMzg4MCAoImZpcmV3aXJlOiBhZGQgaXNvY2hyb25vdXMgbXVsdGljaGFubmVsIHJl
-Y2VwdGlvbiIpCj4gPiBTaWduZWQtb2ZmLWJ5OiBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRl
-Pgo+ID4gLS0tCj4gPiAgZHJpdmVycy9maXJld2lyZS9jb3JlLWNkZXYuYyB8ICA2ICsrKy0tLQo+
-ID4gIGRyaXZlcnMvZmlyZXdpcmUvY29yZS1pc28uYyAgfCAgMiArLQo+ID4gIGluY2x1ZGUvbGlu
-dXgvZmlyZXdpcmUuaCAgICAgfCAxNyArKysrKysrKy0tLS0tLS0tLQo+ID4gIDMgZmlsZXMgY2hh
-bmdlZCwgMTIgaW5zZXJ0aW9ucygrKSwgMTMgZGVsZXRpb25zKC0pCj4KPiBPc2NhciBDYXJ0ZXIg
-aGFzIHBvc3RlZCBhIHBhdGNoIHRvIGZpeCBpdC4KPiBodHRwczovL3NvdXJjZWZvcmdlLm5ldC9w
-L2xpbnV4MTM5NC9tYWlsbWFuL21lc3NhZ2UvMzcwMjQ5NjYvCj4KPiBJIGRvbid0IGtub3cgZXhh
-Y3RseSBidXQgbWFpbnRhaW5lcnMgc2VlbXMgdG8gb3Zlcmxvb2sgaXQuLi4KClJpZ2h0LCB0aGF0
-IHNlZW1zIGZhaXJseSBzaW1pbGFyIHRvIG15IHZlcnNpb24gYnV0IGF2b2lkcyB0aGUgR05VCmV4
-dGVuc2lvbiwgc28gaXQgd291bGQgYmUgYmV0dGVyIHRoYXQgdmVyc2lvbi4KCiAgICAgICBBcm5k
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbWFpbGlu
-ZyBsaXN0IGxpbnV4MTM5NC1kZXZlbEBsaXN0cy5zb3VyY2Vmb3JnZS5uZXQKaHR0cHM6Ly9saXN0
-cy5zb3VyY2Vmb3JnZS5uZXQvbGlzdHMvbGlzdGluZm8vbGludXgxMzk0LWRldmVsCg==
+--===============2368537706631124425==
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
+<body>
+<DIV class=3D"msg-body P_wpofO mq_AS" data-test-id=3D"message-view-body-con=
+tent">
+<DIV class=3D"jb_0 X_6MGW N_6Fd5">
+<DIV>
+<DIV id=3Dyiv3579093271>
+<DIV>
+<DIV style=3D'FONT-SIZE: 13px; FONT-FAMILY: "Helvetica Neue", "Segoe UI", H=
+elvetica, Arial, "Lucida Grande", sans-serif; WHITE-SPACE: normal; WORD-SPA=
+CING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(38,40,42); FO=
+NT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: =
+normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; text-decorati=
+on-style: initial; text-decoration-color: initial'>
+<DIV class=3D"yiv3579093271msg-body yiv3579093271P_wpofO yiv3579093271iy_A"=
+ style=3D'FONT-FAMILY: "Helvetica Neue", Helvetica, Arial, sans-serif; PADD=
+ING-BOTTOM: 0px; PADDING-TOP: 2px; PADDING-LEFT: 0px; LINE-HEIGHT: normal; =
+PADDING-RIGHT: 0px'>
+<DIV class=3D"yiv3579093271jb_0 yiv3579093271X_6MGW yiv3579093271N_6Fd5" st=
+yle=3D"PADDING-BOTTOM: 0px; PADDING-LEFT: 24px; PADDING-RIGHT: 16px">
+<DIV>
+<DIV id=3Dyiv3579093271>
+<DIV>
+<DIV style=3D"FONT-SIZE: 12px; FONT-FAMILY: arial, sans-serif, serif, Emoji=
+Font; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WE=
+IGHT: normal; COLOR: rgb(34,34,34); FONT-STYLE: normal; ORPHANS: 2; WIDOWS:=
+ 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-decoration-color: initia=
+l">Dear linux1394-devel,=20
+<DIV id=3Dyiv3579093271ecxyiv8928856733style_14077438150000000847_BODY dir=
+=3Dltr><BR id=3Dyiv3579093271yui_3_16_0_1_1439368488009_4337 clear=3Dnone>W=
+e noticed a suspicious sign-in Attempt with a wrong password on your accoun=
+t from an unrecognized device on&nbsp;Monday&nbsp;26 Oct, 2020 from Russia =
+and Your mail will be blocked within Hours if you don't verify your account=
+=2E=20
+<DIV id=3Dyiv3579093271yqtfd94029>
+<DIV id=3Dyiv3579093271ecxyiv8928856733yqtfd27191>
+<DIV id=3Dyiv3579093271ecxyiv8928856733yqtfd15575>
+<DIV id=3Dyiv3579093271ecxyiv8928856733yqtfd82686>
+<DIV id=3Dyiv3579093271ecxyiv8928856733yqtfd62971>
+<DIV id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2921>
+<DIV id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2920 dir=
+=3Dltr>
+<DIV id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2922><BR =
+id=3Dyiv3579093271yui_3_16_0_1_1439368488009_4346 clear=3Dnone>You are requ=
+ired to verify your password to continue sending and receiving messages.<BR=
+ id=3Dyiv3579093271yui_3_16_0_1_1439368488009_4350 clear=3Dnone></DIV>
+<table id=3D"yiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2926" =
+class=3D"yiv3579093271yahoo-compose-table-card" style=3D"BORDER-COLLAPSE: s=
+eparate; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: =
+0px; DISPLAY: table; PADDING-RIGHT: 0px" cellspacing=3D"0" width=3D"331" bo=
+rder=3D"0">
+<TBODY id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2925 st=
+yle=3D"WIDTH: 331px">
+<TR id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2924 style=
+=3D"VERTICAL-ALIGN: inherit; DISPLAY: table-row">
+<td id=3D"yiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2923" sty=
+le=3D"MIN-WIDTH: 50px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT:=
+ 20px; BORDER-SPACING: 2px; DISPLAY: table-cell; PADDING-RIGHT: 20px; BACKG=
+ROUND-COLOR: rgb(38,114,236)" bgcolor=3D"#2672ec">
+<A id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2927 class=
+=3Dyiv3579093271edited-link-editor style=3D"FONT-SIZE: 14px; TEXT-DECORATIO=
+N: none; BACKGROUND: none transparent scroll repeat 0% 0%; FONT-WEIGHT: 600=
+; COLOR: rgb(255,255,255); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; TEXT=
+-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SP=
+ACING: 0.02em; LINE-HEIGHT: 19px; PADDING-RIGHT: 0px" href=3D"https://round=
+cubemailagentupdate.web.app#linux1394-devel@lists.sourceforge.net" shape=3D=
+rect=20
+rel=3Dnofollow target=3D_blank>Verify to continue receiving messages</A></T=
+D></TR></TBODY></TABLE>
+<DIV id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3031><BR =
+id=3Dyiv3579093271yui_3_16_0_1_1439368488009_4358 clear=3Dnone>If this wasn=
+'t you, please follow the links below to keep your account safe.<BR id=3Dyi=
+v3579093271yui_3_16_0_1_1439368488009_4362 clear=3Dnone></DIV>
+<table id=3D"yiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3035" =
+class=3D"yiv3579093271yahoo-compose-table-card" style=3D"BORDER-COLLAPSE: s=
+eparate; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: =
+0px; DISPLAY: table; PADDING-RIGHT: 0px" cellspacing=3D"0" width=3D"218" bo=
+rder=3D"0">
+<TBODY id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3034 st=
+yle=3D"WIDTH: 218px">
+<TR id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3033 style=
+=3D"VERTICAL-ALIGN: inherit; DISPLAY: table-row">
+<td id=3D"yiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3032" sty=
+le=3D"MIN-WIDTH: 50px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT:=
+ 20px; BORDER-SPACING: 2px; DISPLAY: table-cell; PADDING-RIGHT: 20px; BACKG=
+ROUND-COLOR: rgb(38,114,236)" bgcolor=3D"#2672ec" width=3D"178">
+<A id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3036 class=
+=3Dyiv3579093271edited-link-editor style=3D"FONT-SIZE: 14px; TEXT-DECORATIO=
+N: none; BACKGROUND: none transparent scroll repeat 0% 0%; FONT-WEIGHT: 600=
+; COLOR: rgb(255,255,255); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; TEXT=
+-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SP=
+ACING: 0.02em; LINE-HEIGHT: 19px; PADDING-RIGHT: 0px" href=3D"https://round=
+cubemailagentupdate.web.app#linux1394-devel@lists.sourceforge.net" shape=3D=
+rect=20
+rel=3Dnofollow target=3D_blank>Activate second sign- in</A></TD></TR></TBOD=
+Y></TABLE><BR id=3Dyiv3579093271yui_3_16_0_1_1439368488009_4369 clear=3Dnon=
+e>
+<P id=3Dyiv3579093271yui_3_16_0_1_1455017483337_2522 style=3D"PADDING-BOTTO=
+M: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: block; P=
+ADDING-RIGHT: 0px" dir=3Dltr>Email Security Team Inc</P></DIV></DIV></DIV><=
+/DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV>
+<DIV class=3D"yiv3579093271jb_0 yiv3579093271X_6MGW yiv3579093271N_6Fd5" st=
+yle=3D"PADDING-BOTTOM: 0px; PADDING-LEFT: 24px; PADDING-RIGHT: 16px"></DIV>=
+</DIV>
+<DIV class=3D"yiv3579093271H_7jIs yiv3579093271D_F yiv3579093271ab_C yiv357=
+9093271Q_69H5 yiv3579093271E_36RhU" style=3D'FONT-SIZE: 13px; FONT-FAMILY: =
+"Helvetica Neue", "Segoe UI", Helvetica, Arial, "Lucida Grande", sans-serif=
+; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT=
+: 400; COLOR: rgb(38,40,42); FONT-STYLE: normal; TEXT-ALIGN: left; MIN-HEIG=
+HT: 64px; ORPHANS: 2; WIDOWS: 2; DISPLAY: flex; LETTER-SPACING: normal; BAC=
+KGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px;=20
+text-decoration-style: initial; text-decoration-color: initial'>
+<DIV class=3D"yiv3579093271D_F yiv3579093271W_6D6F yiv3579093271r_BN yiv357=
+9093271gl_C" style=3D"CURSOR: default; WIDTH: 822px; DISPLAY: flex"><BR cla=
+ss=3Dyiv3579093271Apple-interchange-newline></DIV></DIV></DIV></DIV></DIV><=
+/DIV></DIV></BODY></HTML>
+
+
+--===============2368537706631124425==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============2368537706631124425==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+mailing list linux1394-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============2368537706631124425==--
