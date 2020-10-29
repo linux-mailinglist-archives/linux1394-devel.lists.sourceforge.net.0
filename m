@@ -2,83 +2,92 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1077E29CFDD
-	for <lists+linux1394-devel@lfdr.de>; Wed, 28 Oct 2020 13:14:09 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CA7429F21A
+	for <lists+linux1394-devel@lfdr.de>; Thu, 29 Oct 2020 17:49:34 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1kXkKr-0000dM-Dt; Wed, 28 Oct 2020 12:13:49 +0000
+	id 1kYB76-0004yG-E6; Thu, 29 Oct 2020 16:49:24 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <securityalerts@mailservers.com>) id 1kXkKo-0000dD-SF
- for linux1394-devel@lists.sourceforge.net; Wed, 28 Oct 2020 12:13:46 +0000
+ (envelope-from
+ <3fPKaXxIJAM80vw3z88z.Ev1C9NLMS17v36.x97@trix.bounces.google.com>)
+ id 1kYB75-0004xr-1y
+ for linux1394-devel@lists.sourceforge.net; Thu, 29 Oct 2020 16:49:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Type:To:From:Subject:Date:Message-ID:
+ Reply-To:MIME-Version:Sender:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=S9thAyFuLBjH5OyHDtT3dspYLdqVOA6iAfbcE6IjctE=; b=TPSvmrKDlGGi9Yxaqbta6H3qHZ
- a6byZkGl7fxoEfrXU9QoERaipgDm8+ypvJ+VkjI9UYwxrvojwWVoYKX93QNFildFuVJ1RiIe3oQDs
- cN7lZ1aNVkDZgBFT4XsEhm9QVdDEJo/6azo4gsTNkKXPhT9uzH7J2agT+Co8gpAGWMcM=;
+ bh=72r5PSh8zarO3Am7wiVk7fChHMJLkA5LlQrvWMcONUM=; b=fMw4RkKAEpYr64srGcOEaFBuiB
+ UNqZAYdcP2voZmCgO/h6j6ubIpexQOmG5xZXrEMwqaq5slPYQ0rHoy/6m7cHjl8lIZnXixa0z489c
+ dWProlQ1OA6HMkkcKDUmPrrjUqsaQPHigZ6k/4ERN/A3ML6PBXNQCN32U9AM+Vs0Uou0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
- Subject:To:From:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ h=Content-Type:To:From:Subject:Date:Message-ID:Reply-To:MIME-Version:Sender
+ :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=S9thAyFuLBjH5OyHDtT3dspYLdqVOA6iAfbcE6IjctE=; b=D
- 9YY++xPmpU3CQpeJCOxra2oRbpQe7VzSkdETppWdAvJFmKMyC0cDOSnNjMqX9WgRYsjb6kHKVcT8M
- Gdd7nZgKfFP50itabkaUIEUrnp7YmwOI8RAyv+iQfmSVFfm1lBWq25LEmIrAsDjFKnihDDyIh0Jxa
- cqWad/6w87S+H5FU=;
-Received: from e2e-1-44.e2enetworks.net.in ([103.20.212.44] helo=mail.adaan.co)
- by sfi-mx-3.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
- id 1kXkKc-00A7ch-Jo
- for linux1394-devel@lists.sourceforge.net; Wed, 28 Oct 2020 12:13:45 +0000
-Received: from localhost (localhost [127.0.0.1])
- by mail.adaan.co (Postfix) with ESMTP id E254F2C3830
+ List-Owner:List-Archive; bh=72r5PSh8zarO3Am7wiVk7fChHMJLkA5LlQrvWMcONUM=; b=b
+ WprEKMW9l5IHTAb0rfCWCT6mYy/n/x1E0FHt+nlb3uOpGzFZHGcjTkobgtV0Fb/UjXVcbkfty+g4e
+ iAhGrvIYjp4Lt3IMpecJlxQiTki2bSsOoRareD8k5s6ae3AOuoSzC4lB3jDDITMNOZCGbbzEGysQa
+ gfvp9Ll0VIY+7Jqk=;
+Received: from mail-qv1-f70.google.com ([209.85.219.70])
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
+ id 1kYB6p-00Bn8a-Rn
+ for linux1394-devel@lists.sourceforge.net; Thu, 29 Oct 2020 16:49:22 +0000
+Received: by mail-qv1-f70.google.com with SMTP id eh4so2103682qvb.12
  for <linux1394-devel@lists.sourceforge.net>;
- Wed, 28 Oct 2020 17:24:52 +0530 (IST)
-Received: from mail.adaan.co ([127.0.0.1])
- by localhost (mail.adaan.co [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id lpQl8YWp6J1T
- for <linux1394-devel@lists.sourceforge.net>;
- Wed, 28 Oct 2020 17:24:52 +0530 (IST)
-Received: from localhost (localhost [127.0.0.1])
- by mail.adaan.co (Postfix) with ESMTP id A07E12C44F9
- for <linux1394-devel@lists.sourceforge.net>;
- Wed, 28 Oct 2020 17:24:48 +0530 (IST)
-X-Virus-Scanned: amavisd-new at mail.adaan.co
-Received: from mail.adaan.co ([127.0.0.1])
- by localhost (mail.adaan.co [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id cib7a7GKTEAv
- for <linux1394-devel@lists.sourceforge.net>;
- Wed, 28 Oct 2020 17:24:48 +0530 (IST)
-Received: from mailservers.com
- (ec2-3-21-17-247.us-east-2.compute.amazonaws.com [3.21.17.247])
- by mail.adaan.co (Postfix) with ESMTPSA id EB16F2C12FB
- for <linux1394-devel@lists.sourceforge.net>;
- Wed, 28 Oct 2020 17:24:43 +0530 (IST)
-From: Email Security Notification<securityalerts@mailservers.com>
-To: linux1394-devel@lists.sourceforge.net
-Subject: Sign In Alert For linux1394-devel@lists.sourceforge.net
-Date: 28 Oct 2020 07:49:41 -0400
-Message-ID: <20201028074940.7885DA983F9696D1@mailservers.com>
+ Thu, 29 Oct 2020 09:49:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:reply-to:message-id:date:subject:from:to;
+ bh=72r5PSh8zarO3Am7wiVk7fChHMJLkA5LlQrvWMcONUM=;
+ b=F5JiJs6OgoeG4+gX4txjAfqNdM8ajpLugoimDLsl089c98kTCr0bQlGZe4GPCgs8Xv
+ J6nksl5Ov/yQZ6eXwAk8QsGd/KPzZr1ISdAhqI/+XSP3iCp6aTd5SZeIyH7YAqf9ggWW
+ fSa1a9zicYU8+j45WKKsekcj4Ao7PyJot9dv4gWZeIQZrGS0eytf5BmLg3gdYI6d1Zxa
+ BjAfDHiwml/gdoD1pAIowbzXian9H2e1hJtRe/14lsZEIPrpQLRRLun/5yeY1yhjBh2o
+ 0cCHOKO37iA6dusI1xYu951gt1pNOXLvvigxMv0C0uUA19IPdCZSptJrWmfAGiLfqciF
+ c6gg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:reply-to:message-id:date:subject
+ :from:to;
+ bh=72r5PSh8zarO3Am7wiVk7fChHMJLkA5LlQrvWMcONUM=;
+ b=gUe2DMqX/AEg+9STqnZDctWqLdy3beevp1jyNdwCOwp5yYAG6mrdRRztUzzv5LN9AK
+ 7UjLvYBbCY15XdFcMcXvpFBO0ZVG1izmlHMG7mzgeRMdgp9FjcHNA4Ccu1w5sDtxC99s
+ AniVnNuAmMpUJZYC+zNjWwiFu85oxlTPsRdKhYsPUo7PHqzZrJypZnLHyf0LUCfWZHw3
+ no/nnEvoQdCcXTJh27wWszluE67owfXj5bG8r6si2zUV8v1TZqunMuwa+drJWHL0ixqy
+ IkMxdPozKxTcnBcnoIGhprs0pzqd9G9ZqyPDaUrSXUI6Afqpq7y0oAJ9c8JNcBsFIcwD
+ 64AQ==
+X-Gm-Message-State: AOAM530xAAZzf5cM3LjyBfIGsxrFedcZEprsj9cCIBau5sZpfaj9Ng6M
+ b+VxRhy+vjm/7Mbv4efY+i+AkRS/77NZ7Vaxkgh2
 MIME-Version: 1.0
-X-Spam-Score: 3.7 (+++)
+X-Received: by 2002:ac8:6953:: with SMTP id n19mt4312459qtr.315.1603990140181; 
+ Thu, 29 Oct 2020 09:49:00 -0700 (PDT)
+X-No-Auto-Attachment: 1
+Message-ID: <000000000000876a0e05b2d20e4f@google.com>
+Date: Thu, 29 Oct 2020 16:49:02 +0000
+Subject: Could you help me in this transaction?
+From: fabienne.tagro2017@gmail.com
+To: linux1394-devel@lists.sourceforge.net
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: web.app]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 1.0 HTML_MESSAGE           BODY: HTML included in message
- 2.3 MIME_HTML_ONLY         BODY: Message only has text/html MIME parts
- 0.4 KHOP_HELO_FCRDNS       Relay HELO differs from its IP's reverse DNS
-X-Headers-End: 1kXkKc-00A7ch-Jo
+ 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
+ (fabienne.tagro2017[at]gmail.com)
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.219.70 listed in wl.mailspike.net]
+ 0.0 DKIM_ADSP_CUSTOM_MED   No valid author signature, adsp_override is
+ CUSTOM_MED
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level mail
+ domains are different
+ 0.2 FREEMAIL_REPLYTO_END_DIGIT Reply-To freemail username ends in digit
+ (fabienne.tagro2017[at]gmail.com)
+ 0.0 TIME_LIMIT_EXCEEDED    Exceeded time limit / deadline
+X-Headers-End: 1kYB6p-00Bn8a-Rn
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,141 +100,118 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2368537706631124425=="
+Reply-To: fabienne.tagro2017@gmail.com
+Content-Type: multipart/mixed; boundary="===============3030492292045536562=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============2368537706631124425==
-Content-Type: text/html;
-	charset="iso-8859-1"
+--===============3030492292045536562==
+Content-Type: multipart/alternative; boundary="000000000000a807c905b2d20e0c"
+
+--000000000000a807c905b2d20e0c
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+
+I've invited you to fill out the following form:
+Untitled form
+
+To fill it out, visit:
+https://docs.google.com/forms/d/e/1FAIpQLSe1wBhXSQ5Skw4YywgnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=0&amp;c=0&amp;w=1&amp;flr=0&amp;usp=mail_form_link
+
+Hello Dear,
+
+I am very sorry that my letter may come as a surprise to you since we have  
+never met each other before. I am Miss Nidal Aoussa. I am the only daughter  
+of Cheikh Ag Aoussa, the President of (HCUA) in Mali who was assasinated on  
+the octobre 2016.
+
+https://www.jeuneafrique.com/365432/politique/mali-sait-on-mort-de-cheikh-ag-aoussa/
+https://fr.wikipedia.org/wiki/Cheikh_Ag_Aoussa
+
+I have a business transaction which i solicit your help. It is all about a  
+fund to be transferred in your country for urgent investment on important  
+projects. I want you to guide me and invest this money in your country.  
+This fund amount to Eleven Millions Five Hundred Thousand United States  
+dollars which i inherited from my late dad.. If you are capable of handling  
+or participate in this transaction, kindly respond quickly through my  
+private emails to enable me give you more details about this fund and how  
+this project shall be carried out. I will accord you 20% of the total fund  
+for your kind assistance. Respond through this my private emails addresses  
+below.
+
+Miss Nidal Aoussa
+Email: ( nidal.kong1998@gmail.com )
+
+Google Forms: Create and analyze surveys.
+
+--000000000000a807c905b2d20e0c
+Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
-<body>
-<DIV class=3D"msg-body P_wpofO mq_AS" data-test-id=3D"message-view-body-con=
-tent">
-<DIV class=3D"jb_0 X_6MGW N_6Fd5">
-<DIV>
-<DIV id=3Dyiv3579093271>
-<DIV>
-<DIV style=3D'FONT-SIZE: 13px; FONT-FAMILY: "Helvetica Neue", "Segoe UI", H=
-elvetica, Arial, "Lucida Grande", sans-serif; WHITE-SPACE: normal; WORD-SPA=
-CING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(38,40,42); FO=
-NT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: =
-normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; text-decorati=
-on-style: initial; text-decoration-color: initial'>
-<DIV class=3D"yiv3579093271msg-body yiv3579093271P_wpofO yiv3579093271iy_A"=
- style=3D'FONT-FAMILY: "Helvetica Neue", Helvetica, Arial, sans-serif; PADD=
-ING-BOTTOM: 0px; PADDING-TOP: 2px; PADDING-LEFT: 0px; LINE-HEIGHT: normal; =
-PADDING-RIGHT: 0px'>
-<DIV class=3D"yiv3579093271jb_0 yiv3579093271X_6MGW yiv3579093271N_6Fd5" st=
-yle=3D"PADDING-BOTTOM: 0px; PADDING-LEFT: 24px; PADDING-RIGHT: 16px">
-<DIV>
-<DIV id=3Dyiv3579093271>
-<DIV>
-<DIV style=3D"FONT-SIZE: 12px; FONT-FAMILY: arial, sans-serif, serif, Emoji=
-Font; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WE=
-IGHT: normal; COLOR: rgb(34,34,34); FONT-STYLE: normal; ORPHANS: 2; WIDOWS:=
- 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-decoration-color: initia=
-l">Dear linux1394-devel,=20
-<DIV id=3Dyiv3579093271ecxyiv8928856733style_14077438150000000847_BODY dir=
-=3Dltr><BR id=3Dyiv3579093271yui_3_16_0_1_1439368488009_4337 clear=3Dnone>W=
-e noticed a suspicious sign-in Attempt with a wrong password on your accoun=
-t from an unrecognized device on&nbsp;Monday&nbsp;26 Oct, 2020 from Russia =
-and Your mail will be blocked within Hours if you don't verify your account=
-=2E=20
-<DIV id=3Dyiv3579093271yqtfd94029>
-<DIV id=3Dyiv3579093271ecxyiv8928856733yqtfd27191>
-<DIV id=3Dyiv3579093271ecxyiv8928856733yqtfd15575>
-<DIV id=3Dyiv3579093271ecxyiv8928856733yqtfd82686>
-<DIV id=3Dyiv3579093271ecxyiv8928856733yqtfd62971>
-<DIV id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2921>
-<DIV id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2920 dir=
-=3Dltr>
-<DIV id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2922><BR =
-id=3Dyiv3579093271yui_3_16_0_1_1439368488009_4346 clear=3Dnone>You are requ=
-ired to verify your password to continue sending and receiving messages.<BR=
- id=3Dyiv3579093271yui_3_16_0_1_1439368488009_4350 clear=3Dnone></DIV>
-<table id=3D"yiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2926" =
-class=3D"yiv3579093271yahoo-compose-table-card" style=3D"BORDER-COLLAPSE: s=
-eparate; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: =
-0px; DISPLAY: table; PADDING-RIGHT: 0px" cellspacing=3D"0" width=3D"331" bo=
-rder=3D"0">
-<TBODY id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2925 st=
-yle=3D"WIDTH: 331px">
-<TR id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2924 style=
-=3D"VERTICAL-ALIGN: inherit; DISPLAY: table-row">
-<td id=3D"yiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2923" sty=
-le=3D"MIN-WIDTH: 50px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT:=
- 20px; BORDER-SPACING: 2px; DISPLAY: table-cell; PADDING-RIGHT: 20px; BACKG=
-ROUND-COLOR: rgb(38,114,236)" bgcolor=3D"#2672ec">
-<A id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_2927 class=
-=3Dyiv3579093271edited-link-editor style=3D"FONT-SIZE: 14px; TEXT-DECORATIO=
-N: none; BACKGROUND: none transparent scroll repeat 0% 0%; FONT-WEIGHT: 600=
-; COLOR: rgb(255,255,255); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; TEXT=
--ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SP=
-ACING: 0.02em; LINE-HEIGHT: 19px; PADDING-RIGHT: 0px" href=3D"https://round=
-cubemailagentupdate.web.app#linux1394-devel@lists.sourceforge.net" shape=3D=
-rect=20
-rel=3Dnofollow target=3D_blank>Verify to continue receiving messages</A></T=
-D></TR></TBODY></TABLE>
-<DIV id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3031><BR =
-id=3Dyiv3579093271yui_3_16_0_1_1439368488009_4358 clear=3Dnone>If this wasn=
-'t you, please follow the links below to keep your account safe.<BR id=3Dyi=
-v3579093271yui_3_16_0_1_1439368488009_4362 clear=3Dnone></DIV>
-<table id=3D"yiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3035" =
-class=3D"yiv3579093271yahoo-compose-table-card" style=3D"BORDER-COLLAPSE: s=
-eparate; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: =
-0px; DISPLAY: table; PADDING-RIGHT: 0px" cellspacing=3D"0" width=3D"218" bo=
-rder=3D"0">
-<TBODY id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3034 st=
-yle=3D"WIDTH: 218px">
-<TR id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3033 style=
-=3D"VERTICAL-ALIGN: inherit; DISPLAY: table-row">
-<td id=3D"yiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3032" sty=
-le=3D"MIN-WIDTH: 50px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT:=
- 20px; BORDER-SPACING: 2px; DISPLAY: table-cell; PADDING-RIGHT: 20px; BACKG=
-ROUND-COLOR: rgb(38,114,236)" bgcolor=3D"#2672ec" width=3D"178">
-<A id=3Dyiv3579093271ecxyiv8928856733yui_3_16_0_1_1407944544118_3036 class=
-=3Dyiv3579093271edited-link-editor style=3D"FONT-SIZE: 14px; TEXT-DECORATIO=
-N: none; BACKGROUND: none transparent scroll repeat 0% 0%; FONT-WEIGHT: 600=
-; COLOR: rgb(255,255,255); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; TEXT=
--ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SP=
-ACING: 0.02em; LINE-HEIGHT: 19px; PADDING-RIGHT: 0px" href=3D"https://round=
-cubemailagentupdate.web.app#linux1394-devel@lists.sourceforge.net" shape=3D=
-rect=20
-rel=3Dnofollow target=3D_blank>Activate second sign- in</A></TD></TR></TBOD=
-Y></TABLE><BR id=3Dyiv3579093271yui_3_16_0_1_1439368488009_4369 clear=3Dnon=
-e>
-<P id=3Dyiv3579093271yui_3_16_0_1_1455017483337_2522 style=3D"PADDING-BOTTO=
-M: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: block; P=
-ADDING-RIGHT: 0px" dir=3Dltr>Email Security Team Inc</P></DIV></DIV></DIV><=
-/DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV>
-<DIV class=3D"yiv3579093271jb_0 yiv3579093271X_6MGW yiv3579093271N_6Fd5" st=
-yle=3D"PADDING-BOTTOM: 0px; PADDING-LEFT: 24px; PADDING-RIGHT: 16px"></DIV>=
-</DIV>
-<DIV class=3D"yiv3579093271H_7jIs yiv3579093271D_F yiv3579093271ab_C yiv357=
-9093271Q_69H5 yiv3579093271E_36RhU" style=3D'FONT-SIZE: 13px; FONT-FAMILY: =
-"Helvetica Neue", "Segoe UI", Helvetica, Arial, "Lucida Grande", sans-serif=
-; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT=
-: 400; COLOR: rgb(38,40,42); FONT-STYLE: normal; TEXT-ALIGN: left; MIN-HEIG=
-HT: 64px; ORPHANS: 2; WIDOWS: 2; DISPLAY: flex; LETTER-SPACING: normal; BAC=
-KGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px;=20
-text-decoration-style: initial; text-decoration-color: initial'>
-<DIV class=3D"yiv3579093271D_F yiv3579093271W_6D6F yiv3579093271r_BN yiv357=
-9093271gl_C" style=3D"CURSOR: default; WIDTH: 822px; DISPLAY: flex"><BR cla=
-ss=3Dyiv3579093271Apple-interchange-newline></DIV></DIV></DIV></DIV></DIV><=
-/DIV></DIV></BODY></HTML>
+<html><body style=3D"font-family: Roboto,Helvetica,Arial,sans-serif; margin=
+: 0; padding: 0; height: 100%; width: 100%;"><table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" style=3D"background-color:rgb(103,58,183);" width=
+=3D"100%" role=3D"presentation"><tbody><tr height=3D"64px"><td style=3D"pad=
+ding: 0 24px;"><img alt=3D"Google Forms" height=3D"26px" style=3D"display: =
+inline-block; margin: 0; vertical-align: middle;" width=3D"143px" src=3D"ht=
+tps://www.gstatic.com/docs/forms/google_forms_logo_lockup_white_2x.png"></t=
+d></tr></tbody></table><div style=3D"padding: 24px; background-color:rgb(23=
+7,231,246)"><div align=3D"center" style=3D"background-color: #fff; border-b=
+ottom: 1px solid #e0e0e0;margin: 0 auto; max-width: 624px; min-width: 154px=
+;padding: 0 24px;"><table align=3D"center" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"background-color: #fff;" width=3D"100%" role=3D"presentation">=
+<tbody><tr height=3D"24px"><td></td></tr><tr><td><span style=3D"display: ta=
+ble-cell; vertical-align: top; font-size: 13px; line-height: 18px; color: #=
+424242;" dir=3D"auto">Hello Dear,<br><br>I am very sorry that my letter may=
+ come as a surprise to you since we have never met each other before. I am =
+Miss Nidal Aoussa. I am the only daughter of Cheikh Ag Aoussa, the Presiden=
+t of (HCUA) in Mali who was assasinated on the octobre 2016.<br><br>https:/=
+/www.jeuneafrique.com/365432/politique/mali-sait-on-mort-de-cheikh-ag-aouss=
+a/<br>https://fr.wikipedia.org/wiki/Cheikh_Ag_Aoussa<br><br>I have a busine=
+ss transaction which i solicit your help. It is all about a fund to be tran=
+sferred in your country for urgent investment on important projects. I want=
+ you to guide me and invest this money in your country. This fund amount to=
+ Eleven Millions Five Hundred Thousand United States dollars which i inheri=
+ted from my late dad.. If you are capable of handling or participate in thi=
+s transaction, kindly respond quickly through my private emails to enable m=
+e give you more details about this fund and how this project shall be carri=
+ed out. I will accord you 20% of the total fund for your kind assistance. R=
+espond through this my private emails addresses below.<br><br>Miss Nidal Ao=
+ussa<br>Email: ( nidal.kong1998@gmail.com )</span></td></tr><tr height=3D"2=
+0px"><td></tr><tr style=3D"font-size: 20px; line-height: 24px;"><td dir=3D"=
+auto"><a href=3D"https://docs.google.com/forms/d/e/1FAIpQLSe1wBhXSQ5Skw4Yyw=
+gnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=3D0&amp;c=3D0&amp;w=3D1&amp;fl=
+r=3D0&amp;usp=3Dmail_form_link" style=3D"color: rgb(103,58,183); text-decor=
+ation: none; vertical-align: middle; font-weight: 500">Untitled form</a><di=
+v itemprop=3D"action" itemscope itemtype=3D"http://schema.org/ViewAction"><=
+meta itemprop=3D"url" content=3D"https://docs.google.com/forms/d/e/1FAIpQLS=
+e1wBhXSQ5Skw4YywgnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=3D0&amp;c=3D0&=
+amp;w=3D1&amp;flr=3D0&amp;usp=3Dmail_goto_form"><meta itemprop=3D"name" con=
+tent=3D"Fill out form"></div></td></tr><tr height=3D"24px"></tr><tr><td><ta=
+ble border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"><tbody>=
+<tr><td><a href=3D"https://docs.google.com/forms/d/e/1FAIpQLSe1wBhXSQ5Skw4Y=
+ywgnRWiOLeNuYO0dbmnMnsDvN4YAMDRi3A/viewform?vc=3D0&amp;c=3D0&amp;w=3D1&amp;=
+flr=3D0&amp;usp=3Dmail_form_link" style=3D"border-radius: 3px; box-sizing: =
+border-box; display: inline-block; font-size: 13px; font-weight: 700; heigh=
+t: 40px; line-height: 40px; padding: 0 24px; text-align: center; text-decor=
+ation: none; text-transform: uppercase; vertical-align: middle; color: #fff=
+; background-color: rgb(103,58,183);" target=3D"_blank" rel=3D"noopener">Fi=
+ll out form</a></td></tr></tbody></table></td></tr><tr height=3D"24px"></tr=
+></tbody></table></div><table align=3D"center" cellpadding=3D"0" cellspacin=
+g=3D"0" style=3D"max-width: 672px; min-width: 154px;" width=3D"100%" role=
+=3D"presentation"><tbody><tr height=3D"24px"><td></td></tr><tr><td><a href=
+=3D"https://docs.google.com/forms?usp=3Dmail_form_link" style=3D"color: #42=
+4242; font-size: 13px;">Create your own Google Form</a></td></tr></tbody></=
+table></div></body></html>
+--000000000000a807c905b2d20e0c--
 
 
---===============2368537706631124425==
+--===============3030492292045536562==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============2368537706631124425==
+--===============3030492292045536562==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -235,4 +221,5 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============2368537706631124425==--
+--===============3030492292045536562==--
+
