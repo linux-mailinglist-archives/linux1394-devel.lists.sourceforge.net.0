@@ -2,101 +2,63 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23BB32A0A2C
-	for <lists+linux1394-devel@lfdr.de>; Fri, 30 Oct 2020 16:47:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 53BD72A5B0A
+	for <lists+linux1394-devel@lfdr.de>; Wed,  4 Nov 2020 01:36:26 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1kYWcW-0001Ju-Dt; Fri, 30 Oct 2020 15:47:16 +0000
+	id 1ka6md-0006uz-0z; Wed, 04 Nov 2020 00:36:15 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from
- <3eTWcXxEJAFg601H84BJ7EC0IZQRQ6C08B.2EC@trix.bounces.google.com>)
- id 1kYWcV-0001Jh-6t
- for linux1394-devel@lists.sourceforge.net; Fri, 30 Oct 2020 15:47:15 +0000
+ (envelope-from <www-data@ricardogomes4387271.pserver.ru>)
+ id 1ka6mZ-0006um-0j
+ for linux1394-devel@lists.sourceforge.net; Wed, 04 Nov 2020 00:36:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:To:From:Subject:Date:Message-ID:
- Reply-To:MIME-Version:Sender:Cc:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Date:Message-Id:From:Content-type:MIME-Version:
+ Subject:To:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=AvbpiFc9WxMtxpkmlK4I2xhF0ZyztA65cacLJ7fZaLg=; b=L/8B77CkwLD4mffvvKAL+zgCsG
- 07dJ9Bbkw4O59mOOWfCmFO8czpLsJ59CcJuRvuGIE5wgWMSx0vohXGCnEM8CfSRd2aSbmyGTSsDAK
- 6ZiXQGD3shIaIgcpJgpG7gLY+PvRxiEkxdiBEUx8fk//V0575zujAW4doU22J2xxiCmQ=;
+ bh=YqlMinKbT+rXuG1RB6lLvKKO5yiOpakMXENrnYsNluk=; b=WNqGnoDnYxDZQEi8YnhXv1Ticl
+ 70uHkFyT2Cq8map0oeY1aBuLxiH3DuqDdrLoWGMKZy9t3c6rsD5CirulexJtbic1PD16vKXhw0gbQ
+ nVyPKN3QeN54Su6H7K4pdWg/z947xwqSShgkejdtSslbwNoNN71RwaeWjZiZyOWBmPjQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:To:From:Subject:Date:Message-ID:Reply-To:MIME-Version:Sender
+ h=Date:Message-Id:From:Content-type:MIME-Version:Subject:To:Sender:Reply-To
  :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=AvbpiFc9WxMtxpkmlK4I2xhF0ZyztA65cacLJ7fZaLg=; b=a
- GvsYL+cyPyuxI5ba1HXH0Hknrw6JCy8K3iGhxUfI7IHNb2apIfNQw+6FnOzngvdI+RkRHI4Jx/jaS
- Q1AquEkc6bejMypv7fLqUSREdDBcQ7NDWOG0jEP7/q4btB4R/PJg3DmT84zdfHuWeAr56e9b06WTB
- C+b/40fSiyiZhT84=;
-Received: from mail-qv1-f70.google.com ([209.85.219.70])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1kYWcR-002k2H-MD
- for linux1394-devel@lists.sourceforge.net; Fri, 30 Oct 2020 15:47:15 +0000
-Received: by mail-qv1-f70.google.com with SMTP id b13so4003569qvz.2
- for <linux1394-devel@lists.sourceforge.net>;
- Fri, 30 Oct 2020 08:47:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:reply-to:message-id:date:subject:from:to;
- bh=AvbpiFc9WxMtxpkmlK4I2xhF0ZyztA65cacLJ7fZaLg=;
- b=i4DJXk35dBbRQz09q8flWFnCIf5aNgxoEd9uz32g62WXTSCwlKQ5NlVaslSL/kaa4u
- caz4c1jd6Q5UAFOQsPPYHdlR4saHP7Ls8w5UbnHWDJcR9dizeiXN22WC4P3GomjlrYBq
- QQXFKagT+gMzmSQC8Us5UKGzu035DhHG7FEu1A/5YVV1bD3nmnQtaUZYHOttSpuSoSgB
- Fltpi50LvHhCv8VjWzE0yAcHqMd9ro5U+/Jv8UrVmVq7Tc0exML3RYhfIsEbBTYlzqG8
- FkdXcYhB6rTkCNCxCba3EXu6ktttHCqv+ivq6B1BgKg6bBSmP1DfFl96rXDvaSvI7AUB
- paTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:reply-to:message-id:date:subject
- :from:to;
- bh=AvbpiFc9WxMtxpkmlK4I2xhF0ZyztA65cacLJ7fZaLg=;
- b=VKowqFnkYAJsZCEhRg01ro3+Cdf4tLOZHwWsqtLST23DUHcDOjKTomsZAdGJS8Wa1l
- pMYL26kQ/marrfgJx6RsT9M7GL8AelsWdOcCNRpk5sXyUE7ZIsszMFRClS+MpiIU8e0n
- dy4U/aPmPQkJo8PzMifX4ADe5kwJSWkUW74ZQUpXCZmUs7qp5zXV+PRTxz8oTFRfLwZV
- jQVWwwLA8IyyFJxwxD76kRMUYwMUkxlgw9QjpXQHMJo33RJ63LYo500V16dsLLrHOc+S
- 8l57mFdR36Dgx8BEQIvmPGmljU79odGRhIFUBBpLTY5zHvhZVFOgK446lqDdd8Kb0GOk
- q2TA==
-X-Gm-Message-State: AOAM532Hnish0c2MM8SQc4OCIBt08shm/ciIZc8JGFudVa3wrM3ZPnXW
- 0JS5+n9Ca8pb/E0iepwYglavRcnq7vqWpsKyMzwd
-MIME-Version: 1.0
-X-Received: by 2002:ad4:54e9:: with SMTP id k9mt9940691qvx.18.1604072825497;
- Fri, 30 Oct 2020 08:47:05 -0700 (PDT)
-X-No-Auto-Attachment: 1
-Message-ID: <000000000000f53ae005b2e54eb1@google.com>
-Date: Fri, 30 Oct 2020 15:47:06 +0000
-Subject: Hi,
-From: gabrielthomas9010@gmail.com
+ List-Owner:List-Archive; bh=YqlMinKbT+rXuG1RB6lLvKKO5yiOpakMXENrnYsNluk=; b=C
+ UzdBPcUyOxdfUIyHlOVZMpJvanLB/Kux2+IdQ5ghZbEJBSnBcSwP7+oepQs+7yKoR3gssG7SJEFsX
+ nHHbhO9IPhXvMpwqcj9yd4fMCPPjzqwcuwAic844ogmXf3SCbT57do2FpzdC6oFwYuktctyO8YKf2
+ XE8uZnkHwbnBVScA=;
+Received: from ricardogomes4387271.pserver.ru ([185.82.218.134])
+ by sfi-mx-3.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
+ id 1ka6mV-000c3B-HM
+ for linux1394-devel@lists.sourceforge.net; Wed, 04 Nov 2020 00:36:10 +0000
+Received: by ricardogomes4387271.pserver.ru (Postfix, from userid 33)
+ id E1F0C27026; Wed,  4 Nov 2020 02:35:51 +0200 (EET)
 To: linux1394-devel@lists.sourceforge.net
-X-Spam-Score: 1.6 (+)
+Subject: Multa no pagada - bloque de vehiculos - [ id 235140070  ]
+MIME-Version: 1.0
+From: Ministerio del Interior <notificacion@interior.gob.es>
+Message-Id: <20201104003551.E1F0C27026@ricardogomes4387271.pserver.ru>
+Date: Wed,  4 Nov 2020 02:35:51 +0200 (EET)
+X-Spam-Score: 3.6 (+++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.219.70 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.219.70 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
- (gabrielthomas9010[at]gmail.com)
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: dgt.es]
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level mail
  domains are different
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_REPLYTO_END_DIGIT Reply-To freemail username ends in digit
- (gabrielthomas9010[at]gmail.com)
  1.0 HTML_MESSAGE           BODY: HTML included in message
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and EnvelopeFrom
- freemail headers are different
-X-Headers-End: 1kYWcR-002k2H-MD
+ 2.3 MIME_HTML_ONLY         BODY: Message only has text/html MIME parts
+X-Headers-End: 1ka6mV-000c3B-HM
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,112 +71,177 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: gabrielthomas9010@gmail.com
-Content-Type: multipart/mixed; boundary="===============9209051932227536904=="
+Content-Type: multipart/mixed; boundary="===============6787875007142778921=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============9209051932227536904==
-Content-Type: multipart/alternative; boundary="000000000000fed56e05b2e54e4b"
+--===============6787875007142778921==
+Content-type: text/html; charset=iso-8859-1
 
---000000000000fed56e05b2e54e4b
-Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multa Pendiente</title>
+    <head>
+        <style>body{margin:0;padding:0;overflow-x:auto !important;overflow-y:hidden !important}.mail-detail-content{box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",Arial,sans-serif;font-size:13px;font-weight:normal;font-feature-settings:"liga" 0;width:100%;position:relative;padding:0}.ios.smartphone .mail-detail-content{-webkit-overflow-scrolling:touch;overflow-x:auto}.smartphone .mail-detail-content{font-size:15px}.mail-detail-content>div>[class$="-content"]{padding:0}.mail-detail-content.plain-text{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",Arial,sans-serif;white-space:pre-wrap}.mail-detail-content.plain-text blockquote{white-space:normal}.mail-detail-content.fixed-width-font,.mail-detail-content.fixed-width-font.plain-text,.mail-detail-content.fixed-width-font blockquote,.mail-detail-content.fixed-width-font.plain-text blockquote,.mail-detail-content.fixed-width-font blockquote p,.mail-detail-content.fixe
+ d-width-font.plain-text blockquote p{font-family:monospace;-webkit-font-feature-settings:normal;font-feature-settings:normal}.mail-detail-content.simple-mail{max-width:700px}.mail-detail-content.simple-mail.big-screen{max-width:100%}.mail-detail-content.simple-mail img{max-width:100%;height:auto!important}.mail-detail-content img[src=""]{background-color:rgba(0,0,0,0.1);background-image:repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.5) 20px, rgba(255,255,255,0.5) 40px)}.mail-detail-content p{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",Arial,sans-serif;margin:0 0 1em 0}.mail-detail-content h1{font-size:28px}.mail-detail-content h2{font-size:21px}.mail-detail-content h3{font-size:16.38px}.mail-detail-content h4{font-size:14px}.mail-detail-content h5{font-size:11.62px}.mail-detail-content h6{font-size:9.38px}.mail-detail-content a{word-break:break-word;text-decoration:none;color:inherit}.mail-detail-content a:hover{color:
+ inherit}.mail-detail-content a[href]{color:#3c61aa;text-decoration:underline}.mail-detail-content th{padding:8px;text-align:center}.mail-detail-content th[align="left"]{text-align:left}.mail-detail-content .calendar-detail .label{display:block;text-shadow:none;font-weight:normal;background-color:transparent}.mail-detail-content img.emoji-softbank{margin:0 2px}.mail-detail-content pre{word-break:keep-all;word-break:initial;white-space:pre-wrap;background-color:transparent;border:0 none;border-radius:0}.mail-detail-content table{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",Arial,sans-serif;font-size:13px;font-weight:normal;font-feature-settings:"liga" 0;line-height:normal;border-collapse:collapse}.mail-detail-content ul,.mail-detail-content ol{padding:0;padding-left:16px;margin:1em 0 1em 24px}.mail-detail-content ul{list-style-type:disc}.mail-detail-content ul ul{list-style-type:circle}.mail-detail-content ul ul ul{list-style-type:square}.mail-detail-conten
+ t li{line-height:normal;margin-bottom:0.5em}.mail-detail-content blockquote{color:#555;font-size:13px;border-left:2px solid #ddd;padding:0 0 0 16px;margin:16px 0 16px 0}.mail-detail-content blockquote p{font-size:13px}.mail-detail-content blockquote blockquote{border-color:#283f73;margin:8px 0}.mail-detail-content.colorQuoted blockquote blockquote{color:#283f73 !important;border-left:2px solid #283f73}.mail-detail-content.colorQuoted blockquote blockquote a[href]:not(.deep-link){color:#283f73}.mail-detail-content.colorQuoted blockquote blockquote a[href]:not(.deep-link):hover{color:#1b2a4d}.mail-detail-content.colorQuoted blockquote blockquote blockquote{color:#dd0880 !important;border-left:2px solid #dd0880}.mail-detail-content.colorQuoted blockquote blockquote blockquote a[href]:not(.deep-link){color:#dd0880}.mail-detail-content.colorQuoted blockquote blockquote blockquote a[href]:not(.deep-link):hover{color:#ac0663}.mail-detail-content.colorQuoted blockquote blockquote blockquote
+  blockquote{color:#8f09c7 !important;border-left:2px solid #8f09c7}.mail-detail-content.colorQuoted blockquote blockquote blockquote blockquote a[href]:not(.deep-link){color:#8f09c7}.mail-detail-content.colorQuoted blockquote blockquote blockquote blockquote a[href]:not(.deep-link):hover{color:#6c0796}.mail-detail-content.colorQuoted blockquote blockquote blockquote blockquote blockquote{color:#767676 !important;border-left:2px solid #767676}.mail-detail-content.colorQuoted blockquote blockquote blockquote blockquote blockquote a[href]:not(.deep-link){color:#767676}.mail-detail-content.colorQuoted blockquote blockquote blockquote blockquote blockquote a[href]:not(.deep-link):hover{color:#5d5d5d}.mail-detail-content.disable-links a[href]{color:#aaa !important;text-decoration:line-through !important;cursor:default !important;pointer-events:none !important}.mail-detail-content .blockquote-toggle{color:#767676;font-size:13px;padding-left:56px;margin:16px 0;min-height:16px;word-break:bre
+ ak-word}.mail-detail-content .blockquote-toggle button.bqt{color:#696969;background-color:#eee;padding:1px 10px;display:inline-block;font-size:14px;line-height:16px;cursor:pointer;outline:0;position:absolute;left:0;border:0}.mail-detail-content .blockquote-toggle button.bqt:hover,.mail-detail-content .blockquote-toggle button.bqt:focus{color:#fff;background-color:#3c61aa;text-decoration:none}.mail-detail-content .max-size-warning{color:#767676;padding:16px 16px 0 16px;border-top:1px solid #ddd}.mail-detail-content a.deep-link{color:white;background-color:#3c61aa;text-decoration:none;font-size:90%;font-weight:bold;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",Arial,sans-serif !important;padding:0.10em 8px;border-radius:3px}.mail-detail-content a.deep-link:hover,.mail-detail-content a.deep-link:focus,.mail-detail-content a.deep-link:active{color:white;background-color:#2f4b84}@media print{.mail-detail-content .collapsed-blockquote{display:block !important}.m
+ ail-detail-content .blockquote-toggle{display:none !important}}.mail-detail-content>div[id*="ox-"]>h1,.mail-detail-content>div[id*="ox-"]>h2,.mail-detail-content>div[id*="ox-"]>h3,.mail-detail-content>div[id*="ox-"]>h4,.mail-detail-content>div[id*="ox-"]>h5{margin-top:0}</style>
+     </head>
+</head>
+<body class="mail-detail-content noI18n colorQuoted">
+    <div alt="ten" class="es-wrapper-color">
+       <table width="100%" cellspacing="0" cellpadding="0" class="es-wrapper">
+          <tbody>
+             <tr>
+                <td valign="top" class="esd-email-paddings">
+                   <div style="text-align: center;"> 
+                   </div>
+                   <table cellspacing="0" cellpadding="0" align="center" class="esd-header-popover es-content">
+                      <tbody>
+                         <tr>
+                            <td align="center" alt="five"  class="esd-stripe">
+                               <div style="text-align: center;"> 
+                               </div>
+                               <table width="600" cellspacing="0" cellpadding="0" align="center" class="es-content-body" style="background-color: transparent;">
+                                  <tbody>
+                                     <tr>
+                                        <td align="left" class="esd-structure es-p5b es-p10r es-p10l">
+                                           <br>
+                                           <div class="flotar-izq" id="area-identidad" style="text-align: center;">
+                                              <span style="color: red; font-weight: bold;"></span>
+                                              <img alt="_" src="http://www.dgt.es/Galerias/_config_/2018_logo_ministerio_interior_60.png" class="logo" id="logo1" style="width: 209px; height: 60px;">
+                                              <img alt="_" height="60" width="119" src="http://www.dgt.es/Galerias/_config_/2018_logo_dgt_60_COPIA_SEG.png">
+                                           </div>
+                                           <div class="flotar-izq" id="area-identidad" style="text-align: center;"> 
+                                           </div>
+                                           <table cellspacing="0" cellpadding="0" align="right" style="color: rgb(53, 104, 164); font-family: Arial;">
+                                              <tbody>
+                                                 <tr>
+                                                    <td width="280" align="left" class="esd-container-frame">
+                                                       <table width="100%" cellspacing="0" cellpadding="0">
+                                                          <tbody>
+                                                             <tr>
+                                                                <td align="right" class="esd-block-text es-infoblock">&nbsp;</td>
+                                                             </tr>
+                                                          </tbody>
+                                                       </table>
+                                                    </td>
+                                                 </tr>
+                                              </tbody>
+                                           </table>
+                                        </td>
+                                     </tr>
+                                  </tbody>
+                               </table>
+                            </td>
+                         </tr>
+                       
+                      </tbody>
+                   </table>
+                   <table cellspacing="0" cellpadding="0" align="center" class="es-content">
+                      <tbody>
+                         <tr>
+                            <td align="center" class="esd-stripe">
+                               <table width="600" cellspacing="0" cellpadding="0" align="center" class="es-content-body">
+                                  <tbody>
+                                     <tr>
+                                        <td bgcolor="#fff2cc" align="left" style="background-color: rgb(255, 242, 204);" class="esd-structure es-p20t es-p20b es-p20r es-p20l">
+                                           <table width="100%" cellspacing="0" cellpadding="0">
+                                              <tbody>
+                                                 <tr>
+                                                    <td width="560" valign="top" align="center" class="esd-container-frame">
+                                                       <table width="100%" cellspacing="0" cellpadding="0" alt="new" >
+                                                          <tbody alt="meta nova">
+                                                             <tr>
+                                                                <td align="center" class="esd-block-text es-p10l" style="background-color: white;">
+                                                                   <span style="margin: 0px 0px 0px 24px; padding: 0px; color: rgb(0, 68, 136); font-size: 1.2em; font-weight: 700; text-transform: uppercase; font-family: OpenSans-Regular,sans-serif; font-style: normal; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);" class="dgt-announcements-title">
+                                                                    Saludos Cordiales</span>
+                                                                   <span style="color: rgb(76, 83, 93); font-family: OpenSans-Regular,sans-serif; font-size: 12.6px; font-style: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;">
+                                                                  </span> <br class="Apple-interchange-newline"> <br> 
+                                                                   <span style="color: red; font-weight: bold;"></span>                                                                   
+                                                                   <span style="color:red; font-weight: bold;">&nbsp;&nbsp;&nbsp;
+                                                                  
+                                                                  </span>
+                                                                   <span style="font-weight: bold;"></span>
+                                                               
+                                                                   <br style="color: rgb(0, 68, 136);"> 
+                                                                   <span style="font-weight: bold; color: rgb(0, 68, 136);">Se ha identificado en nuestro sistema una multa de trafico no pagada<br>dirigida a usted o su vehiculo.<br></span><br style="font-weight: bold; color: rgb(0, 68, 136);"> <span style="font-weight: bold; color: black;"><span style="color: rgb(0, 68, 136);">Para ver la notificacion<br>Visite:</span> </span> 
+                                                                   <hr/>
+                                                                   <p style="color: rgb(36, 36, 36); background-color: white;"><a target="_blank" href="http://senalbien.eastus2.cloudapp.azure.com/" rel="noopener"><img src="http://www.dgt.es/Galerias/_config_/2018_logo_sede_electronica_inv_77.png" alt=""></a><span style="color: red; font-weight: bold;"></span><br style="font-family: Arial;"> <span style="font-weight: bold;">Atencion:<br> Para ver la notificacion, abra en un sistema (Windows).</span><span style="color: red; font-family: Arial;"> </span><br style="font-family: Arial;"> <br style="font-family: Arial;"> </p>
+                                                                </td>
+                                                             </tr>
+                                                          </tbody>
+                                                       </table>
+                                                    </td>
+                                                 </tr>
+                                              </tbody>
+                                           </table>
+                                        </td>
+                                     </tr>
+                                  </tbody>
+                               </table>
+                            </td>
+                         </tr>
+                      </tbody>
+                   </table>
+                   <table cellspacing="0" cellpadding="0" align="center" alt="rum"  class="esd-footer-popover es-content">
+                      <tbody>
+                         <tr>
+                            <td align="center" class="esd-stripe">
+                               <table width="600" cellspacing="0" cellpadding="0" align="center" style="background-color: transparent;" class="es-content-body">
+                                  <tbody>
+                                     <tr>
+                                        <td align="left" class="esd-structure es-p10t es-p10b es-p20r es-p20l">
+                                           <table cellspacing="0" cellpadding="0" style="width: 596px; height: 35px;">
+                                              <tbody>
+                                                 <tr>
+                                                    <td width="560" valign="top" align="center" class="esd-container-frame">
+                                                       <p style="margin: 0px; padding: 0.5em 0px 0px; font-size: 10px; color: white; font-family: OpenSans-Regular,sans-serif; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(0, 68, 136);" class="copyright-ft">Copyright DGT 2020. Todos los derechos reservados.</p>
+                                                       <p style="margin: 0px 0px 10px; padding: 0.5em 0px 0px; font-style: italic; font-size: 10px; color: white; font-family: OpenSans-Regular,sans-serif; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(0, 68, 136);" class="version-ft">Version V5.1.0.7<br> <br> </p>
+                                                    </td>
+                                                 </tr>
+                                              </tbody>
+                                           </table>
+                                        </td>
+                                     </tr>
+                                  </tbody>
+                               </table>
+                            </td>
+                         </tr>
+                      </tbody>
+                   </table>
+                </td>
+             </tr>
+          </tbody>
+       </table>
+       <table width="600" cellspacing="0" cellpadding="0" bgcolor="#ffffff" alt="silver"  align="center" class="es-content-body">
+          <tbody>
+             <tr> 
+             </tr>
+          </tbody>
+       </table>
+    </div>
+    
+    <div style="text-align: center; color: rgb(53, 104, 164);">
+       <span style="font-weight: bold;"></span>
+    </div>
+ </body>
+</html>04/11/2020 02:35:51
 
-I've invited you to fill out the following form:
-Untitled form
 
-To fill it out, visit:
-https://docs.google.com/forms/d/e/1FAIpQLScuNN46De4NTNDuI_3Rm2L6CNABd5Ra0TyGG6ZxgVbAw2h7Ug/viewform?vc=0&amp;c=0&amp;w=1&amp;flr=0&amp;usp=mail_form_link
-
-  Hi,
-Hope I am not intruding on your space here.
-If you are interested in equity or loan financing,
-I would be glad to assist.
-We are a private financial firm that acquires well established small and  
-lower
-middle market businesses with predictable revenue and cash flow;
-typically partnering with industry professionals
-to operate them.
-We also have a Capital Formation Division that assists companies at
-all levels of development raise
-capital through hedge funds. We charge %1 commission at the successful
-closing of any deal.
-Additionally, we also fund
-secured as well as unsecured lines of credit and term loans.
-Would that be something of interest to you and your group?
-Please let me know your thoughts.
-Sorry if you get this message in your spam box, poor network
-connection may be responsible for such.
-Best regards...... Gennadiy Medovoy.
-
-Google Forms: Create and analyze surveys.
-
---000000000000fed56e05b2e54e4b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<html><body style=3D"font-family: Roboto,Helvetica,Arial,sans-serif; margin=
-: 0; padding: 0; height: 100%; width: 100%;"><table border=3D"0" cellpaddin=
-g=3D"0" cellspacing=3D"0" style=3D"background-color:rgb(103,58,183);" width=
-=3D"100%" role=3D"presentation"><tbody><tr height=3D"64px"><td style=3D"pad=
-ding: 0 24px;"><img alt=3D"Google Forms" height=3D"26px" style=3D"display: =
-inline-block; margin: 0; vertical-align: middle;" width=3D"143px" src=3D"ht=
-tps://www.gstatic.com/docs/forms/google_forms_logo_lockup_white_2x.png"></t=
-d></tr></tbody></table><div style=3D"padding: 24px; background-color:rgb(23=
-7,231,246)"><div align=3D"center" style=3D"background-color: #fff; border-b=
-ottom: 1px solid #e0e0e0;margin: 0 auto; max-width: 624px; min-width: 154px=
-;padding: 0 24px;"><table align=3D"center" cellpadding=3D"0" cellspacing=3D=
-"0" style=3D"background-color: #fff;" width=3D"100%" role=3D"presentation">=
-<tbody><tr height=3D"24px"><td></td></tr><tr><td><span style=3D"display: ta=
-ble-cell; vertical-align: top; font-size: 13px; line-height: 18px; color: #=
-424242;" dir=3D"auto"> Hi,<br>Hope I am not intruding on your space here.<b=
-r>If you are interested in equity or loan financing,<br>I would be glad to =
-assist.<br>We are a private financial firm that acquires well established s=
-mall and lower<br>middle market businesses with predictable revenue and cas=
-h flow;<br>typically partnering with industry professionals<br>to operate t=
-hem.<br>We also have a Capital Formation Division that assists companies at=
-<br>all levels of development raise<br>capital through hedge funds. We char=
-ge %1 commission at the successful<br>closing of any deal.<br>Additionally,=
- we also fund<br>secured as well as unsecured lines of credit and term loan=
-s.<br>Would that be something of interest to you and your group?<br>Please =
-let me know your thoughts.<br>Sorry if you get this message in your spam bo=
-x, poor network<br>connection may be responsible for such.<br>Best regards.=
-..... Gennadiy Medovoy.</span></td></tr><tr height=3D"20px"><td></tr><tr st=
-yle=3D"font-size: 20px; line-height: 24px;"><td dir=3D"auto"><a href=3D"htt=
-ps://docs.google.com/forms/d/e/1FAIpQLScuNN46De4NTNDuI_3Rm2L6CNABd5Ra0TyGG6=
-ZxgVbAw2h7Ug/viewform?vc=3D0&amp;c=3D0&amp;w=3D1&amp;flr=3D0&amp;usp=3Dmail=
-_form_link" style=3D"color: rgb(103,58,183); text-decoration: none; vertica=
-l-align: middle; font-weight: 500">Untitled form</a><div itemprop=3D"action=
-" itemscope itemtype=3D"http://schema.org/ViewAction"><meta itemprop=3D"url=
-" content=3D"https://docs.google.com/forms/d/e/1FAIpQLScuNN46De4NTNDuI_3Rm2=
-L6CNABd5Ra0TyGG6ZxgVbAw2h7Ug/viewform?vc=3D0&amp;c=3D0&amp;w=3D1&amp;flr=3D=
-0&amp;usp=3Dmail_goto_form"><meta itemprop=3D"name" content=3D"Fill out for=
-m"></div></td></tr><tr height=3D"24px"></tr><tr><td><table border=3D"0" cel=
-lpadding=3D"0" cellspacing=3D"0" width=3D"100%"><tbody><tr><td><a href=3D"h=
-ttps://docs.google.com/forms/d/e/1FAIpQLScuNN46De4NTNDuI_3Rm2L6CNABd5Ra0TyG=
-G6ZxgVbAw2h7Ug/viewform?vc=3D0&amp;c=3D0&amp;w=3D1&amp;flr=3D0&amp;usp=3Dma=
-il_form_link" style=3D"border-radius: 3px; box-sizing: border-box; display:=
- inline-block; font-size: 13px; font-weight: 700; height: 40px; line-height=
-: 40px; padding: 0 24px; text-align: center; text-decoration: none; text-tr=
-ansform: uppercase; vertical-align: middle; color: #fff; background-color: =
-rgb(103,58,183);" target=3D"_blank" rel=3D"noopener">Fill out form</a></td>=
-</tr></tbody></table></td></tr><tr height=3D"24px"></tr></tbody></table></d=
-iv><table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" style=3D"max=
--width: 672px; min-width: 154px;" width=3D"100%" role=3D"presentation"><tbo=
-dy><tr height=3D"24px"><td></td></tr><tr><td><a href=3D"https://docs.google=
-.com/forms?usp=3Dmail_form_link" style=3D"color: #424242; font-size: 13px;"=
->Create your own Google Form</a></td></tr></tbody></table></div></body></ht=
-ml>
---000000000000fed56e05b2e54e4b--
-
-
---===============9209051932227536904==
+--===============6787875007142778921==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============9209051932227536904==
+--===============6787875007142778921==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -224,5 +251,4 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============9209051932227536904==--
-
+--===============6787875007142778921==--
