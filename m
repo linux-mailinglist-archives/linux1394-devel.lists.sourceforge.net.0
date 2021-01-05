@@ -2,49 +2,68 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D1332EA063
-	for <lists+linux1394-devel@lfdr.de>; Tue,  5 Jan 2021 00:07:43 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 96C202EA2FF
+	for <lists+linux1394-devel@lfdr.de>; Tue,  5 Jan 2021 02:48:41 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1kwYwp-0006VB-Ac; Mon, 04 Jan 2021 23:07:35 +0000
+	id 1kwbSb-0001jI-4G; Tue, 05 Jan 2021 01:48:33 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <fthain@telegraphics.com.au>) id 1kwYwo-0006V4-7c
- for linux1394-devel@lists.sourceforge.net; Mon, 04 Jan 2021 23:07:34 +0000
+ (envelope-from <bart.vanassche@gmail.com>) id 1kwbSZ-0001jA-AS
+ for linux1394-devel@lists.sourceforge.net; Tue, 05 Jan 2021 01:48:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:MIME-Version:References:Message-ID:
- In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
- :Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=n8tr27oJwNvrseD+YA1kYrXn5YLgUpg+bqfZxxtozX8=; b=GaKGj3vvf52wMrZHVekrfV7NCU
- Re960VM/KmoGVyfpxiRhQlr5QwzBtXYr5eD/mtMGq87bGETK4EUdP7YSVvCr0aFwvIVVbTHTS2spm
- bQzGJ7ig+33zqztHE0jyrYkrzdcjSUO3FAhu105aJ4ugsxpJmOVIlpibCb64HOJ7F+DA=;
+ bh=iUVK5navqb95pupmgd9YzX87VeG3u/6V7I7N2PejYtg=; b=Xfcq3a6GK4vqvKp2ZBsXVVCcTU
+ o4oAYVkHskBN62PvUHOyx4iwCJKFmKmxG8XnVgKhXOQL/WieSTWYxIz0hdUHg92Gp/mmesoTsu2wr
+ yTNTYA1bwgg/M6p5/Mv6QJwoEBkSLNyU/6hRI4puUVwews/yFcmNUaeHJrxwZTs3kJSQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+ Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=n8tr27oJwNvrseD+YA1kYrXn5YLgUpg+bqfZxxtozX8=; b=eiLD8Ep44aes4rOqfKHupxgnXr
- M9iR5v0ZRvLma1e1xx0wvlJITbb0MLHV1MjPu1RMaMR+R0FtOdyFQBVj6UY49Rcqnk6CF2AIxgijb
- O7X45T/BwNxm5L8HbqRnH1BpwF68YiNetQlsn4pO8iuERbWHPD5iUBHnI4E3QcWKGIfU=;
-Received: from kvm5.telegraphics.com.au ([98.124.60.144])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
- id 1kwYwd-00DXWm-Cm
- for linux1394-devel@lists.sourceforge.net; Mon, 04 Jan 2021 23:07:34 +0000
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by kvm5.telegraphics.com.au (Postfix) with ESMTP id 8F2BB282AD;
- Mon,  4 Jan 2021 17:50:15 -0500 (EST)
-Date: Tue, 5 Jan 2021 09:50:14 +1100 (AEDT)
-From: Finn Thain <fthain@telegraphics.com.au>
-To: Bart Van Assche <bvanassche@acm.org>
+ bh=iUVK5navqb95pupmgd9YzX87VeG3u/6V7I7N2PejYtg=; b=c0Q9PL3qkpaaYTt0X//CP8O1Xi
+ EG8liEu4T60JHPvVHNlcj9wniDTSDGgB26RC++Pr/DHz9Xf2283q4aezrQHVSigaPry4rxM1wlmjn
+ eZ61HHaLyslActVl7EKrchCi4qvMI3DWakoilxLMcVPkln/cFTe5D8kyy3vQX2S+gIlo=;
+Received: from mail-pg1-f169.google.com ([209.85.215.169])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
+ id 1kwbSI-00E5mN-Oi
+ for linux1394-devel@lists.sourceforge.net; Tue, 05 Jan 2021 01:48:31 +0000
+Received: by mail-pg1-f169.google.com with SMTP id c22so20230292pgg.13
+ for <linux1394-devel@lists.sourceforge.net>;
+ Mon, 04 Jan 2021 17:48:14 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=iUVK5navqb95pupmgd9YzX87VeG3u/6V7I7N2PejYtg=;
+ b=oi/cPSu3YbIU5zSo73S9b0zKk9INY1P7ljfKEIO+5e9YR5DG2qKW0uPF3YbYQMR4+O
+ jddoM/0QjHcJo8SvMuBIYdWcZG3ojGL6MjtqqEds7y5fJVUTKEg6BmntTimTx/qWWpAQ
+ tMP94hXanpSwg5Pd3k60T00ePTAt+A9OQanDK7RH8Uo2C1RO6lwWDUXxYQuSYEfy7vti
+ 0zhCrJMnCU6gTeB77lK3gsFWGP5Tq3BIOnGYQHwSSsucNf8RUcJgrCHRbCZrhGuWiBN6
+ OGB6JSt1piNEPovApJ9jv1pfFAu3Z56CBBbd3B0w2LxBXbF1P+IlFMFSRfyvQ3LU6A8x
+ 8BXw==
+X-Gm-Message-State: AOAM5311s16UCMbObGkJ8cvmrtTtzunIkyEI2VuH9ilKxTcKzTUN1zCn
+ 5v1OgiAtp4BAB3HXfgPzfCaTKug3mwM=
+X-Google-Smtp-Source: ABdhPJwzgRX+RGhlnQaIjfArrJuHlMKAMOxe4eTbuOyxNFW7vMhZmvmjR2h5swJDzjjpRU13PM4MEw==
+X-Received: by 2002:a63:5d7:: with SMTP id 206mr75322598pgf.384.1609811289105; 
+ Mon, 04 Jan 2021 17:48:09 -0800 (PST)
+Received: from [192.168.3.217] (c-73-241-217-19.hsd1.ca.comcast.net.
+ [73.241.217.19])
+ by smtp.gmail.com with ESMTPSA id i7sm56827951pfc.50.2021.01.04.17.48.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 04 Jan 2021 17:48:08 -0800 (PST)
 Subject: Re: [PATCH] scsi: target/sbp: remove firewire SBP target driver
-In-Reply-To: <e3b5ce6a-0152-01b8-89d2-80bcdb9c1c57@acm.org>
-Message-ID: <alpine.LNX.2.23.453.2101050840010.6@nippy.intranet>
+To: Finn Thain <fthain@telegraphics.com.au>
 References: <01020172acd3d10f-3964f076-a820-43fc-9494-3f3946e9b7b5-000000@eu-west-1.amazonses.com>
  <alpine.LNX.2.22.394.2006140934520.15@nippy.intranet>
  <7ad14946-5c25-fc49-1e48-72d37a607832@boo.tc>
@@ -54,13 +73,33 @@ References: <01020172acd3d10f-3964f076-a820-43fc-9494-3f3946e9b7b5-000000@eu-wes
  <8cbab988-fba7-8e27-7faf-9f7aa36ca235@acm.org>
  <alpine.LNX.2.22.394.2006171104540.11@nippy.intranet>
  <e3b5ce6a-0152-01b8-89d2-80bcdb9c1c57@acm.org>
+ <alpine.LNX.2.23.453.2101050840010.6@nippy.intranet>
+From: Bart Van Assche <bvanassche@acm.org>
+Message-ID: <9103b316-8848-2350-7c0d-b742c8d8c83c@acm.org>
+Date: Mon, 4 Jan 2021 17:48:06 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-X-Spam-Score: 0.0 (/)
+In-Reply-To: <alpine.LNX.2.23.453.2101050840010.6@nippy.intranet>
+Content-Language: en-US
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.0 FREEMAIL_FROM Sender email is commonly abused enduser mail provider
+ (bart.vanassche[at]gmail.com)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+ trust [209.85.215.169 listed in list.dnswl.org]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level mail
+ domains are different
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.215.169 listed in wl.mailspike.net]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-X-Headers-End: 1kwYwd-00DXWm-Cm
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and EnvelopeFrom
+ freemail headers are different
+ -0.0 NICE_REPLY_A           Looks like a legit reply (A)
+X-Headers-End: 1kwbSI-00E5mN-Oi
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,97 +121,34 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Mon, 4 Jan 2021, Bart Van Assche wrote:
-
-> On 6/16/20 7:07 PM, Finn Thain wrote:
-> > On Tue, 16 Jun 2020, Bart Van Assche wrote:
-> >> As far as I know the sbp driver only has had one user ever and that 
-> >> user is no longer user the sbp driver.
-> > 
-> > So, you estimate the userbase at zero. Can you give a confidence 
-> > level? Actual measurement is hard because when end users encounter 
-> > breakage, they look for quick workarounds before they undertake post 
-> > mortem, log collection, bug reporting, mailing list discussions, 
-> > analysis etc.
+On 1/4/21 2:50 PM, Finn Thain wrote:
+> On Mon, 4 Jan 2021, Bart Van Assche wrote:
+>> Additionally, there is a good alternative available for the sbp driver. 
+>> Every system I know of that is equipped with a Firewire port also has an 
+>> Ethernet port. So users who want to provide SCSI target functionality on 
+>> such systems can use any SCSI transport protocol that is compatible with 
+>> Ethernet (iSCSI, iSER over soft-RoCE, SRP over soft-RoCE, ...).
 > 
-> (replying to an e-mail from six months ago)
+> Ethernet is not always an alternative. That was already discussed in this 
+> thread. But let's assume for a moment that you can migrate any and all 
+> users of this driver over to an ethernet driver.
 > 
-> Hi Finn,
-> 
-> I am confident that my estimate is an accurate estimate since I have not 
-> seen any sbp support requests, sbp bug reports nor any sbp bug fixes 
-> since the sbp target driver has been accepted upstream.
-> 
+> Why would the maintainers of that Ethernet driver and its API accept that 
+> plan, if adding users would extend their maintenance and testing 
+> obligations? Do you think those maintainers should pay the "kind of tax 
+> that all developers/users pay to all developers/users?"
 
-That suggests to me that the code that you're hoping to remove 1) has no 
-bugs, or 2) has no reported bugs, or 3) has no users at present.
+Hi Finn,
 
-I am confident that your evidence does not support your conclusion (i.e. 
-the code will never be used again).
+I cannot speak in the name of the iSCSI over TCP/IP or iSER driver
+maintainers. But since I maintain the SRP initiator and target kernel
+drivers myself, I can state that I would be happy to help SBP target users
+(if that driver has any users today) to switch from SCSI over Firewire to
+SCSI over SRP over RoCE or even NVMEoF over TCP.
 
-Sometimes, users only appear after the unreported bugs get fixed. I've 
-seen it happen.
+Thanks,
 
-> > Here's a different question: "Why remove it from the kernel tree?"
-> > 
-> > If maintaining this code is a burden, is it not the kind of tax that 
-> > all developers/users pay to all developers/users? Does this driver 
-> > impose an unreasonably high burden for some reason?
-> 
-> Yes. If anyone wants to change the interface between SCSI target core 
-> and SCSI target drivers, all target drivers, including the sbp and FCoE 
-> target driver have to be retested.
-
-I'm unaware of such an obligation. API changes happen often. When they do, 
-we see good test coverage of commercially viable hardware, some 
-best-effort testing of common hardware, and some perfunctory build 
-testing.
-
-But that is missing the point, which was about a particular driver, not 
-about development process. You have not shown how the target API is 
-special, to support your claim that this driver imposes an unreasonable 
-burden.
-
-In the interests of making forward progress in this discussion, shall we 
-discuss the kind of SCSI Target API changes that you anticipate?
-
-> In other words, keeping unused target drivers inside the kernel tree 
-> involves a significant maintenance burden for anyone who wants to modify 
-> the interface between the SCSI target core and SCSI target drivers.
-> 
-
-Keeping _any_ driver in the kernel involves a maintenance burden. There 
-are two good ways to address that.
-
-Firstly, by improving the development process. For example, an API change 
-is mostly mechanical work that lends itself to automated refactoring.
-Secondly, by involving all interested parties, so that the burden is 
-shared.
-
-Of course, there are other ways. E.g. "don't ship code when doing so won't 
-turn a profit". That, by the way, was the policy that gave us 10 billion 
-Android devices (or more) that don't function with a mainline kernel.
-
-> Additionally, there is a good alternative available for the sbp driver. 
-> Every system I know of that is equipped with a Firewire port also has an 
-> Ethernet port. So users who want to provide SCSI target functionality on 
-> such systems can use any SCSI transport protocol that is compatible with 
-> Ethernet (iSCSI, iSER over soft-RoCE, SRP over soft-RoCE, ...).
-> 
-
-Ethernet is not always an alternative. That was already discussed in this 
-thread. But let's assume for a moment that you can migrate any and all 
-users of this driver over to an ethernet driver.
-
-Why would the maintainers of that ethernet driver and its API accept that 
-plan, if adding users would extend their maintenance and testing 
-obligations? Do you think those maintainers should pay the "kind of tax 
-that all developers/users pay to all developers/users?"
-
-> Thanks,
-> 
-> Bart.
-> 
+Bart.
 
 
 _______________________________________________
