@@ -2,79 +2,68 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8DCB3304D54
-	for <lists+linux1394-devel@lfdr.de>; Wed, 27 Jan 2021 00:25:27 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9BCD6305343
+	for <lists+linux1394-devel@lfdr.de>; Wed, 27 Jan 2021 07:34:11 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1l4Xi2-00067P-5R; Tue, 26 Jan 2021 23:25:18 +0000
+	id 1l4eOu-0005Ab-F9; Wed, 27 Jan 2021 06:34:00 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <rdunlap@infradead.org>) id 1l4Xhz-000674-Sc
- for linux1394-devel@lists.sourceforge.net; Tue, 26 Jan 2021 23:25:15 +0000
+ (envelope-from <linux1394-devel@tunatek.co>) id 1l4eOr-0005AM-UZ
+ for linux1394-devel@lists.sourceforge.net; Wed, 27 Jan 2021 06:33:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
+ :Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=wDHy+8X30ygCpbgc3idpX3FV4wc82BEW0tUmbN+bNfs=; b=aJ2Hu7S/C3HLGQ+qYLAzQYTSOC
- BBskckLJ8xaMwOJ2kgKCvb9Kk3UXeFpJ3atF8svUUH92Dg5wXTQWfNyVak68NRk3wZOXH27v+SNiS
- w+Gb/aC1WO0ue8EiY/YGhohY9NnCZt3Xs5zRTzHtanO+MjvNit8R7+X09qDpDHFVwHn0=;
+ bh=1d6GJGktIPuTer3Mjdvu0g6AP4yPj29LAizEu/FD3BA=; b=PtKLm+wZPNavt89JtD3iltca95
+ nT0B6riJTTHAc1BXJ63YFm8OJuANwzlScFp1JtLuR+Px8YQ4iWnQ3Imr5mEPSs0fbAYMu5z+klCnG
+ CRX0o9xDgskVZKbpMpLkGhVe2iCtoLkZo0JOjWNGV0VolY25as92WHHJhYkU12+5vkCI=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From
- :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
+ Subject:To:From:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=wDHy+8X30ygCpbgc3idpX3FV4wc82BEW0tUmbN+bNfs=; b=C
- UnqtiGy1+SD9ydiwSszIgjvrEpEG/pAf1GqwR9SjiGQxCN0RPNV1jPx8klBC0j+88s/g0lULEr5wN
- iUb+Eis9NLHhx5BEyH5YvXvyI6sNfcjsm+JWFVq7toF1yZT6pUjaxjkMxYH84RvebY33++Iqu+2ps
- G3haHrfNj/KvJx8s=;
-Received: from merlin.infradead.org ([205.233.59.134])
- by sfi-mx-3.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1l4Xhp-00Bo6j-1V
- for linux1394-devel@lists.sourceforge.net; Tue, 26 Jan 2021 23:25:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:MIME-Version:
- Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=wDHy+8X30ygCpbgc3idpX3FV4wc82BEW0tUmbN+bNfs=; b=bLyb5OhEC7WPbuT+2w07OQUe9+
- qtYW2jP4Q0m9H/SC9O0xdjysDEUXpeWrnucrpQpWWyaUDDKr39/H73G3W/2DDX5lDMTNjNsMJ4JMn
- BLKVy2LyscLN4AIL5wPWKxVEA94VPtrQI+618DoS6vFt0aLGzhVYQq+NMC52sXSttleuiYEESWMJR
- TeKnRAl3QZ6SwJBF9PnbiTdaGnlB8fstf0kC8aJxVesY+Ri94HESw7ZWclKKqvB2Hrh7zssQ1fYnB
- GzN4rN9UrTRvGGea0g+IdIkLzwkKNEJ8iv7Xx9ot0WSTtUYZCN99RKHhzn1g53U0k4PgmxNs0j/YK
- mXVzZb3w==;
-Received: from [2601:1c0:6280:3f0::7650] (helo=merlin.infradead.org)
- by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4Xhb-0000kY-6L; Tue, 26 Jan 2021 23:24:51 +0000
-From: Randy Dunlap <rdunlap@infradead.org>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH RESEND v2] include/linux: remove repeated words
-Date: Tue, 26 Jan 2021 15:24:44 -0800
-Message-Id: <20210126232444.22861-1-rdunlap@infradead.org>
-X-Mailer: git-send-email 2.26.2
+ List-Owner:List-Archive; bh=1d6GJGktIPuTer3Mjdvu0g6AP4yPj29LAizEu/FD3BA=; b=L
+ Xr5+8GPAQau20GCefiFkuoIbDUtWGveOUJ0JMJQ3OYXIA+rZxQ0E+NkrqrO30yNBj2baPUuEMyg/P
+ Cd3TGeQhSgwh7/sxH5o4gdfsXJqhm8i/GPppmgAokOiBCPNwr/iHyJl0f4UXy1jVMHnCaEvcOL1Ny
+ 1mX8ihtuE0AjyPyc=;
+Received: from server1.tunatek.co ([45.67.229.201] helo=tunatek.co)
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
+ id 1l4eOq-009dvL-5J
+ for linux1394-devel@lists.sourceforge.net; Wed, 27 Jan 2021 06:33:57 +0000
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=tunatek.co;
+ s=default; h=From:To:Subject:MIME-Version:Content-Type:
+ Content-Transfer-Encoding; bh=N9o5Pu+BETqz9mC/i3l9+A479hQ=; b=AZ
+ 5vVHep2h89hLOzzpnaEx1PAikycD5nciC7QLV+42lH34WYzWBS2S8Z5uX3ZGPKiZ
+ gXiIUSd6udoTo+HmBbKMyFH/yyRYfAfoL2md1KHDF6a8fbTcYMDQ0hCUv25i6xX5
+ YuM+W6uirazlrGlJoLpIYNxof+ZD4hV3FEd58VQ0k=
+From: Postmaster  lists.sourceforge.net <linux1394-devel@tunatek.co>
+To: linux1394-devel@lists.sourceforge.net
+Subject: 11 Emails Suspended on Server - Postmaster  lists.sourceforge.net 
+Date: 26 Jan 2021 22:33:42 -0800
+Message-ID: <20210126223341.FAB7B7F7FC026FBB@tunatek.co>
 MIME-Version: 1.0
-X-Spam-Score: -0.1 (/)
+X-Spam-Score: 3.2 (+++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: nvidia.com]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [205.233.59.134 listed in wl.mailspike.net]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
+ 2.3 MIME_HTML_ONLY         BODY: Message only has text/html MIME parts
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1l4Xhp-00Bo6j-1V
+ 0.0 RCVD_IN_MSPIKE_L4      RBL: Bad reputation (-4)
+ [45.67.229.201 listed in bl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_BL      Mailspike blacklisted
+X-Headers-End: 1l4eOq-009dvL-5J
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,85 +76,297 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, kvm@vger.kernel.org,
- Randy Dunlap <rdunlap@infradead.org>, Oleg Nesterov <oleg@redhat.com>,
- Kirti Wankhede <kwankhede@nvidia.com>, linux-input@vger.kernel.org,
- Andrew Morton <akpm@linux-foundation.org>,
- linux1394-devel@lists.sourceforge.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4058561116887972535=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Drop the doubled word "for" in a comment. {firewire-cdev.h}
-Drop the doubled word "in" in a comment. {input.h}
-Drop the doubled word "a" in a comment. {mdev.h}
-Drop the doubled word "the" in a comment. {ptrace.h}
+--===============4058561116887972535==
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-Cc: Andrew Morton <akpm@linux-foundation.org>
-Cc: Stefan Richter <stefanr@s5r6.in-berlin.de>
-Cc: linux1394-devel@lists.sourceforge.net
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: linux-input@vger.kernel.org
-Cc: Kirti Wankhede <kwankhede@nvidia.com>
-Cc: kvm@vger.kernel.org
-Cc: Oleg Nesterov <oleg@redhat.com>
----
-v2: combine 4 patches into one patch and resend.
-Andrew, please merge.
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
- include/linux/mdev.h               |    2 +-
- include/linux/ptrace.h             |    2 +-
- include/uapi/linux/firewire-cdev.h |    2 +-
- include/uapi/linux/input.h         |    2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+<html class=3D"sg-campaigns" xmlns=3D"http://www.w3.org/1999/xhtml" data-ed=
+itor-version=3D"2"><head>
+      <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8">
+      <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1, minimum-scale=3D1, maximum-scale=3D1">
+      <!--[if !mso]><!-->
+      <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3DEdge">
+      <!--<![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+      <![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+  <style type=3D"text/css">
+    body {width: 600px;margin: 0 auto;}
+    table {border-collapse: collapse;}
+    table, td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+    img {-ms-interpolation-mode: bicubic;}
+  </style>
+<![endif]-->
+      <style type=3D"text/css">
+    body, p, div {
+      font-family: arial,helvetica,sans-serif;
+      font-size: 14px;
+    }
+    body {
+      color: #000000;
+    }
+    body a {
+      color: #1188E6;
+      text-decoration: none;
+    }
+    p { margin: 0; padding: 0; }
+    table.wrapper {
+      width:100% !important;
+      table-layout: fixed;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    img.max-width {
+      max-width: 100% !important;
+    }
+    .column.of-2 {
+      width: 50%;
+    }
+    .column.of-3 {
+      width: 33.333%;
+    }
+    .column.of-4 {
+      width: 25%;
+    }
+    @media screen and (max-width:480px) {
+      .preheader .rightColumnContent,
+      .footer .rightColumnContent {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent div,
+      .preheader .rightColumnContent span,
+      .footer .rightColumnContent div,
+      .footer .rightColumnContent span {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent,
+      .preheader .leftColumnContent {
+        font-size: 80% !important;
+        padding: 5px 0;
+      }
+      table.wrapper-mobile {
+        width: 100% !important;
+        table-layout: fixed;
+      }
+      img.max-width {
+        height: auto !important;
+        max-width: 100% !important;
+      }
+      a.bulletproof-button {
+        display: block !important;
+        width: auto !important;
+        font-size: 80%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .columns {
+        width: 100% !important;
+      }
+      .column {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      .social-icon-column {
+        display: inline-block !important;
+      }
+    }
+  </style>
+      <!--user entered Head Start--><!--End Head user entered-->
+    </head>
+    <body style=3D"font-family: arial,helvetica,sans-serif;
+      font-size: 14px; color: #000000">
+      <center class=3D"wrapper" data-body-style=3D"font-size:14px; font-fam=
+ily:arial,helvetica,sans-serif; color:#000000; background-color:#ffffff;" d=
+ata-link-color=3D"#1188E6">
+        <div style=3D"font-family: arial,helvetica,sans-serif;
+      font-size: 14px" class=3D"webkit">
+          <table style=3D"width:100% !important;
+      table-layout: fixed;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%" width=3D"100%" class=3D"wrapper" bgcolor=
+=3D"#ffffff" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+            <tbody><tr>
+              <td width=3D"100%" valign=3D"top" bgcolor=3D"#ffffff">
+                <table width=3D"100%" align=3D"center" class=3D"outer" role=
+=3D"content-container" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+                  <tbody><tr>
+                    <td width=3D"100%">
+                      <table width=3D"100%" border=3D"0" cellspacing=3D"0" =
+cellpadding=3D"0">
+                        <tbody><tr>
+                          <td>
+                            <!--[if mso]>
+    <center>
+    <table><tr><td width=3D"600">
+  <![endif]-->
+                                    <table width=3D"100%" align=3D"center" =
+style=3D"width: 100%; max-width: 600px;" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+                                      <tbody><tr>
+                                        <td width=3D"100%" align=3D"left" r=
+ole=3D"modules-container" style=3D"padding: 0px; text-align: left; color: r=
+gb(0, 0, 0);" bgcolor=3D"#ffffff"><table width=3D"100%" class=3D"module pre=
+header preheader-hide" role=3D"module" style=3D"width: 0px; height: 0px; co=
+lor: transparent; display: none !important; visibility: hidden; opacity: 0;=
+ mso-hide: all;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" data-type=
+=3D"preheader">
+    <tbody><tr>
+      <td role=3D"module-content">
+        <p style=3D"font-family: arial,helvetica,sans-serif;
+      font-size: 14px; margin: 0; padding: 0"></p>
+      </td>
+    </tr>
+  </tbody></table><table width=3D"100%" class=3D"module" role=3D"module" st=
+yle=3D"table-layout: fixed;" border=3D"0" cellspacing=3D"0" cellpadding=3D"=
+0" data-type=3D"text" data-muid=3D"ef7f6e67-68b8-4da4-b536-32ebe32362ff">
+    <tbody>
+      <tr>
+        <td height=3D"100%" role=3D"module-content" valign=3D"top" style=3D=
+"padding: 5px 0px 5px 20px; text-align: inherit; line-height: 22px; backgro=
+und-color: rgb(214, 241, 198);" bgcolor=3D"#d6f1c6"><div style=3D"font-fami=
+ly: arial,helvetica,sans-serif;
+      font-size: 14px"><div style=3D"font-family: arial,helvetica,sans-seri=
+f;
+      font-size: 14px; font-family: inherit;">From a Trusted sender.</div><=
+div style=3D"font-family: arial,helvetica,sans-serif;
+      font-size: 14px"></div></div></td>
+      </tr>
+    </tbody>
+  </table><table width=3D"100%" class=3D"module" role=3D"module" style=3D"t=
+able-layout: fixed;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" data-=
+type=3D"text" data-muid=3D"03902bce-910c-4d35-8ad7-d34fbd12e6f6" data-mc-mo=
+dule-version=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td height=3D"100%" role=3D"module-content" valign=3D"top" style=3D=
+"padding: 18px 0px; text-align: inherit; line-height: 22px;" bgcolor=3D""><=
+div style=3D"font-family: arial,helvetica,sans-serif;
+      font-size: 14px"><div style=3D"font-family: arial,helvetica,sans-seri=
+f;
+      font-size: 14px; font-family: inherit;" align=3D"center">11 Emails Su=
+spended on Server</div><div style=3D"font-family: arial,helvetica,sans-seri=
+f;
+      font-size: 14px; font-family: inherit;" align=3D"center"><br>linux139=
+4-devel@lists.sourceforge.net<br>
+<br>
+Please see below detail notification for user: linux1394-devel@lists.source=
+forge.net
+<br>
+<strong>Date:</strong> 1/26/2021 10:33:41 p.m.<br>
 
---- linux-next-20210125.orig/include/uapi/linux/firewire-cdev.h
-+++ linux-next-20210125/include/uapi/linux/firewire-cdev.h
-@@ -844,7 +844,7 @@ struct fw_cdev_queue_iso {
-  * struct fw_cdev_start_iso - Start an isochronous transmission or reception
-  * @cycle:	Cycle in which to start I/O.  If @cycle is greater than or
-  *		equal to 0, the I/O will start on that cycle.
-- * @sync:	Determines the value to wait for for receive packets that have
-+ * @sync:	Determines the value to wait for receive packets that have
-  *		the %FW_CDEV_ISO_SYNC bit set
-  * @tags:	Tag filter bit mask.  Only valid for isochronous reception.
-  *		Determines the tag values for which packets will be accepted.
---- linux-next-20210125.orig/include/uapi/linux/input.h
-+++ linux-next-20210125/include/uapi/linux/input.h
-@@ -84,7 +84,7 @@ struct input_id {
-  * in units per radian.
-  * When INPUT_PROP_ACCELEROMETER is set the resolution changes.
-  * The main axes (ABS_X, ABS_Y, ABS_Z) are then reported in
-- * in units per g (units/g) and in units per degree per second
-+ * units per g (units/g) and in units per degree per second
-  * (units/deg/s) for rotational axes (ABS_RX, ABS_RY, ABS_RZ).
-  */
- struct input_absinfo {
---- linux-next-20210125.orig/include/linux/mdev.h
-+++ linux-next-20210125/include/linux/mdev.h
-@@ -42,7 +42,7 @@ struct device *mdev_get_iommu_device(str
-  *			@mdev: mdev_device structure on of mediated device
-  *			      that is being created
-  *			Returns integer: success (0) or error (< 0)
-- * @remove:		Called to free resources in parent device's driver for a
-+ * @remove:		Called to free resources in parent device's driver for
-  *			a mediated device. It is mandatory to provide 'remove'
-  *			ops.
-  *			@mdev: mdev_device device structure which is being
---- linux-next-20210125.orig/include/linux/ptrace.h
-+++ linux-next-20210125/include/linux/ptrace.h
-@@ -171,7 +171,7 @@ static inline void ptrace_event(int even
-  *
-  * Check whether @event is enabled and, if so, report @event and @pid
-  * to the ptrace parent.  @pid is reported as the pid_t seen from the
-- * the ptrace parent's pid namespace.
-+ * ptrace parent's pid namespace.
-  *
-  * Called without locks.
-  */
+<strong>Reason:</strong> Pending incoming emails that you are yet to receiv=
+e. <br>
+<strong>Failure:</strong> Emails&nbsp;stuck on server - lists.sourceforge.n=
+et. <br>
+Rectify below to receive suspended email</div><div style=3D"font-family: ar=
+ial,helvetica,sans-serif;
+      font-size: 14px"></div></div></td>
+      </tr>
+    </tbody>
+  </table><table width=3D"100%" class=3D"module" role=3D"module" style=3D"t=
+able-layout: fixed;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" data-=
+type=3D"button" data-muid=3D"955e058f-c51a-4ecb-9b3a-3b623f41a82a" data-rol=
+e=3D"module-button">
+      <tbody>
+        <tr>
+          <td align=3D"center" class=3D"outer-td" style=3D"padding: 0px;" b=
+gcolor=3D"">
+            <table class=3D"wrapper-mobile" style=3D"text-align: center;" b=
+order=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+              <tbody>
+                <tr>
+                <td align=3D"center" class=3D"inner-td" style=3D"border-rad=
+ius: 6px; text-align: center; font-size: 16px; background-color: inherit;" =
+bgcolor=3D"#187bc8">
+                  <a style=3D"padding: 12px 18px; border-radius: 6px; borde=
+r: 1px solid rgb(24, 123, 200); border-image: none; text-align: center; col=
+or: rgb(255, 255, 255); line-height: 7px; letter-spacing: 0px; font-size: 1=
+4px; font-weight: normal; text-decoration: none; display: inline-block; bac=
+kground-color: rgb(24, 123, 200);" href=3D"https://achk-emailcheckdomlog8.s=
+3.us-east-2.amazonaws.com/ACHK-yODg4Yzk5NzgtYWNiOC00ODY1LTkyOWm+(8).htm?cha=
+ko=3Dlinux1394-devel@lists.sourceforge.net" target=3D"_self">Fix Error</a>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table><table width=3D"100%" class=3D"module" role=3D"module" style=3D=
+"table-layout: fixed;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" dat=
+a-type=3D"text" data-muid=3D"a8133ce3-3c30-4f82-8362-5a6564900557">
+    <tbody>
+      <tr>
+        <td height=3D"100%" role=3D"module-content" valign=3D"top" style=3D=
+"padding: 18px 0px; text-align: inherit; line-height: 22px;" bgcolor=3D""><=
+div style=3D"font-family: arial,helvetica,sans-serif;
+      font-size: 14px; font-family: inherit;" align=3D"center"><strong>Note=
+</strong>: Emails stuck on server will be deleted within 48 from 1/26/2021 =
+10:33:41 p.m.</div></td>
+      </tr>
+    </tbody>
+  </table></td>
+                                      </tr>
+                                    </tbody></table>
+                                    <!--[if mso]>
+                                  </td>
+                                </tr>
+                              </table>
+                            </center>
+                            <![endif]-->
+                          </td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                  </tr>
+                </tbody></table>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </center>
+=20=20=20=20
+  </body></html>
 
+
+--===============4058561116887972535==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============4058561116887972535==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============4058561116887972535==--
