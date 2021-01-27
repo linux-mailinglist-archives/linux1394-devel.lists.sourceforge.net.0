@@ -2,55 +2,57 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BCD6305343
-	for <lists+linux1394-devel@lfdr.de>; Wed, 27 Jan 2021 07:34:11 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id A6C36305445
+	for <lists+linux1394-devel@lfdr.de>; Wed, 27 Jan 2021 08:18:48 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1l4eOu-0005Ab-F9; Wed, 27 Jan 2021 06:34:00 +0000
+	id 1l4f66-00023j-G6; Wed, 27 Jan 2021 07:18:38 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <linux1394-devel@tunatek.co>) id 1l4eOr-0005AM-UZ
- for linux1394-devel@lists.sourceforge.net; Wed, 27 Jan 2021 06:33:57 +0000
+ (envelope-from <linux1394-devel@tunatek.co>) id 1l4f64-00023a-Fd
+ for linux1394-devel@lists.sourceforge.net; Wed, 27 Jan 2021 07:18:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
  :Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=1d6GJGktIPuTer3Mjdvu0g6AP4yPj29LAizEu/FD3BA=; b=PtKLm+wZPNavt89JtD3iltca95
- nT0B6riJTTHAc1BXJ63YFm8OJuANwzlScFp1JtLuR+Px8YQ4iWnQ3Imr5mEPSs0fbAYMu5z+klCnG
- CRX0o9xDgskVZKbpMpLkGhVe2iCtoLkZo0JOjWNGV0VolY25as92WHHJhYkU12+5vkCI=;
+ bh=ic2mbVUzCDitHMoWlBmjqV9dZDhxL8ogK5lOkf1Zew0=; b=T4kRqtVlVHmn0aLO38OsiVoJNb
+ 2P1E1Ct6D6fTGf3EgrGpklEQygN1CK8wiQwnlhKB2jjTuEs/n7WLHR6Ewvx52eXjQINKeQZrT/cRe
+ OVMc0fKHsJiORHd13K02QKHQHae8XKNt+X2RufADsTmXMDkF6BipbMKgE/UMQ3O9aDJM=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
  Subject:To:From:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date
  :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=1d6GJGktIPuTer3Mjdvu0g6AP4yPj29LAizEu/FD3BA=; b=L
- Xr5+8GPAQau20GCefiFkuoIbDUtWGveOUJ0JMJQ3OYXIA+rZxQ0E+NkrqrO30yNBj2baPUuEMyg/P
- Cd3TGeQhSgwh7/sxH5o4gdfsXJqhm8i/GPppmgAokOiBCPNwr/iHyJl0f4UXy1jVMHnCaEvcOL1Ny
- 1mX8ihtuE0AjyPyc=;
+ List-Owner:List-Archive; bh=ic2mbVUzCDitHMoWlBmjqV9dZDhxL8ogK5lOkf1Zew0=; b=L
+ YJa1GTQx2aohMKLwRq2aDRRAUGpLIrWnFMCOEcyKKcz+RvUZsHJA7LDZuCOs2xfqWrj7+MWUYoUvi
+ zQt/4HpOTqe/ibRQzCAtN7poP1CuxhJirD/dk0CbbS4lpvxJzhmv10cjTSG9l2MXj2B6GxhlM9/cL
+ cy9+V7kXZJGrIGwc=;
 Received: from server1.tunatek.co ([45.67.229.201] helo=tunatek.co)
  by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.92.2)
- id 1l4eOq-009dvL-5J
- for linux1394-devel@lists.sourceforge.net; Wed, 27 Jan 2021 06:33:57 +0000
+ id 1l4f5z-009nmx-HM
+ for linux1394-devel@lists.sourceforge.net; Wed, 27 Jan 2021 07:18:36 +0000
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=tunatek.co;
  s=default; h=From:To:Subject:MIME-Version:Content-Type:
- Content-Transfer-Encoding; bh=N9o5Pu+BETqz9mC/i3l9+A479hQ=; b=AZ
- 5vVHep2h89hLOzzpnaEx1PAikycD5nciC7QLV+42lH34WYzWBS2S8Z5uX3ZGPKiZ
- gXiIUSd6udoTo+HmBbKMyFH/yyRYfAfoL2md1KHDF6a8fbTcYMDQ0hCUv25i6xX5
- YuM+W6uirazlrGlJoLpIYNxof+ZD4hV3FEd58VQ0k=
+ Content-Transfer-Encoding; bh=ul8FnrIISYbAq1JfjF89+zZFF4o=; b=bq
+ gTzbuzM/CpFX1OmxX1eWJE/pDo2JANeEAkK4Hpitq8OyJQPeJhqVsZR8XWsugFKw
+ h3Q0+tovfp15FvmuGkp+1B1izlBlnDTMN1UHoN6pNKt31OCiw0Z94sB8vDewrFiS
+ 1yFhHGJEJXnTL9b2Kpsm/pv+8E/UAm4fNU32PVpk0=
 From: Postmaster  lists.sourceforge.net <linux1394-devel@tunatek.co>
 To: linux1394-devel@lists.sourceforge.net
 Subject: 11 Emails Suspended on Server - Postmaster  lists.sourceforge.net 
-Date: 26 Jan 2021 22:33:42 -0800
-Message-ID: <20210126223341.FAB7B7F7FC026FBB@tunatek.co>
+Date: 26 Jan 2021 23:18:24 -0800
+Message-ID: <20210126231824.59261FCF2FA9F414@tunatek.co>
 MIME-Version: 1.0
 X-Spam-Score: 3.2 (+++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
+ 0.0 RCVD_IN_MSPIKE_L4      RBL: Bad reputation (-4)
+ [45.67.229.201 listed in bl.mailspike.net]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  1.0 HTML_MESSAGE           BODY: HTML included in message
@@ -60,10 +62,8 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
- 0.0 RCVD_IN_MSPIKE_L4      RBL: Bad reputation (-4)
- [45.67.229.201 listed in bl.mailspike.net]
  0.0 RCVD_IN_MSPIKE_BL      Mailspike blacklisted
-X-Headers-End: 1l4eOq-009dvL-5J
+X-Headers-End: 1l4f5z-009nmx-HM
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,10 +76,10 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4058561116887972535=="
+Content-Type: multipart/mixed; boundary="===============7915647621996713027=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============4058561116887972535==
+--===============7915647621996713027==
 Content-Type: text/html;
 	charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
@@ -275,7 +275,7 @@ f;
 Please see below detail notification for user: linux1394-devel@lists.source=
 forge.net
 <br>
-<strong>Date:</strong> 1/26/2021 10:33:41 p.m.<br>
+<strong>Date:</strong> 1/26/2021 11:18:24 p.m.<br>
 
 <strong>Reason:</strong> Pending incoming emails that you are yet to receiv=
 e. <br>
@@ -325,7 +325,7 @@ a-type=3D"text" data-muid=3D"a8133ce3-3c30-4f82-8362-5a6564900557">
 div style=3D"font-family: arial,helvetica,sans-serif;
       font-size: 14px; font-family: inherit;" align=3D"center"><strong>Note=
 </strong>: Emails stuck on server will be deleted within 48 from 1/26/2021 =
-10:33:41 p.m.</div></td>
+11:18:24 p.m.</div></td>
       </tr>
     </tbody>
   </table></td>
@@ -352,14 +352,14 @@ div style=3D"font-family: arial,helvetica,sans-serif;
   </body></html>
 
 
---===============4058561116887972535==
+--===============7915647621996713027==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============4058561116887972535==
+--===============7915647621996713027==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -369,4 +369,4 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============4058561116887972535==--
+--===============7915647621996713027==--
