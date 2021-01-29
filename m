@@ -2,62 +2,89 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E09A3080A9
-	for <lists+linux1394-devel@lfdr.de>; Thu, 28 Jan 2021 22:42:21 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9356B308AD4
+	for <lists+linux1394-devel@lfdr.de>; Fri, 29 Jan 2021 18:04:54 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1l5F3H-0007b7-VG; Thu, 28 Jan 2021 21:42:07 +0000
+	id 1l5XCO-0000tj-Bv; Fri, 29 Jan 2021 17:04:44 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <dave@sleepmap.de>) id 1l5F3G-0007au-OK
- for linux1394-devel@lists.sourceforge.net; Thu, 28 Jan 2021 21:42:06 +0000
+ (envelope-from <bigeasy@linutronix.de>) id 1l5XCN-0000td-ET
+ for linux1394-devel@lists.sourceforge.net; Fri, 29 Jan 2021 17:04:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:Mime-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=eeRj6QZvPa0/bGT9/5OqH2PjvccJ99cXABZ24MjaXH0=; b=WYfwxwJC7pAmZUwxaObxF4LmKd
- SbMz+8nK6gAoL85efCK6f/JkjxmGhcvtr2aZdJ3KzPUeRWtfDLQ99Ib5Av3d5vVt0y8BrW/juANy2
- OEwIE9TBjeJGHu5ChdJngKD0EeN8YrvZYPzfRQydNj4VCSbZyeFkYw0OHzeLK9p+QjTE=;
+ bh=IGnKt1blMBo1w/KvEX+f7ff+JRpZpJsPM2mWDu64NPQ=; b=OcZji5edgvXIOqb4Y+2d4IK2hd
+ 9fua7Aknq91PQ7HjwuPBlMPwWR0EcNqOT8hIT/hqptQG5SYCvV6eTSrJR3yOujAETPHvXUm6AKRJ7
+ pAYXLroY3QJdSxAQJQ3NkNGoYCvhZIcQ4TcFV+tdwWSYqnnrPPRKc0U3s6eWKOGjMKxo=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:Mime-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=eeRj6QZvPa0/bGT9/5OqH2PjvccJ99cXABZ24MjaXH0=; b=EglgYjQN3ioAYwPkP9b/gl10uJ
- 50He52scawGvmo8C4R8A9jAAWEUYIaPCO6Ar/udsjmIzToQ2oBJ5DUShcz4Xwr0Hz/gi0mJ0XdBc3
- LyzMgWo6BkxGC93UorKzCNCPSHPGp3YBd1O43Dkz9vV7pAmE9Ib272OdRrh0dte9O3RM=;
-Received: from sleepmap.de ([85.10.206.218] helo=mail.sleepmap.de)
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1l5F3B-00Gayv-EW
- for linux1394-devel@lists.sourceforge.net; Thu, 28 Jan 2021 21:42:05 +0000
-Date: Thu, 28 Jan 2021 22:41:45 +0100
-From: David Runge <dave@sleepmap.de>
-To: "Ahmed S. Darwish" <a.darwish@linutronix.de>
+ bh=IGnKt1blMBo1w/KvEX+f7ff+JRpZpJsPM2mWDu64NPQ=; b=MzPOFcH8eAhJDNwJdoZSe3+RZL
+ WmUkmNojUMiiKBWw1cGOP6yXL4pisj2IpB2l0Jx30HtoUvVmKqkm+g128scM0l57NDqR3aYaEGct1
+ PbyO2ZsaC0jba52MTN4xQNt3nZiBqAeRRT12YG+kZUDxHxC5BIigkTf/7QObNDVddRbA=;
+Received: from galois.linutronix.de ([193.142.43.55])
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
+ id 1l5XC6-0007wV-Ea
+ for linux1394-devel@lists.sourceforge.net; Fri, 29 Jan 2021 17:04:42 +0000
+Date: Fri, 29 Jan 2021 18:04:14 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1611939855;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IGnKt1blMBo1w/KvEX+f7ff+JRpZpJsPM2mWDu64NPQ=;
+ b=aqbaPQHzcbtWMMcrh9Wfvj87Uu7O7iVcZs/pn1qvhBirhcGO8mw9qflRoBZzoyCiuuHHYL
+ UTwsVqe40CzXfpohEPdEW/ne6aOaP0UMqvhWjBlqOTtjUUjf88hI7OQcM3H0htTc6Ld7WL
+ pNS+oH95Jra3oniktDBJF9iRmE5bqnpNuSH4u/dHOj34AXAfmbPLHl0cA3iDjptDWy7b5E
+ 6FQMXDr2XAieUmno1/mL2hRPzP18gWvqC6EMG42B77wWH+uK3ptDItd1Vxpf85Vf0zyi7X
+ dZo3t8cEMgYiIiEeO7ZkC14VjmpcsxSlZZhGbIbF5dDPC3krxsa8zgm9+HZ+8A==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1611939855;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IGnKt1blMBo1w/KvEX+f7ff+JRpZpJsPM2mWDu64NPQ=;
+ b=g4S0Kq2vq9X1wngzJV0aYXHopvOOLTgyX3SIJ5ALn3i9HqD2csAn/KtkH6nCQgb78aMQiu
+ KMAWZl4g6x73dBBw==
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+To: David Runge <dave@sleepmap.de>
 Subject: Re: firewire-ohci fails to initialize Texas Instruments
  XIO2213A/B/XIO2221 based controller on realtime kernels [5.4.91-rt50,
  5.10.8-rt24]
-Message-ID: <YBMvmU+kp11f7+wF@hmbx>
-References: <YAwPoaUZ1gTD5y+k@hmbx>
- <YBJZk9/77+E0TRk4@lx-t490>
-Mime-Version: 1.0
-In-Reply-To: <YBJZk9/77+E0TRk4@lx-t490>
-X-Spam-Score: 0.0 (/)
+Message-ID: <20210129170414.ugrlb6hpcnbiqqbf@linutronix.de>
+References: <YAwPoaUZ1gTD5y+k@hmbx> <YBJZk9/77+E0TRk4@lx-t490>
+ <YBMvmU+kp11f7+wF@hmbx>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YBMvmU+kp11f7+wF@hmbx>
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: sleepmap.de]
+ for more information. [URIs: pkgbuild.com]
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-X-Headers-End: 1l5F3B-00Gayv-EW
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+X-Headers-End: 1l5XC6-0007wV-Ea
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,120 +97,20 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-rt-users@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============0733925108944308937=="
+Cc: linux1394-devel@lists.sourceforge.net, linux-rt-users@vger.kernel.org,
+ "Ahmed S. Darwish" <a.darwish@linutronix.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-
---===============0733925108944308937==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="xQ9xaHb/SmmtzFh5"
-Content-Disposition: inline
-
-
---xQ9xaHb/SmmtzFh5
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Date: Thu, 28 Jan 2021 22:41:45 +0100
-From: David Runge <dave@sleepmap.de>
-To: "Ahmed S. Darwish" <a.darwish@linutronix.de>
-Cc: linux-rt-users@vger.kernel.org, linux1394-devel@lists.sourceforge.net
-Subject: Re: firewire-ohci fails to initialize Texas Instruments
- XIO2213A/B/XIO2221 based controller on realtime kernels [5.4.91-rt50,
- 5.10.8-rt24]
-
-On 2021-01-28 07:28:35 (+0100), Ahmed S. Darwish wrote:
-> On Sat, Jan 23, 2021 at 12:59:29PM +0100, David Runge wrote:
-> ...
-> Can you please send the full kernel log, with boot parameter
-> "firewire_ohci.debug=3D-1", for mainline v5.4.91 vs. v5.4.91-rt50?
-
-kernel log for mainline:
-https://pkgbuild.com/~dvzrv/bugs/2021/01/linux-5.4.91-kernel.log
-
-kernel log for rt (no dice :-/):
-https://pkgbuild.com/~dvzrv/bugs/2021/01/linux-5.4.91.50.arch1-kernel.log
-
-> Please also make sure to use the exact same defconfig for both, except
-> with CONFIG_PREEMPT_RT=3Dy for the -rt kenrel of course.
-
-config diff:
-https://pkgbuild.com/~dvzrv/bugs/2021/01/linux-5.4.91-lts_changed_vs_rt-lts=
-=2Epatch
-
-> This will help in comparing apples to apples, as you were posting the
-> results of different base kernels (vs. the -rt versions), and different
-> defconfigs (vs. -rt) within such kernels.
-
-The configuration for the 5.4.91 stock kernel has not been updated since
-the 5.4.83, which is maybe a bit misleading.
-Generally I enable anything that I can in the config for the realtime
-kernel. However, some settings of course get switched off, as they are
-not compatible.
-The diff above is for a custom version I just made, just to make sure
-and clear things out.
-
-> Good luck,
-
-Thanks, seems it's needed!
-
-> P.S. Since this maybe is a timing issue, and ohci bus reset handling
-> occurs at SCHED_OTHER workqueu context, were you by any chance running
-> unreasonably-intensive realtime workloads by the time the driver was
-> loaded?
-
-Not that I am aware of. The driver neither initializes the device during
-boot nor when later reloading.
-There are no intense services running. The system is fairly
-multi-purpose, so most things are started on demand.
-
-Thanks!
-
-David
-
---=20
-https://sleepmap.de
-
---xQ9xaHb/SmmtzFh5
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEkb2IFf4AQPp/9daHVMKPT/WhqUkFAmATL5kACgkQVMKPT/Wh
-qUkPdBAAgK7/YwFvPgqG7uJ2jOMC49R1nPfs5VdJwgZ8Ue+ltq5ihY85F5GHHmub
-rCbtSGTHSANjpYk8ZfniQcehzemHB9KMKroSSnst5einTQC7jIZ8DDHytRPyoDPZ
-a7USfJ3cs4H6JryopqTY5q3hzapwMLX4b2H9WFIUe/KoNYvY9oEXZDY4y8wapnlv
-JW7nSviV1guat1FNhf7PwpgCD4y2zCAEVHlV2jED0PqG7YlsMJVcxI8e9CZBvExQ
-vFMbhhlpdcM0JUissUcKyqk1Jo4PK347ZBROOT12LcdcS5BCkyT/HzMOZaBNb0J/
-KbKsoUMVdGPa9gmWyHv5a8CYhVA8WECwGBat7fn9k/nkNA2qUcTe/zlZBG0jljqT
-UwNvKjWjTWS6pFqSt0C6AqzPvh3rN1PKwnFUjqGvUFcuykL+ULpCbW6u7uR4cPNW
-PWsBP7Qw3zhum9dwCg6d4P6//55cAZ0oK9xrdlfnoiHYsJhQ8CAvdcOy8CUkHSDj
-tRdQs5kfnsiYxDlmLAvSGgE08n2n372qOjsD4Uy2ohKN/jMp9G9VSDRAnnEPMXAm
-I3AI8vS5cu07EwuPmab9HQ/Wbmi2WyWk3pFCciGKBQQIFDcfcb0HqhRZfmJV8Ecb
-9KrqAWRo3+wVeYvlfHMTXeyJarOQWINFeK9yFTlygRNG+28gP48=
-=qjyt
------END PGP SIGNATURE-----
-
---xQ9xaHb/SmmtzFh5--
-
-
---===============0733925108944308937==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============0733925108944308937==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-mailing list linux1394-devel@lists.sourceforge.net
-https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============0733925108944308937==--
-
+T24gMjAyMS0wMS0yOCAyMjo0MTo0NSBbKzAxMDBdLCBEYXZpZCBSdW5nZSB3cm90ZToKPiBrZXJu
+ZWwgbG9nIGZvciBtYWlubGluZToKPiBodHRwczovL3BrZ2J1aWxkLmNvbS9+ZHZ6cnYvYnVncy8y
+MDIxLzAxL2xpbnV4LTUuNC45MS1rZXJuZWwubG9nCj4gCj4ga2VybmVsIGxvZyBmb3IgcnQgKG5v
+IGRpY2UgOi0vKToKPiBodHRwczovL3BrZ2J1aWxkLmNvbS9+ZHZ6cnYvYnVncy8yMDIxLzAxL2xp
+bnV4LTUuNC45MS41MC5hcmNoMS1rZXJuZWwubG9nCgpJIGRvbid0IHNlZSBhbnl0aGluZyB3cm9u
+Zy4gVGhlcmUgaXMgc21hbGwgZGlmZmVyZW5jZSBpbiB0aW1pbmcgYW5kIHRoZW4KdGhlIFJUIHZl
+cnNpb24gZG9lcyBub3QgZG8gYSB0aGluZyB3aGlsZSAhUlQga2VlcHMgcmVzZXRpbmfigKYKQ291
+bGQgeW91IHRyeSBub24tUlQgd2l0aCB0aGUKCXRocmVhZGlycXMKCm9wdGlvbj8KClNlYmFzdGlh
+bgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCm1haWxp
+bmcgbGlzdCBsaW51eDEzOTQtZGV2ZWxAbGlzdHMuc291cmNlZm9yZ2UubmV0Cmh0dHBzOi8vbGlz
+dHMuc291cmNlZm9yZ2UubmV0L2xpc3RzL2xpc3RpbmZvL2xpbnV4MTM5NC1kZXZlbAo=
