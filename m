@@ -2,81 +2,65 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4026430A45F
-	for <lists+linux1394-devel@lfdr.de>; Mon,  1 Feb 2021 10:31:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 00A8C30D117
+	for <lists+linux1394-devel@lfdr.de>; Wed,  3 Feb 2021 02:56:06 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1l6VXq-0002pX-0r; Mon, 01 Feb 2021 09:30:54 +0000
+	id 1l77Ob-0002Qh-9X; Wed, 03 Feb 2021 01:55:53 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <bigeasy@linutronix.de>) id 1l6VXo-0002pO-EH
- for linux1394-devel@lists.sourceforge.net; Mon, 01 Feb 2021 09:30:52 +0000
+ (envelope-from <yang.lee@linux.alibaba.com>) id 1l77OZ-0002QZ-8t
+ for linux1394-devel@lists.sourceforge.net; Wed, 03 Feb 2021 01:55:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:
- MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ d=sourceforge.net; s=x; h=Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ MIME-Version:Content-Type:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:References:List-Id:List-Help:List-Unsubscribe:
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=aaJFegpsFq5Ifsc5Ox2rbD2EGiC1q66G9Lz8akhD8ns=; b=GjD6Mdp7iv4UheGyjhPcm1ei6b
- riWjuV895Fh+dAa900dmLPJcJIKS3Kwex4c+qkEpNWWD4xpL7jteV8UdumnGzPqd0mSR1+KNNGy5q
- yKal1mBxkuaXvBQTzTQE9mVm71EArKjQyWRcFJ5r0fqNTGxpAnoFHqOPhumINoqwcfnc=;
+ bh=/bZSxvASXR7l8AhOUkzDsywN9fgU4dbq33qffpVhFXY=; b=Zj0EZkok4Oc8o6O3loKUyVXJw9
+ 9tZglip3hQlvSCJh9eQyOWx5/fn8Ep8/omEHqA4gwdYAX4mbhdqwiYNuQX2dUhHcmATb1xIBpo0gR
+ ISijkKkaHMEjOcQh66LovvI/1u4LhIGNZly4JcI4pvVuOWRSJsJWMnniIgZVoH8KuKiY=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=aaJFegpsFq5Ifsc5Ox2rbD2EGiC1q66G9Lz8akhD8ns=; b=JOUi5jwocVaPkzNU53+rnTYn39
- oe3IBvK+SnvJhsXXw5tUWh3Gx79oCv3JNYajEDbORWCvgRYbCLH1s08oBk/i0J8wTyFYEyiVO6wX5
- O4WoYg5zJpzvzJAQ4uwXZNesYzOfCxwNm/yR5RaZYpsH6ru/sMnj6hxBJLf/ojVM+xRo=;
-Received: from galois.linutronix.de ([193.142.43.55])
+ h=Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:
+ Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=/bZSxvASXR7l8AhOUkzDsywN9fgU4dbq33qffpVhFXY=; b=cuVKxqLJ9bTB7uj5PCs5ySrznc
+ /Uanas50IRPFIuWEI7FbYcx6LXyfEi1DbR206vPW94m5lFJPpXL5/UfNc9b1WUrQ0t4YrHUIJ9r3i
+ rjjOAn7oDiNv2mUwTkMH1KPBoy/QK84h5NQslMulbNbxBkMC/4WYI0xh9fD2EtMN060A=;
+Received: from out4436.biz.mail.alibaba.com ([47.88.44.36])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1l6VXe-0003L2-9n
- for linux1394-devel@lists.sourceforge.net; Mon, 01 Feb 2021 09:30:52 +0000
-Date: Mon, 1 Feb 2021 09:34:41 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1612168483;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:  in-reply-to:in-reply-to; 
- bh=aaJFegpsFq5Ifsc5Ox2rbD2EGiC1q66G9Lz8akhD8ns=;
- b=Ss6QxNgvhf29a5NlX4+6KGlZaJL/pl4egdJLNxHBYAt0O5LsgyKI+q/jbJSt+sjzrHDmho
- AKkOTNCI5wwliQ8ZS1PoknX9ZcsI5/14bc20gTD/e07TtEpXHa2H7NRGj5CV0q9X7cy8w7
- iYEn4mp4CIrW6th5QZIqlslGKStx7rRW4sJtoDIPs2TIhKRoJj5txclaVN/M76Lt/TeMxK
- tBtW3uS2gk9j9IR8PvKAdPMJJUL5LOK39q7RmtkMcBQV5haPtG2HEG1JJGbizyX/1wkuXs
- sk65JWLcWVwizVH0AYMysomaKo49zKW9JFm820l1SA5Kkqhfame9KxXw33sFYw==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1612168483;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:  in-reply-to:in-reply-to; 
- bh=aaJFegpsFq5Ifsc5Ox2rbD2EGiC1q66G9Lz8akhD8ns=;
- b=Tdn+lzXx3YWyLhCP+aPjQJW+VWX+YS+wdVEllOEX7/Ju7ZSvrLrHNzi0YYOVxMmvmZFSJz
- Uaf+1h1pGKqffNBQ==
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-To: David Runge <dave@sleepmap.de>
-Subject: Re: firewire-ohci fails to initialize Texas Instruments
- XIO2213A/B/XIO2221 based controller on realtime kernels [5.4.91-rt50,
- 5.10.8-rt24]
-Message-ID: <20210201083441.ocucdvdrv37goz2s@linutronix.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YBVG/PG7syFIUBno@hmbx>
-X-Spam-Score: -0.1 (/)
+ id 1l77OO-000687-QK
+ for linux1394-devel@lists.sourceforge.net; Wed, 03 Feb 2021 01:55:50 +0000
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R881e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04394; MF=yang.lee@linux.alibaba.com;
+ NM=1; PH=DS; RN=7; SR=0; TI=SMTPD_---0UNiznmg_1612316993; 
+Received: from
+ j63c13417.sqa.eu95.tbsite.net(mailfrom:yang.lee@linux.alibaba.com
+ fp:SMTPD_---0UNiznmg_1612316993) by smtp.aliyun-inc.com(127.0.0.1);
+ Wed, 03 Feb 2021 09:49:53 +0800
+From: Yang Li <yang.lee@linux.alibaba.com>
+To: bootc@bootc.net
+Subject: [PATCH] scsi: target: remove unneeded semicolon
+Date: Wed,  3 Feb 2021 09:49:52 +0800
+Message-Id: <1612316992-71443-1-git-send-email-yang.lee@linux.alibaba.com>
+X-Mailer: git-send-email 1.8.3.1
+X-Spam-Score: -8.0 (--------)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [47.88.44.36 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
-X-Headers-End: 1l6VXe-0003L2-9n
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF white-list
+ 0.0 UNPARSEABLE_RELAY Informational: message has unparseable relay lines
+ -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL Match
+X-Headers-End: 1l77OO-000687-QK
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,24 +73,41 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-rt-users@vger.kernel.org,
- "Ahmed S. Darwish" <a.darwish@linutronix.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: martin.petersen@oracle.com, linux-scsi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, target-devel@vger.kernel.org,
+ Yang Li <yang.lee@linux.alibaba.com>, linux1394-devel@lists.sourceforge.net
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-KyBmaXJld2lyZSBtYWludGFpbmVyCgpPbiAyMDIxLTAxLTMwIDEyOjQ2OjA0IFsrMDEwMF0sIERh
-dmlkIFJ1bmdlIHdyb3RlOgo+IE9uIDIwMjEtMDEtMjkgMTg6MDQ6MTQgKCswMTAwKSwgU2ViYXN0
-aWFuIEFuZHJ6ZWogU2lld2lvciB3cm90ZToKPiA+IEkgZG9uJ3Qgc2VlIGFueXRoaW5nIHdyb25n
-LiBUaGVyZSBpcyBzbWFsbCBkaWZmZXJlbmNlIGluIHRpbWluZyBhbmQKPiA+IHRoZW4gdGhlIFJU
-IHZlcnNpb24gZG9lcyBub3QgZG8gYSB0aGluZyB3aGlsZSAhUlQga2VlcHMgcmVzZXRpbmfigKYK
-PiA+IENvdWxkIHlvdSB0cnkgbm9uLVJUIHdpdGggdGhlCj4gPiAJdGhyZWFkaXJxcwo+ID4gCj4g
-PiBvcHRpb24/Cj4gCj4gWWVzLCAoc29ycnkgZm9yIG5vdCBpbmNsdWRpbmcgdGhhdCBlYXJsaWVy
-IEQ6KSB0aGF0IGZhaWxzIHRoZSBzYW1lIHdheQo+IGFzIHRoZSByZWFsdGltZSBrZXJuZWw6Cj4g
-aHR0cHM6Ly9wa2didWlsZC5jb20vfmR2enJ2L2J1Z3MvMjAyMS8wMS9saW51eC01LjQuOTEta2Vy
-bmVsX3RocmVhZGlycXMubG9nCgpDb3VsZCBiZSBzcGVjaWZpYyB0byB0aGUgY2hpcCBvciB0aGUg
-b2hjaSBkcml2ZXIuIEVpdGhlciB3YXksIHRoZSBwcm9ibGVtCmFyZSB0aGUgdGhyZWFkZWQgaW50
-ZXJydXB0cy4KCj4gQmVzdCwKPiAKPiBEYXZpZAoKU2ViYXN0aWFuCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbWFpbGluZyBsaXN0IGxpbnV4MTM5NC1k
-ZXZlbEBsaXN0cy5zb3VyY2Vmb3JnZS5uZXQKaHR0cHM6Ly9saXN0cy5zb3VyY2Vmb3JnZS5uZXQv
-bGlzdHMvbGlzdGluZm8vbGludXgxMzk0LWRldmVsCg==
+Eliminate the following coccicheck warning:
+./drivers/target/sbp/sbp_target.c:1009:2-3: Unneeded semicolon
+
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+---
+ drivers/target/sbp/sbp_target.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/target/sbp/sbp_target.c b/drivers/target/sbp/sbp_target.c
+index e4a9b9f..2a6165f 100644
+--- a/drivers/target/sbp/sbp_target.c
++++ b/drivers/target/sbp/sbp_target.c
+@@ -1006,7 +1006,7 @@ static void tgt_agent_fetch_work(struct work_struct *work)
+ 			agent->state = AGENT_STATE_SUSPENDED;
+ 
+ 		spin_unlock_bh(&agent->lock);
+-	};
++	}
+ }
+ 
+ static struct sbp_target_agent *sbp_target_agent_register(
+-- 
+1.8.3.1
+
+
+
+_______________________________________________
+mailing list linux1394-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/linux1394-devel
