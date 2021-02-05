@@ -2,67 +2,89 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42E6230ED7F
-	for <lists+linux1394-devel@lfdr.de>; Thu,  4 Feb 2021 08:41:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C80C310A34
+	for <lists+linux1394-devel@lfdr.de>; Fri,  5 Feb 2021 12:27:19 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1l7ZFx-0005XS-Uq; Thu, 04 Feb 2021 07:40:49 +0000
+	id 1l7zGY-0004SD-M2; Fri, 05 Feb 2021 11:27:10 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <jiapeng.chong@linux.alibaba.com>) id 1l7ZFv-0005XJ-O6
- for linux1394-devel@lists.sourceforge.net; Thu, 04 Feb 2021 07:40:47 +0000
+ (envelope-from <bigeasy@linutronix.de>) id 1l7zGW-0004S3-GT
+ for linux1394-devel@lists.sourceforge.net; Fri, 05 Feb 2021 11:27:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- MIME-Version:Content-Type:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=mF4gC48laHIBzxQNAbb2yJo9lzSAGPX9pZYbizcS1Wk=; b=aYZdaY9aya+cFcLh/nNCXBDomz
- u+AJqlSUuRIyKomP074ROlSYbd7IKp0kuoODdtSEHZxy2fPJ7yZxjoN9WG0WWV0cJd8jOzJAbSBL8
- G0eHx6+S62NfJJsN8v8ElmE1fYQWRvAsiKk8c4mE30gmkInRSSiP0Z/ZRLLf2Z7gZ5QI=;
+ bh=9ueGmdvz3ioHRE0UmAFIZj/SnSpCrX/9dlN34TMpvV0=; b=Dpq9sCjs88hEC00y9SJKww1rso
+ 0lW/PdXb/vS3Z6GaLFCYgeG15aWIhcG2iT0X1EMI5q57+Vs76BZXGDb1x07Td4aJr678jymJlYzEz
+ i0F42kWsxA8fEuoIdQzDYz1dgLAzaO3h703V95G6frvpMLd78oAEvdWKbhBcpfIyLDag=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:
- Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=mF4gC48laHIBzxQNAbb2yJo9lzSAGPX9pZYbizcS1Wk=; b=XdL2/oUudZkxIMWVP4X3pyrv6Y
- SWMKRCoGDySbMMHtpQNH5ys258B+jy9UuIghkZiwGHomb44/ZokpaQzZa7JZBjqmX951MnnWh+NtD
- jl+XTnESd+q90jNAJkHf/Vaq5TgQtBLbchDhv+uepVvqG22DlPuOuq8ySjEBKS0TkvUQ=;
-Received: from out30-54.freemail.mail.aliyun.com ([115.124.30.54])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1l7ZFk-0001A0-LP
- for linux1394-devel@lists.sourceforge.net; Thu, 04 Feb 2021 07:40:47 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R141e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04426;
- MF=jiapeng.chong@linux.alibaba.com; NM=1; PH=DS; RN=4; SR=0;
- TI=SMTPD_---0UNqzBz7_1612424421; 
-Received: from
- j63c13417.sqa.eu95.tbsite.net(mailfrom:jiapeng.chong@linux.alibaba.com
- fp:SMTPD_---0UNqzBz7_1612424421) by smtp.aliyun-inc.com(127.0.0.1);
- Thu, 04 Feb 2021 15:40:27 +0800
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-To: stefanr@s5r6.in-berlin.de
-Subject: [PATCH v2] firewire: convert sysfs sprintf/snprintf family to
- sysfs_emit
-Date: Thu,  4 Feb 2021 15:40:20 +0800
-Message-Id: <1612424420-96871-1-git-send-email-jiapeng.chong@linux.alibaba.com>
-X-Mailer: git-send-email 1.8.3.1
-X-Spam-Score: -8.0 (--------)
+ bh=9ueGmdvz3ioHRE0UmAFIZj/SnSpCrX/9dlN34TMpvV0=; b=f7ZP40JSqd2snPSYzxo7V8CEVK
+ zT/KatSjKux+YYtfDDd+Cee28UVKaeukZWWdnKlZqcFWEY14SVsFmI/I+fhMVTPmB2BFsjYgPjv/Z
+ TwLSAoiJ9nnnznl4WqoMiThCPejquGxP+qKSvVqeyKhzChBxOj/uANyjaUTb0YqGft8U=;
+Received: from galois.linutronix.de ([193.142.43.55])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1l7zGI-0087eq-GR
+ for linux1394-devel@lists.sourceforge.net; Fri, 05 Feb 2021 11:27:08 +0000
+Date: Fri, 5 Feb 2021 12:26:38 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1612524400;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9ueGmdvz3ioHRE0UmAFIZj/SnSpCrX/9dlN34TMpvV0=;
+ b=ngHlRBQsZ7W7twI/SyGq2iRmAJ99VR5ounbqPAIO1UssSrWzWr+wMcl1s0rFIgewWpk/Jb
+ kaC1OZXC2rl+CcFHl00pZ8BbKEzSNljec04pnjY7nWbnW6Z1+H9qoWiOTSI0B2qRfsEVDq
+ nNquLEtW64YrkJsfuO6CLNdP2rqxjqMRt2LSqURfUxp1MqUDelaRXfnJc2j2IQtvekjPQD
+ wdA5HxBTj990uYGL7ty6edjH+CcjRBYXoW31dKuqGKvWtetAIAazDc/1y6UkJhn/5ooiP8
+ tX/2CTk8UBQRW00CcX04F7qqWP7GrEvh+ApsDwgVqTu50GxYkyemtV1sfhKIbA==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1612524400;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9ueGmdvz3ioHRE0UmAFIZj/SnSpCrX/9dlN34TMpvV0=;
+ b=nb7z/uyYMgpoffX7RWQ6m8JAjR4w4RzvI9D0VOqXy4s+mIrrMVCiPJtb7NcJCGixKp7s9N
+ J6bYyBi3tRRlntCg==
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+To: David Runge <dave@sleepmap.de>
+Subject: Re: firewire-ohci fails to initialize Texas Instruments
+ XIO2213A/B/XIO2221 based controller on realtime kernels [5.4.91-rt50,
+ 5.10.8-rt24]
+Message-ID: <20210205112638.xuduvuefy3auycht@linutronix.de>
+References: <YBVG/PG7syFIUBno@hmbx>
+ <20210201083441.ocucdvdrv37goz2s@linutronix.de>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210201083441.ocucdvdrv37goz2s@linutronix.de>
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [115.124.30.54 listed in list.dnswl.org]
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: pkgbuild.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF white-list
- 0.0 UNPARSEABLE_RELAY Informational: message has unparseable relay lines
- -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL Match
-X-Headers-End: 1l7ZFk-0001A0-LP
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+X-Headers-End: 1l7zGI-0087eq-GR
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,56 +97,28 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
- linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux1394-devel@lists.sourceforge.net, linux-rt-users@vger.kernel.org,
+ "Ahmed S. Darwish" <a.darwish@linutronix.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Fix the following coccicheck warning:
-
-./drivers/firewire/core-device.c:375:8-16: WARNING: use scnprintf or
-sprintf.
-
-Reported-by: Abaci Robot<abaci@linux.alibaba.com>
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
----
-Changes in v2:
-  - Modified print format.
-
- drivers/firewire/core-device.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/firewire/core-device.c b/drivers/firewire/core-device.c
-index 80db43a..25508a8 100644
---- a/drivers/firewire/core-device.c
-+++ b/drivers/firewire/core-device.c
-@@ -372,8 +372,7 @@ static ssize_t rom_index_show(struct device *dev,
- 	struct fw_device *device = fw_device(dev->parent);
- 	struct fw_unit *unit = fw_unit(dev);
- 
--	return snprintf(buf, PAGE_SIZE, "%d\n",
--			(int)(unit->directory - device->config_rom));
-+	return sysfs_emit(buf, "%td\n", unit->directory - device->config_rom);
- }
- 
- static struct device_attribute fw_unit_attributes[] = {
-@@ -403,8 +402,7 @@ static ssize_t guid_show(struct device *dev,
- 	int ret;
- 
- 	down_read(&fw_device_rwsem);
--	ret = snprintf(buf, PAGE_SIZE, "0x%08x%08x\n",
--		       device->config_rom[3], device->config_rom[4]);
-+	ret = sysfs_emit(buf, "0x%08x%08x\n", device->config_rom[3], device->config_rom[4]);
- 	up_read(&fw_device_rwsem);
- 
- 	return ret;
--- 
-1.8.3.1
-
-
-
-_______________________________________________
-mailing list linux1394-devel@lists.sourceforge.net
-https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+T24gMjAyMS0wMi0wMSAwOTozNDo0MSBbKzAxMDBdLCBUbyBEYXZpZCBSdW5nZSB3cm90ZToKPiAr
+IGZpcmV3aXJlIG1haW50YWluZXIKPiAKPiBPbiAyMDIxLTAxLTMwIDEyOjQ2OjA0IFsrMDEwMF0s
+IERhdmlkIFJ1bmdlIHdyb3RlOgo+ID4gT24gMjAyMS0wMS0yOSAxODowNDoxNCAoKzAxMDApLCBT
+ZWJhc3RpYW4gQW5kcnplaiBTaWV3aW9yIHdyb3RlOgo+ID4gPiBJIGRvbid0IHNlZSBhbnl0aGlu
+ZyB3cm9uZy4gVGhlcmUgaXMgc21hbGwgZGlmZmVyZW5jZSBpbiB0aW1pbmcgYW5kCj4gPiA+IHRo
+ZW4gdGhlIFJUIHZlcnNpb24gZG9lcyBub3QgZG8gYSB0aGluZyB3aGlsZSAhUlQga2VlcHMgcmVz
+ZXRpbmfigKYKPiA+ID4gQ291bGQgeW91IHRyeSBub24tUlQgd2l0aCB0aGUKPiA+ID4gCXRocmVh
+ZGlycXMKPiA+ID4gCj4gPiA+IG9wdGlvbj8KPiA+IAo+ID4gWWVzLCAoc29ycnkgZm9yIG5vdCBp
+bmNsdWRpbmcgdGhhdCBlYXJsaWVyIEQ6KSB0aGF0IGZhaWxzIHRoZSBzYW1lIHdheQo+ID4gYXMg
+dGhlIHJlYWx0aW1lIGtlcm5lbDoKPiA+IGh0dHBzOi8vcGtnYnVpbGQuY29tL35kdnpydi9idWdz
+LzIwMjEvMDEvbGludXgtNS40LjkxLWtlcm5lbF90aHJlYWRpcnFzLmxvZwo+IAo+IENvdWxkIGJl
+IHNwZWNpZmljIHRvIHRoZSBjaGlwIG9yIHRoZSBvaGNpIGRyaXZlci4gRWl0aGVyIHdheSwgdGhl
+IHByb2JsZW0KPiBhcmUgdGhlIHRocmVhZGVkIGludGVycnVwdHMuCgpEYXZpZCwgY291bGQgeW91
+IHBsZWFzZSB0cnkgYSB2NS4xMCBrZXJuZWwgd2l0aCB0aHJlYWRpcnFzPyBJJ3ZlIGJlZW4KanVz
+dCB0b2xkIHRoYXQgaXQgd29ya3MgdGhlcmUgb24gYSBwcGM2NCBib3guCgo+ID4gQmVzdCwKPiA+
+IAo+ID4gRGF2aWQKClNlYmFzdGlhbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCm1haWxpbmcgbGlzdCBsaW51eDEzOTQtZGV2ZWxAbGlzdHMuc291cmNl
+Zm9yZ2UubmV0Cmh0dHBzOi8vbGlzdHMuc291cmNlZm9yZ2UubmV0L2xpc3RzL2xpc3RpbmZvL2xp
+bnV4MTM5NC1kZXZlbAo=
