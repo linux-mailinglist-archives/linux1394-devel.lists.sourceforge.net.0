@@ -2,89 +2,63 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C80C310A34
-	for <lists+linux1394-devel@lfdr.de>; Fri,  5 Feb 2021 12:27:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 28E0E3116FB
+	for <lists+linux1394-devel@lfdr.de>; Sat,  6 Feb 2021 00:22:53 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1l7zGY-0004SD-M2; Fri, 05 Feb 2021 11:27:10 +0000
+	id 1l8AR0-0003mv-EO; Fri, 05 Feb 2021 23:22:42 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <bigeasy@linutronix.de>) id 1l7zGW-0004S3-GT
- for linux1394-devel@lists.sourceforge.net; Fri, 05 Feb 2021 11:27:08 +0000
+ (envelope-from <dave@sleepmap.de>) id 1l8AQz-0003mn-4M
+ for linux1394-devel@lists.sourceforge.net; Fri, 05 Feb 2021 23:22:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:Mime-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=9ueGmdvz3ioHRE0UmAFIZj/SnSpCrX/9dlN34TMpvV0=; b=Dpq9sCjs88hEC00y9SJKww1rso
- 0lW/PdXb/vS3Z6GaLFCYgeG15aWIhcG2iT0X1EMI5q57+Vs76BZXGDb1x07Td4aJr678jymJlYzEz
- i0F42kWsxA8fEuoIdQzDYz1dgLAzaO3h703V95G6frvpMLd78oAEvdWKbhBcpfIyLDag=;
+ bh=m/xlretD1S/1KKwvbHstI72sIIIdso2AYmRLgEL6IP4=; b=ZAsxrc9bqACfAlbMZyOA7VaftF
+ d6p1iy+xCBa2Fnyy3SlrLEcjZM439Xw76IhntXITERwDtSZjptdqj670AT3IYE3gA2HDvngu2Mku0
+ yLlN/AGfXJwxKnvedykhbYxEUD0H5VeZdszICeQ91Hb+jpjIO81aXrWiS015Y0bmFwVc=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ h=In-Reply-To:Content-Type:Mime-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=9ueGmdvz3ioHRE0UmAFIZj/SnSpCrX/9dlN34TMpvV0=; b=f7ZP40JSqd2snPSYzxo7V8CEVK
- zT/KatSjKux+YYtfDDd+Cee28UVKaeukZWWdnKlZqcFWEY14SVsFmI/I+fhMVTPmB2BFsjYgPjv/Z
- TwLSAoiJ9nnnznl4WqoMiThCPejquGxP+qKSvVqeyKhzChBxOj/uANyjaUTb0YqGft8U=;
-Received: from galois.linutronix.de ([193.142.43.55])
+ bh=m/xlretD1S/1KKwvbHstI72sIIIdso2AYmRLgEL6IP4=; b=ZTfM2oO+0sL4YviNC4VzZVs2mc
+ RU6y3stwARQAMBHClUgW5aGb9xA77D8M5dHxsm0a5jEXTpCd7ubCOfCabG7UJlvgbTm4GgPUcC9EJ
+ hdm66VJRwOBWMOx+XtMreEq75sXzzQiXctoA8wQFfef03o+wg9WO7d2g8U83BFIGfCec=;
+Received: from sleepmap.de ([85.10.206.218] helo=mail.sleepmap.de)
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1l7zGI-0087eq-GR
- for linux1394-devel@lists.sourceforge.net; Fri, 05 Feb 2021 11:27:08 +0000
-Date: Fri, 5 Feb 2021 12:26:38 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1612524400;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=9ueGmdvz3ioHRE0UmAFIZj/SnSpCrX/9dlN34TMpvV0=;
- b=ngHlRBQsZ7W7twI/SyGq2iRmAJ99VR5ounbqPAIO1UssSrWzWr+wMcl1s0rFIgewWpk/Jb
- kaC1OZXC2rl+CcFHl00pZ8BbKEzSNljec04pnjY7nWbnW6Z1+H9qoWiOTSI0B2qRfsEVDq
- nNquLEtW64YrkJsfuO6CLNdP2rqxjqMRt2LSqURfUxp1MqUDelaRXfnJc2j2IQtvekjPQD
- wdA5HxBTj990uYGL7ty6edjH+CcjRBYXoW31dKuqGKvWtetAIAazDc/1y6UkJhn/5ooiP8
- tX/2CTk8UBQRW00CcX04F7qqWP7GrEvh+ApsDwgVqTu50GxYkyemtV1sfhKIbA==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1612524400;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=9ueGmdvz3ioHRE0UmAFIZj/SnSpCrX/9dlN34TMpvV0=;
- b=nb7z/uyYMgpoffX7RWQ6m8JAjR4w4RzvI9D0VOqXy4s+mIrrMVCiPJtb7NcJCGixKp7s9N
- J6bYyBi3tRRlntCg==
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-To: David Runge <dave@sleepmap.de>
+ id 1l8AQo-0092WZ-GT
+ for linux1394-devel@lists.sourceforge.net; Fri, 05 Feb 2021 23:22:41 +0000
+Date: Sat, 6 Feb 2021 00:22:12 +0100
+From: David Runge <dave@sleepmap.de>
+To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Subject: Re: firewire-ohci fails to initialize Texas Instruments
  XIO2213A/B/XIO2221 based controller on realtime kernels [5.4.91-rt50,
  5.10.8-rt24]
-Message-ID: <20210205112638.xuduvuefy3auycht@linutronix.de>
+Message-ID: <YB3TLNN39/XhUyUY@hmbx>
 References: <YBVG/PG7syFIUBno@hmbx>
  <20210201083441.ocucdvdrv37goz2s@linutronix.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210201083441.ocucdvdrv37goz2s@linutronix.de>
-X-Spam-Score: -0.1 (/)
+ <20210205112638.xuduvuefy3auycht@linutronix.de>
+Mime-Version: 1.0
+In-Reply-To: <20210205112638.xuduvuefy3auycht@linutronix.de>
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: pkgbuild.com]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ for more information. [URIs: sleepmap.de]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
-X-Headers-End: 1l7zGI-0087eq-GR
+X-Headers-End: 1l8AQo-0092WZ-GT
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,26 +73,117 @@ List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>,
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
 Cc: linux1394-devel@lists.sourceforge.net, linux-rt-users@vger.kernel.org,
  "Ahmed S. Darwish" <a.darwish@linutronix.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============9178735238973702409=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-T24gMjAyMS0wMi0wMSAwOTozNDo0MSBbKzAxMDBdLCBUbyBEYXZpZCBSdW5nZSB3cm90ZToKPiAr
-IGZpcmV3aXJlIG1haW50YWluZXIKPiAKPiBPbiAyMDIxLTAxLTMwIDEyOjQ2OjA0IFsrMDEwMF0s
-IERhdmlkIFJ1bmdlIHdyb3RlOgo+ID4gT24gMjAyMS0wMS0yOSAxODowNDoxNCAoKzAxMDApLCBT
-ZWJhc3RpYW4gQW5kcnplaiBTaWV3aW9yIHdyb3RlOgo+ID4gPiBJIGRvbid0IHNlZSBhbnl0aGlu
-ZyB3cm9uZy4gVGhlcmUgaXMgc21hbGwgZGlmZmVyZW5jZSBpbiB0aW1pbmcgYW5kCj4gPiA+IHRo
-ZW4gdGhlIFJUIHZlcnNpb24gZG9lcyBub3QgZG8gYSB0aGluZyB3aGlsZSAhUlQga2VlcHMgcmVz
-ZXRpbmfigKYKPiA+ID4gQ291bGQgeW91IHRyeSBub24tUlQgd2l0aCB0aGUKPiA+ID4gCXRocmVh
-ZGlycXMKPiA+ID4gCj4gPiA+IG9wdGlvbj8KPiA+IAo+ID4gWWVzLCAoc29ycnkgZm9yIG5vdCBp
-bmNsdWRpbmcgdGhhdCBlYXJsaWVyIEQ6KSB0aGF0IGZhaWxzIHRoZSBzYW1lIHdheQo+ID4gYXMg
-dGhlIHJlYWx0aW1lIGtlcm5lbDoKPiA+IGh0dHBzOi8vcGtnYnVpbGQuY29tL35kdnpydi9idWdz
-LzIwMjEvMDEvbGludXgtNS40LjkxLWtlcm5lbF90aHJlYWRpcnFzLmxvZwo+IAo+IENvdWxkIGJl
-IHNwZWNpZmljIHRvIHRoZSBjaGlwIG9yIHRoZSBvaGNpIGRyaXZlci4gRWl0aGVyIHdheSwgdGhl
-IHByb2JsZW0KPiBhcmUgdGhlIHRocmVhZGVkIGludGVycnVwdHMuCgpEYXZpZCwgY291bGQgeW91
-IHBsZWFzZSB0cnkgYSB2NS4xMCBrZXJuZWwgd2l0aCB0aHJlYWRpcnFzPyBJJ3ZlIGJlZW4KanVz
-dCB0b2xkIHRoYXQgaXQgd29ya3MgdGhlcmUgb24gYSBwcGM2NCBib3guCgo+ID4gQmVzdCwKPiA+
-IAo+ID4gRGF2aWQKClNlYmFzdGlhbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCm1haWxpbmcgbGlzdCBsaW51eDEzOTQtZGV2ZWxAbGlzdHMuc291cmNl
-Zm9yZ2UubmV0Cmh0dHBzOi8vbGlzdHMuc291cmNlZm9yZ2UubmV0L2xpc3RzL2xpc3RpbmZvL2xp
-bnV4MTM5NC1kZXZlbAo=
+
+--===============9178735238973702409==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="0UeuAIkDJI+OXuHw"
+Content-Disposition: inline
+
+
+--0UeuAIkDJI+OXuHw
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Date: Sat, 6 Feb 2021 00:22:12 +0100
+From: David Runge <dave@sleepmap.de>
+To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Cc: "Ahmed S. Darwish" <a.darwish@linutronix.de>,
+	linux-rt-users@vger.kernel.org,
+	linux1394-devel@lists.sourceforge.net,
+	Stefan Richter <stefanr@s5r6.in-berlin.de>
+Subject: Re: firewire-ohci fails to initialize Texas Instruments
+ XIO2213A/B/XIO2221 based controller on realtime kernels [5.4.91-rt50,
+ 5.10.8-rt24]
+
+On 2021-02-05 12:26:38 (+0100), Sebastian Andrzej Siewior wrote:
+> On 2021-02-01 09:34:41 [+0100], To David Runge wrote:
+> > + firewire maintainer
+> >=20
+> > On 2021-01-30 12:46:04 [+0100], David Runge wrote:
+> > > On 2021-01-29 18:04:14 (+0100), Sebastian Andrzej Siewior wrote:
+> > > > I don't see anything wrong. There is small difference in timing and
+> > > > then the RT version does not do a thing while !RT keeps reseting=E2=
+=80=A6
+> > > > Could you try non-RT with the
+> > > > 	threadirqs
+> > > >=20
+> > > > option?
+> > >=20
+> > > Yes, (sorry for not including that earlier D:) that fails the same way
+> > > as the realtime kernel:
+> > > https://pkgbuild.com/~dvzrv/bugs/2021/01/linux-5.4.91-kernel_threadir=
+qs.log
+> >=20
+> > Could be specific to the chip or the ohci driver. Either way, the probl=
+em
+> > are the threaded interrupts.
+>=20
+> David, could you please try a v5.10 kernel with threadirqs? I've been
+> just told that it works there on a ppc64 box.
+
+I have now tried with our vanilla 5.10.13 kernel, as I have issues
+getting 5.10.12-rt26 to boot at all on my machine (will try to
+investigate that tomorrow).
+
+On 5.10.13 with threadirqs the controller is indeed initialized again
+(/dev/fw0 appears).
+However, no connected device is detected (i.e. /dev/fw1 does not
+appear).
+
+Here are the kernel logs with "firewire-ohci debug=3D-1":
+https://pkgbuild.com/~dvzrv/bugs/2021/01/linux-5.10.13.arch1_threadirqs-ker=
+nel.log
+
+Thanks for the follow-up!
+
+Best,
+David
+
+--=20
+https://sleepmap.de
+
+--0UeuAIkDJI+OXuHw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEkb2IFf4AQPp/9daHVMKPT/WhqUkFAmAd0yQACgkQVMKPT/Wh
+qUl4qxAAvlMpTTx1UwI+TQdWOPbRIWPgWsTd8mQ6a+DWuFyVihS5dyXuvBiXQQyF
+YHCMoUxQunGTWpejLiMsImkvG+WGxp8vHTgH8Xp52ODUXq0kslJwiSD2esrSJ6a/
++AG6SObGgKpv1zUGoy+g/BIQb+a4xSPHrlq6W6qAv79F35zGnKfy3bUeagobwbM2
+DfzdFtMvipiZvWRCWDKHmelCHM/ZsTgvbZAtFITRbVpEo2rjmAhZZRuOPMs8cCnQ
+GRW1zQpa7RmOqkO/vfRy//3j5i13AJ0zMKhOLtpsRMct8GAsgvUuaZ1jZ6tQXb8/
+UxFXzItJVRt/MuGjnDFwUeIzDamEt20tbpsf/MMUVMiuEnjvx2/iBehfadzAZ/sz
+wAHbbSqG8hzxtkIDiAyQB0C6+LozA/4yYuujmgba1fckOMvz7L9LBuIa1bXU21jQ
+ZLLEmVgvCKUSpbil5uiKWtG6X5Ph9DgHbu3CIzy09fAwUCFXIGKIT2V1i8hm8od9
+EF4pyIeK1d95FmwBDKuSGVcswqInAB4acMzT4VEMvBNyjl2yEaE2kS/eSV3QC3n8
+1mjJ3pK/18+IAzFVFgxcT8Y9uaGLIFiN5e6DzL539psgg1mL7Seqe2y5AFjKxz1a
+qxKQQ1rj1wGW3MepvYJKw9MceHLn0GUD1MTXrho8SMQu+pLZCu4=
+=6AIq
+-----END PGP SIGNATURE-----
+
+--0UeuAIkDJI+OXuHw--
+
+
+--===============9178735238973702409==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============9178735238973702409==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+mailing list linux1394-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============9178735238973702409==--
+
