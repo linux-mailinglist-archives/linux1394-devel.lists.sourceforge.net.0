@@ -2,60 +2,78 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B57A32E31E
-	for <lists+linux1394-devel@lfdr.de>; Fri,  5 Mar 2021 08:43:02 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE00533107C
+	for <lists+linux1394-devel@lfdr.de>; Mon,  8 Mar 2021 15:12:38 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1lI56m-0008CI-Ic; Fri, 05 Mar 2021 07:42:48 +0000
+	id 1lJGcY-000401-0d; Mon, 08 Mar 2021 14:12:30 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <gustavoars@kernel.org>) id 1lI56k-0008CB-Vo
- for linux1394-devel@lists.sourceforge.net; Fri, 05 Mar 2021 07:42:46 +0000
+ (envelope-from <bigeasy@linutronix.de>) id 1lJGcW-0003zW-08
+ for linux1394-devel@lists.sourceforge.net; Mon, 08 Mar 2021 14:12:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
- From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=vM93lw4tZmjCpuLbJUDls2dF4PtcixB7z0qSu0H1XW0=; b=RMdX97HA1TobmOOKwtInF6pZZZ
- M1M3AubiEfFsec1U4iDjkbePZy5T/tdaUn/9L3k6A84vl99I8+zI8aBZBfMrm2wWL4nE0agQmdIvr
- aISlMGtcNkISmoDHH3KDfblIfeip1pn2Cjb0eohQCcX2q8e5+5EkgnD5zrAdRQ0exflo=;
+ bh=lyIKqK5wLrUyNMr8Vn9EWnwNm9njaJ3gmuSF0PKWyVU=; b=aT0RsINSbjHtou+uFSbCdsskue
+ WWK0TccrymwR9UTSvoXGTfnpMG9Pzpd/VodEPuaqpb/H1JU4K+gAkFH7cnVuhAQRR27KjmmwCFKRQ
+ dsEAnNR3TyYouN18mxvJME8b2Q5Qngaz4PxuSCtUDLkbF9E/Ff3dzBPqsmzVQxBl3U4Q=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:
- Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=vM93lw4tZmjCpuLbJUDls2dF4PtcixB7z0qSu0H1XW0=; b=g
- r19597wKfZcLloT3xvnnf7ziTyc4aBE5IFPcV90V+6s7ELpkn8wVkw3aKrdJO9lxAUuo2DoaDMe8D
- PjM/UUcEpyNT1QO6587zL2wYRugj0tOLS/B3ILTx67W1URvkXgFNBFz+w6eqTskzbVwsbAaUiwerf
- CqZShc6ERY/iY6OU=;
-Received: from mail.kernel.org ([198.145.29.99])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1lI56Z-0002Ax-4l
- for linux1394-devel@lists.sourceforge.net; Fri, 05 Mar 2021 07:42:46 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 506DC64F44;
- Fri,  5 Mar 2021 07:42:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614930147;
- bh=uTFqnv6qmEoQwDoOMs90+0OH/pwEDX4h2tr5/bq6uGo=;
- h=Date:From:To:Cc:Subject:From;
- b=SWFzHV5i5pQ/GvRpen6FZgdRQhi5jcuZssly8nU0K+h9elbOz0NjOhC7j7+g3QWAS
- ZBUqUvaOZ6cq791A7TtWGqKkoOxCjhE3pMcicYe/VpNouxljqJxT/ifw4ifYocfy5V
- 0cgnB35f3OJxeGICkHuKzKNxrHSsmRILo2/gJKi0zm7GSrOx0MA38ThmWs4hoEeHW6
- P9+hh8aX7t7X1tFRE5qS0luM0Q27HlC0JZWyF1FhcEEN5Q8pHCf1apzGO2gXQcM6vS
- Mtw6mz0gXamM1n8hzYWiKYBT1REs5dmBoJjtcwWvqtAgMldvQ3hvGtpTwzJgfmcqQH
- 6Yy29atjh7j7A==
-Date: Fri, 5 Mar 2021 01:42:23 -0600
-From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: Stefan Richter <stefanr@s5r6.in-berlin.de>
-Subject: [PATCH][next] firewire: core: Fix fall-through warnings for Clang
-Message-ID: <20210305074223.GA123031@embeddedor>
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=lyIKqK5wLrUyNMr8Vn9EWnwNm9njaJ3gmuSF0PKWyVU=; b=i6CCD36t2R0cKao4YeL/ccN57L
+ XCp2opjmY7bCwEw66f6cDHbGUOQVBedTeASkT1qvS7Em5hLZRUjTco2tprcAVO3P734rmFwGoPDJ3
+ IMlKi1I/FKDXHYiDxdRydRUKxqpTu4C4JODUwC7fRxyDiEMpH2DyAA0OyWsbjIz1tt+4=;
+Received: from galois.linutronix.de ([193.142.43.55])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1lJGcQ-001AW8-1y
+ for linux1394-devel@lists.sourceforge.net; Mon, 08 Mar 2021 14:12:27 +0000
+Date: Mon, 8 Mar 2021 15:12:10 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1615212731;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=lyIKqK5wLrUyNMr8Vn9EWnwNm9njaJ3gmuSF0PKWyVU=;
+ b=G3xKbTwEq0wO20f5IuTmCpj64xguSM6JDXIxfHgqoIC2p1kg88Er1YuvfiVs/mdCnoYlQN
+ FA6AdM6rDRllKLB5oj4H08+g+bX/I8QGioa1bZ+Lvwfpe36uTqQkbAHXUIjh+4UVgfkHNr
+ JIggFhZnShNjlhNhlsj7xxbfHWcI7nAxaHbHdRQ6zz4Lko7RL419ECeqAwazm5+8CtPbmx
+ pA5ZxCacUmKxju0FvI8UIJw+Ce1TOP5dMGSWBIvyzdz2gKFhhrcpXIdLs9EfLxFm7qPuJb
+ Yjk7hGbB/s4hoM2lQUJqYgX0zih0MyzzfZXjkKsDzT2mmeSDUDHtwruXkcH88Q==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1615212731;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=lyIKqK5wLrUyNMr8Vn9EWnwNm9njaJ3gmuSF0PKWyVU=;
+ b=PHoFHJfu5UvLduMZeeTLxgnG+5hyiMfP2pMEHh8gVvOCxYldybM6xcFBgnTSUgwM9NHFWg
+ RUJIMeoQdjfcGtBA==
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+To: David Runge <dave@sleepmap.de>
+Subject: Re: firewire-ohci fails to initialize Texas Instruments
+ XIO2213A/B/XIO2221 based controller on realtime kernels [5.4.91-rt50,
+ 5.10.8-rt24]
+Message-ID: <20210308141210.yoa37dsc26p4jsim@linutronix.de>
+References: <YBVG/PG7syFIUBno@hmbx>
+ <20210201083441.ocucdvdrv37goz2s@linutronix.de>
+ <20210205112638.xuduvuefy3auycht@linutronix.de>
+ <YB3TLNN39/XhUyUY@hmbx> <YB+5tdIpbTfnDnIi@hmbx>
+ <20210208091940.csuyf7l73n4ofpmz@linutronix.de>
+ <YCl28sXo7LEyCK8y@hmbx>
+ <20210218083849.iitcrhdgv2oajfhv@linutronix.de>
+ <20210218092751.ahn262llcpp2loz7@linutronix.de>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <20210218092751.ahn262llcpp2loz7@linutronix.de>
 X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
@@ -66,8 +84,7 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
-X-Headers-End: 1lI56Z-0002Ax-4l
+X-Headers-End: 1lJGcQ-001AW8-1y
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,36 +97,24 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-hardening@vger.kernel.org,
- linux-kernel@vger.kernel.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Cc: linux1394-devel@lists.sourceforge.net, linux-rt-users@vger.kernel.org,
+ "Ahmed S. Darwish" <a.darwish@linutronix.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-In preparation to enable -Wimplicit-fallthrough for Clang, fix a warning
-by explicitly adding a fallthrough pseudo-keyword.
+On 2021-02-18 10:27:51 [+0100], To David Runge wrote:
+> On 2021-02-18 09:38:49 [+0100], To David Runge wrote:
+> > On 2021-02-14 20:16:02 [+0100], David Runge wrote:
+> > > The current config can be found on the AUR [1].
+> > 
+> > So this did make a difference. 
+> 
+> made _no_ difference. Sorry for the confusion.
 
-Link: https://github.com/KSPP/linux/issues/115
-Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
----
- drivers/firewire/core-topology.c | 1 +
- 1 file changed, 1 insertion(+)
+David, did you had a chance to test the patch?
 
-diff --git a/drivers/firewire/core-topology.c b/drivers/firewire/core-topology.c
-index ec68ed27b0a5..b63d55f5ebd3 100644
---- a/drivers/firewire/core-topology.c
-+++ b/drivers/firewire/core-topology.c
-@@ -58,6 +58,7 @@ static u32 *count_ports(u32 *sid, int *total_port_count, int *child_port_count)
- 		case SELFID_PORT_PARENT:
- 		case SELFID_PORT_NCONN:
- 			(*total_port_count)++;
-+			fallthrough;
- 		case SELFID_PORT_NONE:
- 			break;
- 		}
--- 
-2.27.0
-
+Sebastian
 
 
 _______________________________________________
