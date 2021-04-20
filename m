@@ -2,98 +2,114 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29E2D364DBB
-	for <lists+linux1394-devel@lfdr.de>; Tue, 20 Apr 2021 00:40:12 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.92.3)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AF6E366115
+	for <lists+linux1394-devel@lfdr.de>; Tue, 20 Apr 2021 22:44:03 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1lYcYg-00015a-Ac; Mon, 19 Apr 2021 22:39:58 +0000
+	id 1lYxDs-00027n-Ob; Tue, 20 Apr 2021 20:43:52 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- (envelope-from <keescook@chromium.org>) id 1lYcYe-00015T-MR
- for linux1394-devel@lists.sourceforge.net; Mon, 19 Apr 2021 22:39:56 +0000
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <gustavo@embeddedor.com>) id 1lYxDr-00027Z-5t
+ for linux1394-devel@lists.sourceforge.net; Tue, 20 Apr 2021 20:43:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=z7kIVSYEdrRLbG/oTtoQrKQxmDG3dmpZPUyg3EMa1CI=; b=km/ZO2N+J2UWt7IMBRcIanDl1D
- 7X8/OmZnLiKFafWYnQlvHBkfTZsMNAeegUV6QhUviUKmGbv+vqlnD9WQJznUWEqZMPb5oFVdS5t7O
- bF4JRg+l75CTXJuCrzZBBGLE5t1FwlMe0q6xEyQVRjhCiJ7x3X8kZ9IFEoy0nE2XhRdo=;
+ bh=/R9UkJuQ7YZGJkQ6UXFLC3+p4h+sEMyvizG4Bj6L9D8=; b=BUzrTOYQQXTpeFhPH2/pKWDHsg
+ a3QxWJFRnmAwNj13/QWzHvvqpUONBMMfl4fxkIw2pqlNPHcCuLwHwRato1/K8enU2+KXIGSUSrRbq
+ 2pl0js8+hxBHOQSwFoBzFFJ1Py+/vam/HZvtd3FdZJ2uw/9capvpss3g0IDuC8BzcspQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+ Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=z7kIVSYEdrRLbG/oTtoQrKQxmDG3dmpZPUyg3EMa1CI=; b=SehBZOsLdE79wJXGRFzPwpk27U
- FnOCmU2bHE0O3Qd+cMLBfIn6K0JUpWOYkdTMTJ3AV9i7edvHijYKQBOgGqPc7cJaYIKMEniBh756n
- UeNd0S9nioSVMtiHTZ0QmL8cSbXH8KnQ4bjq05gB9cnwCQntTG2Y6vz7FLwqR6YZ/Jx4=;
-Received: from mail-io1-f51.google.com ([209.85.166.51])
+ bh=/R9UkJuQ7YZGJkQ6UXFLC3+p4h+sEMyvizG4Bj6L9D8=; b=ZjM6bBjgIKjVd5S8xvYoKREGWk
+ /WnQCb/3SdmR8Oo4aqsDPOB43GcQKHh4Fd1pPZm67UIT8o/Ler8zXzSmTaoyfye7+t4mdCHoGIDrx
+ itm5r8KoH2fahGoQ7Jc1GpAJ1NRFUCEcEfuQET/Q8qzq3ymtTLW24hVDTJVoVMQj38nI=;
+Received: from gateway21.websitewelcome.com ([192.185.45.89])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.2)
- id 1lYcYT-00GyY2-1g
- for linux1394-devel@lists.sourceforge.net; Mon, 19 Apr 2021 22:39:56 +0000
-Received: by mail-io1-f51.google.com with SMTP id z14so3055078ioc.12
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1lYxDb-004YpE-18
+ for linux1394-devel@lists.sourceforge.net; Tue, 20 Apr 2021 20:43:51 +0000
+Received: from cm17.websitewelcome.com (cm17.websitewelcome.com [100.42.49.20])
+ by gateway21.websitewelcome.com (Postfix) with ESMTP id DB08F4010B418
  for <linux1394-devel@lists.sourceforge.net>;
- Mon, 19 Apr 2021 15:39:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=z7kIVSYEdrRLbG/oTtoQrKQxmDG3dmpZPUyg3EMa1CI=;
- b=Sc9mIgdJ5IJ09G9kAqZ9VsN1nsYl+yz3IGYKiVoJZ31Jk4GPBt030CiHSA3T7NfRVD
- V0fzJmr7jDWGooYekukrrrg4QXb9oTMYULfmrYj9uREqw4NITDNEeYQkMdFvW2ENTTju
- I09A75uB7/7mdrhUmFll44K2Bs3tXGMjLNa6k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=z7kIVSYEdrRLbG/oTtoQrKQxmDG3dmpZPUyg3EMa1CI=;
- b=kNSeeuXBDRQUoLD78c0NHbp022VI5vBYpYls2T20hY+sExhyw5Ny4ipVkbz2NwjzvA
- ykni3Hm0eFHa51IVQ0fPIhDvHXOWA4B60tqa8ia0c6rpSqFo7zim/u5OxZd7PVNeOrS0
- 0kqUU4+eceOihxxnSrH5lhQFyAveh0Y+0nm1zqhwmHllNIPzDSN7bRBmmJr18ZsrpL0X
- 1Fwm77KILUdbVhJdbmGc49WUDyR5xoJn5GgfPfG3BohxBCIi8XHIIcJw/EqZyEFUygsN
- uxUEtytbXjRt+p9r9nLpQTkIl7Uu/iTtpHc89oc6xHp+hTvq9eoAey0GlMnwGb9re5Ku
- ocLw==
-X-Gm-Message-State: AOAM533WFJilmijIPwpsdjFLFuCR57/hSyJ+UCOgVweW5Rf5hqSeMaSy
- LoefSmskqW/DtVvuMBJ1l4Vsdr32lLYHQQ==
-X-Google-Smtp-Source: ABdhPJw5yzdDzieag+gqmOa5kavOqzVuM6LBmdKRuUmV+3JzQTh1pmD4bxzemJrOuM5oef2m82t6hQ==
-X-Received: by 2002:a65:5581:: with SMTP id j1mr2421475pgs.420.1618868534877; 
- Mon, 19 Apr 2021 14:42:14 -0700 (PDT)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
- by smtp.gmail.com with ESMTPSA id r14sm345587pjz.43.2021.04.19.14.42.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Apr 2021 14:42:14 -0700 (PDT)
-Date: Mon, 19 Apr 2021 14:42:13 -0700
-From: Kees Cook <keescook@chromium.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH] media: firewire: firedtv-avc: fix a buffer overflow in
- avc_ca_pmt()
-Message-ID: <202104191438.D54A181@keescook>
-References: <000001d73031$d5304480$7f90cd80$@nsfocus.com>
- <YHaulytonFcW+lyZ@mwanda>
+ Tue, 20 Apr 2021 15:12:41 -0500 (CDT)
+Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
+ id YwjhlOGcFMGeEYwjhlkxjI; Tue, 20 Apr 2021 15:12:41 -0500
+X-Authority-Reason: nr=8
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=/R9UkJuQ7YZGJkQ6UXFLC3+p4h+sEMyvizG4Bj6L9D8=; b=LlurlvvrXyOUM81IDErArZVs6L
+ jkyS0Wgk5C0o55yNenmsNkTXksQt1RKo1WiAlRUBZTAu+hDrJx4ikyVkYyiAKFOf1uEsdwH/kOtYN
+ IruJL51clkIk3sOk5jbmONXlchRrgf6eHYFlrEKx4u/HjiEs2FOJ3/oH4Gjt3YIJ0VC7TnVYjmFXe
+ LRPNQdFFKsA/6ok866hSBAiKimomVjdMY1aF86bS8SZrotp+02o47Ab6YL6Jadr4zCgNfZtC4S7/Q
+ EPknCKDA77cHV11SRkTIs/WNKz/VuG33RieF2ZHOHFqKsgqy5DiEqQOkD+bOR15ib46Myy0vrIZ1t
+ uFBmI58w==;
+Received: from 187-162-31-110.static.axtel.net ([187.162.31.110]:48968
+ helo=[192.168.15.8])
+ by gator4166.hostgator.com with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94)
+ (envelope-from <gustavo@embeddedor.com>)
+ id 1lYwjf-002k6w-HY; Tue, 20 Apr 2021 15:12:39 -0500
+Subject: Re: [PATCH][next] firewire: core: Fix fall-through warnings for Clang
+To: "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Stefan Richter <stefanr@s5r6.in-berlin.de>
+References: <20210305074223.GA123031@embeddedor>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Message-ID: <69b103b8-1955-ce79-57ec-0e9eca48ba6c@embeddedor.com>
+Date: Tue, 20 Apr 2021 15:12:56 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YHaulytonFcW+lyZ@mwanda>
+In-Reply-To: <20210305074223.GA123031@embeddedor>
+Content-Language: en-US
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
+X-AntiAbuse: Original Domain - lists.sourceforge.net
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - embeddedor.com
+X-BWhitelist: no
+X-Source-IP: 187.162.31.110
+X-Source-L: No
+X-Exim-ID: 1lYwjf-002k6w-HY
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: 187-162-31-110.static.axtel.net ([192.168.15.8])
+ [187.162.31.110]:48968
+X-Source-Auth: gustavo@embeddedor.com
+X-Email-Count: 81
+X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
+X-Local-Domain: yes
 X-Spam-Score: -0.1 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.166.51 listed in wl.mailspike.net]
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [209.85.166.51 listed in list.dnswl.org]
+ trust [192.185.45.89 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
+ [192.185.45.89 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
-X-Headers-End: 1lYcYT-00GyY2-1g
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 NICE_REPLY_A           Looks like a legit reply (A)
+X-Headers-End: 1lYxDb-004YpE-18
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,108 +122,43 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: security@kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-distros@vs.openwall.org, Luo Likang <luolikang@nsfocus.com>,
- linux1394-devel@lists.sourceforge.net, linux-media@vger.kernel.org
+Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
+ linux-hardening@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Wed, Apr 14, 2021 at 11:57:59AM +0300, Dan Carpenter wrote:
-> The bounds checking in avc_ca_pmt() is not strict enough.  It should
-> be checking "read_pos + 4" because it's reading 5 bytes.  If the
-> "es_info_length" is non-zero then it reads a 6th byte so there needs to
-> be an additional check for that.
+Hi all,
+
+Friendly ping: who can take this, please?
+
+Thanks
+--
+Gustavo
+
+On 3/5/21 01:42, Gustavo A. R. Silva wrote:
+> In preparation to enable -Wimplicit-fallthrough for Clang, fix a warning
+> by explicitly adding a fallthrough pseudo-keyword.
 > 
-> I also added checks for the "write_pos".  I don't think these are
-> required because "read_pos" and "write_pos" are tied together so
-> checking one ought to be enough.  But they make the code easier to
-> understand for me.
-> 
-> The other problem is that "length" can be invalid.  It comes from
-> "data_length" in fdtv_ca_pmt().
-> 
-> Cc: stable@vger.kernel.org
-> Reported-by: Luo Likang <luolikang@nsfocus.com>
-> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
-
-Thanks for the report and the fix!
-
-As a quick note on alternative mitigations, it seems that
-CONFIG_UBSAN_BOUNDS would have caught this at runtime too. (i.e.
-c->operand[]'s size is known at build time, so out of bounds
-indexing should be detected.)
-
--Kees
-
+> Link: https://github.com/KSPP/linux/issues/115
+> Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 > ---
-> This hardware isn't super common so there is no embargo.  Resending
-> through normal lists.
+>  drivers/firewire/core-topology.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> Oh, another thing is the data_length calculation in fdtv_ca_pmt() seems
-> very suspicous.  Reading more than 4 bytes in the loop will lead to
-> shift wrapping.
+> diff --git a/drivers/firewire/core-topology.c b/drivers/firewire/core-topology.c
+> index ec68ed27b0a5..b63d55f5ebd3 100644
+> --- a/drivers/firewire/core-topology.c
+> +++ b/drivers/firewire/core-topology.c
+> @@ -58,6 +58,7 @@ static u32 *count_ports(u32 *sid, int *total_port_count, int *child_port_count)
+>  		case SELFID_PORT_PARENT:
+>  		case SELFID_PORT_NCONN:
+>  			(*total_port_count)++;
+> +			fallthrough;
+>  		case SELFID_PORT_NONE:
+>  			break;
+>  		}
 > 
->  drivers/media/firewire/firedtv-avc.c | 14 +++++++++++---
->  drivers/media/firewire/firedtv-ci.c  |  2 ++
->  2 files changed, 13 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/media/firewire/firedtv-avc.c b/drivers/media/firewire/firedtv-avc.c
-> index 2bf9467b917d..71991f8638e6 100644
-> --- a/drivers/media/firewire/firedtv-avc.c
-> +++ b/drivers/media/firewire/firedtv-avc.c
-> @@ -1165,7 +1165,11 @@ int avc_ca_pmt(struct firedtv *fdtv, char *msg, int length)
->  		read_pos += program_info_length;
->  		write_pos += program_info_length;
->  	}
-> -	while (read_pos < length) {
-> +	while (read_pos + 4 < length) {
-> +		if (write_pos + 4 >= sizeof(c->operand) - 4) {
-> +			ret = -EINVAL;
-> +			goto out;
-> +		}
->  		c->operand[write_pos++] = msg[read_pos++];
->  		c->operand[write_pos++] = msg[read_pos++];
->  		c->operand[write_pos++] = msg[read_pos++];
-> @@ -1177,13 +1181,17 @@ int avc_ca_pmt(struct firedtv *fdtv, char *msg, int length)
->  		c->operand[write_pos++] = es_info_length >> 8;
->  		c->operand[write_pos++] = es_info_length & 0xff;
->  		if (es_info_length > 0) {
-> +			if (read_pos >= length) {
-> +				ret = -EINVAL;
-> +				goto out;
-> +			}
->  			pmt_cmd_id = msg[read_pos++];
->  			if (pmt_cmd_id != 1 && pmt_cmd_id != 4)
->  				dev_err(fdtv->device, "invalid pmt_cmd_id %d at stream level\n",
->  					pmt_cmd_id);
->  
-> -			if (es_info_length > sizeof(c->operand) - 4 -
-> -					     write_pos) {
-> +			if (es_info_length > sizeof(c->operand) - 4 - write_pos ||
-> +			    es_info_length > length - read_pos) {
->  				ret = -EINVAL;
->  				goto out;
->  			}
-> diff --git a/drivers/media/firewire/firedtv-ci.c b/drivers/media/firewire/firedtv-ci.c
-> index 9363d005e2b6..2d6992ac5dd6 100644
-> --- a/drivers/media/firewire/firedtv-ci.c
-> +++ b/drivers/media/firewire/firedtv-ci.c
-> @@ -134,6 +134,8 @@ static int fdtv_ca_pmt(struct firedtv *fdtv, void *arg)
->  	} else {
->  		data_length = msg->msg[3];
->  	}
-> +	if (data_length > sizeof(msg->msg) - 4)
-> +		return -EINVAL;
->  
->  	return avc_ca_pmt(fdtv, &msg->msg[data_pos], data_length);
->  }
-> -- 
-> 2.30.2
-> 
-
--- 
-Kees Cook
 
 
 _______________________________________________
