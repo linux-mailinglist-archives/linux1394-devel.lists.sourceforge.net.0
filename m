@@ -2,52 +2,52 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD8B73803BB
-	for <lists+linux1394-devel@lfdr.de>; Fri, 14 May 2021 08:44:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F0E4F3803FC
+	for <lists+linux1394-devel@lfdr.de>; Fri, 14 May 2021 09:06:25 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1lhRYn-00027l-0d; Fri, 14 May 2021 06:44:33 +0000
+	id 1lhRto-0002xG-Bv; Fri, 14 May 2021 07:06:16 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <pulehui@huawei.com>) id 1lhRYk-00027Y-VZ
- for linux1394-devel@lists.sourceforge.net; Fri, 14 May 2021 06:44:30 +0000
+ (envelope-from <pulehui@huawei.com>) id 1lhRtj-0002wy-FI
+ for linux1394-devel@lists.sourceforge.net; Fri, 14 May 2021 07:06:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
  :Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=hTHgeLDseGB/ZmdqwH3Xjq/f1+jdCg0L9D4vZ+cqpGU=; b=X2MSPL6Lmb+GWViIdyztgUyTP0
- txRlKU9m5z5DiF7So6Z5DtuVjrfZ7FwEBPIER80vk0Hhx+HyWSjXe8Dv/o04sMR+9GWUm6n3ejxGx
- SCBH8mqJdN3k7diP+Pkc+at+E3lpwBsxzrOopCuZiJxKXCO1aKWsoQykt02vi7ks5fOE=;
+ bh=hTHgeLDseGB/ZmdqwH3Xjq/f1+jdCg0L9D4vZ+cqpGU=; b=U3HkjQwwy+ojHpI8QM7ORtibu2
+ 3Qqn1w1UJG/RRwLfW7hiyGqvR5rCDqzYT++CJZc/RbWBoOREx92CD3Zdn0C+MUGV1odDq1VSm42G2
+ LoZqz1XwCmivv0VJt6n1opXqucypr1XbXjsACKx4sD7zaLmqCNGlsn1wb888V+Kh7tj0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
  Subject:CC:To:From:Sender:Reply-To:Content-ID:Content-Description:Resent-Date
  :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=hTHgeLDseGB/ZmdqwH3Xjq/f1+jdCg0L9D4vZ+cqpGU=; b=g
- 6/dXq9ECCzLCvT4NmCg/yktzNs4LF4Ord3FoGStDQeis96VNupTs7UeZ6e6uYVtyup0hpXF2VKdrJ
- YX7HMiMLZzAdVOmPe4/RRfetRG/o/ZVZH37qnA7rSKMZcUriqUCAdJt+kYm3WDY29BWnXxGy75Jwr
- z97zl+Hu+/1YcJDU=;
-Received: from szxga05-in.huawei.com ([45.249.212.191])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1lhRYf-0001Q9-JT
- for linux1394-devel@lists.sourceforge.net; Fri, 14 May 2021 06:44:30 +0000
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4FhJpR19sdzkWLg;
- Fri, 14 May 2021 14:41:35 +0800 (CST)
+ List-Owner:List-Archive; bh=hTHgeLDseGB/ZmdqwH3Xjq/f1+jdCg0L9D4vZ+cqpGU=; b=Q
+ hXOgkM9E1lLzlQcHV6ywyEuH/YwflbSSOeDm9bVjFtyJIxTwXPTwHeOlUOSJTyV5xQFn7+4LessQT
+ dZbOHddMMZyZ6e07W14TkbYPOn6XnR7VnUPuzPfuxiXgDlh1lPoGyYGov5CvAEwIdG1lvkPPV/dG5
+ 4+ljvvfhY3oBG4jQ=;
+Received: from szxga07-in.huawei.com ([45.249.212.35])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
+ id 1lhRtg-007sBk-AC
+ for linux1394-devel@lists.sourceforge.net; Fri, 14 May 2021 07:06:13 +0000
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4FhKHT2njszBsGN;
+ Fri, 14 May 2021 15:03:17 +0800 (CST)
 Received: from ubuntu1804.huawei.com (10.67.174.98) by
- DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.498.0; Fri, 14 May 2021 14:44:11 +0800
+ DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
+ 14.3.498.0; Fri, 14 May 2021 15:05:54 +0800
 From: Pu Lehui <pulehui@huawei.com>
 To: <stefanr@s5r6.in-berlin.de>
 Subject: [PATCH -next] firewire: net: remove unused variable 'guid'
-Date: Fri, 14 May 2021 14:44:38 +0800
-Message-ID: <20210514064438.66456-1-pulehui@huawei.com>
+Date: Fri, 14 May 2021 15:06:21 +0800
+Message-ID: <20210514070621.73356-1-pulehui@huawei.com>
 X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
 X-Originating-IP: [10.67.174.98]
@@ -59,12 +59,12 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
  for more information. [URIs: huawei.com]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [45.249.212.191 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
+ [45.249.212.35 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1lhRYf-0001Q9-JT
+X-Headers-End: 1lhRtg-007sBk-AC
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,7 +77,7 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux-kernel@vger.kernel.or, linux1394-devel@lists.sourceforge.net,
+Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
  pulehui@huawei.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
