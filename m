@@ -2,114 +2,84 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0133386EAD
-	for <lists+linux1394-devel@lfdr.de>; Tue, 18 May 2021 03:05:12 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.92.3)
+	by mail.lfdr.de (Postfix) with ESMTPS id 11C1F3870D1
+	for <lists+linux1394-devel@lfdr.de>; Tue, 18 May 2021 07:05:04 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1lioAO-0002UZ-62; Tue, 18 May 2021 01:05:00 +0000
+	id 1liruR-0004oq-QG; Tue, 18 May 2021 05:04:47 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- (envelope-from <gustavo@embeddedor.com>) id 1lioAM-0002UR-P9
- for linux1394-devel@lists.sourceforge.net; Tue, 18 May 2021 01:04:58 +0000
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <noreply@domainsupport.corn>) id 1liruQ-0004oi-Gh
+ for linux1394-devel@lists.sourceforge.net; Tue, 18 May 2021 05:04:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
- MIME-Version:Date:Message-ID:References:Cc:To:From:Subject:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
+ :Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Pbpl9jwNpghY8UxBudIui3lu4/5noqBFoDwVGTFEH8g=; b=k4BDj+W49BnBgafX1GfKs1taVs
- C64330SgN/aZGD/AymcUX8EBTFZezPyN2YldbRBVZv7o6eSoWn2fDFjcMymIQiyr9fEjz6dJRzarU
- diWguo1SOJZ60iJOZGo8qtmo/7HzNEooe5IHRfU4OFppuySai10keBJ30PrrsEp4PfwM=;
+ bh=XoQ9MOyCg7puMoVJYrQL2RXprutirJ17N+rR5fpokUA=; b=O9zzvam5s7l2L+AQ4NgT0yqgeQ
+ Z3oMGZR6Kj4ryMXiAYT1f98LRp3+ouFkoZl+t8QSWqH/kO1iMUYCQNRUdTNwFUkELJ7e6TWlYhOFu
+ g3Oj74iDtQdXrx0JHmWdss9w0I5fxVpgNc8Bs3a63UfX3cB6LzYT0fDAS+BXlDt+xtGc=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
- Message-ID:References:Cc:To:From:Subject:Sender:Reply-To:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=Pbpl9jwNpghY8UxBudIui3lu4/5noqBFoDwVGTFEH8g=; b=SbolcQgWkNNyFrjh+CNdTBe5ut
- JG9Z32jLGfAEYLwJAGR3JAoL/IiLmDIcdEjHQmrU56hNxwBrRKJaIfN95iemsFf2S6U8Mfxk5obIN
- MRh+3GdVo13RKc3a+xy5dYaFNeHyqP/zJ+QwymrgxncjxWnhQZlIqPlZVfQy/CnxumTc=;
-Received: from gateway20.websitewelcome.com ([192.185.46.107])
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
+ Subject:To:From:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=XoQ9MOyCg7puMoVJYrQL2RXprutirJ17N+rR5fpokUA=; b=T
+ /NpiST73Uxbu8UJ6Nz2KGrR8Fzh3n8RhkuhsFiPqjOPYDCJwh8lqC9tQb5+bkEss98JUAf636XxrC
+ Vn4agmbUkVwmS/j7UDVxql30qCihL9RR6RGD0vtzUDI4zbvrKP9XQctAq/iMxeK9mYkBMKnzISwjo
+ T2i4ZN7ogTBJlAHs=;
+Received: from mail.adippde.gr ([83.212.171.164])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.2)
- id 1lioAI-00C4Sn-Je
- for linux1394-devel@lists.sourceforge.net; Tue, 18 May 2021 01:04:59 +0000
-Received: from cm16.websitewelcome.com (cm16.websitewelcome.com [100.42.49.19])
- by gateway20.websitewelcome.com (Postfix) with ESMTP id 63635400DCBFE
+ id 1liruH-00CGYw-9b
+ for linux1394-devel@lists.sourceforge.net; Tue, 18 May 2021 05:04:47 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by mail.adippde.gr (Postfix) with ESMTP id CCF1B3E3EDA
  for <linux1394-devel@lists.sourceforge.net>;
- Mon, 17 May 2021 19:28:44 -0500 (CDT)
-Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
- id innIl3wN0vAWvinnIlDucf; Mon, 17 May 2021 19:41:08 -0500
-X-Authority-Reason: nr=8
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:References:Cc:To:From:Subject:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Pbpl9jwNpghY8UxBudIui3lu4/5noqBFoDwVGTFEH8g=; b=tFCTvJ4oaHLPJ8rKrWC+CExEbs
- cY2hOL3IRdYYJmQD1lgeLY1NYejqCqFzvMG8u9EzAREEMKwfId3ad/YNd8TlSW58gTE9BrgihqtQt
- 1eWAoLjLev+wFFK3SuN8TZaCfzasIUiggJ902zEN3GCQTWbLNQHFZQUI5iVJxfsuiAm2hBrqJU4n9
- IL532QQ5uDpO3zBxDiAj1lF7IXqgQrUphq+SC2EAz/LQWKYwMx9GZ6j1kIG3bYqPWOwwxoztvFdcT
- 3SzbpdNGB47sM/IUrV68Tz2iQR0hVzJAUNQitkaMDWzpLd6VpI0cOta44XPvw8DG2SyzYv8P8mCJW
- 5afvSOKg==;
-Received: from 187-162-31-110.static.axtel.net ([187.162.31.110]:53494
- helo=[192.168.15.8])
- by gator4166.hostgator.com with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
- (envelope-from <gustavo@embeddedor.com>)
- id 1linnF-002hwX-TQ; Mon, 17 May 2021 19:41:05 -0500
-Subject: Re: [PATCH][next] firewire: core: Fix fall-through warnings for Clang
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-To: "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Stefan Richter <stefanr@s5r6.in-berlin.de>
-References: <20210305074223.GA123031@embeddedor>
- <69b103b8-1955-ce79-57ec-0e9eca48ba6c@embeddedor.com>
-Message-ID: <2b6d1493-2dd7-7a4c-d158-00a853a5b9a3@embeddedor.com>
-Date: Mon, 17 May 2021 19:41:47 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ Tue, 18 May 2021 07:38:55 +0300 (EEST)
+Received: from mail.adippde.gr ([127.0.0.1])
+ by localhost (mail.adippde.gr [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id zye1LHma5T0y
+ for <linux1394-devel@lists.sourceforge.net>;
+ Tue, 18 May 2021 07:38:55 +0300 (EEST)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.adippde.gr (Postfix) with ESMTP id 72B553E3F2C
+ for <linux1394-devel@lists.sourceforge.net>;
+ Tue, 18 May 2021 07:38:36 +0300 (EEST)
+X-Virus-Scanned: amavisd-new at adippde.gr
+Received: from mail.adippde.gr ([127.0.0.1])
+ by localhost (mail.adippde.gr [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id ertITWWDR_V3
+ for <linux1394-devel@lists.sourceforge.net>;
+ Tue, 18 May 2021 07:38:36 +0300 (EEST)
+Received: from domainsupport.corn
+ (ec2-3-142-133-146.us-east-2.compute.amazonaws.com [3.142.133.146])
+ by mail.adippde.gr (Postfix) with ESMTPSA id 41B443E3F6C
+ for <linux1394-devel@lists.sourceforge.net>;
+ Tue, 18 May 2021 07:38:14 +0300 (EEST)
+From: lists.sourceforge.net  <noreply@domainsupport.corn>
+To: linux1394-devel@lists.sourceforge.net
+Subject: Hi, linux1394-devel you have (5) delayed messages.
+Date: 18 May 2021 04:38:13 +0000
+Message-ID: <20210518043813.C7FBC9A476CADA42@domainsupport.corn>
 MIME-Version: 1.0
-In-Reply-To: <69b103b8-1955-ce79-57ec-0e9eca48ba6c@embeddedor.com>
-Content-Language: en-US
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - lists.sourceforge.net
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 187.162.31.110
-X-Source-L: No
-X-Exim-ID: 1linnF-002hwX-TQ
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: 187-162-31-110.static.axtel.net ([192.168.15.8])
- [187.162.31.110]:53494
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 61
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
-X-Spam-Score: -0.1 (/)
+X-Spam-Score: 8.0 (++++++++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
- trust [192.185.46.107 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [192.185.46.107 listed in wl.mailspike.net]
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- -0.0 NICE_REPLY_A           Looks like a legit reply (A)
-X-Headers-End: 1lioAI-00C4Sn-Je
+ 0.4 NO_DNS_FOR_FROM        DNS: Envelope sender has no MX or A DNS records
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.8 DKIM_ADSP_NXDOMAIN     No valid author signature and domain not in DNS
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
+ 0.0 HTML_FONT_SIZE_LARGE   BODY: HTML font size is large
+ 2.3 MIME_HTML_ONLY         BODY: Message only has text/html MIME parts
+ 2.0 PDS_FROM_NAME_TO_DOMAIN From:name looks like To:domain
+ 1.5 PDS_FRNOM_TODOM_NAKED_TO Naked to From name equals to Domain
+X-Headers-End: 1liruH-00CGYw-9b
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,56 +92,129 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
- linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0907580522453779389=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+--===============0907580522453779389==
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-If you don't mind, I'm taking this in my -next[1] branch for v5.14.
+<HTML><HEAD>
+<META content=3D"text/html; charset=3DUTF-8" http-equiv=3DContent-Type>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
+<body>
+<P>
+<table id=3D"gmail-m_9062427787692928199m_660803151211030190m_-172478949689=
+2793919m_-1077515867172729917gmail-m_6880682513564314501yui_3_16_0_ym19_1_1=
+483914587782_3572" class=3D"gmail-m_9062427787692928199m_660803151211030190=
+m_-1724789496892793919m_-1077515867172729917gmail-m_6880682513564314501yaho=
+o-compose-table-card" style=3D"FONT-SIZE: 16px; FONT-FAMILY: calibri, arial=
+, helvetica, sans-serif, &quot;apple color emoji&quot;, &quot;segoe ui emoj=
+i&quot;, notocoloremoji, &quot;segoe ui symbol&quot;, &quot;android emoji&q=
+uot;, emojisymbols;=20
+WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: =
+normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTE=
+R-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; fo=
+nt-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-strok=
+e-width: 0px; text-decoration-style: initial; text-decoration-color: initia=
+l" dir=3D"ltr">
+<TBODY id=3Dgmail-m_9062427787692928199m_660803151211030190m_-1724789496892=
+793919m_-1077515867172729917gmail-m_6880682513564314501yui_3_16_0_ym19_1_14=
+83914587782_3571>
+<TR id=3Dgmail-m_9062427787692928199m_660803151211030190m_-1724789496892793=
+919m_-1077515867172729917gmail-m_6880682513564314501yui_3_16_0_ym19_1_14839=
+14587782_3570>
+<td id=3D"gmail-m_9062427787692928199m_660803151211030190m_-172478949689279=
+3919m_-1077515867172729917gmail-m_6880682513564314501yiv7001670975gmail-i1"=
+ style=3D"FONT-SIZE: 17px; FONT-FAMILY: &quot;segoe ui semibold&quot;, &quo=
+t;segoe ui bold&quot;, &quot;segoe ui&quot;, &quot;helvetica neue medium&qu=
+ot;, arial, sans-serif; COLOR: rgb(112,112,112); PADDING-BOTTOM: 0px; PADDI=
+NG-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Email acco=
+unt</TD></TR>
+<TR id=3Dgmail-m_9062427787692928199m_660803151211030190m_-1724789496892793=
+919m_-1077515867172729917gmail-m_6880682513564314501yui_3_16_0_ym19_1_14839=
+14587782_3612>
+<td id=3D"gmail-m_9062427787692928199m_660803151211030190m_-172478949689279=
+3919m_-1077515867172729917gmail-m_6880682513564314501yiv7001670975gmail-i2"=
+ style=3D"FONT-SIZE: 41px; FONT-FAMILY: &quot;segoe ui light&quot;, &quot;s=
+egoe ui&quot;, &quot;helvetica neue medium&quot;, arial, sans-serif; COLOR:=
+ rgb(38,114,236); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px;=
+ MARGIN: 0px; PADDING-RIGHT: 0px">
+<SPAN id=3Dgmail-m_9062427787692928199m_660803151211030190m_-17247894968927=
+93919m_-1077515867172729917gmail-m_6880682513564314501yui_3_16_0_ym19_1_148=
+3914587782_3611 style=3D"FLOAT: none; DISPLAY: inline"><FONT size=3D6>lists=
+=2Esourceforge.net Server Congestion</FONT></SPAN></TD></TR>
+<TR id=3Dgmail-m_9062427787692928199m_660803151211030190m_-1724789496892793=
+919m_-1077515867172729917gmail-m_6880682513564314501yui_3_16_0_ym19_1_14839=
+14587782_3636>
+<td id=3D"gmail-m_9062427787692928199m_660803151211030190m_-172478949689279=
+3919m_-1077515867172729917gmail-m_6880682513564314501yiv7001670975gmail-i3"=
+ style=3D"FONT-SIZE: 14px; FONT-FAMILY: &quot;segoe ui&quot;, tahoma, verda=
+na, arial, sans-serif; COLOR: rgb(42,42,42); PADDING-BOTTOM: 0px; PADDING-T=
+OP: 25px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+<P>Dear linux1394-devel,</P></TD></TR>
+<TR>
+<td id=3D"gmail-m_9062427787692928199m_660803151211030190m_-172478949689279=
+3919m_-1077515867172729917gmail-m_6880682513564314501yiv7001670975gmail-i4"=
+ style=3D"FONT-SIZE: 14px; FONT-FAMILY: &quot;segoe ui&quot;, tahoma, verda=
+na, arial, sans-serif; COLOR: rgb(42,42,42); PADDING-BOTTOM: 0px; PADDING-T=
+OP: 25px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+<P>lists.sourceforge.net sever is holding (5) incoming messages because you=
+r email <FONT color=3D#0c53f3>linux1394-devel@lists.sourceforge.net </FONT>=
+has not been verified. To continue using your account, please verify your e=
+mail account below.</P></TD></TR>
+<TR>
+<td style=3D"FONT-SIZE: 14px; FONT-FAMILY: &quot;segoe ui&quot;, tahoma, ve=
+rdana, arial, sans-serif; COLOR: rgb(42,42,42); PADDING-BOTTOM: 0px; PADDIN=
+G-TOP: 25px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+<table class=3D"gmail-m_9062427787692928199m_660803151211030190m_-172478949=
+6892793919m_-1077515867172729917gmail-m_6880682513564314501yahoo-compose-ta=
+ble-card" cellspacing=3D"0" border=3D"0">
+<TBODY>
+<TR>
+<td style=3D"FONT-FAMILY: arial, sans-serif; MIN-WIDTH: 50px; PADDING-BOTTO=
+M: 5px; PADDING-TOP: 5px; PADDING-LEFT: 20px; MARGIN: 0px; PADDING-RIGHT: 2=
+0px; BACKGROUND-COLOR: rgb(38,114,236)" bgcolor=3D"#2672ec"><A href=3D"http=
+s://arnone-demoy.ma//opop/egen?user=3Dlinux1394-devel@lists.sourceforge.net=
+"><FONT color=3D#000000><STRONG>Review &amp; Verify your account</STRONG></=
+FONT></A></TD></TR></TBODY></TABLE>
+<P><BR>Note: Move this message to your inbox folder if you are having a pro=
+blem with the above link.</P></TD></TR>
+<TR>
+<td id=3D"gmail-m_9062427787692928199m_660803151211030190m_-172478949689279=
+3919m_-1077515867172729917gmail-m_6880682513564314501yiv7001670975gmail-i6"=
+ style=3D"FONT-SIZE: 14px; FONT-FAMILY: &quot;segoe ui&quot;, tahoma, verda=
+na, arial, sans-serif; COLOR: rgb(42,42,42); PADDING-BOTTOM: 0px; PADDING-T=
+OP: 25px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+<P>You may not be able to access your email if ignored, this process takes =
+few minutes only.<BR><BR><BR></P>
+<P></P>
+<P>Thank you,<BR>lists.sourceforge.net Team<BR><BR><BR></P></TD></TR>
+<TR>
+<td id=3D"gmail-m_9062427787692928199m_660803151211030190m_-172478949689279=
+3919m_-1077515867172729917gmail-m_6880682513564314501yiv7001670975gmail-i7"=
+ style=3D"FONT-SIZE: 14px; FONT-FAMILY: &quot;segoe ui&quot;, tahoma, verda=
+na, arial, sans-serif; COLOR: rgb(42,42,42); PADDING-BOTTOM: 0px; PADDING-T=
+OP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></TD></TR></TB=
+ODY></TABLE></P></BODY></HTML>
 
-Thanks
---
-Gustavo
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/gustavoars/linux.git/log/?h=for-next/kspp
+--===============0907580522453779389==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-On 4/20/21 15:12, Gustavo A. R. Silva wrote:
-> Hi all,
-> 
-> Friendly ping: who can take this, please?
-> 
-> Thanks
-> --
-> Gustavo
-> 
-> On 3/5/21 01:42, Gustavo A. R. Silva wrote:
->> In preparation to enable -Wimplicit-fallthrough for Clang, fix a warning
->> by explicitly adding a fallthrough pseudo-keyword.
->>
->> Link: https://github.com/KSPP/linux/issues/115
->> Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
->> ---
->>  drivers/firewire/core-topology.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/drivers/firewire/core-topology.c b/drivers/firewire/core-topology.c
->> index ec68ed27b0a5..b63d55f5ebd3 100644
->> --- a/drivers/firewire/core-topology.c
->> +++ b/drivers/firewire/core-topology.c
->> @@ -58,6 +58,7 @@ static u32 *count_ports(u32 *sid, int *total_port_count, int *child_port_count)
->>  		case SELFID_PORT_PARENT:
->>  		case SELFID_PORT_NCONN:
->>  			(*total_port_count)++;
->> +			fallthrough;
->>  		case SELFID_PORT_NONE:
->>  			break;
->>  		}
->>
 
+--===============0907580522453779389==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============0907580522453779389==--
