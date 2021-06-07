@@ -2,62 +2,62 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C2C539D62D
-	for <lists+linux1394-devel@lfdr.de>; Mon,  7 Jun 2021 09:39:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E19A739D630
+	for <lists+linux1394-devel@lfdr.de>; Mon,  7 Jun 2021 09:39:29 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1lq9qR-0003tW-2y; Mon, 07 Jun 2021 07:38:47 +0000
+	id 1lq9qz-000409-7h; Mon, 07 Jun 2021 07:39:21 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <yangyanchao6@huawei.com>) id 1lq9qP-0003tG-SX
- for linux1394-devel@lists.sourceforge.net; Mon, 07 Jun 2021 07:38:45 +0000
+ (envelope-from <yangyanchao6@huawei.com>) id 1lq9qx-0003zu-T4
+ for linux1394-devel@lists.sourceforge.net; Mon, 07 Jun 2021 07:39:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Type:Content-Transfer-Encoding:MIME-Version
  :Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=DIvLYKKlXLBpE0aoutyZtF+l8b9sNg56d41bSANIdeM=; b=Vx++bVK2hRVQ9ny6qi+cxDleBZ
- etmpit8GBNteBG2X++kK1j3K7/LGMhLtSgbyMpid0pe/seyW3QQ8knn/X+kzv6M25al8hUuTOLnMA
- bkCoO+jGNp8KVAMeDIy4jJyxazWdkueaPvj75F2awOyShifbObnfyzTdwK+iABVL/ys4=;
+ bh=DIvLYKKlXLBpE0aoutyZtF+l8b9sNg56d41bSANIdeM=; b=hexYoQ5VwwqzXarSuqh701Ozw8
+ l9FX+UGjZ6LI7GH5hfzjeX/RbWTTAHVhRDUjSXnY2h+f2a60ZnvT4qn7zLs5frsCTvqP8ahugV4Jt
+ 0gPaMWRDP7nJH2Dz2IL/KV444Phs912VSPpgrjbbqHIAoPF1rvEXQBTOvxp+oBvDTkc0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
  Subject:CC:To:From:Sender:Reply-To:Content-ID:Content-Description:Resent-Date
  :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=DIvLYKKlXLBpE0aoutyZtF+l8b9sNg56d41bSANIdeM=; b=E
- W9Fs51fcQfcLKk7IrahtlkNxHzcytJT41TMz7A8/10FMZlot2c9tNms/ZcF1pOGAw9WE0GwsZuPeW
- M5sHZBNeyy42ntvPP7K2aN2bEpFrOW6T5o++lb5clCvfeAzp8bGs9VrEOS20wxABu5IFIiLbzC/a6
- sTOJXCKbirmUmaw8=;
-Received: from szxga03-in.huawei.com ([45.249.212.189])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ List-Owner:List-Archive; bh=DIvLYKKlXLBpE0aoutyZtF+l8b9sNg56d41bSANIdeM=; b=M
+ Tm0m+niGMYPx9p4VMxtmQjYK7qqyc01HP/avyJgLFBrnu+OlONSuJI7rM5j1bkue3wbF2X2g+b9pF
+ 9EXp7AYtPQ8ukJWUku9CXaDikcBLuLJSa0hFZuFBloeXrGyA7e3sfWRB7/4xuTj8TafhI9yueehDF
+ 7K7eENP9IHy5YWK4=;
+Received: from szxga01-in.huawei.com ([45.249.212.187])
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1lq9qC-00D420-H6
- for linux1394-devel@lists.sourceforge.net; Mon, 07 Jun 2021 07:38:46 +0000
-Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.55])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4Fz4rV0xK7z69cZ;
- Mon,  7 Jun 2021 15:34:34 +0800 (CST)
+ id 1lq9qp-0003OA-AG
+ for linux1394-devel@lists.sourceforge.net; Mon, 07 Jun 2021 07:39:19 +0000
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.56])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Fz4r42KKCzWsvZ;
+ Mon,  7 Jun 2021 15:34:12 +0800 (CST)
 Received: from dggpeml500016.china.huawei.com (7.185.36.70) by
- dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Mon, 7 Jun 2021 15:38:18 +0800
+ 15.1.2176.2; Mon, 7 Jun 2021 15:39:01 +0800
 Received: from huawei.com (10.174.179.133) by dggpeml500016.china.huawei.com
  (7.185.36.70) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2176.2; Mon, 7 Jun 2021
- 15:38:18 +0800
+ 15:39:01 +0800
 From: Yang Yanchao <yangyanchao6@huawei.com>
 To: <dan.carpenter@oracle.com>
 Subject: [PATCH] media firewire firedtv-avc fix a buffer overflow in
  avc_ca_pmt() 
-Date: Mon, 7 Jun 2021 15:38:17 +0800
-Message-ID: <20210607073817.1246-1-yangyanchao6@huawei.com>
+Date: Mon, 7 Jun 2021 15:39:00 +0800
+Message-ID: <20210607073900.1298-1-yangyanchao6@huawei.com>
 X-Mailer: git-send-email 2.31.1.windows.1
 MIME-Version: 1.0
 X-Originating-IP: [10.174.179.133]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  dggpeml500016.china.huawei.com (7.185.36.70)
 X-CFilter-Loop: Reflected
 X-Spam-Score: 0.0 (/)
@@ -65,7 +65,7 @@ X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-X-Headers-End: 1lq9qC-00D420-H6
+X-Headers-End: 1lq9qp-0003OA-AG
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,10 +81,10 @@ List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>,
 Cc: linux-distros@vs.openwall.org, mchehab@kernel.org,
  linux1394-devel@lists.sourceforge.net, security@kernel.org,
  linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============1813928011513679729=="
+Content-Type: multipart/mixed; boundary="===============4507801422556790703=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============1813928011513679729==
+--===============4507801422556790703==
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain
 
@@ -171,14 +171,14 @@ index 8dc5a7495..0e7ffa156 100644=0D
 2.23.0=
 
 
---===============1813928011513679729==
+--===============4507801422556790703==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============1813928011513679729==
+--===============4507801422556790703==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -188,4 +188,4 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============1813928011513679729==--
+--===============4507801422556790703==--
