@@ -2,70 +2,72 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id E19A739D630
-	for <lists+linux1394-devel@lfdr.de>; Mon,  7 Jun 2021 09:39:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8AB0739D8BB
+	for <lists+linux1394-devel@lfdr.de>; Mon,  7 Jun 2021 11:27:25 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1lq9qz-000409-7h; Mon, 07 Jun 2021 07:39:21 +0000
+	id 1lqBXN-0001mi-LL; Mon, 07 Jun 2021 09:27:13 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <yangyanchao6@huawei.com>) id 1lq9qx-0003zu-T4
- for linux1394-devel@lists.sourceforge.net; Mon, 07 Jun 2021 07:39:19 +0000
+ (envelope-from <gregkh@linuxfoundation.org>) id 1lqBXL-0001mI-S2
+ for linux1394-devel@lists.sourceforge.net; Mon, 07 Jun 2021 09:27:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:Content-Transfer-Encoding:MIME-Version
- :Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=DIvLYKKlXLBpE0aoutyZtF+l8b9sNg56d41bSANIdeM=; b=hexYoQ5VwwqzXarSuqh701Ozw8
- l9FX+UGjZ6LI7GH5hfzjeX/RbWTTAHVhRDUjSXnY2h+f2a60ZnvT4qn7zLs5frsCTvqP8ahugV4Jt
- 0gPaMWRDP7nJH2Dz2IL/KV444Phs912VSPpgrjbbqHIAoPF1rvEXQBTOvxp+oBvDTkc0=;
+ bh=2WUHVfXBkcawe37HHm/5hrwgodeUqB7bnVk60FWs2VM=; b=ZW7dGC4tPCK+oA7PEoWJZZTRhg
+ ZorAfC+TBaabQ17N6febVhZKUmFz1TA+A+0vzTxo1jZLmNFmWptkyoBw3NtSLOfdyaXR/75Q+6m9E
+ bK9PlIswP9YrZQztSrK3Y0CjbKr95hdee5DRdyf3E/WVMZ7QfwIfB11tOH+onBG8ybu0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
- Subject:CC:To:From:Sender:Reply-To:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=DIvLYKKlXLBpE0aoutyZtF+l8b9sNg56d41bSANIdeM=; b=M
- Tm0m+niGMYPx9p4VMxtmQjYK7qqyc01HP/avyJgLFBrnu+OlONSuJI7rM5j1bkue3wbF2X2g+b9pF
- 9EXp7AYtPQ8ukJWUku9CXaDikcBLuLJSa0hFZuFBloeXrGyA7e3sfWRB7/4xuTj8TafhI9yueehDF
- 7K7eENP9IHy5YWK4=;
-Received: from szxga01-in.huawei.com ([45.249.212.187])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=2WUHVfXBkcawe37HHm/5hrwgodeUqB7bnVk60FWs2VM=; b=cHIJnTKDgyZgC8N6LTcHGtDhv/
+ 983ecRdTcdIFezAg8lP8VTxs4fSDwnQdWqr0j2qNbxilOOVGo4zxMwiSsj6VwcZzefDn498eRbNlz
+ DVgK7lUSXuynNyU6ARj3SJLCagmJgnaprIFPyCUyhSvWKQNmxF9bin9hmw+HR/1icZ8Q=;
+Received: from mail.kernel.org ([198.145.29.99])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1lq9qp-0003OA-AG
- for linux1394-devel@lists.sourceforge.net; Mon, 07 Jun 2021 07:39:19 +0000
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.56])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Fz4r42KKCzWsvZ;
- Mon,  7 Jun 2021 15:34:12 +0800 (CST)
-Received: from dggpeml500016.china.huawei.com (7.185.36.70) by
- dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Mon, 7 Jun 2021 15:39:01 +0800
-Received: from huawei.com (10.174.179.133) by dggpeml500016.china.huawei.com
- (7.185.36.70) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2176.2; Mon, 7 Jun 2021
- 15:39:01 +0800
-From: Yang Yanchao <yangyanchao6@huawei.com>
-To: <dan.carpenter@oracle.com>
-Subject: [PATCH] media firewire firedtv-avc fix a buffer overflow in
- avc_ca_pmt() 
-Date: Mon, 7 Jun 2021 15:39:00 +0800
-Message-ID: <20210607073900.1298-1-yangyanchao6@huawei.com>
-X-Mailer: git-send-email 2.31.1.windows.1
+ id 1lqBXE-00DUYk-4H
+ for linux1394-devel@lists.sourceforge.net; Mon, 07 Jun 2021 09:27:12 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 071B0610A1;
+ Mon,  7 Jun 2021 09:26:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1623058018;
+ bh=KO0ay+dCHrHSAS+hWho1t9DunNnSg9fCilCENS/YlGY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=xSiXwKh2uEcA4kRyocx12eHOiLKq9ex6vWlSVdnwoJ3zVlSwFTcmKpTIkxw0NaUvB
+ WgLt8gltSvMKLEHrGDPWcJnFCPqXNjdOqFQrGE8RLtpv+bgP1uYwgckvfDrUmq+fNP
+ 2lfaonnQQaWLcwfelFZSTomMe2B8d8VaLpNrtiCU=
+Date: Mon, 7 Jun 2021 11:26:56 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Yang Yanchao <yangyanchao6@huawei.com>
+Subject: Re: [PATCH] media firewire firedtv-avc fix a buffer overflow in
+ avc_ca_pmt()
+Message-ID: <YL3mYOYx2tf729o4@kroah.com>
+References: <20210607073900.1298-1-yangyanchao6@huawei.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.174.179.133]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- dggpeml500016.china.huawei.com (7.185.36.70)
-X-CFilter-Loop: Reflected
-X-Spam-Score: 0.0 (/)
+Content-Disposition: inline
+In-Reply-To: <20210607073900.1298-1-yangyanchao6@huawei.com>
+X-Spam-Score: -0.3 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
-X-Headers-End: 1lq9qp-0003OA-AG
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+ -0.2 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
+X-Headers-End: 1lqBXE-00DUYk-4H
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,114 +80,51 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux-distros@vs.openwall.org, mchehab@kernel.org,
- linux1394-devel@lists.sourceforge.net, security@kernel.org,
+Cc: security@kernel.org, linux1394-devel@lists.sourceforge.net,
+ linux-distros@vs.openwall.org, mchehab@kernel.org, dan.carpenter@oracle.com,
  linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============4507801422556790703=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============4507801422556790703==
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain
+On Mon, Jun 07, 2021 at 03:39:00PM +0800, Yang Yanchao wrote:
+> For CVE-2021-3542:
 
-For CVE-2021-3542:=0D
-=0D
-1=E3=80=81read_pos will be added four times in the patch, =0D
-so use "read_pos + 4 < length" and write_pos as well=0D
-=0D
-2. The last four bits of c->operand are used for CRC, =0D
-so "sizeof (C - > operand) - 4" is used=0D
-=0D
-3. "read_pos+=3D2" is added after the end of read_pos, so add value (read_p=
-os >=3D length)=0D
-=0D
-4. In order to avoid memcpy crossing the boundary, es_ info_ length > lengt=
-h - read_ pos=0D
-=0D
-5. When the date_length is a specific input of a construction,it will cause=
- memcpy=0D
- to exceed the boundary, "(MSG - > MSG [3] & 0x7F) + date_ length) > (sizeo=
-f(msg->msg) - 4)"=0D
-=0D
-Signed-off-by: yangyanchao <yangyanchao6@huawei.com>=0D
----=0D
- drivers/media/firewire/firedtv-avc.c | 14 +++++++++++---=0D
- drivers/media/firewire/firedtv-ci.c  |  2 ++=0D
- 2 files changed, 13 insertions(+), 3 deletions(-)=0D
-diff --git a/drivers/media/firewire/firedtv-avc.c b/drivers/media/firewire/=
-firedtv-avc.c=0D
-index 3ef5df164..8c31cf90c 100644=0D
---- a/drivers/media/firewire/firedtv-avc.c=0D
-+++ b/drivers/media/firewire/firedtv-avc.c=0D
-@@ -1169,7 +1169,11 @@ int avc_ca_pmt(struct firedtv *fdtv, char *msg, int =
-length)=0D
- 		read_pos +=3D program_info_length;=0D
- 		write_pos +=3D program_info_length;=0D
- 	}=0D
--	while (read_pos < length) {=0D
-+	while (read_pos + 4 < length) {=0D
-+		if (write_pos + 4 >=3D sizeof(c->operand) - 4) {=0D
-+			ret =3D -EINVAL;=0D
-+			goto out;=0D
-+		}=0D
- 		c->operand[write_pos++] =3D msg[read_pos++];=0D
- 		c->operand[write_pos++] =3D msg[read_pos++];=0D
- 		c->operand[write_pos++] =3D msg[read_pos++];=0D
-@@ -1181,13 +1185,17 @@ int avc_ca_pmt(struct firedtv *fdtv, char *msg, int=
- length)=0D
- 		c->operand[write_pos++] =3D es_info_length >> 8;=0D
- 		c->operand[write_pos++] =3D es_info_length & 0xff;=0D
- 		if (es_info_length > 0) {=0D
-+			if (read_pos >=3D length) {=0D
-+				ret =3D -EINVAL;=0D
-+				goto out;=0D
-+			}=0D
- 			pmt_cmd_id =3D msg[read_pos++];=0D
- 			if (pmt_cmd_id !=3D 1 && pmt_cmd_id !=3D 4)=0D
- 				dev_err(fdtv->device, "invalid pmt_cmd_id %d at stream level\n",=0D
- 					pmt_cmd_id);=0D
- =0D
--			if (es_info_length > sizeof(c->operand) - 4 -=0D
--					     write_pos) {=0D
-+			if (es_info_length > sizeof(c->operand) - 4 - write_pos ||=0D
-+			    es_info_length > length - read_pos) {=0D
- 				ret =3D -EINVAL;=0D
- 				goto out;=0D
- 			}=0D
-diff --git a/drivers/media/firewire/firedtv-ci.c b/drivers/media/firewire/f=
-iredtv-ci.c=0D
-index 8dc5a7495..0e7ffa156 100644=0D
---- a/drivers/media/firewire/firedtv-ci.c=0D
-+++ b/drivers/media/firewire/firedtv-ci.c=0D
-@@ -135,6 +135,8 @@ static int fdtv_ca_pmt(struct firedtv *fdtv, void *arg)=
-=0D
- 		data_length =3D 0;=0D
- 		for (i =3D 0; i < (msg->msg[3] & 0x7f); i++)=0D
- 			data_length =3D (data_length << 8) + msg->msg[data_pos++];=0D
-+		if (((msg->msg[3] & 0x7f) + date_length) > (sizeof(msg->msg) - 4))=0D
-+			return -EINVAL;=0D
- 	} else {=0D
- 		data_length =3D msg->msg[3];=0D
- 	}=0D
--- =0D
-2.23.0=
+What does that mean?  We don't know what cve numbers refer to as there
+is no way to really track and update the information with them.  Please
+spell out the issue please.
 
+> 
+> 1???read_pos will be added four times in the patch, 
+> so use "read_pos + 4 < length" and write_pos as well
 
---===============4507801422556790703==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+what is "???" here?
 
+> 
+> 2. The last four bits of c->operand are used for CRC, 
+> so "sizeof (C - > operand) - 4" is used
+> 
+> 3. "read_pos+=2" is added after the end of read_pos, so add value (read_pos >= length)
+> 
+> 4. In order to avoid memcpy crossing the boundary, es_ info_ length > length - read_ pos
+> 
+> 5. When the date_length is a specific input of a construction,it will cause memcpy
+>  to exceed the boundary, "(MSG - > MSG [3] & 0x7F) + date_ length) > (sizeof(msg->msg) - 4)"
 
---===============4507801422556790703==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+I do not understand, this is saying what you did, not _why_ you did it.
+can you please rework this to make it more obvious what you are doing?
+
+And shouldn't this be more than one patch?  A series of patches, each
+fixing one thing?
+
+And no need to put security@kernel.org on this now that you have sent it
+to a public mailing list.
+
+thanks,
+
+greg k-h
+
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============4507801422556790703==--
