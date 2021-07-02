@@ -2,112 +2,81 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCEE53B1340
-	for <lists+linux1394-devel@lfdr.de>; Wed, 23 Jun 2021 07:31:48 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.92.3)
+	by mail.lfdr.de (Postfix) with ESMTPS id ECDDA3BA129
+	for <lists+linux1394-devel@lfdr.de>; Fri,  2 Jul 2021 15:20:44 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1lvvU5-0000VZ-0P; Wed, 23 Jun 2021 05:31:33 +0000
+	id 1lzJ5m-0004PH-1x; Fri, 02 Jul 2021 13:20:26 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1lvvTu-0000VD-Mp
- for linux1394-devel@lists.sourceforge.net; Wed, 23 Jun 2021 05:31:22 +0000
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <infoteam@metamarketsearch.online>)
+ id 1lzJ5k-0004Or-89
+ for linux1394-devel@lists.sourceforge.net; Fri, 02 Jul 2021 13:20:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Message-Id:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Date:Subject:To:From:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=LEF1LNgst0bjgb4FOHFKgHZeYipfQQoqcBu139b0D8M=; b=BpbJ0Z34IMYRNkpzM5Tx0r0dCB
- U5PquHXpETtepb5udE98eMhy2femdSfdI5DQxQH0Ha2lQQXsszSZMTBh6EmnM62a5OcaO6NZULeJR
- XkHRFcxRaVa87AwWdO9b7TL2c9kYjblhqATAPq8RNbGN3DJpERSu7WJniJI1iJoxs8gs=;
+ bh=xwx2g5IhSzHQiqqN7s6ynFTZqV/+3w3uAQXE4aKNRQ4=; b=WXOY3UwkRu9bUwNuKvQik4Z6j5
+ 2vdHJ/pO0Ql5X28+8atbpypKe9u5RWdrFAjuV/ejfZrqDnPFIZxf42rCRjpolGvJuZl7P0jtlb/VN
+ 3P9ixJcbErGymIv38CIRrwR8ljT/0EJsIZYjxrRbICJ27fLs8zhqJL+kAXcDBUl9iVVE=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=LEF1LNgst0bjgb4FOHFKgHZeYipfQQoqcBu139b0D8M=; b=bR8DwM9TOqem1LgAiFTAId3KT6
- uwykOQLGZ+SLHSHTWYIpkcZnNBUJjrJ0NVdlYmoX14kuSYQ0yTzPQFxwQlnd1IHiojxYlubofw1Py
- 7i3E6+SZzkxHqlQTwIFJe4644zuQPJ1E7oLcQUMiW3aLnM3fnEg4gHIo5Fe+NsGFLvI4=;
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ h=Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Date:
+ Subject:To:From:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=xwx2g5IhSzHQiqqN7s6ynFTZqV/+3w3uAQXE4aKNRQ4=; b=n
+ S+ConA0XB5mOjoMGObwfwPVINO12KiQqMscZQWIGpexL7/hd9Vc6T7E4Ysu1xdbHNH54C0D+eD67u
+ yZW4lNl1h/GEDcMqTCAA3/LKtO8RWMgWI/ybtbLTV0bEvBFf47RZxSocYAQ/zy9hL6jTa5r0ICQXm
+ yREDW5Vij03TRFd8=;
+Received: from mail.metamarketsearch.online ([147.182.166.141])
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1lvvTg-008Vr5-3W
- for linux1394-devel@lists.sourceforge.net; Wed, 23 Jun 2021 05:31:23 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.west.internal (Postfix) with ESMTP id 0F141F55;
- Wed, 23 Jun 2021 01:14:36 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Wed, 23 Jun 2021 01:14:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=LEF1LNgst0bjgb4FOHFKgHZeYip
- fQQoqcBu139b0D8M=; b=wLEVbDZ6S+vaUMdpfMQOYaR1VVDz9QEBY2VZ7ep2qUP
- QH9O8x0YR9Ka5PzrdLxWT2PbTZ7b7wlXDxgyMZBA2LRkl9h/bZcPNRDBU56XojmN
- igtW1Nj6KtOwSG2ZDUCnFxVJEEGyhCZqV9bZqQqC1RyjJqECvK5ACj7ZJEjmEG95
- m5Ksf8UPMMiHe5VtnxLdnNiSJEz6QOSnCFvP++1VS6fMjVEWo0M9e9T2rLPSjGXc
- U47T+teBicGHrc/j7OcgM7mlHAYG6gOzDAZu0d66v/0F9S+LTkFx3Sro1k8JXuep
- t7eAL94l/1D5WCQvLTjfXsmI7aW3ascMQZY6o4oSIYA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=LEF1LN
- gst0bjgb4FOHFKgHZeYipfQQoqcBu139b0D8M=; b=D7MchOaxs8cE/LN2wMB3lf
- kKkYiDJrZsdXzGKHAdNdgFmL4r6Vl7zDK5aa4JScCtiYjdiiSHICJCdhNfDkbmJ8
- EFpvDmRBVErcSorMmBPPZ2pnJnBbekMaS/cyfszfJXLLYH+8YEs0yq/H17MG69b0
- JcINY2OzhR1zHXL5fQ94/6R6ynRfEiUA7Y2AwmzOHYNbgwVZr01dt/DPPUtHfIGY
- Z7Qg4BZWDq4kaH+symBTkDRvUuspSDBLrM044vAWWIN9AYjr0TGhUsQTKC/zQuAv
- EVwsPo2r6V6aEvgWNu7ozGmuOq653vVeK4Qe1K6FfBy+tbNYEiJ/5AYEJw+bHvng
- ==
-X-ME-Sender: <xms:PMPSYC07lTCVW1qjTn9xTsY7mIr6zK3ucajns9T_w5ocbUwY-7EPfA>
- <xme:PMPSYFG8Jp5te5MTFD3aezOINNZQgrkh_SMx3bu3v3mvEQS7mnynP7Ls6d6fDkrcj
- 6hd6aEG65L5dgIdl0s>
-X-ME-Received: <xmr:PMPSYK5Mu_PAcCH76AiTM0qCdpJv_r7Uk_o1Yqnmr_vGJKgcXDPuqCI2LoJk2_oRQikzRaxkkgXGt8ODEBHqJXsuRUPcAxvc4g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrfeegvddgkeehucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefvrghkrghs
- hhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjh
- hpqeenucggtffrrghtthgvrhhnpeefueevjedvtdevtedtvdetfeeftdelheffgfeglefh
- geetleekffduueeuteejjeenucffohhmrghinhepphgrshhtvggsihhnrdgtohhmpdhgih
- hthhhusgdrtghomhenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhl
- fhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:PMPSYD1m7-ZO9Iy6eV0-blK2AmCSHHKpF8txE2n33HxwiFhsgU8vTA>
- <xmx:PMPSYFEaScwKqoPBAOhR6i_zMoB5bfbZgKYFkESr9-be5g0Gf_RNcg>
- <xmx:PMPSYM-WV6qT7LlQtcCVU-YUHuIXAZ8kUudLWu-NHXJPry3c3b0ONQ>
- <xmx:PMPSYIMROA-Rpum_aAYJwgiafBAY8e_ecO9wQUxaR39izS3fqUk4KQ>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 23 Jun 2021 01:14:35 -0400 (EDT)
-Date: Wed, 23 Jun 2021 14:14:32 +0900
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: "Yoder, Lukas P" <lukas.yoder@gatech.edu>
-Subject: Re: FireWire OHCI Driver Issue
-Message-ID: <YNLDOP/yW9uDG1VF@workstation>
-Mail-Followup-To: "Yoder, Lukas P" <lukas.yoder@gatech.edu>,
- "linux1394-devel@lists.sourceforge.net"
- <linux1394-devel@lists.sourceforge.net>
-References: <MN2PR07MB724736CDFE0D13C83CFEC7A797099@MN2PR07MB7247.namprd07.prod.outlook.com>
+ id 1lzJ5b-0000w4-5m
+ for linux1394-devel@lists.sourceforge.net; Fri, 02 Jul 2021 13:20:24 +0000
+Authentication-Results: mail.metamarketsearch.online; auth=pass (login)
+From: DHL Express <infoteam@metamarketsearch.online>
+To: linux1394-devel@lists.sourceforge.net
+Subject: DHL Shipment Arrival Notice AWB: 5579224884
+Date: 2 Jul 2021 13:01:49 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <MN2PR07MB724736CDFE0D13C83CFEC7A797099@MN2PR07MB7247.namprd07.prod.outlook.com>
-X-Spam-Score: -0.1 (/)
+Received: from localhost (Unknown [127.0.0.1])
+ by mail.metamarketsearch.online (Haraka) with ESMTPSA id
+ D5DE2953-490C-4900-8194-B39F5D2E1B41.1
+ envelope-from <infoteam@metamarketsearch.online> (authenticated bits=0)
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+ Fri, 02 Jul 2021 13:01:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256;
+ bh=xwx2g5IhSzHQiqqN7s6ynFTZqV/+3w3uAQXE4aKNRQ4=; c=relaxed/simple;
+ d=metamarketsearch.online; h=from:subject:date:to:mime-version; s=s20210630850;
+ b=fr9m2mgzwO9Z7hjIZ3F1ryWk8s43jtyIOPT0QlG9i420sOyI4eq/QSMLd/Kl/cjG6I4/b1gZ3l0+KnuXvUOPgpAa64pRk6NaJ9WistEjnPVKfp8VjuNKA10ChPsakX7v9bowp78/8UCAkyT5ejdct6rlutFtItU33PXcrk/tfCxBhOv/nGkgcv7i3MFG9g9+bmg0Q6KzHzDEFo/O5AfDmh5PPXTrOkIfo4yNUWEVR/NQ/otqJRACV/7paLtB9TnNB9ylyiTAQJa0lqB6QRtB/QAzbGKB+2wXD87WD+wSAR3u9Iy479DuK26yrHSSxL4qSM/FntVKBW0la0M/yloAHw==
+Message-Id: <D5DE2953-490C-4900-8194-B39F5D2E1B41.1@mail.metamarketsearch.online>
+X-Spam-Score: 3.3 (+++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: pastebin.com]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 URI_HEX                URI: URI hostname has long hexadecimal sequence
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
+ 0.0 HTML_FONT_LOW_CONTRAST BODY: HTML font color similar or identical to
+ background
+ 2.3 MIME_HTML_ONLY         BODY: Message only has text/html MIME parts
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1lvvTg-008Vr5-3W
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [147.182.166.141 listed in wl.mailspike.net]
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: dynamics.com]
+X-Headers-End: 1lzJ5b-0000w4-5m
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -120,87 +89,125 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: "linux1394-devel@lists.sourceforge.net"
- <linux1394-devel@lists.sourceforge.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7826161256098877080=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+--===============7826161256098877080==
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jun 23, 2021 at 12:14:00AM +0000, Yoder, Lukas P wrote:
->    Hello,
-> 
->    I'm using the vanilla Linux kernel version 5.10.27, and I'm
->    encountering an issue with the firewire-ohci driver when interfacing
->    with my OHCI-compliant Texas Instruments TSB12LV26 IEEE-1394 Controller
->    (over PCI).
-> 
->    Devices show up under "/dev/fw0" and "/dev/fw1". In the kernel's sysfs
->    under "/sys/bus/firewire/devices/", I see "fw0", "fw1", and "fw1.0".
-> 
->    If I build the OHCI driver into my kernel, I get nonsensical values in
->    "/sys/bus/firewire/devices/fw0/config_rom". If I instead build it as a
->    module and manually run "modprobe firewire-ohci" after boot, when I
->    read "/sys/bus/firewire/devices/fw0/config_rom", I get the name of the
->    Juju stack spelled backwards alongside garbled text:
->    [1]https://pastebin.com/hm7Y6SBr
-> 
->    Regardless of whether I build the OHCI driver into my kernel or as a
->    module, if I try to get information about the "fw1" device at
->    "/sys/bus/firewire/devices/fw1/config_rom", I get the device name
->    spelled strangely as well: [2]https://pastebin.com/raw/dsHuWrzM
-> 
->    I believe fw1's "config_rom" should read "QImaging Retiga Digital
->    Camera (v100)".
-> 
->    This does not appear to be a problem with my card because it doesn't
->    know anything about the Linux "Juju" stack.
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
+<BODY><BR>
+<P></P>
+<TABLE cellSpacing=3D0 width=3D"100%">
+<TBODY>
+<TR>
+<TD bgColor=3D#ffbf00 height=3D"15%">
+<TABLE width=3D"90%" align=3Dcenter>
+<TBODY>
+<TR>
+<TD><SPAN style=3D"FONT-SIZE: large; FONT-FAMILY: impact, serif, EmojiFont;=
+ COLOR: rgb(223,1,1)"><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=
+=3D"VERTICAL-ALIGN: inherit">DHL Express </SPAN></SPAN></SPAN></TD></TR></T=
+BODY></TABLE></TD></TR>
+<TR>
+<TD height=3D"75%">
+<TABLE width=3D"90%" align=3Dcenter>
+<TBODY>
+<TR>
+<TD><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, serif, EmojiFont=
+; COLOR: rgb(180,4,4)"><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=
+=3D"VERTICAL-ALIGN: inherit">Incoming Package Notification! </SPAN></SPAN><=
+/SPAN><BR><BR><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, serif,=
+ EmojiFont; COLOR: rgb(0,0,0)"><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPA=
+N style=3D"VERTICAL-ALIGN: inherit">Attention&nbsp;</SPAN></SPAN></SPAN><SP=
+AN style=3D"VERTICAL-ALIGN: inherit">
+<SPAN style=3D"VERTICAL-ALIGN: inherit"> linux1394-devel@lists.sourceforge.=
+net,&nbsp;&nbsp; </SPAN></SPAN><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY=
+: verdana, serif, EmojiFont; COLOR: rgb(0,0,0)"><BR><BR><SPAN style=3D"VERT=
+ICAL-ALIGN: inherit"><SPAN style=3D"VERTICAL-ALIGN: inherit">This is to not=
+ify you that you have an incoming shipment registered in your email (</SPAN=
+></SPAN></SPAN><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=3D"VERTI=
+CAL-ALIGN: inherit"> linux1394-devel@lists.sourceforge.net). </SPAN></SPAN>=
 
-Against your expectation for string literal, the content of 'config_rom'
-node is binary data, including structured metadata.
+<SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, serif, EmojiFont; CO=
+LOR: rgb(0,0,0)"><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, ser=
+if, EmojiFont; COLOR: rgb(0,0,0)"><BR><SPAN style=3D"VERTICAL-ALIGN: inheri=
+t"><SPAN style=3D"VERTICAL-ALIGN: inherit">Please follow the URL below to t=
+rack your shipment.</SPAN></SPAN><BR><BR></SPAN></SPAN>
+<TABLE>
+<TBODY>
+<TR>
+<TD style=3D"HEIGHT: 45px; WIDTH: 250px; BACKGROUND-COLOR: #b40404">
+<DIV align=3Dcenter><A style=3D"text-decoration-line: none" href=3D"https:/=
+/82bd1a68d1d446e185a90c172eafdf01.svc.dynamics.com/t/r/mZOIA6nMh3TU_lsPZdh7=
+O9Z_R6OAhWZ7OnWdDpdtGng#linux1394-devel@lists.sourceforge.net:00=3D75" rel=
+=3D"noopener noreferrer" target=3D_blank data-linkindex=3D"0" data-auth=3D"=
+NotApplicable"><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, serif=
+, EmojiFont; COLOR: rgb(255,255,255)"><SPAN style=3D"VERTICAL-ALIGN: inheri=
+t"><SPAN style=3D"VERTICAL-ALIGN: inherit">Track my shipment Now! </SPAN></=
+SPAN></SPAN></A></DIV>
+</TD></TR></TBODY></TABLE><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: ver=
+dana, serif, EmojiFont; COLOR: rgb(0,0,0)"><BR><SPAN style=3D"VERTICAL-ALIG=
+N: inherit"><SPAN style=3D"VERTICAL-ALIGN: inherit">Thank you for letting u=
+s serve you better. </SPAN></SPAN><BR><BR><SPAN style=3D"VERTICAL-ALIGN: in=
+herit"><SPAN style=3D"VERTICAL-ALIGN: inherit">Regards, </SPAN></SPAN><BR><=
+STRONG><SPAN style=3D"COLOR: #b40404"><SPAN style=3D"VERTICAL-ALIGN: inheri=
+t"><SPAN style=3D"VERTICAL-ALIGN: inherit">DHL CustomerCare</SPAN>
+</SPAN></SPAN></STRONG> </SPAN><BR><BR>
+<HR align=3Dleft width=3D"50%">
+<BR><SPAN style=3D"FONT-SIZE: xx-small; FONT-FAMILY: verdana, serif, EmojiF=
+ont"><STRONG><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=3D"VERTICA=
+L-ALIGN: inherit">Excellency. </SPAN><SPAN style=3D"VERTICAL-ALIGN: inherit=
+">Simply delivered. </SPAN></SPAN></STRONG><BR><SPAN style=3D"VERTICAL-ALIG=
+N: inherit"><SPAN style=3D"VERTICAL-ALIGN: inherit">International express d=
+eliveries; </SPAN><SPAN style=3D"VERTICAL-ALIGN: inherit">global freight fo=
+rwarding by air, sea, road and rail; </SPAN></SPAN><BR>
+<SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=3D"VERTICAL-ALIGN: inhe=
+rit">warehousing solutions from packaging, to repairs, to storage; </SPAN><=
+SPAN style=3D"VERTICAL-ALIGN: inherit">mail deliveries worldwide; </SPAN></=
+SPAN><BR><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=3D"VERTICAL-AL=
+IGN: inherit">and other customized logistic services? </SPAN><SPAN style=3D=
+"VERTICAL-ALIGN: inherit">with everything DHL does, we help connect people =
+and improve their lives. </SPAN></SPAN><BR><BR>
+<SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=3D"VERTICAL-ALIGN: inhe=
+rit">With a global network in over 220 countries and territories across the=
+ globe, </SPAN></SPAN><BR><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN sty=
+le=3D"VERTICAL-ALIGN: inherit">DHL is the most international company in the=
+ world and can offer solutions for an almost infinite number of logistics n=
+eeds.</SPAN></SPAN></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+<TR>
+<TD bgColor=3D#b40404 height=3D"10%">
+<TABLE width=3D"90%" align=3Dcenter>
+<TBODY>
+<TR>
+<TD><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, serif, EmojiFont=
+; COLOR: rgb(255,255,255)"><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN st=
+yle=3D"VERTICAL-ALIGN: inherit">DHL Global &copy; 2021 | </SPAN><SPAN style=
+=3D"VERTICAL-ALIGN: inherit">All rights reserved.&nbsp;</SPAN></SPAN></SPAN=
+></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<DIV></DIV>
+<DIV></DIV>
+<DIV></DIV>
+<DIV></DIV></BODY></HTML>
 
-We can see the format of content in ISO/IEC 13213 (formerly IEEE 1212). The
-'crpp' (Python script) in linux-firewire-utils is available to parse it:
 
- * https://github.com/cladisch/linux-firewire-utils
-
-I note that the content of 'config_rom' node is aligned to host endiannes.
-
->    Here is my kernel config: [3]https://pastebin.com/raw/dw9w3KtN
-> 
->    Here is the relevant portion of my `lspci` output:
->    [4]https://pastebin.com/raw/9QFugen9
-> 
->    Here is output of `tree /sys/bus/firewire/devices/`:
->    [5]https://pastebin.com/raw/TMaW1S0T
-> 
->    Here is output of `grep -R . *` in "/sys/bus/firewire/devices/":
->    [6]https://pastebin.com/raw/6ZGW7fD1
-> 
->    It's very strange that the strings in the config_rom's are backwards
->    and out of order. Could this be an issue of endianness?
-
-As a side note, the camera does not have IIDC-compliant content of
-configuration ROM:
-
-> fw1/fw1.0/specifier_id:0x0006e3
-> ...
-> fw1/fw1.0/version:0x000100
-> fw1/fw1.0/modalias:ieee1394:ven000006E3mo00000000sp000006E3ver00000100
-> ...
-> fw1/vendor:0x0006e3
-
-If it were compliant, the value of specifier_id should be 0x00a02d
-(=OUI of 1394TA). I'm not good at IIDC specification and implementations,
-but I think device enumeration by libdc1394 might fail.
+--===============7826161256098877080==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 
-Regards
-
-Takashi Sakamoto
-
+--===============7826161256098877080==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============7826161256098877080==--
