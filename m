@@ -2,81 +2,64 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id ECDDA3BA129
-	for <lists+linux1394-devel@lfdr.de>; Fri,  2 Jul 2021 15:20:44 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 45E7C3BC350
+	for <lists+linux1394-devel@lfdr.de>; Mon,  5 Jul 2021 22:09:16 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.92.3)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1lzJ5m-0004PH-1x; Fri, 02 Jul 2021 13:20:26 +0000
+	id 1m0Utq-0007fb-Os; Mon, 05 Jul 2021 20:09:02 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <infoteam@metamarketsearch.online>)
- id 1lzJ5k-0004Or-89
- for linux1394-devel@lists.sourceforge.net; Fri, 02 Jul 2021 13:20:24 +0000
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
+ (envelope-from <stefanr@s5r6.in-berlin.de>) id 1m0Uto-0007fJ-Ko
+ for linux1394-devel@lists.sourceforge.net; Mon, 05 Jul 2021 20:09:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Message-Id:Content-Transfer-Encoding:Content-Type:
- MIME-Version:Date:Subject:To:From:Sender:Reply-To:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
+ :References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=xwx2g5IhSzHQiqqN7s6ynFTZqV/+3w3uAQXE4aKNRQ4=; b=WXOY3UwkRu9bUwNuKvQik4Z6j5
- 2vdHJ/pO0Ql5X28+8atbpypKe9u5RWdrFAjuV/ejfZrqDnPFIZxf42rCRjpolGvJuZl7P0jtlb/VN
- 3P9ixJcbErGymIv38CIRrwR8ljT/0EJsIZYjxrRbICJ27fLs8zhqJL+kAXcDBUl9iVVE=;
+ bh=sJwADp0q7vNgBnEbVnitHn8XWduMkiUgiSZKW4Jc+24=; b=IgekPk0hWEUSQMATykFJs3ZQlX
+ pBWEdPcEm8mk/hgjlxUJpIxBZZID3jLHyYW/ngE8syrd1Ef/oj20A7VY+bBcXmZd3MGwkPy9ffciC
+ CceM0xyzccmUHzpV/msRG/ZOI+5RySx6EFUSTNn3y9aO39QCeMGLhvmjVvEASwZ2zzEw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Date:
- Subject:To:From:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=xwx2g5IhSzHQiqqN7s6ynFTZqV/+3w3uAQXE4aKNRQ4=; b=n
- S+ConA0XB5mOjoMGObwfwPVINO12KiQqMscZQWIGpexL7/hd9Vc6T7E4Ysu1xdbHNH54C0D+eD67u
- yZW4lNl1h/GEDcMqTCAA3/LKtO8RWMgWI/ybtbLTV0bEvBFf47RZxSocYAQ/zy9hL6jTa5r0ICQXm
- yREDW5Vij03TRFd8=;
-Received: from mail.metamarketsearch.online ([147.182.166.141])
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:
+ In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=sJwADp0q7vNgBnEbVnitHn8XWduMkiUgiSZKW4Jc+24=; b=gGeBimieZuMnwKkfnNKRxYuR2N
+ PXsT+OYrb4EmJWWgndMBkAIvbb4jYc8leh++VS0TAbH3IgfB15vnwpzk6LmTgBHyPgTwB4UoOLpwx
+ EXuOKqdTNRy6AtYCU/J4X4tREkKRNBzGFdC7hHEgAwwJjVje3LI+SeU4cQmbVzXG4r9A=;
+Received: from einhorn.in-berlin.de ([192.109.42.8]
+ helo=einhorn-mail-out.in-berlin.de)
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1lzJ5b-0000w4-5m
- for linux1394-devel@lists.sourceforge.net; Fri, 02 Jul 2021 13:20:24 +0000
-Authentication-Results: mail.metamarketsearch.online; auth=pass (login)
-From: DHL Express <infoteam@metamarketsearch.online>
-To: linux1394-devel@lists.sourceforge.net
-Subject: DHL Shipment Arrival Notice AWB: 5579224884
-Date: 2 Jul 2021 13:01:49 +0000
+ id 1m0Utj-0006aC-7g
+ for linux1394-devel@lists.sourceforge.net; Mon, 05 Jul 2021 20:09:00 +0000
+X-Envelope-From: stefanr@s5r6.in-berlin.de
+Received: from authenticated.user (localhost [127.0.0.1]) by
+ einhorn.in-berlin.de with ESMTPSA id 165JkjlC005959
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Mon, 5 Jul 2021 21:46:45 +0200
+Date: Mon, 5 Jul 2021 21:46:45 +0200
+From: Stefan Richter <stefanr@s5r6.in-berlin.de>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Subject: Re: [PATCH] firewire: nosy: switch from 'pci_' to 'dma_' API
+Message-ID: <20210705214645.04bca11a@kant>
+In-Reply-To: <e1d7fa558f31abf294659a9d4edcc1e4fc065fab.1623590706.git.christophe.jaillet@wanadoo.fr>
+References: <e1d7fa558f31abf294659a9d4edcc1e4fc065fab.1623590706.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Received: from localhost (Unknown [127.0.0.1])
- by mail.metamarketsearch.online (Haraka) with ESMTPSA id
- D5DE2953-490C-4900-8194-B39F5D2E1B41.1
- envelope-from <infoteam@metamarketsearch.online> (authenticated bits=0)
- (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
- Fri, 02 Jul 2021 13:01:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256;
- bh=xwx2g5IhSzHQiqqN7s6ynFTZqV/+3w3uAQXE4aKNRQ4=; c=relaxed/simple;
- d=metamarketsearch.online; h=from:subject:date:to:mime-version; s=s20210630850;
- b=fr9m2mgzwO9Z7hjIZ3F1ryWk8s43jtyIOPT0QlG9i420sOyI4eq/QSMLd/Kl/cjG6I4/b1gZ3l0+KnuXvUOPgpAa64pRk6NaJ9WistEjnPVKfp8VjuNKA10ChPsakX7v9bowp78/8UCAkyT5ejdct6rlutFtItU33PXcrk/tfCxBhOv/nGkgcv7i3MFG9g9+bmg0Q6KzHzDEFo/O5AfDmh5PPXTrOkIfo4yNUWEVR/NQ/otqJRACV/7paLtB9TnNB9ylyiTAQJa0lqB6QRtB/QAzbGKB+2wXD87WD+wSAR3u9Iy479DuK26yrHSSxL4qSM/FntVKBW0la0M/yloAHw==
-Message-Id: <D5DE2953-490C-4900-8194-B39F5D2E1B41.1@mail.metamarketsearch.online>
-X-Spam-Score: 3.3 (+++)
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [192.109.42.8 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 URI_HEX                URI: URI hostname has long hexadecimal sequence
- 1.0 HTML_MESSAGE           BODY: HTML included in message
- 0.0 HTML_FONT_LOW_CONTRAST BODY: HTML font color similar or identical to
- background
- 2.3 MIME_HTML_ONLY         BODY: Message only has text/html MIME parts
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [147.182.166.141 listed in wl.mailspike.net]
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: dynamics.com]
-X-Headers-End: 1lzJ5b-0000w4-5m
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1m0Utj-0006aC-7g
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,125 +72,123 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7826161256098877080=="
+Cc: greg@kroah.com, linux1394-devel@lists.sourceforge.net,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============7826161256098877080==
-Content-Type: text/html
-Content-Transfer-Encoding: quoted-printable
+On Jun 13 Christophe JAILLET wrote:
+> The wrappers in include/linux/pci-dma-compat.h should go away.
+> 
+> The patch has been generated with the coccinelle script below and has been
+> hand modified to replace GFP_ with a correct flag.
+> It has been compile tested.
+> 
+> When memory is allocated in 'add_card()', GFP_KERNEL can be used because
+> this flag is already used a few lines above and no lock is taken in the
+> between.
+> 
+> While at it, also remove some useless casting.
+[...]
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
-<BODY><BR>
-<P></P>
-<TABLE cellSpacing=3D0 width=3D"100%">
-<TBODY>
-<TR>
-<TD bgColor=3D#ffbf00 height=3D"15%">
-<TABLE width=3D"90%" align=3Dcenter>
-<TBODY>
-<TR>
-<TD><SPAN style=3D"FONT-SIZE: large; FONT-FAMILY: impact, serif, EmojiFont;=
- COLOR: rgb(223,1,1)"><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=
-=3D"VERTICAL-ALIGN: inherit">DHL Express </SPAN></SPAN></SPAN></TD></TR></T=
-BODY></TABLE></TD></TR>
-<TR>
-<TD height=3D"75%">
-<TABLE width=3D"90%" align=3Dcenter>
-<TBODY>
-<TR>
-<TD><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, serif, EmojiFont=
-; COLOR: rgb(180,4,4)"><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=
-=3D"VERTICAL-ALIGN: inherit">Incoming Package Notification! </SPAN></SPAN><=
-/SPAN><BR><BR><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, serif,=
- EmojiFont; COLOR: rgb(0,0,0)"><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPA=
-N style=3D"VERTICAL-ALIGN: inherit">Attention&nbsp;</SPAN></SPAN></SPAN><SP=
-AN style=3D"VERTICAL-ALIGN: inherit">
-<SPAN style=3D"VERTICAL-ALIGN: inherit"> linux1394-devel@lists.sourceforge.=
-net,&nbsp;&nbsp; </SPAN></SPAN><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY=
-: verdana, serif, EmojiFont; COLOR: rgb(0,0,0)"><BR><BR><SPAN style=3D"VERT=
-ICAL-ALIGN: inherit"><SPAN style=3D"VERTICAL-ALIGN: inherit">This is to not=
-ify you that you have an incoming shipment registered in your email (</SPAN=
-></SPAN></SPAN><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=3D"VERTI=
-CAL-ALIGN: inherit"> linux1394-devel@lists.sourceforge.net). </SPAN></SPAN>=
+Thanks.
+Committed to linux1394.git.
 
-<SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, serif, EmojiFont; CO=
-LOR: rgb(0,0,0)"><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, ser=
-if, EmojiFont; COLOR: rgb(0,0,0)"><BR><SPAN style=3D"VERTICAL-ALIGN: inheri=
-t"><SPAN style=3D"VERTICAL-ALIGN: inherit">Please follow the URL below to t=
-rack your shipment.</SPAN></SPAN><BR><BR></SPAN></SPAN>
-<TABLE>
-<TBODY>
-<TR>
-<TD style=3D"HEIGHT: 45px; WIDTH: 250px; BACKGROUND-COLOR: #b40404">
-<DIV align=3Dcenter><A style=3D"text-decoration-line: none" href=3D"https:/=
-/82bd1a68d1d446e185a90c172eafdf01.svc.dynamics.com/t/r/mZOIA6nMh3TU_lsPZdh7=
-O9Z_R6OAhWZ7OnWdDpdtGng#linux1394-devel@lists.sourceforge.net:00=3D75" rel=
-=3D"noopener noreferrer" target=3D_blank data-linkindex=3D"0" data-auth=3D"=
-NotApplicable"><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, serif=
-, EmojiFont; COLOR: rgb(255,255,255)"><SPAN style=3D"VERTICAL-ALIGN: inheri=
-t"><SPAN style=3D"VERTICAL-ALIGN: inherit">Track my shipment Now! </SPAN></=
-SPAN></SPAN></A></DIV>
-</TD></TR></TBODY></TABLE><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: ver=
-dana, serif, EmojiFont; COLOR: rgb(0,0,0)"><BR><SPAN style=3D"VERTICAL-ALIG=
-N: inherit"><SPAN style=3D"VERTICAL-ALIGN: inherit">Thank you for letting u=
-s serve you better. </SPAN></SPAN><BR><BR><SPAN style=3D"VERTICAL-ALIGN: in=
-herit"><SPAN style=3D"VERTICAL-ALIGN: inherit">Regards, </SPAN></SPAN><BR><=
-STRONG><SPAN style=3D"COLOR: #b40404"><SPAN style=3D"VERTICAL-ALIGN: inheri=
-t"><SPAN style=3D"VERTICAL-ALIGN: inherit">DHL CustomerCare</SPAN>
-</SPAN></SPAN></STRONG> </SPAN><BR><BR>
-<HR align=3Dleft width=3D"50%">
-<BR><SPAN style=3D"FONT-SIZE: xx-small; FONT-FAMILY: verdana, serif, EmojiF=
-ont"><STRONG><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=3D"VERTICA=
-L-ALIGN: inherit">Excellency. </SPAN><SPAN style=3D"VERTICAL-ALIGN: inherit=
-">Simply delivered. </SPAN></SPAN></STRONG><BR><SPAN style=3D"VERTICAL-ALIG=
-N: inherit"><SPAN style=3D"VERTICAL-ALIGN: inherit">International express d=
-eliveries; </SPAN><SPAN style=3D"VERTICAL-ALIGN: inherit">global freight fo=
-rwarding by air, sea, road and rail; </SPAN></SPAN><BR>
-<SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=3D"VERTICAL-ALIGN: inhe=
-rit">warehousing solutions from packaging, to repairs, to storage; </SPAN><=
-SPAN style=3D"VERTICAL-ALIGN: inherit">mail deliveries worldwide; </SPAN></=
-SPAN><BR><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=3D"VERTICAL-AL=
-IGN: inherit">and other customized logistic services? </SPAN><SPAN style=3D=
-"VERTICAL-ALIGN: inherit">with everything DHL does, we help connect people =
-and improve their lives. </SPAN></SPAN><BR><BR>
-<SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN style=3D"VERTICAL-ALIGN: inhe=
-rit">With a global network in over 220 countries and territories across the=
- globe, </SPAN></SPAN><BR><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN sty=
-le=3D"VERTICAL-ALIGN: inherit">DHL is the most international company in the=
- world and can offer solutions for an almost infinite number of logistics n=
-eeds.</SPAN></SPAN></SPAN></TD></TR></TBODY></TABLE></TD></TR>
-<TR>
-<TD bgColor=3D#b40404 height=3D"10%">
-<TABLE width=3D"90%" align=3Dcenter>
-<TBODY>
-<TR>
-<TD><SPAN style=3D"FONT-SIZE: small; FONT-FAMILY: verdana, serif, EmojiFont=
-; COLOR: rgb(255,255,255)"><SPAN style=3D"VERTICAL-ALIGN: inherit"><SPAN st=
-yle=3D"VERTICAL-ALIGN: inherit">DHL Global &copy; 2021 | </SPAN><SPAN style=
-=3D"VERTICAL-ALIGN: inherit">All rights reserved.&nbsp;</SPAN></SPAN></SPAN=
-></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
-<DIV></DIV>
-<DIV></DIV>
-<DIV></DIV>
-<DIV></DIV></BODY></HTML>
-
-
---===============7826161256098877080==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> ---
+> If needed, see post from Christoph Hellwig on the kernel-janitors ML:
+>    https://marc.info/?l=kernel-janitors&m=158745678307186&w=4
+> ---
+>  drivers/firewire/nosy.c | 43 +++++++++++++++++++++++------------------
+>  1 file changed, 24 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/firewire/nosy.c b/drivers/firewire/nosy.c
+> index 88ed971e32c0..b0d671db178a 100644
+> --- a/drivers/firewire/nosy.c
+> +++ b/drivers/firewire/nosy.c
+> @@ -511,12 +511,12 @@ remove_card(struct pci_dev *dev)
+>  		wake_up_interruptible(&client->buffer.wait);
+>  	spin_unlock_irq(&lynx->client_list_lock);
+>  
+> -	pci_free_consistent(lynx->pci_device, sizeof(struct pcl),
+> -			    lynx->rcv_start_pcl, lynx->rcv_start_pcl_bus);
+> -	pci_free_consistent(lynx->pci_device, sizeof(struct pcl),
+> -			    lynx->rcv_pcl, lynx->rcv_pcl_bus);
+> -	pci_free_consistent(lynx->pci_device, PAGE_SIZE,
+> -			    lynx->rcv_buffer, lynx->rcv_buffer_bus);
+> +	dma_free_coherent(&lynx->pci_device->dev, sizeof(struct pcl),
+> +			  lynx->rcv_start_pcl, lynx->rcv_start_pcl_bus);
+> +	dma_free_coherent(&lynx->pci_device->dev, sizeof(struct pcl),
+> +			  lynx->rcv_pcl, lynx->rcv_pcl_bus);
+> +	dma_free_coherent(&lynx->pci_device->dev, PAGE_SIZE, lynx->rcv_buffer,
+> +			  lynx->rcv_buffer_bus);
+>  
+>  	iounmap(lynx->registers);
+>  	pci_disable_device(dev);
+> @@ -532,7 +532,7 @@ add_card(struct pci_dev *dev, const struct pci_device_id *unused)
+>  	u32 p, end;
+>  	int ret, i;
+>  
+> -	if (pci_set_dma_mask(dev, DMA_BIT_MASK(32))) {
+> +	if (dma_set_mask(&dev->dev, DMA_BIT_MASK(32))) {
+>  		dev_err(&dev->dev,
+>  		    "DMA address limits not supported for PCILynx hardware\n");
+>  		return -ENXIO;
+> @@ -564,12 +564,16 @@ add_card(struct pci_dev *dev, const struct pci_device_id *unused)
+>  		goto fail_deallocate_lynx;
+>  	}
+>  
+> -	lynx->rcv_start_pcl = pci_alloc_consistent(lynx->pci_device,
+> -				sizeof(struct pcl), &lynx->rcv_start_pcl_bus);
+> -	lynx->rcv_pcl = pci_alloc_consistent(lynx->pci_device,
+> -				sizeof(struct pcl), &lynx->rcv_pcl_bus);
+> -	lynx->rcv_buffer = pci_alloc_consistent(lynx->pci_device,
+> -				RCV_BUFFER_SIZE, &lynx->rcv_buffer_bus);
+> +	lynx->rcv_start_pcl = dma_alloc_coherent(&lynx->pci_device->dev,
+> +						 sizeof(struct pcl),
+> +						 &lynx->rcv_start_pcl_bus,
+> +						 GFP_KERNEL);
+> +	lynx->rcv_pcl = dma_alloc_coherent(&lynx->pci_device->dev,
+> +					   sizeof(struct pcl),
+> +					   &lynx->rcv_pcl_bus, GFP_KERNEL);
+> +	lynx->rcv_buffer = dma_alloc_coherent(&lynx->pci_device->dev,
+> +					      RCV_BUFFER_SIZE,
+> +					      &lynx->rcv_buffer_bus, GFP_KERNEL);
+>  	if (lynx->rcv_start_pcl == NULL ||
+>  	    lynx->rcv_pcl == NULL ||
+>  	    lynx->rcv_buffer == NULL) {
+> @@ -667,14 +671,15 @@ add_card(struct pci_dev *dev, const struct pci_device_id *unused)
+>  
+>  fail_deallocate_buffers:
+>  	if (lynx->rcv_start_pcl)
+> -		pci_free_consistent(lynx->pci_device, sizeof(struct pcl),
+> -				lynx->rcv_start_pcl, lynx->rcv_start_pcl_bus);
+> +		dma_free_coherent(&lynx->pci_device->dev, sizeof(struct pcl),
+> +				  lynx->rcv_start_pcl,
+> +				  lynx->rcv_start_pcl_bus);
+>  	if (lynx->rcv_pcl)
+> -		pci_free_consistent(lynx->pci_device, sizeof(struct pcl),
+> -				lynx->rcv_pcl, lynx->rcv_pcl_bus);
+> +		dma_free_coherent(&lynx->pci_device->dev, sizeof(struct pcl),
+> +				  lynx->rcv_pcl, lynx->rcv_pcl_bus);
+>  	if (lynx->rcv_buffer)
+> -		pci_free_consistent(lynx->pci_device, PAGE_SIZE,
+> -				lynx->rcv_buffer, lynx->rcv_buffer_bus);
+> +		dma_free_coherent(&lynx->pci_device->dev, PAGE_SIZE,
+> +				  lynx->rcv_buffer, lynx->rcv_buffer_bus);
+>  	iounmap(lynx->registers);
+>  
+>  fail_deallocate_lynx:
 
 
---===============7826161256098877080==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
+-- 
+Stefan Richter
+-======--=-= -=== --=-=
+http://arcgraph.de/sr/
+
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============7826161256098877080==--
