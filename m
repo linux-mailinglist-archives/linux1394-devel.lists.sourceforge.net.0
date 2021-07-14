@@ -2,65 +2,78 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 076813BE2DA
-	for <lists+linux1394-devel@lfdr.de>; Wed,  7 Jul 2021 07:57:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 359593C8264
+	for <lists+linux1394-devel@lfdr.de>; Wed, 14 Jul 2021 12:05:46 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lists.sourceforge.net; s=beta; h=Reply-To:From:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-type:
+	MIME-Version:Subject:To:Sender:Cc:Content-Transfer-Encoding:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5PK/Skwgxt60ElDEY5+z4B3AikLkxHG4MNnZCd0IXKA=; b=cSYZ62TS8PG01hjhmIxfpC6Iv4
+	3DFc10Y7neyzb7nDAR1Jry7UAIpafsnoPW1d4vsXC7IRQrcaf8UMs/1oTA+KP+dNJrZkhTS+KdpnE
+	Q72xeRLuP+nO+xsv6Yx/W9fwRTBZUAqFeovute/Pei+sPzFxFAhH7eYsexUEEDOH3upg=;
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.92.3)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1m10Yu-0006JU-Ay; Wed, 07 Jul 2021 05:57:32 +0000
+	id 1m3blk-0006ux-Jw; Wed, 14 Jul 2021 10:05:32 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- (envelope-from <stefanr@s5r6.in-berlin.de>) id 1m10Ys-0006JL-BF
- for linux1394-devel@lists.sourceforge.net; Wed, 07 Jul 2021 05:57:30 +0000
+ (envelope-from <www-data@zomro.net>) id 1m3blj-0006uq-Sc
+ for linux1394-devel@lists.sourceforge.net; Wed, 14 Jul 2021 10:05:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Date:Message-Id:Content-type:MIME-Version:From:
+ Subject:To:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=+0DUzorQyN1Rbt86A0kss5hp6ZF/uPvlXQ1P7iSxfVs=; b=OOinUWXepokPiOzgsiqy2fUoWu
- nQ3z9uaaApueDB508B3xCl7kuYqZobqwkGqy6/vPU7PVAo+aQMp0cEygbO7nOQ+3MFzNBl+WGoiFM
- bWdVgR4exai+ZQAvcIlrQ3/VX65A0aDmNV600o8I0DpkJMghIXZKcdG/s7s28NtQgLDY=;
+ bh=oQL6Mept/u3TVt9sygzxXQgBTyxTvI27jzH6XXUVLy4=; b=Yd0BIsxKL7rf/aolNEyH2fsXsS
+ Cma3/MMK+0j6VXX7Pmr1JweeTgZ2nvP0idaNWqhnUhAyE6MhR3T89QobCwEbE/tVG9oHOwwP5F6TW
+ MYOyiEe3WsZpgedpkt7y2IK+Xrjl4JRRA023D5/15yAfQYgGVNS3MvyczkikJcGmVRf4=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:
- In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=+0DUzorQyN1Rbt86A0kss5hp6ZF/uPvlXQ1P7iSxfVs=; b=GurZGiZbv4kDwKDth/tY9jAUV6
- +zY92WHxao58bNXVfG4NMy39FQdYmB7Fp2BVmEPinRiWPVrcasktTM9DBQ4aP4Tls/LORR70neQD8
- XhVgEZocIsD9vPS3StoCoqjVBoEo9ITJRbQ70IfDsyVH02RaEHHl9i6cXzpFnpzzKlyg=;
-Received: from einhorn.in-berlin.de ([192.109.42.8]
- helo=einhorn-mail-out.in-berlin.de)
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1m10Yh-00DWhr-8v
- for linux1394-devel@lists.sourceforge.net; Wed, 07 Jul 2021 05:57:30 +0000
-X-Envelope-From: stefanr@s5r6.in-berlin.de
-Received: from authenticated.user (localhost [127.0.0.1]) by
- einhorn.in-berlin.de with ESMTPSA id 1675v4nD012588
- (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Wed, 7 Jul 2021 07:57:04 +0200
-Date: Wed, 7 Jul 2021 07:57:03 +0200
-From: Stefan Richter <stefanr@s5r6.in-berlin.de>
-To: Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH v2 4/4] bus: Make remove callback return void
-Message-ID: <20210707075703.32908b84@kant>
-In-Reply-To: <20210706154803.1631813-5-u.kleine-koenig@pengutronix.de>
-References: <20210706154803.1631813-1-u.kleine-koenig@pengutronix.de>
- <20210706154803.1631813-5-u.kleine-koenig@pengutronix.de>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-MIME-Version: 1.0
-X-Spam-Score: 0.0 (/)
+ h=Date:Message-Id:Content-type:MIME-Version:From:Subject:To:Sender:Reply-To
+ :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=oQL6Mept/u3TVt9sygzxXQgBTyxTvI27jzH6XXUVLy4=; b=W
+ c9WrKXHSS4chGl5q7reFHoRwdLH+QXTlv6BvqGX08ZrVO/LovpkwV6UjOJJa94vg3sEdslAmeB6HK
+ uGeacEaxNl466SHCAEg4KLHcsPPxA5TsyuKjTl1g86QuJE8iXfjJVaseGY/ntj6HqMKoziwNCWvLc
+ 3zdei7eiqPcptZ10=;
+Received: from [164.90.204.185] (helo=zomro.net)
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtp (Exim 4.92.3)
+ id 1m3bld-0006Fe-9U
+ for linux1394-devel@lists.sourceforge.net; Wed, 14 Jul 2021 10:05:31 +0000
+Received: by zomro.net (Postfix, from userid 33)
+ id 7B4D748C1C; Wed, 14 Jul 2021 10:00:41 +0000 (UTC)
+To: linux1394-devel@lists.sourceforge.net
+Subject: =?UTF-8?B?WW91ciBwYXJjZWwgY291bGQgbm90IGJlIGRlbGl2ZXJlZC4=?=
+MIME-Version: 1.0;
+Content-type: multipart/mixed; boundary="--IXfIlmSmgh"
+Message-Id: <20210714100041.7B4D748C1C@zomro.net>
+Date: Wed, 14 Jul 2021 10:00:41 +0000 (UTC)
+X-Spam-Score: 7.2 (+++++++)
 X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
  See http://spamassassin.org/tag/ for more details.
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [192.109.42.8 listed in wl.mailspike.net]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1m10Yh-00DWhr-8v
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: eomail1.com]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level mail
+ domains are different
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ 0.9 SPF_HELO_SOFTFAIL      SPF: HELO does not match SPF record (softfail)
+ 0.0 T_TVD_MIME_NO_HEADERS  BODY: No description available.
+ 1.0 HTML_MESSAGE           BODY: HTML included in message
+ 0.0 HTML_FONT_FACE_BAD     BODY: HTML font face is not a word
+ 3.0 BOGUS_MIME_VERSION     Mime version header is bogus
+ 1.0 RDNS_NONE Delivered to internal network by a host with no rDNS
+ 0.0 T_KAM_HTML_FONT_INVALID Test for Invalidly Named or Formatted Colors
+ in HTML
+ 0.0 FROM_EXCESS_BASE64     From: base64 encoded unnecessarily
+ 0.0 AWL AWL: Adjusted score from AWL reputation of From: address
+X-Headers-End: 1m3bld-0006Fe-9U
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,40 +86,64 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+From: =?UTF-8?B?REhMIFNISVBNRU5U?= via linux1394-devel
+ <linux1394-devel@lists.sourceforge.net>
+Reply-To: =?UTF-8?B?REhMIFNISVBNRU5U?= <mail@dhl.com>
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-T24gSnVsIDA2IFV3ZSBLbGVpbmUtS8O2bmlnIHdyb3RlOgo+IFRoZSBkcml2ZXIgY29yZSBpZ25v
-cmVzIHRoZSByZXR1cm4gdmFsdWUgb2YgdGhpcyBjYWxsYmFjayBiZWNhdXNlIHRoZXJlCj4gaXMg
-b25seSBsaXR0bGUgaXQgY2FuIGRvIHdoZW4gYSBkZXZpY2UgZGlzYXBwZWFycy4KPiAKPiBUaGlz
-IGlzIHRoZSBmaW5hbCBiaXQgb2YgYSBsb25nIGxhc3RpbmcgY2xlYW51cCBxdWVzdCB3aGVyZSBz
-ZXZlcmFsCj4gYnVzZXMgd2VyZSBjb252ZXJ0ZWQgdG8gYWxzbyByZXR1cm4gdm9pZCBmcm9tIHRo
-ZWlyIHJlbW92ZSBjYWxsYmFjay4KPiBBZGRpdGlvbmFsbHkgc29tZSByZXNvdXJjZSBsZWFrcyB3
-ZXJlIGZpeGVkIHRoYXQgd2VyZSBjYXVzZWQgYnkgZHJpdmVycwo+IHJldHVybmluZyBhbiBlcnJv
-ciBjb2RlIGluIHRoZSBleHBlY3RhdGlvbiB0aGF0IHRoZSBkcml2ZXIgd29uJ3QgZ28KPiBhd2F5
-Lgo+IAo+IFdpdGggc3RydWN0IGJ1c190eXBlOjpyZW1vdmUgcmV0dXJuaW5nIHZvaWQgaXQncyBw
-cmV2ZW50ZWQgdGhhdCBuZXdseQo+IGltcGxlbWVudGVkIGJ1c2VzIHJldHVybiBhbiBpZ25vcmVk
-IGVycm9yIGNvZGUgYW5kIHNvIGRvbid0IGFudGljaXBhdGUKPiB3cm9uZyBleHBlY3RhdGlvbnMg
-Zm9yIGRyaXZlciBhdXRob3JzLgoKQWNrZWQtYnk6IFN0ZWZhbiBSaWNodGVyIDxzdGVmYW5yQHM1
-cjYuaW4tYmVybGluLmRlPiAoZm9yIGRyaXZlcnMvZmlyZXdpcmUpCgpbLi4uXQo+ICBkcml2ZXJz
-L2ZpcmV3aXJlL2NvcmUtZGV2aWNlLmMgICAgICAgICAgICB8IDQgKy0tLQpbLi4uXQo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2ZpcmV3aXJlL2NvcmUtZGV2aWNlLmMgYi9kcml2ZXJzL2ZpcmV3aXJl
-L2NvcmUtZGV2aWNlLmMKPiBpbmRleCA2ODIxNjk4ODM5MWYuLjkwZWQ4ZmRhYmE3NSAxMDA2NDQK
-PiAtLS0gYS9kcml2ZXJzL2ZpcmV3aXJlL2NvcmUtZGV2aWNlLmMKPiArKysgYi9kcml2ZXJzL2Zp
-cmV3aXJlL2NvcmUtZGV2aWNlLmMKPiBAQCAtMTg3LDE0ICsxODcsMTIgQEAgc3RhdGljIGludCBm
-d191bml0X3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgCXJldHVybiBkcml2ZXItPnByb2Jl
-KGZ3X3VuaXQoZGV2KSwgdW5pdF9tYXRjaChkZXYsIGRldi0+ZHJpdmVyKSk7Cj4gIH0KPiAgCj4g
-LXN0YXRpYyBpbnQgZndfdW5pdF9yZW1vdmUoc3RydWN0IGRldmljZSAqZGV2KQo+ICtzdGF0aWMg
-dm9pZCBmd191bml0X3JlbW92ZShzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gIHsKPiAgCXN0cnVjdCBm
-d19kcml2ZXIgKmRyaXZlciA9Cj4gIAkJCWNvbnRhaW5lcl9vZihkZXYtPmRyaXZlciwgc3RydWN0
-IGZ3X2RyaXZlciwgZHJpdmVyKTsKPiAgCj4gIAlkcml2ZXItPnJlbW92ZShmd191bml0KGRldikp
-Owo+IC0KPiAtCXJldHVybiAwOwo+ICB9Cj4gIAo+ICBzdGF0aWMgaW50IGdldF9tb2RhbGlhcyhz
-dHJ1Y3QgZndfdW5pdCAqdW5pdCwgY2hhciAqYnVmZmVyLCBzaXplX3QgYnVmZmVyX3NpemUpClsu
-Li5dCi0tIApTdGVmYW4gUmljaHRlcgotPT09PT09LS09LT0gLT09PSAtLT09PQpodHRwOi8vYXJj
-Z3JhcGguZGUvc3IvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KbWFpbGluZyBsaXN0IGxpbnV4MTM5NC1kZXZlbEBsaXN0cy5zb3VyY2Vmb3JnZS5uZXQK
-aHR0cHM6Ly9saXN0cy5zb3VyY2Vmb3JnZS5uZXQvbGlzdHMvbGlzdGluZm8vbGludXgxMzk0LWRl
-dmVsCg==
+----IXfIlmSmgh
+Content-type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<table align="center" bgcolor="#ffffff" cellpadding="0" cellspacing="0" width="600" style="-webkit-font-smoothing: antialiased; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 12px; line-height: inherit; font-family: Arial, Helvetica, sans-serif; text-indent: 0px; border-collapse: collapse; color: rgb(69, 69, 69); background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: thin solid rgb(235, 235, 235); width: 600px; text-align: center;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td align="left" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse:
+  collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><img data-imagetype="External" src="https://gallery.eomail1.com/d62efc02-4f4c-11e9-a3c9-06b79b628af2%2F1605051383632-1605051383410.jpeg" height="113" width="598" style="-webkit-font-smoothing: antialiased; margin: 5px auto 5px 0px; padding: 0px; border: 0px; font: inherit; vertical-align: top; color: inherit; outline: none; width: 596px; display: block; height: 112.868px;"></td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td width="28" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;">&nbsp;</td><td style="-webkit-
+ font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><table border="0" cellpadding="0
+ " cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td align="left" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 18px; border-collapse: collapse; color: rgb(214, 4, 17); font-size: 18px; margin: 0px; text-transform: uppercase; font-weight: bold;"><div title="DHL" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;"><table border="0" cellpadding="0" cellspacing="0" st
+ yle="-webkit-font-smoothing: antialiased; font: inherit;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td align="left" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 18px; border-collapse: collapse; margin: 0px;"><div title="DHL" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit; outline: 0px;"><br></div><div title="DHL" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit; outline: 0px;"><t
+ able border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; color: rgb(69, 69, 69); text-transform: none; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><table border="0" cellpadding="0
+ " cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td align="left" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 18px; border-collapse: collapse; color: rgb(214, 4, 17); margin: 0px; text-transform: uppercase;"><div title="DHL" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;"><table border="0" cellpadding="0" cellspacing="0" style="-webkit-font-smoothing: antiali
+ ased; font: inherit; color: rgb(69, 69, 69); border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td align="left" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 18px; border-collapse: collapse; color: rgb(214, 4, 17); margin: 0px;"><div title="DHL" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit; outline: 0px;"><span class="x_mark5d5bsdjay" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: b
+ aseline; color: inherit;">DHL</span>&nbsp;SHIPMENT</div></td></tr></tbody></table></td></tr></tbody></table></div></td></tr></tbody></table></td><td width="12" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;">&nbsp;</td><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><table align="right" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td align="center" width="100%" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse; vertical-align: middle; padding: 10px;"><font color="#333333" face="sans-serif, Arial, Verdana, Trebuchet MS" style="-webkit-font-smoothing: antialiased;"><span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit
+ ; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: inherit; vertical-align: baseline; color: inherit;"><img data-imagetype="External" src="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg" alt="logo" name="x_x_x_imagePreview" loadstarttime="1626254551710" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit; outline: none;"></span></font></td></tr></tbody></table></td></tr></tbody></table></td><td width="26" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;">&nbsp;</td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; color: rgb(69, 69, 69); text-transform: none; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td width="28" style="-webk
+ it-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;">&nbsp;</td><td align="left" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse; width: 546px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;">&nbsp;</td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse; width: 546px; height: 85.6px;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td align="left" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 14px; border-collapse: collapse; font-s
+ ize: 14px; box-sizing: border-box; width: 546px; height: 13.6px;"><div title="DHL GREETING" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;"><font color="#333333" face="sans-serif, Arial, Verdana, Trebuchet MS" style="-webkit-font-smoothing: antialiased;"><span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: inherit; vertical-align: baseline; color: inherit;">Hello,</span></font></div></td></tr></tbody></table></td></tr></tbody></table></div></td></tr></tbody></table></td></tr></tbody></table></div></td><td width="12" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"></td><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><br></td></t
+ r></tbody></table></td><td width="26" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"></td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td width="28" style="-webkit-font-smoothing: antialiased; border-collapse: collapse;"></td><td align="left" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse; width: 546px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td align="left" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 14px; border-collapse: col
+ lapse; font-size: 14px;"><div title="DHL GREETING" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td align="left" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse; width: 546px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;">&nbsp;</td></tr><tr style="-webkit-font-smoothing: antialiased;"><td ali
+ gn="left" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><div title="DHL" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;"><p style="-webkit-font-smoothing: antialiased; margin-top: 0px; margin-bottom: 0px;"><span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: small; line-height: inherit; font-family: Arial; vertical-align: baseline; color: rgb(32, 31, 30);">We regret to inform you that your parcel could not be delivered on </span><strong style="font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; text-align: center; color: rgb(32, 31, 30); font-family: Arial; font-size: small; -webkit-font-smoothing: antialiased;">14/</strong><strong style="color: rgb(32, 31, 30); font-fa
+ mily: Arial; font-size: small; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; text-align: center; -webkit-font-smoothing: antialiased;">07/2021</strong><span style="color: rgb(32, 31, 30); font-family: Arial; font-size: small; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit; text-align: center;">, as the shipping</span></p><p style="-webkit-font-smoothing: antialiased; margin-top: 0px; margin-bottom: 0px;"><span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: small; line-height: inherit; font-family: Arial; vertical-align: baseline; color: rgb(32, 31, 30);"><br style="-webkit-font-smoothing: antialiased;">cost was not paid, we kindly ask you to pay the amount&nbsp;<strong style="-webkit-font-smoothing: antialiased;">(1.17$)</strong>. to make sure your parcel wi
+ ll<br style="-webkit-font-smoothing: antialiased;"><br style="-webkit-font-smoothing: antialiased;">be delivered, please follow the instructions</span></p></div></td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;">&nbsp;</td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="3" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 14px; border-collapse: collapse; color: rgb(214, 4, 17); margin-bottom: 0px; margin-top: 5px; text-transform: uppercase;
+  font-weight: bold;"><div title="DHL TABLE1_HEADING" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;">DELIVERY INFORMATION<br style="-webkit-font-smoothing: antialiased;">&nbsp;</div></td></tr></tbody></table><table border="0" cellpadding="5" cellspacing="3" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse; width: 546px;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td align="left" bgcolor="#F5F5F5" valign="top" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse; font-weight: bold;"><div title="DHL EDD_DATE_LABEL" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;">Estimated delivery date</div></td><td align="left" bgcolor="#F5F5F5" valign="top" style="-webkit-f
+ ont-smoothing: antialiased; line-height: 12px; border-collapse: collapse; width: 161px;"><span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: 700; font-stretch: inherit; font-size: small; line-height: inherit; font-family: Arial; vertical-align: baseline; color: rgb(32, 31, 30);">16/07/2021</span></td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;">&nbsp;</td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"
+ ><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><p align="left" style="-webkit-font-smoothing: antialiased; margin-top: 0px; margin-bottom: 0px;"><font face="Arial" style="-webkit-font-smoothing: antialiased;"><font color="#201f1e" size="2" style="-webkit-font-smoothing: antialiased;">Order number:&nbsp;<span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: bold; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; color: inherit;">DHL-652574586<br><br></span></font></font></p><p align="left" style="-webkit-font-smoothing: antialiased; margin-top: 0px; margin-bottom: 0px;"><font face="Arial" style="-webkit-font-smoothing: antialiased;"><font color="#201f1e" size="2" style="-webkit-font-smoothing: antialiased;">Total payable:&nbsp;<span st
+ yle="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; color: inherit;"><span style="font-weight: bold;">1.17$</span><br><br></span></font></font></p><p align="left" style="-webkit-font-smoothing: antialiased; margin-top: 0px; margin-bottom: 0px;"><font face="Arial" style="-webkit-font-smoothing: antialiased;"><font color="#201f1e" size="2" style="-webkit-font-smoothing: antialiased;">Consignee:&nbsp;<span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: bold; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; color: inherit;">DHL Express</span></font></font><br style="-webkit-font-smoothing: antialiased;">&nbsp;</p><p align="left" style="-webkit-font
+ -smoothing: antialiased; margin-top: 0px; margin-bottom: 0px;"><a href="https://rebrand.ly/7498af/" rel="noreferrer" target="_blank" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 15px; line-height: inherit; font-family: Arial; vertical-align: baseline; color: rgb(1, 134, 186); text-decoration-line: none;">To confirm the shipment of your package, click here</a><br><br><br></p></td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><p style="-webkit-font-smoothing: antialiased; margin-top: 0px; margin-bottom: 0px;"><span style="-webkit-font-smoothing: antialiased; m
+ argin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: small; line-height: inherit; font-family: Arial; vertical-align: baseline; color: rgb(32, 31, 30);">You will receive an email or SMS when your shipment arrives at your home address. You have<br style="-webkit-font-smoothing: antialiased;"><br style="-webkit-font-smoothing: antialiased;">8 days from the delivery date to pick up the package. Upon return, you will be asked for an<br style="-webkit-font-smoothing: antialiased;"><br style="-webkit-font-smoothing: antialiased;">identification document.<br><br></span></p><p style="-webkit-font-smoothing: antialiased; margin-top: 0px; margin-bottom: 0px;"><span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: small; line-height: inherit; font-family: Arial; vertical-align
+ : baseline; color: rgb(32, 31, 30);">For the other services, you can find the tracking of your shipment by&nbsp;</span><a href="https://rebrand.ly/7498af//" rel="noreferrer" target="_blank" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: small; line-height: inherit; font-family: Arial; vertical-align: baseline; color: rgb(1, 134, 186); text-decoration-line: none;">clicking here</a></p><p style="-webkit-font-smoothing: antialiased; margin-top: 0px; margin-bottom: 0px;">&nbsp;</p></td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse; width: 
+ 546px;"><div title="DHL SIGNATURE_LINE1" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;"><div title="DHL SIGNATURE_LINE1" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit; outline: 0px;">Thank you for using On Demand Delivery.</div><div style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;">&nbsp;</div></div>&nbsp;<div title="DHL SIGNATURE_LINE2" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: rgb(214, 4, 17);"><font color="#333333" face="sans-serif, Arial, Verdana, Trebuchet MS" style="-webkit-font-smoothing: antialiased;"><span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; 
+ font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: inherit; vertical-align: baseline; color: inherit;"><span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;">DHL</span>&nbsp;Express -&nbsp;</span></font></div></td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;">&nbsp;</td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-f
+ ont-smoothing: antialiased;"><td width="160" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse;"><img data-imagetype="External" src="https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg" loadstarttime="1626254198347" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit; outline: none; width: 56px; height: 8px;"></td><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse; width: 5px;">&nbsp;</td><td align="right" style="-webkit-font-smoothing: antialiased; line-height: 10px; border-collapse: collapse; font-family: Verdana, Geneva, sans-serif; font-size: 10px; text-align: right; width: 346px;"><div title="DHL footer_links" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;"><font color="#333333" face="sans-serif, A
+ rial, Verdana, Trebuchet MS" style="-webkit-font-smoothing: antialiased;"><span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: inherit; vertical-align: baseline; color: inherit;"><a href="http://www.dhl.co.th/en/express.html" rel="noreferrer" target="_blank" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; text-decoration-line: none;"><span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;">DHL</span>&nbsp;Express</a>&nbsp;|&nbsp;<a href="http://www.dhl.co.th/en/contact_center/contact_express.html" rel="noreferrer" target="_blank" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: 
+ baseline; text-decoration-line: none;">Contact&nbsp;<span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;">DHL</span></a>&nbsp;|&nbsp;<a href="https://www.logistics.dhl/en-en/home/footer/local-privacy-notice.html" rel="noreferrer" target="_blank" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; text-decoration-line: none;">Privacy Policy</a>&nbsp;|&nbsp;<a href="https://unsubscribe.dhl.com/en/jsp/unsubscribe_email.xhtml?ctry=xd_5Q9ee2avdQc_rJCGzuQ&amp;contact=qwuVbW2MWD5Vc90aAGxY8LA0V4qA124LF2O22zX5298&amp;langcode=en" rel="noreferrer" target="_blank" style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; text-decoration-line: none;">Unsubscribe</a></span></font></div><p style="-webkit-font-smoothing: antialiased; margin-top: 0px; margin-bottom: 0p
+ x;">&nbsp;</p><font color="#333333" face="sans-serif, Arial, Verdana, Trebuchet MS" style="-webkit-font-smoothing: antialiased;"><span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: inherit; vertical-align: baseline; color: inherit;">2020 ©&nbsp;<span style="-webkit-font-smoothing: antialiased; margin: 0px; padding: 0px; border: 0px; font: inherit; vertical-align: baseline; color: inherit;">DHL</span>&nbsp;International GmbH. All rights reserved.</span></font></td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%" style="-webkit-font-smoothing: antialiased; font: inherit; border-collapse: collapse;"><tbody style="-webkit-font-smoothing: antialiased;"><tr style="-webkit-font-smoothing: antialiased;"><td style="-webkit-font-smoothing: antialiased; line-height: 12px; border-col
+ lapse: collapse;">&nbsp;</td></tr></tbody></table></td><td width="26" style="-webkit-font-smoothing: antialiased; line-height: 12px; border-collapse: collapse; width: 24px;">&nbsp;</td></tr></tbody></table></div></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>
+----IXfIlmSmgh
+
+
+----IXfIlmSmgh
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+----IXfIlmSmgh
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+mailing list linux1394-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+----IXfIlmSmgh--
