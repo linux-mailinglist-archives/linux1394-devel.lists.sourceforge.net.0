@@ -2,196 +2,117 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id F009B3ECF57
-	for <lists+linux1394-devel@lfdr.de>; Mon, 16 Aug 2021 09:28:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C4B4F3F8F96
+	for <lists+linux1394-devel@lfdr.de>; Thu, 26 Aug 2021 22:21:11 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1mFX2c-000820-7X; Mon, 16 Aug 2021 07:28:14 +0000
+	id 1mJLrn-00060i-0n; Thu, 26 Aug 2021 20:20:51 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <dan.carpenter@oracle.com>) id 1mFX2b-00081u-Ac
- for linux1394-devel@lists.sourceforge.net; Mon, 16 Aug 2021 07:28:13 +0000
+ (envelope-from <bounce@idemalobags.com>) id 1mJLrl-00060b-9f
+ for linux1394-devel@lists.sourceforge.net; Thu, 26 Aug 2021 20:20:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=MIME-Version:In-Reply-To:Content-Type:Message-ID:
- Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=List-Id:List-Unsubscribe:Content-Type:MIME-Version:
+ To:Reply-To:From:Subject:Date:Message-ID:Sender:Cc:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Help:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=pI2NBjDZymVQ08Q6XBhkbcjEHFjSutICoQgWSzfZdDA=; b=TGJNWPUt2qK+A0lFJ+uZillkX1
- vo2D6VVDYZddDVGw7adn88Hy+NJQNVBpYCL+x16At98nO7qz0dK8T1sRkjfhjvGjxTWr/l2focDgD
- g0j2goW2rWFer5BrMqoJQpD9+CGGPxiEby4mYgW/SsEAY0ZVl5PQrtbdOOcjAt7+BW5A=;
+ bh=enqvR0D5fM9gJNCmldaWdIvvvEyQAq3I9eUhD9sWTkU=; b=Z2KQSNy3zFbIq4UiHmtLpFavE+
+ bJzlyYElfyLfU+LesAVELnUbmD09QWAivBwgCju2Z3Rr2Mi32wMddruk7RIcSCJ2TCQn7tgLlzhCW
+ RM/rP32pG5LOxAAv2us2yMRGe8rOgMfKOtih0Rz2XhYu3p6O3PpvfHU/VBPqZr/+Miy8=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=MIME-Version:In-Reply-To:Content-Type:Message-ID:Subject:Cc:To:From:Date:
- Sender:Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=pI2NBjDZymVQ08Q6XBhkbcjEHFjSutICoQgWSzfZdDA=; b=c
- NGGavtcg4EdL74jxDKNhrlW0hxa2eFTAIfvmFNM5Dw7Ob2JFe75Frap7PJgi6hMcqBB9+mZerav50
- FbJFt2qK5fwoxDeKQa+GyJcrvFek3GH3S0FLYIXfAeoiVKTccazQFTOFYZCG278SbGX3LKMlO6kci
- PpO5JXxG0vLMlTZU=;
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+ h=List-Id:List-Unsubscribe:Content-Type:MIME-Version:To:Reply-To:From:
+ Subject:Date:Message-ID:Sender:Cc:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Help:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=enqvR0D5fM9gJNCmldaWdIvvvEyQAq3I9eUhD9sWTkU=; b=V
+ AWVWzicnbr6BCCax2RU85yDSUmJ0/hHMJH1L0OGOC4LGdnaKMeSNPy52HVWBWwlVv0XcjeQLWhrRa
+ ytO7NzWFbbD4LKuNpOqM6rkU+NALm/mDg2LitGix03OUifRgw5wMuaXLg2jSWBqDSqcIHjM1QMMU2
+ J56Vbs04M1fSNquE=;
+Received: from ip137.ip-193-70-95.eu ([193.70.95.137] helo=rdns0.ekaf.top)
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1mFX2R-0081jr-GQ
- for linux1394-devel@lists.sourceforge.net; Mon, 16 Aug 2021 07:28:13 +0000
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 17G7C6Y1031191; Mon, 16 Aug 2021 07:27:38 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : in-reply-to : mime-version;
- s=corp-2021-07-09; bh=pI2NBjDZymVQ08Q6XBhkbcjEHFjSutICoQgWSzfZdDA=;
- b=NNpbku7J1cKeD0wT2f7z+QkxY1o+68vbD3KmluN75X0SE4aym34WO9zGMNjutgqdegxJ
- pc0zDFFCFCcWvzDfZk2RI3l9idYoNbWB9VC3n7SvPm5MBTq7Q/ODD8c5mpFIMegh8yo7
- TI7aJvsVidcXAtEqPdwl/+vhb18h7w5n/G4Mal6DmpuTIpny/+7qxvoqzvWnjAqGGoJz
- KD4QF+qJGbzF/NSpWb6iNXUtm5hMbk1YTs0HBtXGV7tbVpUJJV1XSfmoFD7pCz4iyDos
- 6nOexNL6XM81FNFX7hidzaavq2MDd5NNjYLOpZMmuBwLt6nDkskz0NphINysC25bp+wZ Cg== 
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : in-reply-to : mime-version;
- s=corp-2020-01-29; bh=pI2NBjDZymVQ08Q6XBhkbcjEHFjSutICoQgWSzfZdDA=;
- b=eKuP6/DX4S66SahQQNd113UiGETITWesg6l2iK6hQuEwSitIELMDTwZfVPOgJZCWyjk2
- qnHExmwSRiEt7b5K31tV7KM37CsbUmaKW/O3l6AEm7mUWmFZl2HoofU98xbcc6jgnCHV
- NgVDBXbahawT8Yz3YuFERn6J8c9bJdq04XWyocFLrN0ONOqbUWARObmiW8ZDCm58Ou4P
- KvV4lRm8yHX70H49CqIFNaj7ijRanGnwipwC+JwEydidBTXcp7tKcl3EZofW1QwT/wvu
- kUQMc0wgyxb/nfPyM6GdQlUhPSJq44SNpTMFPQokdV0tvf7OekWOlEtuOudE/6y4A1Qm uQ== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by mx0b-00069f02.pphosted.com with ESMTP id 3af1q99equ-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 16 Aug 2021 07:27:38 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 17G7AnqX037222;
- Mon, 16 Aug 2021 07:27:37 GMT
-Received: from nam10-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam10lp2109.outbound.protection.outlook.com [104.47.58.109])
- by aserp3030.oracle.com with ESMTP id 3ae3vdbmc1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 16 Aug 2021 07:27:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=M3ISKM6LlzakuYViFgHd5zU0TgJex3PVplMMCiWYVZlqTRuXewTn8ug6EU2w2UTcdu+I0mtOz6AS/H7ETNGJkGdicuaUgY/w8XfpJi2Pbetn3hzzR5XUbwlMNP/LVbIM4CtvTux4xKHKlmLX4Uk2tRrxCn+l/RggwiYE+0aM9Lbt1iz6itiraZgrTmKSenhr7d2uPyHUZXJck/XGQF3MeKO5J0lZcKMotoxPxDTUaP9/LxMrIz5ZrGzrjqsEVxDaT3KyrVmYVTL/DN3SIWs5yxA5CqAQzNk3gtDkqlUdjTkgogMScXJ5VfGM3q1yXl2Zxm1SHN4+pBQC94jarGORSA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pI2NBjDZymVQ08Q6XBhkbcjEHFjSutICoQgWSzfZdDA=;
- b=EOmx2VgECVfQ7UKlnXRkTBTr0Na5oMRl3LcwTuapvBvpmfvU85sezGdtlJKliNzQIT9U0rOE8V1tDuUI/6WBgjD5oGgEKkixIJSAxQi0rkiTHP0Aick7pivL8xw9Zm3IHRoU3oGe1J9LKWvMpNlcO+uzgssKU3UuvdTNqDQD0p+mRY0ifJKpoL1nsu1ZhcqBieOvNavriuobUxafq7h2mNiqYnXZ7eSd3Rw+n07FXJlvqniJ+afjpdOG7c9xKoAdrmVmb8n+1h/VRQqnKWpRTM3CjLRQDxYCBo1VKX4Zei4QzIVFeuf4fFqST81XAJj8LsvfhzQhI5j4oQuvFmMs0Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pI2NBjDZymVQ08Q6XBhkbcjEHFjSutICoQgWSzfZdDA=;
- b=H42ddCKPjAeHH0h1k41cB7aehdfiL8ic9nYisZOTwjSoagQTI9ykRtSuxjIbvp9CbLZGd4QLRtSV5YENaDU1SlMTsvpW8pw9ACF35zmEIFmfdgrtcn3//zzwJtMlOd83kkkGskmQINatq+sF0nJK9cqw7Tp26jQVVkALwpeur3w=
-Authentication-Results: s5r6.in-berlin.de; dkim=none (message not signed)
- header.d=none;s5r6.in-berlin.de; dmarc=none action=none
- header.from=oracle.com;
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by CO6PR10MB5571.namprd10.prod.outlook.com
- (2603:10b6:303:146::19) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.21; Mon, 16 Aug
- 2021 07:27:35 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::5820:e42b:73d7:4268]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::5820:e42b:73d7:4268%7]) with mapi id 15.20.4415.023; Mon, 16 Aug 2021
- 07:27:34 +0000
-Date: Mon, 16 Aug 2021 10:27:22 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Stefan Richter <stefanr@s5r6.in-berlin.de>,
- Luo Likang <luolikang@nsfocus.com>
-Subject: [PATCH v2 RESEND] media: firewire: firedtv-avc: fix a buffer
- overflow in avc_ca_pmt()
-Message-ID: <20210816072721.GA10534@kili>
-Content-Disposition: inline
-In-Reply-To: <YRoNTX3Krtw9NdkI@eldamar.lan>
-X-Mailer: git-send-email haha only kidding
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ClientProxiedBy: ZR0P278CA0038.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:1d::7) To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ id 1mJLre-0027fj-Qb
+ for linux1394-devel@lists.sourceforge.net; Thu, 26 Aug 2021 20:20:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256;
+ bh=enqvR0D5fM9gJNCmldaWdIvvvEyQAq3I9eUhD9sWTkU=; d=idemalobags.com;
+ h=Message-ID: Date: Subject: From: Reply-To: To: MIME-Version: Content-Type:
+ Precedence: List-Unsubscribe: List-Id: Feedback-ID; i=@idemalobags.com;
+ s=mailer; c=relaxed/relaxed; t=1630009192;
+ b=EtoblUl3M5hh2pgnOh2gpHqsgp+2MNkNvJPI/6dd7jFPREHzma4WGi4SRB9nsdxHre4uvtX48
+ CMzO/Q+peMfcuMKlg/4wk2T6Lceiscyg89d2rZyATwWtgli/Glvub08TqLaoc0y9HK7puPfL9
+ OpXE75kb7oF7FRPAeFcqnG7anOLxpNjfxZbvNTqEo9p0PnRfm64g6IQnqy5R1vvljgXg2G92G
+ EuEAE7y/6UR4mZsRuUWr1FdT1GP/m7rxYa5oKisZCBxvAOwW/kso7X+F2mZIj/Z71ZwKOpdbG
+ PYq9Wbn6W5LM8+pTSMo+HsVzt7Qm9Duk/uoieD9xHrt4dAjATQ==
+Message-ID: <ded4bb0d244e0d8d2052c92bbdb84ff6@idemalobags.com>
+Date: Thu, 26 Aug 2021 20:19:50 +0000
+Subject: custom bags/cases with your logo linux1394-devel@lists.sourceforge.net
+From: Allen Xiong <allen@idemalobags.com>
+To: "linux1394-devel@lists.sourceforge.net"
+ <linux1394-devel@lists.sourceforge.net>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from kili (62.8.83.99) by ZR0P278CA0038.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:1d::7) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.14 via Frontend
- Transport; Mon, 16 Aug 2021 07:27:30 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: bf0a4a6e-2c8c-4ded-6516-08d9608750d8
-X-MS-TrafficTypeDiagnostic: CO6PR10MB5571:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <CO6PR10MB5571108DAB5EB88AB2BC26DE8EFD9@CO6PR10MB5571.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: C1pK3tSGbbAl07JD+0S1qBQGbd5HPuLi/QAFmS+OBW/3bAkb0yM520Ov2TOqQe2wj/MGP6nJZj18d9Pc9bqp7rTlsMDclyXctUR7hapPJ9kMKgJJ5Myzi3K/A9HB+k6W3bA5Wee8bIXH0wR76asCwX64U/ACo6Rdl9lELtDb0oS90nBiJ9lOdKEIFRuZHndt8AzQwZEuG/KDfn7B0xfU+V+/+LJs80qVQV7uFqSWYl9Uxvqmjx3ddmowWzqsrWCHg5uxainVoabvejvPtcgJQKwZYXYSmg09Z+17XkwJ4tce7IDsyEnteLx4vaA8wvdkVfWLNdDKZocV7mri/XA0bUn3ibAA3JucCggiZuAMC25uDIt4sFpOC31r0F2dMVRQhFzPM2vI6xnYu2RDOjkPATwhTpk+coMAa6UJhBJnBwkApFBldKxpqPTw2FvN/A1j6YXYIG2uzSKqC2GCIY9hKC5Rcv/W+2mJQsgXwi3g0sHP2jp/MC9NE9su963hwHI3NXA384VcobaES0mqA/BMyIca0IDIO4l2TDc9YzckvrjQLqT2HUi1VpGYJyLBgvKsRCHW2rSDQzxmeQm4ydWseeUXwnyl2y44ceD4IZQwYuUD7XV88wXlUV5FYjlJu1B4hvkMxwWGXTACRrq5jGQTiAsFvt5z8ZOiYuraFnpRBJ7NXdlMWAn+lLlgaMkHwUTPx7w0umpZ7s8ZBv+LRKIX9w==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(396003)(366004)(39860400002)(376002)(346002)(136003)(5660300002)(4326008)(478600001)(316002)(38350700002)(38100700002)(26005)(6666004)(1076003)(186003)(8676002)(52116002)(6496006)(2906002)(8936002)(54906003)(110136005)(44832011)(66946007)(55016002)(86362001)(9576002)(66556008)(83380400001)(956004)(66476007)(9686003)(33656002)(33716001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?KPBKxgGgTzxyW7jf4GDXH3aHyEBfzK9dvyGscbGHXycTc4buMcdRi3r58VYx?=
- =?us-ascii?Q?WLGoFMmXXTOS9KFAhJfVRFetfU9qOFJ6A2Ltaik+wkqR+OajjNJO9dkPyS+k?=
- =?us-ascii?Q?qYsmoff6z5CDBosabuSBepsFplFN7fhQ+UsZ/dXBioksxWl07GrpoPKrtC20?=
- =?us-ascii?Q?zQm2rQHrhtXq0KhAYcs0oqlueBKKlW6o1ntKauf18N+lfX9VL+PfKQimf4Sg?=
- =?us-ascii?Q?QoEnTxkBOd/aqytt74fec09T+c5M9Vaq83e5bqDSAFwyonQHq/+fISQAp3Gt?=
- =?us-ascii?Q?MR9NZs1aGkvraMe5fXQa/Mq70d/gqw2fK1H6/WSjbr99NNElNk9N77/wo9d6?=
- =?us-ascii?Q?ECDdBDJaTwFMufyPIwmvdiCXpQ6fCMnVPup97QYVjQmfDtuTuU8qGyY3UQza?=
- =?us-ascii?Q?c1tKdZp3VZavCIvVlmmGrJ2Wrj/TjuLri8RjlYBG/7pMp68CB/OmLV+8kFTt?=
- =?us-ascii?Q?fcdo3Wb5Ci7mbVrkRvEhxwgMSd628gapEuZNMmpX7p35qLPiboa4uAEqushQ?=
- =?us-ascii?Q?o+b4LYr7KWtohkxOA8c7zOntpj08Z/iTJJzo6dKUzMYbFJuZQ5B1lg0H/0jb?=
- =?us-ascii?Q?7HXodajh5M6C6FhXgCveKrvqjE3owkNJ9egaS2uWT24BTDJnicYi2GrpfwWE?=
- =?us-ascii?Q?P1QZXqB7wC03i4mezJI4/iQdWnz8iokk1/3TUYV+7+ZpC25XEPtCvUc8o+LG?=
- =?us-ascii?Q?gukUbtx7l5XrHYn2llEqRn/9iHPy/Ltcimclrwbc8NabPJbq2GQn7Z5kOOmB?=
- =?us-ascii?Q?b0IJkSlDENap/FG/CbrW6qRmgegMyoE3dALfze9ifXHvhGolNvM6R6sS+SAv?=
- =?us-ascii?Q?/tYNxUckFx6z0N9/eUVcBCzd9CMF0GFFi/IsmPgR9YgmVzaCKVm6kOgG28KR?=
- =?us-ascii?Q?cW5l/+Lt4CcWZK4ow5+NNZ+2rpAEtybL7oIpSqVIDM8gfgWsdWXpGtHdWVP3?=
- =?us-ascii?Q?CKMIgGfsNRJ4J5zlI0ruZGv/OXrroJPtRzTzrtzemnBPlyCnP53pS0GMZODR?=
- =?us-ascii?Q?WgZ1O4ivDiUvOZd5aM7oh2gtQjZDmrAdK3G8gx7onSEUJIqzldZbR0GkKvr8?=
- =?us-ascii?Q?Whz2yVT9CxYg90Oap8l1Lt0Z25hc84MEgVkkpjUCpVgKMLj6Igr6VFoh9ofV?=
- =?us-ascii?Q?uBhtWpuQG3cKbr2sCopCduwlRjHTy4s4q/ICdwApQ5AJ9qaU9xv3JNr+Wcth?=
- =?us-ascii?Q?XTwE2okEVV4PLtOC+6GL5H6WJCi5uefFBp5XZtbucbzcj+Gbt7rlW/NonTPI?=
- =?us-ascii?Q?XjM/A6UeR3O4qQbmX5GYzzgm6AtSP4lk5+HUVqyULGYVXDKKGE/G/R0sYRlr?=
- =?us-ascii?Q?T9gWg4fAfjQUxqVB9AuDGGFH?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bf0a4a6e-2c8c-4ded-6516-08d9608750d8
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2021 07:27:34.4235 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: UCtdTC2RWqbfNQQEHaVeK0IVJ03TTdSgSMTY1AWmJi2KBmnspRfKHJ2lGeLDigAzPQhMhAEzyf0T9yPMySSZwwGIRvTuMdAO+0Yz5gr350U=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR10MB5571
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=10077
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- adultscore=0 mlxscore=0
- malwarescore=0 mlxlogscore=999 spamscore=0 bulkscore=0 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2107140000
- definitions=main-2108160046
-X-Proofpoint-GUID: sfZYyaOmnaLHoFTKuDSnKnu3t8-AKPVv
-X-Proofpoint-ORIG-GUID: sfZYyaOmnaLHoFTKuDSnKnu3t8-AKPVv
-X-Spam-Score: -0.1 (/)
-X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
- See http://spamassassin.org/tag/ for more details.
- 0.0 RCVD_IN_MSPIKE_L3      RBL: Low reputation (-3)
- [205.220.177.32 listed in bl.mailspike.net]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+X-Vtdm-Tracking-Did: 29
+X-Vtdm-Subscriber-Uid: nt302tnm20e81
+X-Vtdm-Mailer: SwiftMailer - 5.4.x
+X-Vtdm-EBS: http://track.idemalobags.com/lists/block-address
+X-Vtdm-Delivery-Sid: 95
+X-Vtdm-Customer-Uid: qs3089m3hr9bf
+X-Vtdm-Customer-Gid: 4
+X-Vtdm-Campaign-Uid: yk404l667vdd0
+X-Sender: bounce@idemalobags.com
+X-Report-Abuse: Please report abuse for this campaign here:
+ http://track.idemalobags.com/campaigns/yk404l667vdd0/report-abuse/vl105lktzree6/nt302tnm20e81
+X-Receiver: linux1394-devel@lists.sourceforge.net
+Precedence: bulk
+Feedback-ID: yk404l667vdd0:nt302tnm20e81:vl105lktzree6:qs3089m3hr9bf
+X-Spam-Score: 5.3 (+++++)
+X-Spam-Report: Spam detection software,
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ has NOT identified this incoming email as spam.  The original
+ message has been attached to this so you can view it or label
+ similar future email.  If you have any questions, see
+ the administrator of that system for details.
+ Content preview:  Hi Linux1394-devel, We, iDemalo Bags,
+ produce custom bags/cases
+ with logo for global customers from 2005. As a 10+ years' bags/cases
+ manufacturer, 
+ we always assuring you high quality and good price. If you are in need of
+ any custom bags/cases, please feel free to contact us for a quote. 
+ Content analysis details:   (5.3 points, 6.0 required)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ 2.5 URIBL_DBL_SPAM         Contains a spam URL listed in the Spamhaus DBL
+ blocklist [URIs: idemalobags.com]
+ 1.9 URIBL_ABUSE_SURBL      Contains an URL listed in the ABUSE SURBL
+ blocklist [URIs: idemalobags.com]
+ 0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
+ blocked.  See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: idemalobags.com]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [193.70.95.137 listed in wl.mailspike.net]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
+ 0.0 HTML_MESSAGE           BODY: HTML included in message
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- 0.0 RCVD_IN_MSPIKE_BL      Mailspike blacklisted
- 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
-X-Headers-End: 1mFX2R-0081jr-GQ
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ 0.0 T_KAM_HTML_FONT_INVALID Test for Invalidly Named or Formatted
+ Colors in HTML
+ 2.0 RAND_MKTG_HEADER       Has partially-randomized marketing/tracking
+ header(s)
+ -1.0 MAILING_LIST_MULTI     Multiple indicators imply a widely-seen list
+ manager
+X-Headers-End: 1mJLre-0027fj-Qb
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
-Precedence: list
 List-Id: Linux IEEE 1394 development list
  <linux1394-devel.lists.sourceforge.net>
 List-Unsubscribe: <https://lists.sourceforge.net/lists/options/linux1394-devel>, 
@@ -201,106 +122,195 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: security@kernel.org, Yang Yanchao <yangyanchao6@huawei.com>,
- linux-media@vger.kernel.org, linux-distros@vs.openwall.org,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux1394-devel@lists.sourceforge.net,
- Salvatore Bonaccorso <carnil@debian.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Allen Xiong <allen@idemalobags.com>
+Content-Type: multipart/mixed; boundary="===============3766179709947368357=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The bounds checking in avc_ca_pmt() is not strict enough.  It should
-be checking "read_pos + 4" because it's reading 5 bytes.  If the
-"es_info_length" is non-zero then it reads a 6th byte so there needs to
-be an additional check for that.
 
-I also added checks for the "write_pos".  I don't think these are
-required because "read_pos" and "write_pos" are tied together so
-checking one ought to be enough.  But they make the code easier to
-understand for me.  The check on write_pos is:
-
-	if (write_pos + 4 >= sizeof(c->operand) - 4) {
-
-The first "+ 4" is because we're writing 5 bytes and the last " - 4"
-is to leave space for the CRC.
-
-The other problem is that "length" can be invalid.  It comes from
-"data_length" in fdtv_ca_pmt().  Added a check in fdtv_ca_pmt() to
-prevent that.
-
-Cc: stable@vger.kernel.org
-Reported-by: Luo Likang <luolikang@nsfocus.com>
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
-RESEND: this patch got lost somehow.
-
-v2: Change the limit in fdtv_ca_pmt() from "sizeof(msg->msg) - 4" to
-"sizeof(msg->msg) - data_pos".
-
-Oh, another thing is the data_length calculation in fdtv_ca_pmt() seems
-very suspicous.  Reading more than 4 bytes in the loop will lead to
-shift wrapping.
-
- drivers/media/firewire/firedtv-avc.c | 14 +++++++++++---
- drivers/media/firewire/firedtv-ci.c  |  2 ++
- 2 files changed, 13 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/media/firewire/firedtv-avc.c b/drivers/media/firewire/firedtv-avc.c
-index 2bf9467b917d..71991f8638e6 100644
---- a/drivers/media/firewire/firedtv-avc.c
-+++ b/drivers/media/firewire/firedtv-avc.c
-@@ -1165,7 +1165,11 @@ int avc_ca_pmt(struct firedtv *fdtv, char *msg, int length)
- 		read_pos += program_info_length;
- 		write_pos += program_info_length;
- 	}
--	while (read_pos < length) {
-+	while (read_pos + 4 < length) {
-+		if (write_pos + 4 >= sizeof(c->operand) - 4) {
-+			ret = -EINVAL;
-+			goto out;
-+		}
- 		c->operand[write_pos++] = msg[read_pos++];
- 		c->operand[write_pos++] = msg[read_pos++];
- 		c->operand[write_pos++] = msg[read_pos++];
-@@ -1177,13 +1181,17 @@ int avc_ca_pmt(struct firedtv *fdtv, char *msg, int length)
- 		c->operand[write_pos++] = es_info_length >> 8;
- 		c->operand[write_pos++] = es_info_length & 0xff;
- 		if (es_info_length > 0) {
-+			if (read_pos >= length) {
-+				ret = -EINVAL;
-+				goto out;
-+			}
- 			pmt_cmd_id = msg[read_pos++];
- 			if (pmt_cmd_id != 1 && pmt_cmd_id != 4)
- 				dev_err(fdtv->device, "invalid pmt_cmd_id %d at stream level\n",
- 					pmt_cmd_id);
- 
--			if (es_info_length > sizeof(c->operand) - 4 -
--					     write_pos) {
-+			if (es_info_length > sizeof(c->operand) - 4 - write_pos ||
-+			    es_info_length > length - read_pos) {
- 				ret = -EINVAL;
- 				goto out;
- 			}
-diff --git a/drivers/media/firewire/firedtv-ci.c b/drivers/media/firewire/firedtv-ci.c
-index 9363d005e2b6..2d6992ac5dd6 100644
---- a/drivers/media/firewire/firedtv-ci.c
-+++ b/drivers/media/firewire/firedtv-ci.c
-@@ -134,6 +134,8 @@ static int fdtv_ca_pmt(struct firedtv *fdtv, void *arg)
- 	} else {
- 		data_length = msg->msg[3];
- 	}
-+	if (data_length > sizeof(msg->msg) - data_pos)
-+		return -EINVAL;
- 
- 	return avc_ca_pmt(fdtv, &msg->msg[data_pos], data_length);
- }
--- 
-2.30.2
+--===============3766179709947368357==
+Content-Type: multipart/alternative;
+ boundary="_=_swift_v4_1630009190_5034f1f70d4a238db4f698d8c9a5c46e_=_"
 
 
+--_=_swift_v4_1630009190_5034f1f70d4a238db4f698d8c9a5c46e_=_
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi Linux1394-devel,=20
+=20
+We, iDemalo Bags, produce custom bags/cases with=
+ logo for global
+customers from 2005.=20
+=20
+As a 10+ years' bags/cases m=
+anufacturer, we always assuring you high
+quality and good price.
+If you=
+ are in need of any custom bags/cases, please feel free to
+contact us for=
+ a quote.=20
+=20
+Custom sample bags/cases with your logo can be supplied on=
+ce you
+reply this email.
+=20
+Thanks in advance,
+Allen (Co-owner & Sal=
+es Manager)
+-------------------------------------------------------------=
+-------
+iDemalo Bags Co.,Ltd.(China)
+Add|No.8, Caotang, Zhuyuan Village=
+, Liaobu, Dongguan, China
+=20
+_Please consider the environment before pri=
+nting this email_
+=20
+Unsubscribe
+http://track.idemalobags.com/lists/vl=
+105lktzree6/unsubscribe/nt302tnm20e81/yk404l667vdd0
+
+--_=_swift_v4_1630009190_5034f1f70d4a238db4f698d8c9a5c46e_=_
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html>
+<head><meta charset=3D"utf-8"/>
+=09<title></ti=
+tle>
+</head>
+<body><span style=3D"font-size:12px;"><span style=3D"font-=
+family:Arial,Helvetica,sans-serif;">Hi Linux1394-devel, <br />
+ <br />
+=
+We, iDemalo Bags, produce<font color=3D"#003366"> <font color=3D"blue"><str=
+ong>custom </strong></font><font color=3D"blue"><strong>bags/cases</strong>=
+</font> </font>with logo for global customers from 2005. <br />
+<br />
+=
+<font color=3D"#003366"> </font><br />
+As a 10+ years' bags/cases manufac=
+turer, we always assuring you high quality and good price.<br />
+<br />=
+
+<br />
+If you are in need of any custom bags/cases, please feel free t=
+o contact us for a quote. <br />
+<br />
+<br />
+ <br />
+Custom <font=
+ color=3D"blue"><strong>sample bags/cases</strong></font> with your logo ca=
+n be supplied<font color=3D"#0000ff"><b> </b></font>once you reply this ema=
+il.</span><br />
+<br />
+<br />
+ </span>
+<p><span style=3D"font-size=
+:12px;"><span style=3D"font-family:Arial"><span style=3D"font-style:normal"=
+><span style=3D"font-variant-ligatures:normal"><span style=3D"font-variant-=
+caps:normal"><span style=3D"font-weight:400"><span style=3D"letter-spacing:=
+normal"><span style=3D"orphans:2"><span style=3D"text-transform:none"><span=
+ style=3D"white-space:normal"><span style=3D"widows:2"><span style=3D"word-=
+spacing:0px"><span style=3D"background-color:#ffffff"><span style=3D"text-d=
+ecoration-style:initial"><span style=3D"text-decoration-color:initial"><spa=
+n style=3D"line-height:23px"><span style=3D"clear:both"><span style=3D"back=
+ground-color:window">Thanks in advance,</span></span></span></span></span><=
+/span></span></span></span></span></span></span></span></span></span></span=
+></span><br />
+<span style=3D"font-family:Arial"><span style=3D"font-styl=
+e:normal"><span style=3D"font-variant-ligatures:normal"><span style=3D"font=
+-variant-caps:normal"><span style=3D"font-weight:400"><span style=3D"letter=
+-spacing:normal"><span style=3D"orphans:2"><span style=3D"text-transform:no=
+ne"><span style=3D"white-space:normal"><span style=3D"widows:2"><span style=
+=3D"word-spacing:0px"><span style=3D"background-color:#ffffff"><span style=
+=3D"text-decoration-style:initial"><span style=3D"text-decoration-color:ini=
+tial"><span style=3D"line-height:23px"><span style=3D"clear:both"><span sty=
+le=3D"border:0px; margin:0px; padding:0px; outline:0px">Allen (Co-owner & S=
+ales Manager)</span></span></span></span></span></span></span></span></span=
+></span></span></span></span></span></span></span></span><br />
+<span sty=
+le=3D"color:#003366"><span style=3D"font-family:Arial"><span style=3D"font-=
+style:normal"><span style=3D"font-variant-ligatures:normal"><span style=3D"=
+font-variant-caps:normal"><span style=3D"font-weight:400"><span style=3D"le=
+tter-spacing:normal"><span style=3D"orphans:2"><span style=3D"text-transfor=
+m:none"><span style=3D"white-space:normal"><span style=3D"widows:2"><span s=
+tyle=3D"word-spacing:0px"><span style=3D"background-color:#ffffff"><span st=
+yle=3D"text-decoration-style:initial"><span style=3D"text-decoration-color:=
+initial"><span style=3D"line-height:23px"><span style=3D"clear:both"><span =
+style=3D"border:0px; margin:0px; padding:0px; outline:0px">----------------=
+----------------------------------------------------</span></span></span></=
+span></span></span></span></span></span></span></span></span></span></span>=
+</span></span></span></span><br />
+<span style=3D"font-family:Arial"><spa=
+n style=3D"font-style:normal"><span style=3D"font-variant-ligatures:normal"=
+><span style=3D"font-variant-caps:normal"><span style=3D"font-weight:400"><=
+span style=3D"letter-spacing:normal"><span style=3D"orphans:2"><span style=
+=3D"text-transform:none"><span style=3D"white-space:normal"><span style=3D"=
+widows:2"><span style=3D"word-spacing:0px"><span style=3D"background-color:=
+#ffffff"><span style=3D"text-decoration-style:initial"><span style=3D"text-=
+decoration-color:initial"><span style=3D"line-height:23px"><span style=3D"c=
+lear:both"><b>iDemalo Bags Co.,Ltd.(China)</b></span></span></span></span><=
+/span></span></span></span></span></span></span></span></span></span></span=
+></span><br />
+<span style=3D"font-style:normal"><span style=3D"font-vari=
+ant-ligatures:normal"><span style=3D"font-variant-caps:normal"><span style=
+=3D"font-weight:400"><span style=3D"letter-spacing:normal"><span style=3D"o=
+rphans:2"><span style=3D"text-transform:none"><span style=3D"white-space:no=
+rmal"><span style=3D"widows:2"><span style=3D"word-spacing:0px"><span style=
+=3D"background-color:#ffffff"><span style=3D"text-decoration-style:initial"=
+><span style=3D"text-decoration-color:initial"><span style=3D"line-height:n=
+ormal"><span style=3D"font-family:Helvetica, &quot;Trebuchet MS&quot;, Aria=
+l, sans-serif"><span style=3D"min-height:20px"><b>Add</b>|<span style=3D"li=
+ne-height:23px"><span style=3D"font-family:Arial"><span style=3D"background=
+-color:window">No.8, Caotang, Zhuyuan Village, Liaobu, Dongguan, China</spa=
+n></span></span></span></span></span></span></span></span></span></span></s=
+pan></span></span></span></span></span></span></span></span><br />
+<br />=
+
+ </p>
+
+<div style=3D"text-align:start; -webkit-text-stroke-width:0px=
+; margin-bottom:0.3em"><span style=3D"font-size:10px;"><span style=3D"color=
+:#27ae60;"><b><i><span style=3D"background-color:#ffffff;">Please consider =
+the environment before printing this email</span></i></b></span></span><br =
+/>
+<br />
+<br />
+<br />
+ </div>
+<br />
+<a href=3D"http://track.=
+idemalobags.com/lists/vl105lktzree6/unsubscribe/nt302tnm20e81/yk404l667vdd0=
+">Unsubscribe</a>
+<img width=3D"1" height=3D"1" src=3D"http://track.idema=
+lobags.com/campaigns/yk404l667vdd0/track-opening/nt302tnm20e81" alt=3D"" />=
+
+</body>
+</html>
+
+--_=_swift_v4_1630009190_5034f1f70d4a238db4f698d8c9a5c46e_=_--
+
+
+
+--===============3766179709947368357==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============3766179709947368357==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============3766179709947368357==--
+
+
