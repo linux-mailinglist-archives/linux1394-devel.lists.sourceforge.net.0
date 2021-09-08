@@ -2,136 +2,67 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC3C04032AC
-	for <lists+linux1394-devel@lfdr.de>; Wed,  8 Sep 2021 04:36:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FCEA403E5B
+	for <lists+linux1394-devel@lfdr.de>; Wed,  8 Sep 2021 19:30:46 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1mNnRa-0003RH-P0; Wed, 08 Sep 2021 02:36:10 +0000
+	id 1mO1P7-00032M-4G; Wed, 08 Sep 2021 17:30:33 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1mNnRZ-0003R3-HA
- for linux1394-devel@lists.sourceforge.net; Wed, 08 Sep 2021 02:36:09 +0000
+ (envelope-from <dave@sleepmap.de>) id 1mO1P5-000320-AS
+ for linux1394-devel@lists.sourceforge.net; Wed, 08 Sep 2021 17:30:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:Mime-Version:References:
+ Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=XpBX03ofTywQgFacgXDG1pZnMP+5dK41kLgfbvxz1O8=; b=V/wdtzreDxK/Sjm81DVMb2hlKN
- FFEbOeatnyGSqkeo7Ex9UHjNLw0cDLhdphL13o7qhez/wvqNIZPHfZ3bgTDqWJ/CHwG65oBy6q6Pk
- yzievZVeDKgESw+xj9nCPelYRAv5DWpXqjm+A4jKQCDneZPxdsSgyChUHRuZVjsg9cng=;
+ bh=/DfJzIHje0DmgI0ZIvpR9bciJm/gZg+l1qszbdZTcG8=; b=B9NUZPvUZXXTfUP3PQIJjxHQ9z
+ +Baet6RCYk1kKKCv2X5j+Zi2VLzwcY6xafTwfYfGLdEnO2fljvF1zMWykgGlYUsOGvqnWF/anZ48M
+ vvOtYbfbYU91u4vQgu7Yygln9zG8VFDUMpNUM46MUgBWBjNgPxzd5KowTergMA6/RJgk=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ h=In-Reply-To:Content-Type:Mime-Version:References:Message-ID:Subject:To:
+ From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=XpBX03ofTywQgFacgXDG1pZnMP+5dK41kLgfbvxz1O8=; b=XFdLqQs13dw1tL8xjMa7qq0efT
- KrN2TgTUJbFdyoLKF+JWbw2Pmyil+oAtOQkihRXurTvrNBfv9mE7gTOJE6s85JZeIUyie5FLfgvlk
- f7kAmtzqIoS0/FF22WbaxM6dTI8bvvFKyXDol9A0PCj29Vx5P8SwdcBydcxDZRaKfFuE=;
-Received: from wout5-smtp.messagingengine.com ([64.147.123.21])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ bh=/DfJzIHje0DmgI0ZIvpR9bciJm/gZg+l1qszbdZTcG8=; b=mmtU0EswofxGfyy2FiRxdNHH8I
+ bcoji/jNc15w72w902bwrVh2jNM9cWk31YVpS9fCAKckDIuYnah2XY+c9sMtyyxLuMfLQ25fcZQzy
+ UlSYusM9sQhPFnChP8fDEsjmc0+ib4bBmd5JVi+aGApdTpTy9bZmOw7LdHls49x3eSZE=;
+Received: from sleepmap.de ([85.10.206.218] helo=mail.sleepmap.de)
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1mNnRQ-001mWp-1r
- for linux1394-devel@lists.sourceforge.net; Wed, 08 Sep 2021 02:36:09 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id 8C8983200985;
- Tue,  7 Sep 2021 22:17:23 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Tue, 07 Sep 2021 22:17:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm2; bh=XpBX03ofTywQgFacgXDG1pZnMP+
- 5dK41kLgfbvxz1O8=; b=vefuPfVGtc/b90iJSbhosL2zzG/5ncgLrxYd1mMbkST
- 5wMhlFPbptLMut4VDPB3L4vcAgBFMPslBfzzaNdSdQZPguX12B7NWauXwa0X6BNp
- QJa+hoiBdHFJNRvNGUl2EZMYo4ZZIizTSWsYWbd3O+jsAgdKt+r8uLm+ViJbc9cT
- SfoZ27dk+fvb+EOtKaxoE1esjj9N9BqOWZW9annXz2RDW8T5t+clxZsbu59VWisM
- Pze3rVKT/d/iQXPSCTW7f4se1u/rhM1fDWvLnJ58mQStRG0e31w1JzNGmMiw4lPi
- l3oNkgLh5B1BPadqlsyxSaB2091SITD82aU/7rfFZzA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=XpBX03
- ofTywQgFacgXDG1pZnMP+5dK41kLgfbvxz1O8=; b=NCbZLVBdq20uU76hRrohup
- mkJaVbehVe5tcTQNzK4eDvIVBbpQ0STcG9x7K/BQF6Mm05dl5TlPoujHIypS/9lC
- eDi0wLnODl9P9yjdtxZ1VX1hZv5L8pFcQAuxQbl2kKDxR1ElHjk5UxSwF+k1FlOC
- mNkT8z7ts3CdSgldEH6jhRSufAZ+9gXifMj146t1LRTO0gsNrjQDKL743wuRTSCR
- vO0oKfr9OGaxbob4msuji3/tFyGtas64CDYgiZUru/+lgK7QWOt+BDSuBRMRqEvt
- 1YNfxsEHUdT2ijtfiyggcjprR/B7bsn8NFshVo4qpVuMq0tlefjJE3zWzRqc1phQ
- ==
-X-ME-Sender: <xms:Mh04YUl5tJ-FAyiAyZEWhiW8KjBW1yQN29w7K84SoNJx8cQMEBN6QA>
- <xme:Mh04YT1WEYreZKYIN8kFQXX4xODjFLMHkmFLHyZXFli7fwsdAbA7zfu_jeA-Oo8w8
- a8sraE7J82SyHvRL5I>
-X-ME-Received: <xmr:Mh04YSreeLqYBlV2v24tgFB61X_2fZyryy0Rx-f5iIRLgI6VJQKAvTqTJYmmR2uW3LYIzFKt4Y8KNEf43tsTaTPIDI-s6FTB8A>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrudefiedgheegucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefvrghkrghs
- hhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjh
- hpqeenucggtffrrghtthgvrhhnpeeugefhhfeileevtdegleduleeffedvkefhueekveei
- hfeijeejvdekuddthfekhfenucffohhmrghinhepphhkghgsuhhilhgurdgtohhmnecuve
- hluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgr
- shhhihesshgrkhgrmhhotggthhhirdhjph
-X-ME-Proxy: <xmx:Mh04YQnAq3w9MqNRMOWH-sqEMvt4Sb68GLs00tJutW9xKeBV7_5ILA>
- <xmx:Mh04YS2eOHYme2SRRMLH0iZEVTxpBC51R6Bd4fwiZDZ2hN3G52B0wg>
- <xmx:Mh04YXtjmozt1vR9cdQA3YxwEjX2v8u0NtoXLPBl63N284MFJDwYbQ>
- <xmx:Mx04YVQV14bk-TSR0lDpnr3f6JjBsxsBq079qZ4TTNAVg2REUP93Uw>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 7 Sep 2021 22:17:20 -0400 (EDT)
-Date: Wed, 8 Sep 2021 11:17:18 +0900
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: David Runge <dave@sleepmap.de>
+ id 1mO1P2-0002sl-9l
+ for linux1394-devel@lists.sourceforge.net; Wed, 08 Sep 2021 17:30:31 +0000
+Date: Wed, 8 Sep 2021 19:30:14 +0200
+From: David Runge <dave@sleepmap.de>
+To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Kristian Hoegsberg <krh@bitplanet.net>,
+ linux1394-devel@lists.sourceforge.net, linux-rt-users@vger.kernel.org,
+ "Ahmed S. Darwish" <a.darwish@linutronix.de>
 Subject: Re: firewire-ohci fails to initialize Texas Instruments
  XIO2213A/B/XIO2221 based controller on realtime kernels [5.4.91-rt50,
  5.10.8-rt24]
-Message-ID: <YTgdLkTs7wEmj8fh@workstation>
-Mail-Followup-To: David Runge <dave@sleepmap.de>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Kristian Hoegsberg <krh@bitplanet.net>,
- linux1394-devel@lists.sourceforge.net,
- linux-rt-users@vger.kernel.org,
- "Ahmed S. Darwish" <a.darwish@linutronix.de>
-References: <20210205112638.xuduvuefy3auycht@linutronix.de>
- <YB3TLNN39/XhUyUY@hmbx> <YB+5tdIpbTfnDnIi@hmbx>
+Message-ID: <YTjzKftQmFtPLYUR@hmbx>
+References: <YB3TLNN39/XhUyUY@hmbx> <YB+5tdIpbTfnDnIi@hmbx>
  <20210208091940.csuyf7l73n4ofpmz@linutronix.de>
  <YCl28sXo7LEyCK8y@hmbx>
  <20210218083849.iitcrhdgv2oajfhv@linutronix.de>
  <20210218092751.ahn262llcpp2loz7@linutronix.de>
  <20210308141210.yoa37dsc26p4jsim@linutronix.de>
  <YEkMvjJt/Vu9Jbgu@hmbx> <YTfy7pLhWkTOn+aI@hmbx>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YTfy7pLhWkTOn+aI@hmbx>
-X-Spam-Score: -0.9 (/)
-X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
- has NOT identified this incoming email as spam.  The original
- message has been attached to this so you can view it or label
- similar future email.  If you have any questions, see
- the administrator of that system for details.
- Content preview:  Hi, On Wed, Sep 08, 2021 at 01:17:02AM +0200, David Runge
- wrote: > Upon first boot the /dev/fw0 and /dev/fw1 nodes did not show up >
- initially [1] (log without using -1 debug parameter), which is why I > [...]
- Content analysis details:   (-0.9 points, 6.0 required)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [64.147.123.21 listed in wl.mailspike.net]
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.147.123.21 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
-X-Headers-End: 1mNnRQ-001mWp-1r
+ <YTgdLkTs7wEmj8fh@workstation>
+Mime-Version: 1.0
+In-Reply-To: <YTgdLkTs7wEmj8fh@workstation>
+X-Spam-Score: 0.0 (/)
+X-Spam-Report: Spam Filtering performed by mx.sourceforge.net.
+ See http://spamassassin.org/tag/ for more details.
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+X-Headers-End: 1mO1P2-0002sl-9l
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,168 +75,128 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: Kristian Hoegsberg <krh@bitplanet.net>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- linux1394-devel@lists.sourceforge.net, linux-rt-users@vger.kernel.org,
- "Ahmed S. Darwish" <a.darwish@linutronix.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8367834013029807433=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
 
-On Wed, Sep 08, 2021 at 01:17:02AM +0200, David Runge wrote:
-> Upon first boot the /dev/fw0 and /dev/fw1 nodes did not show up
-> initially [1] (log without using -1 debug parameter), which is why I
-> switched the device off and on again.
-> Afterwards the device nodes were created, so I attempted to use aplay -l
-> to check whether the device was detected. The command hung forever (also
-> starting jackd) and I had to reboot eventually. Using alsamixer I was
-> able to select the Fireface800 device from the list of devices though.
-> 
-> Upon 2nd boot I used the -1 debug parameter for firewire-ohci [2].
-> The device nodes were created automatically, but neither aplay -l nor
-> alsamixer showed the audio interface. The attempt to switch the device
-> off and on again and afterwards to remove the firewire-ohci module lead
-> to another freeze and a successive reboot.
-> 
-> If I can provide further information, please let me know!
-> 
-> I hope I can try the vanilla 5.14.1 kernel tomorrow to see how it
-> behaves in regards to firewire-ohci (judging from the past it will
-> probably work though).
-> 
-> Best,
-> David
-> 
-> P.S.: I have added Kristian Hoegsberg in CC, who is mentioned as the
-> author of firewire-ohci and firewire-core.
-> 
-> [1] https://pkgbuild.com/~dvzrv/bugs/2021/09/linux-5.14.1.19.realtime1-kernel.log
-> [2] https://pkgbuild.com/~dvzrv/bugs/2021/09/linux-5.14.1.19.realtime1-restart_device_kernel.log
+--===============8367834013029807433==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7whbo5xfvtqAAJgT"
+Content-Disposition: inline
 
-```
-kernel: INFO: task pipewire-media-:2554 blocked for more than 122 seconds.
-kernel:       Not tainted 5.14.1.19.realtime1-1-rt #1
-kernel: "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
-kernel: task:pipewire-media- state:D stack:    0 pid: 2554 ppid:  1803 flags:0x00000220
-kernel: Call Trace:
-kernel:  __schedule+0x338/0x1580
-kernel:  ? __mod_zone_page_state+0x81/0xf0
-kernel:  ? rt_spin_unlock+0x13/0x40
-kernel:  ? rmqueue_bulk+0x201/0x820
-kernel:  schedule+0x43/0xf0
-kernel:  schedule_timeout+0x14d/0x190
-kernel:  wait_for_completion+0x9e/0x100
-kernel:  fw_run_transaction+0xd7/0x110 [firewire_core bb04f32445782056ab0dc73199b57a87dc27c06d]
-...
-```
 
-According to the log, the task of 'pipewire-media-:2554' is blocked during
-122 seconds by call of 'wait_for_completion()' in code of
-'fw_run_transaction()'. This is odd in two points of transaction service
-programmed in Linux FireWire subsystem:
+--7whbo5xfvtqAAJgT
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Date: Wed, 8 Sep 2021 19:30:14 +0200
+From: David Runge <dave@sleepmap.de>
+To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	Kristian Hoegsberg <krh@bitplanet.net>,
+	linux1394-devel@lists.sourceforge.net,
+	linux-rt-users@vger.kernel.org,
+	"Ahmed S. Darwish" <a.darwish@linutronix.de>
+Subject: Re: firewire-ohci fails to initialize Texas Instruments
+ XIO2213A/B/XIO2221 based controller on realtime kernels [5.4.91-rt50,
+ 5.10.8-rt24]
 
-1. The process context should be awakened by softIRQ context, which should
-   be scheduled by hwIRQ context for hardware interrupt of OHCI 1394
-   controller.
-2. Even if the softIRQ context is not invoked, the process context
-   should be awakened by wheel timer context, which is scheduled to finish
-   the transaction several jiffies later (originally prepared for the case
-   of split-transaction). In the case, the result of transaction is
-   'RCODE_CANCELLED'.
+Hi Takashi,
 
-The call graph is below:
+thanks for the prompt and detailed response!
 
-1 in the process context:
+Unfortunately I lack the knowledge about the driver and its inner
+workings to be able to provide a patch for this issue myself.
+If anyone reading this who is able to suggest a fix, I'd be happy to
+test it!
+
+On 2021-09-08 11:17:18 (+0900), Takashi Sakamoto wrote:
+> I guess we have issue in the softIRQ context or timer wheel context
+> instead of hwIRQ context, if the OHCI 1394 controller you use has
+> no quirk (I suggest you to give information about the controller).
+>=20
+> I'd like you to check it. The firewire-ohci module has 'debug' parameter.
+>=20
+> ``
+> $ modinfo firewire-ohci
+> ...
+> parm:           debug:Verbose logging (default =3D 0, AT/AR events =3D 1,=
+ self-IDs =3D 2, IRQs =3D 4, busReset events =3D 8, or a combination, or al=
+l =3D -1) (int)
+> ``
+
+I am using '-1' (all) in the 2nd link in my previous mail. It appears to
+not show a different output in the kernel logs from when I set it to '5'
+though. There seems to be something wrong...
+I'm adding the options in a .conf file below /etc/modprobe.d/, e.g.:
 
 ```
-(drivers/firewire/core-transaction.c)
-->fw_run_transaction()
-  ->timer_setup_on_stack()
-  ->fw_send_request()
-    ->timer_setup()
-    ->struct fw_card_driver.send_request()
-    (drivers/firewire/ohci.c)
-    = ohci_send_request()
-      ...
-      ->writel()
-  ->wait_for_completion()
-    (blocked and awakened by softIRQ context later)
-  ->destroy_timer_on_stack()
+options firewire-ohci debug=3D5
 ```
 
-2 in the hwIRQ context:
+The only output I get from that is:
 
 ```
-(drivers/firewire/ohci.c)
-->irq_handler()
-  ->tasklet_schedule(&ohci->at_response_ctx.tasklet);
+firewire_ohci 0000:05:00.0: enabling device (0000 -> 0002)
+firewire_ohci 0000:05:00.0: added OHCI v1.10 device as card 0, 8 IR + 8 IT =
+contexts, quirks 0x2
+firewire_core 0000:05:00.0: created device fw0: GUID 7856341278563412, S800
+firewire_ohci 0000:05:00.0: isochronous cycle inconsistent
+firewire_core 0000:05:00.0: created device fw1: GUID 000a3500ada83262, S400
+firewire_core 0000:05:00.0: phy config: new root=3Dffc0, gap_count=3D5
 ```
 
-3 in the softIRQ context:
+This is with starting with the audio interface connected and on. I have
+to switch it off and on again to get recognized, but then the driver
+crashes (full kernel log [1])
 
-```
-(drivers/firewire/core-transaction.c)
-->handle_at_packet()
-  ->struct fw_packet.callback()
-  = transmit_complete_callback()
-    ->close_transaction()
-      ->struct fw_transaction.callback()
-      = transaction_callback()
-        ->complete()
-```
+[1] https://pkgbuild.com/~dvzrv/bugs/2021/09/linux-5.14.1.19.realtime1-fire=
+wire-ohci-debug-kernel.log
 
-4. in the timer wheel context:
+Best,
+David
 
-```
-(drivers/firewire/core-transaction.c)
-->split_transaction_timeout_callback()
-  ->struct fw_packet.callback()
-  = transaction_callback()
-    ->complete()
-```
+--=20
+https://sleepmap.de
 
-I guess we have issue in the softIRQ context or timer wheel context
-instead of hwIRQ context, if the OHCI 1394 controller you use has
-no quirk (I suggest you to give information about the controller).
+--7whbo5xfvtqAAJgT
+Content-Type: application/pgp-signature; name="signature.asc"
 
-I'd like you to check it. The firewire-ohci module has 'debug' parameter.
+-----BEGIN PGP SIGNATURE-----
 
-``
-$ modinfo firewire-ohci
-...
-parm:           debug:Verbose logging (default = 0, AT/AR events = 1, self-IDs = 2, IRQs = 4, busReset events = 8, or a combination, or all = -1) (int)
-``
+iQIzBAABCgAdFiEEkb2IFf4AQPp/9daHVMKPT/WhqUkFAmE48yYACgkQVMKPT/Wh
+qUmGNBAAkoh52BI9hO/mESSlPDS7lEiTzI/UWZruXfRft/f5odfm59EqwVWdQr79
+tshPKsvdBYKeavsvQoGVG8SUmqqxKuyBFEB8a6/qF2K4lspUGSRDJVhYGE3HwFCC
+o2OVE0RtObn3CT7ps38l9Zwk7oDKTxxG+8O03mfDMpS2OlwhkBMt/QpKd20G6HEg
+N8QeEYFjnGoUJfahEST8Ew4lFkWJbxQKXM/DnqtW+V/DkVrhzZHyGA4UKLWO0tu3
++fmskzxYx3O8Cm3s7ONi/FaNJorSC8wd9aHq1O9qId29DeaxY3F8ZtOlmQgoUhCm
+cOffP3rOJk2ZNKRR7Ev7tL7VNtkzZYyKipKhlPurAUwY7DnwnPGgUYcZiObGGeT4
+ZqbLLR0omLvRJDFAKq+5+a70611QEHJ5FJhppnUMJotduWSZJAzbO7uTwuFBijLu
+RW2mQsFugoYONEyOpkrml4HKQCiOvh5rviFBsS109W44BYItkOekoMdM1jSmijK/
+NxeqbdadgluUbnTHHVQW6wvxdyVEzvP2ll5eYm4YqEqINEkR79lmg73TkK63V9oz
+n1wQrXFOeylEmd6Y0M2xdX9EgbwulZWmGQkCbBVd+yihl/PfRzXZfRzt44WTJu8y
+5/zALb61bngeV3g/jYMcm64zGjeGuIqBdbnew9OVALYGTNGkHNw=
+=PJBS
+-----END PGP SIGNATURE-----
 
-When the parameter has value '5' (= 1 | 4), we can see information per
-transaction, like:
-
-```
-kernel: firewire_ohci 0000:0b:00.0: IRQ 00000001 AT_req
-kernel: firewire_ohci 0000:0b:00.0: AT spd 2 tl 27, ffc1 -> ffc0, ack_pending , QR req, fffff0000400
-kernel: firewire_ohci 0000:0b:00.0: IRQ 00000020 AR_resp
-kernel: firewire_ohci 0000:0b:00.0: AR spd 2 tl 27, ffc0 -> ffc1, ack_complete, QR resp = 04101573
-```
-
-The first line:  in hwIRQ context for request subaction
-The second line: in softIRQ context scheduled by the above.
-The third line:  in hwIRQ context for response subaction
-The fourth line: in softIRQ context scheduled by the above.
-
-If we have any issue in invocation of softIRQ, we would often see
-missing swIRQ logs (and it might be the most concern to RT Linux
-developers).
-
-If you need instruction to configure module parameters, 'man modprobe.d'
-may be a good help.
+--7whbo5xfvtqAAJgT--
 
 
-Thanks
+--===============8367834013029807433==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-Takashi Sakamoto
 
+--===============8367834013029807433==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============8367834013029807433==--
+
