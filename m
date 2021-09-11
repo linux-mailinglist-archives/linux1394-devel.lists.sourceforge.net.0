@@ -2,141 +2,79 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66D7F4075F6
-	for <lists+linux1394-devel@lfdr.de>; Sat, 11 Sep 2021 11:47:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C342407658
+	for <lists+linux1394-devel@lfdr.de>; Sat, 11 Sep 2021 13:59:15 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.92.3)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1mOzbQ-0004P0-Ci; Sat, 11 Sep 2021 09:47:16 +0000
+	id 1mP1ew-0008Sm-7B; Sat, 11 Sep 2021 11:59:02 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1mOzbO-0004Oq-UU
- for linux1394-devel@lists.sourceforge.net; Sat, 11 Sep 2021 09:47:14 +0000
+ (envelope-from <stefanr@s5r6.in-berlin.de>) id 1mP1eu-0008SV-PW
+ for linux1394-devel@lists.sourceforge.net; Sat, 11 Sep 2021 11:59:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+ From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=ALRQvkuUO/Bbr8HWamoT1D0i6BssoUh0UPD6C16R7RM=; b=cMfJg5tmgj9ybf7hvH1BXgD7EM
- 1+UfCMJ1exQowEjguRXdaNdio7e6NDogp4zCbO8qPrt+8kIrXuTiotF5jy42IZYyBn7b9J/E0rKVE
- iN655sklILC78eh6oIPsTRx9Gnn+9K/BXBB6r0RlvQKJB/AOnX+fGrwngD3YUKpCD3yM=;
+ bh=QOGCwA6rRjE1nxKn9mxm66bYPQ2pQ1bfZkTkrKtzCvw=; b=Y9tbgE8cOc1oNhlePZ5/pH0YC1
+ 7YUBWnF6mPAOVMhGCErVm2dNLLgZL9A4j2i0MWAY/Iz9TgW12xXvXwPYGHaaEAuIn4oGU5gGaWO9m
+ s4BbVNYIidjh7hZ0cNE0xiMTbDEO07cujMsdwbhP+h0fpuvM4GnK07YSGJbh9iApbJ9g=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=ALRQvkuUO/Bbr8HWamoT1D0i6BssoUh0UPD6C16R7RM=; b=SuIJ7x2WbjAg/xAsEnRuoRiEAA
- uIPYZZehmzOM0nE0VzxpzKljswAQsptTIUQPCpNBAciv04b+Nt2wuaXhc/29DdG1fhz8UN824s47x
- xdN034T7XwGOTE9iCR4x+mkawBCeD3s+Nq0/u27lL1rQGomwvAzaIJVz1xO1w65dhXGY=;
-Received: from wout5-smtp.messagingengine.com ([64.147.123.21])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:
+ Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=QOGCwA6rRjE1nxKn9mxm66bYPQ2pQ1bfZkTkrKtzCvw=; b=d
+ M9hBtr3VMlyPpFMYx1dyUQy+GayT2WQJImRoEezXI96Q2EX5IWmUSvgYxQtUk+kXqhStocyUHCPyj
+ ZAoBiq//5QyzDyfe7LE7NMIafLTfzbPel+r6mBczAkzY/FBqLjJEpAUj0Z8gB7XV83Kh9ry4KpsSh
+ qqu2Jc4VQsZRZ2pY=;
+Received: from einhorn.in-berlin.de ([192.109.42.8]
+ helo=einhorn-mail-out.in-berlin.de)
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1mOzbK-0001Uw-R1
- for linux1394-devel@lists.sourceforge.net; Sat, 11 Sep 2021 09:47:14 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
- by mailout.west.internal (Postfix) with ESMTP id 049263200939;
- Sat, 11 Sep 2021 05:47:02 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Sat, 11 Sep 2021 05:47:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm2; bh=ALRQvkuUO/Bbr8HWamoT1D0i6Bs
- soUh0UPD6C16R7RM=; b=Mx9m4iQiNLSmqFz0u1UDVRzsfxbaGbBEDdpiZF3NUXe
- POMSjja8X6PTmEmf+AE+k4bVs24MuAjQjGmtzbwXMMiYOpGMXTQD5v0VolYnwh7O
- caxvoebN08k6WnmiIfMlezMd89kMImellkHvnQ2ruW1W9iDoq3QYU5IqOQPzIMIo
- ecpyOE02/LE14/OaMZDlfqy6wxYR3o5sLHatZN0E12Qaz+hVzGWPk5Tw0ouG8BxH
- qK61ywFL8OPOt06ha7Aj7TeZDZ5+G08Blp4p7ABhmaKc3j4YPs4OmwYNc1iZRImx
- x3GABp9MsPIsSCcrYN45g/BNsU5u94vN2SgFMxRZBQQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=ALRQvk
- uUO/Bbr8HWamoT1D0i6BssoUh0UPD6C16R7RM=; b=riCnbQ7oe/OK3Oht+ZDSiM
- j/5IxZ3UBJcWMV31stWLDVe0PC9RWrWDkZ0l8cc9tcPq/wcOzblX3tkHMrgk/AT9
- 50LrlOnMmNDHQD65ed5rXmF20npInkoRO0Sz+j1y+vXK+mp5VHHVFUHmL+duwPEF
- EBSVjqyEwVpwK6yOp89REVy8zVhjcjo27sgCpKiIFyO8vggvRJN4F5qiItAh7TgQ
- 1nkn33CG9tQD1Y+LaGZyeZzQ717l/RQcOCTRUAYXChKVfUPZuxIhYobe2b/fHpLA
- 5utguwJV5UCjr8rTco5A1aucbGZWQPEVMxMKgPrgvehjvIJ/BcJyjBH7mEwfTWiA
- ==
-X-ME-Sender: <xms:Fns8YdV4R001-9xlmdw5YSY0YbC8ITK9MFdknN10EgIUYrSDn_oK-A>
- <xme:Fns8YdnsT4ArZpPaZhVo4DCh4-6Bf7StEolTzZReiqG4kLaiuTtsuip3p6BhTfnL-
- 6jRF2ZhiQW1rXOcnjA>
-X-ME-Received: <xmr:Fns8YZYmP-7YDl7MFiSvBEAeCdeOZj3K4YRSyNzGWnyH5UuPLIZ2uxGg18AtxafUiivfqM4Y2at1WMKz8SpUlu6P_6Ii7ahxUg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrudegfedgvddtucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefvrghkrghs
- hhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjh
- hpqeenucggtffrrghtthgvrhhnpeejgeeifeeuveeufeeigeegjeelvdfgjeegffejgfdv
- keelhefgtdefteejleekjeenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluh
- hsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhh
- ihesshgrkhgrmhhotggthhhirdhjph
-X-ME-Proxy: <xmx:Fns8YQWeuRjKueuauLxHqBHFKHxqJ7vX63uNRTJFsoUfnaxusTl0bw>
- <xmx:Fns8YXmK4IlCkLCiekau_SXeeAnATebvvoRV6eyhJT-Yd0owW0E_yA>
- <xmx:Fns8YddHdoeEIwGQcOPwv8r2_nz3LO0AiNFX8rU8C_svHpXtnb0eQA>
- <xmx:Fns8YVgxmb3outCvn8Yt3aghEwb9tleaL3Dcr-r0MEkN6DvILWE3Rg>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 11 Sep 2021 05:47:00 -0400 (EDT)
-Date: Sat, 11 Sep 2021 18:46:57 +0900
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Subject: Re: firewire-ohci fails to initialize Texas Instruments
- XIO2213A/B/XIO2221 based controller on realtime kernels [5.4.91-rt50,
- 5.10.8-rt24]
-Message-ID: <YTx7EVV5vFuhKM5i@workstation>
-Mail-Followup-To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- David Runge <dave@sleepmap.de>,
- linux1394-devel@lists.sourceforge.net,
- linux-rt-users@vger.kernel.org,
- "Ahmed S. Darwish" <a.darwish@linutronix.de>
-References: <YB+5tdIpbTfnDnIi@hmbx>
- <20210208091940.csuyf7l73n4ofpmz@linutronix.de>
- <YCl28sXo7LEyCK8y@hmbx>
- <20210218083849.iitcrhdgv2oajfhv@linutronix.de>
- <20210218092751.ahn262llcpp2loz7@linutronix.de>
- <20210308141210.yoa37dsc26p4jsim@linutronix.de>
- <YEkMvjJt/Vu9Jbgu@hmbx> <YTfy7pLhWkTOn+aI@hmbx>
- <YTgdLkTs7wEmj8fh@workstation>
- <20210910115541.jjf3fovv4v3etvde@linutronix.de>
+ id 1mP1eq-0077V0-8x
+ for linux1394-devel@lists.sourceforge.net; Sat, 11 Sep 2021 11:59:00 +0000
+X-Envelope-From: stefanr@s5r6.in-berlin.de
+Received: from authenticated.user (localhost [127.0.0.1]) by
+ einhorn.in-berlin.de with ESMTPSA id 18BBge3X031428
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Sat, 11 Sep 2021 13:43:00 +0200
+Date: Sat, 11 Sep 2021 13:42:36 +0200
+From: Stefan Richter <stefanr@s5r6.in-berlin.de>
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Subject: [git pull] FireWire (IEEE 1394) update post v5.14
+Message-ID: <20210911134236.58da0be9@kant>
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210910115541.jjf3fovv4v3etvde@linutronix.de>
-X-Spam-Score: -0.9 (/)
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Fri, Sep 10, 2021 at 01:55:41PM +0200,
- Sebastian Andrzej
- Siewior wrote: > On 2021-09-08 11:17:18 [+0900], Takashi Sakamoto wrote:
- > > Hi, > Hi, > > > According to the log, the task of 'pipewire-med [...] 
- Content analysis details:   (-0.9 points, 6.0 required)
+ Content preview:  Linus,
+ please pull from the tag "firewire-update" at
+ git://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git
+ firewire-update 
+ Content analysis details:   (-0.7 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [64.147.123.21 listed in wl.mailspike.net]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [192.109.42.8 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [192.109.42.8 listed in wl.mailspike.net]
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: messagingengine.com]
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.147.123.21 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
-X-Headers-End: 1mOzbK-0001Uw-R1
+ for more information. [URIs: arcgraph.de]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1mP1eq-0077V0-8x
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -149,57 +87,87 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-rt-users@vger.kernel.org,
- "Ahmed S. Darwish" <a.darwish@linutronix.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============4104730329464671298=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+--===============4104730329464671298==
+Content-Type: multipart/signed; boundary="Sig_/qIXG0B.=9T1GyME9K.JO/Ba";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
 
-On Fri, Sep 10, 2021 at 01:55:41PM +0200, Sebastian Andrzej Siewior wrote:
-> On 2021-09-08 11:17:18 [+0900], Takashi Sakamoto wrote:
-> > Hi,
-> Hi,
-> 
-> > According to the log, the task of 'pipewire-media-:2554' is blocked during
-> > 122 seconds by call of 'wait_for_completion()' in code of
-> > 'fw_run_transaction()'. This is odd in two points of transaction service
-> > programmed in Linux FireWire subsystem:
-> > 
-> > 1. The process context should be awakened by softIRQ context, which should
-> >    be scheduled by hwIRQ context for hardware interrupt of OHCI 1394
-> >    controller.
-> > 2. Even if the softIRQ context is not invoked, the process context
-> >    should be awakened by wheel timer context, which is scheduled to finish
-> >    the transaction several jiffies later (originally prepared for the case
-> >    of split-transaction). In the case, the result of transaction is
-> >    'RCODE_CANCELLED'.
-> 
-> 
-> Side note: David is using PREEMPT_RT and his problem can be reduced to
-> plain vanilla with `threadirqs' boot option. Back in February I sent him
-> a patch [0] which inlines the tasklet job as I assumed it is not good
-> reset the IRQ-event in the tasklet/workqueue. It seemed to improve the
-> situtation as it recognized the device attached to the bus but ended
-> then in the same timeout behaviour as now.
-> 
-> [0] https://https://lkml.kernel.org/r/.kernel.org/all/20210218083849.iitcrhdgv2oajfhv@linutronix.de/
+--Sig_/qIXG0B.=9T1GyME9K.JO/Ba
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
-Thanks for the side note, and I apologize to follow the thread partially,
-not entire.
+Linus,
 
-Furthermore, I'd like to correct my misunderstanding about the 2nd point
-since the timer wheel context is scheduled only when the peer of
-transaction transfer ack_pending for the request subaction. Without the
-hwIRQ context, the task is blocked ever anyway.
+please pull from the tag "firewire-update" at
+
+    git://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git
+    firewire-update
+
+to receive the following FireWire (IEEE 1394) subsystem updates:
+
+  - Migrate the bus snooper driver 'nosy' from PCI to DMA API.
+
+  - Small janitorial cleanup in the IPv4/v6-over-1394 driver.
+
+Christophe JAILLET (1):
+      firewire: nosy: switch from 'pci_' to 'dma_' API
+
+Pu Lehui (1):
+      firewire: net: remove unused variable 'guid'
+
+ drivers/firewire/net.c  |  4 ----
+ drivers/firewire/nosy.c | 43 ++++++++++++++++++++++++-------------------
+ 2 files changed, 24 insertions(+), 23 deletions(-)
+
+Thank you,
+--=20
+Stefan Richter
+-=3D=3D=3D=3D=3D=3D--=3D-=3D =3D--=3D -=3D-=3D=3D
+http://arcgraph.de/sr/
+
+--Sig_/qIXG0B.=9T1GyME9K.JO/Ba
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEElVwAmOXEbvmhUkgUefNvslRdedAFAmE8li0ACgkQefNvslRd
+edBfqxAAgOhfHtfVPC44m/8hZHUqVeRNCwdFmsDd3teqbunXsrD3lagSgzLhysZD
+b/KciVbe8vRDreNxtH3KaGTWOhMeGL7BcrKJhQPlizwW3NrQketEzkh6OXLfJmQw
+bwT/+fPUFNrXEWKN0iPLEDwkN15JbRX1oQqsA/OK+gOToASNznjEG6cyUwZjz5Yo
+n9QBa4pCtZd9WPzklvbYRbYHlhDxoaqyGVVu+2bVqfhtSCmhfHHweuAN+O4zXgMm
+mgkdEACXhZITTPd/KTyOP53OyR6N+uugTAgdIDcorKET8oqOcjbP4WnqiVpgTwxj
+2PSzqYsIisuYWEqQkWWvSE+V8YIGqkvuDbXJ7DP8GQnOnZMUXAdE6nDKArL51/BD
+eer7uHF88kk7H66rkejrg0Q0oJS2F6ZsUjfxF4YdorILQ1+0HOJW0chfg0ZvvsNu
+OakWaVfohqkICoLrbWBBZlUQDYg7iU6UqrZ1IAtZxb0Y7olN4VpCNRZZZ+5rHDMR
+hwqjNf5wZHjl8L6N3fMFsopVETx62jRwV53Td4bS+RcincH/CDZM67Wf1Cx50NTA
++I7kouSI7nrEbIuFcbmVVxX2zx3YMvB9YVgdlJ30kBzf64ExuqIWo34jvizDx+y3
+YeiTULOvTXRi0nFSTqzcubMn27pyB80YJctpROtFmNFXtzNCkTY=
+=Ak0q
+-----END PGP SIGNATURE-----
+
+--Sig_/qIXG0B.=9T1GyME9K.JO/Ba--
 
 
-Regards
+--===============4104730329464671298==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-Takashi Sakamoto
 
+--===============4104730329464671298==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============4104730329464671298==--
+
