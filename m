@@ -2,17 +2,17 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id A787F43B8EB
-	for <lists+linux1394-devel@lfdr.de>; Tue, 26 Oct 2021 20:03:42 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
+	by mail.lfdr.de (Postfix) with ESMTPS id 51A0143B8F0
+	for <lists+linux1394-devel@lfdr.de>; Tue, 26 Oct 2021 20:05:00 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1mfQnQ-0000r0-Eg; Tue, 26 Oct 2021 18:03:36 +0000
+	id 1mfQod-0005XB-Qw; Tue, 26 Oct 2021 18:04:51 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <kuba@kernel.org>) id 1mfQnO-0000qs-QD
- for linux1394-devel@lists.sourceforge.net; Tue, 26 Oct 2021 18:03:34 +0000
+ (envelope-from <kuba@kernel.org>) id 1mfQoP-0005VJ-VI
+ for linux1394-devel@lists.sourceforge.net; Tue, 26 Oct 2021 18:04:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
@@ -33,9 +33,10 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  FiGhpPPHSvdhD32Yhlcd70aoLawu0puS0ucrA8YKWCq8mjWNwumVj594O8hDOvGvcK4CGf1ZzyfGt
  /2aLN2g9nhUhbWho=;
 Received: from mail.kernel.org ([198.145.29.99])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtp (Exim 4.92.3)
- id 1mfQmu-00035O-M6
- for linux1394-devel@lists.sourceforge.net; Tue, 26 Oct 2021 18:03:34 +0000
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
+ id 1mfQm1-00031p-FT
+ for linux1394-devel@lists.sourceforge.net; Tue, 26 Oct 2021 18:04:29 +0000
 Received: by mail.kernel.org (Postfix) with ESMTPSA id 1B73F6103C;
  Tue, 26 Oct 2021 17:53:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
@@ -55,7 +56,7 @@ Date: Tue, 26 Oct 2021 10:53:52 -0700
 Message-Id: <20211026175352.3197750-1-kuba@kernel.org>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-X-Headers-End: 1mfQmu-00035O-M6
+X-Headers-End: 1mfQm1-00031p-FT
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
