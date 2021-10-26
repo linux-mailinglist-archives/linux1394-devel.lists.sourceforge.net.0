@@ -2,17 +2,17 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03F9A43B8B5
-	for <lists+linux1394-devel@lfdr.de>; Tue, 26 Oct 2021 19:56:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A787F43B8EB
+	for <lists+linux1394-devel@lfdr.de>; Tue, 26 Oct 2021 20:03:42 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1mfQgP-0000gw-Ir; Tue, 26 Oct 2021 17:56:21 +0000
+	id 1mfQnQ-0000r0-Eg; Tue, 26 Oct 2021 18:03:36 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <kuba@kernel.org>) id 1mfQgN-0000gp-U5
- for linux1394-devel@lists.sourceforge.net; Tue, 26 Oct 2021 17:56:19 +0000
+ (envelope-from <kuba@kernel.org>) id 1mfQnO-0000qs-QD
+ for linux1394-devel@lists.sourceforge.net; Tue, 26 Oct 2021 18:03:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
@@ -33,10 +33,9 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  FiGhpPPHSvdhD32Yhlcd70aoLawu0puS0ucrA8YKWCq8mjWNwumVj594O8hDOvGvcK4CGf1ZzyfGt
  /2aLN2g9nhUhbWho=;
 Received: from mail.kernel.org ([198.145.29.99])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1mfQe7-0002Yj-NI
- for linux1394-devel@lists.sourceforge.net; Tue, 26 Oct 2021 17:56:19 +0000
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtp (Exim 4.92.3)
+ id 1mfQmu-00035O-M6
+ for linux1394-devel@lists.sourceforge.net; Tue, 26 Oct 2021 18:03:34 +0000
 Received: by mail.kernel.org (Postfix) with ESMTPSA id 1B73F6103C;
  Tue, 26 Oct 2021 17:53:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
@@ -56,7 +55,7 @@ Date: Tue, 26 Oct 2021 10:53:52 -0700
 Message-Id: <20211026175352.3197750-1-kuba@kernel.org>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-X-Headers-End: 1mfQe7-0002Yj-NI
+X-Headers-End: 1mfQmu-00035O-M6
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
