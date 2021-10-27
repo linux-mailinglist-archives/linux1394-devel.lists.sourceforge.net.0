@@ -2,65 +2,65 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4505443C13E
-	for <lists+linux1394-devel@lfdr.de>; Wed, 27 Oct 2021 06:19:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 89AD743C32A
+	for <lists+linux1394-devel@lfdr.de>; Wed, 27 Oct 2021 08:45:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Type:Reply-To:From:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Message-ID:Date:Subject:To:Sender:Cc:Content-Transfer-Encoding:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tucDHylOEz7ByH/mQyfLpuV53A0zIC/04lsDgUIkd3c=; b=a7Pr0S6kKmYQX77XfqFPBsSESZ
-	lCp27X0xzZq690LjtrataRJ1KLsT/rob63CpLcFEpBxGbFTLOHaFhAJfH9tUzjwkCwAYW4DXWSFcf
-	xnMxO0tH4jwiWKFlf2zzu1AfFGb2ZHj4JPDE076kcK7W04PcVbf7HMzBIWGJdtHoDnow=;
+	bh=rlJ0jK9W7AhLwW+1j0//TnrosKK7Rd+BmIElTgHt668=; b=WI/lWqOlzVlPYPoRShwb0xWQXN
+	mP0blu9OwMkTLIHgXl42xpQHlqjmlEQGV4qYP+A+MGSgZa2kFNi7laczorBbXDBBovbhnhY9XHWU9
+	44cH1TtI7Z7KFd8yg+9RIZvxkBiKfbd9jESoEGq8k3MFeBver9hyDLlJmRxWGRYU+rZI=;
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.90_1)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1mfaPE-0000H0-JF; Wed, 27 Oct 2021 04:19:16 +0000
+	id 1mfcgF-0002Bh-E9; Wed, 27 Oct 2021 06:44:59 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <contacts@robertwalters.co.jp>) id 1mfaP7-0000Fr-Fd
- for linux1394-devel@lists.sourceforge.net; Wed, 27 Oct 2021 04:19:09 +0000
+ (envelope-from <contacts@robertwalters.co.jp>) id 1mfcfy-0002A0-LK
+ for linux1394-devel@lists.sourceforge.net; Wed, 27 Oct 2021 06:44:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
  :Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=egYFMRivqdpvWC6lTzfbk0wiD5BplBs2hvElcMhvohQ=; b=WQHyz8RpFDbS/p3gXc12lI5Ubs
- iNw6Y6jhy3qaE4zPqY5oOyxOtOgsHlxRulBo1NHw4Q+8uILXE73GxbhwdmE3LKRFArpia0IbSss/L
- 7wvqbithzmObQ9pq382QYJBOSmquCKaDMmZ3TS1eVpRIfucZYsLyJearte/KHw4bqFik=;
+ bh=egYFMRivqdpvWC6lTzfbk0wiD5BplBs2hvElcMhvohQ=; b=EvQ36PuOmmsfAonRHFovppXEvc
+ hRmKGyMVtbXUkaRGHF0POyUACCm8Lrg9oXr9OXXU+vs3vRXqEZuQWQfW46W4D4yyNq+ie+nMlBGb9
+ 99XbjV+njxwMpyhtgkPTf4ODzMEbq66JjXhMSSuBgDteny/xwvcrha1BO63t3Ofrgc+A=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
  Subject:To:From:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date
  :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=egYFMRivqdpvWC6lTzfbk0wiD5BplBs2hvElcMhvohQ=; b=G
- rDs+kUdCp9yQZaRvVXwtJshH54FhvykPh7CWZBxnAWW5RZVa0eo49o1AaR/HHGk7eieuiBSVF8qRs
- Gd+yEhPEXCrfOH6+0vvjdqtvu6yZ/AJtz+QlKA2bAjZKwNjk4cTdXHURF3rJnQj59kztHjW8lxrzc
- dJqXbYuEKRsXYu/E=;
+ List-Owner:List-Archive; bh=egYFMRivqdpvWC6lTzfbk0wiD5BplBs2hvElcMhvohQ=; b=J
+ at+KMUo/uohsRulECR3qymtBl8unV02loExj+zuB1RQj4jGpQMOHLb6ikvQY8aiLXht9UFp9lsddk
+ ST994ZU55Abr2SPMvSxGGdUMbDPPSzxK3A27SOIMfwlxlyGbqKRkxcEPib5ZqPLYJO8RGGE0//HD0
+ 8uu6stqLtioGxOIk=;
 Received: from [104.248.1.211] (helo=mail0.robertwalters.co.jp)
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1mfaOd-000eO7-BI
- for linux1394-devel@lists.sourceforge.net; Wed, 27 Oct 2021 04:19:09 +0000
+ id 1mfcfR-000s7p-8e
+ for linux1394-devel@lists.sourceforge.net; Wed, 27 Oct 2021 06:44:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default;
  d=robertwalters.co.jp; 
  h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
  Content-Transfer-Encoding; i=contacts@robertwalters.co.jp;
  bh=egYFMRivqdpvWC6lTzfbk0wiD5BplBs2hvElcMhvohQ=;
- b=ZhAMLjkqPcXm7KhVzHjIe1RAKwydh5YBx8uoyZoR9DeGaDvb07+2rGKXp70edvLAoTPawpX1iyyR
- Wm5jKZRtYoZSEqCC3JT5AU4Hb1abneYtvRchRSOfAaF/rihaiXdg18SxjTqcEK0yBdwiOrj0mi58
- /RvQhWFt41w1H0IM2vY=
+ b=yxY846SrjR768jEtVOnS9YHRqdSssA8h1T473SDfBlsfWEUNXU08u4f3HjyfJhlK5tIX6h0nxbw7
+ eosyGwQkp1BEjIHV8DQRxgoiYEI7CPnrEclCvc4mcYWfmcQSwOhkji8BxkyHh0IVD4/2v7E28P6D
+ pxCTBc7gbzMQzdU6dyE=
 To: linux1394-devel@lists.sourceforge.net
 Subject: Authentication error in linux1394-devel@lists.sourceforge.net on
- 10/26/2021 7:10:13 p.m.
-Date: 26 Oct 2021 19:10:13 -0700
-Message-ID: <20211026191013.099837FFBCFC1AAB@robertwalters.co.jp>
+ 10/26/2021 10:25:21 p.m.
+Date: 26 Oct 2021 22:25:21 -0700
+Message-ID: <20211026222521.BE8A009C859AEF1B@robertwalters.co.jp>
 MIME-Version: 1.0
-X-Headers-End: 1mfaOd-000eO7-BI
+X-Headers-End: 1mfcfR-000s7p-8e
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,10 +76,10 @@ List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>,
 From: "lists.sourceforge.net via linux1394-devel"
  <linux1394-devel@lists.sourceforge.net>
 Reply-To: "lists.sourceforge.net" <contacts@robertwalters.co.jp>
-Content-Type: multipart/mixed; boundary="===============5864153513298371647=="
+Content-Type: multipart/mixed; boundary="===============2645135093463017822=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============5864153513298371647==
+--===============2645135093463017822==
 Content-Type: text/html;
 	charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
@@ -244,14 +244,14 @@ A> Inc.</SPAN></P></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
 <P><BR></P></BODY></HTML>
 
 
---===============5864153513298371647==
+--===============2645135093463017822==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============5864153513298371647==
+--===============2645135093463017822==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -261,4 +261,4 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============5864153513298371647==--
+--===============2645135093463017822==--
