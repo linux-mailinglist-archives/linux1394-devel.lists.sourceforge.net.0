@@ -2,45 +2,45 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0247145E7A1
-	for <lists+linux1394-devel@lfdr.de>; Fri, 26 Nov 2021 07:01:23 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3639745E798
+	for <lists+linux1394-devel@lfdr.de>; Fri, 26 Nov 2021 06:56:09 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1mqUI8-0002kA-FW; Fri, 26 Nov 2021 06:01:00 +0000
+	id 1mqUDB-0004pa-4Y; Fri, 26 Nov 2021 05:55:53 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <dgrxf@ryukyuan.jp>) id 1mqUI6-0002jx-Ob
- for linux1394-devel@lists.sourceforge.net; Fri, 26 Nov 2021 06:00:58 +0000
+ (envelope-from <dgrxf@ryukyuan.jp>) id 1mqUD9-0004pT-Jj
+ for linux1394-devel@lists.sourceforge.net; Fri, 26 Nov 2021 05:55:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
  :Message-ID:Subject:From:To:Date:List-id:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=IKRnqhJxtHARlgIItx1TtEjxFAw8GWLI+MczTXZqtxc=; b=UAGqwnYOJHTaW/64Wncu+Qi5NE
- 2PaaMKcjQAXeGkjDq3Rr9jC2qr7iK9gS55RHFgLpez24W2JQ9g8WewFw0KgpAr2ICR2m3ljbtlDIX
- sqvw1giLBDXAqQcuvifGs2sRmtsVfGSuGbQs2xYu7Bj0/mlxshOLgHqctB3/Vjca6A/Y=;
+ bh=IKRnqhJxtHARlgIItx1TtEjxFAw8GWLI+MczTXZqtxc=; b=dqnAe8261gwuAM/S5ljPUF6Gcz
+ 48hNQkWlTWzR0eYpHg8Ea2hB9+cDw76fZ1lIDwjr8sb/6fe3dWswbGUb/RvpgByefRpBId20Qxr91
+ XE70awSWuj4l4WoHlefbgaEbzZh95y+qaT/c1NpkW5UqiNpXtupcBa+ClM6zH9/qj3j8=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:
  From:To:Date:List-id:Sender:Reply-To:Cc:Content-ID:Content-Description:
  Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
  In-Reply-To:References:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=IKRnqhJxtHARlgIItx1TtEjxFAw8GWLI+MczTXZqtxc=; b=Z
- NgewjkCRzDtb0QKN9IPnCJA09pmLagUEzqYxygJfckwZyc/h1tkCswV6KjByU4vBw2cmtJZ9jokl4
- /rfE3AyhO4eYDbZ78kKSz3AtRUMx6HSRdBOF5Cc0QkUzIeHUctPF86u/k+lqMgL27eE2EpCG4ywNL
- WCinw9jR9rrssNWY=;
-Received: from [70.34.213.140] (helo=ryukyuan.jp)
- by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.92.3)
- id 1mqUI5-009inI-U5
- for linux1394-devel@lists.sourceforge.net; Fri, 26 Nov 2021 06:00:58 +0000
-Date: Fri, 26 Nov 2021 05:40:39 +0000
+ List-Owner:List-Archive; bh=IKRnqhJxtHARlgIItx1TtEjxFAw8GWLI+MczTXZqtxc=; b=O
+ E2PWXHb9P8YIaHGrAcBMdbXYtZ1KYmfkem24ojR1HmOVGt2J8DfdxZGIjbSM0XbW5usMj8sDVYqy1
+ 7n30o65sdtKrUl39PR0MacJ3jNsTWZ9dQYiDXXm+RpzkefbCdFsgfWJnXM3eI2Z2yw5End1q4mbr8
+ fKYldcA8UmR0ahvw=;
+Received: from [70.34.213.102] (helo=ryukyuan.jp)
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtp (Exim 4.92.3)
+ id 1mqUD7-0000dh-SR
+ for linux1394-devel@lists.sourceforge.net; Fri, 26 Nov 2021 05:55:50 +0000
+Date: Fri, 26 Nov 2021 05:42:40 +0000
 To: linux1394-devel@lists.sourceforge.net
 From: =?utf-8?Q?Miles=20=26=20More?= <ww-news@ryukyuan.jp>
 Subject: =?utf-8?Q?Wichtig=20=21?=
-Message-ID: <58d9660ad812e14eef03dad4ce35a0a8@70.34.213.140>
+Message-ID: <5c18e8eb9538aa6a30c4c77392dff205@70.34.213.102>
 X-Priority: 3
 MIME-Version: 1.0
 X-mailer: Cabestan DMS
@@ -70,7 +70,7 @@ X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.
                              identical to background
   1.3 RDNS_NONE              Delivered to internal network by a host with no rDNS
   0.0 NORDNS_LOW_CONTRAST    No rDNS + hidden text
-X-Headers-End: 1mqUI5-009inI-U5
+X-Headers-End: 1mqUD7-0000dh-SR
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,10 +83,10 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7547156353635399111=="
+Content-Type: multipart/mixed; boundary="===============6288595164697852699=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============7547156353635399111==
+--===============6288595164697852699==
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
@@ -172,14 +172,14 @@ unseren<span>&nbsp;</span></span><a
 </html>
 
 
---===============7547156353635399111==
+--===============6288595164697852699==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============7547156353635399111==
+--===============6288595164697852699==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -189,4 +189,4 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============7547156353635399111==--
+--===============6288595164697852699==--
