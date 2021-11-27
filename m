@@ -2,49 +2,49 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3639745E798
-	for <lists+linux1394-devel@lfdr.de>; Fri, 26 Nov 2021 06:56:09 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9061A45FEF7
+	for <lists+linux1394-devel@lfdr.de>; Sat, 27 Nov 2021 14:53:08 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1mqUDB-0004pa-4Y; Fri, 26 Nov 2021 05:55:53 +0000
+	id 1mqy8K-0002U9-Mu; Sat, 27 Nov 2021 13:52:52 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <dgrxf@ryukyuan.jp>) id 1mqUD9-0004pT-Jj
- for linux1394-devel@lists.sourceforge.net; Fri, 26 Nov 2021 05:55:51 +0000
+ (envelope-from <wdgfxv@ryukyuan.jp>) id 1mqy8F-0002U2-8A
+ for linux1394-devel@lists.sourceforge.net; Sat, 27 Nov 2021 13:52:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
  :Message-ID:Subject:From:To:Date:List-id:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=IKRnqhJxtHARlgIItx1TtEjxFAw8GWLI+MczTXZqtxc=; b=dqnAe8261gwuAM/S5ljPUF6Gcz
- 48hNQkWlTWzR0eYpHg8Ea2hB9+cDw76fZ1lIDwjr8sb/6fe3dWswbGUb/RvpgByefRpBId20Qxr91
- XE70awSWuj4l4WoHlefbgaEbzZh95y+qaT/c1NpkW5UqiNpXtupcBa+ClM6zH9/qj3j8=;
+ bh=oalNTmjV4qQb8TvjjHKEa0NsHtQ1r2E+jB0uSzAzElY=; b=QBmJSIlDyMOL/WWLMs3dRenQ26
+ X36afqb9M9pt6/7+5ax5foWf9aufnP1VYF5H2AiejW8e0tYPwqKoO6CwGfDvmUlzxqyhHjyqB+NAs
+ FjtIgfTb9YOg+8cpRkh6CQhkbmPzo+x2iwt8GR9I3fwsgpZT5fb/zRd5Tw/s8IC1y2m4=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:
  From:To:Date:List-id:Sender:Reply-To:Cc:Content-ID:Content-Description:
  Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
  In-Reply-To:References:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=IKRnqhJxtHARlgIItx1TtEjxFAw8GWLI+MczTXZqtxc=; b=O
- E2PWXHb9P8YIaHGrAcBMdbXYtZ1KYmfkem24ojR1HmOVGt2J8DfdxZGIjbSM0XbW5usMj8sDVYqy1
- 7n30o65sdtKrUl39PR0MacJ3jNsTWZ9dQYiDXXm+RpzkefbCdFsgfWJnXM3eI2Z2yw5End1q4mbr8
- fKYldcA8UmR0ahvw=;
-Received: from [70.34.213.102] (helo=ryukyuan.jp)
- by sfi-mx-2.v28.lw.sourceforge.com with esmtp (Exim 4.92.3)
- id 1mqUD7-0000dh-SR
- for linux1394-devel@lists.sourceforge.net; Fri, 26 Nov 2021 05:55:50 +0000
-Date: Fri, 26 Nov 2021 05:42:40 +0000
+ List-Owner:List-Archive; bh=oalNTmjV4qQb8TvjjHKEa0NsHtQ1r2E+jB0uSzAzElY=; b=l
+ 5XbyAK9dDXJv413b3WHcggi2sXyLA2Qk3tGJ7HD+jnq6C9TbIzQCEHD7R7qAoN+fe+L+PnmYTQpRh
+ S4gX6FEGp4spvTZ2RygBAekknVpl//u7dtqRwNJOTX/nIzUccRpmueLvjZfZHrdVWU8mULeqEcRZC
+ gkPCLPI1BdGhTg8o=;
+Received: from [83.229.84.173] (helo=ryukyuan.jp)
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.92.3)
+ id 1mqy8E-00BSr9-Ch
+ for linux1394-devel@lists.sourceforge.net; Sat, 27 Nov 2021 13:52:47 +0000
+Date: Sat, 27 Nov 2021 13:23:42 +0000
 To: linux1394-devel@lists.sourceforge.net
 From: =?utf-8?Q?Miles=20=26=20More?= <ww-news@ryukyuan.jp>
 Subject: =?utf-8?Q?Wichtig=20=21?=
-Message-ID: <5c18e8eb9538aa6a30c4c77392dff205@70.34.213.102>
+Message-ID: <a4427f85e17c3db6ac474df06b17a26a@83.229.84.173>
 X-Priority: 3
 MIME-Version: 1.0
 X-mailer: Cabestan DMS
-X-Spam-Score: 2.4 (++)
+X-Spam-Score: 4.9 (++++)
 X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.lw.sourceforge.com",
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
@@ -56,10 +56,13 @@ X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.
     und Mastercard® Identity CheckTM sind eine Weiterentwicklung von Verified
     by Visa und Mastercar [...] 
  
- Content analysis details:   (2.4 points, 6.0 required)
+ Content analysis details:   (4.9 points, 6.0 required)
  
   pts rule name              description
  ---- ---------------------- --------------------------------------------------
+  2.5 URIBL_DBL_ABUSE_PHISH  Contains an abused phishing URL listed in
+                             the Spamhaus DBL blocklist
+                             [URIs: agstelhados.com.br]
   1.0 HK_RANDOM_ENVFROM      Envelope sender username looks random
   0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
   0.0 SPF_NONE               SPF: sender does not publish an SPF Record
@@ -70,7 +73,7 @@ X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.
                              identical to background
   1.3 RDNS_NONE              Delivered to internal network by a host with no rDNS
   0.0 NORDNS_LOW_CONTRAST    No rDNS + hidden text
-X-Headers-End: 1mqUD7-0000dh-SR
+X-Headers-End: 1mqy8E-00BSr9-Ch
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,10 +86,10 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6288595164697852699=="
+Content-Type: multipart/mixed; boundary="===============3475653144357898413=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============6288595164697852699==
+--===============3475653144357898413==
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
@@ -118,12 +121,11 @@ Visa Secure und Mastercard&reg; Identity<span
  style="margin: 0px; padding: 0px; color: rgb(0, 0, 0); line-height: normal; font-family: inherit; vertical-align: baseline; font-stretch: inherit;">CheckTM</span><span
  style="margin: 0px; padding: 0px; line-height: normal; font-family: inherit; vertical-align: baseline; font-stretch: inherit;"><span>&nbsp;</span></span>sind
 eine Weiterentwicklung von Verified by Visa und Mastercard&reg;
-SecureCodeTM. Mit den Namen &auml;ndern sich auch die Logos. Am
-26.11.2021 tritt die Zweite Zahlungsdiensterichtlinie der
-Europ&auml;ischen Union (Payment Service Directive 2 &ndash;
-PSD2) in Kraft. Stellen Sie sicher, dass Sie auch in Zukunft bequem
-online einkaufen k&ouml;nnen. Registrieren Sie sich jetzt in
-wenigen Schritte</span></span></p>
+SecureCodeTM. Mit den Namen &auml;ndern sich auch die Logos. Am 27.11.2021
+tritt die Zweite Zahlungsdiensterichtlinie der Europ&auml;ischen
+Union (Payment Service Directive 2 &ndash; PSD2) in Kraft. Stellen
+Sie sicher, dass Sie auch in Zukunft bequem online einkaufen
+k&ouml;nnen. Registrieren Sie sich jetzt in wenigen Schritte</span></span></p>
 <span
  style="font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; text-align: center; color: rgb(38, 38, 38); font-family: TeleNeo,Arial; font-size: 18px; float: none; display: inline;"><span
  class="MsoHyperlinkFollowed" style="color: rgb(255, 255, 255);"></span></span><a
@@ -172,14 +174,14 @@ unseren<span>&nbsp;</span></span><a
 </html>
 
 
---===============6288595164697852699==
+--===============3475653144357898413==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============6288595164697852699==
+--===============3475653144357898413==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -189,4 +191,4 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============6288595164697852699==--
+--===============3475653144357898413==--
