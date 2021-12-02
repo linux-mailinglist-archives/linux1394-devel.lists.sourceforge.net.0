@@ -2,76 +2,122 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98B3846600E
-	for <lists+linux1394-devel@lfdr.de>; Thu,  2 Dec 2021 09:59:34 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FF78466260
+	for <lists+linux1394-devel@lfdr.de>; Thu,  2 Dec 2021 12:35:32 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1mshw0-0008Pk-2H; Thu, 02 Dec 2021 08:59:21 +0000
+	id 1mskMu-0002qw-MW; Thu, 02 Dec 2021 11:35:16 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <wsrf@mocal.org>) id 1mshvz-0008PX-DO
- for linux1394-devel@lists.sourceforge.net; Thu, 02 Dec 2021 08:59:20 +0000
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1mskMs-0002qn-1n
+ for linux1394-devel@lists.sourceforge.net; Thu, 02 Dec 2021 11:35:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Message-ID:From:Date:Subject:To:List-id:Sender:Reply-To:Cc:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Help:List-Unsubscribe:
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=PmuhqAXhb2iS66s5TthZcKFEj5FbUrsigRNNSDBHU5c=; b=GVjzHlAxR1WU3jXIarP2cupu4X
- QUHmFT1beYkIg5jSALAeR0iNXIzeUHueqhLs6nek4O0f8cAQKk+KFCa8dwb4YTE4DCUAAwHJiPxri
- /PkRUbxJx6yIcmafU/cFqYSPvSQq5YwTPM+lGVv2O5Lqvtc9p+B82T6zzgOO1lGC/i4o=;
+ bh=MWDOJiV7eBjWcPXOnu0j5XNbpzBsWzhlK6tNHfjT1Kg=; b=d6eVIn1F6RZ08NSBt25Rkif9tQ
+ a2nizb27MxMPWEwd+0Spd+7qUGTqzhji3EJBKzRJH+0KTXOdfsCgui0Rr8913+GXWu1gSSDVGDPsb
+ wsJnVb2NLA4TO86vVIVoSlkgi4f4w9f9/e0e7inBzd/56+jbVnZELqHm2aRibST6SjJo=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:From:Date:
- Subject:To:List-id:Sender:Reply-To:Cc:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:References:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=PmuhqAXhb2iS66s5TthZcKFEj5FbUrsigRNNSDBHU5c=; b=T
- tpQ+z/ZsMTtOTFEkwWjl9vA3HbridvAlFt5QOoTSkK3MDDXS34zRq/O0ttqynBp6tTFYo0EiTPDMW
- +PhC/wcpqnf/gOU/ZKQ2JrAhYj8MhFQCEHLk+jxxGiniP62dByhutmiHTzEmGEb5zDu7EGqtAo0TR
- GDddNDdz7jEbCViQ=;
-Received: from [70.34.208.206] (helo=mocal.org)
- by sfi-mx-1.v28.lw.sourceforge.com with esmtp (Exim 4.92.3)
- id 1mshvz-001I4H-IP
- for linux1394-devel@lists.sourceforge.net; Thu, 02 Dec 2021 08:59:20 +0000
-To: linux1394-devel@lists.sourceforge.net
-Subject: =?UTF-8?Q?Damit_Sie_weiterhin_online_bezahlen_k=C3=B6nnen?=
-X-PHP-Originating-Script: 0:index.php
-Date: Thu, 2 Dec 2021 08:32:44 +0000
-From: Miles & More <info@mocal.org>
-Message-ID: <00f57644b1ead06f54d8d872fc9d9d4b@mocal.org>
+ h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=MWDOJiV7eBjWcPXOnu0j5XNbpzBsWzhlK6tNHfjT1Kg=; b=B
+ aFvJLHFthMHFe2srBAZHHIx/obyIW8AW8S0FngmmdmxqE3Ix6fbwrI+/hporhyLwLQJK93ezmknS6
+ H/snwFuaNmuYsmE0yn1CCQR633FNKWtm8oSYofxwQFDrG8rjOlkahyUo7xMLxWPu1RMeozSj+jbTp
+ eoEMkW+LS7kKINgA=;
+Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
+ id 1mskMp-0001c6-49
+ for linux1394-devel@lists.sourceforge.net; Thu, 02 Dec 2021 11:35:13 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.west.internal (Postfix) with ESMTP id 3F5463201EE7;
+ Thu,  2 Dec 2021 06:35:03 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute5.internal (MEProxy); Thu, 02 Dec 2021 06:35:03 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding; s=fm3; bh=MWDOJiV7eBjWcPXOnu0j5XNbpz
+ BsWzhlK6tNHfjT1Kg=; b=LNyw9nr36KA0eyni69wBg2vuM1wXOUh5BTEIGrVX56
+ nuznzaKvnEAPwWi5G9HzoNDeZS/RKrmqsQYj3/adcnlufbJB2tK8FvGFhr1pCKUB
+ DcJok7uqPdEE8dG923rhisDT+3bkEQUW/xh1iZSv3OXfVNzrNYtegvOk+4SRP9X2
+ gIKFcckcVwmCUgdSeA6rMfXBfobD023Do2nAkDMopsuavD5lnFto+kJCJJKGaRTv
+ v3DBE4un1xRHNhiWhsxx/BmVb6M/gQm2BylQsQoBCcaYDs2vO7nsAy97ZX2cwUie
+ ArPqB2pZ50UjaMuZ04OpSD3Ud/1n8zUZ8QXnDA90b1UQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:date:from
+ :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=MWDOJiV7eBjWcPXOn
+ u0j5XNbpzBsWzhlK6tNHfjT1Kg=; b=iwyrb1qC0yZh25MM/6bB9X72K/6jokl0i
+ /bl98rWGP6KH6n5kZ5xK00oZxvRwYopuBnPuGVhUKXiOK2tM7oT5iyppkl+Fo9vY
+ Qbk6YQFiUVMIzPbkJcW+sb6EYSKGxEk9BPkgEl/H2PNhYGFA0A83wqV2LZ68/6B8
+ N3TK4iMBjKe7S8xP4lQqOG1qTN4f7It/GD0qQT79WFYDk46DJwDNsWtyJPZxG/Mz
+ oBB7HNgNvapW8tojTel0KnwteFOT5bKhcvpSTth/qnmuilZKwUyJC1qSryPYLEjG
+ mU4D/TaRmub5EQBAYDueyWCJHKtCHj0o/bQ2AxAqIHzxeuKvDJS3g==
+X-ME-Sender: <xms:Zq-oYX7ZkaV_lTw5dPGjow9LRTNRA3YPkJMTg0NwLnKBdhF9zIaROw>
+ <xme:Zq-oYc7qnpSRUeCgPjx7Hrrt62N0-CW6nSwfy4zp3kMZaRhQZMFRluPW6DodPi3iV
+ F1lyxttaoQ_ivMDIM8>
+X-ME-Received: <xmr:Zq-oYedl5x_hKzGL_FqW7naI2B5UjMwzvno5DuY33PBrh3Jjhsc-T8o_vXxXOuG3Tr29aHof5nlhiYncnvQAei3jMUnBGwO5XxvDObQPwxRUrH-PcDwv>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvuddrieehgddvlecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffoggfgsedtkeertdertd
+ dtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhi
+ sehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeetieeuhfejkeekfe
+ ehteeikedvgeefhffggfdvieehhefhheeivdfhgfejjeduudenucffohhmrghinhepkhgv
+ rhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
+ hfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjph
+X-ME-Proxy: <xmx:Zq-oYYJZ6wLcEDDuWCnfhCc9AIlWwJelJFGN9Zu-CwWU-TM5U4AyrQ>
+ <xmx:Zq-oYbKsuyzHtogCRs2MvQriOJHqbhh93t_Pv5q4vj7f5Gl6BMW7YA>
+ <xmx:Zq-oYRwQD7ovEoEP-gXySfSJ0ltxLcHAzg9inZN5SrqRyGF9FgQIRg>
+ <xmx:Zq-oYYGgoMhV3_OC8HewPGIFDBZp4dwxD0rMc6YRW0P5PGsiKmk8Ag>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 2 Dec 2021 06:35:00 -0500 (EST)
+From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+To: stefanr@s5r6.in-berlin.de
+Subject: [PATCH 0/3] firewire: assist unit driver to compute packet timestamp
+Date: Thu,  2 Dec 2021 20:34:54 +0900
+Message-Id: <20211202113457.24011-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-X-mailer: Cabestan DMS
-X-Spam-Score: 3.1 (+++)
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Miles &amp; More Damit Sie weiterhin online bezahlen k&ouml;
- nnen
- Aufgrund der EU-Richtlinie PSD2 m&uuml;ssen Sie Online-Zahlungen mit Ihrer
- Miles &amp; More Credit Card immer h&auml;ufiger freigeben. Aktivieren Sie
- dazu ab sofort eines unserer zwei Visa card&reg; I [...] 
- Content analysis details:   (3.1 points, 6.0 required)
+ Content preview:  Hi, In 1394 OHCI specification,
+ each descriptor of IR/IT/AR/AT
+ DMA context has timeStamp field. The value of timeStamp field express the
+ time in which the controller accept packet. The resolution of value [...]
+ Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [64.147.123.20 listed in list.dnswl.org]
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: onliveserver.com]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
- 0.9 SPF_HELO_SOFTFAIL      SPF: HELO does not match SPF record (softfail)
- 0.0 HTML_MESSAGE           BODY: HTML included in message
- 0.0 HTML_FONT_LOW_CONTRAST BODY: HTML font color similar or
- identical to background
- 0.0 HTML_FONT_SIZE_HUGE    BODY: HTML font size is huge
- 1.3 RDNS_NONE Delivered to internal network by a host with no rDNS
- 0.0 NORDNS_LOW_CONTRAST    No rDNS + hidden text
-X-Headers-End: 1mshvz-001I4H-IP
+ for more information. [URIs: sakamocchi.jp]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [64.147.123.20 listed in wl.mailspike.net]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+X-Headers-End: 1mskMp-0001c6-49
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,206 +130,70 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============9120638607480963473=="
+Cc: alsa-devel@alsa-project.org, linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org, marcan@marcan.st
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-This is a multi-part message in MIME format.
+Hi,
 
---===============9120638607480963473==
-Content-Type: multipart/alternative;
-	boundary="1d871efdc6e3048ed498b31816e153bc3"
-Content-Transfer-Encoding: 8bit
+In 1394 OHCI specification, each descriptor of IR/IT/AR/AT DMA context
+has timeStamp field. The value of timeStamp field express the time in
+which the controller accept packet. The resolution of value is isochronous
+cycle count (8,000 Hz) with second up to 7.
 
-This is a multi-part message in MIME format.
+I have a plan to use the value of timeStamp field for ALSA firewire stack
+so that userspace ALSA PCM/Rawmidi applications can get converted timestamp
+(ktime) for PCM frame/MIDI message. The timestamp can ideally express
+finer granularity than the time to invoke IRQ handler (and co).
 
---1d871efdc6e3048ed498b31816e153bc3
-Content-Type: text/plain; charset=us-ascii
+Current implementation of Linux FireWire subsystem delivers the value of
+timeStamp field to unit driver for IR/IT/AT DMA context, but not for AR
+DMA context. Additionally, the way to refer to Isochronous Cycle Timer
+Register in MMIO region of 1394 OHCI controller is transaction to local
+node. It includes overhead of transaction and it's preferable to add
+less-overhead way available in any type of IRQ context.
 
+This patchset adds two functions exposed in kernel space:
 
+ * fw_card_read_cycle_time()
+    * allow unit driver to access to CYCLE_TIME register in MMIO region
+      without initiate transaction
+ * fw_request_get_timestamp()
+    * allow unit driver to get timestamp of request packet inner request
+      handler
 
+I note that Hector Martin found kernel null pointer dereference during
+process to remove PCI card and has posted a patch:
 
-  
-  
+ * https://lore.kernel.org/lkml/20211027113130.8802-1-marcan@marcan.st/
 
+His patch is included in the series with my comment for relevant commit
+20802224298c ("firewire: core: add forgotten dummy driver methods, remove
+unused ones"). The patch is required since unit driver can refer to dummy
+driver between removal callback of PCI subsystem and removal callback of
+FireWire subsystem.
 
-Miles &amp;
-More
-Damit Sie
-weiterhin online bezahlen k&ouml;nnen
+Hector Martin (1):
+  firewire: Add dummy read_csr/write_csr functions
 
-Aufgrund
-der EU-Richtlinie PSD2 m&uuml;ssen Sie Online-Zahlungen mit Ihrer
-Miles &amp; More Credit Card immer h&auml;ufiger freigeben.
-Aktivieren Sie dazu ab sofort eines unserer zwei Visa card&reg;
-Identity Check&trade; Verfahren:
+Takashi Sakamoto (2):
+  firewire: add kernel API to access CYCLE_TIME register
+  firewire: add kernel API to access packet structure in request
+    structure for AR context
 
-1)
-Freigabe &uuml;ber die Miles
-&amp; More Credit Card-App
-2)
-Freigabe &uuml;ber Miles
-&amp; More und&nbsp;Sicherheitsfrage
+ drivers/firewire/core-card.c        | 39 +++++++++++++++++++++++++++++
+ drivers/firewire/core-cdev.c        |  6 +++--
+ drivers/firewire/core-transaction.c | 18 +++++++++++++
+ include/linux/firewire.h            |  3 +++
+ 4 files changed, 64 insertions(+), 2 deletions(-)
 
-Aktivieren
-Sie jetzt das Verfahren Ihrer Wahl, um auch zuk&uuml;nftig online
-bezahlen zu k&ouml;nnen.
-
-Jetzt
-aktivieren
-
-
-
-Viele
-Gr&uuml;&szlig;e von&nbsp;
-Ihrem
-Miles &amp; More-Team
-
-
-
-visit
-our website&nbsp;|&nbsp;log
-in to your account&nbsp;|&nbsp;get
-support
-Copyright
-&copy; Onlive Server Private Limited, All rights reserved.
+-- 
+2.32.0
 
 
-
---1d871efdc6e3048ed498b31816e153bc3
-Content-Type: text/html; charset=us-ascii
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-  <meta content="text/html; charset=ISO-8859-1"
- http-equiv="content-type">
-  <title></title>
-</head>
-<body>
-<p
- style="border: 0px none ; margin: 0px 0px 1.5em; padding: 0px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; background-color: rgb(255, 255, 255);"><big><span
- style="margin: 0px; padding: 0px; line-height: normal; font-family: inherit; vertical-align: baseline; font-stretch: inherit;"><span
- style="margin: 0px; padding: 0px; line-height: normal; font-family: inherit; font-size: 18px; vertical-align: baseline; font-stretch: inherit;"><span
- style="margin: 0px; padding: 0px; line-height: normal; font-family: inherit; vertical-align: baseline; font-stretch: inherit;"><span
- style="margin: 0px; padding: 0px;"><strong><font
- color="#0000a0" size="7"><big>Miles &amp;
-More</big></font></strong></span></span></span></span></big></p>
-<p
- style="border: 0px none ; margin: 0px 0px 1.5em; padding: 0px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(51, 51, 51); font-family: Cabin,Helvetica,Arial,sans-serif; font-size: 13px; background-color: rgb(255, 255, 255);"><b
- style="font-weight: bold; line-height: inherit;">Damit Sie
-weiterhin online bezahlen k&ouml;nnen</b></p>
-<br
- style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
-<span
- style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">Aufgrund
-der EU-Richtlinie PSD2 m&uuml;ssen Sie Online-Zahlungen mit Ihrer
-Miles &amp; More Credit Card immer h&auml;ufiger freigeben.
-Aktivieren Sie dazu ab sofort eines unserer zwei Visa card&reg;
-Identity Check&trade; Verfahren:</span><br
- style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
-<br
- style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
-<span
- style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">1)
-Freigabe &uuml;ber die<span><span> </span></span></span><strong
- style="font-family: Verdana; font-size: 12px; font-style: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-weight: bold; line-height: inherit; color: rgb(80, 80, 80);">Miles
-&amp; More Credit Card-App</strong><br
- style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
-<span
- style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">2)
-Freigabe &uuml;ber<span><span> </span></span></span><strong
- style="font-family: Verdana; font-size: 12px; font-style: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-weight: bold; line-height: inherit; color: rgb(80, 80, 80);">Miles
-&amp; More<span><span> </span></span></strong><span
- style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">und</span><strong
- style="font-family: Verdana; font-size: 12px; font-style: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-weight: bold; line-height: inherit; color: rgb(80, 80, 80);"><span>&nbsp;</span>Sicherheitsfrage</strong><br
- style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
-<br
- style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">
-<span
- style="font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; color: rgb(80, 80, 80);">Aktivieren
-Sie jetzt das Verfahren Ihrer Wahl, um auch zuk&uuml;nftig online
-bezahlen zu k&ouml;nnen.<br>
-<br>
-</span><a class="button right"
- href="https://asiscapts.org/template/"
- onclick="parent.phx.event.mailUrlClicked('https://www.cigarrilloelectronicos.es/cache/'); return true;"
- target="_blank"
- style="margin: 0px auto 20px; padding: 15px 20px; background: rgb(15, 40, 110) none repeat scroll 0% 50%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial; font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; line-height: 18px; color: rgb(255, 255, 255); text-decoration: underline; cursor: pointer; vertical-align: middle;">Jetzt
-aktivieren</a><br
- style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
-<br
- style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
-<br
- style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
-<br
- style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
-<span
- style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; vertical-align: inherit;">Viele
-Gr&uuml;&szlig;e von&nbsp;</span><br
- style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">
-<span
- style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; vertical-align: inherit;">Ihrem<span><span>
-<span style="font-weight: bold;">Miles &amp; More-</span></span></span></span><strong
- style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 12px; font-style: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Team<br>
-<br>
-<br>
-<br>
-</strong><a
- href="https://deref-web.de/mail/client/TahzAubyP1Q/dereferrer/?redirectUrl=https%3A%2F%2Fonliveserver.com"
- onclick="parent.phx.event.mailUrlClicked('https://onliveserver.com'); return true;"
- target="_blank"
- style="font-weight: 400; text-decoration: underline; font-family: Helvetica; font-size: 12px; font-style: normal; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); color: rgb(204, 255, 255);">visit
-our website</a><span
- style="font-family: Helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none; color: rgb(204, 255, 255);"><span>&nbsp;</span></span><span
- class="hide-mobile"
- style="font-family: Helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); color: rgb(204, 255, 255);">|<span>&nbsp;</span></span><span
- style="font-family: Helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none; color: rgb(204, 255, 255);"></span><a
- href="https://deref-web.de/mail/client/sWrxiwqCpUQ/dereferrer/?redirectUrl=https%3A%2F%2Fonliveserver.com%2Fpanel1%2F"
- onclick="parent.phx.event.mailUrlClicked('https://onliveserver.com/panel1/'); return true;"
- target="_blank"
- style="font-weight: 400; text-decoration: underline; font-family: Helvetica; font-size: 12px; font-style: normal; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); color: rgb(204, 255, 255);">log
-in to your account</a><span
- style="font-family: Helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none; color: rgb(204, 255, 255);"><span>&nbsp;</span></span><span
- class="hide-mobile"
- style="font-family: Helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); color: rgb(204, 255, 255);">|<span>&nbsp;</span></span><span
- style="font-family: Helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none; color: rgb(204, 255, 255);"></span><a
- href="https://deref-web.de/mail/client/iPsC4bz9TsQ/dereferrer/?redirectUrl=https%3A%2F%2Fonliveserver.com%2Fpanel1%2Fsubmitticket.php"
- onclick="parent.phx.event.mailUrlClicked('https://onliveserver.com/panel1/submitticket.php'); return true;"
- target="_blank"
- style="font-weight: 400; text-decoration: underline; font-family: Helvetica; font-size: 12px; font-style: normal; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); color: rgb(204, 255, 255);">get
-support</a><span
- style="font-family: Helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none; color: rgb(204, 255, 255);"></span><br
- style="font-family: Helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); color: rgb(204, 255, 255);">
-<span
- style="font-family: Helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none; color: rgb(204, 255, 255);">Copyright
-&copy; Onlive Server Private Limited, All rights reserved.</span><span
- style="color: rgb(204, 255, 255);"></span>
-</body>
-</html>
-
-
-
---1d871efdc6e3048ed498b31816e153bc3--
-
-
-
---===============9120638607480963473==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============9120638607480963473==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============9120638607480963473==--
-
-
