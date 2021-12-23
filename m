@@ -2,82 +2,85 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D44247D414
-	for <lists+linux1394-devel@lfdr.de>; Wed, 22 Dec 2021 16:01:16 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7713747E47B
+	for <lists+linux1394-devel@lfdr.de>; Thu, 23 Dec 2021 15:22:22 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1n0370-000161-1N; Wed, 22 Dec 2021 15:01:02 +0000
+	id 1n0Oyt-0005p7-KZ; Thu, 23 Dec 2021 14:22:07 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2) (envelope-from
- <bounce-2287853-64-17611-linux1394-devel=lists.sourceforge.net@s15.avl4.acemsrvd.com>)
- id 1n036y-00015b-Qm
- for linux1394-devel@lists.sourceforge.net; Wed, 22 Dec 2021 15:01:00 +0000
+ <bounce-2287853-65-17611-linux1394-devel=lists.sourceforge.net@s15.avl4.acemsrvd.com>)
+ id 1n0Oys-0005p1-1t
+ for linux1394-devel@lists.sourceforge.net; Thu, 23 Dec 2021 14:22:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Message-ID:List-Unsubscribe:Sender:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Subject:From:To:
  Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
  List-Id:List-Help:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=3FMAyE99exW5UDRrRdKNGHS8bgJ+1Q7cMsgF/7H7dos=; b=Lsz+EZZokkB+Kd5oB0wzVjzApa
- N4B8/I9yEapEAheysiKX8oJD1Aa7RsflUrhD7yqVfX8+1AwYoIZXBzSYRG0AHgL/+rschdnr47LUp
- R4EfEw35ibmKDbfq3/eMWA1QFXJQ30lW3yib6iZhrdQackULCo1iY9ROo17g1HDfjV18=;
+ bh=cRKZiZmCG03TU7Y8K5B1QFKNSjkJH+GRYlZc5AmXTAg=; b=BKiZKoFGkJazaYOY1yihmKOjz7
+ sVpCE6aHJ2KNt27WgJ7nSRe8y7uxw3x/5dc/6QtLc8oRxd322wfKyEHn8ei7V+yvOjFvn2hb2PrOh
+ +tWmXRwSMQuuGB2jRO5W+56DEpFt36TkfrIM+p62nzUFKlGd4NBi7XHIbod7aA5UtF18=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Message-ID:List-Unsubscribe:Sender:Content-Transfer-Encoding:Content-Type
  :MIME-Version:Date:Subject:From:To:Reply-To:Cc:Content-ID:Content-Description
  :Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
  In-Reply-To:References:List-Id:List-Help:List-Subscribe:List-Post:List-Owner:
- List-Archive; bh=3FMAyE99exW5UDRrRdKNGHS8bgJ+1Q7cMsgF/7H7dos=; b=OD2iS5NUDXL5
- 0Cu0dl0ZqO0ijRZAbPbjZzSgGXfCIoWeHSgJzlhEc3an5Yzt4TPpKpH6urFMveT7mb/AQdTaeuiHH
- kJHxUFre1K89fQoHEHjfYkt7rrROhJYwOS31pfbl15hNu6O0oyU7R6EPbztF12/TjMsRgcWoH0QMa
- 91kDg=;
+ List-Archive; bh=cRKZiZmCG03TU7Y8K5B1QFKNSjkJH+GRYlZc5AmXTAg=; b=PgyUumfEenO0
+ ud8pv846h6N18CgRQaXkMKrvBG91jQkGIK+W7cparG51sujbc5fOhNR5udzy7L+Ft1JpTPlNGKMpP
+ Tu0HV0xA0jOGncyQnQ34XVMNVOlqKeebilzgCagi+vX2CTH02TCxQoNPimyJRlYnR4pqAgJz6TnzI
+ vaB9U=;
 Received: from s15.avl4.acemsrvd.com ([192.92.97.219])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1n036v-006NmE-BL
- for linux1394-devel@lists.sourceforge.net; Wed, 22 Dec 2021 15:01:00 +0000
+ id 1n0Oyr-007LYn-0n
+ for linux1394-devel@lists.sourceforge.net; Thu, 23 Dec 2021 14:22:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dk;
  d=s15.avl4.acemsrvd.com; 
  h=To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding:
  Sender:List-Unsubscribe:List-Unsubscribe-Post:Message-ID;
  i=motorcityfunding.activehosted.com@s15.avl4.acemsrvd.com;
- bh=3FMAyE99exW5UDRrRdKNGHS8bgJ+1Q7cMsgF/7H7dos=;
- b=1rbuGcBWxA0mI/smV/3lf7zsXEjUj056eaY+glgH51PfpPsi447cxlIhrxw8gC2KLTZKbsalKbRA
- txk9xKM91Z1G4wd8fCuaf7fQ2MK3qn5FyNtqCwmqx5ydKfVpLvWhsPaUL/q/Mp8bwx85FUTKOFvO
- sOGOIZNvFcTix2nQV9Y=
-Received: by s15.avl4.acemsrvd.com id hocuq22q274q for
+ bh=cRKZiZmCG03TU7Y8K5B1QFKNSjkJH+GRYlZc5AmXTAg=;
+ b=AYrnE8JUuQhC49Zc/I+KndOGKZKkcZJXz/wuZmbi8ljgPdudNGAJICt2mJ0eQsH/4eDpRE8IOQND
+ f8pGy+36QBU0q4NeBRMZO56g4eMCgqNKKFc+6aRdtQEn7EtcQHKed6omyjH2NivfFQWzm3hpZCHk
+ eYC1dFmBVf8WgJRDfec=
+Received: by s15.avl4.acemsrvd.com id hoi3062q2747 for
  <linux1394-devel@lists.sourceforge.net>;
- Wed, 22 Dec 2021 15:00:49 +0000 (envelope-from
- <bounce-2287853-64-17611-linux1394-devel=lists.sourceforge.net@s15.avl4.acemsrvd.com>)
+ Thu, 23 Dec 2021 14:21:55 +0000 (envelope-from
+ <bounce-2287853-65-17611-linux1394-devel=lists.sourceforge.net@s15.avl4.acemsrvd.com>)
 To: linux1394-devel@lists.sourceforge.net
 From: "SBA Admin" <sbrugman@motorcityfunding.com>
 Subject: SBA's EIDL and Cash Grant Program Ending December 31
-Date: Wed, 22 Dec 2021 08:54:54 -0600
+Date: Thu, 23 Dec 2021 08:10:21 -0600
 MIME-Version: 1.0
 X-Sender: <motorcityfunding.activehosted.com@s15.avl4.acemsrvd.com>
 X-Report-Abuse: Please report abuse to abuse@activecampaign.com
-X-mid: bGludXgxMzk0LWRldmVsQGxpc3RzLnNvdXJjZWZvcmdlLm5ldCAsIGM2NCAsIG05OCAsIHM1OQ
+X-mid: bGludXgxMzk0LWRldmVsQGxpc3RzLnNvdXJjZWZvcmdlLm5ldCAsIGM2NSAsIG05OSAsIHM2MA
 x-virtual-mta: s15.avl4.acemsrvd.com
 Feedback-ID: 2287853:activecampaign
-X-250ok-CID: 2287853-64
+X-250ok-CID: 2287853-65
 List-Unsubscribe-Post: List-Unsubscribe=One-Click
-Message-ID: <20211222150049.28064.296690528.swift@motorcityfunding.activehosted.com>
-X-Spam-Score: 0.2 (/)
+Message-ID: <20211223142155.25770.194639171.swift@motorcityfunding.activehosted.com>
+X-Spam-Score: 1.5 (+)
 X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.lw.sourceforge.com",
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
  
- Content preview:  Deadline to Apply is Imminent - 9 Days Left!  ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌
+ Content preview:  Deadline to Apply is Imminent - 8 Days Left!  ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌
     [...] 
  
- Content analysis details:   (0.2 points, 6.0 required)
+ Content analysis details:   (1.5 points, 6.0 required)
  
   pts rule name              description
  ---- ---------------------- --------------------------------------------------
+  1.2 RCVD_IN_BL_SPAMCOP_NET RBL: Received via a relay in
+                             bl.spamcop.net
+               [Blocked - see <https://www.spamcop.net/bl.shtml?192.92.97.219>]
   0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
                              mail domains are different
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
@@ -89,7 +92,7 @@ X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.
                              valid
  -0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
   0.0 LOTS_OF_MONEY          Huge... sums of money
-X-Headers-End: 1n036v-006NmE-BL
+X-Headers-End: 1n0Oyr-007LYn-0n
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,20 +105,20 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8842633447269083126=="
+Content-Type: multipart/mixed; boundary="===============8201044702829737082=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
 
---===============8842633447269083126==
+--===============8201044702829737082==
 Content-Type: multipart/alternative;
- boundary="_=_swift-23347361961c33c3e1280b7.57465379_=_"
+ boundary="_=_swift-141250263461c4834d6280e2.43946241_=_"
 Content-Transfer-Encoding: 7bit
 
 
---_=_swift-23347361961c33c3e1280b7.57465379_=_
+--_=_swift-141250263461c4834d6280e2.43946241_=_
 Content-Type: text/plain; charset=utf-8
 
-Deadline to Apply is Imminent - 9 Days Left! 
+Deadline to Apply is Imminent - 8 Days Left! 
  ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌
 
  
@@ -163,10 +166,10 @@ _________________
 Sent to linux1394-devel@lists.sourceforge.net
 
 Unsubscribe:
-http://motorcityfunding.activehosted.com/proc.php?nl=1&amp;c=64&amp;m=98&amp;s=0ad92c0c4a2ff86eed94873b1c9268b7&amp;act=unsub
+http://motorcityfunding.activehosted.com/proc.php?nl=1&amp;c=65&amp;m=99&amp;s=0ad92c0c4a2ff86eed94873b1c9268b7&amp;act=unsub
 
 Motor City Funding, 3000 Town Center, Southfield, United States
---_=_swift-23347361961c33c3e1280b7.57465379_=_
+--_=_swift-141250263461c4834d6280e2.43946241_=_
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -224,13 +227,13 @@ th:16px !important; height:16px !important;} *[class].ac-social-icon-24 {wi=
 dth:24px !important; height:24px !important;} *[class].ac-social-icon-28 {w=
 idth:28px !important; height:28px !important;} *[class].__ac_social_icons {=
  margin-right: 0px !important; } }=0A</style><style data-ac-keep=3D"true"> =
-@media only screen and (max-width: 320px) { #layout-row1375 { max-height: 0=
+@media only screen and (max-width: 320px) { #layout-row1389 { max-height: 0=
 px!important; font-size: 0px!important; display: none!important; visibility=
-: hidden!important; } #layout-row1376 img { width: 100% !important; height:=
- auto !important; max-width: 320px !important; } #layout-row1377 img { widt=
+: hidden!important; } #layout-row1390 img { width: 100% !important; height:=
+ auto !important; max-width: 320px !important; } #layout-row1391 img { widt=
 h: 100% !important; height: auto !important; max-width: 320px !important; }=
- #layout-row1379 img { width: 100% !important; height: auto !important; max=
--width: 320px !important; } #layout-row1387 img { width: 100% !important; h=
+ #layout-row1393 img { width: 100% !important; height: auto !important; max=
+-width: 320px !important; } #layout-row1401 img { width: 100% !important; h=
 eight: auto !important; max-width: 320px !important; } table, tbody, td, .d=
 ivbody { display: table !important; width: 100% !important; max-width: 100%=
  !important; } .td_rss .rss-item img.iphone_large_image { width: auto !impo=
@@ -249,12 +252,12 @@ line-block !important; margin: auto !important; width: auto !important; min=
 ac_social_table img { display: inline-block !important; margin: auto !impor=
 tant; width: 32px !important; min-width: 32px !important; max-width: 32px !=
 important; }=0A}=0A@media only screen and (max-width: 375px) { #layout-row1=
-375 { max-height: 0px!important; font-size: 0px!important; display: none!im=
-portant; visibility: hidden!important; } #layout-row1376 img { width: 100% =
+389 { max-height: 0px!important; font-size: 0px!important; display: none!im=
+portant; visibility: hidden!important; } #layout-row1390 img { width: 100% =
 !important; height: auto !important; max-width: 375px !important; } #layout=
--row1377 img { width: 100% !important; height: auto !important; max-width: =
-375px !important; } #layout-row1379 img { width: 100% !important; height: a=
-uto !important; max-width: 375px !important; } #layout-row1387 img { width:=
+-row1391 img { width: 100% !important; height: auto !important; max-width: =
+375px !important; } #layout-row1393 img { width: 100% !important; height: a=
+uto !important; max-width: 375px !important; } #layout-row1401 img { width:=
  100% !important; height: auto !important; max-width: 375px !important; } t=
 able, tbody, td, .divbody { display: table !important; width: 100% !importa=
 nt; max-width: 100% !important; } .td_rss .rss-item img.iphone_large_image =
@@ -273,13 +276,13 @@ uto !important; min-width: auto !important; text-align: center !important; =
 } u + .body table._ac_social_table img { display: inline-block !important; =
 margin: auto !important; width: 32px !important; min-width: 32px !important=
 ; max-width: 32px !important; }=0A}=0A@media only screen and (max-width: 41=
-4px) { #layout-row1375 { max-height: 0px!important; font-size: 0px!importan=
-t; display: none!important; visibility: hidden!important; } #layout-row1376=
+4px) { #layout-row1389 { max-height: 0px!important; font-size: 0px!importan=
+t; display: none!important; visibility: hidden!important; } #layout-row1390=
  img { width: 100% !important; height: auto !important; max-width: 414px !i=
-mportant; } #layout-row1377 img { width: 100% !important; height: auto !imp=
-ortant; max-width: 380px !important; } #layout-row1379 img { width: 100% !i=
+mportant; } #layout-row1391 img { width: 100% !important; height: auto !imp=
+ortant; max-width: 380px !important; } #layout-row1393 img { width: 100% !i=
 mportant; height: auto !important; max-width: 414px !important; } #layout-r=
-ow1387 img { width: 100% !important; height: auto !important; max-width: 41=
+ow1401 img { width: 100% !important; height: auto !important; max-width: 41=
 4px !important; } table, tbody, td, .divbody { display: table !important; w=
 idth: 100% !important; max-width: 100% !important; } .td_rss .rss-item img.=
 iphone_large_image { width: auto !important; } u + .body { display: table !=
@@ -297,13 +300,13 @@ important; width: auto !important; min-width: auto !important; text-align: =
 center !important; } u + .body table._ac_social_table img { display: inline=
 -block !important; margin: auto !important; width: 32px !important; min-wid=
 th: 32px !important; max-width: 32px !important; }=0A}=0A@media only screen=
- and (max-width: 667px) { #layout-row1375 { max-height: 0px!important; font=
+ and (max-width: 667px) { #layout-row1389 { max-height: 0px!important; font=
 -size: 0px!important; display: none!important; visibility: hidden!important=
-; } #layout-row1376 img { width: 100% !important; height: auto !important; =
-max-width: 667px !important; } #layout-row1377 img { width: 100% !important=
-; height: auto !important; max-width: 380px !important; } #layout-row1379 i=
+; } #layout-row1390 img { width: 100% !important; height: auto !important; =
+max-width: 667px !important; } #layout-row1391 img { width: 100% !important=
+; height: auto !important; max-width: 380px !important; } #layout-row1393 i=
 mg { width: 100% !important; height: auto !important; max-width: 667px !imp=
-ortant; } #layout-row1387 img { width: 100% !important; height: auto !impor=
+ortant; } #layout-row1401 img { width: 100% !important; height: auto !impor=
 tant; max-width: 667px !important; } table, tbody, td, .divbody { display: =
 table !important; width: 100% !important; max-width: 100% !important; } .td=
 _rss .rss-item img.iphone_large_image { width: auto !important; } u + .body=
@@ -330,7 +333,7 @@ F; width: 100%; text-align: center;">=09=09<div style=3D"display: none !imp=
 ortant; padding: 0; height: 1px; font-size: 1px; background-color: inherit =
 !important; opacity: 0; color: transparent; mso-line-height-rule: exactly; =
 line-height:1px; mso-hide:all;">=0A=09=09=09Deadline to Apply is Imminent -=
- 9 Days Left!=0A=09=09=09<div style=3D"display: none; max-height: 0px; over=
+ 8 Days Left!=0A=09=09=09<div style=3D"display: none; max-height: 0px; over=
 flow: hidden;">=0A=09=09=09=09&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
 =8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
 =E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
@@ -371,20 +374,20 @@ padding=3D"0" cellspacing=3D"0" width=3D"650" bgcolor=3D"#FFFFFF" style=3D"=
 -ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse=
 : collapse; font-size: 14px; min-width: auto; mso-table-lspace: 0pt; mso-ta=
 ble-rspace: 0pt; max-width: 650px;"><tr=0Astyle=3D"mso-line-height-rule: ex=
-actly;"><td id=3D"layout_table_8e470d6166d0e7d25bf9582bea53c6ab58684126" va=
+actly;"><td id=3D"layout_table_a3bed7a57fb0fd97754d4edfc318d80c2da0b7f8" va=
 lign=3D"top" align=3D"center" width=3D"650" style=3D"mso-line-height-rule: =
 exactly;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"=
 layout layout-table root-table" width=3D"650" style=3D"-ms-text-size-adjust=
 : auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-siz=
 e: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><t=
-r style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1375"=
+r style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1389"=
  valign=3D"top" style=3D"mso-line-height-rule: exactly;"><table width=3D"10=
 0%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size=
 -adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; f=
 ont-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0=
-pt;"><tr id=3D"layout-row1375" class=3D"layout layout-row widget _widget_sp=
+pt;"><tr id=3D"layout-row1389" class=3D"layout layout-row widget _widget_sp=
 acer " style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-paddin=
-g1375" valign=3D"top"=0Astyle=3D"mso-line-height-rule: exactly;"><table wid=
+g1389" valign=3D"top"=0Astyle=3D"mso-line-height-rule: exactly;"><table wid=
 th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-t=
 ext-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: col=
 lapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-r=
@@ -398,37 +401,37 @@ rspace: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td class=3D"spa=
 cer-body" valign=3D"top" height=3D"30" width=3D"650" style=3D"mso-line-heig=
 ht-rule: exactly;">=C2=A0</td>=0A</tr>=0A</table>=0A</div>=0A</td>=0A</tr>=
 =0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-l=
-ine-height-rule: exactly;"><td id=3D"layout-row-margin1376" valign=3D"top" =
+ine-height-rule: exactly;"><td id=3D"layout-row-margin1390" valign=3D"top" =
 style=3D"mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0"=
  cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -=
 webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; =
 min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"l=
-ayout-row1376" class=3D"layout layout-row widget _widget_picture " align=3D=
+ayout-row1390" class=3D"layout layout-row widget _widget_picture " align=3D=
 "center" style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padd=
-ing1376" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><table wid=
+ing1390" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><table wid=
 th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-t=
 ext-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: col=
 lapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-r=
 space: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td class=3D"imag=
 e-td" align=3D"center" valign=3D"top" width=3D"650" style=3D"mso-line-heigh=
 t-rule: exactly;"><img=0Asrc=3D"https://content.app-us1.com/Rnj5K/2021/11/0=
-8/5ed7148d-1798-4506-a900-35ec4edba52c.png?r=3D89177703" alt=3D"" width=3D"=
-325" style=3D"display: block; border: none; outline: none; width: 325px; op=
-acity: 1; max-width: 100%;"></td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</ta=
-ble>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: exactly;"><td id=
-=3D"layout-row-margin1374" valign=3D"top" style=3D"mso-line-height-rule: ex=
+8/5ed7148d-1798-4506-a900-35ec4edba52c.png?r=3D911999743" alt=3D"" width=3D=
+"325" style=3D"display: block; border: none; outline: none; width: 325px; o=
+pacity: 1; max-width: 100%;"></td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</t=
+able>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: exactly;"><td id=
+=3D"layout-row-margin1388" valign=3D"top" style=3D"mso-line-height-rule: ex=
 actly; padding: 0;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" ce=
 llspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adju=
 st: 100%; border-collapse: initial !important; font-size: 14px; min-width: =
 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row13=
-74" class=3D"layout layout-row widget _widget_text style1374" style=3D"mso-=
+88" class=3D"layout layout-row widget _widget_text style1388" style=3D"mso-=
 line-height-rule: exactly; margin: 0; padding: 0; background-color: #244df0=
-;"><td id=3D"layout-row-padding1374" valign=3D"top" style=3D"mso-line-heigh=
+;"><td id=3D"layout-row-padding1388" valign=3D"top" style=3D"mso-line-heigh=
 t-rule: exactly; background-color: #244df0; padding: 0;"><table width=3D"10=
 0%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size=
 -adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; f=
 ont-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0=
-pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"text_div1171"=
+pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"text_div1183"=
 =0Aclass=3D"td_text td_block" valign=3D"top" align=3D"left" width=3D"650" s=
 tyle=3D"line-height: 140%; mso-line-height-rule: exactly; margin: 0; outlin=
 e: none; padding: 0; color: inherit; font-size: 12px; font-weight: inherit;=
@@ -449,16 +452,16 @@ ications</span><span style=3D"color: #ffffff; font-size: inherit; font-weig=
 ht: inherit; line-height: inherit; text-decoration: inherit; text-align: in=
 herit;"> to December 31st 2021 Apply before the deadline!</span></span></di=
 v>=0A </div>=0A<!--[if (gte mso 12)&(lte mso 15) ]>=0A<style data-ac-keep=
-=3D"true" data-ac-inline=3D"false"> #text_div1171, #text_div1171 div { line=
+=3D"true" data-ac-inline=3D"false"> #text_div1183, #text_div1183 div { line=
 -height: 140% !important; };=0A</style>=0A<![endif]--></td>=0A</tr>=0A</tab=
 le>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-heig=
-ht-rule: exactly;"><td id=3D"layout-row-margin1387" valign=3D"top" style=3D=
+ht-rule: exactly;"><td id=3D"layout-row-margin1401" valign=3D"top" style=3D=
 "mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpad=
 ding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-t=
 ext-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-widt=
 h: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-ro=
-w1387" class=3D"layout layout-row widget _widget_picture " align=3D"left" s=
-tyle=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padding1387" v=
+w1401" class=3D"layout layout-row widget _widget_picture " align=3D"left" s=
+tyle=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padding1401" v=
 align=3D"top" style=3D"mso-line-height-rule: exactly;"><table width=3D"100%=
 " border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-a=
 djust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; fon=
@@ -466,17 +469,17 @@ t-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt=
 ;"><tr style=3D"mso-line-height-rule: exactly;"><td class=3D"image-td" alig=
 n=3D"left" valign=3D"top" width=3D"650" style=3D"mso-line-height-rule: exac=
 tly;"><img=0Asrc=3D"https://content.app-us1.com/Rnj5K/2021/10/19/efc7c4bf-d=
-aad-4389-a62e-b7bdcea92aec.png?r=3D1705835498" alt=3D"" width=3D"650" style=
+aad-4389-a62e-b7bdcea92aec.png?r=3D467980738" alt=3D"" width=3D"650" style=
 =3D"display: block; border: none; outline: none; width: 650px; opacity: 1; =
 max-width: 100%;"></td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</t=
 d>=0A</tr>=0A<tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-=
-row-margin1377" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><ta=
+row-margin1391" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><ta=
 ble width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=
 =3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-coll=
 apse: collapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; ms=
-o-table-rspace: 0pt;"><tr id=3D"layout-row1377" class=3D"layout layout-row =
+o-table-rspace: 0pt;"><tr id=3D"layout-row1391" class=3D"layout layout-row =
 widget _widget_picture " align=3D"center" style=3D"mso-line-height-rule: ex=
-actly;"><td id=3D"layout-row-padding1377" valign=3D"top" style=3D"mso-line-=
+actly;"><td id=3D"layout-row-padding1391" valign=3D"top" style=3D"mso-line-=
 height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpadding=3D"0"=
  cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-a=
 djust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; m=
@@ -484,85 +487,85 @@ so-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-=
 rule: exactly;"><td class=3D"image-td" align=3D"center" valign=3D"top" widt=
 h=3D"650" style=3D"mso-line-height-rule: exactly;"><img=0Asrc=3D"https://co=
 ntent.app-us1.com/Rnj5K/2021/11/08/8db24c11-71e7-459f-ab55-2957448b054e.jpe=
-g?r=3D1316257169" alt=3D"" width=3D"380" style=3D"display: block; border: n=
-one; outline: none; width: 380px; opacity: 1; max-width: 100%;"></td>=0A</t=
-r>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso=
--line-height-rule: exactly;"><td id=3D"layout-row-margin1378" valign=3D"top=
-" style=3D"mso-line-height-rule: exactly; padding: 5px;"><table width=3D"10=
-0%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size=
--adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: initial !im=
-portant; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table=
--rspace: 0pt;"><tr id=3D"layout-row1378" class=3D"layout layout-row widget =
-_widget_text style1378" style=3D"mso-line-height-rule: exactly; margin: 0; =
-padding: 0; background-color: #244df0;"><td id=3D"layout-row-padding1378" v=
-align=3D"top" style=3D"mso-line-height-rule: exactly; background-color: #24=
-4df0; padding: 5px;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" c=
-ellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adj=
-ust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso=
--table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-ru=
-le: exactly;"><td=0Aid=3D"text_div1175" class=3D"td_text td_block" valign=
-=3D"top" align=3D"left" width=3D"630" style=3D"mso-line-height-rule: exactl=
-y; margin: 0; outline: none; padding: 0; color: inherit; font-size: 12px; f=
-ont-weight: inherit; line-height: 1; text-decoration: inherit; font-family:=
- arial;"> <div style=3D"margin: 0; outline: none; padding: 0; color: inheri=
-t; font-size: 18px; font-weight: inherit; line-height: inherit; text-decora=
-tion: inherit;"> <div style=3D"margin: 0; outline: none; padding: 0; color:=
- #ffffff; font-size: inherit; font-weight: inherit; line-height: inherit; t=
-ext-decoration: inherit;"> <div style=3D"margin: 0; outline: none; padding:=
- 0; color: #ffffff; font-size: inherit; font-weight: inherit; line-height: =
-inherit; text-decoration: inherit; text-align: center;"><span style=3D"colo=
-r: #ffffff; font-size: inherit; font-weight: bold; line-height: inherit; te=
-xt-decoration: inherit;" class=3D"">What is the EIDL? </span></div>=0A </di=
-v>=0A </div>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
-=0A</tr>=0A<tr id=3D"layout-row1382" class=3D"layout layout-row clear-this =
-" style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padding1382=
-" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><table width=3D"1=
-00%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-siz=
-e-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; =
-font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: =
-0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout_table_f=
-0ee6d300f32c8b357522257a73706553f3c19ab" valign=3D"top" width=3D"325" style=
-=3D"mso-line-height-rule: exactly;"><table cellpadding=3D"0" cellspacing=3D=
-"0" border=3D"0" class=3D"layout layout-table " width=3D"325" style=3D"-ms-=
-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: co=
-llapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-=
-rspace: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout=
--row-margin1379" valign=3D"top" style=3D"mso-line-height-rule:=0Aexactly;">=
-<table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" styl=
-e=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-col=
-lapse: collapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; m=
-so-table-rspace: 0pt;"><tr id=3D"layout-row1379" class=3D"layout layout-row=
- widget _widget_picture " align=3D"center" style=3D"mso-line-height-rule: e=
-xactly;"><td id=3D"layout-row-padding1379" valign=3D"top" style=3D"mso-line=
--height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpadding=3D"0=
-" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-=
-adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; =
-mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height=
--rule: exactly;"><td class=3D"image-td" align=3D"center" valign=3D"top" wid=
-th=3D"325" style=3D"mso-line-height-rule: exactly;"><img src=3D"https://con=
-tent.app-us1.com/Rnj5K/2021/10/19/8657e27f-7004-40ca-ba8e-9b2b418af77c.png?=
-r=3D1481696319" alt=3D"" width=3D"203"=0Astyle=3D"display: block; border: n=
-one; outline: none; width: 203px; opacity: 1; max-width: 100%;"></td>=0A</t=
-r>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
-=0A<td id=3D"layout_table_1bffc17bb80bb8405ab09e7cf16aafe5ce894a60" valign=
+g?r=3D379923209" alt=3D"" width=3D"380" style=3D"display: block; border: no=
+ne; outline: none; width: 380px; opacity: 1; max-width: 100%;"></td>=0A</tr=
+>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-=
+line-height-rule: exactly;"><td id=3D"layout-row-margin1392" valign=3D"top"=
+ style=3D"mso-line-height-rule: exactly; padding: 5px;"><table width=3D"100=
+%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-=
+adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: initial !imp=
+ortant; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-=
+rspace: 0pt;"><tr id=3D"layout-row1392" class=3D"layout layout-row widget _=
+widget_text style1392" style=3D"mso-line-height-rule: exactly; margin: 0; p=
+adding: 0; background-color: #244df0;"><td id=3D"layout-row-padding1392" va=
+lign=3D"top" style=3D"mso-line-height-rule: exactly; background-color: #244=
+df0; padding: 5px;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adju=
+st: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-rul=
+e: exactly;"><td=0Aid=3D"text_div1187" class=3D"td_text td_block" valign=3D=
+"top" align=3D"left" width=3D"630" style=3D"mso-line-height-rule: exactly; =
+margin: 0; outline: none; padding: 0; color: inherit; font-size: 12px; font=
+-weight: inherit; line-height: 1; text-decoration: inherit; font-family: ar=
+ial;"> <div style=3D"margin: 0; outline: none; padding: 0; color: inherit; =
+font-size: 18px; font-weight: inherit; line-height: inherit; text-decoratio=
+n: inherit;"> <div style=3D"margin: 0; outline: none; padding: 0; color: #f=
+fffff; font-size: inherit; font-weight: inherit; line-height: inherit; text=
+-decoration: inherit;"> <div style=3D"margin: 0; outline: none; padding: 0;=
+ color: #ffffff; font-size: inherit; font-weight: inherit; line-height: inh=
+erit; text-decoration: inherit; text-align: center;"><span style=3D"color: =
+#ffffff; font-size: inherit; font-weight: bold; line-height: inherit; text-=
+decoration: inherit;" class=3D"">What is the EIDL? </span></div>=0A </div>=
+=0A </div>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A=
+</tr>=0A<tr id=3D"layout-row1396" class=3D"layout layout-row clear-this " s=
+tyle=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padding1396" v=
+align=3D"top" style=3D"mso-line-height-rule: exactly;"><table width=3D"100%=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-a=
+djust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; fon=
+t-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt=
+;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout_table_e3a1=
+ab07225db6bed868ad9658ec13f737ae92dd" valign=3D"top" width=3D"325" style=3D=
+"mso-line-height-rule: exactly;"><table cellpadding=3D"0" cellspacing=3D"0"=
+ border=3D"0" class=3D"layout layout-table " width=3D"325" style=3D"-ms-tex=
+t-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: colla=
+pse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rsp=
+ace: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-ro=
+w-margin1393" valign=3D"top" style=3D"mso-line-height-rule:=0Aexactly;"><ta=
+ble width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=
+=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-coll=
+apse: collapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt;"><tr id=3D"layout-row1393" class=3D"layout layout-row =
+widget _widget_picture " align=3D"center" style=3D"mso-line-height-rule: ex=
+actly;"><td id=3D"layout-row-padding1393" valign=3D"top" style=3D"mso-line-=
+height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-a=
+djust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; m=
+so-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-=
+rule: exactly;"><td class=3D"image-td" align=3D"center" valign=3D"top" widt=
+h=3D"325" style=3D"mso-line-height-rule: exactly;"><img src=3D"https://cont=
+ent.app-us1.com/Rnj5K/2021/10/19/8657e27f-7004-40ca-ba8e-9b2b418af77c.png?r=
+=3D1645156082" alt=3D"" width=3D"203"=0Astyle=3D"display: block; border: no=
+ne; outline: none; width: 203px; opacity: 1; max-width: 100%;"></td>=0A</tr=
+>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
+=0A<td id=3D"layout_table_62de68750763e7b5416849057068f593d9593aa4" valign=
 =3D"top" width=3D"325" style=3D"mso-line-height-rule: exactly;"><table cell=
 padding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"layout layout-table "=
  width=3D"325" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjus=
 t: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso-t=
 able-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-rule=
-: exactly;"><td id=3D"layout-row-margin1380" valign=3D"top" style=3D"mso-li=
+: exactly;"><td id=3D"layout-row-margin1394" valign=3D"top" style=3D"mso-li=
 ne-height-rule: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" =
 cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -w=
 ebkit-text-size-adjust: 100%; border-collapse: initial !important; font-siz=
 e: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><t=
-r id=3D"layout-row1380" class=3D"layout layout-row widget _widget_text styl=
-e1380" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0;"><td =
-id=3D"layout-row-padding1380" valign=3D"top"=0Astyle=3D"mso-line-height-rul=
+r id=3D"layout-row1394" class=3D"layout layout-row widget _widget_text styl=
+e1394" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0;"><td =
+id=3D"layout-row-padding1394" valign=3D"top"=0Astyle=3D"mso-line-height-rul=
 e: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" cellpadding=
 =3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-=
 size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: 1=
 00%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-h=
-eight-rule: exactly;"><td id=3D"text_div1177" class=3D"td_text td_block" va=
+eight-rule: exactly;"><td id=3D"text_div1189" class=3D"td_text td_block" va=
 lign=3D"top" align=3D"left" width=3D"305" style=3D"mso-line-height-rule: ex=
 actly; margin: 0; outline: none; padding: 0; color: inherit; font-size: 12p=
 x; font-weight: inherit; line-height: 1; text-decoration: inherit; font-fam=
@@ -605,14 +608,14 @@ weight: bold; line-height: inherit; text-decoration: inherit; text-align: i=
 nherit;">Minimum FICO of 550</span></li></ul></div>=0A </div>=0A</td>=0A</t=
 r>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
 =0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: ex=
-actly;"><td id=3D"layout-row-margin1381" valign=3D"top" style=3D"mso-line-h=
+actly;"><td id=3D"layout-row-margin1395" valign=3D"top" style=3D"mso-line-h=
 eight-rule: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" cell=
 padding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webki=
 t-text-size-adjust: 100%; border-collapse: initial !important; font-size: 1=
 4px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=
-=3D"layout-row1381" class=3D"layout layout-row widget _widget_button style1=
-381" style=3D"mso-line-height-rule: exactly; background-color: #244df0;"><t=
-d id=3D"layout-row-padding1381" valign=3D"top" style=3D"mso-line-height-rul=
+=3D"layout-row1395" class=3D"layout layout-row widget _widget_button style1=
+395" style=3D"mso-line-height-rule: exactly; background-color: #244df0;"><t=
+d id=3D"layout-row-padding1395" valign=3D"top" style=3D"mso-line-height-rul=
 e: exactly; background-color: #244df0; padding: 5px;"><table width=3D"100%"=
  border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-ad=
 just: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font=
@@ -624,10 +627,10 @@ n: 0; outline: none; padding: 0; text-align: center;">=0A<!--[if mso]> <v:r=
 oundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schemas-m=
 icrosoft-com:office:word" href=3D"https://motorcityfunding.lt.acemlnd.com/P=
 rod/link-tracker?redirectUrl=3DaHR0cCUzQSUyRiUyRnd3dy5wbWZ1cy5jb20lMkZzYnJ1=
-Z21hbg=3D=3D&sig=3D7gJxo8XEVtqsCs8byGKZLowKf9vxpEj1xAsFpKw5BSUf&iat=3D16401=
-85249&a=3D%7C%7C225362583%7C%7C&account=3Dmotorcityfunding%2Eactivehosted%2=
+Z21hbg=3D=3D&sig=3DF2xgmV8NjPS1roy6XRFBUcXha4vhBqmiEufCuTuJm1Nt&iat=3D16402=
+69315&a=3D%7C%7C225362583%7C%7C&account=3Dmotorcityfunding%2Eactivehosted%2=
 Ecom&email=3DrcnACfXAw2TQUyfpj7YMwBdIU0DsLaDSPK6rhDqV%2BUXVt3QtV0xSM9W6AkIV=
-KsAf&s=3D0ad92c0c4a2ff86eed94873b1c9268b7&i=3D64A98A1A189" style=3D"v-text-=
+KsAf&s=3D0ad92c0c4a2ff86eed94873b1c9268b7&i=3D65A99A1A192" style=3D"v-text-=
 anchor:middle; width:130px; height:60px; font-weight: bold;" arcsize=3D"6%"=
  strokecolor=3D"#B5B5B5" strokeweight=3D"1pt" fillcolor=3D"#ff1414" o:butto=
 n=3D"true" o:allowincell=3D"true" o:allowoverlap=3D"false" > <v:textbox ins=
@@ -635,10 +638,10 @@ et=3D"2px,2px,2px,2px"> <center style=3D"color:#ffffff;font-family:Arial; f=
 ont-size:14px; font-weight: bold;line-height: 1.1;">APPLY NOW</center> </v:=
 textbox> </v:roundrect>=0A<![endif]--> <a href=3D"https://motorcityfunding.=
 lt.acemlnd.com/Prod/link-tracker?redirectUrl=3DaHR0cCUzQSUyRiUyRnd3dy5wbWZ1=
-cy5jb20lMkZzYnJ1Z21hbg=3D=3D&sig=3D7gJxo8XEVtqsCs8byGKZLowKf9vxpEj1xAsFpKw5=
-BSUf&iat=3D1640185249&a=3D%7C%7C225362583%7C%7C&account=3Dmotorcityfunding%=
+cy5jb20lMkZzYnJ1Z21hbg=3D=3D&sig=3DF2xgmV8NjPS1roy6XRFBUcXha4vhBqmiEufCuTuJ=
+m1Nt&iat=3D1640269315&a=3D%7C%7C225362583%7C%7C&account=3Dmotorcityfunding%=
 2Eactivehosted%2Ecom&email=3DrcnACfXAw2TQUyfpj7YMwBdIU0DsLaDSPK6rhDqV%2BUXV=
-t3QtV0xSM9W6AkIVKsAf&s=3D0ad92c0c4a2ff86eed94873b1c9268b7&i=3D64A98A1A189" =
+t3QtV0xSM9W6AkIVKsAf&s=3D0ad92c0c4a2ff86eed94873b1c9268b7&i=3D65A99A1A192" =
 style=3D"margin: 0; outline: none; padding: 12px; color: #ffffff; backgroun=
 d: #ff1414; background-color: #ff1414; border: 1px solid #B5B5B5; border-ra=
 dius: 3px; font-family: Arial; font-size: 14px; display: inline-block; line=
@@ -646,19 +649,19 @@ dius: 3px; font-family: Arial; font-size: 14px; display: inline-block; line=
 span style=3D"color:#ffffff;font-family:Arial;font-size:14px;font-weight: b=
 old;"> APPLY NOW </span> </a> </div>=0A=0A</td>=0A</tr>=0A</table>=0A</td>=
 =0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: ex=
-actly;"><td id=3D"layout-row-margin1383" valign=3D"top" style=3D"mso-line-h=
+actly;"><td id=3D"layout-row-margin1397" valign=3D"top" style=3D"mso-line-h=
 eight-rule: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" cell=
 padding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webki=
 t-text-size-adjust: 100%; border-collapse: initial !important; font-size: 1=
 4px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=
-=3D"layout-row1383" class=3D"layout layout-row widget _widget_text style138=
-3" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0;"><td id=
-=3D"layout-row-padding1383" valign=3D"top" style=3D"mso-line-height-rule: e=
+=3D"layout-row1397" class=3D"layout layout-row widget _widget_text style139=
+7" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0;"><td id=
+=3D"layout-row-padding1397" valign=3D"top" style=3D"mso-line-height-rule: e=
 xactly; padding: 5px;"><table width=3D"100%" border=3D"0" cellpadding=3D"0"=
  cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-a=
 djust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; m=
 so-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-=
-rule: exactly;"><td id=3D"text_div1179" class=3D"td_text td_block" valign=
+rule: exactly;"><td id=3D"text_div1191" class=3D"td_text td_block" valign=
 =3D"top"=0Aalign=3D"left" width=3D"630" style=3D"mso-line-height-rule: exac=
 tly; margin: 0; outline: none; padding: 0; color: inherit; font-size: 12px;=
  font-weight: inherit; line-height: 1; text-decoration: inherit; font-famil=
@@ -703,32 +706,32 @@ bold; line-height: inherit; text-decoration: inherit; font-family: arial;">=
 herit; line-height: inherit; text-decoration: inherit; font-family: arial;"=
 >Funding Manager</span></span></div>=0A</span></span></div>=0A </div>=0A</t=
 d>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr id=
-=3D"layout-row1386" class=3D"layout layout-row clear-this " style=3D"mso-li=
-ne-height-rule: exactly;"><td id=3D"layout-row-padding1386" valign=3D"top" =
+=3D"layout-row1400" class=3D"layout layout-row clear-this " style=3D"mso-li=
+ne-height-rule: exactly;"><td id=3D"layout-row-padding1400" valign=3D"top" =
 style=3D"mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0"=
  cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -=
 webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; =
 min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=
-=3D"mso-line-height-rule: exactly;"><td id=3D"layout_table_295da3cc07bd2f30=
-c4285b54f6dbc7962d7c03f1" valign=3D"top" width=3D"325" style=3D"mso-line-he=
+=3D"mso-line-height-rule: exactly;"><td id=3D"layout_table_4a22207dad4153ff=
+35d6f410396731333d914307" valign=3D"top" width=3D"325" style=3D"mso-line-he=
 ight-rule: exactly;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
 " class=3D"layout layout-table " width=3D"325" style=3D"-ms-text-size-adjus=
 t: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-si=
 ze: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><=
-tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1384=
+tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1398=
 " valign=3D"top" style=3D"mso-line-height-rule:=0Aexactly; padding: 5px;"><=
 table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=
 =3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-coll=
 apse: initial !important; font-size: 14px; min-width: 100%; mso-table-lspac=
-e: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row1384" class=3D"layout l=
-ayout-row widget _widget_text style1384" style=3D"mso-line-height-rule: exa=
+e: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row1398" class=3D"layout l=
+ayout-row widget _widget_text style1398" style=3D"mso-line-height-rule: exa=
 ctly; margin: 0; padding: 0; background-color: #244df0;"><td id=3D"layout-r=
-ow-padding1384" valign=3D"top" style=3D"mso-line-height-rule: exactly; back=
+ow-padding1398" valign=3D"top" style=3D"mso-line-height-rule: exactly; back=
 ground-color: #244df0; padding: 5px;"><table width=3D"100%" border=3D"0" ce=
 llpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -web=
 kit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min=
 -width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"m=
-so-line-height-rule: exactly;"><td id=3D"text_div1180" class=3D"td_text td_=
+so-line-height-rule: exactly;"><td id=3D"text_div1192" class=3D"td_text td_=
 block" valign=3D"top" align=3D"left" width=3D"305" style=3D"mso-line-height=
 -rule: exactly; margin: 0;=0Aoutline: none; padding: 0; color: inherit; fon=
 t-size: 12px; font-weight: inherit; line-height: 1; text-decoration: inheri=
@@ -756,20 +759,20 @@ ial; text-align: center;"><span style=3D"color: inherit; font-size: inherit=
 ; font-weight: inherit; line-height: inherit; text-decoration: inherit; fon=
 t-family: arial; text-align: inherit;">O: (315) 257-1195</span></div>=0A</s=
 pan></div>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A=
-</tr>=0A</table>=0A</td>=0A<td id=3D"layout_table_648b093162d2a8701d3a9c623=
-9d4630546ad14bb" valign=3D"top" width=3D"325" style=3D"mso-line-height-rule=
+</tr>=0A</table>=0A</td>=0A<td id=3D"layout_table_14fcaa11f41abf702244599b6=
+0dccc1517552e7c" valign=3D"top" width=3D"325" style=3D"mso-line-height-rule=
 : exactly;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=
 =3D"layout layout-table " width=3D"325" style=3D"-ms-text-size-adjust: auto=
 ; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14p=
 x; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr styl=
-e=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1385" valig=
+e=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1399" valig=
 n=3D"top" style=3D"mso-line-height-rule: exactly; padding: 8px;"><table wid=
 th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-t=
 ext-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: ini=
 tial !important; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; m=
-so-table-rspace: 0pt;"><tr id=3D"layout-row1385" class=3D"layout layout-row=
- widget _widget_button style1385" style=3D"mso-line-height-rule: exactly; b=
-ackground-color: #244df0;"><td id=3D"layout-row-padding1385" valign=3D"top"=
+so-table-rspace: 0pt;"><tr id=3D"layout-row1399" class=3D"layout layout-row=
+ widget _widget_button style1399" style=3D"mso-line-height-rule: exactly; b=
+ackground-color: #244df0;"><td id=3D"layout-row-padding1399" valign=3D"top"=
 =0Astyle=3D"mso-line-height-rule: exactly; background-color: #244df0; paddi=
 ng: 14px;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
 =3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%;=
@@ -795,7 +798,7 @@ tion: none; mso-hide: all;"> <span style=3D"color:#ffffff;font-family:Arial=
 td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table=
 >=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<=
 /table>=0A</td>=0A</tr>=0A</table>=0A</div>=0A<img src=3D"https://motorcity=
-funding.lt.acemlnd.com/Prod/link-tracker?nl=3D1&c=3D64&m=3D98&s=3D0ad92c0c4=
+funding.lt.acemlnd.com/Prod/link-tracker?nl=3D1&c=3D65&m=3D99&s=3D0ad92c0c4=
 a2ff86eed94873b1c9268b7&l=3Dopen&account=3Dmotorcityfunding.activehosted.co=
 m&a=3D225362583" border=3D"0" width=3D"1" height=3D"1" style=3D"display:blo=
 ck;width:1px!important;min-width:1px!important;max-width:1px!important;heig=
@@ -807,25 +810,25 @@ ze:11px;font-family:arial,helvetica,sans-serif;line-height:140%;line-height=
 to: <span style=3D"font-size:11px;font-family:arial,helvetica,sans-serif;fo=
 nt-weight:normal;text-decoration:none;outline:none;">linux1394-devel@lists.=
 sourceforge.net</span>=0A=09=09<br>=0A=09=09<br>=0A=09=09<a href=3D"http://=
-motorcityfunding.activehosted.com/proc.php?nl=3D1&c=3D64&m=3D98&s=3D0ad92c0=
+motorcityfunding.activehosted.com/proc.php?nl=3D1&c=3D65&m=3D99&s=3D0ad92c0=
 c4a2ff86eed94873b1c9268b7&act=3Dunsub" style=3D"font-size:11px;font-family:=
 arial,helvetica,sans-serif;font-weight:bold;text-decoration:underline;"><sp=
 an style=3D"font-weight:bold;text-decoration:underline;">Unsubscribe</span>=
 </a>=0A=09=09<br>=0A=09=09<br> Motor City Funding, 3000 Town Center, Southf=
 ield, United States=0A=09</center>=0A</div>=0A<br clear=3D"all" /></body>=
 =0A</html>
---_=_swift-23347361961c33c3e1280b7.57465379_=_--
+--_=_swift-141250263461c4834d6280e2.43946241_=_--
 
 
 
---===============8842633447269083126==
+--===============8201044702829737082==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============8842633447269083126==
+--===============8201044702829737082==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -835,6 +838,6 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============8842633447269083126==--
+--===============8201044702829737082==--
 
 
