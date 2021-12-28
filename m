@@ -2,82 +2,85 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 290674804ED
-	for <lists+linux1394-devel@lfdr.de>; Mon, 27 Dec 2021 22:37:15 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B7C6480A0C
+	for <lists+linux1394-devel@lfdr.de>; Tue, 28 Dec 2021 15:39:13 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1n1xfy-0003Ma-Fp; Mon, 27 Dec 2021 21:37:02 +0000
+	id 1n2Dcx-0007Hm-FN; Tue, 28 Dec 2021 14:38:59 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2) (envelope-from
- <bounce-2287853-69-17611-linux1394-devel=lists.sourceforge.net@s15.avl4.acemsrvd.com>)
- id 1n1xfw-0003MK-OA
- for linux1394-devel@lists.sourceforge.net; Mon, 27 Dec 2021 21:37:00 +0000
+ <bounce-2287853-70-17611-linux1394-devel=lists.sourceforge.net@s15.avl4.acemsrvd.com>)
+ id 1n2Dcu-0007Hc-Oj
+ for linux1394-devel@lists.sourceforge.net; Tue, 28 Dec 2021 14:38:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Message-ID:List-Unsubscribe:Sender:
  Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Subject:From:To:
  Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
  List-Id:List-Help:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=/sbjmvtWqHPHoMObJNPQMBIp/UBu1qhpuHuL8++EJ14=; b=jCdTz9+7LU4NEExA0mRtr5nY2F
- uwxD+CEY/6EkOv99hCcduMX/qitMRHWWSdeIi7hf8S2aYIVO7F99OimyUAXSqHFldC6iEqbr/ebsY
- Noo6ku76CWhWn5FvGSPs5ukgh4+f5ND0VvflzpYcy2nbwIv6wYR6R+aenwqhWV2tZi60=;
+ bh=zEtoDjxy07ZJ3mI0sqTI8mHCBbKsur0M4CN500WbPQI=; b=Q7tz4558OVY6w+CvuxnsUDK3aK
+ wlnPHynRAGXjnumM/Zp+8ddT7oIrIxDEZHGO3LD1ytFW5YBrgxm85PtOmahSBRzCVBV+9C2ETIR81
+ 1QpiJq4PBuj6tbIwQN2Np+Z0MNr9SfZgQgXdMJya5aaW0eBQ+FOLvlHYfZ9akpA3IQ6Y=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Message-ID:List-Unsubscribe:Sender:Content-Transfer-Encoding:Content-Type
  :MIME-Version:Date:Subject:From:To:Reply-To:Cc:Content-ID:Content-Description
  :Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
  In-Reply-To:References:List-Id:List-Help:List-Subscribe:List-Post:List-Owner:
- List-Archive; bh=/sbjmvtWqHPHoMObJNPQMBIp/UBu1qhpuHuL8++EJ14=; b=l/77jPedee7K
- okbi/O7GH/L5eTuq/hZgaN3v84Up53XuSP3OGbq+txqemRLzYDx81LsCbtuHj0fzMI3s1MFhphqad
- vKPZMEbPGwSEqf05gOF3vtkNpI1tU/znbIBYCnVXzy/SYGU2DMV8aRFkcWYPUrU+F8gAUmVY2sf78
- pNUbA=;
+ List-Archive; bh=zEtoDjxy07ZJ3mI0sqTI8mHCBbKsur0M4CN500WbPQI=; b=LUbPHCtI4xS7
+ 3xrIPPcmt/NNsHq8KvlM3jUJggyW65fO9X7tKLyNZs+liopdQlZCBrn0gTmMfLeiIAeCXbJXvn5Rd
+ +9GywwRwSDusJwAfdPMQ7otUiW7xI+MlxYvdItbQ1iyeN5IOPyNnOmxYpaX3xAq5q2Va5pHIf9vcm
+ DZd/g=;
 Received: from s15.avl4.acemsrvd.com ([192.92.97.219])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1n1xft-0004rU-8x
- for linux1394-devel@lists.sourceforge.net; Mon, 27 Dec 2021 21:37:00 +0000
+ id 1n2Dcr-0005OB-1V
+ for linux1394-devel@lists.sourceforge.net; Tue, 28 Dec 2021 14:38:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dk;
  d=s15.avl4.acemsrvd.com; 
  h=To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding:
  Sender:List-Unsubscribe:List-Unsubscribe-Post:Message-ID;
  i=motorcityfunding.activehosted.com@s15.avl4.acemsrvd.com;
- bh=/sbjmvtWqHPHoMObJNPQMBIp/UBu1qhpuHuL8++EJ14=;
- b=nxRXc+7FDu0bz7NDz+OSftEQUDn2KTaCnOS/u/N18JJV7yAvR38lH/GUgPmBx7MRQJ42GqQc0uQA
- 51nDKWxB0s2xfKDt9sMUAKzEEmqg3Z3MsAKF9d0bE/FIALmdM/BYQq0tIChBzuwTOKeG3IRain8F
- u5hD7QYDOl1vwTX8bls=
-Received: by s15.avl4.acemsrvd.com id hp8ov22q274s for
+ bh=zEtoDjxy07ZJ3mI0sqTI8mHCBbKsur0M4CN500WbPQI=;
+ b=sQQymtC2GSBubIZDxbui5UF7CNrtPMo35/J2WYqTqgihKsxygxwvzgnhSI/Y5BhRjCe/lKMYlGbA
+ Z2p61vdQSTaF9uJZNlJRRn5UOt3UrjrK19mAHwLvX57ZA0EmqLdlBmEWMRvwf7Sz/QQPXCBdo2yT
+ SWAjvsN0TzcQamInfYE=
+Received: by s15.avl4.acemsrvd.com id hpcgn42q274u for
  <linux1394-devel@lists.sourceforge.net>;
- Mon, 27 Dec 2021 21:36:49 +0000 (envelope-from
- <bounce-2287853-69-17611-linux1394-devel=lists.sourceforge.net@s15.avl4.acemsrvd.com>)
+ Tue, 28 Dec 2021 14:38:42 +0000 (envelope-from
+ <bounce-2287853-70-17611-linux1394-devel=lists.sourceforge.net@s15.avl4.acemsrvd.com>)
 To: linux1394-devel@lists.sourceforge.net
 From: "SBA Admin" <sbrugman@motorcityfunding.com>
 Subject: SBA's EIDL and Cash Grant Program Ending December 31
-Date: Mon, 27 Dec 2021 15:30:44 -0600
+Date: Tue, 28 Dec 2021 08:31:16 -0600
 MIME-Version: 1.0
 X-Sender: <motorcityfunding.activehosted.com@s15.avl4.acemsrvd.com>
 X-Report-Abuse: Please report abuse to abuse@activecampaign.com
-X-mid: bGludXgxMzk0LWRldmVsQGxpc3RzLnNvdXJjZWZvcmdlLm5ldCAsIGM2OSAsIG0xMDUgLCBzNjI
+X-mid: bGludXgxMzk0LWRldmVsQGxpc3RzLnNvdXJjZWZvcmdlLm5ldCAsIGM3MCAsIG0xMDYgLCBzNjM
 x-virtual-mta: s15.avl4.acemsrvd.com
 Feedback-ID: 2287853:activecampaign
-X-250ok-CID: 2287853-69
+X-250ok-CID: 2287853-70
 List-Unsubscribe-Post: List-Unsubscribe=One-Click
-Message-ID: <20211227213649.20418.296146754.swift@motorcityfunding.activehosted.com>
-X-Spam-Score: 0.2 (/)
+Message-ID: <20211228143842.12132.1810803235.swift@motorcityfunding.activehosted.com>
+X-Spam-Score: 1.5 (+)
 X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.lw.sourceforge.com",
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
  
- Content preview:  Deadline to Apply is Imminent - 4 Days Left!  ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌
+ Content preview:  Deadline to Apply is Imminent - 3 Days Left!  ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌
     [...] 
  
- Content analysis details:   (0.2 points, 6.0 required)
+ Content analysis details:   (1.5 points, 6.0 required)
  
   pts rule name              description
  ---- ---------------------- --------------------------------------------------
+  1.2 RCVD_IN_BL_SPAMCOP_NET RBL: Received via a relay in
+                             bl.spamcop.net
+               [Blocked - see <https://www.spamcop.net/bl.shtml?192.92.97.219>]
   0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
                              mail domains are different
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
@@ -89,7 +92,7 @@ X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.
                              valid
  -0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
   0.0 LOTS_OF_MONEY          Huge... sums of money
-X-Headers-End: 1n1xft-0004rU-8x
+X-Headers-End: 1n2Dcr-0005OB-1V
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,20 +105,20 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8028630372220034539=="
+Content-Type: multipart/mixed; boundary="===============7285628469333070931=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
 
---===============8028630372220034539==
+--===============7285628469333070931==
 Content-Type: multipart/alternative;
- boundary="_=_swift-161043501761ca308477dae5.28366309_=_"
+ boundary="_=_swift-170532212861cb1fb4ee3a02.15781689_=_"
 Content-Transfer-Encoding: 7bit
 
 
---_=_swift-161043501761ca308477dae5.28366309_=_
+--_=_swift-170532212861cb1fb4ee3a02.15781689_=_
 Content-Type: text/plain; charset=utf-8
 
-Deadline to Apply is Imminent - 4 Days Left! 
+Deadline to Apply is Imminent - 3 Days Left! 
  ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌
 
  
@@ -163,10 +166,10 @@ _________________
 Sent to linux1394-devel@lists.sourceforge.net
 
 Unsubscribe:
-http://motorcityfunding.activehosted.com/proc.php?nl=1&amp;c=69&amp;m=105&amp;s=0ad92c0c4a2ff86eed94873b1c9268b7&amp;act=unsub
+http://motorcityfunding.activehosted.com/proc.php?nl=1&amp;c=70&amp;m=106&amp;s=0ad92c0c4a2ff86eed94873b1c9268b7&amp;act=unsub
 
 Motor City Funding, 3000 Town Center, Southfield, United States
---_=_swift-161043501761ca308477dae5.28366309_=_
+--_=_swift-170532212861cb1fb4ee3a02.15781689_=_
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -224,13 +227,13 @@ th:16px !important; height:16px !important;} *[class].ac-social-icon-24 {wi=
 dth:24px !important; height:24px !important;} *[class].ac-social-icon-28 {w=
 idth:28px !important; height:28px !important;} *[class].__ac_social_icons {=
  margin-right: 0px !important; } }=0A</style><style data-ac-keep=3D"true"> =
-@media only screen and (max-width: 320px) { #layout-row1441 { max-height: 0=
+@media only screen and (max-width: 320px) { #layout-row1455 { max-height: 0=
 px!important; font-size: 0px!important; display: none!important; visibility=
-: hidden!important; } #layout-row1442 img { width: 100% !important; height:=
- auto !important; max-width: 320px !important; } #layout-row1443 img { widt=
+: hidden!important; } #layout-row1456 img { width: 100% !important; height:=
+ auto !important; max-width: 320px !important; } #layout-row1457 img { widt=
 h: 100% !important; height: auto !important; max-width: 320px !important; }=
- #layout-row1445 img { width: 100% !important; height: auto !important; max=
--width: 320px !important; } #layout-row1453 img { width: 100% !important; h=
+ #layout-row1459 img { width: 100% !important; height: auto !important; max=
+-width: 320px !important; } #layout-row1467 img { width: 100% !important; h=
 eight: auto !important; max-width: 320px !important; } table, tbody, td, .d=
 ivbody { display: table !important; width: 100% !important; max-width: 100%=
  !important; } .td_rss .rss-item img.iphone_large_image { width: auto !impo=
@@ -249,12 +252,12 @@ line-block !important; margin: auto !important; width: auto !important; min=
 ac_social_table img { display: inline-block !important; margin: auto !impor=
 tant; width: 32px !important; min-width: 32px !important; max-width: 32px !=
 important; }=0A}=0A@media only screen and (max-width: 375px) { #layout-row1=
-441 { max-height: 0px!important; font-size: 0px!important; display: none!im=
-portant; visibility: hidden!important; } #layout-row1442 img { width: 100% =
+455 { max-height: 0px!important; font-size: 0px!important; display: none!im=
+portant; visibility: hidden!important; } #layout-row1456 img { width: 100% =
 !important; height: auto !important; max-width: 375px !important; } #layout=
--row1443 img { width: 100% !important; height: auto !important; max-width: =
-375px !important; } #layout-row1445 img { width: 100% !important; height: a=
-uto !important; max-width: 375px !important; } #layout-row1453 img { width:=
+-row1457 img { width: 100% !important; height: auto !important; max-width: =
+375px !important; } #layout-row1459 img { width: 100% !important; height: a=
+uto !important; max-width: 375px !important; } #layout-row1467 img { width:=
  100% !important; height: auto !important; max-width: 375px !important; } t=
 able, tbody, td, .divbody { display: table !important; width: 100% !importa=
 nt; max-width: 100% !important; } .td_rss .rss-item img.iphone_large_image =
@@ -273,13 +276,13 @@ uto !important; min-width: auto !important; text-align: center !important; =
 } u + .body table._ac_social_table img { display: inline-block !important; =
 margin: auto !important; width: 32px !important; min-width: 32px !important=
 ; max-width: 32px !important; }=0A}=0A@media only screen and (max-width: 41=
-4px) { #layout-row1441 { max-height: 0px!important; font-size: 0px!importan=
-t; display: none!important; visibility: hidden!important; } #layout-row1442=
+4px) { #layout-row1455 { max-height: 0px!important; font-size: 0px!importan=
+t; display: none!important; visibility: hidden!important; } #layout-row1456=
  img { width: 100% !important; height: auto !important; max-width: 414px !i=
-mportant; } #layout-row1443 img { width: 100% !important; height: auto !imp=
-ortant; max-width: 380px !important; } #layout-row1445 img { width: 100% !i=
+mportant; } #layout-row1457 img { width: 100% !important; height: auto !imp=
+ortant; max-width: 380px !important; } #layout-row1459 img { width: 100% !i=
 mportant; height: auto !important; max-width: 414px !important; } #layout-r=
-ow1453 img { width: 100% !important; height: auto !important; max-width: 41=
+ow1467 img { width: 100% !important; height: auto !important; max-width: 41=
 4px !important; } table, tbody, td, .divbody { display: table !important; w=
 idth: 100% !important; max-width: 100% !important; } .td_rss .rss-item img.=
 iphone_large_image { width: auto !important; } u + .body { display: table !=
@@ -297,13 +300,13 @@ important; width: auto !important; min-width: auto !important; text-align: =
 center !important; } u + .body table._ac_social_table img { display: inline=
 -block !important; margin: auto !important; width: 32px !important; min-wid=
 th: 32px !important; max-width: 32px !important; }=0A}=0A@media only screen=
- and (max-width: 667px) { #layout-row1441 { max-height: 0px!important; font=
+ and (max-width: 667px) { #layout-row1455 { max-height: 0px!important; font=
 -size: 0px!important; display: none!important; visibility: hidden!important=
-; } #layout-row1442 img { width: 100% !important; height: auto !important; =
-max-width: 667px !important; } #layout-row1443 img { width: 100% !important=
-; height: auto !important; max-width: 380px !important; } #layout-row1445 i=
+; } #layout-row1456 img { width: 100% !important; height: auto !important; =
+max-width: 667px !important; } #layout-row1457 img { width: 100% !important=
+; height: auto !important; max-width: 380px !important; } #layout-row1459 i=
 mg { width: 100% !important; height: auto !important; max-width: 667px !imp=
-ortant; } #layout-row1453 img { width: 100% !important; height: auto !impor=
+ortant; } #layout-row1467 img { width: 100% !important; height: auto !impor=
 tant; max-width: 667px !important; } table, tbody, td, .divbody { display: =
 table !important; width: 100% !important; max-width: 100% !important; } .td=
 _rss .rss-item img.iphone_large_image { width: auto !important; } u + .body=
@@ -330,7 +333,7 @@ F; width: 100%; text-align: center;">=09=09<div style=3D"display: none !imp=
 ortant; padding: 0; height: 1px; font-size: 1px; background-color: inherit =
 !important; opacity: 0; color: transparent; mso-line-height-rule: exactly; =
 line-height:1px; mso-hide:all;">=0A=09=09=09Deadline to Apply is Imminent -=
- 4 Days Left!=0A=09=09=09<div style=3D"display: none; max-height: 0px; over=
+ 3 Days Left!=0A=09=09=09<div style=3D"display: none; max-height: 0px; over=
 flow: hidden;">=0A=09=09=09=09&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
 =8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
 =E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
@@ -371,20 +374,20 @@ padding=3D"0" cellspacing=3D"0" width=3D"650" bgcolor=3D"#FFFFFF" style=3D"=
 -ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse=
 : collapse; font-size: 14px; min-width: auto; mso-table-lspace: 0pt; mso-ta=
 ble-rspace: 0pt; max-width: 650px;"><tr=0Astyle=3D"mso-line-height-rule: ex=
-actly;"><td id=3D"layout_table_14a6564ff7a307d7430dae2498489b5f963e2bc4" va=
+actly;"><td id=3D"layout_table_46c5f38a7f23bc1a86e37e437eebbe4fbde4727a" va=
 lign=3D"top" align=3D"center" width=3D"650" style=3D"mso-line-height-rule: =
 exactly;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"=
 layout layout-table root-table" width=3D"650" style=3D"-ms-text-size-adjust=
 : auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-siz=
 e: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><t=
-r style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1441"=
+r style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1455"=
  valign=3D"top" style=3D"mso-line-height-rule: exactly;"><table width=3D"10=
 0%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size=
 -adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; f=
 ont-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0=
-pt;"><tr id=3D"layout-row1441" class=3D"layout layout-row widget _widget_sp=
+pt;"><tr id=3D"layout-row1455" class=3D"layout layout-row widget _widget_sp=
 acer " style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-paddin=
-g1441" valign=3D"top"=0Astyle=3D"mso-line-height-rule: exactly;"><table wid=
+g1455" valign=3D"top"=0Astyle=3D"mso-line-height-rule: exactly;"><table wid=
 th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-t=
 ext-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: col=
 lapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-r=
@@ -398,37 +401,37 @@ rspace: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td class=3D"spa=
 cer-body" valign=3D"top" height=3D"30" width=3D"650" style=3D"mso-line-heig=
 ht-rule: exactly;">=C2=A0</td>=0A</tr>=0A</table>=0A</div>=0A</td>=0A</tr>=
 =0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-l=
-ine-height-rule: exactly;"><td id=3D"layout-row-margin1442" valign=3D"top" =
+ine-height-rule: exactly;"><td id=3D"layout-row-margin1456" valign=3D"top" =
 style=3D"mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0"=
  cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -=
 webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; =
 min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"l=
-ayout-row1442" class=3D"layout layout-row widget _widget_picture " align=3D=
+ayout-row1456" class=3D"layout layout-row widget _widget_picture " align=3D=
 "center" style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padd=
-ing1442" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><table wid=
+ing1456" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><table wid=
 th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-t=
 ext-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: col=
 lapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-r=
 space: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td class=3D"imag=
 e-td" align=3D"center" valign=3D"top" width=3D"650" style=3D"mso-line-heigh=
 t-rule: exactly;"><img=0Asrc=3D"https://content.app-us1.com/Rnj5K/2021/11/0=
-8/5ed7148d-1798-4506-a900-35ec4edba52c.png?r=3D291549216" alt=3D"" width=3D=
+8/5ed7148d-1798-4506-a900-35ec4edba52c.png?r=3D602841807" alt=3D"" width=3D=
 "325" style=3D"display: block; border: none; outline: none; width: 325px; o=
 pacity: 1; max-width: 100%;"></td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</t=
 able>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: exactly;"><td id=
-=3D"layout-row-margin1440" valign=3D"top" style=3D"mso-line-height-rule: ex=
+=3D"layout-row-margin1454" valign=3D"top" style=3D"mso-line-height-rule: ex=
 actly; padding: 0;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" ce=
 llspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adju=
 st: 100%; border-collapse: initial !important; font-size: 14px; min-width: =
 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row14=
-40" class=3D"layout layout-row widget _widget_text style1440" style=3D"mso-=
+54" class=3D"layout layout-row widget _widget_text style1454" style=3D"mso-=
 line-height-rule: exactly; margin: 0; padding: 0; background-color: #244df0=
-;"><td id=3D"layout-row-padding1440" valign=3D"top" style=3D"mso-line-heigh=
+;"><td id=3D"layout-row-padding1454" valign=3D"top" style=3D"mso-line-heigh=
 t-rule: exactly; background-color: #244df0; padding: 0;"><table width=3D"10=
 0%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size=
 -adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; f=
 ont-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0=
-pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"text_div1228"=
+pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"text_div1240"=
 =0Aclass=3D"td_text td_block" valign=3D"top" align=3D"left" width=3D"650" s=
 tyle=3D"line-height: 140%; mso-line-height-rule: exactly; margin: 0; outlin=
 e: none; padding: 0; color: inherit; font-size: 12px; font-weight: inherit;=
@@ -449,16 +452,16 @@ ications</span><span style=3D"color: #ffffff; font-size: inherit; font-weig=
 ht: inherit; line-height: inherit; text-decoration: inherit; text-align: in=
 herit;"> to December 31st 2021 Apply before the deadline!</span></span></di=
 v>=0A </div>=0A<!--[if (gte mso 12)&(lte mso 15) ]>=0A<style data-ac-keep=
-=3D"true" data-ac-inline=3D"false"> #text_div1228, #text_div1228 div { line=
+=3D"true" data-ac-inline=3D"false"> #text_div1240, #text_div1240 div { line=
 -height: 140% !important; };=0A</style>=0A<![endif]--></td>=0A</tr>=0A</tab=
 le>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-heig=
-ht-rule: exactly;"><td id=3D"layout-row-margin1453" valign=3D"top" style=3D=
+ht-rule: exactly;"><td id=3D"layout-row-margin1467" valign=3D"top" style=3D=
 "mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpad=
 ding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-t=
 ext-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-widt=
 h: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-ro=
-w1453" class=3D"layout layout-row widget _widget_picture " align=3D"left" s=
-tyle=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padding1453" v=
+w1467" class=3D"layout layout-row widget _widget_picture " align=3D"left" s=
+tyle=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padding1467" v=
 align=3D"top" style=3D"mso-line-height-rule: exactly;"><table width=3D"100%=
 " border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-a=
 djust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; fon=
@@ -466,17 +469,17 @@ t-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt=
 ;"><tr style=3D"mso-line-height-rule: exactly;"><td class=3D"image-td" alig=
 n=3D"left" valign=3D"top" width=3D"650" style=3D"mso-line-height-rule: exac=
 tly;"><img=0Asrc=3D"https://content.app-us1.com/Rnj5K/2021/10/19/efc7c4bf-d=
-aad-4389-a62e-b7bdcea92aec.png?r=3D928811011" alt=3D"" width=3D"650" style=
+aad-4389-a62e-b7bdcea92aec.png?r=3D27353625" alt=3D"" width=3D"650" style=
 =3D"display: block; border: none; outline: none; width: 650px; opacity: 1; =
 max-width: 100%;"></td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</t=
 d>=0A</tr>=0A<tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-=
-row-margin1443" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><ta=
+row-margin1457" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><ta=
 ble width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=
 =3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-coll=
 apse: collapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; ms=
-o-table-rspace: 0pt;"><tr id=3D"layout-row1443" class=3D"layout layout-row =
+o-table-rspace: 0pt;"><tr id=3D"layout-row1457" class=3D"layout layout-row =
 widget _widget_picture " align=3D"center" style=3D"mso-line-height-rule: ex=
-actly;"><td id=3D"layout-row-padding1443" valign=3D"top" style=3D"mso-line-=
+actly;"><td id=3D"layout-row-padding1457" valign=3D"top" style=3D"mso-line-=
 height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpadding=3D"0"=
  cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-a=
 djust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; m=
@@ -484,23 +487,23 @@ so-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-=
 rule: exactly;"><td class=3D"image-td" align=3D"center" valign=3D"top" widt=
 h=3D"650" style=3D"mso-line-height-rule: exactly;"><img=0Asrc=3D"https://co=
 ntent.app-us1.com/Rnj5K/2021/11/08/8db24c11-71e7-459f-ab55-2957448b054e.jpe=
-g?r=3D561950803" alt=3D"" width=3D"380" style=3D"display: block; border: no=
+g?r=3D231311367" alt=3D"" width=3D"380" style=3D"display: block; border: no=
 ne; outline: none; width: 380px; opacity: 1; max-width: 100%;"></td>=0A</tr=
 >=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-=
-line-height-rule: exactly;"><td id=3D"layout-row-margin1444" valign=3D"top"=
+line-height-rule: exactly;"><td id=3D"layout-row-margin1458" valign=3D"top"=
  style=3D"mso-line-height-rule: exactly; padding: 5px;"><table width=3D"100=
 %" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-=
 adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: initial !imp=
 ortant; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-=
-rspace: 0pt;"><tr id=3D"layout-row1444" class=3D"layout layout-row widget _=
-widget_text style1444" style=3D"mso-line-height-rule: exactly; margin: 0; p=
-adding: 0; background-color: #244df0;"><td id=3D"layout-row-padding1444" va=
+rspace: 0pt;"><tr id=3D"layout-row1458" class=3D"layout layout-row widget _=
+widget_text style1458" style=3D"mso-line-height-rule: exactly; margin: 0; p=
+adding: 0; background-color: #244df0;"><td id=3D"layout-row-padding1458" va=
 lign=3D"top" style=3D"mso-line-height-rule: exactly; background-color: #244=
 df0; padding: 5px;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" ce=
 llspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adju=
 st: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso-=
 table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-rul=
-e: exactly;"><td=0Aid=3D"text_div1232" class=3D"td_text td_block" valign=3D=
+e: exactly;"><td=0Aid=3D"text_div1244" class=3D"td_text td_block" valign=3D=
 "top" align=3D"left" width=3D"630" style=3D"mso-line-height-rule: exactly; =
 margin: 0; outline: none; padding: 0; color: inherit; font-size: 12px; font=
 -weight: inherit; line-height: 1; text-decoration: inherit; font-family: ar=
@@ -514,26 +517,26 @@ erit; text-decoration: inherit; text-align: center;"><span style=3D"color: =
 #ffffff; font-size: inherit; font-weight: bold; line-height: inherit; text-=
 decoration: inherit;" class=3D"">What is the EIDL? </span></div>=0A </div>=
 =0A </div>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A=
-</tr>=0A<tr id=3D"layout-row1448" class=3D"layout layout-row clear-this " s=
-tyle=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padding1448" v=
+</tr>=0A<tr id=3D"layout-row1462" class=3D"layout layout-row clear-this " s=
+tyle=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padding1462" v=
 align=3D"top" style=3D"mso-line-height-rule: exactly;"><table width=3D"100%=
 " border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-a=
 djust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; fon=
 t-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt=
-;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout_table_b9e3=
-011f5dcc01be2f7559e48e5d0a80dc71bf9d" valign=3D"top" width=3D"325" style=3D=
+;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout_table_a645=
+f37bd18f93fe923de9ec7f2c0aae3c6c142b" valign=3D"top" width=3D"325" style=3D=
 "mso-line-height-rule: exactly;"><table cellpadding=3D"0" cellspacing=3D"0"=
  border=3D"0" class=3D"layout layout-table " width=3D"325" style=3D"-ms-tex=
 t-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: colla=
 pse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rsp=
 ace: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-ro=
-w-margin1445" valign=3D"top" style=3D"mso-line-height-rule:=0Aexactly;"><ta=
+w-margin1459" valign=3D"top" style=3D"mso-line-height-rule:=0Aexactly;"><ta=
 ble width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=
 =3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-coll=
 apse: collapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; ms=
-o-table-rspace: 0pt;"><tr id=3D"layout-row1445" class=3D"layout layout-row =
+o-table-rspace: 0pt;"><tr id=3D"layout-row1459" class=3D"layout layout-row =
 widget _widget_picture " align=3D"center" style=3D"mso-line-height-rule: ex=
-actly;"><td id=3D"layout-row-padding1445" valign=3D"top" style=3D"mso-line-=
+actly;"><td id=3D"layout-row-padding1459" valign=3D"top" style=3D"mso-line-=
 height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpadding=3D"0"=
  cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-a=
 djust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; m=
@@ -541,28 +544,28 @@ so-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-=
 rule: exactly;"><td class=3D"image-td" align=3D"center" valign=3D"top" widt=
 h=3D"325" style=3D"mso-line-height-rule: exactly;"><img src=3D"https://cont=
 ent.app-us1.com/Rnj5K/2021/10/19/8657e27f-7004-40ca-ba8e-9b2b418af77c.png?r=
-=3D1173854051" alt=3D"" width=3D"203"=0Astyle=3D"display: block; border: no=
+=3D2011284039" alt=3D"" width=3D"203"=0Astyle=3D"display: block; border: no=
 ne; outline: none; width: 203px; opacity: 1; max-width: 100%;"></td>=0A</tr=
 >=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
-=0A<td id=3D"layout_table_6dddb46ec0f0370d9932249888c6028e4573b5d5" valign=
+=0A<td id=3D"layout_table_703ef97d4eea09e83f1c12a160babdc70aaa4a34" valign=
 =3D"top" width=3D"325" style=3D"mso-line-height-rule: exactly;"><table cell=
 padding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"layout layout-table "=
  width=3D"325" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjus=
 t: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso-t=
 able-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-rule=
-: exactly;"><td id=3D"layout-row-margin1446" valign=3D"top" style=3D"mso-li=
+: exactly;"><td id=3D"layout-row-margin1460" valign=3D"top" style=3D"mso-li=
 ne-height-rule: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" =
 cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -w=
 ebkit-text-size-adjust: 100%; border-collapse: initial !important; font-siz=
 e: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><t=
-r id=3D"layout-row1446" class=3D"layout layout-row widget _widget_text styl=
-e1446" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0;"><td =
-id=3D"layout-row-padding1446" valign=3D"top"=0Astyle=3D"mso-line-height-rul=
+r id=3D"layout-row1460" class=3D"layout layout-row widget _widget_text styl=
+e1460" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0;"><td =
+id=3D"layout-row-padding1460" valign=3D"top"=0Astyle=3D"mso-line-height-rul=
 e: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" cellpadding=
 =3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-=
 size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: 1=
 00%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-h=
-eight-rule: exactly;"><td id=3D"text_div1234" class=3D"td_text td_block" va=
+eight-rule: exactly;"><td id=3D"text_div1246" class=3D"td_text td_block" va=
 lign=3D"top" align=3D"left" width=3D"305" style=3D"mso-line-height-rule: ex=
 actly; margin: 0; outline: none; padding: 0; color: inherit; font-size: 12p=
 x; font-weight: inherit; line-height: 1; text-decoration: inherit; font-fam=
@@ -605,14 +608,14 @@ weight: bold; line-height: inherit; text-decoration: inherit; text-align: i=
 nherit;">Minimum FICO of 550</span></li></ul></div>=0A </div>=0A</td>=0A</t=
 r>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
 =0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: ex=
-actly;"><td id=3D"layout-row-margin1447" valign=3D"top" style=3D"mso-line-h=
+actly;"><td id=3D"layout-row-margin1461" valign=3D"top" style=3D"mso-line-h=
 eight-rule: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" cell=
 padding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webki=
 t-text-size-adjust: 100%; border-collapse: initial !important; font-size: 1=
 4px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=
-=3D"layout-row1447" class=3D"layout layout-row widget _widget_button style1=
-447" style=3D"mso-line-height-rule: exactly; background-color: #244df0;"><t=
-d id=3D"layout-row-padding1447" valign=3D"top" style=3D"mso-line-height-rul=
+=3D"layout-row1461" class=3D"layout layout-row widget _widget_button style1=
+461" style=3D"mso-line-height-rule: exactly; background-color: #244df0;"><t=
+d id=3D"layout-row-padding1461" valign=3D"top" style=3D"mso-line-height-rul=
 e: exactly; background-color: #244df0; padding: 5px;"><table width=3D"100%"=
  border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-ad=
 just: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font=
@@ -624,10 +627,10 @@ n: 0; outline: none; padding: 0; text-align: center;">=0A<!--[if mso]> <v:r=
 oundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schemas-m=
 icrosoft-com:office:word" href=3D"https://motorcityfunding.lt.acemlnd.com/P=
 rod/link-tracker?redirectUrl=3DaHR0cCUzQSUyRiUyRnd3dy5wbWZ1cy5jb20lMkZzYnJ1=
-Z21hbg=3D=3D&sig=3DACQpaR7qoLJHUyniFkmVhjtxub8hzSEpAgdy7JPvYMqq&iat=3D16406=
-41009&a=3D%7C%7C225362583%7C%7C&account=3Dmotorcityfunding%2Eactivehosted%2=
+Z21hbg=3D=3D&sig=3D9qAQa3BDhmGLNbKrqkBXAaGYx4N9GyLJJYQBVSrMVTwS&iat=3D16407=
+02322&a=3D%7C%7C225362583%7C%7C&account=3Dmotorcityfunding%2Eactivehosted%2=
 Ecom&email=3DrcnACfXAw2TQUyfpj7YMwBdIU0DsLaDSPK6rhDqV%2BUXVt3QtV0xSM9W6AkIV=
-KsAf&s=3D0ad92c0c4a2ff86eed94873b1c9268b7&i=3D69A105A1A201" style=3D"v-text=
+KsAf&s=3D0ad92c0c4a2ff86eed94873b1c9268b7&i=3D70A106A1A204" style=3D"v-text=
 -anchor:middle; width:130px; height:60px; font-weight: bold;" arcsize=3D"6%=
 " strokecolor=3D"#B5B5B5" strokeweight=3D"1pt" fillcolor=3D"#ff1414" o:butt=
 on=3D"true" o:allowincell=3D"true" o:allowoverlap=3D"false" > <v:textbox in=
@@ -635,10 +638,10 @@ set=3D"2px,2px,2px,2px"> <center style=3D"color:#ffffff;font-family:Arial; =
 font-size:14px; font-weight: bold;line-height: 1.1;">APPLY NOW</center> </v=
 :textbox> </v:roundrect>=0A<![endif]--> <a href=3D"https://motorcityfunding=
 .lt.acemlnd.com/Prod/link-tracker?redirectUrl=3DaHR0cCUzQSUyRiUyRnd3dy5wbWZ=
-1cy5jb20lMkZzYnJ1Z21hbg=3D=3D&sig=3DACQpaR7qoLJHUyniFkmVhjtxub8hzSEpAgdy7JP=
-vYMqq&iat=3D1640641009&a=3D%7C%7C225362583%7C%7C&account=3Dmotorcityfunding=
+1cy5jb20lMkZzYnJ1Z21hbg=3D=3D&sig=3D9qAQa3BDhmGLNbKrqkBXAaGYx4N9GyLJJYQBVSr=
+MVTwS&iat=3D1640702322&a=3D%7C%7C225362583%7C%7C&account=3Dmotorcityfunding=
 %2Eactivehosted%2Ecom&email=3DrcnACfXAw2TQUyfpj7YMwBdIU0DsLaDSPK6rhDqV%2BUX=
-Vt3QtV0xSM9W6AkIVKsAf&s=3D0ad92c0c4a2ff86eed94873b1c9268b7&i=3D69A105A1A201=
+Vt3QtV0xSM9W6AkIVKsAf&s=3D0ad92c0c4a2ff86eed94873b1c9268b7&i=3D70A106A1A204=
 " style=3D"margin: 0; outline: none; padding: 12px; color: #ffffff; backgro=
 und: #ff1414; background-color: #ff1414; border: 1px solid #B5B5B5; border-=
 radius: 3px; font-family: Arial; font-size: 14px; display: inline-block; li=
@@ -646,19 +649,19 @@ ne-height: 1.1; text-align: center; text-decoration: none; mso-hide: all;">=
  <span style=3D"color:#ffffff;font-family:Arial;font-size:14px;font-weight:=
  bold;"> APPLY NOW </span> </a> </div>=0A=0A</td>=0A</tr>=0A</table>=0A</td=
 >=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: e=
-xactly;"><td id=3D"layout-row-margin1449" valign=3D"top" style=3D"mso-line-=
+xactly;"><td id=3D"layout-row-margin1463" valign=3D"top" style=3D"mso-line-=
 height-rule: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" cel=
 lpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webk=
 it-text-size-adjust: 100%; border-collapse: initial !important; font-size: =
 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr i=
-d=3D"layout-row1449" class=3D"layout layout-row widget _widget_text style14=
-49" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0;"><td id=
-=3D"layout-row-padding1449" valign=3D"top" style=3D"mso-line-height-rule: e=
+d=3D"layout-row1463" class=3D"layout layout-row widget _widget_text style14=
+63" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0;"><td id=
+=3D"layout-row-padding1463" valign=3D"top" style=3D"mso-line-height-rule: e=
 xactly; padding: 5px;"><table width=3D"100%" border=3D"0" cellpadding=3D"0"=
  cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-a=
 djust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; m=
 so-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-=
-rule: exactly;"><td id=3D"text_div1236" class=3D"td_text td_block" valign=
+rule: exactly;"><td id=3D"text_div1248" class=3D"td_text td_block" valign=
 =3D"top"=0Aalign=3D"left" width=3D"630" style=3D"mso-line-height-rule: exac=
 tly; margin: 0; outline: none; padding: 0; color: inherit; font-size: 12px;=
  font-weight: inherit; line-height: 1; text-decoration: inherit; font-famil=
@@ -703,32 +706,32 @@ bold; line-height: inherit; text-decoration: inherit; font-family: arial;">=
 herit; line-height: inherit; text-decoration: inherit; font-family: arial;"=
 >Funding Manager</span></span></div>=0A</span></span></div>=0A </div>=0A</t=
 d>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr id=
-=3D"layout-row1452" class=3D"layout layout-row clear-this " style=3D"mso-li=
-ne-height-rule: exactly;"><td id=3D"layout-row-padding1452" valign=3D"top" =
+=3D"layout-row1466" class=3D"layout layout-row clear-this " style=3D"mso-li=
+ne-height-rule: exactly;"><td id=3D"layout-row-padding1466" valign=3D"top" =
 style=3D"mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0"=
  cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -=
 webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; =
 min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=
-=3D"mso-line-height-rule: exactly;"><td id=3D"layout_table_a1309e0529208e25=
-4d00146bdd0ce2e5cf5abf5c" valign=3D"top" width=3D"325" style=3D"mso-line-he=
+=3D"mso-line-height-rule: exactly;"><td id=3D"layout_table_1ca4db7d881364fe=
+95b35c6ac9bfc9daf57d3645" valign=3D"top" width=3D"325" style=3D"mso-line-he=
 ight-rule: exactly;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
 " class=3D"layout layout-table " width=3D"325" style=3D"-ms-text-size-adjus=
 t: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-si=
 ze: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><=
-tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1450=
+tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1464=
 " valign=3D"top" style=3D"mso-line-height-rule:=0Aexactly; padding: 5px;"><=
 table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=
 =3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-coll=
 apse: initial !important; font-size: 14px; min-width: 100%; mso-table-lspac=
-e: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row1450" class=3D"layout l=
-ayout-row widget _widget_text style1450" style=3D"mso-line-height-rule: exa=
+e: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row1464" class=3D"layout l=
+ayout-row widget _widget_text style1464" style=3D"mso-line-height-rule: exa=
 ctly; margin: 0; padding: 0; background-color: #244df0;"><td id=3D"layout-r=
-ow-padding1450" valign=3D"top" style=3D"mso-line-height-rule: exactly; back=
+ow-padding1464" valign=3D"top" style=3D"mso-line-height-rule: exactly; back=
 ground-color: #244df0; padding: 5px;"><table width=3D"100%" border=3D"0" ce=
 llpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -web=
 kit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min=
 -width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"m=
-so-line-height-rule: exactly;"><td id=3D"text_div1237" class=3D"td_text td_=
+so-line-height-rule: exactly;"><td id=3D"text_div1249" class=3D"td_text td_=
 block" valign=3D"top" align=3D"left" width=3D"305" style=3D"mso-line-height=
 -rule: exactly; margin: 0;=0Aoutline: none; padding: 0; color: inherit; fon=
 t-size: 12px; font-weight: inherit; line-height: 1; text-decoration: inheri=
@@ -756,20 +759,20 @@ ial; text-align: center;"><span style=3D"color: inherit; font-size: inherit=
 ; font-weight: inherit; line-height: inherit; text-decoration: inherit; fon=
 t-family: arial; text-align: inherit;">O: (315) 257-1195</span></div>=0A</s=
 pan></div>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A=
-</tr>=0A</table>=0A</td>=0A<td id=3D"layout_table_c80b6ef17cc610e24e84cb458=
-ac067b432d9a826" valign=3D"top" width=3D"325" style=3D"mso-line-height-rule=
+</tr>=0A</table>=0A</td>=0A<td id=3D"layout_table_46e032628ef9012365c729aba=
+dad189c05eca55f" valign=3D"top" width=3D"325" style=3D"mso-line-height-rule=
 : exactly;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=
 =3D"layout layout-table " width=3D"325" style=3D"-ms-text-size-adjust: auto=
 ; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14p=
 x; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr styl=
-e=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1451" valig=
+e=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1465" valig=
 n=3D"top" style=3D"mso-line-height-rule: exactly; padding: 8px;"><table wid=
 th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-t=
 ext-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: ini=
 tial !important; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; m=
-so-table-rspace: 0pt;"><tr id=3D"layout-row1451" class=3D"layout layout-row=
- widget _widget_button style1451" style=3D"mso-line-height-rule: exactly; b=
-ackground-color: #244df0;"><td id=3D"layout-row-padding1451" valign=3D"top"=
+so-table-rspace: 0pt;"><tr id=3D"layout-row1465" class=3D"layout layout-row=
+ widget _widget_button style1465" style=3D"mso-line-height-rule: exactly; b=
+ackground-color: #244df0;"><td id=3D"layout-row-padding1465" valign=3D"top"=
 =0Astyle=3D"mso-line-height-rule: exactly; background-color: #244df0; paddi=
 ng: 14px;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
 =3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%;=
@@ -795,7 +798,7 @@ tion: none; mso-hide: all;"> <span style=3D"color:#ffffff;font-family:Arial=
 td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table=
 >=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<=
 /table>=0A</td>=0A</tr>=0A</table>=0A</div>=0A<img src=3D"https://motorcity=
-funding.lt.acemlnd.com/Prod/link-tracker?nl=3D1&c=3D69&m=3D105&s=3D0ad92c0c=
+funding.lt.acemlnd.com/Prod/link-tracker?nl=3D1&c=3D70&m=3D106&s=3D0ad92c0c=
 4a2ff86eed94873b1c9268b7&l=3Dopen&account=3Dmotorcityfunding.activehosted.c=
 om&a=3D225362583" border=3D"0" width=3D"1" height=3D"1" style=3D"display:bl=
 ock;width:1px!important;min-width:1px!important;max-width:1px!important;hei=
@@ -807,25 +810,25 @@ ze:11px;font-family:arial,helvetica,sans-serif;line-height:140%;line-height=
 to: <span style=3D"font-size:11px;font-family:arial,helvetica,sans-serif;fo=
 nt-weight:normal;text-decoration:none;outline:none;">linux1394-devel@lists.=
 sourceforge.net</span>=0A=09=09<br>=0A=09=09<br>=0A=09=09<a href=3D"http://=
-motorcityfunding.activehosted.com/proc.php?nl=3D1&c=3D69&m=3D105&s=3D0ad92c=
+motorcityfunding.activehosted.com/proc.php?nl=3D1&c=3D70&m=3D106&s=3D0ad92c=
 0c4a2ff86eed94873b1c9268b7&act=3Dunsub" style=3D"font-size:11px;font-family=
 :arial,helvetica,sans-serif;font-weight:bold;text-decoration:underline;"><s=
 pan style=3D"font-weight:bold;text-decoration:underline;">Unsubscribe</span=
 ></a>=0A=09=09<br>=0A=09=09<br> Motor City Funding, 3000 Town Center, South=
 field, United States=0A=09</center>=0A</div>=0A<br clear=3D"all" /></body>=
 =0A</html>
---_=_swift-161043501761ca308477dae5.28366309_=_--
+--_=_swift-170532212861cb1fb4ee3a02.15781689_=_--
 
 
 
---===============8028630372220034539==
+--===============7285628469333070931==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============8028630372220034539==
+--===============7285628469333070931==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -835,6 +838,6 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============8028630372220034539==--
+--===============7285628469333070931==--
 
 
