@@ -2,113 +2,97 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D493481A9B
-	for <lists+linux1394-devel@lfdr.de>; Thu, 30 Dec 2021 09:02:50 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 684E9481E6D
+	for <lists+linux1394-devel@lfdr.de>; Thu, 30 Dec 2021 18:07:36 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1n2qOR-0006YS-PE; Thu, 30 Dec 2021 08:02:36 +0000
+	id 1n2ytb-0005Z7-Se; Thu, 30 Dec 2021 17:07:19 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2) (envelope-from
- <bounces+17461769-fe27-linux1394-devel=lists.sourceforge.net@em6778.fastfundinggroup.net>)
- id 1n2qOR-0006YK-1o
- for linux1394-devel@lists.sourceforge.net; Thu, 30 Dec 2021 08:02:36 +0000
+ <bounce-2287853-74-17611-linux1394-devel=lists.sourceforge.net@s15.avl4.acemsrvd.com>)
+ id 1n2ytZ-0005Yx-S5
+ for linux1394-devel@lists.sourceforge.net; Thu, 30 Dec 2021 17:07:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=To:References:In-Reply-To:From:Content-Type:Subject
- :Message-Id:Date:MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=MoZGg0Ab95ysUkrCSiBNTiu5o+bs7KkrcprLrVh3JDU=; b=bhOOQ8Obxk7Sh0G5NZnDglMGGy
- Sdda6YFi7QFCoqA1PbODupEvnSkjr/YwbAToyWykTGOnThz2jRztriaciVzJzzCRfR8cOALFqqQgK
- PaQMDPg0pqLE8XvASjZnH1FBYTQKYhZhwcvxWaYM3bA1/sdGmxWA0qEQoX29EwK5LO7c=;
+ d=sourceforge.net; s=x; h=Message-ID:List-Unsubscribe:Sender:
+ Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Subject:From:To:
+ Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+ List-Id:List-Help:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=wBA5QzX2tfb3sYRXG4j8fqn9COY16JbwiVhYxjmhEPo=; b=kPKwaBGtWv//lbiGouEkwV+Rc+
+ Pe8KFxsyujlLEpZQFVyd8Y3ov7+GLn7UshhHsob9tRT2EqsuNdQtQ/42zgrnkaDMJcjh5zGao5eQR
+ 8iEwvVB2uTzPvo0y8ro4+YllcJ1RfBSoJKzKY3c0O1WxbfYthKP3FF7FONNiGeiGZg24=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=To:References:In-Reply-To:From:Content-Type:Subject:Message-Id:Date:
- MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=MoZGg0Ab95ysUkrCSiBNTiu5o+bs7KkrcprLrVh3JDU=; b=hlvTsPBerk6Bat4qf5Y0O9CEUN
- u6mBCTbpLe0lwNx753JB/PEHncUpbgnlupiDmoU81w0hFWnPelN+fuQqxKy4POlagLPcxG3PVp3iB
- MzSFS+Bxp8/jXT23251YFb5i7K1ZkmSmGLU3PnOvscJDd8jOyZkjbdU9Pax5nHSdgnmA=;
-Received: from wrqvdxtc.outbound-mail.sendgrid.net ([149.72.218.124])
+ h=Message-ID:List-Unsubscribe:Sender:Content-Transfer-Encoding:Content-Type
+ :MIME-Version:Date:Subject:From:To:Reply-To:Cc:Content-ID:Content-Description
+ :Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Subscribe:List-Post:List-Owner:
+ List-Archive; bh=wBA5QzX2tfb3sYRXG4j8fqn9COY16JbwiVhYxjmhEPo=; b=DfC1YSBvDfqC
+ 9TuTwxOxFeCnFWCfS9t/3DBmcGwpHXnSG5glIZhsyKDLC6cYL1koJDMqJepVE2mO5jjXq68MjKipO
+ td66nIRAv1WQNdMGvb/nqGtUyDEFHrDKheFcpINzSNgye3C4n6ubOaFIydeEUYZXKaZcWgAWgJfWb
+ bxJT0=;
+Received: from s15.avl4.acemsrvd.com ([192.92.97.219])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92.3)
- id 1n2qON-0002Nx-Qi
- for linux1394-devel@lists.sourceforge.net; Thu, 30 Dec 2021 08:02:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastfundinggroup.net; 
- h=mime-version:subject:content-type:from:in-reply-to:references:to; 
- s=s1; bh=MoZGg0Ab95ysUkrCSiBNTiu5o+bs7KkrcprLrVh3JDU=;
- b=GUT5kryW/MrBwi/l/CpuS6oA/c3GIkeO+dtac17zk7Tkkyn9HjQ6DjZw2Iw/lpRFbD+c
- LTqf8gdp/Kf7Esxy2jsqZbvZKleXhSQsRAEJj4z/EoZhJ/stWNE5bqnIie3QPIGWIxUvtg
- retycMXNxkYJMPpVF4GuxHxSqXdlp0P681g+2sTG1jUVLKL1otVOIYt/ncHPLKGXCDTnqT
- 6QY7A+KSAIc15CvRnoDv92M8iIck8DiOG3qXNQEKd/BfThf2ZmRoiWh8KpHxIPPWuuy0Rb
- ubjx/Kt9lccvk4x0xQhtOQJVxvyWW3dkgNAHEUdMJ+pTiYKjJUL0xa5lDi6cIuFw==
-Received: by filterdrecv-794785844b-pwswl with SMTP id
- filterdrecv-794785844b-pwswl-1-61CD6791-113
- 2021-12-30 08:02:25.996013943 +0000 UTC m=+10316531.392370479
-Received: from [172.31.8.143] (unknown) by geopod-ismtpd-2-1 (SG) with ESMTP
- id PBKAF2XpRFaHbZzIgLhDqw
- for <linux1394-devel@lists.sourceforge.net>;
- Thu, 30 Dec 2021 08:02:25.880 +0000 (UTC)
-Received: from 776393159873 named unknown by gmailapi.google.com with HTTPREST;
- Wed, 29 Dec 2021 23:40:06 -0800
-Received: from 776393159873 named unknown by gmailapi.google.com with HTTPREST;
- Wed, 22 Dec 2021 07:29:04 -0800
-MIME-Version: 1.0
-Date: Thu, 30 Dec 2021 08:02:26 +0000 (UTC)
-Message-Id: <23e2a4556cf24e9d87316f46974d60b4_CAHtXQSPmCtA2CC90ObNc00u-hM3DUgjzQdWmvVyVgFMukHh5Cw@mail.gmail.com>
-Subject: Re: Direct Lender here... Largest lender on the east coast. I can and
- will get you funded. Even if you just got funded....
-From: Ron Michaels <underwriting@fastfundinggroup.net>
-In-Reply-To: <8b08516e5c834b4d82740b1cb76d2ae6_CAHtXQSNpdfUAyYCfQe3ZQxrhJ=dQ7-hqfL-CPWq0hvWWKN0wBQ@mail.gmail.com>
-References: <e9406c06c752485ca3dd8ba9ffef2271_CAHtXQSMO9btot9VB=DTBOOWUJ2tkRV9gbouw76apALk6yWSS_w@mail.gmail.com>
- <4174d637da8f40e4b48fd1968054c22a_CAHtXQSPfv7gM28WDdcJ+PnbwSO1oyUDKCGY-azF2Ch1t-kE4NQ@mail.gmail.com>
- <4a6995e089604b59a593c80727e7c0a3_CAHtXQSNeNef+Uqv_JozcueodcTdfkx+S+3AEsV4DapY6ZpF-gQ@mail.gmail.com>
- <c0562ce2f3b243ea97a63a4064506bb5_CAHtXQSOZFwEaWdXmN3QvQbs3MxWsiWsCgzv0YMX3nXv6Tgjgcw@mail.gmail.com>
- <8b08516e5c834b4d82740b1cb76d2ae6_CAHtXQSNpdfUAyYCfQe3ZQxrhJ=dQ7-hqfL-CPWq0hvWWKN0wBQ@mail.gmail.com>
-X-SG-EID: =?us-ascii?Q?aVQykaPryv=2FvgHutWGk3angG8gEn3d1yBXNMlmyW3ym8kEtTl3IPMaCerxg6OO?=
- =?us-ascii?Q?wxwmNsmXUIv41APfJv9S+fooEu5vLudUK=2F3m9Cg?=
- =?us-ascii?Q?wMMEnDeav9S9Jg0TphY3YsK8yM6G+XPqjBYWDuz?=
- =?us-ascii?Q?qEIaGAVehIvGdaVUxpvdX0fjDH6ugXTrnuQSckn?=
- =?us-ascii?Q?UcO86MV6PGO=2FV24otHRZExx12Ul8pPN9YyTthSI?=
- =?us-ascii?Q?LumZ8uq2vO+5gIKp8G4WLwjDmbYKt+wGioYW5VD?=
- =?us-ascii?Q?k6CSh=2FtkvnUpOD18uaRfxuw93pPzBsrJuQdJOrx?=
- =?us-ascii?Q?M6I=3D?=
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
+ id 1n2ytX-0000qz-RU
+ for linux1394-devel@lists.sourceforge.net; Thu, 30 Dec 2021 17:07:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=dk;
+ d=s15.avl4.acemsrvd.com; 
+ h=To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Sender:List-Unsubscribe:List-Unsubscribe-Post:Message-ID;
+ i=motorcityfunding.activehosted.com@s15.avl4.acemsrvd.com;
+ bh=wBA5QzX2tfb3sYRXG4j8fqn9COY16JbwiVhYxjmhEPo=;
+ b=ZTp97Xt6BM+PsTIivF9QYmQruXC96ribMeZLfOpFh0+s1ghe8WluvrJZLw8/vfw1MpSZULAZIybM
+ KP4lBjlnV0CW763yRk9ey9W9jpadutb3B53R0RpQYYaQghfqWHz33LdcHRo07YeEN/Kbd2QUQQ6b
+ Z1dEEpxMzunrCY2G5ZM=
+Received: by s15.avl4.acemsrvd.com id hpnjjk2q274i for
+ <linux1394-devel@lists.sourceforge.net>;
+ Thu, 30 Dec 2021 17:07:06 +0000 (envelope-from
+ <bounce-2287853-74-17611-linux1394-devel=lists.sourceforge.net@s15.avl4.acemsrvd.com>)
 To: linux1394-devel@lists.sourceforge.net
-X-Entity-ID: /PhzgDtEoGxZCUSeVQe5nQ==
-X-Spam-Score: 2.3 (++)
-X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+From: "SBA Admin" <sbrugman@motorcityfunding.com>
+Subject: SBA's EIDL and Cash Grant Program Ending December 31
+Date: Thu, 30 Dec 2021 10:59:13 -0600
+MIME-Version: 1.0
+X-Sender: <motorcityfunding.activehosted.com@s15.avl4.acemsrvd.com>
+X-Report-Abuse: Please report abuse to abuse@activecampaign.com
+X-mid: bGludXgxMzk0LWRldmVsQGxpc3RzLnNvdXJjZWZvcmdlLm5ldCAsIGM3NCAsIG0xMTIgLCBzNjc
+x-virtual-mta: s15.avl4.acemsrvd.com
+Feedback-ID: 2287853:activecampaign
+X-250ok-CID: 2287853-74
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Message-ID: <20211230170706.8551.1247072570.swift@motorcityfunding.activehosted.com>
+X-Spam-Score: 1.5 (+)
+X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.lw.sourceforge.com",
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  I have not heard from you. Let me know please. On Wednesday, 
- December 29, 2021 at 11:38 PM, Ron Michaels <underwriting@fastfundinggroup.net>
- wrote: > I have not heard from you. Let me know please. I WILL get the job
- done and get you the funding yo [...] 
- Content analysis details:   (2.3 points, 6.0 required)
- pts rule name              description
+ 
+ Content preview:  Deadline to Apply is Imminent - 1 Day Left!  ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌�
+    [...] 
+ 
+ Content analysis details:   (1.5 points, 6.0 required)
+ 
+  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 2.5 URIBL_DBL_SPAM         Contains a spam URL listed in the Spamhaus DBL
- blocklist [URIs: fastfundinggroup.net]
- 0.0 RCVD_IN_MSPIKE_H5      RBL: Excellent reputation (+5)
- [149.72.218.124 listed in wl.mailspike.net]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+  1.2 RCVD_IN_BL_SPAMCOP_NET RBL: Received via a relay in
+                             bl.spamcop.net
+               [Blocked - see <https://www.spamcop.net/bl.shtml?192.92.97.219>]
+  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+                             mail domains are different
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 HTML_MESSAGE           BODY: HTML included in message
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1n2qON-0002Nx-Qi
+  0.0 HTML_FONT_LOW_CONTRAST BODY: HTML font color similar or
+                             identical to background
+  0.0 HTML_MESSAGE           BODY: HTML included in message
+  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+                             valid
+ -0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
+  0.0 LOTS_OF_MONEY          Huge... sums of money
+X-Headers-End: 1n2ytX-0000qz-RU
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -121,418 +105,730 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8077234828742359013=="
+Content-Type: multipart/mixed; boundary="===============4961879636339588072=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============8077234828742359013==
-Content-Type: multipart/alternative; boundary="0000000000008090d505d3bdc627"
 
---0000000000008090d505d3bdc627
+--===============4961879636339588072==
+Content-Type: multipart/alternative;
+ boundary="_=_swift-20402315061cde561b51598.99180945_=_"
+Content-Transfer-Encoding: 7bit
+
+
+--_=_swift-20402315061cde561b51598.99180945_=_
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
 
-I have not heard from you. Let me know please.
+Deadline to Apply is Imminent - 1 Day Left! 
+ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌
 
-On Wednesday, December 29, 2021 at 11:38 PM, Ron Michaels <underwriting@fas=
-tfundinggroup.net> wrote:
-> I have not heard from you. Let me know please. I WILL get the job done an=
-d get you the funding you need
->=20
-> On Tuesday, December 28, 2021 at 5:18 PM, Ron Michaels <underwriting@fast=
-fundinggroup.net> wrote:
-> > I'm sure you're busy, but I'd appreciate if you can respond to my email=
- below, so I can cross this off my to do list.
-> >=20
-> > On Monday, December 27, 2021 at 12:38 AM, Ron Michaels <underwriting@fa=
-stfundinggroup.net> wrote:
-> > > I've reached out a couple times, but I haven't heard back. I'd apprec=
-iate a response to my email below. I'm your guy! I'll get you the business =
-funding you need..
-> > >=20
-> > > On Saturday, December 25, 2021 at 10:00 AM, Ron Michaels <underwritin=
-g@fastfundinggroup.net> wrote:
-> > > > Just making sure you saw this.
-> > > >=20
-> > > > On Friday, December 24, 2021 at 7:18 AM, Ron Michaels <underwriting=
-@fastfundinggroup.net> wrote:
-> > > > >=20
-> > > > >=20
-> > > > > Even if you were funded recently, I can and will buy the loan at =
-a lower=20
-> > > > > cost. If you're in need of funding for your business. I am a DIRE=
-CT LENDER!=20
-> > > > > We own 4 lending platforms outright and I have access to 80 addit=
-ional=20
-> > > > > banks. I fund in-house within 8 hours. NO BROKERS OR FEE'S! NO LI=
-ES!!!!!
-> > > > >=20
-> > > > > Complete the following Application=20
-> > > > > <http://url6045.fastfundinggroup.net/ls/click?upn=3DjntoTxyaQ8kc-=
-2B-2BBhHZcrIL5dRSLuKVcbWnUs8kFN-2FBwiH9mBf0mDL9H26AQY4XTY9VlQt8-2BzOweBrrjD=
-a-2B8gM4mPTcydQr126kMBsEs-2FA9qYfYqCwxQKpFBTBNlKI3iOncGYQ0cFIR8sDYFZLHzOLyi=
-mYgIdet0m64H8YCnCJGAu2QdiegP1Vg9INGd1i5tqBAFs_9c2ZCZzrWFlb2tjmei9-2FZAE1DdJ=
-1NjbET0lcB-2BJJVDAgewWzHM8gDHHOxhos5tje70r5a8idQvbpAg59u9-2FdZ5WuUTnWLMqj-2=
-BxwCEsRGS54smXKkYyHc9BosYCnBN-2Bg18diK1a77Su8-2BhXkEG6lKqkszB7NpToRxnE6LHX6=
-z4MuBNGe1FY5Exq44oZ4zuJAhenSctw5Gsn2uu4CfgmApXQl72Lm2n701AOCOFVcJCyuRtY-2F4=
-loRlN9UwnwJngBoj> and=20
-> > > > > receive the terms you deserve.
-> > > > >=20
-> > > > > -Bridge loans 2-24 months
-> > > > > -No fees deducted after the funds are deposited (no brokers neede=
-d)
-> > > > > -Term loans up to 25 years 2.7% above prime
-> > > > > -Lines of credit
-> > > > > -TRUE consolidations=20
-> > > > > -Equipment Financing
-> > > > >=20
-> > > > > -Merchant Cash Advances
-> > > > >=20
-> > > > >=20
-> > > > > =20
-> > > > >=20
-> > > > >           If you would like to be proactive, please complete the =
-application=20
-> > > > > here online=20
-> > > > > <http://url6045.fastfundinggroup.net/ls/click?upn=3DjntoTxyaQ8kc-=
-2B-2BBhHZcrIL5dRSLuKVcbWnUs8kFN-2FBwiH9mBf0mDL9H26AQY4XTY9VlQt8-2BzOweBrrjD=
-a-2B8gM4mPTcydQr126kMBsEs-2FA9qYfYqCwxQKpFBTBNlKI3iOncGYQ0cFIR8sDYFZLHzOLyi=
-mYgIdet0m64H8YCnCJGAu2QdiegP1Vg9INGd1i5tqfzZ-_9c2ZCZzrWFlb2tjmei9-2FZAE1DdJ=
-1NjbET0lcB-2BJJVDAgewWzHM8gDHHOxhos5tje70r5a8idQvbpAg59u9-2FdZ9edGM-2BA1BiG=
-FXUrz6QdkZv85LwCoDYMiPqBeg2zXDzPhoUFKn7Sja6-2FunMkMztCoIScEn6P7v-2BtSvbVGxd=
-uLtDlTaPWCRLmhnFIniHRKe9-2Ba7LBTZaKpwsrE-2Fvq41m6xr86nOUS21k1pkzn2zG38e7Sfg=
-ejUd7XtcA977-2BC-2BF3a> and=20
-> > > > > return the last 4 months business bank statements.=20
-> > > > >=20
-> > > > >  *I will pledge to you, in advance, that my rates and terms will =
-be the=20
-> > > > > best in the industry. We=E2=80=99re a total financial warehouse w=
-ith every single=20
-> > > > > financial option available for business owners.*
-> > > > >=20
-> > > > >=20
-> > > > > Upon receiving that information, I will immediately activate your=
- firm=20
-> > > > > approvals.=20
-> > > > >=20
-> > > > > As soon as I have options for you, I will give you a call to disc=
-uss.
-> > > > >=20
-> > > > > Usually within 3 or 4 hours.....
-> > > > >=20
-> > > > > =20
-> > > > >=20
-> > > > >  application here online=20
-> > > > > <http://url6045.fastfundinggroup.net/ls/click?upn=3DjntoTxyaQ8kc-=
-2B-2BBhHZcrIL5dRSLuKVcbWnUs8kFN-2FBwiH9mBf0mDL9H26AQY4XTY9VlQt8-2BzOweBrrjD=
-a-2B8gM4mPTcydQr126kMBsEs-2FA9qYfYqCwxQKpFBTBNlKI3iOncGYQ0cFIR8sDYFZLHzOLyi=
-mYgIdet0m64H8YCnCJGAu2QdiegP1Vg9INGd1i5tqjlr3_9c2ZCZzrWFlb2tjmei9-2FZAE1DdJ=
-1NjbET0lcB-2BJJVDAgewWzHM8gDHHOxhos5tje70r5a8idQvbpAg59u9-2FdZ1BnxLrlnLR-2B=
-nuFbr58Nst-2FfvF55oWelFPCS14S1Q3MnOTBsonmR-2BLQMxbseXnuCitAYsg7TTCTNEJervf9=
-6W7zOYECmz369tYNyDg6OF2ySI5q4-2F3Xq3Abo6u83UoAevTK4-2FdZwkuV6lRRUlmsemM9tkp=
-3hiRq6ZCZcbBLns0jX>
-> > > > >  =20
-> > > > >=20
-> > > > > --
-> > > > >=20
-> > > > > *Ron Michaels*
-> > > > >=20
-> > > > > Managing Director/ Lead  Underwriter
-> > > > >=20
-> > > > > *Omega Capital Funding*
-> > > > >=20
-> > > > > www.omegacapfund.com
-> > > > >=20
-> > > > > 1-877-282-1214 =E2=80=93 Toll Free
-> > > > >=20
-> > > > > 1-631-714-6801 =E2=80=93 Main
-> > > > >=20
-> > > > > 1-631-730-8115 - Fax
-> > > > >=20
-> > > > > You may unsubscribe <http://url6045.fastfundinggroup.net/ls/click=
-?upn=3D0mogsfw379VW7NOF7LqlEo-2FxCzy-2FKWmP-2BOlbLKXGTezZIQiKjAtXuXFg7VeLCz=
-siNzAavT5Rbmvb0Byc2r3kumkpEVdObji397CB7dzrBjZJlXvIPkyXxjxV9VdJ3zJzP1et5RdeD=
-G-2FNTBB1lAjIoA-3D-3DiHtw_9c2ZCZzrWFlb2tjmei9-2FZAE1DdJ1NjbET0lcB-2BJJVDAge=
-wWzHM8gDHHOxhos5tje70r5a8idQvbpAg59u9-2FdZ25JdBl0iRIdXAdWPfvJVd1Fvd93gv-2BI=
-nNuDMz847h9UygniiFawVu11JLmYYttqF-2Fkjdc2YgQjMEn1vugydJJHda5Pnj-2BND7pa6drI=
-1rl0dho8wPmYFnvi-2BshO3KSQ5Mu0W8eYXbQsRgJ-2F1-2BrwAbF3m2UQohwEo9jkD-2BeMgzp=
-qP> to stop=20
-> > > > > receiving our emails.
-> > > > >=20
-> > > >=20
-> > >=20
-> >=20
->=20
+ 
 
---0000000000008090d505d3bdc627
+The Small Business Administration has moved the deadline for all EIDL
+applications to December 31st 2021 Apply before the deadline!
+
+What is the EIDL? 
+
+* Up to $2,000,000
+
+* No payments for the first 24 months
+
+* 3.75% fixed interest rate over 30 years! 
+
+* Short for Economic Injury Disaster Loan
+
+* Part of the CARES act passed in March of 2020 
+
+* All US business owners can apply
+
+* Based off of 2019 business tax returns
+
+* Minimum FICO of 550
+
+APPLY NOW  
+
+If you have any questions please do not hesitate to call.  We pride
+ourselves on always being available to our clients.
+
+Sincerely,
+
+Samuel Brugman | Funding Manager
+
+Motor City Funding
+3000 Town Center
+
+Southfield, MI 48076
+
+O: (315) 257-1195
+
+CONTACT US 
+_________________
+
+Sent to linux1394-devel@lists.sourceforge.net
+
+Unsubscribe:
+http://motorcityfunding.activehosted.com/proc.php?nl=1&amp;c=74&amp;m=112&amp;s=0ad92c0c4a2ff86eed94873b1c9268b7&amp;act=unsub
+
+Motor City Funding, 3000 Town Center, Southfield, United States
+--_=_swift-20402315061cde561b51598.99180945_=_
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-I have not heard from you. Let me know please.
-<div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Wednesday, Dec=
-ember 29, 2021 at 11:38 PM, Ron Michaels &lt;underwriting@fastfundinggroup.=
-net&gt; wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .=
-8ex;border-left:1px #ccc solid;padding-left:1ex">I have not heard from you.=
- Let me know please. I WILL get the job done and get you the funding you ne=
-ed
-<div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Tuesday, Decem=
-ber 28, 2021 at 5:18 PM, Ron Michaels &lt;underwriting@fastfundinggroup.net=
-&gt; wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex=
-;border-left:1px #ccc solid;padding-left:1ex">I'm sure you're busy, but I'd=
- appreciate if you can respond to my email below, so I can cross this off m=
-y to do list.
-<div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Monday, Decemb=
-er 27, 2021 at 12:38 AM, Ron Michaels &lt;underwriting@fastfundinggroup.net=
-&gt; wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex=
-;border-left:1px #ccc solid;padding-left:1ex">I've reached out a couple tim=
-es, but I haven't heard back. I'd appreciate a response to my email below. =
-I'm your guy! I'll get you the business funding you need..
-<div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Saturday, Dece=
-mber 25, 2021 at 10:00 AM, Ron Michaels &lt;underwriting@fastfundinggroup.n=
-et&gt; wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
-ex;border-left:1px #ccc solid;padding-left:1ex">Just making sure you saw th=
-is.
-<div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Friday, Decemb=
-er 24, 2021 at 7:18 AM, Ron Michaels &lt;underwriting@fastfundinggroup.net&=
-gt; wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;=
-border-left:1px #ccc solid;padding-left:1ex"><div dir=3D"ltr"><div dir=3D"l=
-tr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><di=
-v dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=
-=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr=
-"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div =
-dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"=
-ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><d=
-iv dir=3D"ltr"><p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font=
--size:11pt;font-family:Calibri,sans-serif"><span style=3D"font-size:13.5pt;=
-font-family:&quot;Times New Roman&quot;,serif;color:black">Even if you were=
- funded recently, I can and will buy the loan at a lower cost. If you&#39;r=
-e in need of funding for your business. I am a DIRECT LENDER! We own 4 lend=
-ing=C2=A0platforms outright and I have access to 80 additional banks. I fun=
-d in-house within 8 hours. NO BROKERS OR FEE&#39;S! NO LIES!!!!!</span><spa=
-n style=3D"font-size:12pt"></span></p><p class=3D"MsoNormal" style=3D"margi=
-n:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span sty=
-le=3D"font-size:13.5pt;font-family:&quot;Times New Roman&quot;,serif;color:=
-black">Complete the following=C2=A0<span style=3D"color:rgb(17,85,204)"><a =
-href=3D"http://url6045.fastfundinggroup.net/ls/click?upn=3D0mogsfw379VW7NOF=
-7LqlEo-2FxCzy-2FKWmP-2BOlbLKXGTezZIQiKjAtXuXFg7VeLCzsiNzAavT5Rbmvb0Byc2r3ku=
-g19adfC078V7aakkB3o1EmOP-2BnWjMFnWnetYaYjI1fo6g7DQ55v5KIRzeX7kLEA3Bi4mj-2Br=
-M-2FI54wmzrBJf0lBcguE0W66zr50tMmvUkP3xNyXn78w0c2V-2BKiw5c1Kq9Q-3D-3DYoCR_9c=
-2ZCZzrWFlb2tjmei9-2FZAE1DdJ1NjbET0lcB-2BJJVDAgewWzHM8gDHHOxhos5tje70r5a8idQ=
-vbpAg59u9-2FdZ2M2ulrcnPwILn-2FUpH0iLrBjE9t8XWmIqGPLHcy9AkcH4qjiGkYQlfoYO-2B=
-1yuH7Gh-2BJ0IJZW0zG1yAEJF19Yvt6rOdonj-2BuMSJTQzwZ4nC663rFMO1ZfXYECnJrkvuWDR=
-Tnh0Xr7hE31kq5OAnIL4Q7PFVY1Fks71OC43TTAoimD" target=3D"_blank">Application<=
-/a></span>=C2=A0and receive the terms you deserve.<br><br>-Bridge loans 2-2=
-4 months<br>-No fees deducted after the funds are deposited (no brokers nee=
-ded)<br>-Term loans up to 25 years 2.7% above prime<br>-Lines of credit<br>=
--TRUE consolidations=C2=A0<br></span><span style=3D"color:black;font-family=
-:&quot;Times New Roman&quot;,serif;font-size:13.5pt">-Equipment Financing</=
-span><span style=3D"font-size:13.5pt;font-family:&quot;Times New Roman&quot=
-;,serif;color:black"><br></span></p><p class=3D"MsoNormal" style=3D"margin:=
-0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style=
-=3D"color:black;font-family:&quot;Times New Roman&quot;,serif;font-size:13.=
-5pt">-Merchant Cash Advances</span><br></p><p class=3D"MsoNormal" style=3D"=
-margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><br>=
-</p><p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;=
-font-family:Calibri,sans-serif"><span style=3D"font-size:12pt">=C2=A0</span=
-></p><p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt=
-;font-family:Calibri,sans-serif"><span style=3D"font-size:13.5pt;font-famil=
-y:&quot;Times New Roman&quot;,serif;color:black">=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 If you would like to be proactive, please complete the=C2=A0</sp=
-an><span style=3D"font-size:12pt"><span style=3D"font-size:13.5pt;font-fami=
-ly:&quot;Times New Roman&quot;,serif;color:rgb(17,85,204)"><a href=3D"http:=
-//url6045.fastfundinggroup.net/ls/click?upn=3D0mogsfw379VW7NOF7LqlEo-2FxCzy=
--2FKWmP-2BOlbLKXGTezZIQiKjAtXuXFg7VeLCzsiNzAavT5Rbmvb0Byc2r3kug19adfC078V7a=
-akkB3o1EmOP-2BnWjMFnWnetYaYjI1fo6g7DQ55v5KIRzeX7kLEA3Bi4mj-2BrM-2FI54wmzrBJ=
-f0lBcguE0W66zr50tMmvUkP3xNyXn78w0c2V-2BKiw5c1Kq9Q-3D-3DRDHs_9c2ZCZzrWFlb2tj=
-mei9-2FZAE1DdJ1NjbET0lcB-2BJJVDAgewWzHM8gDHHOxhos5tje70r5a8idQvbpAg59u9-2Fd=
-Zz91bIrAJ5GwzB0sK75CYdkCBumwaWlw6bAzUvlO3dsu3KsTmExdE8zlyqxWOsBLtirilAJ7EHg=
-ngDb8P5lTCvz0FwUKrJ29rcYasYvk6sWSHlc42UcbuaqIB7kjiTgD8Yipoyue43-2FaLXeYArmd=
-SypEB42tBCgaQxFHv2FMXEgN" target=3D"_blank">application here online</a></sp=
-an></span><span style=3D"font-size:13.5pt;font-family:&quot;Times New Roman=
-&quot;,serif;color:black">=C2=A0and return the last 4 months business bank =
-statements.=C2=A0</span><span style=3D"font-size:12pt"></span></p><p class=
-=3D"MsoNormal" style=3D"margin:0in;background-image:initial;background-posi=
-tion:initial;background-size:initial;background-repeat:initial;background-o=
-rigin:initial;background-clip:initial;font-size:11pt;font-family:Calibri,sa=
-ns-serif"><span style=3D"font-size:12pt;color:rgb(33,33,33)">=C2=A0<i>I wil=
-l pledge to you, in advance, that my rates and terms will be the best in th=
-e industry.=C2=A0<span style=3D"background:yellow">We=E2=80=99re a total fi=
-nancial warehouse with every single financial option available for business=
- owners</span>.</i></span><span style=3D"color:rgb(33,33,33)"></span></p><p=
- class=3D"MsoNormal" style=3D"margin:0in;background-image:initial;backgroun=
-d-position:initial;background-size:initial;background-repeat:initial;backgr=
-ound-origin:initial;background-clip:initial;font-size:11pt;font-family:Cali=
-bri,sans-serif"><span style=3D"font-size:12pt;color:rgb(33,33,33)"><i><br><=
-/i></span></p><p class=3D"MsoNormal" style=3D"margin:0in;font-size:11pt;fon=
-t-family:Calibri,sans-serif"><span style=3D"font-size:12pt;color:rgb(38,40,=
-42)">Upon receiving that information, I will immediately activate your firm=
- approvals.=C2=A0</span><span style=3D"font-size:12pt;color:rgb(33,33,33)">=
-</span></p><p class=3D"MsoNormal" style=3D"margin:0in;font-size:11pt;font-f=
-amily:Calibri,sans-serif"><span style=3D"color:rgb(38,40,42);font-size:12pt=
-">As soon as I have options for you, I will give you a call to discuss.</sp=
-an></p><p class=3D"MsoNormal" style=3D"margin:0in;font-size:11pt;font-famil=
-y:Calibri,sans-serif"><span style=3D"color:rgb(38,40,42);font-size:12pt">Us=
-ually within 3 or 4 hours.....</span></p><p class=3D"MsoNormal" style=3D"ma=
-rgin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><p cla=
-ss=3D"MsoNormal" style=3D"margin:0in;background-image:initial;background-po=
-sition:initial;background-size:initial;background-repeat:initial;background=
--origin:initial;background-clip:initial;font-size:11pt;font-family:Calibri,=
-sans-serif"><span style=3D"font-size:12pt;color:rgb(33,33,33)">=C2=A0</span=
-><span style=3D"color:rgb(33,33,33)"></span></p><div></div><p class=3D"MsoN=
-ormal" style=3D"margin:0in;font-size:11pt;font-family:Calibri,sans-serif"><=
-span style=3D"font-size:13.5pt;font-family:&quot;Times New Roman&quot;,seri=
-f;color:black">=C2=A0</span><span style=3D"font-family:Arial,Helvetica,sans=
--serif;font-size:12pt"><span style=3D"font-size:13.5pt;font-family:&quot;Ti=
-mes New Roman&quot;,serif;color:rgb(17,85,204)"><a href=3D"http://url6045.f=
-astfundinggroup.net/ls/click?upn=3D0mogsfw379VW7NOF7LqlEo-2FxCzy-2FKWmP-2BO=
-lbLKXGTezZIQiKjAtXuXFg7VeLCzsiNzAavT5Rbmvb0Byc2r3kug19adfC078V7aakkB3o1EmOP=
--2BnWjMFnWnetYaYjI1fo6g7DQ55v5KIRzeX7kLEA3Bi4mj-2BrM-2FI54wmzrBJf0lBcguE0W6=
-6zr50tMmvUkP3xNyXn78w0c2V-2BKiw5c1Kq9Q-3D-3Ds81l_9c2ZCZzrWFlb2tjmei9-2FZAE1=
-DdJ1NjbET0lcB-2BJJVDAgewWzHM8gDHHOxhos5tje70r5a8idQvbpAg59u9-2FdZ-2BJy2QfKW=
-rkviD6loveBa0xOpfcgG4o90c9z0XKwqrHsgwfIMsXKuOTWWL-2FFQbGcs93E-2Bk6fnRg94sCa=
-RRwTZK6Kvk0i0h8m0rso8TNXY03j4idN4cMk-2BFb8fkgLej-2BymzghrZA36ac8iLpsIbJeiMO=
-nA3qBVLAQmbvyNq2ATIEB" target=3D"_blank">application here online</a></span>=
-</span>=C2=A0=C2=A0<br></p><p class=3D"MsoNormal" style=3D"margin:0in 0in 0=
-.0001pt;font-size:11pt;font-family:Calibri,sans-serif">--<br></p><div dir=
-=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><table border=3D"0" cellspacing=
-=3D"0" cellpadding=3D"0" style=3D"border-collapse:collapse"><tbody><tr><td =
-style=3D"padding:0in 0in 0in 9pt"><p class=3D"MsoNormal" style=3D"margin:0i=
-n;font-size:11pt;font-family:Calibri,sans-serif"><b><span style=3D"font-siz=
-e:16pt;font-family:&quot;Bookman Old Style&quot;,serif;color:rgb(0,112,192)=
-">Ron
-Michaels</span></b></p><p class=3D"MsoNormal" style=3D"margin:0in;font-size=
-:11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:&quot;Bask=
-erville Old Face&quot;,serif">Managing Director/ Lead=C2=A0 Underwriter</sp=
-an></p><p class=3D"MsoNormal" style=3D"margin:0in;font-size:11pt;font-famil=
-y:Calibri,sans-serif"><b><span style=3D"font-size:14pt;font-family:&quot;Bo=
-okman Old Style&quot;,serif">Omega Capital
-Funding</span></b></p><p class=3D"MsoNormal" style=3D"margin:0in;font-size:=
-11pt;font-family:Calibri,sans-serif"><a href=3D"http://url6045.fastfundingg=
-roup.net/ls/click?upn=3D0mogsfw379VW7NOF7LqlEo-2FxCzy-2FKWmP-2BOlbLKXGTezZI=
-QiKjAtXuXFg7VeLCzsiNzAavT5Rbmvb0Byc2r3kug19adfC078V7aakkB3o1EnXmhJypoONy7pT=
-wJHUt-2FaelZ5sQXYD65iv9p-2FHPoLsQ8-2FDgYDiZQ1qIwX1HD8PnmKLAdR4avME3lMU-2Bao=
--2BMAnirJMcZCm-2FT76N4USd8277YQ-3D-3Dv5Kt_9c2ZCZzrWFlb2tjmei9-2FZAE1DdJ1Njb=
-ET0lcB-2BJJVDAgewWzHM8gDHHOxhos5tje70r5a8idQvbpAg59u9-2FdZzWPa7OL8G6Dnuk-2B=
-M8kPqhVF-2BXivIIyDXusRbah0iNaJujM-2Fl-2FRptpFxNhb05F1Hhna71YEoGUo4xgNbQrVOJ=
-NS-2BlTHf3vsf7InPU4uxnVhc05fuXOj-2BtDWg3zWBY7-2BEgV7e-2FJP0ZTylzTd6EY7JPu6o=
-gyh15kqyj32IIZ43fKfG" style=3D"color:blue">www.omegacapfund.com</a><span st=
-yle=3D"color:rgb(0,112,192)"></span></p><p class=3D"MsoNormal" style=3D"mar=
-gin:0in;font-size:11pt;font-family:Calibri,sans-serif"><span style=3D"font-=
-family:&quot;Bookman Old Style&quot;,serif"><span class=3D"gmail-__dt"><spa=
-n class=3D"__dt"> <img class=3D"kixie-click-image-c2c" id=3D"telephone_numb=
-er_160" src=3D"chrome-extension://bmdpeakaalmaaflnkckhjcojpemlkjig/images/d=
-t_phone.png" style=3D"cursor:pointer;width:14px;height:13px" title=3D"Call =
-1-877-282-1214" span=3D"kixie-click-image"> 1-877-282-1214 =E2=80=93
-Toll Free</span></span></span></p><p class=3D"MsoNormal" style=3D"margin:0i=
-n;font-size:11pt;font-family:Calibri,sans-serif"><span style=3D"font-family=
-:&quot;Bookman Old Style&quot;,serif"><span class=3D"gmail-__dt"><span clas=
-s=3D"__dt"> <img class=3D"kixie-click-image-c2c" id=3D"telephone_number_161=
-" src=3D"chrome-extension://bmdpeakaalmaaflnkckhjcojpemlkjig/images/dt_phon=
-e.png" style=3D"cursor:pointer;width:14px;height:13px" title=3D"Call 1-631-=
-714-6801" span=3D"kixie-click-image"> 1-631-714-6801 =E2=80=93
-Main</span></span></span></p><p class=3D"MsoNormal" style=3D"margin:0in;fon=
-t-size:11pt;font-family:Calibri,sans-serif">
+<!DOCTYPE html><html>=0A<head><meta http-equiv=3D"Content-Type" content=3D"=
+text/html; charset=3Dutf-8"><meta http-equiv=3D"Content-Language" content=
+=3D"en-us"><meta name=3D"format-detection" content=3D"telephone=3Dno"><meta=
+ name=3D"format-detection" content=3D"date=3Dno"><meta name=3D"format-detec=
+tion" content=3D"address=3Dno"><meta name=3D"format-detection" content=3D"e=
+mail=3Dno"><meta name=3D"viewport" content=3D"width=3Ddevice-width, minimal=
+-ui, initial-scale=3D1.0, maximum-scale=3D1.0, user-scalable=3D0;"><meta ht=
+tp-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"><style data-ac-keep=3D"t=
+rue"> .ExternalClass { width: 100%; background: inherit; background-color: =
+inherit; } .ExternalClass, .ExternalClass p, .ExternalClass span, .External=
+Class font, .ExternalClass td, .ExternalClass div { line-height: 100%; } .E=
+xternalClass p, .ExternalClass ul, .ExternalClass ol { Margin: 0; } .undore=
+set div p, .undoreset p { margin-bottom: 20px; } div[class^=3D"aolmail_divb=
+ody"] { overflow: auto; } [owa] #ac-footer { padding: 20px 0px !important; =
+background:=0Ainherit; background-color: inherit; } a[x-apple-data-detector=
+s] { color: inherit !important; text-decoration: none !important; font-size=
+: inherit !important; font-family: inherit !important; font-weight: inherit=
+ !important; line-height: inherit !important; } @-ms-viewport { width: devi=
+ce-width; } </style><style data-ac-keep=3D"true">=0A@media only screen and =
+(max-width: 600px) { /*----------------------------------------------------=
+---------------------*\ Abandoned Cart widget \*---------------------------=
+---------------------------------------------*/ .td_abandoned-cart img {dis=
+play: block;padding-right: 0 !important;padding-bottom: 0 !important;width:=
+ 100% !important;max-width: 100% !important;height: auto !important;} body =
+{ padding: 0!important; font-size:1em!important; } * { -webkit-box-sizing: =
+border-box; -moz-box-sizing: border-box; box-sizing: border-box; } *[class]=
+.divbody {-webkit-text-size-adjust:none !important; width:auto !important;}=
+ *[class].td_picture img {width:auto !important;} *[class].td_text { line-h=
+eight: 110%; } *[class].td_button { width: auto; } /* Collapse all block el=
+ements */ :not(.body) table { display: block!important; float:none!importan=
+t; border-collapse:collapse !important; width:100% !important; min-width:10=
+0% !important; clear:both!important; } :not(.body) thead,=0A:not(.body) tbo=
+dy, :not(.body) tr { display:block!important; float:none!important; width:1=
+00% !important; } :not(.body) th, :not(.body) td, :not(.body) p { display:b=
+lock!important; float:none!important; width:100% !important; clear:both!imp=
+ortant; } /* Remove browser default styling for elements */ ul, ol { margin=
+-left: 20px; margin-bottom: 10px; margin-top: 10px; -webkit-margin-before: =
+0; -webkit-margin-after: 0; -webkit-padding-start: 0; } /* Set default heig=
+ht for spacer once collapse */ *[class].spacer { height: auto!important; } =
+a[href^=3Ddate]{ color:inherit !important; text-decoration:none !important;=
+} a[href^=3Dtelephone]{ color:inherit !important; text-decoration:none !imp=
+ortant;} a[href^=3Daddress]{ color:inherit !important; text-decoration:none=
+ !important;} a[href^=3Demail]{ color:inherit !important; text-decoration:n=
+one !important;} /* Default table cell height */ td[height=3D"14"]{height:1=
+4px!important;font-size:14px!important;line-height:14px!important;}=0A/*---=
+----------------------------------------------------------------------*\ Pr=
+oduct Widget \*------------------------------------------------------------=
+-------------*/ .td_product > div { float: none !important; width: 100% !im=
+portant; margin-bottom: 20px !important; } .td_product > div img { width: 7=
+5% !important; } /* Default social icons */ *[class].ac-social-icon-16 {wid=
+th:16px !important; height:16px !important;} *[class].ac-social-icon-24 {wi=
+dth:24px !important; height:24px !important;} *[class].ac-social-icon-28 {w=
+idth:28px !important; height:28px !important;} *[class].__ac_social_icons {=
+ margin-right: 0px !important; } }=0A</style><style data-ac-keep=3D"true"> =
+@media only screen and (max-width: 320px) { #layout-row1511 { max-height: 0=
+px!important; font-size: 0px!important; display: none!important; visibility=
+: hidden!important; } #layout-row1512 img { width: 100% !important; height:=
+ auto !important; max-width: 320px !important; } #layout-row1513 img { widt=
+h: 100% !important; height: auto !important; max-width: 320px !important; }=
+ #layout-row1515 img { width: 100% !important; height: auto !important; max=
+-width: 320px !important; } #layout-row1523 img { width: 100% !important; h=
+eight: auto !important; max-width: 320px !important; } table, tbody, td, .d=
+ivbody { display: table !important; width: 100% !important; max-width: 100%=
+ !important; } .td_rss .rss-item img.iphone_large_image { width: auto !impo=
+rtant; } u + .body { display: table !important; width: 100vw !important; mi=
+n-width: 100vw !important; } u + .body table { display: table !important; w=
+idth: 100% !important; min-width: 100%=0A!important; } u + .body td { displ=
+ay: block !important; width: 100% !important; min-width: 100% !important; }=
+ u + .body img { display: inline-block !important; margin: auto !important;=
+ width: auto !important; vertical-align: bottom !important; } u + .body cen=
+ter { display: block !important; margin: auto !important; width: 100% !impo=
+rtant; min-width: 100% !important; text-align: center !important; } u + .bo=
+dy table._ac_social_table, u + .body table._ac_social_table td, u + .body t=
+able._ac_social_table div, u + .body table._ac_social_table a { display: in=
+line-block !important; margin: auto !important; width: auto !important; min=
+-width: auto !important; text-align: center !important; } u + .body table._=
+ac_social_table img { display: inline-block !important; margin: auto !impor=
+tant; width: 32px !important; min-width: 32px !important; max-width: 32px !=
+important; }=0A}=0A@media only screen and (max-width: 375px) { #layout-row1=
+511 { max-height: 0px!important; font-size: 0px!important; display: none!im=
+portant; visibility: hidden!important; } #layout-row1512 img { width: 100% =
+!important; height: auto !important; max-width: 375px !important; } #layout=
+-row1513 img { width: 100% !important; height: auto !important; max-width: =
+375px !important; } #layout-row1515 img { width: 100% !important; height: a=
+uto !important; max-width: 375px !important; } #layout-row1523 img { width:=
+ 100% !important; height: auto !important; max-width: 375px !important; } t=
+able, tbody, td, .divbody { display: table !important; width: 100% !importa=
+nt; max-width: 100% !important; } .td_rss .rss-item img.iphone_large_image =
+{ width: auto !important; } u + .body { display: table !important; width: 1=
+00vw !important; min-width: 100vw !important; } u + .body table { display: =
+table !important; width: 100% !important; min-width: 100% !important; } u +=
+ .body td { display:=0Ablock !important; width: 100% !important; min-width:=
+ 100% !important; } u + .body img { display: inline-block !important; margi=
+n: auto !important; width: auto !important; vertical-align: bottom !importa=
+nt; } u + .body center { display: block !important; margin: auto !important=
+; width: 100% !important; min-width: 100% !important; text-align: center !i=
+mportant; } u + .body table._ac_social_table, u + .body table._ac_social_ta=
+ble td, u + .body table._ac_social_table div, u + .body table._ac_social_ta=
+ble a { display: inline-block !important; margin: auto !important; width: a=
+uto !important; min-width: auto !important; text-align: center !important; =
+} u + .body table._ac_social_table img { display: inline-block !important; =
+margin: auto !important; width: 32px !important; min-width: 32px !important=
+; max-width: 32px !important; }=0A}=0A@media only screen and (max-width: 41=
+4px) { #layout-row1511 { max-height: 0px!important; font-size: 0px!importan=
+t; display: none!important; visibility: hidden!important; } #layout-row1512=
+ img { width: 100% !important; height: auto !important; max-width: 414px !i=
+mportant; } #layout-row1513 img { width: 100% !important; height: auto !imp=
+ortant; max-width: 380px !important; } #layout-row1515 img { width: 100% !i=
+mportant; height: auto !important; max-width: 414px !important; } #layout-r=
+ow1523 img { width: 100% !important; height: auto !important; max-width: 41=
+4px !important; } table, tbody, td, .divbody { display: table !important; w=
+idth: 100% !important; max-width: 100% !important; } .td_rss .rss-item img.=
+iphone_large_image { width: auto !important; } u + .body { display: table !=
+important; width: 100vw !important; min-width: 100vw !important; } u + .bod=
+y table { display: table !important; width: 100% !important; min-width: 100=
+% !important; } u + .body td { display:=0Ablock !important; width: 100% !im=
+portant; min-width: 100% !important; } u + .body img { display: inline-bloc=
+k !important; margin: auto !important; width: auto !important; vertical-ali=
+gn: bottom !important; } u + .body center { display: block !important; marg=
+in: auto !important; width: 100% !important; min-width: 100% !important; te=
+xt-align: center !important; } u + .body table._ac_social_table, u + .body =
+table._ac_social_table td, u + .body table._ac_social_table div, u + .body =
+table._ac_social_table a { display: inline-block !important; margin: auto !=
+important; width: auto !important; min-width: auto !important; text-align: =
+center !important; } u + .body table._ac_social_table img { display: inline=
+-block !important; margin: auto !important; width: 32px !important; min-wid=
+th: 32px !important; max-width: 32px !important; }=0A}=0A@media only screen=
+ and (max-width: 667px) { #layout-row1511 { max-height: 0px!important; font=
+-size: 0px!important; display: none!important; visibility: hidden!important=
+; } #layout-row1512 img { width: 100% !important; height: auto !important; =
+max-width: 667px !important; } #layout-row1513 img { width: 100% !important=
+; height: auto !important; max-width: 380px !important; } #layout-row1515 i=
+mg { width: 100% !important; height: auto !important; max-width: 667px !imp=
+ortant; } #layout-row1523 img { width: 100% !important; height: auto !impor=
+tant; max-width: 667px !important; } table, tbody, td, .divbody { display: =
+table !important; width: 100% !important; max-width: 100% !important; } .td=
+_rss .rss-item img.iphone_large_image { width: auto !important; } u + .body=
+ { display: table !important; width: 100vw !important; min-width: 100vw !im=
+portant; } u + .body table { display: table !important; width: 100% !import=
+ant; min-width: 100% !important; } u + .body td { display:=0Ablock !importa=
+nt; width: 100% !important; min-width: 100% !important; } u + .body img { d=
+isplay: inline-block !important; margin: auto !important; width: auto !impo=
+rtant; vertical-align: bottom !important; } u + .body center { display: blo=
+ck !important; margin: auto !important; width: 100% !important; min-width: =
+100% !important; text-align: center !important; } u + .body table._ac_socia=
+l_table, u + .body table._ac_social_table td, u + .body table._ac_social_ta=
+ble div, u + .body table._ac_social_table a { display: inline-block !import=
+ant; margin: auto !important; width: auto !important; min-width: auto !impo=
+rtant; text-align: center !important; } u + .body table._ac_social_table im=
+g { display: inline-block !important; margin: auto !important; width: 32px =
+!important; min-width: 32px !important; max-width: 32px !important; }=0A} <=
+/style><!--[if !mso]><!-- webfonts --><!--<![endif]--><!--[if lt mso 12]> <=
+![endif]--><!--[if gte mso 9]>=0A<xml> <o:OfficeDocumentSettings> <o:AllowP=
+NG/> <o:PixelsPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSettings>=0A</=
+xml>=0A<![endif]--></head><body id=3D"ac-designer" class=3D"body" style=3D"=
+font-family: Arial; line-height: 1.1; margin: 0px; background-color: #FFFFF=
+F; width: 100%; text-align: center;">=09=09<div style=3D"display: none !imp=
+ortant; padding: 0; height: 1px; font-size: 1px; background-color: inherit =
+!important; opacity: 0; color: transparent; mso-line-height-rule: exactly; =
+line-height:1px; mso-hide:all;">=0A=09=09=09Deadline to Apply is Imminent -=
+ 1 Day Left!=0A=09=09=09<div style=3D"display: none; max-height: 0px; overf=
+low: hidden;">=0A=09=09=09=09&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=0A=09=09=09</div>=0A=
+=0A=09=09</div>=0A<div class=3D"divbody" style=3D"margin: 0px; outline: non=
+e; padding: 0px; color: #000000; font-family: arial; line-height: 1.1; widt=
+h: 100%; background-color: #FFFFFF; background: #FFFFFF; text-align: center=
+;"><table class=3D"template-table" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"100%" align=3D"left" style=3D"-ms-text-size-adjust: auto;=
+ -webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px=
+; min-width: auto; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background=
+-color: #FFFFFF; background: #FFFFFF;"><tr style=3D"mso-line-height-rule: e=
+xactly;"><td align=3D"center" valign=3D"top" width=3D"100%" style=3D"mso-li=
+ne-height-rule: exactly;"><table class=3D"template-table" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" width=3D"650" bgcolor=3D"#FFFFFF" style=3D"=
+-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse=
+: collapse; font-size: 14px; min-width: auto; mso-table-lspace: 0pt; mso-ta=
+ble-rspace: 0pt; max-width: 650px;"><tr=0Astyle=3D"mso-line-height-rule: ex=
+actly;"><td id=3D"layout_table_8c6a850ae2b7761181781f34ec827eac2c418ce1" va=
+lign=3D"top" align=3D"center" width=3D"650" style=3D"mso-line-height-rule: =
+exactly;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"=
+layout layout-table root-table" width=3D"650" style=3D"-ms-text-size-adjust=
+: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-siz=
+e: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><t=
+r style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1511"=
+ valign=3D"top" style=3D"mso-line-height-rule: exactly;"><table width=3D"10=
+0%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size=
+-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; f=
+ont-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0=
+pt;"><tr id=3D"layout-row1511" class=3D"layout layout-row widget _widget_sp=
+acer " style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-paddin=
+g1511" valign=3D"top"=0Astyle=3D"mso-line-height-rule: exactly;"><table wid=
+th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-t=
+ext-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: col=
+lapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-r=
+space: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td valign=3D"top=
+" height=3D"30" style=3D"mso-line-height-rule: exactly;"><div class=3D"spac=
+er" style=3D"margin: 0; outline: none; padding: 0; height: 30px;"><table ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%" style=3D"-ms-=
+text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: co=
+llapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-=
+rspace: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td class=3D"spa=
+cer-body" valign=3D"top" height=3D"30" width=3D"650" style=3D"mso-line-heig=
+ht-rule: exactly;">=C2=A0</td>=0A</tr>=0A</table>=0A</div>=0A</td>=0A</tr>=
+=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-l=
+ine-height-rule: exactly;"><td id=3D"layout-row-margin1512" valign=3D"top" =
+style=3D"mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -=
+webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; =
+min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"l=
+ayout-row1512" class=3D"layout layout-row widget _widget_picture " align=3D=
+"center" style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padd=
+ing1512" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><table wid=
+th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-t=
+ext-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: col=
+lapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-r=
+space: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td class=3D"imag=
+e-td" align=3D"center" valign=3D"top" width=3D"650" style=3D"mso-line-heigh=
+t-rule: exactly;"><img=0Asrc=3D"https://content.app-us1.com/Rnj5K/2021/11/0=
+8/5ed7148d-1798-4506-a900-35ec4edba52c.png?r=3D1448219356" alt=3D"" width=
+=3D"325" style=3D"display: block; border: none; outline: none; width: 325px=
+; opacity: 1; max-width: 100%;"></td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A=
+</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: exactly;"><td=
+ id=3D"layout-row-margin1510" valign=3D"top" style=3D"mso-line-height-rule:=
+ exactly; padding: 0;"><table width=3D"100%" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-a=
+djust: 100%; border-collapse: initial !important; font-size: 14px; min-widt=
+h: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-ro=
+w1510" class=3D"layout layout-row widget _widget_text style1510" style=3D"m=
+so-line-height-rule: exactly; margin: 0; padding: 0; background-color: #244=
+df0;"><td id=3D"layout-row-padding1510" valign=3D"top" style=3D"mso-line-he=
+ight-rule: exactly; background-color: #244df0; padding: 0;"><table width=3D=
+"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-s=
+ize-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse=
+; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace=
+: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"text_div1288=
+"=0Aclass=3D"td_text td_block" valign=3D"top" align=3D"left" width=3D"650" =
+style=3D"line-height: 140%; mso-line-height-rule: exactly; margin: 0; outli=
+ne: none; padding: 0; color: inherit; font-size: 12px; font-weight: inherit=
+; line-height: 1.4; text-decoration: inherit; font-family: arial;"> <div st=
+yle=3D"line-height: 140%; margin: 0; outline: none; padding: 0; color: #fff=
+fff; font-size: 18px; font-weight: inherit; line-height: 1.4; text-decorati=
+on: inherit; mso-line-height-rule: exactly;" data-line-height=3D"1.4"> <div=
+ style=3D"margin: 0; outline: none; padding: 0; color: #ffffff; font-size: =
+inherit; font-weight: inherit; line-height: inherit; text-decoration: inher=
+it; text-align: center;"><span style=3D"color: #ffffff; font-size: inherit;=
+ font-weight: bold; line-height: inherit; text-decoration: inherit;" class=
+=3D""><span style=3D"color: #ffffff; font-size: inherit; font-weight: inher=
+it; line-height: inherit; text-decoration: inherit; text-align: inherit;">T=
+he Small Business Administration=0Ahas moved the deadline for all EIDL </sp=
+an><span style=3D"color: #ffffff; font-size: inherit; font-weight: inherit;=
+ line-height: inherit; text-decoration: inherit; text-align: inherit;">appl=
+ications</span><span style=3D"color: #ffffff; font-size: inherit; font-weig=
+ht: inherit; line-height: inherit; text-decoration: inherit; text-align: in=
+herit;"> to December 31st 2021 Apply before the deadline!</span></span></di=
+v>=0A </div>=0A<!--[if (gte mso 12)&(lte mso 15) ]>=0A<style data-ac-keep=
+=3D"true" data-ac-inline=3D"false"> #text_div1288, #text_div1288 div { line=
+-height: 140% !important; };=0A</style>=0A<![endif]--></td>=0A</tr>=0A</tab=
+le>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-heig=
+ht-rule: exactly;"><td id=3D"layout-row-margin1523" valign=3D"top" style=3D=
+"mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-t=
+ext-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-widt=
+h: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-ro=
+w1523" class=3D"layout layout-row widget _widget_picture " align=3D"left" s=
+tyle=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padding1523" v=
+align=3D"top" style=3D"mso-line-height-rule: exactly;"><table width=3D"100%=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-a=
+djust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; fon=
+t-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt=
+;"><tr style=3D"mso-line-height-rule: exactly;"><td class=3D"image-td" alig=
+n=3D"left" valign=3D"top" width=3D"650" style=3D"mso-line-height-rule: exac=
+tly;"><img=0Asrc=3D"https://content.app-us1.com/Rnj5K/2021/10/19/efc7c4bf-d=
+aad-4389-a62e-b7bdcea92aec.png?r=3D1885876687" alt=3D"" width=3D"650" style=
+=3D"display: block; border: none; outline: none; width: 650px; opacity: 1; =
+max-width: 100%;"></td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</t=
+d>=0A</tr>=0A<tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-=
+row-margin1513" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><ta=
+ble width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=
+=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-coll=
+apse: collapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt;"><tr id=3D"layout-row1513" class=3D"layout layout-row =
+widget _widget_picture " align=3D"center" style=3D"mso-line-height-rule: ex=
+actly;"><td id=3D"layout-row-padding1513" valign=3D"top" style=3D"mso-line-=
+height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-a=
+djust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; m=
+so-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-=
+rule: exactly;"><td class=3D"image-td" align=3D"center" valign=3D"top" widt=
+h=3D"650" style=3D"mso-line-height-rule: exactly;"><img=0Asrc=3D"https://co=
+ntent.app-us1.com/Rnj5K/2021/11/08/8db24c11-71e7-459f-ab55-2957448b054e.jpe=
+g?r=3D2106089578" alt=3D"" width=3D"380" style=3D"display: block; border: n=
+one; outline: none; width: 380px; opacity: 1; max-width: 100%;"></td>=0A</t=
+r>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso=
+-line-height-rule: exactly;"><td id=3D"layout-row-margin1514" valign=3D"top=
+" style=3D"mso-line-height-rule: exactly; padding: 5px;"><table width=3D"10=
+0%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size=
+-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: initial !im=
+portant; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt;"><tr id=3D"layout-row1514" class=3D"layout layout-row widget =
+_widget_text style1514" style=3D"mso-line-height-rule: exactly; margin: 0; =
+padding: 0; background-color: #244df0;"><td id=3D"layout-row-padding1514" v=
+align=3D"top" style=3D"mso-line-height-rule: exactly; background-color: #24=
+4df0; padding: 5px;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adj=
+ust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso=
+-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-ru=
+le: exactly;"><td=0Aid=3D"text_div1292" class=3D"td_text td_block" valign=
+=3D"top" align=3D"left" width=3D"630" style=3D"mso-line-height-rule: exactl=
+y; margin: 0; outline: none; padding: 0; color: inherit; font-size: 12px; f=
+ont-weight: inherit; line-height: 1; text-decoration: inherit; font-family:=
+ arial;"> <div style=3D"margin: 0; outline: none; padding: 0; color: inheri=
+t; font-size: 18px; font-weight: inherit; line-height: inherit; text-decora=
+tion: inherit;"> <div style=3D"margin: 0; outline: none; padding: 0; color:=
+ #ffffff; font-size: inherit; font-weight: inherit; line-height: inherit; t=
+ext-decoration: inherit;"> <div style=3D"margin: 0; outline: none; padding:=
+ 0; color: #ffffff; font-size: inherit; font-weight: inherit; line-height: =
+inherit; text-decoration: inherit; text-align: center;"><span style=3D"colo=
+r: #ffffff; font-size: inherit; font-weight: bold; line-height: inherit; te=
+xt-decoration: inherit;" class=3D"">What is the EIDL? </span></div>=0A </di=
+v>=0A </div>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
+=0A</tr>=0A<tr id=3D"layout-row1518" class=3D"layout layout-row clear-this =
+" style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-padding1518=
+" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><table width=3D"1=
+00%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-siz=
+e-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; =
+font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: =
+0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout_table_e=
+a2c70bf2c43f0da0d9022b1f883213138d34a18" valign=3D"top" width=3D"325" style=
+=3D"mso-line-height-rule: exactly;"><table cellpadding=3D"0" cellspacing=3D=
+"0" border=3D"0" class=3D"layout layout-table " width=3D"325" style=3D"-ms-=
+text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: co=
+llapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-=
+rspace: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout=
+-row-margin1515" valign=3D"top" style=3D"mso-line-height-rule:=0Aexactly;">=
+<table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" styl=
+e=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-col=
+lapse: collapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt;"><tr id=3D"layout-row1515" class=3D"layout layout-row=
+ widget _widget_picture " align=3D"center" style=3D"mso-line-height-rule: e=
+xactly;"><td id=3D"layout-row-padding1515" valign=3D"top" style=3D"mso-line=
+-height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-=
+adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; =
+mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height=
+-rule: exactly;"><td class=3D"image-td" align=3D"center" valign=3D"top" wid=
+th=3D"325" style=3D"mso-line-height-rule: exactly;"><img src=3D"https://con=
+tent.app-us1.com/Rnj5K/2021/10/19/8657e27f-7004-40ca-ba8e-9b2b418af77c.png?=
+r=3D1095513793" alt=3D"" width=3D"203"=0Astyle=3D"display: block; border: n=
+one; outline: none; width: 203px; opacity: 1; max-width: 100%;"></td>=0A</t=
+r>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
+=0A<td id=3D"layout_table_ba355bf7eac701dcdbb53df13491da3cd58c1044" valign=
+=3D"top" width=3D"325" style=3D"mso-line-height-rule: exactly;"><table cell=
+padding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"layout layout-table "=
+ width=3D"325" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjus=
+t: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso-t=
+able-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-rule=
+: exactly;"><td id=3D"layout-row-margin1516" valign=3D"top" style=3D"mso-li=
+ne-height-rule: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -w=
+ebkit-text-size-adjust: 100%; border-collapse: initial !important; font-siz=
+e: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><t=
+r id=3D"layout-row1516" class=3D"layout layout-row widget _widget_text styl=
+e1516" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0;"><td =
+id=3D"layout-row-padding1516" valign=3D"top"=0Astyle=3D"mso-line-height-rul=
+e: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-=
+size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: 1=
+00%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-h=
+eight-rule: exactly;"><td id=3D"text_div1294" class=3D"td_text td_block" va=
+lign=3D"top" align=3D"left" width=3D"305" style=3D"mso-line-height-rule: ex=
+actly; margin: 0; outline: none; padding: 0; color: inherit; font-size: 12p=
+x; font-weight: inherit; line-height: 1; text-decoration: inherit; font-fam=
+ily: arial;"> <div style=3D"margin: 0; outline: none; padding: 0; color: in=
+herit; font-size: 15px; font-weight: inherit; line-height: inherit; text-de=
+coration: inherit;"> <div style=3D"margin: 0; outline: none; padding: 0; co=
+lor: inherit; font-size: inherit; font-weight: inherit; line-height: inheri=
+t; text-decoration: inherit;"><ul style=3D"margin: 0 0 0 40px; padding: 0;"=
+><li=0Astyle=3D"display: list-item; line-height: inherit; list-style-type: =
+disc; margin: 0 0 0 3px;"><span style=3D"color: #244df0; font-size: inherit=
+; font-weight: bold; line-height: inherit; text-decoration: inherit; text-a=
+lign: inherit;" class=3D"">Up to $2,000,000</span></li><li style=3D"display=
+: list-item; line-height: inherit; list-style-type: disc; margin: 0 0 0 3px=
+;"><span style=3D"color: #244df0; font-size: inherit; font-weight: bold; li=
+ne-height: inherit; text-decoration: inherit; text-align: inherit;" class=
+=3D"">No payments for the first 24 months</span></li><li style=3D"display: =
+list-item; line-height: inherit; list-style-type: disc; margin: 0 0 0 3px;"=
+><span style=3D"color: #244df0; font-size: inherit; font-weight: bold; line=
+-height: inherit; text-decoration: inherit; text-align: inherit;" class=3D"=
+">3.75% fixed interest rate over 30 years! </span></li><li style=3D"display=
+: list-item; line-height: inherit; list-style-type: disc; margin: 0 0 0 3px=
+;"><span style=3D"color: #244df0;=0Afont-size: inherit; font-weight: bold; =
+line-height: inherit; text-decoration: inherit; text-align: inherit;" class=
+=3D"">Short for Economic Injury Disaster Loan</span></li><li style=3D"displ=
+ay: list-item; line-height: inherit; list-style-type: disc; margin: 0 0 0 3=
+px;"><span class=3D"" style=3D"color: #244df0; font-size: inherit; font-wei=
+ght: bold; line-height: inherit; text-decoration: inherit; text-align: inhe=
+rit;">Part of the CARES act passed in March of 2020 </span></li><li style=
+=3D"display: list-item; line-height: inherit; list-style-type: disc; margin=
+: 0 0 0 3px;"><span class=3D"" style=3D"color: #244df0; font-size: inherit;=
+ font-weight: bold; line-height: inherit; text-decoration: inherit; text-al=
+ign: inherit;">All US business owners can apply</span></li><li style=3D"dis=
+play: list-item; line-height: inherit; list-style-type: disc; margin: 0 0 0=
+ 3px;"><span class=3D"" style=3D"color: #244df0; font-size: inherit; font-w=
+eight: bold; line-height: inherit; text-decoration: inherit;=0Atext-align: =
+inherit;">Based off of 2019 business tax returns</span></li><li style=3D"di=
+splay: list-item; line-height: inherit; list-style-type: disc; margin: 0 0 =
+0 3px;"><span class=3D"" style=3D"color: #244df0; font-size: inherit; font-=
+weight: bold; line-height: inherit; text-decoration: inherit; text-align: i=
+nherit;">Minimum FICO of 550</span></li></ul></div>=0A </div>=0A</td>=0A</t=
+r>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
+=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: ex=
+actly;"><td id=3D"layout-row-margin1517" valign=3D"top" style=3D"mso-line-h=
+eight-rule: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webki=
+t-text-size-adjust: 100%; border-collapse: initial !important; font-size: 1=
+4px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=
+=3D"layout-row1517" class=3D"layout layout-row widget _widget_button style1=
+517" style=3D"mso-line-height-rule: exactly; background-color: #244df0;"><t=
+d id=3D"layout-row-padding1517" valign=3D"top" style=3D"mso-line-height-rul=
+e: exactly; background-color: #244df0; padding: 5px;"><table width=3D"100%"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-ad=
+just: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font=
+-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;=
+"><tr style=3D"mso-line-height-rule: exactly;"><td class=3D"td_button td_bl=
+ock=0Acustomizable" valign=3D"top" align=3D"left" width=3D"630" style=3D"ms=
+o-line-height-rule: exactly;"> <div class=3D"button-wrapper" style=3D"margi=
+n: 0; outline: none; padding: 0; text-align: center;">=0A<!--[if mso]> <v:r=
+oundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schemas-m=
+icrosoft-com:office:word" href=3D"https://motorcityfunding.lt.acemlnd.com/P=
+rod/link-tracker?redirectUrl=3DaHR0cCUzQSUyRiUyRnd3dy5wbWZ1cy5jb20lMkZzYnJ1=
+Z21hbg=3D=3D&sig=3DGSYd6S4c6WNdmwPdgzD4mB43VVp4sczB8gcqfaJhfHeb&iat=3D16408=
+84026&a=3D%7C%7C225362583%7C%7C&account=3Dmotorcityfunding%2Eactivehosted%2=
+Ecom&email=3DrcnACfXAw2TQUyfpj7YMwBdIU0DsLaDSPK6rhDqV%2BUXVt3QtV0xSM9W6AkIV=
+KsAf&s=3D0ad92c0c4a2ff86eed94873b1c9268b7&i=3D74A112A1A216" style=3D"v-text=
+-anchor:middle; width:130px; height:60px; font-weight: bold;" arcsize=3D"6%=
+" strokecolor=3D"#B5B5B5" strokeweight=3D"1pt" fillcolor=3D"#ff1414" o:butt=
+on=3D"true" o:allowincell=3D"true" o:allowoverlap=3D"false" > <v:textbox in=
+set=3D"2px,2px,2px,2px"> <center style=3D"color:#ffffff;font-family:Arial; =
+font-size:14px; font-weight: bold;line-height: 1.1;">APPLY NOW</center> </v=
+:textbox> </v:roundrect>=0A<![endif]--> <a href=3D"https://motorcityfunding=
+.lt.acemlnd.com/Prod/link-tracker?redirectUrl=3DaHR0cCUzQSUyRiUyRnd3dy5wbWZ=
+1cy5jb20lMkZzYnJ1Z21hbg=3D=3D&sig=3DGSYd6S4c6WNdmwPdgzD4mB43VVp4sczB8gcqfaJ=
+hfHeb&iat=3D1640884026&a=3D%7C%7C225362583%7C%7C&account=3Dmotorcityfunding=
+%2Eactivehosted%2Ecom&email=3DrcnACfXAw2TQUyfpj7YMwBdIU0DsLaDSPK6rhDqV%2BUX=
+Vt3QtV0xSM9W6AkIVKsAf&s=3D0ad92c0c4a2ff86eed94873b1c9268b7&i=3D74A112A1A216=
+" style=3D"margin: 0; outline: none; padding: 12px; color: #ffffff; backgro=
+und: #ff1414; background-color: #ff1414; border: 1px solid #B5B5B5; border-=
+radius: 3px; font-family: Arial; font-size: 14px; display: inline-block; li=
+ne-height: 1.1; text-align: center; text-decoration: none; mso-hide: all;">=
+ <span style=3D"color:#ffffff;font-family:Arial;font-size:14px;font-weight:=
+ bold;"> APPLY NOW </span> </a> </div>=0A=0A</td>=0A</tr>=0A</table>=0A</td=
+>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: e=
+xactly;"><td id=3D"layout-row-margin1519" valign=3D"top" style=3D"mso-line-=
+height-rule: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webk=
+it-text-size-adjust: 100%; border-collapse: initial !important; font-size: =
+14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr i=
+d=3D"layout-row1519" class=3D"layout layout-row widget _widget_text style15=
+19" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0;"><td id=
+=3D"layout-row-padding1519" valign=3D"top" style=3D"mso-line-height-rule: e=
+xactly; padding: 5px;"><table width=3D"100%" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-a=
+djust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; m=
+so-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-=
+rule: exactly;"><td id=3D"text_div1296" class=3D"td_text td_block" valign=
+=3D"top"=0Aalign=3D"left" width=3D"630" style=3D"mso-line-height-rule: exac=
+tly; margin: 0; outline: none; padding: 0; color: inherit; font-size: 12px;=
+ font-weight: inherit; line-height: 1; text-decoration: inherit; font-famil=
+y: arial;"> <div style=3D"margin: 0; outline: none; padding: 0; color: inhe=
+rit; font-size: 14px; font-weight: inherit; line-height: inherit; text-deco=
+ration: inherit;"> <div style=3D"margin: 0; outline: none; padding: 0; colo=
+r: inherit; font-size: inherit; font-weight: inherit; line-height: inherit;=
+ text-decoration: inherit;"> <span style=3D"color: #244df0; font-size: inhe=
+rit; font-weight: inherit; line-height: inherit; text-decoration: inherit;"=
+ class=3D""><br><span style=3D"color: inherit; font-size: inherit; font-wei=
+ght: inherit; line-height: inherit; text-decoration: inherit; margin: 0;"><=
+div style=3D"margin: 0; outline: none; padding: 0; color: inherit; font-siz=
+e: inherit; font-weight: 400; line-height: inherit; text-decoration: inheri=
+t; font-family: arial; font-style:=0Anormal; text-align: -webkit-left;"><sp=
+an style=3D"color: inherit; font-size: inherit; font-weight: inherit; line-=
+height: inherit; text-decoration: inherit; font-family: arial;">If you have=
+ any questions please do not hesitate to call.=C2=A0 We pride ourselves on =
+always being available to our clients.</span></div>=0A<div style=3D"margin:=
+ 0; outline: none; padding: 0; color: inherit; font-size: inherit; font-wei=
+ght: 400; line-height: inherit; text-decoration: inherit; font-family: aria=
+l; font-style: normal; text-align: -webkit-left;"><br style=3D""></div>=0A<=
+div style=3D"margin: 0; outline: none; padding: 0; color: inherit; font-siz=
+e: inherit; font-weight: 400; line-height: inherit; text-decoration: inheri=
+t; font-family: arial; font-style: normal; text-align: -webkit-left;"><span=
+ style=3D"color: inherit; font-size: inherit; font-weight: inherit; line-he=
+ight: inherit; text-decoration: inherit; font-family: arial;">Sincerely,</s=
+pan></div>=0A<div style=3D"margin: 0; outline: none; padding: 0; color: inh=
+erit; font-size: inherit; font-weight: 400; line-height: inherit; text-deco=
+ration: inherit; font-family: arial; font-style: normal; text-align: -webki=
+t-left;"><br style=3D""></div>=0A<div style=3D"margin: 0; outline: none; pa=
+dding: 0; color: inherit; font-size: inherit; font-weight: 400; line-height=
+: inherit; text-decoration: inherit; font-family: arial; font-style: normal=
+; text-align: -webkit-left;"><span style=3D"color: inherit; font-size: inhe=
+rit; font-weight: inherit; line-height: inherit; text-decoration: inherit;"=
+><span style=3D"color: inherit; font-size: inherit; font-weight: bold; line=
+-height: inherit; text-decoration: inherit; font-family: arial;">Samuel Bru=
+gman</span><span style=3D"color: inherit; font-size: inherit; font-weight: =
+inherit; line-height: inherit; text-decoration: inherit; font-family: arial=
+;"> </span><span style=3D"color: inherit; font-size: inherit; font-weight: =
+bold; line-height: inherit; text-decoration: inherit; font-family: arial;">=
+| </span><span style=3D"color: inherit; font-size: inherit; font-weight: in=
+herit; line-height: inherit; text-decoration: inherit; font-family: arial;"=
+>Funding Manager</span></span></div>=0A</span></span></div>=0A </div>=0A</t=
+d>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr id=
+=3D"layout-row1522" class=3D"layout layout-row clear-this " style=3D"mso-li=
+ne-height-rule: exactly;"><td id=3D"layout-row-padding1522" valign=3D"top" =
+style=3D"mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -=
+webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; =
+min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=
+=3D"mso-line-height-rule: exactly;"><td id=3D"layout_table_8bf7658fd740f2a8=
+5059ba146c9e5b3a967813b0" valign=3D"top" width=3D"325" style=3D"mso-line-he=
+ight-rule: exactly;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
+" class=3D"layout layout-table " width=3D"325" style=3D"-ms-text-size-adjus=
+t: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-si=
+ze: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><=
+tr style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1520=
+" valign=3D"top" style=3D"mso-line-height-rule:=0Aexactly; padding: 5px;"><=
+table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=
+=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-coll=
+apse: initial !important; font-size: 14px; min-width: 100%; mso-table-lspac=
+e: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row1520" class=3D"layout l=
+ayout-row widget _widget_text style1520" style=3D"mso-line-height-rule: exa=
+ctly; margin: 0; padding: 0; background-color: #244df0;"><td id=3D"layout-r=
+ow-padding1520" valign=3D"top" style=3D"mso-line-height-rule: exactly; back=
+ground-color: #244df0; padding: 5px;"><table width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -web=
+kit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min=
+-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"m=
+so-line-height-rule: exactly;"><td id=3D"text_div1297" class=3D"td_text td_=
+block" valign=3D"top" align=3D"left" width=3D"305" style=3D"mso-line-height=
+-rule: exactly; margin: 0;=0Aoutline: none; padding: 0; color: inherit; fon=
+t-size: 12px; font-weight: inherit; line-height: 1; text-decoration: inheri=
+t; font-family: arial;"> <div style=3D"margin: 0; outline: none; padding: 0=
+; color: #ffffff; font-size: 14px; font-weight: inherit; line-height: inher=
+it; text-decoration: inherit; font-family: arial;"><div style=3D"margin: 0;=
+ outline: none; padding: 0; color: inherit; font-size: 16px; font-weight: i=
+nherit; line-height: inherit; text-decoration: inherit; text-align: center;=
+"><span style=3D"color: #ffffff; font-size: 14px; font-weight: inherit; lin=
+e-height: inherit; text-decoration: inherit; font-family: arial; text-align=
+: inherit;"><span style=3D"color: #01df3a; font-size: inherit; font-weight:=
+ bold; line-height: inherit; text-decoration: inherit;" class=3D"">Motor Ci=
+ty Funding</span><br style=3D"font-size: 22px;">3000 Town Center</span><br>=
+</div>=0A<span style=3D"color: #ffffff; font-size: 14px; font-weight: inher=
+it; line-height: inherit; text-decoration: inherit; font-family: arial; fon=
+t-style: normal;" class=3D""><div style=3D"margin: 0; outline: none; paddin=
+g: 0; color: inherit; font-size: inherit; font-weight: inherit; line-height=
+: inherit; text-decoration: inherit; text-align: center;"><span style=3D"co=
+lor: inherit; font-size: inherit; font-weight: inherit; line-height: inheri=
+t; text-decoration: inherit; font-family: arial; text-align: inherit;">Sout=
+hfield, MI 48076</span></div>=0A<div style=3D"margin: 0; outline: none; pad=
+ding: 0; color: inherit; font-size: inherit; font-weight: inherit; line-hei=
+ght: inherit; text-decoration: inherit; font-style: normal; font-family: ar=
+ial; text-align: center;"><span style=3D"color: inherit; font-size: inherit=
+; font-weight: inherit; line-height: inherit; text-decoration: inherit; fon=
+t-family: arial; text-align: inherit;">O: (315) 257-1195</span></div>=0A</s=
+pan></div>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A=
+</tr>=0A</table>=0A</td>=0A<td id=3D"layout_table_5a2582ec396e2caf2c932993f=
+5fa4e2ff60fb4a5" valign=3D"top" width=3D"325" style=3D"mso-line-height-rule=
+: exactly;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=
+=3D"layout layout-table " width=3D"325" style=3D"-ms-text-size-adjust: auto=
+; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14p=
+x; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr styl=
+e=3D"mso-line-height-rule: exactly;"><td id=3D"layout-row-margin1521" valig=
+n=3D"top" style=3D"mso-line-height-rule: exactly; padding: 8px;"><table wid=
+th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-t=
+ext-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: ini=
+tial !important; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt;"><tr id=3D"layout-row1521" class=3D"layout layout-row=
+ widget _widget_button style1521" style=3D"mso-line-height-rule: exactly; b=
+ackground-color: #244df0;"><td id=3D"layout-row-padding1521" valign=3D"top"=
+=0Astyle=3D"mso-line-height-rule: exactly; background-color: #244df0; paddi=
+ng: 14px;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%;=
+ border-collapse: collapse; font-size: 14px; min-width: 100%; mso-table-lsp=
+ace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-rule: exactl=
+y;"><td class=3D"td_button td_block customizable" valign=3D"top" align=3D"l=
+eft" width=3D"281" style=3D"mso-line-height-rule: exactly;"> <div class=3D"=
+button-wrapper" style=3D"margin: 0; outline: none; padding: 0; text-align: =
+center;">=0A<!--[if mso]> <v:roundrect xmlns:v=3D"urn:schemas-microsoft-com=
+:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"mailto:sbru=
+gman@motorcityfunding.com" style=3D"v-text-anchor:middle; width:135px; heig=
+ht:58px; font-weight: bold;" arcsize=3D"6%" strokecolor=3D"#57db28" strokew=
+eight=3D"1pt" fillcolor=3D"#57db28" o:button=3D"true" o:allowincell=3D"true=
+" o:allowoverlap=3D"false" > <v:textbox inset=3D"2px,2px,2px,2px"> <center =
+style=3D"color:#ffffff;font-family:Arial; font-size:14px; font-weight: bold=
+;line-height: 1.1;">CONTACT US</center> </v:textbox> </v:roundrect>=0A<![en=
+dif]--> <a href=3D"mailto:sbrugman@motorcityfunding.com" style=3D"margin: 0=
+; outline: none; padding: 12px; color: #ffffff; background: #57db28; backgr=
+ound-color: #57db28; border-radius: 3px; font-family: Arial; font-size: 14p=
+x; display: inline-block; line-height: 1.1; text-align: center; text-decora=
+tion: none; mso-hide: all;"> <span style=3D"color:#ffffff;font-family:Arial=
+;font-size:14px;font-weight: bold;"> CONTACT US </span> </a> </div>=0A=0A</=
+td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table=
+>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<=
+/table>=0A</td>=0A</tr>=0A</table>=0A</div>=0A<img src=3D"https://motorcity=
+funding.lt.acemlnd.com/Prod/link-tracker?nl=3D1&c=3D74&m=3D112&s=3D0ad92c0c=
+4a2ff86eed94873b1c9268b7&l=3Dopen&account=3Dmotorcityfunding.activehosted.c=
+om&a=3D225362583" border=3D"0" width=3D"1" height=3D"1" style=3D"display:bl=
+ock;width:1px!important;min-width:1px!important;max-width:1px!important;hei=
+ght:1px!important;border:0;overflow:hidden;" /><div id=3D"ac-footer" style=
+=3D"clear:both;background-color:inherit;background:inherit;min-width:100%;m=
+so-table-lspace:0pt;mso-table-rspace:0pt;padding:20px;color:#000000;font-si=
+ze:11px;font-family:arial,helvetica,sans-serif;line-height:140%;line-height=
+:1.4;text-align:center;box-sizing:border-box;">=0A=09<center>=0A=09=09Sent =
+to: <span style=3D"font-size:11px;font-family:arial,helvetica,sans-serif;fo=
+nt-weight:normal;text-decoration:none;outline:none;">linux1394-devel@lists.=
+sourceforge.net</span>=0A=09=09<br>=0A=09=09<br>=0A=09=09<a href=3D"http://=
+motorcityfunding.activehosted.com/proc.php?nl=3D1&c=3D74&m=3D112&s=3D0ad92c=
+0c4a2ff86eed94873b1c9268b7&act=3Dunsub" style=3D"font-size:11px;font-family=
+:arial,helvetica,sans-serif;font-weight:bold;text-decoration:underline;"><s=
+pan style=3D"font-weight:bold;text-decoration:underline;">Unsubscribe</span=
+></a>=0A=09=09<br>=0A=09=09<br> Motor City Funding, 3000 Town Center, South=
+field, United States=0A=09</center>=0A</div>=0A<br clear=3D"all" /></body>=
+=0A</html>
+--_=_swift-20402315061cde561b51598.99180945_=_--
 
 
 
-
-
-
-
-
-
-
-
-</p><p class=3D"MsoNormal" style=3D"margin:0in;font-size:11pt;font-family:C=
-alibri,sans-serif"><span style=3D"font-family:&quot;Bookman Old Style&quot;=
-,serif"><span class=3D"gmail-__dt"><span class=3D"__dt"> <img class=3D"kixi=
-e-click-image-c2c" id=3D"telephone_number_162" src=3D"chrome-extension://bm=
-dpeakaalmaaflnkckhjcojpemlkjig/images/dt_phone.png" style=3D"cursor:pointer=
-;width:14px;height:13px" title=3D"Call 1-631-730-8115" span=3D"kixie-click-=
-image"> 1-631-730-8115 -
-Fax</span></span></span></p></td></tr></tbody></table></div></div></div><di=
-v dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><br></div><div dir=3D"ltr">=
-You may <a href=3D"http://url6045.fastfundinggroup.net/ls/click?upn=3D0mogs=
-fw379VW7NOF7LqlEo-2FxCzy-2FKWmP-2BOlbLKXGTezZIQiKjAtXuXFg7VeLCzsiNzAavT5Rbm=
-vb0Byc2r3kumkpEVdObji397CB7dzrBjZJlXvIPkyXxjxV9VdJ3zJzP1et5RdeDG-2FNTBB1lAj=
-IoA-3D-3D4wFz_9c2ZCZzrWFlb2tjmei9-2FZAE1DdJ1NjbET0lcB-2BJJVDAgewWzHM8gDHHOx=
-hos5tje70r5a8idQvbpAg59u9-2FdZ7QqW9nUay3XZka3f-2FIpZFs9PeQKDRgaUgl89jo6LIm9=
-2FuNsX99lVMGuj8ImAZpTRvH5qEzw2khFJRQWr-2Fd4rFBeSbxStSTIXkHrhHAaS679GoS-2FNr=
-n-2BZd7PNWHw7yU58qHiPUmcAa97KA1y5seH4aVjMzH6B-2Fvcnd7ylWVsYW5" target=3D"_b=
-lank">unsubscribe</a> to stop receiving our emails.<br></div></div></div></=
-div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<img src=3D"http://ec2-34-217-128-7.us-west-2.compute.amazonaws.com/F9y6-v3=
-HrB2jCS8zN8W8V_9dY5-eI3nb3ow1z4BtgGQsSL_csb-0AQHlKohdRa59LvIVjoBYj8FOMD6S1j=
-2FfzTMN2slD_CI-URjk1kiH6D2au3omoo-CVMAWBS3-j-LsiXOffcYi7dRotYUS1EHcqUwyf5uQ=
-XfEAzJK17jE-8UrCeXN_5ug-vP3nBHR5FiYRqP7VBDZxbCk6EjiEwolxdeHvqwSQ4ZvO563foqv=
-VZ"></blockquote></div><br></div><img src=3D"http://ec2-34-217-128-7.us-wes=
-t-2.compute.amazonaws.com/F9y6-v3HrB2jCS8zN8W8VxlW7IiBUb2cAJIojT_roU6BmKk2f=
-p8ZVFQvaf2goSYOtCKLcGril8fdq8sC4TLM-APBuRUURj_YZwZH3kYaM5py2ftlSSYXdVBSo7cY=
-hzZIFMTjxqgigqpr8UN0wNFarl4SerHaLAKqxqb3JulftP8qzjzDtufNHEdb"></blockquote>=
-</div><br></div><img src=3D"http://ec2-34-217-128-7.us-west-2.compute.amazo=
-naws.com/N-6nrm2DYfOV09pXko-kJEoW2cbYT-pxgWAcFUGvx3ffjsyR56FyY3dLS_LQq8LqHG=
-Dlpn5snwSiwdd0xIP0X_2bhlYM0PUmUhtCKL7WIQU3KRZjwb_BH7giVqNLf6AMd37kDG1Zb52Bn=
-fNdUiTHVsjBOpScH6IidA57LbzZwsI9FEEAoA5sTnAjLxkw9yC_vl"></blockquote></div><=
-br></div><img src=3D"http://ec2-34-217-128-7.us-west-2.compute.amazonaws.co=
-m/kNUQhR_cKKa1ciearMX9vqOx3h-d6H7Q0bxK6Dv_o5gVEgac4b9cRmu8WhsdeSifV8LEqyDME=
-b80FP_cnbLjRQ4amQB2qX4tWyxf975KCcN8__ztHDC0K15TbXAxPANSh0UnMbELpwWDg-aGvyFu=
-EaYXV-UgGcz6Rw9NaFJdYaAYRJnhUvPNJJe11R_2oICrl3s1jxiITxJlgHC4x6xWy7TXdZWJxv_=
-70Ffu5iVX"></blockquote></div><br></div><img src=3D"http://ec2-34-217-128-7=
-.us-west-2.compute.amazonaws.com/F9y6-v3HrB2jCS8zN8W8VziPQsw9VoMmbESMHqI9Td=
-APA9sempRoPsoAg22WKm-_jlKN69yZRyWgQdptCrheXNCn5LnIHyN7ecI-ceBPPPtOQMrb2cA0M=
-_4EsGcThbyBDbAO9fb87VwxA70w5sePo_7gySk1586JAQlVOIKAV3o8jFAlU4bipzaWpPnmJyQf=
-bQ9m1o7V6xqfWbo0cl_PYTG"></blockquote></div><br></div><img src=3D"http://ec=
-2-34-217-128-7.us-west-2.compute.amazonaws.com/8qgP5gV7y27zzReOgfR4JSNVNq7f=
-4Vaq1AbCgDyo1B8cCTqVKBSreBw0943vRXDf5ieK64XfcXtzxPr4GTln8NYbolxTPEvcvqysJz8=
-TtzVhA7Wvk3T2o35wxT5dRdnKvNQkzsfpS5jwErzlMViDGFP9mpjQplL9zRy5PglQ2wMsi-ZLLS=
-N8_eWJd5KXxGIlnlAffpWQs_CVY6dOHdvSXNa2iSK"><img src=3D"http://url6045.fastf=
-undinggroup.net/wf/open?upn=3Dc1k-2BuaaF0K8LeZYcvAHob564iJ76fFRUCHqRrh-2F2a=
-EgMxXct1mETJR7aXvNBjVBGpF2pZ0OdECVYD2LIGmgMW6x6uRaEh7goIzOXrS9NgkAf60lLRggI=
-I-2BYjzUotnQdLEqk1UPGafHYPP3yUpQg5CcaB0eNc0qMJGVpNeOrz6lzhZqatCtVARMWdo0A-2=
-FinVhodM7GRdedQUiRIoJncH3R2I9rNmaLA-2FLSNWGZh4r3p9sFgJ3-2BpjxE-2FCVe09AMvMD=
-" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !impor=
-tant;width:1px !important;border-width:0 !important;margin-top:0 !important=
-;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !import=
-ant;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 !i=
-mportant;padding-left:0 !important;"/>
---0000000000008090d505d3bdc627--
-
-
---===============8077234828742359013==
+--===============4961879636339588072==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============8077234828742359013==
+--===============4961879636339588072==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -542,5 +838,6 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============8077234828742359013==--
+--===============4961879636339588072==--
+
 
