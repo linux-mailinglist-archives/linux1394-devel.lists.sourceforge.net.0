@@ -2,129 +2,80 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B6B648BDC3
-	for <lists+linux1394-devel@lfdr.de>; Wed, 12 Jan 2022 04:51:53 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id F292F48BF7B
+	for <lists+linux1394-devel@lfdr.de>; Wed, 12 Jan 2022 09:06:09 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1n7Ufd-0003De-Sn; Wed, 12 Jan 2022 03:51:34 +0000
+	id 1n7Ydp-0001Vu-3e; Wed, 12 Jan 2022 08:05:57 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1n7Ufc-0003DW-Ec
- for linux1394-devel@lists.sourceforge.net; Wed, 12 Jan 2022 03:51:33 +0000
+ (envelope-from <marcan@marcan.st>) id 1n7Ydn-0001VO-JL
+ for linux1394-devel@lists.sourceforge.net; Wed, 12 Jan 2022 08:05:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ From:References:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=cPPCjW0++zs5j1BPECt8fbcKsS3R/TgbbewmfZx6kS0=; b=PdXJEkckBQGsIgXWfo97W8pyZs
- yb8nkjXP8maAuMMiShGNF5E/+rvKvbHfQln2uKIYBgbLnSsYDj3zrytsfKTcOXZ66yHckV79r/7Y+
- MAn1Oz1lSDss8z99BtFT2f9QCQ+jjTwM7P69V6go4Q9VCQ7x/869mfSZikb0vpLnxMuA=;
+ bh=DbMk7u0hsoxkRkoI2puCbHrby//UB1W5rBpm7hR57RU=; b=VlCBCyYl47UTsJN4dTCwTrkHcl
+ j12tY/05+AX3wrEYx2ZUClfABcc3tRtxYNIy/E1tNBv86tUBk+eNlxznxEiECI46gQTXOld4sXnaR
+ Z2csVn8/Y1x8oU6EoduwOr7fBkkGwvSVgJ0dDJ8kBssa1Jc6hjUsej/sfShjhMDQNRys=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:To:
- From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:
+ Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=cPPCjW0++zs5j1BPECt8fbcKsS3R/TgbbewmfZx6kS0=; b=b7VeXQ9e4asW/dj4ERpdIspIqS
- znXdyQTjnV2AGiSPutWlz5tq4fZ+DIXB2lLHs0OLKu46/GKgP+S/Gi6+E5nUGr15DpTC9K/Gq95lg
- /IKV5gITtTctM92yhpY2i9bW/hsoZn1yPI7S1+fD2EmjPKOvrJdqEE33FS3fz9Sk7RhM=;
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ bh=DbMk7u0hsoxkRkoI2puCbHrby//UB1W5rBpm7hR57RU=; b=k+Vfjso70//uP1B56oTMcuWr4y
+ P5QaA+YBLvvWESqE69sOLhsP5z8iM1QG6Y8v1kCwosZAlrOOZBI6hf8P74pzsqDZORDKBIeYgQsHw
+ i3I4DfnWmWbBlWFrp5Rko3oo9v897kGpT0tBbC3bELPw1cwLUjq9byjmoalqmrTbGn7I=;
+Received: from marcansoft.com ([212.63.210.85] helo=mail.marcansoft.com)
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1n7Ufc-0001Cy-93
- for linux1394-devel@lists.sourceforge.net; Wed, 12 Jan 2022 03:51:33 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.west.internal (Postfix) with ESMTP id BA76E320167D;
- Tue, 11 Jan 2022 22:51:24 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Tue, 11 Jan 2022 22:51:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=date:from:to:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm3; bh=cPPCjW0++zs5j1BPECt8fbcKsS3
- R/TgbbewmfZx6kS0=; b=Mycbv/xmkNCGIvmdvQRqd5qmGXjmN22OACHXD3vEihP
- +wZ9PiGK7MtO/eKtnqwHZQH7s3HsbgS4Hq7F79wABVSaFTDICaMOcgZtxoakP7Yr
- 7IYxz+TmJPNj5fnzaVCl/qv6x9g1jJ2AwzSDMsqK6elihGLO1HYV5sfItMzgBPi7
- kZVXaxChxsx5YcKKa5VieU8evfVtSGC+/xqiSul3sBgIxPdXnkvW1kGOOaGhHvIP
- N42x3WTsjT5TcwpbPSiR/be5lB6aIShtDIS9pcnRd4JdpaE1Art4smCFz6sMwuNc
- mG0cqcN5isN3PhQv3bjyqBxa4C1zpE4UumFxwPgPKwQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=cPPCjW
- 0++zs5j1BPECt8fbcKsS3R/TgbbewmfZx6kS0=; b=kmP4fLlO7ppe2GRHsMlvON
- qfHmAQENdYCE+z6g9W9LIH7rg1ZCN67Qx5zAUqtwY8+ozh+2K6kGHqQIvZLNEfXo
- 9bKh5+LP97KwSDH9VzYWLGT0i/uYpFXb66WYJul+3K0CvS9/mI6vVdqtymLDQHrR
- AuJ8jq6YWC3ic4a/wX70gl00dwqKfcfXTRgQ8gWRsiRtBZ+T/C4FTyi02YKYAzn2
- ErJvvxreRAjCMj55CaCrxyJhZcNLqtfjZzKhFNSrXM6N6uSIovRU8r4lMeQ3p3Jk
- hYyslVdn0IaKzoeIkf66UbMC0P/kuyeh+qa3eV7iOwe8VXYqFcEyyUEn5F9l6G8A
- ==
-X-ME-Sender: <xms:O1DeYTI9JtqiTyLBk3hklhpMyh1A-8T314X4NJUfChZYb-Pwnv2LqQ>
- <xme:O1DeYXIWUUvJd4g8oUFebDJrhsdYZBho3Ac22tCqfCL2W9z6BzmYQiWrzINQ_F9tv
- BA-3zapAQVPDJzTrHI>
-X-ME-Received: <xmr:O1DeYbtSKXC4tSgdfW8Vzb02NBfq8EmKh2UQH4Ad7OZRCGsMbGDqLHaItSvKe8QwIkf53vxa0PEYrUoh0_jZSIGZ1Zj9XqFmhQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvuddrudehgedgieeiucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvuffkfhggtggujgesthdtre
- dttddtvdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgr
- shhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepjeegieefue
- evueefieeggeejledvgfejgeffjefgvdekleehgfdtfeetjeelkeejnecuffhomhgrihhn
- pehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmh
- grihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:O1DeYcanM5X5wgDAWQGKg709O0DgC6iL2S_wP6CkE1_nSrh5rBAfNA>
- <xmx:O1DeYaYXhoq_-EX_RbkYJya82uhHoHkGwC3OjWk7r8VTlQ9904_jRQ>
- <xmx:O1DeYQDSRbYnQ5gQRqW2UYGdWXC8tOpv6rP8lj19Q3CpjIgFtduxqg>
- <xmx:PFDeYaF3FhyFtbVWrwImjfHw8nRRsk9yjqSuJ8lI2vAigi6JH7wI0g>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 11 Jan 2022 22:51:21 -0500 (EST)
-Date: Wed, 12 Jan 2022 12:51:18 +0900
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: stefanr@s5r6.in-berlin.de, alsa-devel@alsa-project.org,
- linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
- marcan@marcan.st
+ id 1n7Ydj-00Ccb7-U7
+ for linux1394-devel@lists.sourceforge.net; Wed, 12 Jan 2022 08:05:55 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ (Authenticated sender: marcan@marcan.st)
+ by mail.marcansoft.com (Postfix) with ESMTPSA id 1916744B5E;
+ Wed, 12 Jan 2022 07:47:07 +0000 (UTC)
+Message-ID: <0beed477-adc4-5362-f116-669832c862b1@marcan.st>
+Date: Wed, 12 Jan 2022 16:47:05 +0900
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.4.1
 Subject: Re: [PATCH 0/3] firewire: assist unit driver to compute packet
  timestamp
-Message-ID: <Yd5QNs/YnvzGOy0g@workstation>
-Mail-Followup-To: stefanr@s5r6.in-berlin.de, alsa-devel@alsa-project.org,
- linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
- marcan@marcan.st
+Content-Language: en-US
+To: stefanr@s5r6.in-berlin.de, alsa-devel@alsa-project.org,
+ linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
 References: <20211202113457.24011-1-o-takashi@sakamocchi.jp>
  <YcGycqUrptkWYeOV@workstation> <YdgdfrcvhJrUXwYF@workstation>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YdgdfrcvhJrUXwYF@workstation>
-X-Spam-Score: -0.9 (/)
+ <Yd5QNs/YnvzGOy0g@workstation>
+From: Hector Martin <marcan@marcan.st>
+In-Reply-To: <Yd5QNs/YnvzGOy0g@workstation>
+X-Spam-Score: -2.0 (--)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi Stefan, I'm sorry to post messages several times for the
- patchset if you are still busy. But I'm still waiting for any reaction. I
- note that Linus have announced merge window for v5.17 kernel. *
- https://lore.kernel.org/lkml/CAHk-=wgUkBrUVhjixy4wvrUhPbW-DTgtQubJWVOoLW=O0wRKMA@mail.gmail.com/T/#u
- Content analysis details:   (-0.9 points, 6.0 required)
+ Content preview:  On 2022/01/12 12:51, Takashi Sakamoto wrote: > Hi Stefan,
+ > > I'm sorry to post messages several times for the patchset if you are >
+ still busy. But I'm still waiting for any reaction. > > I note that [...]
+ Content analysis details:   (-2.0 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.147.123.24 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [64.147.123.24 listed in wl.mailspike.net]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1n7Ufc-0001Cy-93
+ -2.0 NICE_REPLY_A           Looks like a legit reply (A)
+X-Headers-End: 1n7Ydj-00Ccb7-U7
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -141,105 +92,37 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi Stefan,
-
-I'm sorry to post messages several times for the patchset if you are
-still busy. But I'm still waiting for any reaction.
-
-I note that Linus have announced merge window for v5.17 kernel.
- * https://lore.kernel.org/lkml/CAHk-=wgUkBrUVhjixy4wvrUhPbW-DTgtQubJWVOoLW=O0wRKMA@mail.gmail.com/T/#u
-
-I'm glad if seeing your action for pull request as a response to the
-window.
-
-
-Kind Regards
-
-Takashi Sakamoto
-
-On Fri, Jan 07, 2022 at 08:01:18PM +0900, Takashi Sakamoto wrote:
+On 2022/01/12 12:51, Takashi Sakamoto wrote:
 > Hi Stefan,
 > 
-> Wishing you a happy new year.
+> I'm sorry to post messages several times for the patchset if you are
+> still busy. But I'm still waiting for any reaction.
 > 
-> We are in the last week for release of v5.16 kernel, and soon merge
-> window for v5.17 kernel will be opened if thing goes well. I wish any
-> action for the review process to merge these patches into upstream.
+> I note that Linus have announced merge window for v5.17 kernel.
+>  * https://lore.kernel.org/lkml/CAHk-=wgUkBrUVhjixy4wvrUhPbW-DTgtQubJWVOoLW=O0wRKMA@mail.gmail.com/T/#u
 > 
-> 
-> Thanks
-> 
-> Takashi Sakamoto
-> 
-> On Tue, Dec 21, 2021 at 07:54:42PM +0900, Takashi Sakamoto wrote:
-> > Hi Stefan,
-> > 
-> > Thank you for your long effort to maintain Linux FireWire subsystem. I'd
-> > like to use the timestamp function for my integration in ALSA firewire
-> > stack planned at next version of Linux kernel. I'm glad if getting to
-> > your help for upstreaming.
-> > 
-> > On Thu, Dec 02, 2021 at 08:34:54PM +0900, Takashi Sakamoto wrote:
-> > > Hi,
-> > > 
-> > > In 1394 OHCI specification, each descriptor of IR/IT/AR/AT DMA context
-> > > has timeStamp field. The value of timeStamp field express the time in
-> > > which the controller accept packet. The resolution of value is isochronous
-> > > cycle count (8,000 Hz) with second up to 7.
-> > > 
-> > > I have a plan to use the value of timeStamp field for ALSA firewire stack
-> > > so that userspace ALSA PCM/Rawmidi applications can get converted timestamp
-> > > (ktime) for PCM frame/MIDI message. The timestamp can ideally express
-> > > finer granularity than the time to invoke IRQ handler (and co).
-> > > 
-> > > Current implementation of Linux FireWire subsystem delivers the value of
-> > > timeStamp field to unit driver for IR/IT/AT DMA context, but not for AR
-> > > DMA context. Additionally, the way to refer to Isochronous Cycle Timer
-> > > Register in MMIO region of 1394 OHCI controller is transaction to local
-> > > node. It includes overhead of transaction and it's preferable to add
-> > > less-overhead way available in any type of IRQ context.
-> > > 
-> > > This patchset adds two functions exposed in kernel space:
-> > > 
-> > >  * fw_card_read_cycle_time()
-> > >     * allow unit driver to access to CYCLE_TIME register in MMIO region
-> > >       without initiate transaction
-> > >  * fw_request_get_timestamp()
-> > >     * allow unit driver to get timestamp of request packet inner request
-> > >       handler
-> > > 
-> > > I note that Hector Martin found kernel null pointer dereference during
-> > > process to remove PCI card and has posted a patch:
-> > > 
-> > >  * https://lore.kernel.org/lkml/20211027113130.8802-1-marcan@marcan.st/
-> > > 
-> > > His patch is included in the series with my comment for relevant commit
-> > > 20802224298c ("firewire: core: add forgotten dummy driver methods, remove
-> > > unused ones"). The patch is required since unit driver can refer to dummy
-> > > driver between removal callback of PCI subsystem and removal callback of
-> > > FireWire subsystem.
-> > > 
-> > > Hector Martin (1):
-> > >   firewire: Add dummy read_csr/write_csr functions
-> > > 
-> > > Takashi Sakamoto (2):
-> > >   firewire: add kernel API to access CYCLE_TIME register
-> > >   firewire: add kernel API to access packet structure in request
-> > >     structure for AR context
-> > > 
-> > >  drivers/firewire/core-card.c        | 39 +++++++++++++++++++++++++++++
-> > >  drivers/firewire/core-cdev.c        |  6 +++--
-> > >  drivers/firewire/core-transaction.c | 18 +++++++++++++
-> > >  include/linux/firewire.h            |  3 +++
-> > >  4 files changed, 64 insertions(+), 2 deletions(-)
-> > > 
-> > > -- 
-> > > 2.32.0
-> > 
-> > 
-> > Sincerely yours
-> > 
-> > Takashi Sakamoto
+> I'm glad if seeing your action for pull request as a response to the
+> window.
+
+Hi Tahashi,
+
+Just FYI, I think a lot of maintainers have been off or doing less work
+over December/the holidays; I also have some things that didn't make it
+into subsystem trees for 5.17. So I'm guessing this patchset will have
+to wait for 5.18. AIUI most maintainers don't merge things into
+subsystem trees after the upstream merge window opens.
+
+I've also been meaning to test your Firewire improvements again (and
+also with Pipewire), but I've been pretty busy lately... hopefully I'll
+get a chance soon. When I tried the first round of improvements that got
+merged (the sequence replay stuff) I noticed it fixed the glitchy audio
+problem, but the minimum stable period size with JACK+ALSA was still
+higher than with JACK+FFADO, and Pipewire also had even higher
+latencies. So I'm back using FFADO but I hope I can switch to ALSA soon :)
+
+-- 
+Hector Martin (marcan@marcan.st)
+Public Key: https://mrcn.st/pub
 
 
 _______________________________________________
