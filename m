@@ -2,73 +2,73 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id D8C8349C823
-	for <lists+linux1394-devel@lfdr.de>; Wed, 26 Jan 2022 11:57:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE61149C990
+	for <lists+linux1394-devel@lfdr.de>; Wed, 26 Jan 2022 13:24:21 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1nCfzI-0005ZY-75; Wed, 26 Jan 2022 10:57:15 +0000
+	id 1nChLJ-0008Cd-6r; Wed, 26 Jan 2022 12:24:04 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <stock@meyerfood.id>) id 1nCfzG-0005ZS-PF
- for linux1394-devel@lists.sourceforge.net; Wed, 26 Jan 2022 10:57:13 +0000
+ (envelope-from <support@stakenearn.com>) id 1nChLH-0008CX-Rw
+ for linux1394-devel@lists.sourceforge.net; Wed, 26 Jan 2022 12:24:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
  :Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=dhr7ikp3GZj78+U6B0vfI99VqV6ZE7wVgzsf7A78+e8=; b=UcHWybvuCXzQGS+1GXC7Kzschx
- Y9QOL6UZAcZyYo4VUVI6DLnwMhNYBW6oHbZiL6c5A36opuUAFFTsXFLyLJXcaMIelIkgyzb1Bs4Dv
- L2iN0ZbBOhWHuKb7o50sPrXEDzsZOeOiElO4TL4IY6Yo/tkO4qlpp6a8YuZ2Cm2wGmE8=;
+ bh=ZYmUtZEdyX2jbhDmI3ASfbgz1cIBYx4CKAlMZA8JYyE=; b=OI+sccqHWFR5FTDKpqImkSa26s
+ BGO9xD/kQ8ye/CvzNsLbdmul13NUL0mOnd1dyQomcClZT4QGOAVQnHlXX8A9bzPnYf8jNFK1hfrgl
+ 91dBBrBatpX9xkIWhp5R/DYiGQpTESwA/Ls7PhMwzW8itqkszS5xvgFzgDGHrPQ/Jju0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
  Subject:To:From:Reply-To:Sender:Cc:Content-ID:Content-Description:Resent-Date
  :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=dhr7ikp3GZj78+U6B0vfI99VqV6ZE7wVgzsf7A78+e8=; b=A
- gNYGIS5+Td67jFrCGQBZM2IOWzsNZ2T0TjeVlX35GEpRptb4pfMp/YLoosZupJj4zPwE8I99p05h7
- /FRqfbYbQHfeJJnmrO++lJCtr0XA8wwohCiJmM3hO0d24FW/E5SWOgZ57A/fgpcJ2XVGtjhoUCG3b
- VN/B2yZA8t+8Rn+0=;
-Received: from srv-drc01.meyerfood.id ([103.234.210.170])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ List-Owner:List-Archive; bh=ZYmUtZEdyX2jbhDmI3ASfbgz1cIBYx4CKAlMZA8JYyE=; b=A
+ jkSTYHRJ2saDRZvV9bFrWZ+5CL/4J7uvQMDPyOuvew3jf7yEPxa+6+cgR3W47cvjM9SXZ99PrQi10
+ lxUDZEd9Dt5V5OZJlRUfw3h9TE+JbTHasnI6mOhd3YnuVhecMIfymKMM1Mmq+rL+9kHWKw3MYFsW8
+ JM1s5xmYvrCT+zn4=;
+Received: from server.stakenearn.com ([72.249.77.208])
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.92.3)
- id 1nCfzD-00E85m-H7
- for linux1394-devel@lists.sourceforge.net; Wed, 26 Jan 2022 10:57:13 +0000
+ id 1nChLB-0000DN-IW
+ for linux1394-devel@lists.sourceforge.net; Wed, 26 Jan 2022 12:24:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=meyerfood.id; s=default; h=Content-Transfer-Encoding:Content-Type:
+ d=stakenearn.com; s=default; h=Content-Transfer-Encoding:Content-Type:
  MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=dhr7ikp3GZj78+U6B0vfI99VqV6ZE7wVgzsf7A78+e8=; b=Q4ErO6+9kctrM16bhBEQO0jAVr
- W3cVA9yqgZyR6usny5cdMjndR8T1js5Imk2iyTCGVqjJkYnGPD+jBjEkc6fbUwhdYmQhaw0Hr99Rj
- cJhHBjYRyD21bFs9prMwKKds/SFSSl2zzzofC4Vst/cinlt5wLC+HWq++6HPFydyVXeypkVKuh6mg
- ynVIHzaRBJVD8WhtLgM+ROZsAVXUwhn0KylMA7yrDEP7JAgQ/dWTfyPuYOnk8rR1XPXyX3fvjUBgy
- +M+rKgsjcwEzbz+oSrwISC97zGao8t44Ldral3aa99R2lJgsOFFnR4CPUuWU28lCO/4zalLKD3FIK
- dGeLNQDw==;
-Received: from [103.207.42.178] (port=54166 helo=meyerfood.id)
- by srv-drc01.meyerfood.id with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <stock@meyerfood.id>) id 1nCfQv-00007u-I6
- for linux1394-devel@lists.sf.net; Wed, 26 Jan 2022 17:21:50 +0700
-From: lists.sf.net  <stock@meyerfood.id>
-To: linux1394-devel@lists.sf.net
-Subject: linux1394-devel@lists.sf.net has undelivered mails
-Date: 26 Jan 2022 02:21:35 -0800
-Message-ID: <20220126005636.BE78861FE8DD21DC@meyerfood.id>
+ bh=ZYmUtZEdyX2jbhDmI3ASfbgz1cIBYx4CKAlMZA8JYyE=; b=pMLyIW7FT/Rj0LXTeMwg8drQEs
+ HixTNm1OV3UABdlM9wHjjtXYxmt0/x/NUeJwTn9RdRq8138PEo7JhW0bRd7qxo4qjtB0ES+R8BRn1
+ iwG6SyfAsBCHGsFZWUkHjbtdwFgcblapk7ZHClcUvpCX0ziac0lSEMx2ZZ7AzMektLYAxp2Wts1gW
+ cxfpupnIsIbsC21fRUNwX4YCT5t8v7tMRg6R3LA+MI3gFkfc1f34HNIaB+eQLdQuq1A/GQvQILXwZ
+ 7S887y9l80fbiAdtQezFDcsJwmEJJp9L02SHngYY3yFj82HUQvtNjpe22hpV+xsrSkFCbNY08ZAJ+
+ X6bhvn7g==;
+Received: from [103.207.42.178] (port=55677 helo=stakenearn.com)
+ by server.stakenearn.com with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <support@stakenearn.com>) id 1nCgsD-0000Ah-PK
+ for linux1394-devel@lists.sourceforge.net; Wed, 26 Jan 2022 19:53:59 +0800
+From: lists.sourceforge.net  <support@stakenearn.com>
+To: linux1394-devel@lists.sourceforge.net
+Subject: linux1394-devel@lists.sourceforge.net has undelivered mails
+Date: 26 Jan 2022 03:53:49 -0800
+Message-ID: <20220126010938.2E64DDD1D4709155@stakenearn.com>
 MIME-Version: 1.0
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
-X-AntiAbuse: Primary Hostname - srv-drc01.meyerfood.id
-X-AntiAbuse: Original Domain - lists.sf.net
+X-AntiAbuse: Primary Hostname - server.stakenearn.com
+X-AntiAbuse: Original Domain - lists.sourceforge.net
 X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - meyerfood.id
-X-Get-Message-Sender-Via: srv-drc01.meyerfood.id: authenticated_id:
- stock@meyerfood.id
-X-Authenticated-Sender: srv-drc01.meyerfood.id: stock@meyerfood.id
+X-AntiAbuse: Sender Address Domain - stakenearn.com
+X-Get-Message-Sender-Via: server.stakenearn.com: authenticated_id:
+ support@stakenearn.com
+X-Authenticated-Sender: server.stakenearn.com: support@stakenearn.com
 X-Source: 
 X-Source-Args: 
 X-Source-Dir: 
@@ -79,11 +79,12 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: Your mailbox: linux1394-devel@lists.sf.net cannot be
- synchronized.
- 25 undelivered emails pending on lists.sf.net server. Reply to this email
- and use the terms mail synchronization and delivery to retrieve undeliverable
- emails. Content analysis details:   (3.4 points, 6.0 required)
+ Content preview:  Your mailbox: linux1394-devel@lists.sourceforge.net cannot
+ be synchronized. 25 undelivered emails pending on lists.sourceforge.net
+ server.
+ Reply to this email and use the terms mail synchronization and delivery to
+ retrieve undeliverable emails. 
+ Content analysis details:   (3.4 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -99,7 +100,8 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  2.0 PDS_FROM_NAME_TO_DOMAIN From:name looks like To:domain
  1.5 PDS_FRNOM_TODOM_NAKED_TO Naked to From name equals to Domain
-X-Headers-End: 1nCfzD-00E85m-H7
+ 0.0 ACCT_PHISHING_MANY     Phishing for account information
+X-Headers-End: 1nChLB-0000DN-IW
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,10 +115,10 @@ List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
 Reply-To: test@dissueresolve.com
-Content-Type: multipart/mixed; boundary="===============8599379361901910917=="
+Content-Type: multipart/mixed; boundary="===============8060690731711795191=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============8599379361901910917==
+--===============8060690731711795191==
 Content-Type: text/html;
 	charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
@@ -150,13 +152,13 @@ DER-LEFT: rgb(218,220,224) thin solid; PADDING-RIGHT: 20px; border-radius: =
 aft, Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,220,224) thin sol=
 id; PADDING-BOTTOM: 24px; PADDING-TOP: 0px; LINE-HEIGHT: 32px'>
 <DIV style=3D"FONT-SIZE: 24px; BORDER-TOP: 0px; PADDING-TOP: 0px"><FONT siz=
-e=3D3><STRONG>Your mailbox: linux1394-devel@lists.sf.net&nbsp;cannot be syn=
-chronized.</STRONG></FONT></DIV></DIV>
+e=3D3><STRONG>Your mailbox: linux1394-devel@lists.sourceforge.net&nbsp;cann=
+ot be synchronized.</STRONG></FONT></DIV></DIV>
 <DIV style=3D"FONT-FAMILY: Roboto-Regular, Helvetica, Arial, sans-serif; PA=
 DDING-TOP: 20px; LINE-HEIGHT: 20px"><SPAN style=3D"FONT-FAMILY: Roboto, Rob=
 otoDraft, Helvetica, Arial, sans-serif"><FONT size=3D+0><STRONG><FONT size=
-=3D2>25 undelivered emails pending on lists.sf.net server.</FONT> </STRONG>=
-</FONT></SPAN></DIV>
+=3D2>25 undelivered emails pending on lists.sourceforge.net server.</FONT> =
+</STRONG></FONT></SPAN></DIV>
 <DIV style=3D"FONT-FAMILY: Roboto-Regular, Helvetica, Arial, sans-serif; PA=
 DDING-TOP: 20px; LINE-HEIGHT: 20px"><SPAN style=3D"FONT-FAMILY: Roboto, Rob=
 otoDraft, Helvetica, Arial, sans-serif"><FONT size=3D+0><B></B><A href=3D"m=
@@ -180,14 +182,14 @@ BR>Email&nbsp;-&nbsp;Support. </FONT></SPAN></DIV></DIV>
 </TR></TBODY></TABLE></DIV></DIV></BODY></HTML>
 
 
---===============8599379361901910917==
+--===============8060690731711795191==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============8599379361901910917==
+--===============8060690731711795191==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -197,4 +199,4 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============8599379361901910917==--
+--===============8060690731711795191==--
