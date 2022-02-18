@@ -2,83 +2,97 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB6C14B9588
-	for <lists+linux1394-devel@lfdr.de>; Thu, 17 Feb 2022 02:32:34 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C3664BAFB5
+	for <lists+linux1394-devel@lfdr.de>; Fri, 18 Feb 2022 03:33:31 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1nKVed-00007i-54; Thu, 17 Feb 2022 01:32:17 +0000
+	id 1nKt59-0003Ck-Fv; Fri, 18 Feb 2022 02:33:14 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <customerservice@sunrisepropanefl.com>)
- id 1nKVeS-00006p-4u
- for linux1394-devel@lists.sourceforge.net; Thu, 17 Feb 2022 01:32:06 +0000
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2) (envelope-from
+ <bounce+42376b.b90a1-linux1394-devel=lists.sourceforge.net@mg.surplusrecord.com>)
+ id 1nKt58-0003Ce-Jm
+ for linux1394-devel@lists.sourceforge.net; Fri, 18 Feb 2022 02:33:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Type:Content-Transfer-Encoding:Message-Id:
+ To:From:Subject:Mime-Version:Date:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=IcKHRvzwvx159n5ND7GHbjji8ROeIXwAYUdmCnvwVDU=; b=CvZZhg4auw124UXVlcR5t0xfN4
- r2V779o2+/+meyUgc+dyYAItl0qy8hg/P01OHvZ8Awbg4vJvrmReL15LVGHgk4MAE/Wa5et1ctBWd
- Dbby9i2zEqt3L+K9Vs7yhtnaFtP/p+yju6HJROhYQ4wuojWl3NkiZDHdLgtJHLltTTps=;
+ bh=yInmNXIpOW1WQNATftQo9sbzL2Hn9Q2x9wralAQFQ1Y=; b=PXjgPbIZ33KO8m4pNjx4d1IFrV
+ 56Ic9oL5uRPyfiJ8HxGq8kn8dpiZre33Vr2Jjh5s7Ltlq07SmrfUZdHpbdc4X/pk+3xIFGMEVTuZc
+ wU4q6SPZrEPu8Wnlp8IYkFZTSNUNXnLeV7EjDyRUfTttLY5zr17sKaqgBscs1rmKNVps=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
- Subject:To:From:Reply-To:Sender:Cc:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=IcKHRvzwvx159n5ND7GHbjji8ROeIXwAYUdmCnvwVDU=; b=A
- 0HwS47TE7XeiUglGuV/Cp3GM2WOXMhcL7jYWxMmEAkLj01hn4pL4iuXhYlEWhEeUjLbGnBFMShrIx
- eZdsWLXWWMh/XFbALcbhrisZLwQUekuUMEbRR7Uciq34H/fQ6F2FVqaFk7+eZXV/PxHvcMr35nKzw
- dCogbz0Io0XdS7xI=;
-Received: from [137.184.182.88] (helo=mail0.coastametal.biz)
+ h=Content-Type:Content-Transfer-Encoding:Message-Id:To:From:Subject:
+ Mime-Version:Date:Sender:Reply-To:Cc:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=yInmNXIpOW1WQNATftQo9sbzL2Hn9Q2x9wralAQFQ1Y=; b=OwJgc8Mbqa3JrIDpMf6BG6D4/4
+ UkP4T4lkJ85A6ybjyJxfiilOh1fzrNyJhx3zNOyM9Ay0pkDMKM3vSKQqWHwYAbqAuVBRPslahI5HG
+ 1K6+l+xINzrc03gl7c5hKH2cNj8gjHntbigujO1DriijuBonvwgXQPPGD3469mZbJR+8=;
+Received: from m43-8.mailgun.net ([69.72.43.8])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
- (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
- id 1nKVeQ-004Fai-7Q
- for linux1394-devel@lists.sourceforge.net; Thu, 17 Feb 2022 01:32:06 +0000
-From: Wendy <purchasing-addidonservices@outlook.com>
+ (TLS1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.94.2)
+ id 1nKt55-005WeM-40
+ for linux1394-devel@lists.sourceforge.net; Fri, 18 Feb 2022 02:33:13 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.surplusrecord.com; 
+ q=dns/txt; s=krs; t=1645151591; h=Content-Type:
+ Content-Transfer-Encoding: Message-Id: To: From: Subject: Mime-Version:
+ Date: Sender; bh=yInmNXIpOW1WQNATftQo9sbzL2Hn9Q2x9wralAQFQ1Y=;
+ b=c5Wbp3xfcf8LNfMIRa1JFBv0VpxUjt/pFIY+6f6AVZYZpwU9usx5uVkC7GkSx9mOzb+dOARe
+ mqfbWAOy33lxLRRQCAPgrUp6niFNtVIxjW9woXCb6nelt27ytCd5rCPS73FTyyX9yqnz6FTa
+ sR14fySSjE/HNFMQOxKuSBf7waM=
+X-Mailgun-Sending-Ip: 69.72.43.8
+X-Mailgun-Sid: WyJjNzJlMCIsICJsaW51eDEzOTQtZGV2ZWxAbGlzdHMuc291cmNlZm9yZ2UubmV0IiwgImI5MGExIl0=
+Received: from <unknown> (<unknown> []) by
+ api-n26.prod.us-east-1.postgun.com with HTTP id 620eff743047cf1c0aad378a;
+ Fri, 18 Feb 2022 02:07:48 GMT
+Date: Fri, 18 Feb 2022 02:07:48 +0000
+Mime-Version: 1.0
+Subject: =?UTF-8?q?Surplus_Record_Copy_of_Inquiry_=E2=80=93_10&quot; _x_31&quot;
+ _Ci?=
+ =?UTF-8?q?ncinnati_Milacron_#R77,_centertype_production_universal_cylindr?=
+ =?UTF-8?q?ical_grinder,_1976?=
+From: "no-reply@surplusrecord.com" <no-reply@surplusrecord.com>
 To: linux1394-devel@lists.sourceforge.net
-Subject: Quote Request
-Date: 17 Feb 2022 01:32:00 +0000
-Message-ID: <20220217013200.2AD54438E7DC9F48@outlook.com>
-MIME-Version: 1.0
-X-Spam-Score: 5.2 (+++++)
-X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+X-Mailgun-Track-Clicks: false
+X-Mailgun-Track-Opens: false
+Message-Id: <20220218020748.fbd248c82c77ff37@mg.surplusrecord.com>
+X-Spam-Score: 0.1 (/)
+X-Spam-Report: Spam detection software, running on the system "util-spamd-2.v13.lw.sourceforge.com",
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hello,
- I want a quote and I would like to know your availability
- so that i can send you the necessary documents as well as drawings and
- specification. Mrs Wendy 
- Content analysis details:   (5.2 points, 6.0 required)
- pts rule name              description
+ 
+ Content preview:  Surplus Record Copy of Inquiry – 10" x 31" Cincinnati Milacron
+    #R77, centertype production universal cylindrical grinder, 1976 Here is the
+    copy of the inquiry relating to the following listing from the Surplus Record
+    website: 
+ 
+ Content analysis details:   (0.1 points, 6.0 required)
+ 
+  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.5 RCVD_IN_UCE1           RBL: IP Listed in UCEPROTECT Level 1
- [137.184.182.88 listed in dnsbl-1.uceprotect.net]
- 1.2 RCVD_IN_BL_SPAMCOP_NET RBL: Received via a relay in
- bl.spamcop.net
- [Blocked - see <https://www.spamcop.net/bl.shtml?137.184.182.88>]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [purchasing-addidonservices[at]outlook.com]
- 0.0 HTML_MESSAGE           BODY: HTML included in message
- 0.1 MIME_HTML_ONLY         BODY: Message only has text/html MIME parts
- 1.3 RDNS_NONE Delivered to internal network by a host with no rDNS
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+                              no trust
+                             [69.72.43.8 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+                             [69.72.43.8 listed in wl.mailspike.net]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+  0.0 HTML_MESSAGE           BODY: HTML included in message
+  0.1 MIME_HTML_ONLY         BODY: Message only has text/html MIME parts
+  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+                             valid
+ -0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
- 0.0 SPOOFED_FREEMAIL_NO_RDNS From SPOOFED_FREEMAIL and no rDNS
- 0.0 TO_NO_BRKTS_NORDNS_HTML To: lacks brackets and no rDNS and HTML
- only 1.6 SPOOFED_FREEMAIL       No description available.
-X-Headers-End: 1nKVeQ-004Fai-7Q
+  0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+                             lines
+X-Headers-End: 1nKt55-005WeM-40
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,82 +105,67 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: purchasing-addidonservices@outlook.com
-Content-Type: multipart/mixed; boundary="===============0103332758700365557=="
+Content-Type: multipart/mixed; boundary="===============6707832060773155054=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============0103332758700365557==
-Content-Type: text/html;
-	charset="iso-8859-1"
+--===============6707832060773155054==
 Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
-w3.org/TR/html4/loose.dtd">
-
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
-<body style=3D"MARGIN: 0.5em">
-<BLOCKQUOTE>
-<DIV id=3Dv1replybody1>
-<DIV style=3D"MARGIN: 0.5em">
-<P style=3D"BACKGROUND: white; MARGIN-TOP: 0cm"><SPAN style=3D"FONT-SIZE: 1=
-0pt; FONT-FAMILY: 'Verdana',sans-serif; COLOR: #2c363a">Hello,</SPAN></P>
-<P style=3D"BOX-SIZING: border-box; BACKGROUND: white; WORD-SPACING: 0px; M=
-ARGIN-TOP: 0cm; ORPHANS: 2; WIDOWS: 2; font-variant-ligatures: normal; font=
--variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-thic=
-kness: initial; text-decoration-style: initial; text-decoration-color: init=
-ial"><SPAN style=3D"FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana',sans-serif; COL=
-OR: #2c363a">
-I want a quote and I would like to know your availability so that i can sen=
-d you the necessary documents as well as drawings and specification.</SPAN>=
-</P>
-<P style=3D"BOX-SIZING: border-box; BACKGROUND: white; WORD-SPACING: 0px; M=
-ARGIN-TOP: 0cm; ORPHANS: 2; WIDOWS: 2; font-variant-ligatures: normal; font=
--variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-thic=
-kness: initial; text-decoration-style: initial; text-decoration-color: init=
-ial"><SPAN style=3D"FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana',sans-serif; COL=
-OR: #2c363a"><BR style=3D"BOX-SIZING: border-box"><BR></SPAN></P>
-<DIV id=3Dv1v1v1v1v1v1v1signature style=3D"BORDER-LEFT-WIDTH: 1pt; BOX-SIZI=
-NG: border-box; BORDER-RIGHT-WIDTH: 1pt; BORDER-TOP-COLOR: #eeeeee; BORDER-=
-BOTTOM-WIDTH: 1pt; WORD-SPACING: 0px; BORDER-LEFT-COLOR: #eeeeee; PADDING-B=
-OTTOM: 0cm; BORDER-BOTTOM-COLOR: #eeeeee; PADDING-TOP: 0cm; PADDING-LEFT: 0=
-cm; ORPHANS: 2; WIDOWS: 2; BORDER-RIGHT-COLOR: #eeeeee; PADDING-RIGHT: 0cm;=
- BORDER-TOP-WIDTH: 1pt; font-variant-ligatures: normal; font-variant-caps: =
-normal; -webkit-text-stroke-width: 0px;=20
-text-decoration-thickness: initial; text-decoration-style: initial; text-de=
-coration-color: initial">
-<P class=3Dv1v1MsoNormal style=3D"BACKGROUND: white">&nbsp;</P>
-<DIV style=3D"BORDER-LEFT-WIDTH: 1pt; BOX-SIZING: border-box; BORDER-RIGHT-=
-WIDTH: 1pt; BORDER-TOP-COLOR: #eeeeee; BORDER-BOTTOM-WIDTH: 1pt; BORDER-LEF=
-T-COLOR: #eeeeee; PADDING-BOTTOM: 0cm; BORDER-BOTTOM-COLOR: #eeeeee; PADDIN=
-G-TOP: 0cm; PADDING-LEFT: 0cm; BORDER-RIGHT-COLOR: #eeeeee; PADDING-RIGHT: =
-0cm; BORDER-TOP-WIDTH: 1pt"><SPAN style=3D"FONT-SIZE: 10pt; FONT-FAMILY: 'V=
-erdana',sans-serif; COLOR: #2c363a"><SPAN lang=3D"">
-<P>Mrs Wendy</P>
-<P>ADIDON SERVICES GROUPS</P>
-<P>Inside Sales Team</P>
-<P>328 Leon St<BR><BR>
-Email:<SPAN style=3D'FONT-SIZE: 28px; FONT-FAMILY: "Segoe UI", "Segoe UI We=
-b (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, =
-"Helvetica Neue", sans-serif; WHITE-SPACE: nowrap; WORD-SPACING: 0px; TEXT-=
-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 300; COLOR: rgb(50,49,48); FONT-=
-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SP=
-ACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-v=
-ariant-ligatures: normal; font-variant-caps:=20
-normal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial;=
- text-decoration-style: initial; text-decoration-color: initial'>purchasing=
--addidonservices@outlook.com</SPAN></P></SPAN></SPAN></DIV></DIV></DIV></DI=
-V></BLOCKQUOTE></BODY></HTML>
+<html>
+	<head>
+		<title>Surplus Record Copy of Inquiry =E2=80=93 10&quot; x 31&quot; Cinci=
+nnati Milacron #R77, centertype production universal cylindrical grinder, 1=
+976</title>
+	</head>
+	<body>
+		<p class=3D"p1">Here is the copy of the inquiry relating to the following=
+ listing from the Surplus Record website:</p><br />
+<strong>Category:</strong> Grinders, Cylindrical, Universal<br />
+<strong>Listing:</strong> 10&quot; x 31&quot; Cincinnati Milacron #R77, cen=
+tertype production universal cylindrical grinder, 1976<br />
+<strong>Listing Link:</strong> https://surplusrecord.com/listing/10-x-31-ci=
+ncinnati-milacron-r77-centertype-production-universal-cylindrical-grinder-1=
+976-273429/<br />
+<br />
+This request has been submitted to the listing dealer who should follow up =
+with you shortly. For your record, their contact information is below. If y=
+ou do follow up directly with them, remember to tell them Surplus Record se=
+nt you.<br />
+<br />
+<strong>Dealer:</strong> Machinery Central<br />
+<strong>Dealer Contact:</strong> Denis Frankenberger<br />
+<strong>Dealer Phone:</strong> 502-219-7311<br />
+<strong>Dealer Email:</strong> linux1394-devel@lists.sourceforge.net<br />
+<em><strong>This email was generated via a request from <a href=3D"https://=
+surplusrecord.com">https://surplusrecord.com</a>. If you did not submit thi=
+s request, please delete and disregard the email.</strong></em><br />
+<br />
+<strong><em>-----</em></strong><br />
+<br />
+<strong><em>"The Leading Online Marketplace for Used &amp; Surplus Industri=
+al Machinery &amp; Equipment"</em></strong><br />
+<br />
+<strong>Surplus Record</strong><br />
+<strong>20 N. Wacker Dr., Suite 2400</strong><br />
+<strong>Chicago, IL 60606</strong><br />
+<strong>Tel: 312-372-9077 </strong><br />
+<strong><a href=3D"mailto:surplus@surplusrecord.com">surplus@surplusrecord.=
+com</a></strong><br />
+<strong><a href=3D"https://surplusrecord.com">https://surplusrecord.com</a>=
+</strong>
+	</body>
+</html>
 
 
---===============0103332758700365557==
+--===============6707832060773155054==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============0103332758700365557==
+--===============6707832060773155054==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -176,4 +175,4 @@ _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
 
---===============0103332758700365557==--
+--===============6707832060773155054==--
