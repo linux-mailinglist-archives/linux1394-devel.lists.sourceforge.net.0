@@ -2,94 +2,97 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id E65DB4D33B4
-	for <lists+linux1394-devel@lfdr.de>; Wed,  9 Mar 2022 17:22:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DD7F74D33B7
+	for <lists+linux1394-devel@lfdr.de>; Wed,  9 Mar 2022 17:22:56 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1nRz5H-0003jM-DE; Wed, 09 Mar 2022 16:22:42 +0000
+	id 1nRz5L-0003jr-Fy; Wed, 09 Mar 2022 16:22:46 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <mchehab@kernel.org>) id 1nRz5F-0003jF-Kw
- for linux1394-devel@lists.sourceforge.net; Wed, 09 Mar 2022 16:22:40 +0000
+ (envelope-from <mchehab@kernel.org>) id 1nRz5J-0003jf-NY
+ for linux1394-devel@lists.sourceforge.net; Wed, 09 Mar 2022 16:22:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
+ In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=kBERRZkwcPrCDXowwKAiYhn/eDzSZ/ACIzfxNh6mNmk=; b=Me3PK86BsK4A3bxRjgRaHo8Y95
- ZXupkmlbmMZxit8b4gZ7HGzgIQ3tcQmPq0iBcXKT4jYKamVZJiu1McQvsMtiFAA178cb5J6fnizEn
- F2IHTryXJJDUWZyUrmi52dagH18asE54iDkTNX+6es5kAgthXszeB0uojYeducrbed5Q=;
+ bh=XGW1GTuyIkwy9fnfs+jqdUbwMDVS6IcnGF1lJN5BatE=; b=ivZBm0vfPNYVpAvHTpIylBnCg1
+ 4BORdpTiXcjH/5kDnvMnQ01LZU44Pp2OUjfdoz8nhf9fS94UtOnql4nkDbysU+zvFz7YRFxiMdNIv
+ Hx3NO8xT2sH4Wmyf7cW4BmqfywjpgyfSuPnWzCbB/EpPhYZFkEKebH8qbMFj7P9lSZJ4=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From
- :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=kBERRZkwcPrCDXowwKAiYhn/eDzSZ/ACIzfxNh6mNmk=; b=a
- l43SHTAQGI0WWQ8WHcH1vF0GUviE9nV5WZMdlo0YjnHXJhH9XyIuHbsd42idK1aG/AvcfNgQINKHu
- 2uwrW/S+TeBYJEA4wexNI/UuqJuU25zsiSEGp44EMFIiwiwYvuV5iG9NhWcUNorcN/2S/wBSJqZpe
- unWBAH9kXHcF4qIs=;
+ h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=XGW1GTuyIkwy9fnfs+jqdUbwMDVS6IcnGF1lJN5BatE=; b=bfJ78KITCsGmwlf/XbIdC7XNOp
+ fel/RJjuO08ntRIxOKYv6T7oW1buX7Kk2+A6TlMQno/AJzzEVitwPEEykHg7yPvyhUyybf+p6cOc5
+ Yq542qxBQ13KqRCikHnr5fIAbNxIKLoF0w5rF+SUv5Tt3k7BK0ttR0sCDC+skJ0Mw6/o=;
 Received: from dfw.source.kernel.org ([139.178.84.217])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
- id 1nRz5D-0007UY-Ki
- for linux1394-devel@lists.sourceforge.net; Wed, 09 Mar 2022 16:22:40 +0000
+ id 1nRz5D-0007Uh-Kq
+ for linux1394-devel@lists.sourceforge.net; Wed, 09 Mar 2022 16:22:43 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 6A49F6193B;
- Wed,  9 Mar 2022 16:22:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C87DBC340F5;
+ by dfw.source.kernel.org (Postfix) with ESMTPS id C71246196E;
+ Wed,  9 Mar 2022 16:22:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D7BE2C340F7;
  Wed,  9 Mar 2022 16:22:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646842948;
- bh=Yu0TsGuK32wvpI2+J3C3f/SaYvUuvXGxBS3dMIFnfLU=;
- h=From:To:Cc:Subject:Date:From;
- b=h2MtXokjWYFs0We/K82MchVDJRT1q2LJL8bcsbZCMfN5nEsD6B+w9AxkaN1rlEnqu
- WSb9e+zw67BL7Gx33sqqqjc8SfbrYHCzjzJDJZzLrq3c70IQaRzteA5VdXj8y+TS0N
- d/LxuzQRymJujghUd2UKHCaeE3MCFl3FhDwEWhzl9X/5sQsYSdTeOSzeaz6mltrBXy
- rljTXKzcUASWuiuzfVi2RChiUxTRg/0V2o1/Akok3DZN+ZPyNtS+IlUCPuIFeIM+m/
- S7uryCUvdbPHrSA2jjRWhdH/e2q5yJ8VSgvAvhLcnC9SXCW2JLqG3vtWxwWwk2KgrH
- w+HAoifCtfwaA==
+ s=k20201202; t=1646842949;
+ bh=2riVopMWkfNoH1zQp6ZxOpgZPlceVCBbF5mqn3OweTI=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=RSMkcKst2qEjjGOU9Yk/9OYCJoWvDglF7GJVOZK1TRP2u23wyZWMMOPv+NXa2Mp5Q
+ B2Vo1cGvfWqKrR5SaKQRDZbjolDOjeIWVwZyJMvxiXqj7rCG23o1rjHhY7RKPrA22f
+ RXgV4KU9XldJNTC+V5t0i5V56gwNMdHB5hkJ0J9MSGD6D1XWXdYDDEWHkqazYTduuy
+ B7id7wYxEaHKL2Xeybo5FiG+va1QvJ8oMaW68xQrBYC4h5aJ14LUQ98haCJkvm3ohW
+ MfG2JzNnAb2Xt8wV/BKsgznpaAL1DhaDZbILXed1TeoXp/7MCap14BQmIK1ycSPBqR
+ OENV95ZpwlaSQ==
 Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
  (envelope-from <mchehab@kernel.org>)
- id 1nRz50-00E6Ab-6y; Wed, 09 Mar 2022 17:22:26 +0100
+ id 1nRz50-00E6An-Cw; Wed, 09 Mar 2022 17:22:26 +0100
 From: Mauro Carvalho Chehab <mchehab@kernel.org>
 To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: [PATCH 0/5] media: sort Makefile entries
-Date: Wed,  9 Mar 2022 17:22:20 +0100
-Message-Id: <cover.1646842741.git.mchehab@kernel.org>
+Subject: [PATCH 3/5] media: Makefiles: remove extra spaces
+Date: Wed,  9 Mar 2022 17:22:23 +0100
+Message-Id: <fd61578204413a87abd49568d7d2be8da35d518e.1646842741.git.mchehab@kernel.org>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <cover.1646842741.git.mchehab@kernel.org>
+References: <cover.1646842741.git.mchehab@kernel.org>
 MIME-Version: 1.0
-X-Spam-Score: -5.9 (-----)
+X-Spam-Score: -5.7 (-----)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: Entries at Makefiles end being merged on random order. Sort
- them on alphabetical order. I'm preparing similar changes for Kconfig entries
- too. Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com> 
- Content analysis details:   (-5.9 points, 6.0 required)
+ Content preview: It is hard to keep all those options aligned as newer config
+ changes get added, and we really don't want to have patches adding new options
+ also touching already existing entries. So, drop the extra spaces. 
+ Content analysis details:   (-5.7 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
  high trust [139.178.84.217 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.7 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
-X-Headers-End: 1nRz5D-0007UY-Ki
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+ -0.5 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
+X-Headers-End: 1nRz5D-0007Uh-Kq
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,91 +105,525 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: Andy Walls <awalls@md.metrocast.net>, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
- Michael Krufky <mkrufky@linuxtv.org>,
+Cc: Marek Vasut <marex@denx.de>, Shawn Tu <shawnx.tu@intel.com>,
+ =?UTF-8?q?Niklas=20S=C3=B6derlund?=
+ <niklas.soderlund+renesas@ragnatech.se>,
+ "Paul J. Murphy" <paul.j.murphy@intel.com>,
+ Mirela Rabulea <mirela.rabulea@nxp.com>, linux1394-devel@lists.sourceforge.net,
+ Martina Krasteva <martinax.krasteva@intel.com>,
+ Jacopo Mondi <jacopo@jmondi.org>, linux-kernel@vger.kernel.org,
+ Daniel Scally <djrscally@gmail.com>, Martin Kepplinger <martink@posteo.de>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Eugen Hristev <eugen.hristev@microchip.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux1394-devel@lists.sourceforge.net,
- Marek Szyprowski <m.szyprowski@samsung.com>
+ Dillon Min <dillon.minfei@gmail.com>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Entries at Makefiles end being merged on random order. 
+It is hard to keep all those options aligned as newer config
+changes get added, and we really don't want to have patches adding
+new options also touching already existing entries.
 
-Sort them on alphabetical order. I'm preparing similar changes for Kconfig
-entries too.
+So, drop the extra spaces.
 
-Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+---
 
-Mauro Carvalho Chehab (5):
-  media: xc2028: rename the driver from tuner-xc2028
-  media: platform: Makefile: group some Makefile options
-  media: Makefiles: remove extra spaces
-  media: dvb-frontend: remove TUNER_ from some DVB frontend Kconfig
-    options
-  media: Makefiles: sort entries where it fits
+To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
+See [PATCH 0/5] at: https://lore.kernel.org/all/cover.1646842741.git.mchehab@kernel.org/
 
- .../admin-guide/media/i2c-cardlist.rst        |   2 +-
- MAINTAINERS                                   |   2 +-
- drivers/media/Makefile                        |   4 +-
- drivers/media/cec/platform/Makefile           |  16 +-
- drivers/media/common/Makefile                 |   4 +-
- drivers/media/common/b2c2/Kconfig             |   4 +-
- drivers/media/common/videobuf2/Makefile       |   6 +-
- drivers/media/dvb-frontends/Kconfig           |   8 +-
- drivers/media/dvb-frontends/Makefile          | 192 +++++++++---------
- drivers/media/dvb-frontends/cx24113.h         |   2 +-
- drivers/media/dvb-frontends/dib0070.h         |   2 +-
- drivers/media/dvb-frontends/dib0090.h         |   2 +-
- drivers/media/dvb-frontends/itd1000.h         |   2 +-
- drivers/media/firewire/Makefile               |   2 +-
- drivers/media/i2c/Makefile                    |  92 ++++-----
- drivers/media/pci/Makefile                    |  18 +-
- drivers/media/pci/cx18/cx18-driver.c          |   2 +-
- drivers/media/pci/cx18/cx18-dvb.c             |   2 +-
- drivers/media/pci/cx18/cx18-gpio.c            |   2 +-
- drivers/media/pci/cx23885/Kconfig             |   2 +-
- drivers/media/pci/cx23885/cx23885-cards.c     |   2 +-
- drivers/media/pci/cx23885/cx23885-dvb.c       |   2 +-
- drivers/media/pci/cx23885/cx23885-video.c     |   2 +-
- drivers/media/pci/cx88/cx88.h                 |   2 +-
- drivers/media/pci/ivtv/ivtv-driver.c          |   2 +-
- drivers/media/pci/ivtv/ivtv-gpio.c            |   2 +-
- drivers/media/pci/saa7134/saa7134-cards.c     |   2 +-
- drivers/media/pci/saa7134/saa7134-dvb.c       |   2 +-
- drivers/media/platform/Makefile               | 147 ++++++--------
- drivers/media/radio/Makefile                  |  42 ++--
- drivers/media/rc/Makefile                     |  45 ++--
- drivers/media/rc/keymaps/Makefile             |  33 +--
- drivers/media/spi/Makefile                    |   5 +-
- drivers/media/test-drivers/Makefile           |  13 +-
- drivers/media/tuners/Makefile                 |  66 +++---
- drivers/media/tuners/tuner-types.c            |   2 +-
- .../{tuner-xc2028-types.h => xc2028-types.h}  |   6 +-
- .../media/tuners/{tuner-xc2028.c => xc2028.c} |   6 +-
- .../media/tuners/{tuner-xc2028.h => xc2028.h} |   2 +-
- drivers/media/tuners/xc4000.c                 |   2 +-
- drivers/media/usb/Makefile                    |  25 +--
- drivers/media/usb/dvb-usb/Kconfig             |   6 +-
- drivers/media/usb/dvb-usb/cxusb.c             |   2 +-
- drivers/media/usb/dvb-usb/dib0700_devices.c   |   2 +-
- drivers/media/usb/em28xx/em28xx-i2c.c         |   2 +-
- drivers/media/usb/em28xx/em28xx.h             |   2 +-
- drivers/media/usb/gspca/Makefile              |  88 ++++----
- drivers/media/usb/tm6000/tm6000-cards.c       |   2 +-
- drivers/media/usb/tm6000/tm6000-dvb.c         |   2 +-
- drivers/media/usb/tm6000/tm6000-i2c.c         |   2 +-
- drivers/media/v4l2-core/Makefile              |  29 ++-
- drivers/media/v4l2-core/tuner-core.c          |   2 +-
- 52 files changed, 450 insertions(+), 465 deletions(-)
- rename drivers/media/tuners/{tuner-xc2028-types.h => xc2028-types.h} (96%)
- rename drivers/media/tuners/{tuner-xc2028.c => xc2028.c} (99%)
- rename drivers/media/tuners/{tuner-xc2028.h => xc2028.h} (99%)
+ drivers/media/Makefile              |   4 +-
+ drivers/media/cec/platform/Makefile |  16 ++---
+ drivers/media/firewire/Makefile     |   2 +-
+ drivers/media/i2c/Makefile          |  92 ++++++++++++-------------
+ drivers/media/platform/Makefile     | 102 ++++++++++++++--------------
+ drivers/media/test-drivers/Makefile |  10 +--
+ drivers/media/usb/Makefile          |  14 ++--
+ drivers/media/usb/gspca/Makefile    |  88 ++++++++++++------------
+ 8 files changed, 164 insertions(+), 164 deletions(-)
 
+diff --git a/drivers/media/Makefile b/drivers/media/Makefile
+index d18357bf1346..20fac24e4f0f 100644
+--- a/drivers/media/Makefile
++++ b/drivers/media/Makefile
+@@ -8,7 +8,7 @@
+ # when compiled as builtin drivers
+ #
+ obj-y += i2c/ tuners/
+-obj-$(CONFIG_DVB_CORE)  += dvb-frontends/
++obj-$(CONFIG_DVB_CORE) += dvb-frontends/
+ 
+ #
+ # Now, let's link-in the media controller core
+@@ -18,7 +18,7 @@ ifeq ($(CONFIG_MEDIA_CONTROLLER),y)
+ endif
+ 
+ obj-$(CONFIG_VIDEO_DEV) += v4l2-core/
+-obj-$(CONFIG_DVB_CORE)  += dvb-core/
++obj-$(CONFIG_DVB_CORE) += dvb-core/
+ 
+ # There are both core and drivers at RC subtree - merge before drivers
+ obj-y += rc/
+diff --git a/drivers/media/cec/platform/Makefile b/drivers/media/cec/platform/Makefile
+index ea6f8ee8161c..26d2bc778394 100644
+--- a/drivers/media/cec/platform/Makefile
++++ b/drivers/media/cec/platform/Makefile
+@@ -4,12 +4,12 @@
+ #
+ 
+ # Please keep it in alphabetic order
+-obj-$(CONFIG_CEC_CROS_EC)	+= cros-ec/
+-obj-$(CONFIG_CEC_GPIO)		+= cec-gpio/
+-obj-$(CONFIG_CEC_MESON_AO)	+= meson/
+-obj-$(CONFIG_CEC_SAMSUNG_S5P)	+= s5p/
+-obj-$(CONFIG_CEC_SECO)		+= seco/
+-obj-$(CONFIG_CEC_STI)		+= sti/
+-obj-$(CONFIG_CEC_STM32)		+= stm32/
+-obj-$(CONFIG_CEC_TEGRA)		+= tegra/
++obj-$(CONFIG_CEC_CROS_EC) += cros-ec/
++obj-$(CONFIG_CEC_GPIO) += cec-gpio/
++obj-$(CONFIG_CEC_MESON_AO) += meson/
++obj-$(CONFIG_CEC_SAMSUNG_S5P) += s5p/
++obj-$(CONFIG_CEC_SECO) += seco/
++obj-$(CONFIG_CEC_STI) += sti/
++obj-$(CONFIG_CEC_STM32) += stm32/
++obj-$(CONFIG_CEC_TEGRA) += tegra/
+ 
+diff --git a/drivers/media/firewire/Makefile b/drivers/media/firewire/Makefile
+index 3670c85af6f5..d5551e6389bf 100644
+--- a/drivers/media/firewire/Makefile
++++ b/drivers/media/firewire/Makefile
+@@ -2,4 +2,4 @@
+ obj-$(CONFIG_DVB_FIREDTV) += firedtv.o
+ 
+ firedtv-y += firedtv-avc.o firedtv-ci.o firedtv-dvb.o firedtv-fe.o firedtv-fw.o
+-firedtv-$(CONFIG_DVB_FIREDTV_INPUT)    += firedtv-rc.o
++firedtv-$(CONFIG_DVB_FIREDTV_INPUT) += firedtv-rc.o
+diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
+index 7f8c1df60330..557c8c9dfafe 100644
+--- a/drivers/media/i2c/Makefile
++++ b/drivers/media/i2c/Makefile
+@@ -2,10 +2,10 @@
+ msp3400-objs	:=	msp3400-driver.o msp3400-kthreads.o
+ obj-$(CONFIG_VIDEO_MSP3400) += msp3400.o
+ 
+-obj-$(CONFIG_VIDEO_CCS)		+= ccs/
+-obj-$(CONFIG_VIDEO_ET8EK8)	+= et8ek8/
++obj-$(CONFIG_VIDEO_CCS) += ccs/
++obj-$(CONFIG_VIDEO_ET8EK8) += et8ek8/
+ obj-$(CONFIG_VIDEO_CX25840) += cx25840/
+-obj-$(CONFIG_VIDEO_M5MOLS)	+= m5mols/
++obj-$(CONFIG_VIDEO_M5MOLS) += m5mols/
+ 
+ obj-$(CONFIG_VIDEO_APTINA_PLL) += aptina-pll.o
+ obj-$(CONFIG_VIDEO_TVAUDIO) += tvaudio.o
+@@ -21,11 +21,11 @@ obj-$(CONFIG_VIDEO_SAA717X) += saa717x.o
+ obj-$(CONFIG_VIDEO_SAA7127) += saa7127.o
+ obj-$(CONFIG_VIDEO_SAA7185) += saa7185.o
+ obj-$(CONFIG_VIDEO_SAA6752HS) += saa6752hs.o
+-obj-$(CONFIG_VIDEO_AD5820)  += ad5820.o
+-obj-$(CONFIG_VIDEO_AK7375)  += ak7375.o
+-obj-$(CONFIG_VIDEO_DW9714)  += dw9714.o
+-obj-$(CONFIG_VIDEO_DW9768)  += dw9768.o
+-obj-$(CONFIG_VIDEO_DW9807_VCM)  += dw9807-vcm.o
++obj-$(CONFIG_VIDEO_AD5820) += ad5820.o
++obj-$(CONFIG_VIDEO_AK7375) += ak7375.o
++obj-$(CONFIG_VIDEO_DW9714) += dw9714.o
++obj-$(CONFIG_VIDEO_DW9768) += dw9768.o
++obj-$(CONFIG_VIDEO_DW9807_VCM) += dw9807-vcm.o
+ obj-$(CONFIG_VIDEO_ADV7170) += adv7170.o
+ obj-$(CONFIG_VIDEO_ADV7175) += adv7175.o
+ obj-$(CONFIG_VIDEO_ADV7180) += adv7180.o
+@@ -38,7 +38,7 @@ obj-$(CONFIG_VIDEO_ADV7842) += adv7842.o
+ obj-$(CONFIG_VIDEO_AD9389B) += ad9389b.o
+ obj-$(CONFIG_VIDEO_ADV7511) += adv7511-v4l2.o
+ obj-$(CONFIG_VIDEO_VPX3220) += vpx3220.o
+-obj-$(CONFIG_VIDEO_VS6624)  += vs6624.o
++obj-$(CONFIG_VIDEO_VS6624) += vs6624.o
+ obj-$(CONFIG_VIDEO_BT819) += bt819.o
+ obj-$(CONFIG_VIDEO_BT856) += bt856.o
+ obj-$(CONFIG_VIDEO_BT866) += bt866.o
+@@ -102,42 +102,42 @@ obj-$(CONFIG_VIDEO_MT9T112) += mt9t112.o
+ obj-$(CONFIG_VIDEO_MT9V011) += mt9v011.o
+ obj-$(CONFIG_VIDEO_MT9V032) += mt9v032.o
+ obj-$(CONFIG_VIDEO_MT9V111) += mt9v111.o
+-obj-$(CONFIG_VIDEO_SR030PC30)	+= sr030pc30.o
+-obj-$(CONFIG_VIDEO_NOON010PC30)	+= noon010pc30.o
+-obj-$(CONFIG_VIDEO_RJ54N1)	+= rj54n1cb0c.o
+-obj-$(CONFIG_VIDEO_S5K6AA)	+= s5k6aa.o
+-obj-$(CONFIG_VIDEO_S5K6A3)	+= s5k6a3.o
+-obj-$(CONFIG_VIDEO_S5K4ECGX)	+= s5k4ecgx.o
+-obj-$(CONFIG_VIDEO_S5K5BAF)	+= s5k5baf.o
+-obj-$(CONFIG_VIDEO_S5C73M3)	+= s5c73m3/
+-obj-$(CONFIG_VIDEO_ADP1653)	+= adp1653.o
+-obj-$(CONFIG_VIDEO_LM3560)	+= lm3560.o
+-obj-$(CONFIG_VIDEO_LM3646)	+= lm3646.o
+-obj-$(CONFIG_VIDEO_CCS_PLL)	+= ccs-pll.o
+-obj-$(CONFIG_VIDEO_AK881X)		+= ak881x.o
+-obj-$(CONFIG_VIDEO_IR_I2C)  += ir-kbd-i2c.o
+-obj-$(CONFIG_VIDEO_I2C)		+= video-i2c.o
+-obj-$(CONFIG_VIDEO_ML86V7667)	+= ml86v7667.o
+-obj-$(CONFIG_VIDEO_OV2659)	+= ov2659.o
+-obj-$(CONFIG_VIDEO_TC358743)	+= tc358743.o
+-obj-$(CONFIG_VIDEO_HI556)	+= hi556.o
+-obj-$(CONFIG_VIDEO_HI846)	+= hi846.o
+-obj-$(CONFIG_VIDEO_HI847)	+= hi847.o
+-obj-$(CONFIG_VIDEO_IMX208)	+= imx208.o
+-obj-$(CONFIG_VIDEO_IMX214)	+= imx214.o
+-obj-$(CONFIG_VIDEO_IMX219)	+= imx219.o
+-obj-$(CONFIG_VIDEO_IMX258)	+= imx258.o
+-obj-$(CONFIG_VIDEO_IMX274)	+= imx274.o
+-obj-$(CONFIG_VIDEO_IMX290)	+= imx290.o
+-obj-$(CONFIG_VIDEO_IMX319)	+= imx319.o
+-obj-$(CONFIG_VIDEO_IMX334)	+= imx334.o
+-obj-$(CONFIG_VIDEO_IMX335)	+= imx335.o
+-obj-$(CONFIG_VIDEO_IMX355)	+= imx355.o
+-obj-$(CONFIG_VIDEO_IMX412)	+= imx412.o
+-obj-$(CONFIG_VIDEO_ISL7998X)	+= isl7998x.o
+-obj-$(CONFIG_VIDEO_MAX9286)	+= max9286.o
+-obj-$(CONFIG_VIDEO_MAX9271_LIB)	+= max9271.o
+-obj-$(CONFIG_VIDEO_RDACM20)	+= rdacm20.o
+-obj-$(CONFIG_VIDEO_RDACM21)	+= rdacm21.o
++obj-$(CONFIG_VIDEO_SR030PC30) += sr030pc30.o
++obj-$(CONFIG_VIDEO_NOON010PC30) += noon010pc30.o
++obj-$(CONFIG_VIDEO_RJ54N1) += rj54n1cb0c.o
++obj-$(CONFIG_VIDEO_S5K6AA) += s5k6aa.o
++obj-$(CONFIG_VIDEO_S5K6A3) += s5k6a3.o
++obj-$(CONFIG_VIDEO_S5K4ECGX) += s5k4ecgx.o
++obj-$(CONFIG_VIDEO_S5K5BAF) += s5k5baf.o
++obj-$(CONFIG_VIDEO_S5C73M3) += s5c73m3/
++obj-$(CONFIG_VIDEO_ADP1653) += adp1653.o
++obj-$(CONFIG_VIDEO_LM3560) += lm3560.o
++obj-$(CONFIG_VIDEO_LM3646) += lm3646.o
++obj-$(CONFIG_VIDEO_CCS_PLL) += ccs-pll.o
++obj-$(CONFIG_VIDEO_AK881X) += ak881x.o
++obj-$(CONFIG_VIDEO_IR_I2C) += ir-kbd-i2c.o
++obj-$(CONFIG_VIDEO_I2C) += video-i2c.o
++obj-$(CONFIG_VIDEO_ML86V7667) += ml86v7667.o
++obj-$(CONFIG_VIDEO_OV2659) += ov2659.o
++obj-$(CONFIG_VIDEO_TC358743) += tc358743.o
++obj-$(CONFIG_VIDEO_HI556) += hi556.o
++obj-$(CONFIG_VIDEO_HI846) += hi846.o
++obj-$(CONFIG_VIDEO_HI847) += hi847.o
++obj-$(CONFIG_VIDEO_IMX208) += imx208.o
++obj-$(CONFIG_VIDEO_IMX214) += imx214.o
++obj-$(CONFIG_VIDEO_IMX219) += imx219.o
++obj-$(CONFIG_VIDEO_IMX258) += imx258.o
++obj-$(CONFIG_VIDEO_IMX274) += imx274.o
++obj-$(CONFIG_VIDEO_IMX290) += imx290.o
++obj-$(CONFIG_VIDEO_IMX319) += imx319.o
++obj-$(CONFIG_VIDEO_IMX334) += imx334.o
++obj-$(CONFIG_VIDEO_IMX335) += imx335.o
++obj-$(CONFIG_VIDEO_IMX355) += imx355.o
++obj-$(CONFIG_VIDEO_IMX412) += imx412.o
++obj-$(CONFIG_VIDEO_ISL7998X) += isl7998x.o
++obj-$(CONFIG_VIDEO_MAX9286) += max9286.o
++obj-$(CONFIG_VIDEO_MAX9271_LIB) += max9271.o
++obj-$(CONFIG_VIDEO_RDACM20) += rdacm20.o
++obj-$(CONFIG_VIDEO_RDACM21) += rdacm21.o
+ obj-$(CONFIG_VIDEO_ST_MIPID02) += st-mipid02.o
+ obj-$(CONFIG_SDR_MAX2175) += max2175.o
+diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
+index 764b5bf45e5a..5cff5e872377 100644
+--- a/drivers/media/platform/Makefile
++++ b/drivers/media/platform/Makefile
+@@ -3,89 +3,89 @@
+ # Makefile for the video capture/playback device drivers.
+ #
+ 
+-obj-$(CONFIG_VIDEO_ALLEGRO_DVT)		+= allegro-dvt/
+-obj-$(CONFIG_VIDEO_ASPEED)		+= aspeed-video.o
+-obj-$(CONFIG_VIDEO_CADENCE)		+= cadence/
++obj-$(CONFIG_VIDEO_ALLEGRO_DVT) += allegro-dvt/
++obj-$(CONFIG_VIDEO_ASPEED) += aspeed-video.o
++obj-$(CONFIG_VIDEO_CADENCE) += cadence/
+ obj-$(CONFIG_VIDEO_VIA_CAMERA) += via-camera.o
+ obj-y += marvell-ccic/
+ 
+-obj-$(CONFIG_VIDEO_OMAP3)	+= omap3isp/
+-obj-$(CONFIG_VIDEO_PXA27x)	+= pxa_camera.o
++obj-$(CONFIG_VIDEO_OMAP3) += omap3isp/
++obj-$(CONFIG_VIDEO_PXA27x) += pxa_camera.o
+ 
+ obj-$(CONFIG_VIDEO_VIU) += fsl-viu.o
+ 
+-obj-y	+= ti-vpe/
++obj-y += ti-vpe/
+ 
+-obj-$(CONFIG_VIDEO_MX2_EMMAPRP)		+= mx2_emmaprp.o
+-obj-$(CONFIG_VIDEO_CODA)		+= coda/
++obj-$(CONFIG_VIDEO_MX2_EMMAPRP) += mx2_emmaprp.o
++obj-$(CONFIG_VIDEO_CODA) += coda/
+ 
+-obj-$(CONFIG_VIDEO_IMX)			+= imx/
+-obj-$(CONFIG_VIDEO_IMX_PXP)		+= imx-pxp.o
+-obj-$(CONFIG_VIDEO_IMX8_JPEG)		+= imx-jpeg/
++obj-$(CONFIG_VIDEO_IMX) += imx/
++obj-$(CONFIG_VIDEO_IMX_PXP) += imx-pxp.o
++obj-$(CONFIG_VIDEO_IMX8_JPEG) += imx-jpeg/
+ 
+-obj-$(CONFIG_VIDEO_MEM2MEM_DEINTERLACE)	+= m2m-deinterlace.o
++obj-$(CONFIG_VIDEO_MEM2MEM_DEINTERLACE) += m2m-deinterlace.o
+ 
+-obj-$(CONFIG_VIDEO_MUX)			+= video-mux.o
++obj-$(CONFIG_VIDEO_MUX) += video-mux.o
+ 
+-obj-$(CONFIG_VIDEO_S3C_CAMIF)		+= s3c-camif/
+-obj-$(CONFIG_VIDEO_SAMSUNG_EXYNOS4_IS)	+= exynos4-is/
+-obj-$(CONFIG_VIDEO_SAMSUNG_S5P_JPEG)	+= s5p-jpeg/
+-obj-$(CONFIG_VIDEO_SAMSUNG_S5P_MFC)	+= s5p-mfc/
++obj-$(CONFIG_VIDEO_S3C_CAMIF) += s3c-camif/
++obj-$(CONFIG_VIDEO_SAMSUNG_EXYNOS4_IS) += exynos4-is/
++obj-$(CONFIG_VIDEO_SAMSUNG_S5P_JPEG) += s5p-jpeg/
++obj-$(CONFIG_VIDEO_SAMSUNG_S5P_MFC) += s5p-mfc/
+ 
+-obj-$(CONFIG_VIDEO_SAMSUNG_S5P_G2D)	+= s5p-g2d/
+-obj-$(CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC)	+= exynos-gsc/
++obj-$(CONFIG_VIDEO_SAMSUNG_S5P_G2D) += s5p-g2d/
++obj-$(CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC) += exynos-gsc/
+ 
+-obj-$(CONFIG_VIDEO_STI_BDISP)		+= sti/bdisp/
+-obj-$(CONFIG_VIDEO_STI_HVA)		+= sti/hva/
+-obj-$(CONFIG_DVB_C8SECTPFE)		+= sti/c8sectpfe/
++obj-$(CONFIG_VIDEO_STI_BDISP) += sti/bdisp/
++obj-$(CONFIG_VIDEO_STI_HVA) += sti/hva/
++obj-$(CONFIG_DVB_C8SECTPFE) += sti/c8sectpfe/
+ 
+-obj-$(CONFIG_VIDEO_STI_DELTA)		+= sti/delta/
++obj-$(CONFIG_VIDEO_STI_DELTA) += sti/delta/
+ 
+-obj-y					+= stm32/
++obj-y += stm32/
+ 
+-obj-y					+= davinci/
++obj-y += davinci/
+ 
+-obj-$(CONFIG_VIDEO_SH_VOU)		+= sh_vou.o
++obj-$(CONFIG_VIDEO_SH_VOU) += sh_vou.o
+ 
+-obj-$(CONFIG_VIDEO_RCAR_DRIF)		+= rcar_drif.o
+-obj-$(CONFIG_VIDEO_RENESAS_CEU)		+= renesas-ceu.o
+-obj-$(CONFIG_VIDEO_RENESAS_FCP)		+= rcar-fcp.o
+-obj-$(CONFIG_VIDEO_RENESAS_FDP1)	+= rcar_fdp1.o
+-obj-$(CONFIG_VIDEO_RENESAS_JPU)		+= rcar_jpu.o
+-obj-$(CONFIG_VIDEO_RENESAS_VSP1)	+= vsp1/
++obj-$(CONFIG_VIDEO_RCAR_DRIF) += rcar_drif.o
++obj-$(CONFIG_VIDEO_RENESAS_CEU) += renesas-ceu.o
++obj-$(CONFIG_VIDEO_RENESAS_FCP) += rcar-fcp.o
++obj-$(CONFIG_VIDEO_RENESAS_FDP1) += rcar_fdp1.o
++obj-$(CONFIG_VIDEO_RENESAS_JPU) += rcar_jpu.o
++obj-$(CONFIG_VIDEO_RENESAS_VSP1) += vsp1/
+ 
+-obj-$(CONFIG_VIDEO_ROCKCHIP_ISP1)	+= rockchip/rkisp1/
+-obj-$(CONFIG_VIDEO_ROCKCHIP_RGA)	+= rockchip/rga/
++obj-$(CONFIG_VIDEO_ROCKCHIP_ISP1) += rockchip/rkisp1/
++obj-$(CONFIG_VIDEO_ROCKCHIP_RGA) += rockchip/rga/
+ 
+-obj-y	+= omap/
++obj-y += omap/
+ 
+-obj-$(CONFIG_VIDEO_AM437X_VPFE)		+= am437x/
++obj-$(CONFIG_VIDEO_AM437X_VPFE) += am437x/
+ 
+-obj-$(CONFIG_VIDEO_XILINX)		+= xilinx/
++obj-$(CONFIG_VIDEO_XILINX) += xilinx/
+ 
+-obj-$(CONFIG_VIDEO_RCAR_ISP)		+= rcar-isp.o
+-obj-$(CONFIG_VIDEO_RCAR_VIN)		+= rcar-vin/
++obj-$(CONFIG_VIDEO_RCAR_ISP) += rcar-isp.o
++obj-$(CONFIG_VIDEO_RCAR_VIN) += rcar-vin/
+ 
+-obj-y	+= atmel/
++obj-y += atmel/
+ 
+-obj-y	+= stm32/
++obj-y += stm32/
+ 
+-obj-$(CONFIG_VIDEO_MEDIATEK_VPU)	+= mtk-vpu/
++obj-$(CONFIG_VIDEO_MEDIATEK_VPU) += mtk-vpu/
+ 
+-obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC)	+= mtk-vcodec/
++obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec/
+ 
+-obj-$(CONFIG_VIDEO_MEDIATEK_MDP)	+= mtk-mdp/
++obj-$(CONFIG_VIDEO_MEDIATEK_MDP) += mtk-mdp/
+ 
+-obj-$(CONFIG_VIDEO_MEDIATEK_JPEG)	+= mtk-jpeg/
++obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk-jpeg/
+ 
+-obj-$(CONFIG_VIDEO_QCOM_CAMSS)		+= qcom/camss/
++obj-$(CONFIG_VIDEO_QCOM_CAMSS) += qcom/camss/
+ 
+-obj-$(CONFIG_VIDEO_QCOM_VENUS)		+= qcom/venus/
++obj-$(CONFIG_VIDEO_QCOM_VENUS) += qcom/venus/
+ 
+-obj-y					+= sunxi/
++obj-y += sunxi/
+ 
+-obj-$(CONFIG_VIDEO_MESON_GE2D)		+= meson/ge2d/
++obj-$(CONFIG_VIDEO_MESON_GE2D) += meson/ge2d/
+ 
+-obj-$(CONFIG_VIDEO_TEGRA_VDE)		+= tegra/vde/
++obj-$(CONFIG_VIDEO_TEGRA_VDE) += tegra/vde/
+ 
+-obj-$(CONFIG_VIDEO_AMPHION_VPU)		+= amphion/
++obj-$(CONFIG_VIDEO_AMPHION_VPU) += amphion/
+diff --git a/drivers/media/test-drivers/Makefile b/drivers/media/test-drivers/Makefile
+index 9f0e4ebb2efe..1e64e05c1f22 100644
+--- a/drivers/media/test-drivers/Makefile
++++ b/drivers/media/test-drivers/Makefile
+@@ -3,8 +3,8 @@
+ # Makefile for the test drivers.
+ #
+ 
+-obj-$(CONFIG_VIDEO_VIMC)		+= vimc/
+-obj-$(CONFIG_VIDEO_VIVID)		+= vivid/
+-obj-$(CONFIG_VIDEO_VIM2M)		+= vim2m.o
+-obj-$(CONFIG_VIDEO_VICODEC)		+= vicodec/
+-obj-$(CONFIG_DVB_VIDTV)			+= vidtv/
++obj-$(CONFIG_VIDEO_VIMC) += vimc/
++obj-$(CONFIG_VIDEO_VIVID) += vivid/
++obj-$(CONFIG_VIDEO_VIM2M) += vim2m.o
++obj-$(CONFIG_VIDEO_VICODEC) += vicodec/
++obj-$(CONFIG_DVB_VIDTV) += vidtv/
+diff --git a/drivers/media/usb/Makefile b/drivers/media/usb/Makefile
+index 3eaff3149ef4..65521f4921e3 100644
+--- a/drivers/media/usb/Makefile
++++ b/drivers/media/usb/Makefile
+@@ -7,15 +7,15 @@
+ obj-y += ttusb-dec/ ttusb-budget/ dvb-usb/ dvb-usb-v2/ siano/ b2c2/
+ obj-y += zr364xx/ stkwebcam/ s2255/
+ 
+-obj-$(CONFIG_USB_VIDEO_CLASS)	+= uvc/
+-obj-$(CONFIG_USB_GSPCA)         += gspca/
+-obj-$(CONFIG_USB_PWC)           += pwc/
+-obj-$(CONFIG_USB_AIRSPY)        += airspy/
+-obj-$(CONFIG_USB_HACKRF)        += hackrf/
+-obj-$(CONFIG_USB_MSI2500)       += msi2500/
++obj-$(CONFIG_USB_VIDEO_CLASS) += uvc/
++obj-$(CONFIG_USB_GSPCA) += gspca/
++obj-$(CONFIG_USB_PWC) += pwc/
++obj-$(CONFIG_USB_AIRSPY) += airspy/
++obj-$(CONFIG_USB_HACKRF) += hackrf/
++obj-$(CONFIG_USB_MSI2500) += msi2500/
+ obj-$(CONFIG_VIDEO_CPIA2) += cpia2/
+ obj-$(CONFIG_VIDEO_AU0828) += au0828/
+-obj-$(CONFIG_VIDEO_HDPVR)	+= hdpvr/
++obj-$(CONFIG_VIDEO_HDPVR) += hdpvr/
+ obj-$(CONFIG_VIDEO_PVRUSB2) += pvrusb2/
+ obj-$(CONFIG_VIDEO_STK1160) += stk1160/
+ obj-$(CONFIG_VIDEO_CX231XX) += cx231xx/
+diff --git a/drivers/media/usb/gspca/Makefile b/drivers/media/usb/gspca/Makefile
+index 3e3ecbffdf9f..a35c45006130 100644
+--- a/drivers/media/usb/gspca/Makefile
++++ b/drivers/media/usb/gspca/Makefile
+@@ -1,51 +1,51 @@
+ # SPDX-License-Identifier: GPL-2.0
+-obj-$(CONFIG_USB_GSPCA)          += gspca_main.o
+-obj-$(CONFIG_USB_GSPCA_BENQ)     += gspca_benq.o
+-obj-$(CONFIG_USB_GSPCA_CONEX)    += gspca_conex.o
+-obj-$(CONFIG_USB_GSPCA_CPIA1)    += gspca_cpia1.o
+-obj-$(CONFIG_USB_GSPCA_DTCS033)  += gspca_dtcs033.o
+-obj-$(CONFIG_USB_GSPCA_ETOMS)    += gspca_etoms.o
+-obj-$(CONFIG_USB_GSPCA_FINEPIX)  += gspca_finepix.o
+-obj-$(CONFIG_USB_GSPCA_JEILINJ)  += gspca_jeilinj.o
++obj-$(CONFIG_USB_GSPCA) += gspca_main.o
++obj-$(CONFIG_USB_GSPCA_BENQ) += gspca_benq.o
++obj-$(CONFIG_USB_GSPCA_CONEX) += gspca_conex.o
++obj-$(CONFIG_USB_GSPCA_CPIA1) += gspca_cpia1.o
++obj-$(CONFIG_USB_GSPCA_DTCS033) += gspca_dtcs033.o
++obj-$(CONFIG_USB_GSPCA_ETOMS) += gspca_etoms.o
++obj-$(CONFIG_USB_GSPCA_FINEPIX) += gspca_finepix.o
++obj-$(CONFIG_USB_GSPCA_JEILINJ) += gspca_jeilinj.o
+ obj-$(CONFIG_USB_GSPCA_JL2005BCD) += gspca_jl2005bcd.o
+-obj-$(CONFIG_USB_GSPCA_KINECT)   += gspca_kinect.o
+-obj-$(CONFIG_USB_GSPCA_KONICA)   += gspca_konica.o
+-obj-$(CONFIG_USB_GSPCA_MARS)     += gspca_mars.o
++obj-$(CONFIG_USB_GSPCA_KINECT) += gspca_kinect.o
++obj-$(CONFIG_USB_GSPCA_KONICA) += gspca_konica.o
++obj-$(CONFIG_USB_GSPCA_MARS) += gspca_mars.o
+ obj-$(CONFIG_USB_GSPCA_MR97310A) += gspca_mr97310a.o
+-obj-$(CONFIG_USB_GSPCA_NW80X)    += gspca_nw80x.o
+-obj-$(CONFIG_USB_GSPCA_OV519)    += gspca_ov519.o
+-obj-$(CONFIG_USB_GSPCA_OV534)    += gspca_ov534.o
+-obj-$(CONFIG_USB_GSPCA_OV534_9)  += gspca_ov534_9.o
+-obj-$(CONFIG_USB_GSPCA_PAC207)   += gspca_pac207.o
+-obj-$(CONFIG_USB_GSPCA_PAC7302)  += gspca_pac7302.o
+-obj-$(CONFIG_USB_GSPCA_PAC7311)  += gspca_pac7311.o
+-obj-$(CONFIG_USB_GSPCA_SE401)    += gspca_se401.o
++obj-$(CONFIG_USB_GSPCA_NW80X) += gspca_nw80x.o
++obj-$(CONFIG_USB_GSPCA_OV519) += gspca_ov519.o
++obj-$(CONFIG_USB_GSPCA_OV534) += gspca_ov534.o
++obj-$(CONFIG_USB_GSPCA_OV534_9) += gspca_ov534_9.o
++obj-$(CONFIG_USB_GSPCA_PAC207) += gspca_pac207.o
++obj-$(CONFIG_USB_GSPCA_PAC7302) += gspca_pac7302.o
++obj-$(CONFIG_USB_GSPCA_PAC7311) += gspca_pac7311.o
++obj-$(CONFIG_USB_GSPCA_SE401) += gspca_se401.o
+ obj-$(CONFIG_USB_GSPCA_SN9C2028) += gspca_sn9c2028.o
+-obj-$(CONFIG_USB_GSPCA_SN9C20X)  += gspca_sn9c20x.o
+-obj-$(CONFIG_USB_GSPCA_SONIXB)   += gspca_sonixb.o
+-obj-$(CONFIG_USB_GSPCA_SONIXJ)   += gspca_sonixj.o
+-obj-$(CONFIG_USB_GSPCA_SPCA500)  += gspca_spca500.o
+-obj-$(CONFIG_USB_GSPCA_SPCA501)  += gspca_spca501.o
+-obj-$(CONFIG_USB_GSPCA_SPCA505)  += gspca_spca505.o
+-obj-$(CONFIG_USB_GSPCA_SPCA506)  += gspca_spca506.o
+-obj-$(CONFIG_USB_GSPCA_SPCA508)  += gspca_spca508.o
+-obj-$(CONFIG_USB_GSPCA_SPCA561)  += gspca_spca561.o
++obj-$(CONFIG_USB_GSPCA_SN9C20X) += gspca_sn9c20x.o
++obj-$(CONFIG_USB_GSPCA_SONIXB) += gspca_sonixb.o
++obj-$(CONFIG_USB_GSPCA_SONIXJ) += gspca_sonixj.o
++obj-$(CONFIG_USB_GSPCA_SPCA500) += gspca_spca500.o
++obj-$(CONFIG_USB_GSPCA_SPCA501) += gspca_spca501.o
++obj-$(CONFIG_USB_GSPCA_SPCA505) += gspca_spca505.o
++obj-$(CONFIG_USB_GSPCA_SPCA506) += gspca_spca506.o
++obj-$(CONFIG_USB_GSPCA_SPCA508) += gspca_spca508.o
++obj-$(CONFIG_USB_GSPCA_SPCA561) += gspca_spca561.o
+ obj-$(CONFIG_USB_GSPCA_SPCA1528) += gspca_spca1528.o
+-obj-$(CONFIG_USB_GSPCA_SQ905)    += gspca_sq905.o
+-obj-$(CONFIG_USB_GSPCA_SQ905C)   += gspca_sq905c.o
+-obj-$(CONFIG_USB_GSPCA_SQ930X)   += gspca_sq930x.o
+-obj-$(CONFIG_USB_GSPCA_SUNPLUS)  += gspca_sunplus.o
+-obj-$(CONFIG_USB_GSPCA_STK014)   += gspca_stk014.o
+-obj-$(CONFIG_USB_GSPCA_STK1135)  += gspca_stk1135.o
+-obj-$(CONFIG_USB_GSPCA_STV0680)  += gspca_stv0680.o
+-obj-$(CONFIG_USB_GSPCA_T613)     += gspca_t613.o
+-obj-$(CONFIG_USB_GSPCA_TOPRO)    += gspca_topro.o
+-obj-$(CONFIG_USB_GSPCA_TOUPTEK)  += gspca_touptek.o
+-obj-$(CONFIG_USB_GSPCA_TV8532)   += gspca_tv8532.o
+-obj-$(CONFIG_USB_GSPCA_VC032X)   += gspca_vc032x.o
+-obj-$(CONFIG_USB_GSPCA_VICAM)    += gspca_vicam.o
++obj-$(CONFIG_USB_GSPCA_SQ905) += gspca_sq905.o
++obj-$(CONFIG_USB_GSPCA_SQ905C) += gspca_sq905c.o
++obj-$(CONFIG_USB_GSPCA_SQ930X) += gspca_sq930x.o
++obj-$(CONFIG_USB_GSPCA_SUNPLUS) += gspca_sunplus.o
++obj-$(CONFIG_USB_GSPCA_STK014) += gspca_stk014.o
++obj-$(CONFIG_USB_GSPCA_STK1135) += gspca_stk1135.o
++obj-$(CONFIG_USB_GSPCA_STV0680) += gspca_stv0680.o
++obj-$(CONFIG_USB_GSPCA_T613) += gspca_t613.o
++obj-$(CONFIG_USB_GSPCA_TOPRO) += gspca_topro.o
++obj-$(CONFIG_USB_GSPCA_TOUPTEK) += gspca_touptek.o
++obj-$(CONFIG_USB_GSPCA_TV8532) += gspca_tv8532.o
++obj-$(CONFIG_USB_GSPCA_VC032X) += gspca_vc032x.o
++obj-$(CONFIG_USB_GSPCA_VICAM) += gspca_vicam.o
+ obj-$(CONFIG_USB_GSPCA_XIRLINK_CIT) += gspca_xirlink_cit.o
+-obj-$(CONFIG_USB_GSPCA_ZC3XX)    += gspca_zc3xx.o
++obj-$(CONFIG_USB_GSPCA_ZC3XX) += gspca_zc3xx.o
+ 
+ gspca_main-objs     := gspca.o autogain_functions.o
+ gspca_benq-objs     := benq.o
+@@ -95,6 +95,6 @@ gspca_vicam-objs    := vicam.o
+ gspca_xirlink_cit-objs := xirlink_cit.o
+ gspca_zc3xx-objs    := zc3xx.o
+ 
+-obj-$(CONFIG_USB_M5602)   += m5602/
++obj-$(CONFIG_USB_M5602) += m5602/
+ obj-$(CONFIG_USB_STV06XX) += stv06xx/
+-obj-$(CONFIG_USB_GL860)   += gl860/
++obj-$(CONFIG_USB_GL860) += gl860/
 -- 
 2.35.1
-
 
 
 
