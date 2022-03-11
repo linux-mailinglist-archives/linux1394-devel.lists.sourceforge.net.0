@@ -2,26 +2,26 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD7F74D33B7
-	for <lists+linux1394-devel@lfdr.de>; Wed,  9 Mar 2022 17:22:56 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C8584D62E4
+	for <lists+linux1394-devel@lfdr.de>; Fri, 11 Mar 2022 15:08:24 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1nRz5L-0003jr-Fy; Wed, 09 Mar 2022 16:22:46 +0000
+	id 1nSfw9-0007IJ-FS; Fri, 11 Mar 2022 14:08:08 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <mchehab@kernel.org>) id 1nRz5J-0003jf-NY
- for linux1394-devel@lists.sourceforge.net; Wed, 09 Mar 2022 16:22:44 +0000
+ (envelope-from <mchehab@kernel.org>) id 1nSfw8-0007I5-7H
+ for linux1394-devel@lists.sourceforge.net; Fri, 11 Mar 2022 14:08:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=XGW1GTuyIkwy9fnfs+jqdUbwMDVS6IcnGF1lJN5BatE=; b=ivZBm0vfPNYVpAvHTpIylBnCg1
- 4BORdpTiXcjH/5kDnvMnQ01LZU44Pp2OUjfdoz8nhf9fS94UtOnql4nkDbysU+zvFz7YRFxiMdNIv
- Hx3NO8xT2sH4Wmyf7cW4BmqfywjpgyfSuPnWzCbB/EpPhYZFkEKebH8qbMFj7P9lSZJ4=;
+ bh=SkGHyALrMEEzLtAlSEjZWYganvHs9H5x9M77ROcRmA8=; b=OFpxNYNxfWv756uZdc6lS6b4qj
+ Ci8OpDS8tbU79C9xGKDwc3Y16DEb4dPDS2b9aL/xdSb88oL3IPFVJxER/rBwgfPnUET5xu9rKYErY
+ UIXua+pkdzy8ctuhnKOrczP1Uw2VTWFPsV1sgYi/Zjgnt5K9o1J4eo3+zNpt/nyEkD/k=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
@@ -29,46 +29,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=XGW1GTuyIkwy9fnfs+jqdUbwMDVS6IcnGF1lJN5BatE=; b=bfJ78KITCsGmwlf/XbIdC7XNOp
- fel/RJjuO08ntRIxOKYv6T7oW1buX7Kk2+A6TlMQno/AJzzEVitwPEEykHg7yPvyhUyybf+p6cOc5
- Yq542qxBQ13KqRCikHnr5fIAbNxIKLoF0w5rF+SUv5Tt3k7BK0ttR0sCDC+skJ0Mw6/o=;
-Received: from dfw.source.kernel.org ([139.178.84.217])
+ bh=SkGHyALrMEEzLtAlSEjZWYganvHs9H5x9M77ROcRmA8=; b=SBPF9xzylR+ptZGdyFk8xizBFQ
+ MxT/j0Jkj9hyhHHDSdfDd7cUkvbm42KMjPnGumP3Et0JXD4Dj8iSH2+0/328QPZMDOBF7UJHcmDw5
+ nWpsjOWjl2ftL/JPPK8q+9JJLZvwP33RExMrY+2JDdpJdXJoyR9x1cXEfT8e+V6JiGVk=;
+Received: from ams.source.kernel.org ([145.40.68.75])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
- id 1nRz5D-0007Uh-Kq
- for linux1394-devel@lists.sourceforge.net; Wed, 09 Mar 2022 16:22:43 +0000
+ id 1nSfw4-0000Nv-8k
+ for linux1394-devel@lists.sourceforge.net; Fri, 11 Mar 2022 14:08:06 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id C71246196E;
- Wed,  9 Mar 2022 16:22:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D7BE2C340F7;
- Wed,  9 Mar 2022 16:22:28 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id BADA1B82C0F;
+ Fri, 11 Mar 2022 14:07:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EC2A6C340ED;
+ Fri, 11 Mar 2022 14:07:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646842949;
- bh=2riVopMWkfNoH1zQp6ZxOpgZPlceVCBbF5mqn3OweTI=;
+ s=k20201202; t=1647007676;
+ bh=lTvzeKs9ITq/Oly2F8O6WN1u5dgqJJVcKMHPif1bZQM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=RSMkcKst2qEjjGOU9Yk/9OYCJoWvDglF7GJVOZK1TRP2u23wyZWMMOPv+NXa2Mp5Q
- B2Vo1cGvfWqKrR5SaKQRDZbjolDOjeIWVwZyJMvxiXqj7rCG23o1rjHhY7RKPrA22f
- RXgV4KU9XldJNTC+V5t0i5V56gwNMdHB5hkJ0J9MSGD6D1XWXdYDDEWHkqazYTduuy
- B7id7wYxEaHKL2Xeybo5FiG+va1QvJ8oMaW68xQrBYC4h5aJ14LUQ98haCJkvm3ohW
- MfG2JzNnAb2Xt8wV/BKsgznpaAL1DhaDZbILXed1TeoXp/7MCap14BQmIK1ycSPBqR
- OENV95ZpwlaSQ==
+ b=idyR23/RLg63V0lw5ef74EAMUnAKbYUZf+DFJN5bWy++44Za0mVacVwXgnVDBsN3t
+ /A7Z13BCk1I9VZeokQCgmCAZW1k7y9AJmTpelSbKvaTipjGDnJY8tYfgHUGk73COSL
+ UkDKC1PyaLtlnn7e+vqNVNjO5PLCcUpvpxPBC6Ozi0Q3t5JoLNDHcS1eIiyX1KVQd/
+ s8NlMBD3h0mYxRZuFeoNSWsj2qRNXym2O1ZB+XjcHmqHMOZPE8jCe60hCC4iCKhZh6
+ 7pUmMkhxxKGXgDseabng1g1aissTzxkTvQNyJKSXFsw4YEp9DqSKAmNanfmO7Q3mwy
+ tvmMvWfPKHjFw==
 Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
  (envelope-from <mchehab@kernel.org>)
- id 1nRz50-00E6An-Cw; Wed, 09 Mar 2022 17:22:26 +0100
+ id 1nSfvt-000lAd-Ht; Fri, 11 Mar 2022 15:07:53 +0100
 From: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: [PATCH 3/5] media: Makefiles: remove extra spaces
-Date: Wed,  9 Mar 2022 17:22:23 +0100
-Message-Id: <fd61578204413a87abd49568d7d2be8da35d518e.1646842741.git.mchehab@kernel.org>
+To: 
+Subject: [PATCH v2 02/38] media: Makefiles: remove extra spaces
+Date: Fri, 11 Mar 2022 15:07:15 +0100
+Message-Id: <0bec5b3ed228f2d49b3fefb25061b380c8133044.1647006877.git.mchehab@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <cover.1646842741.git.mchehab@kernel.org>
-References: <cover.1646842741.git.mchehab@kernel.org>
+In-Reply-To: <cover.1647006877.git.mchehab@kernel.org>
+References: <cover.1647006877.git.mchehab@kernel.org>
 MIME-Version: 1.0
-X-Spam-Score: -5.7 (-----)
+X-Spam-Score: -5.9 (-----)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
@@ -76,23 +76,22 @@ X-Spam-Report: Spam detection software,
  Content preview: It is hard to keep all those options aligned as newer config
  changes get added, and we really don't want to have patches adding new options
  also touching already existing entries. So, drop the extra spaces. 
- Content analysis details:   (-5.7 points, 6.0 required)
+ Content analysis details:   (-5.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [139.178.84.217 listed in list.dnswl.org]
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ high trust [145.40.68.75 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.0 T_SCC_BODY_TEXT_LINE   No description available.
- -0.5 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
-X-Headers-End: 1nRz5D-0007Uh-Kq
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.7 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
+X-Headers-End: 1nSfw4-0000Nv-8k
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,19 +104,16 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: Marek Vasut <marex@denx.de>, Shawn Tu <shawnx.tu@intel.com>,
- =?UTF-8?q?Niklas=20S=C3=B6derlund?=
- <niklas.soderlund+renesas@ragnatech.se>,
+Cc: Shawn Tu <shawnx.tu@intel.com>, Arec Kao <arec.kao@intel.com>,
+ Martina Krasteva <martinax.krasteva@intel.com>, linux-kernel@vger.kernel.org,
  "Paul J. Murphy" <paul.j.murphy@intel.com>,
- Mirela Rabulea <mirela.rabulea@nxp.com>, linux1394-devel@lists.sourceforge.net,
- Martina Krasteva <martinax.krasteva@intel.com>,
- Jacopo Mondi <jacopo@jmondi.org>, linux-kernel@vger.kernel.org,
  Daniel Scally <djrscally@gmail.com>, Martin Kepplinger <martink@posteo.de>,
  Sakari Ailus <sakari.ailus@linux.intel.com>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Eugen Hristev <eugen.hristev@microchip.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Dillon Min <dillon.minfei@gmail.com>, linux-media@vger.kernel.org
+ linux1394-devel@lists.sourceforge.net,
+ Daniele Alessandrelli <daniele.alessandrelli@intel.com>,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
@@ -132,17 +128,16 @@ Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 ---
 
 To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
-See [PATCH 0/5] at: https://lore.kernel.org/all/cover.1646842741.git.mchehab@kernel.org/
+See [PATCH v2 00/38] at: https://lore.kernel.org/all/cover.1647006877.git.mchehab@kernel.org/
 
- drivers/media/Makefile              |   4 +-
- drivers/media/cec/platform/Makefile |  16 ++---
- drivers/media/firewire/Makefile     |   2 +-
- drivers/media/i2c/Makefile          |  92 ++++++++++++-------------
- drivers/media/platform/Makefile     | 102 ++++++++++++++--------------
- drivers/media/test-drivers/Makefile |  10 +--
- drivers/media/usb/Makefile          |  14 ++--
- drivers/media/usb/gspca/Makefile    |  88 ++++++++++++------------
- 8 files changed, 164 insertions(+), 164 deletions(-)
+ drivers/media/Makefile              |  4 +-
+ drivers/media/cec/platform/Makefile | 16 ++---
+ drivers/media/firewire/Makefile     |  2 +-
+ drivers/media/i2c/Makefile          | 92 ++++++++++++++---------------
+ drivers/media/test-drivers/Makefile | 10 ++--
+ drivers/media/usb/Makefile          | 14 ++---
+ drivers/media/usb/gspca/Makefile    | 88 +++++++++++++--------------
+ 7 files changed, 113 insertions(+), 113 deletions(-)
 
 diff --git a/drivers/media/Makefile b/drivers/media/Makefile
 index d18357bf1346..20fac24e4f0f 100644
@@ -325,151 +320,6 @@ index 7f8c1df60330..557c8c9dfafe 100644
 +obj-$(CONFIG_VIDEO_RDACM21) += rdacm21.o
  obj-$(CONFIG_VIDEO_ST_MIPID02) += st-mipid02.o
  obj-$(CONFIG_SDR_MAX2175) += max2175.o
-diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
-index 764b5bf45e5a..5cff5e872377 100644
---- a/drivers/media/platform/Makefile
-+++ b/drivers/media/platform/Makefile
-@@ -3,89 +3,89 @@
- # Makefile for the video capture/playback device drivers.
- #
- 
--obj-$(CONFIG_VIDEO_ALLEGRO_DVT)		+= allegro-dvt/
--obj-$(CONFIG_VIDEO_ASPEED)		+= aspeed-video.o
--obj-$(CONFIG_VIDEO_CADENCE)		+= cadence/
-+obj-$(CONFIG_VIDEO_ALLEGRO_DVT) += allegro-dvt/
-+obj-$(CONFIG_VIDEO_ASPEED) += aspeed-video.o
-+obj-$(CONFIG_VIDEO_CADENCE) += cadence/
- obj-$(CONFIG_VIDEO_VIA_CAMERA) += via-camera.o
- obj-y += marvell-ccic/
- 
--obj-$(CONFIG_VIDEO_OMAP3)	+= omap3isp/
--obj-$(CONFIG_VIDEO_PXA27x)	+= pxa_camera.o
-+obj-$(CONFIG_VIDEO_OMAP3) += omap3isp/
-+obj-$(CONFIG_VIDEO_PXA27x) += pxa_camera.o
- 
- obj-$(CONFIG_VIDEO_VIU) += fsl-viu.o
- 
--obj-y	+= ti-vpe/
-+obj-y += ti-vpe/
- 
--obj-$(CONFIG_VIDEO_MX2_EMMAPRP)		+= mx2_emmaprp.o
--obj-$(CONFIG_VIDEO_CODA)		+= coda/
-+obj-$(CONFIG_VIDEO_MX2_EMMAPRP) += mx2_emmaprp.o
-+obj-$(CONFIG_VIDEO_CODA) += coda/
- 
--obj-$(CONFIG_VIDEO_IMX)			+= imx/
--obj-$(CONFIG_VIDEO_IMX_PXP)		+= imx-pxp.o
--obj-$(CONFIG_VIDEO_IMX8_JPEG)		+= imx-jpeg/
-+obj-$(CONFIG_VIDEO_IMX) += imx/
-+obj-$(CONFIG_VIDEO_IMX_PXP) += imx-pxp.o
-+obj-$(CONFIG_VIDEO_IMX8_JPEG) += imx-jpeg/
- 
--obj-$(CONFIG_VIDEO_MEM2MEM_DEINTERLACE)	+= m2m-deinterlace.o
-+obj-$(CONFIG_VIDEO_MEM2MEM_DEINTERLACE) += m2m-deinterlace.o
- 
--obj-$(CONFIG_VIDEO_MUX)			+= video-mux.o
-+obj-$(CONFIG_VIDEO_MUX) += video-mux.o
- 
--obj-$(CONFIG_VIDEO_S3C_CAMIF)		+= s3c-camif/
--obj-$(CONFIG_VIDEO_SAMSUNG_EXYNOS4_IS)	+= exynos4-is/
--obj-$(CONFIG_VIDEO_SAMSUNG_S5P_JPEG)	+= s5p-jpeg/
--obj-$(CONFIG_VIDEO_SAMSUNG_S5P_MFC)	+= s5p-mfc/
-+obj-$(CONFIG_VIDEO_S3C_CAMIF) += s3c-camif/
-+obj-$(CONFIG_VIDEO_SAMSUNG_EXYNOS4_IS) += exynos4-is/
-+obj-$(CONFIG_VIDEO_SAMSUNG_S5P_JPEG) += s5p-jpeg/
-+obj-$(CONFIG_VIDEO_SAMSUNG_S5P_MFC) += s5p-mfc/
- 
--obj-$(CONFIG_VIDEO_SAMSUNG_S5P_G2D)	+= s5p-g2d/
--obj-$(CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC)	+= exynos-gsc/
-+obj-$(CONFIG_VIDEO_SAMSUNG_S5P_G2D) += s5p-g2d/
-+obj-$(CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC) += exynos-gsc/
- 
--obj-$(CONFIG_VIDEO_STI_BDISP)		+= sti/bdisp/
--obj-$(CONFIG_VIDEO_STI_HVA)		+= sti/hva/
--obj-$(CONFIG_DVB_C8SECTPFE)		+= sti/c8sectpfe/
-+obj-$(CONFIG_VIDEO_STI_BDISP) += sti/bdisp/
-+obj-$(CONFIG_VIDEO_STI_HVA) += sti/hva/
-+obj-$(CONFIG_DVB_C8SECTPFE) += sti/c8sectpfe/
- 
--obj-$(CONFIG_VIDEO_STI_DELTA)		+= sti/delta/
-+obj-$(CONFIG_VIDEO_STI_DELTA) += sti/delta/
- 
--obj-y					+= stm32/
-+obj-y += stm32/
- 
--obj-y					+= davinci/
-+obj-y += davinci/
- 
--obj-$(CONFIG_VIDEO_SH_VOU)		+= sh_vou.o
-+obj-$(CONFIG_VIDEO_SH_VOU) += sh_vou.o
- 
--obj-$(CONFIG_VIDEO_RCAR_DRIF)		+= rcar_drif.o
--obj-$(CONFIG_VIDEO_RENESAS_CEU)		+= renesas-ceu.o
--obj-$(CONFIG_VIDEO_RENESAS_FCP)		+= rcar-fcp.o
--obj-$(CONFIG_VIDEO_RENESAS_FDP1)	+= rcar_fdp1.o
--obj-$(CONFIG_VIDEO_RENESAS_JPU)		+= rcar_jpu.o
--obj-$(CONFIG_VIDEO_RENESAS_VSP1)	+= vsp1/
-+obj-$(CONFIG_VIDEO_RCAR_DRIF) += rcar_drif.o
-+obj-$(CONFIG_VIDEO_RENESAS_CEU) += renesas-ceu.o
-+obj-$(CONFIG_VIDEO_RENESAS_FCP) += rcar-fcp.o
-+obj-$(CONFIG_VIDEO_RENESAS_FDP1) += rcar_fdp1.o
-+obj-$(CONFIG_VIDEO_RENESAS_JPU) += rcar_jpu.o
-+obj-$(CONFIG_VIDEO_RENESAS_VSP1) += vsp1/
- 
--obj-$(CONFIG_VIDEO_ROCKCHIP_ISP1)	+= rockchip/rkisp1/
--obj-$(CONFIG_VIDEO_ROCKCHIP_RGA)	+= rockchip/rga/
-+obj-$(CONFIG_VIDEO_ROCKCHIP_ISP1) += rockchip/rkisp1/
-+obj-$(CONFIG_VIDEO_ROCKCHIP_RGA) += rockchip/rga/
- 
--obj-y	+= omap/
-+obj-y += omap/
- 
--obj-$(CONFIG_VIDEO_AM437X_VPFE)		+= am437x/
-+obj-$(CONFIG_VIDEO_AM437X_VPFE) += am437x/
- 
--obj-$(CONFIG_VIDEO_XILINX)		+= xilinx/
-+obj-$(CONFIG_VIDEO_XILINX) += xilinx/
- 
--obj-$(CONFIG_VIDEO_RCAR_ISP)		+= rcar-isp.o
--obj-$(CONFIG_VIDEO_RCAR_VIN)		+= rcar-vin/
-+obj-$(CONFIG_VIDEO_RCAR_ISP) += rcar-isp.o
-+obj-$(CONFIG_VIDEO_RCAR_VIN) += rcar-vin/
- 
--obj-y	+= atmel/
-+obj-y += atmel/
- 
--obj-y	+= stm32/
-+obj-y += stm32/
- 
--obj-$(CONFIG_VIDEO_MEDIATEK_VPU)	+= mtk-vpu/
-+obj-$(CONFIG_VIDEO_MEDIATEK_VPU) += mtk-vpu/
- 
--obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC)	+= mtk-vcodec/
-+obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec/
- 
--obj-$(CONFIG_VIDEO_MEDIATEK_MDP)	+= mtk-mdp/
-+obj-$(CONFIG_VIDEO_MEDIATEK_MDP) += mtk-mdp/
- 
--obj-$(CONFIG_VIDEO_MEDIATEK_JPEG)	+= mtk-jpeg/
-+obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk-jpeg/
- 
--obj-$(CONFIG_VIDEO_QCOM_CAMSS)		+= qcom/camss/
-+obj-$(CONFIG_VIDEO_QCOM_CAMSS) += qcom/camss/
- 
--obj-$(CONFIG_VIDEO_QCOM_VENUS)		+= qcom/venus/
-+obj-$(CONFIG_VIDEO_QCOM_VENUS) += qcom/venus/
- 
--obj-y					+= sunxi/
-+obj-y += sunxi/
- 
--obj-$(CONFIG_VIDEO_MESON_GE2D)		+= meson/ge2d/
-+obj-$(CONFIG_VIDEO_MESON_GE2D) += meson/ge2d/
- 
--obj-$(CONFIG_VIDEO_TEGRA_VDE)		+= tegra/vde/
-+obj-$(CONFIG_VIDEO_TEGRA_VDE) += tegra/vde/
- 
--obj-$(CONFIG_VIDEO_AMPHION_VPU)		+= amphion/
-+obj-$(CONFIG_VIDEO_AMPHION_VPU) += amphion/
 diff --git a/drivers/media/test-drivers/Makefile b/drivers/media/test-drivers/Makefile
 index 9f0e4ebb2efe..1e64e05c1f22 100644
 --- a/drivers/media/test-drivers/Makefile
