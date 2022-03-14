@@ -2,26 +2,26 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0F034D7C50
-	for <lists+linux1394-devel@lfdr.de>; Mon, 14 Mar 2022 08:56:25 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F6654D8967
+	for <lists+linux1394-devel@lfdr.de>; Mon, 14 Mar 2022 17:35:38 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1nTfYs-0000LP-32; Mon, 14 Mar 2022 07:56:12 +0000
+	id 1nTnXL-0007Nw-5v; Mon, 14 Mar 2022 16:35:22 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <mchehab@kernel.org>) id 1nTfYr-0000LI-As
- for linux1394-devel@lists.sourceforge.net; Mon, 14 Mar 2022 07:56:12 +0000
+ (envelope-from <mchehab@kernel.org>) id 1nTnXK-0007Np-AW
+ for linux1394-devel@lists.sourceforge.net; Mon, 14 Mar 2022 16:35:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=SI4Tuyd0IpBK0K/hGNcRHA8XWcBSZdZGQHSeQVde8yQ=; b=kKeJAVNUCn7rz2WjF3NCxSjoSK
- rzbBk7qmcDUjk2X2rvDoayQm24MY+gPYhw9eE/Bf4uhn7aZwaVrJjCNr/qT/Tg8UkYMvWLrpfPrnw
- QKZTvp0RVrsdOGOQkI0q6IorFt1qGK+8JLsYjZp+0sy4IZaoC6jK90/QXx+r8d4TodGk=;
+ bh=gTN29iQhftwLj+p7r2QzJt2mp4MHaT31OJ2lXLPoGnQ=; b=QupUoTc5cNhGgYl9Vq6eCDephh
+ bhO4DzLvI/Osi2rK5xzNznCg+UrI6pxGOwOeMiQnY5VfkvK3Ly18ahGaRB3B4bYAJJ8ObG/kNOU0X
+ vWD3t/6pBpICahaUDGJFMsLKslKNlH3hBBM/celEMC4GMz4PmdfVIOIyImkDgKK9tdVU=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
@@ -29,42 +29,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=SI4Tuyd0IpBK0K/hGNcRHA8XWcBSZdZGQHSeQVde8yQ=; b=Eg0hL9V/nfni8BE2CSVRI9rJRN
- DtLDPQmY3W9ATtyztjIcylK2b/DeHsbL8gwQLDA6Us1ky6EzZwujHF5cLeHAzCkv4II0p8Zjjpglo
- ROCq2cFEMRuw1pi7/O6j3WDwXlHoDBIcO6XqchdTKh9BbQaLFBMZVCs5+mbSCY6j/HfM=;
-Received: from dfw.source.kernel.org ([139.178.84.217])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ bh=gTN29iQhftwLj+p7r2QzJt2mp4MHaT31OJ2lXLPoGnQ=; b=hopCD8QpgNKZs3UU/D9LDfkAQh
+ +e5aDvROqiofUdKKe6BH3TARl+9jywoVizvkwRA+LkbtYJGrhF4SUr9QCixmeH2FXr9SuHIt+CPzL
+ bEQ0ElRhrGTPErPAE3Av2BFrBWHM5z1lrIxnifMkH9ZWscZnGc422wrthO8lWZffsdDw=;
+Received: from ams.source.kernel.org ([145.40.68.75])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
- id 1nTfYm-0003Eq-95
- for linux1394-devel@lists.sourceforge.net; Mon, 14 Mar 2022 07:56:11 +0000
+ id 1nTnfE-00FYlT-Ey
+ for linux1394-devel@lists.sourceforge.net; Mon, 14 Mar 2022 16:35:21 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id E4BE061180;
- Mon, 14 Mar 2022 07:56:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A6ABCC340E9;
- Mon, 14 Mar 2022 07:56:00 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 15070B80E8C;
+ Mon, 14 Mar 2022 16:35:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B31D3C36AE7;
+ Mon, 14 Mar 2022 16:35:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647244561;
- bh=P2geQHH31RLZReClIkTVIqPSBaDXnpj6/KtMlxx22Ec=;
+ s=k20201202; t=1647275707;
+ bh=9/AyHTU6/DcyJ1UZqIo3lx8vIn/BdGZ9rf9ITAj8JhA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=i+qkPkQy4Q9RULnxRdY8pN4dmEr6gTA2UP3Ito5vmqHFJenPZ89zLBXQi/RSZ3TUq
- xr6Ewt6usm6wDw9Kqjh8jDlaAzTu6NKErj64u/3WtwXL+m5gHjgzyF147i6kMNCovQ
- tgGIjkMcAdxxMhvREu+OtePzKyG8NEwlsPzb9Fmqhm4rrJPwKzow2zZc0XGuc4WLSe
- hn2VtdQBNiteFvnqLrax3UZsaZUklnUcFZdmV45rgj7AdJvKoEcz3JpOmDZu6bDP0S
- GOs4dpS2L1thdh/dUt/ri1OAPdZIdwoaEDvLAsegIgS6Jk/TBcIARwtTF6l+JA8M1H
- 3h5EqLCF+7vBA==
+ b=C/L43uoQqol+c/BxOxVW5wzsbfsKUJCkcK6D+z4X3aR8jVsVU1pYhTI97VVg4C8mY
+ xcGkIgoACA+BJQHSioGPDJ91msBDWGtF4E1nML2qW+ZAkmYhs12XCwAXaWBooTDT8R
+ C9xBWxxLozZMPuDe2zOidl3O2gZS9NucYs9Daq5mmOgtRGAN42aj8OEQ7Xxn4cWWsQ
+ Nh4VL+qTvy82y6l56OBYitorqG1qOrG27SAXrtVqGA0J+vZvFeUwGu3lds/GX6IZDo
+ QkeIWooJfwSNGuolWKx8nLKzAFJr8PeBzQMVrNIQe798nrv3Vv4pZjt2+h+I2yKf9s
+ AGZ0rHr9TtyDQ==
 Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
  (envelope-from <mchehab@kernel.org>)
- id 1nTfYc-001kUI-BM; Mon, 14 Mar 2022 08:55:58 +0100
+ id 1nTney-001wwD-65; Mon, 14 Mar 2022 17:35:04 +0100
 From: Mauro Carvalho Chehab <mchehab@kernel.org>
 To: 
-Subject: [PATCH 02/64] media: Makefiles: remove extra spaces
-Date: Mon, 14 Mar 2022 08:54:54 +0100
-Message-Id: <271e4323d9e93340fe37c15288056bae9e5bb1a0.1647242579.git.mchehab@kernel.org>
+Subject: [PATCH v2 02/67] media: Makefiles: remove extra spaces
+Date: Mon, 14 Mar 2022 17:33:57 +0100
+Message-Id: <271e4323d9e93340fe37c15288056bae9e5bb1a0.1647274406.git.mchehab@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <cover.1647242578.git.mchehab@kernel.org>
-References: <cover.1647242578.git.mchehab@kernel.org>
+In-Reply-To: <cover.1647274406.git.mchehab@kernel.org>
+References: <cover.1647274406.git.mchehab@kernel.org>
 MIME-Version: 1.0
 X-Spam-Score: -5.9 (-----)
 X-Spam-Report: Spam detection software,
@@ -80,7 +80,7 @@ X-Spam-Report: Spam detection software,
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [139.178.84.217 listed in list.dnswl.org]
+ high trust [145.40.68.75 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -91,7 +91,7 @@ X-Spam-Report: Spam detection software,
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.7 DKIMWL_WL_HIGH         DKIMwl.org - High trust sender
-X-Headers-End: 1nTfYm-0003Eq-95
+X-Headers-End: 1nTnfE-00FYlT-Ey
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,8 +105,9 @@ List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
 Cc: Marek Vasut <marex@denx.de>, Shawn Tu <shawnx.tu@intel.com>,
- Arec Kao <arec.kao@intel.com>, Martina Krasteva <martinax.krasteva@intel.com>,
- linux-kernel@vger.kernel.org, Martin Kepplinger <martink@posteo.de>,
+ Jimmy Su <jimmy.su@intel.com>, linux-kernel@vger.kernel.org,
+ "Paul J. Murphy" <paul.j.murphy@intel.com>,
+ Martina Krasteva <martinax.krasteva@intel.com>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  Sakari Ailus <sakari.ailus@linux.intel.com>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -129,7 +130,7 @@ Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 ---
 
 To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
-See [PATCH 00/64] at: https://lore.kernel.org/all/cover.1647242578.git.mchehab@kernel.org/
+See [PATCH v2 00/67] at: https://lore.kernel.org/all/cover.1647274406.git.mchehab@kernel.org/
 
  drivers/media/Makefile              |  4 +-
  drivers/media/cec/platform/Makefile | 16 ++---
