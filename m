@@ -2,63 +2,63 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33F894E1C76
-	for <lists+linux1394-devel@lfdr.de>; Sun, 20 Mar 2022 17:03:43 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AED64E27E4
+	for <lists+linux1394-devel@lfdr.de>; Mon, 21 Mar 2022 14:41:20 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1nVy1e-000504-8f; Sun, 20 Mar 2022 16:03:24 +0000
+	id 1nWI9Y-0001TR-LW; Mon, 21 Mar 2022 13:41:08 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <ror.mcn@bookitevents.com>) id 1nVy1c-0004zw-3q
- for linux1394-devel@lists.sourceforge.net; Sun, 20 Mar 2022 16:03:22 +0000
+ (envelope-from <ror.mcn@bookitevents.com>) id 1nWI9X-0001TL-7g
+ for linux1394-devel@lists.sourceforge.net; Mon, 21 Mar 2022 13:41:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
  :Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=b8TEW1AOxMRWJvYZo3REPM3MguzlJBxS2ZbVjZBc1Qc=; b=PPPtFsPpica57y6uVG5qDrDEgv
- sCBlMfuZBzhlRj0mihbVNjOa6WYLQhWc3I3B0/gP4q7t0duqfikjFFyYLgD2eh4r2WY2tg1OJ0z1P
- Fj0k2QxsGkhS1ktAgca8wG6LB+Ni7GllB5vofkWIL2d9l5j9CspQqXvSwjo3hXlCvK8I=;
+ bh=b8TEW1AOxMRWJvYZo3REPM3MguzlJBxS2ZbVjZBc1Qc=; b=cRl7/LWF8QcWQg1PQUYFGZ+bmU
+ jdUniffqzNbW5d96kit3dUPdYC5/9YqWnOhlW1uEBkfB+Qkw76bxLu3T+RI2+8MV9wBMEXExvwvxJ
+ OXgUoamDBDUpB966Pl9VMYMscSXWinX6vHk5GpgmuW0w5RV9w56+1mLWp4crk+avTQs4=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
  Subject:To:From:Reply-To:Sender:Cc:Content-ID:Content-Description:Resent-Date
  :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=b8TEW1AOxMRWJvYZo3REPM3MguzlJBxS2ZbVjZBc1Qc=; b=Y
- t8qmTOhKfYxje50v1fSweEIkVyPVoPTWRQMmcdcGMiPSCW3QEqT5e+xi6jv9rYAvgII7AsVeMAOOK
- zBw4//4DF7CMe4WStsWf5p+Fm2NW3LnXmerwJMAfrYiKCtmceW1PRISdkIt27J/HzOXIF2ELiHrCq
- wD0jqos1Bm6INCa8=;
+ List-Owner:List-Archive; bh=b8TEW1AOxMRWJvYZo3REPM3MguzlJBxS2ZbVjZBc1Qc=; b=X
+ dcS3gCzIWJcmMy0Rdfr7U2I5WomBe4Y6xVry2UpWJF+u0Jq0g2Gb9/pBwlWXWimJnn3pK6r9n2DfY
+ WqIaZqvaElFF6JLQ4jbUMEAElZ7FOsW/u+29GExY8mTLHgMV4D9xBo1RsDg/oM+DCbTEJeR6Fx+xA
+ nryjStZggbxDgsDQ=;
 Received: from domination.bookitevents.com ([185.102.170.218])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
- id 1nVy1Z-0003De-KJ
- for linux1394-devel@lists.sourceforge.net; Sun, 20 Mar 2022 16:03:22 +0000
+ id 1nWIHS-0003dR-7B
+ for linux1394-devel@lists.sourceforge.net; Mon, 21 Mar 2022 13:41:06 +0000
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bookitevents.com;
  h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
  i=ror.mcn@bookitevents.com; bh=ka6usbMchhmzRKUz2BtOyHFU4Gk=;
- b=nC0OaG8X7+vzgqQmIFtCzi+zhBk45K2gmDV3y4ZH0TlPicdRJaxIh/6ec1Cqq/RJaLGUortN1HHW
- y0q4cANbGZ/a0FDYTaEBG4PgSdP/OTvyXom/80yBbQa2ydNXhTGy8W//7cUuEE3xE0TcHs66v0v2
- AbvmuDzEQMy41Ha4+Zd/5yofbyH1wRVY0fddFyvL+vzpZwF4xclqVS90LKR7NDZdE+AH4CoSI5Wk
- SLPIH6rTBENJU+kyqpW+0eDO+omVGIIPk1etUcHi3Owk4LkyTy2zMzv7OknOEigMTAyXJNonk+cb
- bXmRc9jpfIQ1PjDjlsGaopUgtz1qIS4u+yuaOw==
+ b=bAAk73GWKmZa0evb98X4Q5WLRKvxKhtoTATjOew0/5nqLJNRE+UccLiAxk3vCZ2Q5icANXlDoD2b
+ CBAACG27QjLzwGsTDt/NAyTSJY1dySxTtw0s95MvOomHIehtIwMfnJkycHzSygEmQv3r9W+g0AX9
+ ovGmtN5Z43AiTCouE44KBtUmx9+b6t9NKvX39nSFMMN54UPx5vU5RLdh/zjJofTLUJuq1AtrbWmZ
+ swLLA9reBKCEI7n3n79WEU8T45Mxw7n2BVez+XqxeH2+jYiWNW0SJLqs8a81/6GOn5aptyQEkRES
+ 3pcbSj+r5ZpHCtzyfVLCUVbIlppPdrmvVJu3Rw==
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bookitevents.com;
- b=tOB1B2mesc43ueo+7/+ZADwE3dzvUIT5n2UpM/l5KtJ4F4wVxzJXn6TgEZC611XE8keeJVI8xA47
- n2NJ6oIyk4e574FsXQgVZCnHwc/IleWxwyW24qjGkushC3CL+dQdufKsIL5SWciX1TS66frkveyO
- aZt9+9FsO20M7oAkCFhlLIIHtbsHF5XJXntrfbzmGmNt3TCIOYfnSB9qlUe03/D8pEeHaQQ+Fvv1
- n6GOSFKmWpJ8uWMVfHdedTZhc6QSS6oLBUrdzyK6NToVjNPr50SghIEfKqxiuP5z7WOkwV0rjndk
- ul5UzCbdgN2S54Usf0tvJqQt2wGeARmzu56jaQ==;
+ b=nl0ZkCm7Wk9mXDuWibjc24uMlXIAhbP2MUZxnNrpxj2CFQo+dk83iM4FaYqI39TJgUkl1i7guG9L
+ 6h4ewP+tIAYlCsBUmnpaWTbygPnWKH2jLVD20VsS8Xq0hMcMzKDDuwwO1cXwhY8waaIkwP3Oc3uK
+ 0alTjffsFQ6OER44Jpc3hTHkcCHSWCo3ssK40PSH9+fMMvUJfiH3OPydRbQ55Rx+TlGZ51QH9QU5
+ dStkCUjKOBH2jDj8Ps/8tB53nWa2bDPnBnicn7o9aoCy3sQy3P1xKIDRmm0zak8ItKPtSDHhGCNe
+ nTY16URIHrMM7cZlb3t9ws665LUvwwnPChUILg==;
 From: Mustafa Ayvaz <ror.mcn@bookitevents.com>
 To: linux1394-devel@lists.sourceforge.net
 Subject: Aufmerksamkeit:
-Date: 20 Mar 2022 17:00:13 +0100
-Message-ID: <20220320170013.7C4B142B3B54C04C@bookitevents.com>
+Date: 21 Mar 2022 14:38:30 +0100
+Message-ID: <20220321143830.07C280BCB5C761AA@bookitevents.com>
 MIME-Version: 1.0
-X-Spam-Score: 6.0 (++++++)
-X-Spam-Report: Spam detection software, running on the system "util-spamd-2.v13.lw.sourceforge.com",
+X-Spam-Score: 7.4 (+++++++)
+X-Spam-Report: Spam detection software, running on the system "util-spamd-1.v13.lw.sourceforge.com",
  has identified this incoming email as possible spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
@@ -69,19 +69,22 @@ X-Spam-Report: Spam detection software, running on the system "util-spamd-2.v13.
     habe, der aufgrund der Coronavirus-Krankheit sein Leben verloren hat, die
     er während s [...] 
  
- Content analysis details:   (6.0 points, 6.0 required)
+ Content analysis details:   (7.4 points, 6.0 required)
  
   pts rule name              description
  ---- ---------------------- --------------------------------------------------
+  1.2 RCVD_IN_BL_SPAMCOP_NET RBL: Received via a relay in
+                             bl.spamcop.net
+             [Blocked - see <https://www.spamcop.net/bl.shtml?185.102.170.218>]
   0.5 RCVD_IN_UCE1           RBL: IP Listed in UCEPROTECT Level 1
                              [185.102.170.218 listed in dnsbl-1.uceprotect.net]
-  3.0 REPTO_419_FRAUD_GM     Reply-To is known advance fee fraud collector
-                              mailbox
-  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+  0.0 RCVD_IN_MSPIKE_L5      RBL: Very bad reputation (-5)
+                             [185.102.170.218 listed in bl.mailspike.net]
   0.2 FREEMAIL_REPLYTO_END_DIGIT Reply-To freemail username ends in
                              digit
                              [tomander231[at]gmail.com]
+  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
                              envelope-from domain
  -0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
@@ -89,12 +92,13 @@ X-Spam-Report: Spam detection software, running on the system "util-spamd-2.v13.
                              valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
                              author's domain
- -0.0 T_SCC_BODY_TEXT_LINE   No description available.
   0.0 LOTS_OF_MONEY          Huge... sums of money
-  0.0 MONEY_FREEMAIL_REPTO   Lots of money from someone using free
+  0.0 RCVD_IN_MSPIKE_BL      Mailspike blacklisted
+  0.1 MONEY_NOHTML           Lots of money in plain text
+  3.0 MONEY_FREEMAIL_REPTO   Lots of money from someone using free
                              email?
   2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
-X-Headers-End: 1nVy1Z-0003De-KJ
+X-Headers-End: 1nWIHS-0003dR-7B
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
