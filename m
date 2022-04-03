@@ -2,80 +2,128 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 362B84EEA9F
-	for <lists+linux1394-devel@lfdr.de>; Fri,  1 Apr 2022 11:42:44 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C70D4F07C6
+	for <lists+linux1394-devel@lfdr.de>; Sun,  3 Apr 2022 07:21:34 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1naDff-00074a-5k; Fri, 01 Apr 2022 09:42:30 +0000
+	id 1nasfr-0002Sj-4q; Sun, 03 Apr 2022 05:21:13 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <marshallee34@baosteel.com>) id 1naDfd-00074U-UN
- for linux1394-devel@lists.sourceforge.net; Fri, 01 Apr 2022 09:42:29 +0000
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1nasfp-0002Sb-P4
+ for linux1394-devel@lists.sourceforge.net; Sun, 03 Apr 2022 05:21:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Message-ID:Date:Subject:To:From:Reply-To:Sender:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=1Bwu/hu5jmzbcMV36JbWEkDhe5FprrSvD3gWMUriP3c=; b=M49fH+V+PM2eni/SnByUDZQWmN
- S7Pk1lGWIVjMqdy08dWydohKqyYqAQioyiWCRVaKxfbmappxevVF1iMi1C/8oc62jt+T+Vt1QzO5r
- smxfjo2nH8a7S79yCZP2K8omnmk68Y3lYKvwzPd7E92d/DLjkWiNuHNbqtH9wksNIQ1I=;
+ bh=WeeRCkZhxmtARzf06YltnRLpzhoYn2mfqbh7gF1oO98=; b=VZfvIIa8MZWNmrMNAZqw82xeV6
+ ODp3urohf8BSscOqHWe7V8AtbOvvDCPaOBWbGvOq/YSB3z8xOE9xWhePH/KzZmwioB7wfYht/yDyz
+ 05xhsbtjIh8ZwHl7lceS7dWuaBdhyJpcD1rPD/Q8dCmlhZVAaI2MM87qjxwKuYXDySLk=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
- Subject:To:From:Reply-To:Sender:Cc:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=1Bwu/hu5jmzbcMV36JbWEkDhe5FprrSvD3gWMUriP3c=; b=U
- ECwLysLb2G25/9hNZeggPxPftGTER7PaJw1fpNapWvDa1bf9wkLY05NhsT6bS5EJQ0WM9GIuV97GK
- 6Fs6zlNmsydKk5Dm3raNzmlM1ZKn97nEmhWbZV8Q6GJYshwrczLUKE0bBIjw46LFSQ09ZrB9jnc4y
- H+YzZ+YLF/V+5Od0=;
-Received: from ps23.myhostcenter.com ([68.171.48.5])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps (TLS1:DHE-RSA-AES256-SHA:256)
- (Exim 4.94.2) id 1naDnY-001hUF-Qp
- for linux1394-devel@lists.sourceforge.net; Fri, 01 Apr 2022 09:42:29 +0000
-Received: (qmail 31205 invoked from network); 1 Apr 2022 03:25:37 -0400
-Received: from unknown (HELO baosteel.com) (52.159.104.48)
- by s87.n49.n171.n68.static.myhostcenter.net with (DHE-RSA-AES256-SHA
- encrypted) SMTP; 1 Apr 2022 03:25:37 -0400
-From: BAOSTEEL <MarshalLee34@baosteel.com>
-To: linux1394-devel@lists.sourceforge.net
-Subject: An Offer
-Date: 01 Apr 2022 07:37:25 +0000
-Message-ID: <20220401065639.AD654CF5D7E0A090@baosteel.com>
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=WeeRCkZhxmtARzf06YltnRLpzhoYn2mfqbh7gF1oO98=; b=HbzNMbXfBrzPfRXfajn1Uj9+vd
+ /Ch1I8M2SxRy46rjBLMuF8At1+/D497z0Qr2KkvfPIk/S8P4SlJipF14DJrRt6hQvtqzIITUr2ztM
+ GRotzUsLupmtxx3xiExrkOUgfE+3/D4oiIkzgebjTNWAxy7C4id3FAdKgF6V7gfq6iFc=;
+Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
+ id 1nasfl-003bvp-DB
+ for linux1394-devel@lists.sourceforge.net; Sun, 03 Apr 2022 05:21:12 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.west.internal (Postfix) with ESMTP id D1E793200D30;
+ Sun,  3 Apr 2022 01:02:51 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute4.internal (MEProxy); Sun, 03 Apr 2022 01:02:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
+ h=cc:cc:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm1; bh=WeeRCkZhxmtARzf06YltnRLpzhoYn2
+ mfqbh7gF1oO98=; b=BZA6oC2Pcq0YOqfC+nC+driizm60Q3zn1Rw/v/NjET+Kp0
+ /rGHjKINSU22NqTZoDouOEw4iJfmO5GCVUY+tVhgHAZBsHMZlUeGc7yAqSEiWwMv
+ WulEJuKr9rApl/bjko17VLvPvXvWY3ZhcPT4i7o2xB2Il3TNbGmwUd1ldmtTtDc4
+ aV/99s9FRiz4R8Kl59Ugk0cI29motgnNiORb/EB0aaYIDuZCWYamvEPGeIM5xpwb
+ DmfLWyqCKUH/ltrzvurFyY0sRxKPwPN8s63S+fdR9dx8NKUXIKNTMxM9PLqiObVZ
+ 1Yi/KhPoiJ9nuDSBa6euAjyKl7RHxAapi/1Fxtwg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=WeeRCkZhxmtARzf06
+ YltnRLpzhoYn2mfqbh7gF1oO98=; b=bX0JCIe9dSbss8GwNo95tUCB3aLr5Nt0z
+ moHkSrwhHPrLFwXssMbkSXNuJemBlFWqpUwVGmA5cno6S6WwkLciwmMCKLZPo3SF
+ ESY4izFB0yyMGzXZJQA8Vdfp4wcjBRXoWMwh50C3phpP0uvbq/cgPi3RMS7IzqZc
+ JZmEsm3xfwufC6Tcnwq1kBssGHZcN3kKjI93WFhz3sZ4tYIs0K/6m0vDbyptONm5
+ /ABnQqwMKTtOpjT9AhVWiA6dMomLkiHg3AQytn9C4+gLi6oxrkjqekJxEDDfTZdt
+ WOSNdZXl5iOB4RGf3Yahv+PUr1srI5ix7TQPJHTDf3hkkH/G6KidQ==
+X-ME-Sender: <xms:eipJYohqhsUtqtfPKg1sDrKZS3oky1xwRh2D4v7Q9S66dCowPgNufA>
+ <xme:eipJYhCoR0scliF3ten5UVVVyJI7U18RX3xQuMUoniHnl6DSE66z0n4Z3hHNJ4mcD
+ xoeOpb4ZaLb7C_2g94>
+X-ME-Received: <xmr:eipJYgFHoTS45-XDtLMgl6rHDIEz0sZ8wGIi5YFECqWW7e6EOeS4UrSCmhpGHAwZkAd90OU-ytSuwNBlJQ4nh4JajmN1JoiM>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudeiledgkeeiucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefvrghkrghs
+ hhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjh
+ hpqeenucggtffrrghtthgvrhhnpeejgeeifeeuveeufeeigeegjeelvdfgjeegffejgfdv
+ keelhefgtdefteejleekjeenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluh
+ hsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhh
+ ihesshgrkhgrmhhotggthhhirdhjph
+X-ME-Proxy: <xmx:eypJYpSNReaLdacj38Bh7MeXLPSYhR4smNqfigJXlUj00HUD3T1hwQ>
+ <xmx:eypJYlwEhKEwSD4iDCxsc9fl2ugDo_666pAuug2iDwuL5miw_Ss7Dg>
+ <xmx:eypJYn4f165a2FQorFf1p2agPntxEXg1QmpFJVN4r5ZWVqk0R2xPNg>
+ <xmx:eypJYsmBAyVyslg2qkhmkld_MI3CqBf0Kf9TInPOIM2eE8uyY8RGZg>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
+ 3 Apr 2022 01:02:49 -0400 (EDT)
+Date: Sun, 3 Apr 2022 14:02:47 +0900
+From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+To: Jakob Koschel <jakobkoschel@gmail.com>
+Subject: Re: [PATCH] firewire: remove check of list iterator against head
+ past the loop body
+Message-ID: <YkkqdybZovAITy6k@workstation>
+Mail-Followup-To: Jakob Koschel <jakobkoschel@gmail.com>,
+ Stefan Richter <stefanr@s5r6.in-berlin.de>,
+ linux-kernel@vger.kernel.org, "Bos, H.J." <h.j.bos@vu.nl>,
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
+ Cristiano Giuffrida <c.giuffrida@vu.nl>,
+ linux1394-devel@lists.sourceforge.net,
+ Mike Rapoport <rppt@kernel.org>
+References: <20220331223601.902329-1-jakobkoschel@gmail.com>
 MIME-Version: 1.0
-X-Spam-Score: 6.9 (++++++)
+Content-Disposition: inline
+In-Reply-To: <20220331223601.902329-1-jakobkoschel@gmail.com>
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
- has identified this incoming email as possible spam.  The original
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: Attention : linux1394-devel Will you be interested in making
- some extra cash in representing us in the USA without you contributing a
- dollar, All our transactions are 100% Legal. If you are in, let us know so
- that more details will be provided to you. 
- Content analysis details:   (6.9 points, 6.0 required)
+ Content preview:  Hi, On Fri, Apr 01, 2022 at 12:36:01AM +0200, Jakob Koschel
+ wrote: > When list_for_each_entry() completes the iteration over the whole
+ list > without breaking the loop, the iterator value will be a bogus [...]
+ Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 1.3 RCVD_IN_VALIDITY_RPBL  RBL: Relay in Validity RPBL,
- https://senderscore.org/blocklistlookup/
- [68.171.48.5 listed in bl.score.senderscore.com]
- 1.0 RCVD_IN_UCE1           RBL: IP Listed in UCEPROTECT Level 1
- [68.171.48.5 listed in dnsbl-1.uceprotect.net]
- 1.2 RCVD_IN_BL_SPAMCOP_NET RBL: Received via a relay in
- bl.spamcop.net
- [Blocked - see <https://www.spamcop.net/bl.shtml?68.171.48.5>]
- 0.9 SPF_FAIL               SPF: sender does not match SPF record (fail)
- [SPF failed: Please see http://www.openspf.org/Why?s=mfrom;
- id=marshallee34%40baosteel.com; ip=68.171.48.5;
- r=util-spamd-2.v13.lw.sourceforge.com]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 T_SCC_BODY_TEXT_LINE   No description available.
- 2.5 FREEMAIL_FORGED_REPLYTO Freemail in Reply-To, but not From
-X-Headers-End: 1naDnY-001hUF-Qp
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [64.147.123.20 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+X-Headers-End: 1nasfl-003bvp-DB
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,28 +136,52 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Reply-To: lmarshal742marshal@gmail.com
+Cc: linux-kernel@vger.kernel.org, "Bos, H.J." <h.j.bos@vu.nl>,
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
+ Cristiano Giuffrida <c.giuffrida@vu.nl>, linux1394-devel@lists.sourceforge.net,
+ Mike Rapoport <rppt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Attention : linux1394-devel
+Hi,
 
-Will you be interested in making some extra cash in representing 
-us in the USA without you contributing a dollar, All our 
-transactions are 100% Legal. 
+On Fri, Apr 01, 2022 at 12:36:01AM +0200, Jakob Koschel wrote:
+> When list_for_each_entry() completes the iteration over the whole list
+> without breaking the loop, the iterator value will be a bogus pointer
+> computed based on the head element.
+> 
+> While it is safe to use the pointer to determine if it was computed
+> based on the head element, either with list_entry_is_head() or
+> &pos->member == head, using the iterator variable after the loop should
+> be avoided.
+> 
+> In preparation to limit the scope of a list iterator to the list
+> traversal loop, use a dedicated pointer to point to the found element [1].
+> 
+> Link: https://lore.kernel.org/all/CAHk-=wgRr_D8CB-D9Kg-c=EHreAsk5SqXPwr9Y7k9sA6cWXJ6w@mail.gmail.com/ [1]
+> Signed-off-by: Jakob Koschel <jakobkoschel@gmail.com>
+> ---
+>  drivers/firewire/core-transaction.c | 30 +++++++++++++++--------------
+>  drivers/firewire/sbp2.c             | 13 +++++++------
+>  2 files changed, 23 insertions(+), 20 deletions(-)
 
-If you are in, let us know so that more details will be provided 
-to you.
+I think it is a good catch.
 
-Marshal Lee
-Consultant
-BAOSTEEL
-lmarshal742marshal@gmail.com
-www.baosteel.com
-ADD:Baosteel Tower, Pu Dian Road 370, Pudong New District, 
-Shanghai, 200122, P.R. China
-Postal Code:20012
+Reviewed-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+
+For the changes in firewire-core module:
+Tested-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+
+Unfortunately the activity for maintenance in Linux FireWire subsystem
+is quite low. No actions in past half a year. If the patch blocks
+further work to improve list implementation, I think it better to look
+for the other path to merge.
+
+
+Regards
+
+Takashi Sakamoto
 
 
 _______________________________________________
