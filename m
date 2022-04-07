@@ -2,26 +2,26 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C70D4F07C6
-	for <lists+linux1394-devel@lfdr.de>; Sun,  3 Apr 2022 07:21:34 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
+	by mail.lfdr.de (Postfix) with ESMTPS id 489474F6EF6
+	for <lists+linux1394-devel@lfdr.de>; Thu,  7 Apr 2022 02:10:52 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1nasfr-0002Sj-4q; Sun, 03 Apr 2022 05:21:13 +0000
+	id 1ncFjS-0001cL-Ca; Thu, 07 Apr 2022 00:10:37 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1nasfp-0002Sb-P4
- for linux1394-devel@lists.sourceforge.net; Sun, 03 Apr 2022 05:21:13 +0000
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1ncFjQ-0001cD-QC
+ for linux1394-devel@lists.sourceforge.net; Thu, 07 Apr 2022 00:10:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
  Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=WeeRCkZhxmtARzf06YltnRLpzhoYn2mfqbh7gF1oO98=; b=VZfvIIa8MZWNmrMNAZqw82xeV6
- ODp3urohf8BSscOqHWe7V8AtbOvvDCPaOBWbGvOq/YSB3z8xOE9xWhePH/KzZmwioB7wfYht/yDyz
- 05xhsbtjIh8ZwHl7lceS7dWuaBdhyJpcD1rPD/Q8dCmlhZVAaI2MM87qjxwKuYXDySLk=;
+ bh=U5WfQ+6qT79WcWmJEsxQhXGAhm+D0KJQuIx4kwqDUAQ=; b=S9Bzr+ce9iPPyJ0Gf/27xgo6z9
+ C3cHhvUDMeU41BeUXDD7pERtj+6TrkOgkjESa/Qoi4eirNessGVAnCZWoDhJ7E5uKMXTLdP4jL1KW
+ sUtkbFMyzheLT2zKkbov+vBvSOyUNYDaL8j/7aM0JTsyHAGNG2rTzRO0dGw7aMm9ab1g=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
@@ -29,45 +29,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=WeeRCkZhxmtARzf06YltnRLpzhoYn2mfqbh7gF1oO98=; b=HbzNMbXfBrzPfRXfajn1Uj9+vd
- /Ch1I8M2SxRy46rjBLMuF8At1+/D497z0Qr2KkvfPIk/S8P4SlJipF14DJrRt6hQvtqzIITUr2ztM
- GRotzUsLupmtxx3xiExrkOUgfE+3/D4oiIkzgebjTNWAxy7C4id3FAdKgF6V7gfq6iFc=;
-Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
+ bh=U5WfQ+6qT79WcWmJEsxQhXGAhm+D0KJQuIx4kwqDUAQ=; b=cMxKhPFnJJ1wBMHDrs2yL1qeE2
+ hsukQ0u4yXeIF8Ff0fAipPXjpZji6+lJidKsuv6EbwIpoBpVWqJvaZDVNGklhQ6KXMR9XeDGMuMNJ
+ k/VWz5Vh+rybfmbgvuQ4EIkKyomAs14RG1kAXg4X0W+OazFqukzVp1AsNHIIaYd32q34=;
+Received: from wout5-smtp.messagingengine.com ([64.147.123.21])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
- id 1nasfl-003bvp-DB
- for linux1394-devel@lists.sourceforge.net; Sun, 03 Apr 2022 05:21:12 +0000
+ id 1ncFjO-0086VD-71
+ for linux1394-devel@lists.sourceforge.net; Thu, 07 Apr 2022 00:10:35 +0000
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id D1E793200D30;
- Sun,  3 Apr 2022 01:02:51 -0400 (EDT)
+ by mailout.west.internal (Postfix) with ESMTP id 3327E3201F24;
+ Wed,  6 Apr 2022 20:10:26 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Sun, 03 Apr 2022 01:02:52 -0400
+ by compute4.internal (MEProxy); Wed, 06 Apr 2022 20:10:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:date:date:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm1; bh=WeeRCkZhxmtARzf06YltnRLpzhoYn2
- mfqbh7gF1oO98=; b=BZA6oC2Pcq0YOqfC+nC+driizm60Q3zn1Rw/v/NjET+Kp0
- /rGHjKINSU22NqTZoDouOEw4iJfmO5GCVUY+tVhgHAZBsHMZlUeGc7yAqSEiWwMv
- WulEJuKr9rApl/bjko17VLvPvXvWY3ZhcPT4i7o2xB2Il3TNbGmwUd1ldmtTtDc4
- aV/99s9FRiz4R8Kl59Ugk0cI29motgnNiORb/EB0aaYIDuZCWYamvEPGeIM5xpwb
- DmfLWyqCKUH/ltrzvurFyY0sRxKPwPN8s63S+fdR9dx8NKUXIKNTMxM9PLqiObVZ
- 1Yi/KhPoiJ9nuDSBa6euAjyKl7RHxAapi/1Fxtwg==
+ :subject:subject:to:to; s=fm1; bh=U5WfQ+6qT79WcWmJEsxQhXGAhm+D0K
+ JQuIx4kwqDUAQ=; b=LE60T11Y8eIKEJmIQYQFBkJvNvz59moAx/a92uEz1+hHAs
+ khGz9FO1XCAihio4ldWIJSpcsceeIPmXqDOSEVvrl8ifUR0fiv5kt35F+AgcP/5c
+ /+BfAwf7v+bNVcUDx6W1IIn6QgOYVljg+vHXgImH1lZ4BusBmZtlO8x58iTmD2D5
+ 6WeRT6omRRrd3dWz+9Nhu6IWmD0zbdx0esh9rmM6Vb6etG8S3uReSIG1m5KqeQyM
+ CRmpY3BWAVwQCiPcSYlaM62+zlIwI9CWx1kdr9c3wSMKA5pMEX1J5cN6KD4dDBIN
+ bSQVgogoFV947+w68ff3GsMfCBs5lGQaR3HXnLow==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=WeeRCkZhxmtARzf06
- YltnRLpzhoYn2mfqbh7gF1oO98=; b=bX0JCIe9dSbss8GwNo95tUCB3aLr5Nt0z
- moHkSrwhHPrLFwXssMbkSXNuJemBlFWqpUwVGmA5cno6S6WwkLciwmMCKLZPo3SF
- ESY4izFB0yyMGzXZJQA8Vdfp4wcjBRXoWMwh50C3phpP0uvbq/cgPi3RMS7IzqZc
- JZmEsm3xfwufC6Tcnwq1kBssGHZcN3kKjI93WFhz3sZ4tYIs0K/6m0vDbyptONm5
- /ABnQqwMKTtOpjT9AhVWiA6dMomLkiHg3AQytn9C4+gLi6oxrkjqekJxEDDfTZdt
- WOSNdZXl5iOB4RGf3Yahv+PUr1srI5ix7TQPJHTDf3hkkH/G6KidQ==
-X-ME-Sender: <xms:eipJYohqhsUtqtfPKg1sDrKZS3oky1xwRh2D4v7Q9S66dCowPgNufA>
- <xme:eipJYhCoR0scliF3ten5UVVVyJI7U18RX3xQuMUoniHnl6DSE66z0n4Z3hHNJ4mcD
- xoeOpb4ZaLb7C_2g94>
-X-ME-Received: <xmr:eipJYgFHoTS45-XDtLMgl6rHDIEz0sZ8wGIi5YFECqWW7e6EOeS4UrSCmhpGHAwZkAd90OU-ytSuwNBlJQ4nh4JajmN1JoiM>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudeiledgkeeiucetufdoteggodetrfdotf
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=U5WfQ+6qT79WcWmJE
+ sxQhXGAhm+D0KJQuIx4kwqDUAQ=; b=ZPUFTidVN0jHZmK6d28u/Krm5zmOb8ki1
+ H6mv6PdCeQKa8C+GMMkc1NFB3QgkrMjW4iMl9I18o3XSEmnM2456ZxEEkjbYFh9+
+ XMMe4u/RZSfbbDF++qWqNSA87QQ0AKq7n/VM/gZnTmuc0yDHir9MllbPS0TM+TO+
+ V/u1hlVg2c8VUHDpTu+Q+XDLH4i4e8v2gVZTHsyWdfJZYJAoxQppbWBESTjLgmCD
+ jIIsPrO0eHCfpldzkv+u0yKk1DR8Ac+39+/JvlkYK4XVv7P0HFchpL4nXg/nxcqb
+ Z76gUERoWGzzxM2CHD1GE53a8AKgpee/D752wAc/w+YDsWsb1LfAQ==
+X-ME-Sender: <xms:8StOYsdKY2-rGhqPaPqAzIhgsDZalAvfYbCeU40kMWXV9iEkcetlDA>
+ <xme:8StOYuO832uNnAcdB6HKg5uDkGGhTZTDfzEO0AgkujrAUWND8EasmhWW3IpQdWLDy
+ vfeOcRao1njYzs-E7k>
+X-ME-Received: <xmr:8StOYti2m-SAL5aNoygZSxXGPYt_1lgRNIJugDAONBmg0Z4XemFwcnHe2QM8FO3vjPwMxDMyUQYvRg-CSSv3Xs1RnVz24wdi>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudejjedgfeduucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
  cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefvrghkrghs
@@ -76,29 +76,26 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudeiledgkeeiucetufdoteggod
  keelhefgtdefteejleekjeenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluh
  hsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhh
  ihesshgrkhgrmhhotggthhhirdhjph
-X-ME-Proxy: <xmx:eypJYpSNReaLdacj38Bh7MeXLPSYhR4smNqfigJXlUj00HUD3T1hwQ>
- <xmx:eypJYlwEhKEwSD4iDCxsc9fl2ugDo_666pAuug2iDwuL5miw_Ss7Dg>
- <xmx:eypJYn4f165a2FQorFf1p2agPntxEXg1QmpFJVN4r5ZWVqk0R2xPNg>
- <xmx:eypJYsmBAyVyslg2qkhmkld_MI3CqBf0Kf9TInPOIM2eE8uyY8RGZg>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 3 Apr 2022 01:02:49 -0400 (EDT)
-Date: Sun, 3 Apr 2022 14:02:47 +0900
+X-ME-Proxy: <xmx:8StOYh9WlmD0GsoROWT8eztL7NWnFdPxFl-KuXZUbvLlsL9o8Nl_Fw>
+ <xmx:8StOYotJOrS3n4tqFBh0xc_ZN4x-kjzX5azYMzUktI1AVfn-HVMOog>
+ <xmx:8StOYoHO7vEtlUHYktVyDepWftci7FD1uf_m2BI0YellxKPYTLm7pg>
+ <xmx:8StOYkIjWF-XyFlh7VYxEhlk9h68Kg2iSxizFliMFD1An1R5oCErog>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 6 Apr 2022 20:10:23 -0400 (EDT)
+Date: Thu, 7 Apr 2022 09:10:21 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Jakob Koschel <jakobkoschel@gmail.com>
-Subject: Re: [PATCH] firewire: remove check of list iterator against head
- past the loop body
-Message-ID: <YkkqdybZovAITy6k@workstation>
-Mail-Followup-To: Jakob Koschel <jakobkoschel@gmail.com>,
- Stefan Richter <stefanr@s5r6.in-berlin.de>,
- linux-kernel@vger.kernel.org, "Bos, H.J." <h.j.bos@vu.nl>,
- Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
- Cristiano Giuffrida <c.giuffrida@vu.nl>,
- linux1394-devel@lists.sourceforge.net,
- Mike Rapoport <rppt@kernel.org>
-References: <20220331223601.902329-1-jakobkoschel@gmail.com>
+To: Takashi Iwai <tiwai@suse.de>
+Subject: Re: [PATCH v3 0/3] firewire: assist unit driver to compute packet
+ time stamp
+Message-ID: <Yk4r7VcotHz0iMOU@workstation>
+Mail-Followup-To: Takashi Iwai <tiwai@suse.de>, clemens@ladisch.de,
+ alsa-devel@alsa-project.org, linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
+References: <20220405072221.226217-1-o-takashi@sakamocchi.jp>
+ <s5hczhv5wjc.wl-tiwai@suse.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220331223601.902329-1-jakobkoschel@gmail.com>
+In-Reply-To: <s5hczhv5wjc.wl-tiwai@suse.de>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
@@ -106,14 +103,16 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Fri, Apr 01, 2022 at 12:36:01AM +0200, Jakob Koschel
- wrote: > When list_for_each_entry() completes the iteration over the whole
- list > without breaking the loop, the iterator value will be a bogus [...]
+ Content preview:  On Tue, Apr 05, 2022 at 06:23:35PM +0200, Takashi Iwai wrote:
+ > On Tue, 05 Apr 2022 09:22:18 +0200, > Takashi Sakamoto wrote: > > > > Hi,
+ > > > > Current implementation of Linux FireWire subsystem doe [...] 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ 0.0 RCVD_IN_MSPIKE_H5      RBL: Excellent reputation (+5)
+ [64.147.123.21 listed in wl.mailspike.net]
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.147.123.20 listed in list.dnswl.org]
+ low trust [64.147.123.21 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -123,7 +122,8 @@ X-Spam-Report: Spam detection software,
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
-X-Headers-End: 1nasfl-003bvp-DB
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1ncFjO-0086VD-71
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -136,50 +136,63 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, "Bos, H.J." <h.j.bos@vu.nl>,
- Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
- Cristiano Giuffrida <c.giuffrida@vu.nl>, linux1394-devel@lists.sourceforge.net,
- Mike Rapoport <rppt@kernel.org>
+Cc: alsa-devel@alsa-project.org, linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
-
-On Fri, Apr 01, 2022 at 12:36:01AM +0200, Jakob Koschel wrote:
-> When list_for_each_entry() completes the iteration over the whole list
-> without breaking the loop, the iterator value will be a bogus pointer
-> computed based on the head element.
+On Tue, Apr 05, 2022 at 06:23:35PM +0200, Takashi Iwai wrote:
+> On Tue, 05 Apr 2022 09:22:18 +0200,
+> Takashi Sakamoto wrote:
+> > 
+> > Hi,
+> > 
+> > Current implementation of Linux FireWire subsystem doesn't allow unit
+> > driver to operate content of packet in IR context according to
+> > time stamp. Additionally it doesn't allow unit driver to read current value
+> > of CYCLE_TIME register in OHCI 1394 controller. It brings disadvantages to
+> > drivers in Linux sound subsystem in regards of handling time for sampled
+> > data such as PCM frames and MIDI messages.
+> > 
+> > This rerolled patchset is first step to improve the situation.
+> > 
+> > Changes in v3:
+> >  * Rebase v2 patchset to v5.18-rc1
+> > Changes in v2:
+> >  * Rebase v1 patchset to v5.16 release
+> >  * https://lore.kernel.org/lkml/20220212022131.199855-1-o-takashi@sakamocchi.jp/
+> > V1:
+> >  * https://lore.kernel.org/lkml/20211202113457.24011-1-o-takashi@sakamocchi.jp/
+> > 
+> > Hector Martin (1):
+> >   firewire: Add dummy read_csr/write_csr functions
+> > 
+> > Takashi Sakamoto (2):
+> >   firewire: add kernel API to access CYCLE_TIME register
+> >   firewire: add kernel API to access packet structure in request
+> >     structure for AR context
 > 
-> While it is safe to use the pointer to determine if it was computed
-> based on the head element, either with list_entry_is_head() or
-> &pos->member == head, using the iterator variable after the loop should
-> be avoided.
-> 
-> In preparation to limit the scope of a list iterator to the list
-> traversal loop, use a dedicated pointer to point to the found element [1].
-> 
-> Link: https://lore.kernel.org/all/CAHk-=wgRr_D8CB-D9Kg-c=EHreAsk5SqXPwr9Y7k9sA6cWXJ6w@mail.gmail.com/ [1]
-> Signed-off-by: Jakob Koschel <jakobkoschel@gmail.com>
-> ---
->  drivers/firewire/core-transaction.c | 30 +++++++++++++++--------------
->  drivers/firewire/sbp2.c             | 13 +++++++------
->  2 files changed, 23 insertions(+), 20 deletions(-)
+> Thanks, applied all three patches now to for-next branch.
 
-I think it is a good catch.
+Although thanks for your applying them into your tree, I apologize to
+trouble you if you overlook that the included changes is just for Linux
+FireWire subsystem. It's my fault to send them only to Linux sound
+subsystem, but the changes are required to my work in sound drivers... 
 
-Reviewed-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+If you are willing to include patches to Linux FireWire subsystem for
+your pull-request to Linus, I can prepare respined patches for it since
+I have the list of patches posted to LKML as bug fixes for Linux FireWire
+subsystem.
 
-For the changes in firewire-core module:
-Tested-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-
-Unfortunately the activity for maintenance in Linux FireWire subsystem
-is quite low. No actions in past half a year. If the patch blocks
-further work to improve list implementation, I think it better to look
-for the other path to merge.
+I need any help to solve current situation of Linux FireWire subsystem
+that bug fixes and new changes are hardly merged. Of course, IEEE 1394 bus
+is already outdated and legacy, but I know that some users still work
+with it. If your path is available for it, it's the easiest and the most
+convenient way for upstreaming, I think.
 
 
-Regards
+Thanks
 
 Takashi Sakamoto
 
