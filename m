@@ -2,86 +2,99 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 245E8504C89
-	for <lists+linux1394-devel@lfdr.de>; Mon, 18 Apr 2022 08:22:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EF02B50D931
+	for <lists+linux1394-devel@lfdr.de>; Mon, 25 Apr 2022 08:06:07 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1ngKli-0006OK-Cf; Mon, 18 Apr 2022 06:21:48 +0000
+	id 1nirr9-00045Q-85; Mon, 25 Apr 2022 06:05:53 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <info@greenrock.org>) id 1ngKlh-0006OE-4O
- for linux1394-devel@lists.sourceforge.net; Mon, 18 Apr 2022 06:21:47 +0000
+ (envelope-from <tiwai@suse.de>) id 1nirr7-00045K-6Q
+ for linux1394-devel@lists.sourceforge.net; Mon, 25 Apr 2022 06:05:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Message-ID:From:Date:Subject:To:Sender:Reply-To:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:References:In-Reply-To:
+ Subject:Cc:To:From:Message-ID:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=7QSehf7HT/Wj8p5jYUWjoLGA3JPYAPQ6SexkRq3uPy0=; b=Vajg1Yqd7RtqwHIPb0BejASStk
- dJDds99RcuQxUPGu5xwsUM4w1FX9+NGecHr/ip1IR0QuHTKorexwroWBy/8Y66WB98LwiwBlBAZtV
- PikwFLkoKXEFRA+Dzmr6xou/LLuXkAKW16amewMVPNenr1ut4tU7vxrUnowKMadtFJ14=;
+ bh=plxmMsG+5AGW4/mNwbhaRMchMn5bkj9cqleBqjx9DwU=; b=M5t8MjHIAFXIB/iP4oYqtMvMWh
+ m7OOio7p5/e2NYEObBay4l8fmro9ZeftSaq39BRnfzMV1erBqAaaF7ummkfMR51ctIXWP7grpkmCN
+ ChX+BDv3Dt5H7ZBafgQ+zv41G3WFHDTQPvSaG/outM7ni6FTnOa5NnV4ygn3hJhnUhsg=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:From:Date:
- Subject:To:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=7QSehf7HT/Wj8p5jYUWjoLGA3JPYAPQ6SexkRq3uPy0=; b=n
- Do0ODAr3WEjzFSifmq9gI4r1HHXixsZVJ7gnC5rTQhRf8RGrZsE5hCim41xQMtZOXaZWFOFQKE2jh
- EUPixRbYL7v6l6Mx0mEOGVH2R1or9UA0xZCdsMZe3D3/QvcIZEkCYI03l/7kgKnV71rvTO61Z2bSL
- JI63Jdvjd6EFCfKk=;
-Received: from [199.27.70.105] (helo=aacweb02.aac.bm)
+ h=Content-Type:MIME-Version:References:In-Reply-To:Subject:Cc:To:From:
+ Message-ID:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=plxmMsG+5AGW4/mNwbhaRMchMn5bkj9cqleBqjx9DwU=; b=CXab92tP/GqVNpcNx+k9EOpc1+
+ mO1rsif82rF4QVC+vKkzXpk7+EUuDLshzXlUzVy11PooUdKND924paSyQ9LfFn4/ZmM19zywlBya0
+ uDG/2PGBeHu6uYZY+311GBlf3suZbaXAfaO69rI9zRMb7CXJUGzbJOzh9DzctOvRZDrk=;
+Received: from smtp-out1.suse.de ([195.135.220.28])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
- (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
- id 1ngKld-0003tG-D2
- for linux1394-devel@lists.sourceforge.net; Mon, 18 Apr 2022 06:21:47 +0000
-Received: from greenrock by aacweb02.aac.bm with local (Exim 4.94.2)
- (envelope-from <info@greenrock.org>)
- id 1ng9mn-004bVP-25; Sun, 17 Apr 2022 15:38:13 -0300
-To: linux1394-devel@lists.sourceforge.net
-Subject: Thank you for your Corporate Supporter application!
-X-PHP-Script: greenrock.org/index.php for 185.130.44.108
-X-PHP-Originating-Script: 1009:class.phpmailer.php
-Date: Sun, 17 Apr 2022 18:38:12 +0000
-From: Greenrock <info@greenrock.org>
-Message-ID: <753be104f384c5be7ac724686dffd689@greenrock.org>
-MIME-Version: 1.0
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - aacweb02.aac.bm
-X-AntiAbuse: Original Domain - lists.sourceforge.net
-X-AntiAbuse: Originator/Caller UID/GID - [1009 989] / [47 12]
-X-AntiAbuse: Sender Address Domain - greenrock.org
-X-Get-Message-Sender-Via: aacweb02.aac.bm: authenticated_id: greenrock/from_h
-X-Authenticated-Sender: aacweb02.aac.bm: info@greenrock.org
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Spam-Score: 1.3 (+)
+ (TLS1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.94.2)
+ id 1nirr4-000698-RL
+ for linux1394-devel@lists.sourceforge.net; Mon, 25 Apr 2022 06:05:51 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+ by smtp-out1.suse.de (Postfix) with ESMTP id DC155210E7;
+ Mon, 25 Apr 2022 06:05:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1650866740; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=plxmMsG+5AGW4/mNwbhaRMchMn5bkj9cqleBqjx9DwU=;
+ b=Xg1qT5DyTMS8Ipa26Ki0VDPYfAPP+Ia+0yV3ESO5NMwsUeQD2Mss2fpWlgSGOHwTD5iXAX
+ KEPSevyQudXsyq577Fdtk4Wb+kVzGXuLCp08vY552DqYYGJqcU8A1o9AzethSyR+0vYneK
+ rewME3Ms+iQ+Fl3fm0jFrvKCDIx9TyE=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1650866740;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=plxmMsG+5AGW4/mNwbhaRMchMn5bkj9cqleBqjx9DwU=;
+ b=No1OWXNUUwbnPdKJTMdlZRG1p7nh/8WtSz3g4QeD82Q5Rln2Mg3tz8RBTOihu2rNMgKSqU
+ uaYSZuf5RlHsfqBg==
+Received: from alsa1.suse.de (alsa1.suse.de [10.160.4.42])
+ by relay2.suse.de (Postfix) with ESMTP id D43D12C199;
+ Mon, 25 Apr 2022 06:05:40 +0000 (UTC)
+Date: Mon, 25 Apr 2022 08:05:40 +0200
+Message-ID: <s5hwnfdr93f.wl-tiwai@suse.de>
+From: Takashi Iwai <tiwai@suse.de>
+To: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+Subject: Re: [PATCH 0/3] firewire: fixes for kernel v4.9 or later
+In-Reply-To: <20220409041243.603210-1-o-takashi@sakamocchi.jp>
+References: <20220409041243.603210-1-o-takashi@sakamocchi.jp>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI/1.14.6 (Maruoka)
+ FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 Emacs/25.3
+ (x86_64-suse-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI 1.14.6 - "Maruoka")
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Dear vzgjjm,
- We confirm receipt of an application from ? Mandy
- want to meet you! Click here: https://cutt.us/nKNK5?fhgi ? to become a
- Greenrock
- Corporate Supporter. Company Name: ? Mandy want to meet you! Click here:
- https://cutt.us/nKNK5?fhgi ? Level: Sponsor: $500 annually - for smaller
- companies
- (suggested for companies with fewer than 50 employees). 
- Content analysis details:   (1.3 points, 6.0 required)
+ Content preview:  On Sat, 09 Apr 2022 06:12:40 +0200, Takashi Sakamoto wrote:
+ > > Hi, > > This patchset respins patches posted before to fix some bugs
+ for Linux > FireWire subsystem. I expect them to be sent to Linus v [...] 
+ Content analysis details:   (-2.5 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 HTML_MESSAGE           BODY: HTML included in message
- 1.3 RDNS_NONE Delivered to internal network by a host with no rDNS
-X-Headers-End: 1ngKld-0003tG-D2
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.28 listed in list.dnswl.org]
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+X-Headers-End: 1nirr4-000698-RL
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,89 +107,52 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6157717820706961624=="
+Cc: alsa-devel@alsa-project.org, linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-This is a multi-part message in MIME format.
+On Sat, 09 Apr 2022 06:12:40 +0200,
+Takashi Sakamoto wrote:
+> 
+> Hi,
+> 
+> This patchset respins patches posted before to fix some bugs for Linux
+> FireWire subsystem. I expect them to be sent to Linus via pull request
+> by maintainer of Linux sound subsystem since the path appears to be
+> available after a short conversation with the maintainer. This patchset
+> is expected to be applied to 'for-linus' branch for v5.18 kernel, and
+> to stable kernels based on v4.9 or later.
+> 
+> This patchset includes below patches:
+> 
+> * [PATCH V2] drivers/firewire: use struct_size over open coded arithmetic
+>     * https://lore.kernel.org/lkml/20220210060805.1608198-1-chi.minghao@zte.com.cn/
+> * [PATCH] firewire: core: extend card->lock in fw_core_handle_bus_reset
+>     * https://lore.kernel.org/lkml/20220303183038.54126-1-dossche.niels@gmail.com/
+> * [PATCH] firewire: remove check of list iterator against head past the loop body
+>     * https://lore.kernel.org/lkml/20220331223601.902329-1-jakobkoschel@gmail.com/
+> 
+> Chengfeng Ye (1):
+>   firewire: fix potential uaf in outbound_phy_packet_callback()
+> 
+> Jakob Koschel (1):
+>   firewire: remove check of list iterator against head past the loop
+>     body
+> 
+> Niels Dossche (1):
+>   firewire: core: extend card->lock in fw_core_handle_bus_reset
 
---===============6157717820706961624==
-Content-Type: multipart/alternative;
-	boundary="b1_753be104f384c5be7ac724686dffd689"
-Content-Transfer-Encoding: 8bit
-
-This is a multi-part message in MIME format.
-
---b1_753be104f384c5be7ac724686dffd689
-Content-Type: text/plain; charset=us-ascii
-
-
-Dear vzgjjm,
-
-We confirm receipt of an application from ? Mandy want to meet you! Click here: https://cutt.us/nKNK5?fhgi ? to become a Greenrock Corporate Supporter.
-
-Company Name: ? Mandy want to meet you! Click here: https://cutt.us/nKNK5?fhgi ?
-Level: Sponsor: $500 annually - for smaller companies (suggested for companies with fewer than 50 employees).
-
-Contact Details:
-Name: vzgjjm
-Email *: linux1394-devel@lists.sourceforge.net
-Phone *: 236934253847
-
-Company Website: lj7jlbkq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Submitted logo attached)
-
-Indicated Method of Payment: To be determined - please contact us
-
-If you have yet to pay, click here for payment options.
-
-We will contact you shortly to confirm payment and supporter status.
-
-If you have questions, or need to make changes to your application, please contact us by email to info@greenrock.org
-
-
-With thanks,
-
-The Greenrock Team
+Now I applied all those pending patches to topic/firewire branch,
+merged into for-linus branch.
 
 
---b1_753be104f384c5be7ac724686dffd689
-Content-Type: text/html; charset=us-ascii
+thanks,
 
-<p>Dear vzgjjm,</p>
-<p>We confirm receipt of an application from<strong> ? Mandy want to meet you! Click here: https://cutt.us/nKNK5?fhgi ?</strong> to become a Greenrock Corporate Supporter.</p>
-<p><strong>Company Name:</strong> ? Mandy want to meet you! Click here: https://cutt.us/nKNK5?fhgi ?<br /><strong>Level</strong>: Sponsor: <b>$500</b> annually - for smaller companies (suggested for companies with fewer than 50 employees).</p>
-<p><strong>Contact Details:</strong></p>
-<p style="padding-left: 30px;"><strong>Name:</strong> vzgjjm<br /><strong>Email *</strong>: linux1394-devel@lists.sourceforge.net<br /><strong>Phone *</strong>: 236934253847</p>
-<p><strong>Company Website</strong>: lj7jlbkq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Submitted logo attached)</p>
-<p><strong>Indicated Method of Payment:</strong> To be determined - please contact us</p>
-<p>If you have yet to pay, <a href="donation" target="_blank">click here</a> for payment options.</p>
-<p>We will contact you shortly to confirm payment and supporter status.</p>
-<p>If you have questions, or need to make changes to your application, please contact us by email to<a href="mailto:info@greenrock.org" target="_blank"> info@greenrock.org<br /></a></p>
-<p>With thanks,</p>
-<p><strong>The Greenrock Team</strong></p>
+Takashi
 
-
-
---b1_753be104f384c5be7ac724686dffd689--
-
-
-
---===============6157717820706961624==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============6157717820706961624==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============6157717820706961624==--
-
-
