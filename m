@@ -2,26 +2,26 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1874554C83E
-	for <lists+linux1394-devel@lfdr.de>; Wed, 15 Jun 2022 14:15:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A9DD654C83B
+	for <lists+linux1394-devel@lfdr.de>; Wed, 15 Jun 2022 14:15:39 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.94.2)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1o1Rvf-0008LK-Ug; Wed, 15 Jun 2022 12:15:24 +0000
+	id 1o1Rvj-0008Lu-5R; Wed, 15 Jun 2022 12:15:28 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1o1Rve-0008LC-MB
- for linux1394-devel@lists.sourceforge.net; Wed, 15 Jun 2022 12:15:23 +0000
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1o1Rvh-0008LW-Jh
+ for linux1394-devel@lists.sourceforge.net; Wed, 15 Jun 2022 12:15:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=U41sdkndxEPcUW2HyhBS60wraWtLaKd+4y+3d1M8lDk=; b=mtBXYONwfK9ngWNznyrzFXFNB1
- uJdYhZ3tf71BJR6N0f3TWa5xkDegvUrI+DVKMyd2mYbE4Mtw/MJgKgi/UacU0TvyX56RUOTVlIn1y
- +vhoRz+Zjz9Y45rC5mCGNqsgQ5ChOh0KP+QqyBUoJOUcLOfXZ0UW9bYcQ2Ci0cQYnhC0=;
+ bh=MtKBc2bhfjgMYC9HTZUX2V0/dMYlGGjy+AYAPIY7ZaY=; b=lNVz2yP7iZA6vb8wsEurvdU2iL
+ Y026Z9eVKeQd0GZK43kY/k8Es1BOtPJ1JD9CiCyBPV/KPXWdyVE7dyOJ4hCd5kLWEsmUhchuYwWNv
+ 1XP93RHbufWmF6cGjHwciQViT5h+EFXPM1ntLSge/I1HW3CbOAtAcRs32xzD+H5wtlGQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
@@ -29,68 +29,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=U41sdkndxEPcUW2HyhBS60wraWtLaKd+4y+3d1M8lDk=; b=ggCu+Z7V+umakWGknQEEdNSq0r
- 2+0DQ7ObnoRCKH2OBIngV964tm30gNMijCiWfLEUgCO0E/oZqE0p04QpQ/hxxX4ncnoEkhh9veATV
- blkOSPv4CnKlPNESASfVTpJLWYllGT+oU9VMx0bzCCF4LF6DaoU9xa6+LYcLZdpprmTE=;
+ bh=MtKBc2bhfjgMYC9HTZUX2V0/dMYlGGjy+AYAPIY7ZaY=; b=b7SZkFifwS0RX+vfcqoU8KIhPP
+ hQz2Ujaz+tv9HEpZro7MOZCbO2o0m8xkPpFutzbz3ZBsah2n421kInrmZclrAHBNhjI9QmN/1fXRQ
+ gQDrXhyITtyets7Fof69ENZpbm6F/Uchw0vpsJPm/+yD3YR0+7kG37PlGD7DFcug590E=;
 Received: from wout3-smtp.messagingengine.com ([64.147.123.19])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.94.2)
- id 1o1Rvb-002NBU-KQ
- for linux1394-devel@lists.sourceforge.net; Wed, 15 Jun 2022 12:15:23 +0000
+ id 1o1Rvf-0000d5-Py
+ for linux1394-devel@lists.sourceforge.net; Wed, 15 Jun 2022 12:15:26 +0000
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id A20A13200A07;
- Wed, 15 Jun 2022 08:15:13 -0400 (EDT)
+ by mailout.west.internal (Postfix) with ESMTP id A0E5D320094C;
+ Wed, 15 Jun 2022 08:15:16 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Wed, 15 Jun 2022 08:15:14 -0400
+ by compute4.internal (MEProxy); Wed, 15 Jun 2022 08:15:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm2; t=1655295313; x=
- 1655381713; bh=U41sdkndxEPcUW2HyhBS60wraWtLaKd+4y+3d1M8lDk=; b=U
- C72yPViI75uIyif27I908MvytUcWLKm4N0ESE9OMSEsPDU5mEMXIDA1NGBEAx7AB
- KzgNZFWcrEf7RY6Oq2w3+rcms7VrK/0j6zo3OqehN0dKV42dVZ7eHo007OygHNHm
- e5z4rRgbEpnFRn1ZuTXyv8RCDKpS61q9wyTNC08LfT0Y1qYOKOVRkF8CyQjRq0rs
- ORp1YBIy8lCtw6ustyPzQ2wLXkCdMFe4IfUYrT4x2lE3bIL4ci4NtFdjjhLrQlpB
- kdaOMS2xYnIM0e6r9JYCXP49gHGAPDPz3cxaXeCsXjRFMbbVps1qp3kufzr4FBZf
- EMV0bqn1Otq4WqKmHND+w==
+ :reply-to:sender:subject:subject:to:to; s=fm2; t=1655295316; x=
+ 1655381716; bh=MtKBc2bhfjgMYC9HTZUX2V0/dMYlGGjy+AYAPIY7ZaY=; b=p
+ OgL8x/LCbQn1ZNkAoeJT4yLKckCmZt8L9inva/gKLl6CpoP9eEI22A/mBzZX9jnm
+ wqyNxQVfZtkidxjFf8VlyecFpGPQ09/gslVQ5d70YOwlFecNNKsLrTqLySQIjwhL
+ aSx7iJ2RcepelsJ6cf+ZX5C6uHPLVViDbMUCDlGZy1fYbElhRJWB3vIiGHUjzU/c
+ u92UHw8GtvDbS1QFCC8N/ZV5p71LYSX0EMla5a3am/2HjWFlp2BnbaseFbsN1Tqv
+ 6HFt8YnkA54eCI8cLcnghCsLv6D6EGIZyFTLFC+PSum3ZQkQge3ndIeLeMZuJZJx
+ ZEzDhF4eVqN01DYLFN3Xw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:sender:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm2; t=1655295313; x=1655381713; bh=U41sdkndxEPcU
- W2HyhBS60wraWtLaKd+4y+3d1M8lDk=; b=EdSmfthiQpm5UGVfTfzka8hJNiyjz
- OmHGJdMdfl6LLSbZ6CbyGECyy2x2LWpi94UvhdIdozNksOAkvXF9SSgwZIVkVtKd
- wkTtsIneHKuzVJb9+R2WD0RsaejsaNtjlNGvpoDd8T/s6Kbgse1iJMBcktZ4+3DJ
- bBLY3ehCoyn2Lv9Gq5b/N9FF8LNsItVm/BDrRW4FTwsSoB2AKUX/nbFC+Y4k6OhK
- L4mUPMP5oiu8yVcOMDFNIQP4y2kVkObn56eSG3xFrfSo68MUGrm7bLK4G+og6rXe
- +9ZfRCXIKUvocXxuB9tIw5zwWsYyU+Pc2WsredsWhpKYrfJoWhcPVW//A==
-X-ME-Sender: <xms:UM2pYnse1Pd1FlW_rEXDZI_Dn60j10SaiK7LbUxbdQkfpcSxXFU_5g>
- <xme:UM2pYoeYDSQhn1E4ZTbwEf06tinRgDFVngwYoopNsHh8Tio9lXAMA-jEQbcj6XX4S
- j1fdTr5PeVulcjvitM>
-X-ME-Received: <xmr:UM2pYqyTpza5M0Rh0hTjbJKcKC39Db0RN_UEKASEGnu_hHHriCviteMfhPWL6erF-DFNePJbnxohJlwxdKefc2e_CeZ3T6EDbRTt0tK-2sh3AlLxV7s>
+ :x-sasl-enc; s=fm2; t=1655295316; x=1655381716; bh=MtKBc2bhfjgMY
+ C9HTZUX2V0/dMYlGGjy+AYAPIY7ZaY=; b=PVvL8wis2OyJPIAnu6qZutU3QqpUW
+ RtyTWLXpnh6h7PzT0oEq45F+GGr3AMHs0YPPblpfJuxT1o4o33wMMrI7iF7YqmOn
+ huXzEkzdumAHvu34ciSbfvcnwqwwEvMBfXFPB2dVbSde0i+OdxP50ctK3/LlhG2R
+ XLTk6qh85FV+sQ4cGUSfu/DjZpP28hXLrw40c8daTnhHXGKovUakyrVJlyidGfQA
+ mQZeuiKt7CRdkT3M1IHPnZusupUxYy+841Pd/Tw3+kjOOJ05z4Fmrwv4QCtIil1e
+ NWwWh7Js6UJoA5rIh+Sm7fywjqmiI3JhngJQTyUrMPY7bmIC4fG9FFyyg==
+X-ME-Sender: <xms:U82pYuz_TJtOmm6mspO7Xm37siDuNEseBoT97cMLhRtQyPMLyobooQ>
+ <xme:U82pYqQbPSsGwQEWF6luJTCwJ_bwvVchVBDq0Xt0xljdx7glXI13PIx9eOxiNa6DM
+ tgUwppIWiIyRFI-fb0>
+X-ME-Received: <xmr:U82pYgV1avoX-ZvtRJOj0yhMYXgBtrSo_pJcKGY0O2ZINljwUz23LDEXc4-EjcfkMKdS1I40zkvprv65LfZlc_UzAxL-ec0WvT2Grbruf-f9w4GAwng>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedruddvuddggeejucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
  cujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhhomhepvfgrkhgr
  shhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhird
  hjpheqnecuggftrfgrthhtvghrnhepvdejgfejuedvgfduudekleevtefgtdevhfdtffef
- iefgveeuteffiedvffekvddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpe
+ iefgveeuteffiedvffekvddtnecuvehluhhsthgvrhfuihiivgepudenucfrrghrrghmpe
  hmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjph
-X-ME-Proxy: <xmx:UM2pYmPUeWNeKNX3MBQt7NCQGs7lmvjR7azUd52zfhayCAFO_8riUg>
- <xmx:UM2pYn8kOLG5EGqm-rILAc_1C1iViz-ubMsT4B0O9bXTnMetCWDYVQ>
- <xmx:UM2pYmVArC0xF4gWa6oSA60oLyu-OljWUm1WF00sv6d-5M0Zicm0RA>
- <xmx:Uc2pYjZzsWNuTNc-prYpZVakq5OQfntXi3miPjQRr1DZJvS8dTRr8A>
+X-ME-Proxy: <xmx:U82pYki99b-h3W2WehOkNvDXxU_tTsUvrBcHd_NzwB_10xDXbirXmQ>
+ <xmx:U82pYgAMVK7EWE97mXawaesmtXBCGs1d1Z571tmA7RKa61HeMAkbSg>
+ <xmx:U82pYlK4d00e_xrLu9F84qa6zu_TwrZGcHkdi8R8TG0ejpOHCFqdnQ>
+ <xmx:VM2pYjMWbM-m2btWT4YcTBJ9B1SeBFl7ZRhihAKJcg4mvyNMrL6QOw>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 15 Jun 2022 08:15:11 -0400 (EDT)
+ 15 Jun 2022 08:15:14 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: tiwai@suse.de,
 	stefanr@s5r6.in-berlin.de
-Subject: [PATCH v2 1/3] firewire: convert sysfs sprintf/snprintf family to
- sysfs_emit
-Date: Wed, 15 Jun 2022 21:15:03 +0900
-Message-Id: <20220615121505.61412-2-o-takashi@sakamocchi.jp>
+Subject: [PATCH v2 2/3] firewire: use struct_size over open coded arithmetic
+Date: Wed, 15 Jun 2022 21:15:04 +0900
+Message-Id: <20220615121505.61412-3-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220615121505.61412-1-o-takashi@sakamocchi.jp>
 References: <20220615121505.61412-1-o-takashi@sakamocchi.jp>
@@ -102,9 +101,10 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com> Fix
- the following coccicheck warning: ./drivers/firewire/core-device.c:375:8-16:
- WARNING: use scnprintf or sprintf. 
+ Content preview: From: "Minghao Chi (CGEL ZTE)" <chi.minghao@zte.com.cn>
+ Replace
+ zero-length array with flexible-array member and make use of the struct_size()
+ helper in kmalloc(). For example: struct fw_request { ... u32 data[]; } 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -119,7 +119,7 @@ X-Spam-Report: Spam detection software,
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
-X-Headers-End: 1o1Rvb-002NBU-KQ
+X-Headers-End: 1o1Rvf-0000d5-Py
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -132,51 +132,47 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
- alsa-devel@alsa-project.org, linux1394-devel@lists.sourceforge.net,
- Abaci Robot <abaci@linux.alibaba.com>
+Cc: alsa-devel@alsa-project.org, linux1394-devel@lists.sourceforge.net,
+ "Minghao Chi \(CGEL ZTE\)" <chi.minghao@zte.com.cn>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+From: "Minghao Chi (CGEL ZTE)" <chi.minghao@zte.com.cn>
 
-Fix the following coccicheck warning:
+Replace zero-length array with flexible-array member and make use
+of the struct_size() helper in kmalloc(). For example:
 
-./drivers/firewire/core-device.c:375:8-16: WARNING: use scnprintf or
-sprintf.
+struct fw_request {
+    ...
+    u32 data[];
+}
 
-Reported-by: Abaci Robot<abaci@linux.alibaba.com>
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+Make use of the struct_size() helper instead of an open-coded version
+in order to avoid any potential type mistakes.
+
+(Revised by Takashi Sakamoto to fix the value of third argument.)
+
+Signed-off-by: Minghao Chi (CGEL ZTE) <chi.minghao@zte.com.cn>
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/core-device.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/firewire/core-transaction.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/firewire/core-device.c b/drivers/firewire/core-device.c
-index 90ed8fdaba75..adddd8c45d0c 100644
---- a/drivers/firewire/core-device.c
-+++ b/drivers/firewire/core-device.c
-@@ -372,8 +372,7 @@ static ssize_t rom_index_show(struct device *dev,
- 	struct fw_device *device = fw_device(dev->parent);
- 	struct fw_unit *unit = fw_unit(dev);
+diff --git a/drivers/firewire/core-transaction.c b/drivers/firewire/core-transaction.c
+index af498d767702..4604a9d97fd1 100644
+--- a/drivers/firewire/core-transaction.c
++++ b/drivers/firewire/core-transaction.c
+@@ -779,7 +779,8 @@ static struct fw_request *allocate_request(struct fw_card *card,
+ 		return NULL;
+ 	}
  
--	return snprintf(buf, PAGE_SIZE, "%d\n",
--			(int)(unit->directory - device->config_rom));
-+	return sysfs_emit(buf, "%td\n", unit->directory - device->config_rom);
- }
+-	request = kmalloc(sizeof(*request) + length, GFP_ATOMIC);
++	request = kmalloc(struct_size(request, data, length / sizeof(request->data[0])),
++			  GFP_ATOMIC);
+ 	if (request == NULL)
+ 		return NULL;
  
- static struct device_attribute fw_unit_attributes[] = {
-@@ -403,8 +402,7 @@ static ssize_t guid_show(struct device *dev,
- 	int ret;
- 
- 	down_read(&fw_device_rwsem);
--	ret = snprintf(buf, PAGE_SIZE, "0x%08x%08x\n",
--		       device->config_rom[3], device->config_rom[4]);
-+	ret = sysfs_emit(buf, "0x%08x%08x\n", device->config_rom[3], device->config_rom[4]);
- 	up_read(&fw_device_rwsem);
- 
- 	return ret;
 -- 
 2.34.1
 
