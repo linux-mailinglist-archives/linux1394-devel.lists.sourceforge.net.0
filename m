@@ -2,108 +2,112 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B092675021
-	for <lists+linux1394-devel@lfdr.de>; Fri, 20 Jan 2023 10:04:25 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 08AFB67501F
+	for <lists+linux1394-devel@lfdr.de>; Fri, 20 Jan 2023 10:04:20 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1pInJq-0005a7-CZ;
-	Fri, 20 Jan 2023 09:04:17 +0000
+	id 1pInJg-0001kG-UX;
+	Fri, 20 Jan 2023 09:04:08 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1pInJX-0005XE-Kz
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1pInJX-0001j6-JS
  for linux1394-devel@lists.sourceforge.net;
- Fri, 20 Jan 2023 09:03:59 +0000
+ Fri, 20 Jan 2023 09:03:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
+ In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=TmHk2Jw/H5/lfewHLkv/Eh+g0mwOxyqgMGxl2LvpjW8=; b=NJHURNtlXIwrHpj29zCk7hLM5i
- NBoUltn7EbCq7vcuGqEPLEIla0vjf81/xrpcq1kCQP06y6spCkO8t44YnWSzJn9FomXdONTuRSCVJ
- sSF+NjEBoOPMhPdrwcx4XWqLve8pv8EfXUCpD24OLtkysjqTLcMkIWWyxVBCADpRKLEE=;
+ bh=jE/Ddp/JVuzNFe//kFpLgM6MgxEg2yp0BYW9xvltuqQ=; b=BAoDMb8VYDl+96FUcuegFsBEft
+ yZVcn43XrQrAbgiQLj6GSdC0I3JOs5rlA9pNmwQZ/qvQhkLtyipQSWud90a/SEMawPEDtK7kTdlMI
+ lHuuE6UfkLtiAnTO2/cGIpqL2XSwESp3dd1iQVZO5dG1TLETggwpfe4C/hKRLm/6fzgM=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From
- :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=TmHk2Jw/H5/lfewHLkv/Eh+g0mwOxyqgMGxl2LvpjW8=; b=b
- QgsdbdlsWXBot5d8SZhgmFWQ3dZbuy7cdEG7IxU5xj1QmIlblStpUv1ycYOL8R2AJG3s6UrOjloBZ
- VB2nMQ2XoY/uc712kq0/URVA3+xcokmkFyYEVAttyeB9Rq/1t2vERWB9/bAq8spnNwPousxE1bQah
- +b1HgecviZtccPSU=;
+ h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=jE/Ddp/JVuzNFe//kFpLgM6MgxEg2yp0BYW9xvltuqQ=; b=CjnU/OSp55hI6pI9MjmrT+ucMk
+ BpQYnn6XXdjxnCJclTQSemYKXda8/XjVy+0LkPDQtvQAVYj83pPz0knYp16uzoD5KJcDtpPS8+6Xv
+ vMzCqonUTDCK+jGTLxORpv01QDQArKHcpo+dbmpSAr2RKS5aJPd7kS29JLBAOzOK4N7I=;
 Received: from out3-smtp.messagingengine.com ([66.111.4.27])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1pInJV-00A0ts-0U for linux1394-devel@lists.sourceforge.net;
+ id 1pInJV-00A0tu-1o for linux1394-devel@lists.sourceforge.net;
  Fri, 20 Jan 2023 09:03:58 +0000
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id B64705C00CB;
- Fri, 20 Jan 2023 04:03:49 -0500 (EST)
+ by mailout.nyi.internal (Postfix) with ESMTP id 84D955C00C3;
+ Fri, 20 Jan 2023 04:03:51 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Fri, 20 Jan 2023 04:03:49 -0500
+ by compute4.internal (MEProxy); Fri, 20 Jan 2023 04:03:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:date:date:from:from
- :in-reply-to:message-id:mime-version:reply-to:sender:subject
- :subject:to:to; s=fm3; t=1674205429; x=1674291829; bh=TmHk2Jw/H5
- /lfewHLkv/Eh+g0mwOxyqgMGxl2LvpjW8=; b=aEoYhzcpULQmKgR0Y8GFnowR1C
- MZMA7PeCErHGdB6CrGeUJ9ddjPtb0etJQ/A6aN4auFBG7XSnIpJKLtPTGm375vTo
- KOOYBREF8utgGXYbIX5UkVvlAFWiuJmoQJHy3hUulShGYuJhNlxpv9uvWW6GGbg3
- IncSd6PmCia23O6eIhbIbpFsw2qfofCRDEenGgnkzdaUE88qLEgV43BPZ1W2+hMc
- CWZpvcU0rbYIIauWpnD/FsMaGyjxtiGZ7Wzu6evjfCKXk+w2b/8zdseumRKZvLVt
- mVkieDwfjh2x6hAJ3n6GNNQR6aEZIwVyyVSvCAAhDH6GnNhtY+ngssFbmBhQ==
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm3; t=1674205431; x=
+ 1674291831; bh=jE/Ddp/JVuzNFe//kFpLgM6MgxEg2yp0BYW9xvltuqQ=; b=f
+ Un1G3AhebUpk57b5I1enrSIHTceCdDYT9pf1wB9L5ioMqtS//jpUrGYuHciPU1NK
+ gxtrHwyICGbzfge/blYuWBfvrlMnCMoSRiCoDqSnDWqQ7Oz5NpiayePcZLVr81OH
+ YJURQg7dmaUFSHIdOo5AbsmjCauuR3q1QX7GQJGnfDmfwbvetvW8C3c0BGYN5ife
+ Uc/vkIUDND4mvYFSqG47uH2YovGvNcOfVFnWx1oWJZR6hvbaCtd32CWb737KusGD
+ ZSfcdL7JbXfcUU9YeRqjbvB7ISnOPpC1/r/3pHTEvcyPXijD4+/UzeOdo6k43OZI
+ kwX/0WoHqFzBQfgKh2MjQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:message-id
- :mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
- 1674205429; x=1674291829; bh=TmHk2Jw/H5/lfewHLkv/Eh+g0mwOxyqgMGx
- l2LvpjW8=; b=hdIjTxpiXyr7X8zjbhDGdrvOisafxKl5zUpGLP38kd3D4mFOpSQ
- frFJB6Mh5hxZ2vOGjLYb1ZOmEZ2QgGqOKerufCU8vZ8xpcDV4lnZZFTfrLIhNAPU
- DWB7DTJhBK6BhM2Yd5C/OzAnwuYLz4ExyHbHyfblFehW8HXjA4/xKd/M6VlNjYML
- ct31bzFBgFLru/ulTyOoh6hNGRdAxvIBW1kyZEDV+xR//gtJ0dMKhOsoute29VtX
- 8W/EGuVPHQXJcUPv0sRQwsb4wGyhqHiGW9ZBnthk1wqufPQ216l76mzS7S2z7QOE
- sGM4N8/tGNSAhPVjCxp8+E6wcp3latP8TmA==
-X-ME-Sender: <xms:9VjKYxRP097bOT4iivE5TSc7ocEdbouTZayNtsbihREOsbaZQt9dmA>
- <xme:9VjKY6y_aj88E4zsRf6s9loe-QBy3KZgvOuRq_2s1dBv-vsLZ8dawqKhayb-Fccir
- bv3rCspl0QvfwM0w0Y>
-X-ME-Received: <xmr:9VjKY218mLqdM-LGdYeFttELts1hybk-EHfvDHlHu9QXEAHLanxwUVCGsvGsHh0GsLQrX4--KJSrxELTQiukkWgWs0zYoIV_aLeLa_iado8mm1n-dFKPKkc>
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm3; t=1674205431; x=1674291831; bh=jE/Ddp/JVuzNF
+ e//kFpLgM6MgxEg2yp0BYW9xvltuqQ=; b=J6W8fLT77ClbrQXoJWX7mEnDANUZu
+ b5unNcaow6bD9oAjBrIYp5V29GadliH1jF5XKo0vc9yjPh7rK29dV3OgnE6efHsU
+ TlN4NAye2VpC9f5daVcflvSddR0xlFAW0cMb1dtcECCCJmNQhFH/A6HdmDW7+6Ns
+ MeEpJY2GvyGv4IxofAW23QI5x/0PSnuM1e771zbJlNLFCiFndk7XMPbA3G9gWWjC
+ b1GXcV/S08UR18Poq2qZeKksNLqQCNmKRv7K5c/SuJXbGVHZphxlGY4Z+2EXxKSs
+ uM4cfUPQaLdN1G3pIJ6jZ6kDbehVxmxvJn2Revaetk2Emziq3p5LeNx+Q==
+X-ME-Sender: <xms:91jKY-Qd91Ga0fqkxN2u2ramrhM1XubH3xjSi-gzPA-2sPUNNv0Lbg>
+ <xme:91jKYzyuOHnUES7IS2zhZ7JN0xZL3yMbYIb5hyYd9pRaYMBdPHcpJVMATV0TGSIDi
+ lTmQ27HYPkGipyak5k>
+X-ME-Received: <xmr:91jKY71vXCgdkDaB1KbqxTi19XUGcKpemGcGbbuFEIjaB8BIqPwV9KseRS3tztM0AFl1p2z92oSbyV3EMu37Wg9bXwuks9KOMzKkIFdiEPKtobKLXW4a-f8>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrudduuddguddvlecutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgggfestdekre
- dtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgr
- shhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepgefgheelhe
- ejieelheevfeekhfdtfeeftdefgefhkeffteduveejgeekvefhvdeunecuffhomhgrihhn
- pehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmh
- grihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:9VjKY5BUFvKn-skbizC3-ruacV0GFsx8_uLAMCRHy_1osJ7NLRjZNw>
- <xmx:9VjKY6glfzRE6ppAjujoe7s_4jwErxLjQCn9uUJfFdB68b1O4qLkPQ>
- <xmx:9VjKY9qUvn3pDXojMAKLHve8QIQ1JXIiX3vL_UCmpqDfu2UvsB98dg>
- <xmx:9VjKY7v7LmMIlhb8qOyu1b7JQzwp-Re3oxrdSpJXCnoLus-k3COzUw>
+ necuuegrihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestd
+ ekredtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgr
+ khgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepvdejgf
+ ejuedvgfduudekleevtefgtdevhfdtffefiefgveeuteffiedvffekvddtnecuvehluhhs
+ thgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhih
+ esshgrkhgrmhhotggthhhirdhjph
+X-ME-Proxy: <xmx:91jKY6DN3mjUePCAba7m872AwQCythWHm5dQdXIXzrvW6nIKS8F05w>
+ <xmx:91jKY3gRX1-6HklQ_ak1DyvA8L3XoEusyhcsGe03-_mXA67-a-oGAA>
+ <xmx:91jKY2rcsrA-Al3WRan-W_8jc4r51hZUOQOdKXZquWkIDZxIJwAc0Q>
+ <xmx:91jKY0ul7nTjFIR7y18ZxtQm0q-KjuNGWsTZ_tNt3yZMyU63NnLOXg>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 20 Jan 2023 04:03:47 -0500 (EST)
+ 20 Jan 2023 04:03:49 -0500 (EST)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: tiwai@suse.de,
 	stefanr@s5r6.in-berlin.de
-Subject: [PATCH 0/3] firewire: use single object for user space listeners to
- dispatch request to IEC 61883-1 FCP region
-Date: Fri, 20 Jan 2023 18:03:41 +0900
-Message-Id: <20230120090344.296451-1-o-takashi@sakamocchi.jp>
+Subject: [PATCH 1/3] firewire: core: use kref structure to maintain lifetime
+ of data for fw_request structure
+Date: Fri, 20 Jan 2023 18:03:42 +0900
+Message-Id: <20230120090344.296451-2-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20230120090344.296451-1-o-takashi@sakamocchi.jp>
+References: <20230120090344.296451-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, This patch solves long standing issue mentioned by code
- comment[1] and a commit 281e20323ab7 ("firewire: core: fix use-after-free
- regression in FCP handler")[2]. This patchset is based on the kernel t [...]
+ Content preview:  Developers have acknowledged that maintenance of lifetime
+ for fw_transaction structure is effective when handling asynchronous
+ transaction
+ to IEC 61883-1 FCP region, since the core function allows mul [...] 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -111,16 +115,16 @@ X-Spam-Report: Spam detection software,
  low trust [66.111.4.27 listed in list.dnswl.org]
  -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
  [66.111.4.27 listed in wl.mailspike.net]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
-X-Headers-End: 1pInJV-00A0ts-0U
+X-Headers-End: 1pInJV-00A0tu-1o
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -139,129 +143,138 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+Developers have acknowledged that maintenance of lifetime for
+fw_transaction structure is effective when handling asynchronous
+transaction to IEC 61883-1 FCP region, since the core function allows
+multiples listeners to the region. Some of them needs to access to the
+payload of request in process context after the callback to listener,
+while the core function releases the object for the structure just after
+completing the callbacks to listeners.
 
-This patch solves long standing issue mentioned by code comment[1] and a
-commit 281e20323ab7 ("firewire: core: fix use-after-free regression in FCP
-handler")[2]. This patchset is based on the kernel tree to which another
-fix is applied[3].
+One of the listeners is character device. Current implementation of the
+character device duplicates the object for the payload of transaction,
+while it's a cost in kernel memory consumption. The lifetime management
+can reduce it.
 
-To Iwai-san, I would like to ask you picking them to your local
-tree, then send them to mainline tree as well as sound patches when
-the merge window is open for v6.3 kernel, unless any question and
-objection is posted. (Additionally, I have prepared the other patchset for
-the subsystem.)
+The typical way to maintain the lifetime is reference count. This commit
+uses kref structure as a first step for the purpose.
 
+Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+---
+ drivers/firewire/core-cdev.c        |  4 ++--
+ drivers/firewire/core-transaction.c | 33 +++++++++++++++++++++++++----
+ drivers/firewire/core.h             |  3 +++
+ 3 files changed, 34 insertions(+), 6 deletions(-)
 
-Linux FireWire subsystem allows multiple listeners to inbound request to
-IEC 61883-1 FCP region. The listeners need to access to the payload of
-request, while the core function needs to guarantee transaction completion
-by sending response. It is a risk to use-after-free by accessing to the
-object of request released at completion.
-
-The commit 281e20323ab7 solves the risk by the duplication of payload,
-while it is slightly redundant (and a risk of memory leak[3]). Developers
-have acknowledged that the advantage of reference count to maintain the
-lifetime of object.
-
-Furthermore, the commit uses NULL pointer for the listeners to
-distinguish whether the request is to FCP region or not. It is a risk
-that the listeners retrieve parameters by dereferencing it. For
-instance, a commit b2405aa948b9 ("firewire: add kernel API to access
-packet structure in request structure for AR context")[4] adds a kernel
-API to retrieve time stamp from the data of request, while it is not
-available in the case of request to FCP region.
-
-As a solution, this patchset uses kref structure to maintain lifetime of
-data for fw_request structure, then dismisses NULL pointer passing to the
-listeners. Finally, the duplication is obsoleted.
-
-
-This is a log to probe kmalloc/kfree tracepoints events in the case to
-handle the request to FCP region.
-
- irq/35-firewire-273881 [002] 373149.138580: kmalloc: (fw_core_handle_request+0x7b) call_site=fw_core_handle_request+0x7b ptr=0xffff99e93f007300 bytes_req=155 bytes_alloc=192 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 373149.138582: kmalloc: (handle_request+0x22e) call_site=handle_request+0x22e ptr=0xffff99e96e54f240 bytes_req=56 bytes_alloc=64 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 373149.138583: kmalloc: (handle_request+0x24b) call_site=handle_request+0x24b ptr=0xffff99e8b8a6ed20 bytes_req=96 bytes_alloc=96 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 373149.138587: kmalloc: (handle_request+0x22e) call_site=handle_request+0x22e ptr=0xffff99e96e54fa80 bytes_req=56 bytes_alloc=64 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 373149.138587: kmalloc: (handle_request+0x24b) call_site=handle_request+0x24b ptr=0xffff99e8a3f06960 bytes_req=96 bytes_alloc=96 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 373149.138591: kmalloc: (handle_request+0x22e) call_site=handle_request+0x22e ptr=0xffff99e96e54f380 bytes_req=56 bytes_alloc=64 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 373149.138591: kmalloc: (handle_request+0x24b) call_site=handle_request+0x24b ptr=0xffff99e8a3f06600 bytes_req=96 bytes_alloc=96 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 373149.138598: kmalloc: (handle_request+0x22e) call_site=handle_request+0x22e ptr=0xffff99e96e54f7c0 bytes_req=56 bytes_alloc=64 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 373149.138598: kmalloc: (handle_request+0x24b) call_site=handle_request+0x24b ptr=0xffff99e8a3f06180 bytes_req=96 bytes_alloc=96 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 373149.138602: kmalloc: (handle_request+0x22e) call_site=handle_request+0x22e ptr=0xffff99e96e54f4c0 bytes_req=56 bytes_alloc=64 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 373149.138603: kmalloc: (handle_request+0x24b) call_site=handle_request+0x24b ptr=0xffff99e94d48b660 bytes_req=96 bytes_alloc=96 gfp_flags=GFP_ATOMIC
-         python3-278050 [000] 373149.138605: kfree:   (fw_device_op_read+0x148) call_site=fw_device_op_read+0x148 ptr=0xffff99e8b8a6ed20
-         python3-278050 [000] 373149.138611: kfree:   (ioctl_send_response+0x10a) call_site=ioctl_send_response+0x10a ptr=0xffff99e96e54f240
-         python3-278053 [001] 373149.138612: kfree:   (fw_device_op_read+0x148) call_site=fw_device_op_read+0x148 ptr=0xffff99e8a3f06960
- snd-oxfw-ctl-se-278061 [003] 373149.138618: kfree:   (fw_device_op_read+0x148) call_site=fw_device_op_read+0x148 ptr=0xffff99e94d48b660
-         python3-278053 [001] 373149.138621: kfree:   (ioctl_send_response+0x10a) call_site=ioctl_send_response+0x10a ptr=0xffff99e96e54fa80
-         python3-278057 [002] 373149.138627: kfree:   (fw_device_op_read+0x148) call_site=fw_device_op_read+0x148 ptr=0xffff99e8a3f06180
- snd-oxfw-ctl-se-278061 [003] 373149.138636: kfree:   (ioctl_send_response+0x10a) call_site=ioctl_send_response+0x10a ptr=0xffff99e96e54f4c0
-         python3-278055 [000] 373149.138637: kfree:   (fw_device_op_read+0x148) call_site=fw_device_op_read+0x148 ptr=0xffff99e8a3f06600
-         python3-278055 [000] 373149.138642: kfree:   (ioctl_send_response+0x10a) call_site=ioctl_send_response+0x10a ptr=0xffff99e96e54f380
-         python3-278057 [002] 373149.138654: kfree:   (fw_request_put+0x2c) call_site=fw_request_put+0x2c ptr=0xffff99e93f007300
-         python3-278057 [002] 373149.138654: kfree:   (ioctl_send_response+0x10a) call_site=ioctl_send_response+0x10a ptr=0xffff99e96e54f7c0
-
-There are five listeners of IEC 61883-1 FCP region:
-
- * Python 3: PID 278050
- * Python 3: PID 278053
- * Python 3: PID 278055
- * Python 3: PID 278057
- * snd-oxfw-ctl-service: PID 278061
-
-When handling 1394 OHCI Asynchronous Receive context (for request) in
-softIRQ context, an object is allocated for the request
-(ptr=0xffff99e93f007300). When queueing event per client, the reference
-count of object is increased.
-
-The object is released when the last listener (PID 278057) executes
-ioctl(2) with FW_CDEV_IOC_SEND_REQUEST request to decrease the reference
-count and release event resource.
-
-Between the event queueing and event dispatching, the core function send
-response to complete transaction. The object is not released in the timing,
-expectedly.
-
-
-This is another log in the case to handle request to non-FCP region:
-
- irq/35-firewire-273881 [002] 377484.348477: kmalloc: (fw_core_handle_request+0x7b) call_site=fw_core_handle_request+0x7b ptr=0xffff99e96140cd80 bytes_req=148 bytes_alloc=192 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 377484.348478: kmalloc: (handle_request+0xa8) call_site=handle_request+0xa8 ptr=0xffff99e9669303c0 bytes_req=56 bytes_alloc=64 gfp_flags=GFP_ATOMIC
- irq/35-firewire-273881 [002] 377484.348479: kmalloc: (handle_request+0xc4) call_site=handle_request+0xc4 ptr=0xffff99e99eaed0c0 bytes_req=96 bytes_alloc=96 gfp_flags=GFP_ATOMIC
-         python3-280425 [001] 377484.348494: kfree:   (fw_device_op_read+0x148) call_site=fw_device_op_read+0x148 ptr=0xffff99e99eaed0c0
-         python3-280425 [001] 377484.348563: kfree:   (ioctl_send_response+0x10a) call_site=ioctl_send_response+0x10a ptr=0xffff99e9669303c0
- irq/35-firewire-273881 [002] 377484.348603: kfree:   (free_response_callback+0x5a) call_site=free_response_callback+0x5a ptr=0xffff99e96140cd80
-
-The object is allocated (ptr=0xffff99e96140cd80) in the softIRQ, then
-event is queued. Python 3 process (PID 280425) dispatches the event, then
-execute ioctl(2) to send response. In softIRQ for 1394 OHCI Asynchronous
-Receive context (for response), the object is finally released as a result
-to decrease the reference count.
-
-The reference count looks to prevent memory leak.
-
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/firewire/core-cdev.c?h=v6.1#n691
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=281e20323ab72180137824a298ee9e21e6f9acf6
-[3] https://lore.kernel.org/lkml/20230117090610.93792-1-o-takashi@sakamocchi.jp/
-[4] I should have elaborated the patch title...
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b2405aa948b95afc5246fa56fc05c3512cd6185c
-
-Takashi Sakamoto (3):
-  firewire: core: use kref structure to maintain lifetime of data for
-    fw_request structure
-  firewire: cdev: obsolete NULL check to detect IEC 61883-1 FCP region
-  firewire: cdev: use single object to dispatch event for request to IEC
-    61883-1 FCP region
-
- drivers/firewire/core-cdev.c        | 43 +++++++++--------------
- drivers/firewire/core-transaction.c | 53 +++++++++++++++++++++--------
- drivers/firewire/core.h             |  9 +++++
- include/linux/firewire.h            |  5 ++-
- 4 files changed, 67 insertions(+), 43 deletions(-)
-
+diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
+index 958aa4662ccb..93dd80d8d4e1 100644
+--- a/drivers/firewire/core-cdev.c
++++ b/drivers/firewire/core-cdev.c
+@@ -826,12 +826,12 @@ static int ioctl_send_response(struct client *client, union ioctl_arg *arg)
+ 
+ 	if (a->length != fw_get_response_length(r->request)) {
+ 		ret = -EINVAL;
+-		kfree(r->request);
++		fw_request_put(r->request);
+ 		goto out;
+ 	}
+ 	if (copy_from_user(r->data, u64_to_uptr(a->data), a->length)) {
+ 		ret = -EFAULT;
+-		kfree(r->request);
++		fw_request_put(r->request);
+ 		goto out;
+ 	}
+ 	fw_send_response(r->card, r->request, a->rcode);
+diff --git a/drivers/firewire/core-transaction.c b/drivers/firewire/core-transaction.c
+index af498d767702..83f61cf1aa8f 100644
+--- a/drivers/firewire/core-transaction.c
++++ b/drivers/firewire/core-transaction.c
+@@ -617,6 +617,7 @@ void fw_core_remove_address_handler(struct fw_address_handler *handler)
+ EXPORT_SYMBOL(fw_core_remove_address_handler);
+ 
+ struct fw_request {
++	struct kref kref;
+ 	struct fw_packet response;
+ 	u32 request_header[4];
+ 	int ack;
+@@ -625,13 +626,33 @@ struct fw_request {
+ 	u32 data[];
+ };
+ 
++void fw_request_get(struct fw_request *request)
++{
++	kref_get(&request->kref);
++}
++
++static void release_request(struct kref *kref)
++{
++	struct fw_request *request = container_of(kref, struct fw_request, kref);
++
++	kfree(request);
++}
++
++void fw_request_put(struct fw_request *request)
++{
++	kref_put(&request->kref, release_request);
++}
++
+ static void free_response_callback(struct fw_packet *packet,
+ 				   struct fw_card *card, int status)
+ {
+-	struct fw_request *request;
++	struct fw_request *request = container_of(packet, struct fw_request, response);
+ 
+-	request = container_of(packet, struct fw_request, response);
+-	kfree(request);
++	// Decrease the reference count since not at in-flight.
++	fw_request_put(request);
++
++	// Decrease the reference count to release the object.
++	fw_request_put(request);
+ }
+ 
+ int fw_get_response_length(struct fw_request *r)
+@@ -782,6 +803,7 @@ static struct fw_request *allocate_request(struct fw_card *card,
+ 	request = kmalloc(sizeof(*request) + length, GFP_ATOMIC);
+ 	if (request == NULL)
+ 		return NULL;
++	kref_init(&request->kref);
+ 
+ 	request->response.speed = p->speed;
+ 	request->response.timestamp =
+@@ -809,7 +831,7 @@ void fw_send_response(struct fw_card *card,
+ 	/* unified transaction or broadcast transaction: don't respond */
+ 	if (request->ack != ACK_PENDING ||
+ 	    HEADER_DESTINATION_IS_BROADCAST(request->request_header[0])) {
+-		kfree(request);
++		fw_request_put(request);
+ 		return;
+ 	}
+ 
+@@ -821,6 +843,9 @@ void fw_send_response(struct fw_card *card,
+ 		fw_fill_response(&request->response, request->request_header,
+ 				 rcode, NULL, 0);
+ 
++	// Increase the reference count so that the object is kept during in-flight.
++	fw_request_get(request);
++
+ 	card->driver->send_response(card, &request->response);
+ }
+ EXPORT_SYMBOL(fw_send_response);
+diff --git a/drivers/firewire/core.h b/drivers/firewire/core.h
+index 71d5f16f311c..78c99f1d27fa 100644
+--- a/drivers/firewire/core.h
++++ b/drivers/firewire/core.h
+@@ -244,6 +244,9 @@ int fw_get_response_length(struct fw_request *request);
+ void fw_fill_response(struct fw_packet *response, u32 *request_header,
+ 		      int rcode, void *payload, size_t length);
+ 
++void fw_request_get(struct fw_request *request);
++void fw_request_put(struct fw_request *request);
++
+ #define FW_PHY_CONFIG_NO_NODE_ID	-1
+ #define FW_PHY_CONFIG_CURRENT_GAP_COUNT	-1
+ void fw_send_phy_config(struct fw_card *card,
 -- 
 2.37.2
 
