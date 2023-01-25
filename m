@@ -2,17 +2,17 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD59267B23F
+	by mail.lfdr.de (Postfix) with ESMTPS id 8026767B23D
 	for <lists+linux1394-devel@lfdr.de>; Wed, 25 Jan 2023 13:03:48 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1pKeVA-0005CD-Oa;
-	Wed, 25 Jan 2023 12:03:39 +0000
+	id 1pKeV8-0006xd-Gv;
+	Wed, 25 Jan 2023 12:03:37 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1pKeV3-0005B2-MN
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1pKeV3-0006ws-9b
  for linux1394-devel@lists.sourceforge.net;
  Wed, 25 Jan 2023 12:03:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -21,9 +21,9 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=4qNJoZP3xhEdcFzYFpHl0G/Z8VsY9m5iDjOTEFzn2zE=; b=f6cY0tqPrmKJCuz1uXkzpuJ+6s
- b3UoiAvxSEB1fJ//EtK9ygxmXQP26kDK1MrvHPNxUVHlYxe0e9JNJQ5/CARS2n5Yh7ANPLjc2TluI
- LplnzA/LagEmQn2TVJzTAFmSGkbzF5xwA636XAGGoh5C2BVflTj4ZfUm2RhAbLRjQc0Q=;
+ bh=ahqs1LYctapqd3obfcgxXTbiu9HxxUAsecH2A0pcwOo=; b=IH2RXzS95zzkqSRubAcatsHaSg
+ qLNdNEmTHkPBz8hP8OcHDOK6bYQXZnBMOO1XimuRPQl84BH73H7uFQ9HHGLI+lBkFQXz8UYlvB7y6
+ PR4y1O2dlE8FV3qpO9N7OjWdxz00fAF43eVOrX4YAUTUKCxtEU0PXTkzjMFLh42ZFywE=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
@@ -31,82 +31,82 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=4qNJoZP3xhEdcFzYFpHl0G/Z8VsY9m5iDjOTEFzn2zE=; b=Fmikj/p+yxAEwr7Ht4FCEIap6Z
- AiEDDzAsbzBlymgYWMhqLqscmAOLvRiuYTsjMDhs+aVT85AxoFLKoMpuigmAGdUIHqdjC235yrOts
- quMLrTYHCVRMA3OO7XM1mgtYy3fwCG1x9wiJTEimLgne1f3R1aXIVLCd4LxaXIaSm3rU=;
+ bh=ahqs1LYctapqd3obfcgxXTbiu9HxxUAsecH2A0pcwOo=; b=HVOF5qPDIhQhVCrLQw1zNDsR23
+ s63OBO2A8UxKp6ZZ+t747D/v8w8YdmODdD3qmoEp+mqcb8+BarTS5qsTSMGH4N08N0QNhsUw2dIdg
+ pBWJVZ5g/2/oYr1pgRH6138nr5vcTg3bNN+tNFAyzKDkiS/U0PoU7c7as1Cp0wDNAtIU=;
 Received: from out3-smtp.messagingengine.com ([66.111.4.27])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1pKeV1-00088r-29 for linux1394-devel@lists.sourceforge.net;
+ id 1pKeV1-00088x-Kw for linux1394-devel@lists.sourceforge.net;
  Wed, 25 Jan 2023 12:03:32 +0000
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 063845C01B3;
- Wed, 25 Jan 2023 07:03:19 -0500 (EST)
+ by mailout.nyi.internal (Postfix) with ESMTP id 86B245C01B7;
+ Wed, 25 Jan 2023 07:03:20 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Wed, 25 Jan 2023 07:03:19 -0500
+ by compute4.internal (MEProxy); Wed, 25 Jan 2023 07:03:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm3; t=1674648199; x=
- 1674734599; bh=4qNJoZP3xhEdcFzYFpHl0G/Z8VsY9m5iDjOTEFzn2zE=; b=l
- zXMNCFet1y42P0mzSdaY6LlTG80H8x0KrAeXmnAjoCR9zvwFa6Gqnftph+ePZpQv
- OST1QSDYIfwCw78Zbk1rCKdyWU5OBNkAPnRjKHcxifz5EYgLu1kYeiZvkaRVkDVM
- cCqO8KOb+zgQ/CQ9pclXAKOMnQNraL+dyPB4jsOoCcTU970F0zd+lo7p+mcxBGLY
- SAVr09R9HULj6WdhNZ4TpkrHVAjIZdKLHlig0MnsIgQTk8kgioi0HE18GvRIhp/3
- rf1+HFT0LdSvYkDOrfJkdZNFWluX7nbYdzTyvc1Q0jHD88trn/NPM3nagGBQWy1F
- TH2Ll5RgYLLETuc6Us+5A==
+ :reply-to:sender:subject:subject:to:to; s=fm3; t=1674648200; x=
+ 1674734600; bh=ahqs1LYctapqd3obfcgxXTbiu9HxxUAsecH2A0pcwOo=; b=H
+ xHPjCINz7UPVaQ0a70ohdvxAVldZo4NeDXnkFV8L/TKVi0VChMCZiSaBtMjJUB5c
+ oWWarWJx5zyU8JCZBz+4Wt3q4mn0xKN7TMTgp8d/kZ3SHum1qX9NmrI/GDM9/0aA
+ dOX6MVj3M4xkmmVuj5cB1BMbhQ01/9ZhMQLInuS3eapN0EoflSbd2IHb7E4wVB6D
+ wnv1KhDBz4+gJ6tK6PowDL5tz2G5g/qbQghMw0d3K6M2Gy38T2zVArn8MCEyLo5g
+ CLFhVh9c7zs6WHMOOya2DP/BhKHLsHIfVst3brfhQwAHUK3bauSW+5WREKqQktDu
+ 7VxVqopty9hAvjwnncFCQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:sender:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm3; t=1674648199; x=1674734599; bh=4qNJoZP3xhEdc
- FzYFpHl0G/Z8VsY9m5iDjOTEFzn2zE=; b=kzRuWlN4/vhhXo0yq3PYHhwnSd3Td
- ardoKNn5FqDWUj2oweQA9iAxaF7Y6yXwgTqBVL2ZcmMfLYItS6zJlXff7EPGCV6/
- CfQf26e4zlnL4toK20B73XfEWxiEMjUiUD9TZPFLuLOOe32QzmJzwRrLi2OXaJf7
- RFlzMGioY2dGv6kVrY8HbDyApSZHriciIxQIssDJ/iAKabXajmfYbAXANkfsP7kB
- MV1lV1Fi4XW8QJuH1RQF0exnAbp0hxrW5Vikyz76NrlxRuQ/V1YuRrn3xXs45ufD
- S1uE01QQ6TDLEMBkzbUpAsmR7dW2ezkBk46Ikv0NCOp6a1Fj4msaU1rtg==
-X-ME-Sender: <xms:hhrRY2kHcHtltNNtXvdTkFfbluNaAtNmEmOC7NtmpbjV0pyevfsAbQ>
- <xme:hhrRY92ZHWCvkkbXe4ALBlVJjuLOr-3wD4VCCBlB7z-mIUlG6TmqSLwRIqfX4QXlz
- 8ybzt3u3qsGdOlmlSc>
-X-ME-Received: <xmr:hhrRY0pp8_lgg9tcrJIUVoZBWEGPxnnRR1iUiJ5zL-6ABgKurCKKUoEBeWWixy22myI6gU1ScTBAcVJPtre6W3q-AtqsJLrjmpKnaICxpUDLthtNHjJwVvA>
+ :x-sasl-enc; s=fm3; t=1674648200; x=1674734600; bh=ahqs1LYctapqd
+ 3obfcgxXTbiu9HxxUAsecH2A0pcwOo=; b=X0iMZwkCCyaKwV2nIbcITALUnh9mj
+ eblsuVBDZXJM/jTI3t2JqL0YEnU0O5QpQsECPUsUp8SpDYr8O87i0kLkbDMZdD4Y
+ 3iKwc4sAiLjgFHNXMS/L4FWVwc071RI7R3ympFypAqvtNK9AcEuTNBCrlnFiRe8a
+ N30nDxfqRGQYSl/d9nKygKV99dv8znjJ54JugPu7d92d5KRU/a2A15JWiHzSRdl0
+ 2WMtAxGwhCFQGUJXin55vql3luE9hd6PtuBXxKqGRxzIwgGE9BXxOr+GNK1P5dJJ
+ xku8omaZ3V6PXvE9vdnACnX1jz0w01crxJ5e07bRWfKF6qiLB/bW+RQJQ==
+X-ME-Sender: <xms:iBrRY23H6A_arJ90EeXijcICCPfa5kQKzmmuJIZTZHa18hpyQFLwDg>
+ <xme:iBrRY5Hzuo9qoix3fs6RXB_InArn1hZXoOIi4IyVZWFtYlCJ1K1re1AT0Ie-QGeee
+ TViwNSGu3_qx_cHp_k>
+X-ME-Received: <xmr:iBrRY-5SemgeB7X4OmncMw8QkaTidPyGUmPzK-uiymhNdbzFf2iH7uVnvXXrUuxLIVMZZMbIp4Gku0OoCSD_-FUX9rP5PwoERDezHeEGY2mcHHzyVLljn0U>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddvvddgfeehucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtke
  ertdertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
  rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpedvjefgje
  euvdfguddukeelveetgfdtvefhtdfffeeigfevueetffeivdffkedvtdenucevlhhushht
- vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
+ vghrufhiiigvpedvnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
  hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:hhrRY6m8V56fJWLN31RMgdhGmhKomeXBobHsw7lX4Y-yvWo-qbotZA>
- <xmx:hhrRY03u6vQd_rtXW-k6DJW4VstBwR5sj-Sc4VH-F69Ruzba4fnj8Q>
- <xmx:hhrRYxtBA1B9wfj-OKEDvWMVjjC_GKssUCabEH3JIgidilxLHJ4vCQ>
- <xmx:hxrRYyCYNn3ipmC4UPf-YW4sfavlDhcxNfU7yhsDtmPEUJVdmxBykA>
+X-ME-Proxy: <xmx:iBrRY32P4n7Qq3x105qQpcMNOVGS2snmkCaKl3MM8NxwsVTZX7U91A>
+ <xmx:iBrRY5Eq4XxDHBDUTicRL6iU5RI6UUPTdeaoTx9icBsLK8G5s0iyDQ>
+ <xmx:iBrRYw8CsPRrt2OCW7_JzrevganNdXzSVbZeMcpSF2enGuGgSgFvpw>
+ <xmx:iBrRY-SYNuUIdhL-p2q2w39DJPUu2AhuKikCgjl2jPbhCbvbWLtZbQ>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 25 Jan 2023 07:03:17 -0500 (EST)
+ 25 Jan 2023 07:03:19 -0500 (EST)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: stefanr@s5r6.in-berlin.de
-Subject: [PATCH 08/11] firewire: cdev: implement new event to notify response
- subaction with time stamp
-Date: Wed, 25 Jan 2023 21:02:58 +0900
-Message-Id: <20230125120301.51585-9-o-takashi@sakamocchi.jp>
+Subject: [PATCH 09/11] firewire: cdev: code refactoring to dispatch event for
+ phy packet
+Date: Wed, 25 Jan 2023 21:02:59 +0900
+Message-Id: <20230125120301.51585-10-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20230125120301.51585-1-o-takashi@sakamocchi.jp>
 References: <20230125120301.51585-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: The callback function now receives an argument for time
- stamps
- relevant to asynchronous transaction. This commit implements a new event
- to notify response subaction with the time stamps for user space [...] 
+ Content preview:  In 1394 OHCI,
+ both Asynchronous Transmit (AT) and Asynchronous
+ Receive (AR) contexts are used to deliver the phy packet of IEEE 1394. The
+ time stamp is available as well as the usual asynchronous tran [...] 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -116,14 +116,14 @@ X-Spam-Report: Spam detection software,
  low trust [66.111.4.27 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
-X-Headers-End: 1pKeV1-00088r-29
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+X-Headers-End: 1pKeV1-00088x-Kw
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -142,162 +142,149 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The callback function now receives an argument for time stamps relevant
-to asynchronous transaction. This commit implements a new event to
-notify response subaction with the time stamps for user space.
+In 1394 OHCI, both Asynchronous Transmit (AT) and Asynchronous Receive
+(AR) contexts are used to deliver the phy packet of IEEE 1394. The time
+stamp is available as well as the usual asynchronous transaction.
+
+This commit is a preparation for future commit to handle the time stamp.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/core-cdev.c | 96 ++++++++++++++++++++++++------------
- 1 file changed, 65 insertions(+), 31 deletions(-)
+ drivers/firewire/core-cdev.c | 78 +++++++++++++++++++++++-------------
+ 1 file changed, 51 insertions(+), 27 deletions(-)
 
 diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-index 315ebc8c545d..8b24abdd51b8 100644
+index 8b24abdd51b8..2220de3c945e 100644
 --- a/drivers/firewire/core-cdev.c
 +++ b/drivers/firewire/core-cdev.c
-@@ -172,6 +172,7 @@ struct outbound_transaction_event {
- 	struct outbound_transaction_resource r;
- 	union {
- 		struct fw_cdev_event_response without_tstamp;
-+		struct fw_cdev_event_response2 with_tstamp;
- 	} rsp;
+@@ -204,12 +204,16 @@ struct outbound_phy_packet_event {
+ 	struct event event;
+ 	struct client *client;
+ 	struct fw_packet p;
+-	struct fw_cdev_event_phy_packet phy_packet;
++	union {
++		struct fw_cdev_event_phy_packet without_tstamp;
++	} phy_packet;
  };
  
-@@ -538,41 +539,64 @@ static void release_transaction(struct client *client,
+ struct inbound_phy_packet_event {
+ 	struct event event;
+-	struct fw_cdev_event_phy_packet phy_packet;
++	union {
++		struct fw_cdev_event_phy_packet without_tstamp;
++	} phy_packet;
+ };
+ 
+ #ifdef CONFIG_COMPAT
+@@ -1549,26 +1553,41 @@ static void outbound_phy_packet_callback(struct fw_packet *packet,
  {
+ 	struct outbound_phy_packet_event *e =
+ 		container_of(packet, struct outbound_phy_packet_event, p);
+-	struct client *e_client;
++	struct client *e_client = e->client;
++	u32 rcode;
++	struct fw_cdev_event_phy_packet *pp;
+ 
+ 	switch (status) {
+-	/* expected: */
+-	case ACK_COMPLETE:	e->phy_packet.rcode = RCODE_COMPLETE;	break;
+-	/* should never happen with PHY packets: */
+-	case ACK_PENDING:	e->phy_packet.rcode = RCODE_COMPLETE;	break;
++	// expected:
++	case ACK_COMPLETE:
++		rcode = RCODE_COMPLETE;
++		break;
++	// should never happen with PHY packets:
++	case ACK_PENDING:
++		rcode = RCODE_COMPLETE;
++		break;
+ 	case ACK_BUSY_X:
+ 	case ACK_BUSY_A:
+-	case ACK_BUSY_B:	e->phy_packet.rcode = RCODE_BUSY;	break;
+-	case ACK_DATA_ERROR:	e->phy_packet.rcode = RCODE_DATA_ERROR;	break;
+-	case ACK_TYPE_ERROR:	e->phy_packet.rcode = RCODE_TYPE_ERROR;	break;
+-	/* stale generation; cancelled; on certain controllers: no ack */
+-	default:		e->phy_packet.rcode = status;		break;
++	case ACK_BUSY_B:
++		rcode = RCODE_BUSY;
++		break;
++	case ACK_DATA_ERROR:
++		rcode = RCODE_DATA_ERROR;
++		break;
++	case ACK_TYPE_ERROR:
++		rcode = RCODE_TYPE_ERROR;
++		break;
++	// stale generation; cancelled; on certain controllers: no ack
++	default:
++		rcode = status;
++		break;
+ 	}
+-	e->phy_packet.data[0] = packet->timestamp;
+ 
+-	e_client = e->client;
+-	queue_event(e->client, &e->event, &e->phy_packet,
+-		    sizeof(e->phy_packet) + e->phy_packet.length, NULL, 0);
++	pp = &e->phy_packet.without_tstamp;
++	pp->rcode = rcode;
++	pp->data[0] = packet->timestamp;
++	queue_event(e->client, &e->event, &e->phy_packet, sizeof(*pp) + pp->length, NULL, 0);
++
+ 	client_put(e_client);
  }
  
--static void complete_transaction(struct fw_card *card, int rcode,
--				 void *payload, size_t length, void *data)
-+static void complete_transaction(struct fw_card *card, int rcode, u32 request_tstamp,
-+				 u32 response_tstamp, void *payload, size_t length, void *data)
- {
- 	struct outbound_transaction_event *e = data;
--	struct fw_cdev_event_response *rsp = &e->rsp.without_tstamp;
- 	struct client *client = e->client;
- 	unsigned long flags;
+@@ -1577,6 +1596,7 @@ static int ioctl_send_phy_packet(struct client *client, union ioctl_arg *arg)
+ 	struct fw_cdev_send_phy_packet *a = &arg->send_phy_packet;
+ 	struct fw_card *card = client->device->card;
+ 	struct outbound_phy_packet_event *e;
++	struct fw_cdev_event_phy_packet *pp;
  
--	if (length < rsp->length)
--		rsp->length = length;
--	if (rcode == RCODE_COMPLETE)
--		memcpy(rsp->data, payload, rsp->length);
--
- 	spin_lock_irqsave(&client->lock, flags);
- 	idr_remove(&client->resource_idr, e->r.resource.handle);
- 	if (client->in_shutdown)
- 		wake_up(&client->tx_flush_wait);
- 	spin_unlock_irqrestore(&client->lock, flags);
+ 	/* Access policy: Allow this ioctl only on local nodes' device files. */
+ 	if (!client->device->is_local)
+@@ -1595,10 +1615,12 @@ static int ioctl_send_phy_packet(struct client *client, union ioctl_arg *arg)
+ 	e->p.header[2]		= a->data[1];
+ 	e->p.header_length	= 12;
+ 	e->p.callback		= outbound_phy_packet_callback;
+-	e->phy_packet.closure	= a->closure;
+-	e->phy_packet.type	= FW_CDEV_EVENT_PHY_PACKET_SENT;
++
++	pp = &e->phy_packet.without_tstamp;
++	pp->closure = a->closure;
++	pp->type = FW_CDEV_EVENT_PHY_PACKET_SENT;
+ 	if (is_ping_packet(a->data))
+-			e->phy_packet.length = 4;
++		pp->length = 4;
  
--	rsp->type = FW_CDEV_EVENT_RESPONSE;
--	rsp->rcode = rcode;
-+	switch (e->rsp.without_tstamp.type) {
-+	case FW_CDEV_EVENT_RESPONSE:
-+	{
-+		struct fw_cdev_event_response *rsp = &e->rsp.without_tstamp;
-+
-+		if (length < rsp->length)
-+			rsp->length = length;
-+		if (rcode == RCODE_COMPLETE)
-+			memcpy(rsp->data, payload, rsp->length);
-+
-+		rsp->rcode = rcode;
-+
-+		// In the case that sizeof(*rsp) doesn't align with the position of the
-+		// data, and the read is short, preserve an extra copy of the data
-+		// to stay compatible with a pre-2.6.27 bug.  Since the bug is harmless
-+		// for short reads and some apps depended on it, this is both safe
-+		// and prudent for compatibility.
-+		if (rsp->length <= sizeof(*rsp) - offsetof(typeof(*rsp), data))
-+			queue_event(client, &e->event, rsp, sizeof(*rsp), rsp->data, rsp->length);
-+		else
-+			queue_event(client, &e->event, rsp, sizeof(*rsp) + rsp->length, NULL, 0);
+ 	card->driver->send_request(card, &e->p);
  
--	/*
--	 * In the case that sizeof(*rsp) doesn't align with the position of the
--	 * data, and the read is short, preserve an extra copy of the data
--	 * to stay compatible with a pre-2.6.27 bug.  Since the bug is harmless
--	 * for short reads and some apps depended on it, this is both safe
--	 * and prudent for compatibility.
--	 */
--	if (rsp->length <= sizeof(*rsp) - offsetof(typeof(*rsp), data))
--		queue_event(client, &e->event, rsp, sizeof(*rsp),
--			    rsp->data, rsp->length);
--	else
--		queue_event(client, &e->event, rsp, sizeof(*rsp) + rsp->length,
--			    NULL, 0);
-+		break;
-+	}
-+	case FW_CDEV_EVENT_RESPONSE2:
-+	{
-+		struct fw_cdev_event_response2 *rsp = &e->rsp.with_tstamp;
-+
-+		if (length < rsp->length)
-+			rsp->length = length;
-+		if (rcode == RCODE_COMPLETE)
-+			memcpy(rsp->data, payload, rsp->length);
-+
-+		rsp->rcode = rcode;
-+		rsp->request_tstamp = request_tstamp;
-+		rsp->response_tstamp = response_tstamp;
-+
-+		queue_event(client, &e->event, rsp, sizeof(*rsp) + rsp->length, NULL, 0);
-+
-+		break;
-+	default:
-+		WARN_ON(1);
-+		break;
-+	}
-+	}
+@@ -1633,18 +1655,20 @@ void fw_cdev_handle_phy_packet(struct fw_card *card, struct fw_packet *p)
+ 	spin_lock_irqsave(&card->lock, flags);
  
- 	/* Drop the idr's reference */
- 	client_put(client);
-@@ -583,7 +607,6 @@ static int init_request(struct client *client,
- 			int destination_id, int speed)
- {
- 	struct outbound_transaction_event *e;
--	struct fw_cdev_event_response *rsp;
- 	void *payload;
- 	int ret;
- 
-@@ -600,10 +623,21 @@ static int init_request(struct client *client,
- 		return -ENOMEM;
- 	e->client = client;
- 
--	rsp = &e->rsp.without_tstamp;
--	rsp->length = request->length;
--	rsp->closure = request->closure;
--	payload = rsp->data;
-+	if (client->version < FW_CDEV_VERSION_EVENT_ASYNC_TSTAMP) {
-+		struct fw_cdev_event_response *rsp = &e->rsp.without_tstamp;
+ 	list_for_each_entry(client, &card->phy_receiver_list, phy_receiver_link) {
++		struct fw_cdev_event_phy_packet *pp;
 +
-+		rsp->type = FW_CDEV_EVENT_RESPONSE;
-+		rsp->length = request->length;
-+		rsp->closure = request->closure;
-+		payload = rsp->data;
-+	} else {
-+		struct fw_cdev_event_response2 *rsp = &e->rsp.with_tstamp;
-+
-+		rsp->type = FW_CDEV_EVENT_RESPONSE2;
-+		rsp->length = request->length;
-+		rsp->closure = request->closure;
-+		payload = rsp->data;
-+	}
+ 		e = kmalloc(sizeof(*e) + 8, GFP_ATOMIC);
+ 		if (e == NULL)
+ 			break;
  
- 	if (request->data && copy_from_user(payload, u64_to_uptr(request->data), request->length)) {
- 		ret = -EFAULT;
-@@ -615,9 +649,9 @@ static int init_request(struct client *client,
- 	if (ret < 0)
- 		goto failed;
+-		e->phy_packet.closure	= client->phy_receiver_closure;
+-		e->phy_packet.type	= FW_CDEV_EVENT_PHY_PACKET_RECEIVED;
+-		e->phy_packet.rcode	= RCODE_COMPLETE;
+-		e->phy_packet.length	= 8;
+-		e->phy_packet.data[0]	= p->header[1];
+-		e->phy_packet.data[1]	= p->header[2];
+-		queue_event(client, &e->event,
+-			    &e->phy_packet, sizeof(e->phy_packet) + 8, NULL, 0);
++		pp = &e->phy_packet.without_tstamp;
++		pp->closure = client->phy_receiver_closure;
++		pp->type = FW_CDEV_EVENT_PHY_PACKET_RECEIVED;
++		pp->rcode = RCODE_COMPLETE;
++		pp->length = 8;
++		pp->data[0] = p->header[1];
++		pp->data[1] = p->header[2];
++		queue_event(client, &e->event, &e->phy_packet, sizeof(*pp) + 8, NULL, 0);
+ 	}
  
--	fw_send_request(client->device->card, &e->r.transaction, request->tcode, destination_id,
--			request->generation, speed, request->offset, payload, request->length,
--			complete_transaction, e);
-+	fw_send_request_with_tstamp(client->device->card, &e->r.transaction, request->tcode,
-+				    destination_id, request->generation, speed, request->offset,
-+				    payload, request->length, complete_transaction, e);
- 	return 0;
- 
-  failed:
+ 	spin_unlock_irqrestore(&card->lock, flags);
 -- 
 2.37.2
 
