@@ -2,128 +2,132 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8DF2167B23E
-	for <lists+linux1394-devel@lfdr.de>; Wed, 25 Jan 2023 13:03:48 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 121D267B258
+	for <lists+linux1394-devel@lfdr.de>; Wed, 25 Jan 2023 13:08:17 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1pKeVB-0005CP-2C;
-	Wed, 25 Jan 2023 12:03:39 +0000
+	id 1pKeZV-0005Ht-9K;
+	Wed, 25 Jan 2023 12:08:08 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1pKeV4-0005BG-5R
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1pKeZT-0005Hd-VT
  for linux1394-devel@lists.sourceforge.net;
- Wed, 25 Jan 2023 12:03:32 +0000
+ Wed, 25 Jan 2023 12:08:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
- In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=emwjPuAJA02+UQjUpJ9j6SBs61cts4zb343YeiC8Exw=; b=FamTma5m6K5Iz+6ir5l4i/ddBE
- 3kb11mXio9K1UEnD+q58/88lwhe+ejc5cl/P8sgn/9A5TMJsxp2yGDkbJG/ht/phvcmYItd9uz/qD
- imZcUqyLtur2OJcf80j05O0DOC1HqTmkA67P27dvkaJU7m5gWXW5Qqmxm/uT2g6a1LAk=;
+ bh=DFNe9qYghXCug/YdqS/utMFk4bq0M24IOJ8OklWGuG8=; b=ZO/xOradzaUEm7oYUZcgbtnOmG
+ Idvbz3qCuDeSgMcYYuH9ilHNScGrWB3dKKhX5o4VO1xFt3hC38a66Iczq8VbXcSEZA3Nj9z/9OYbw
+ q7V1HrQVcpFAzgRQadyUcyPcjwTzFR4xJxtpZxhH8JKd+yal25xXm9/HF8eI763v68YI=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=emwjPuAJA02+UQjUpJ9j6SBs61cts4zb343YeiC8Exw=; b=jm9+WvWEcb8a5Zi1wdp23EYkEu
- FrVR8AFgzlmTwkUxGeaZeJoOxDcgGdTlTp9WxoDuDkrnXJoTcfJHAZYlcjcYdOYaAUCSTY75P+IxI
- 43fSsjrZiUKya77+Sd5oB/+DAUcsnaOi3LXFohYfvqhIkt2Enjr45l0Ltketcb0SfcrM=;
+ bh=DFNe9qYghXCug/YdqS/utMFk4bq0M24IOJ8OklWGuG8=; b=JokEdTpKjWqLvxOaCtdsztqrbh
+ SS8iYHmjefZwMhScluoLfiEHSZxUVzgxIIyW5RtuOhiJ55Q/06c4XXeGd1DaXKKD1DMBjGzq50cA0
+ Q/6HuWRI9yJ0bPXYw2nl5da+fldT8ztl0ZH6ToHfXZ6Yj/bIOiqp2uk6D8BcDbq+oBpA=;
 Received: from out3-smtp.messagingengine.com ([66.111.4.27])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1pKeV1-00FITv-Lf for linux1394-devel@lists.sourceforge.net;
- Wed, 25 Jan 2023 12:03:32 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 8CCB55C01BD;
- Wed, 25 Jan 2023 07:03:23 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Wed, 25 Jan 2023 07:03:23 -0500
+ id 1pKeZR-0008GW-7Z for linux1394-devel@lists.sourceforge.net;
+ Wed, 25 Jan 2023 12:08:07 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.nyi.internal (Postfix) with ESMTP id 97B6A5C0176;
+ Wed, 25 Jan 2023 07:07:59 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Wed, 25 Jan 2023 07:07:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-transfer-encoding:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm3; t=1674648203; x=
- 1674734603; bh=emwjPuAJA02+UQjUpJ9j6SBs61cts4zb343YeiC8Exw=; b=d
- qLEnG1ZrdLHsiaHZH7Se3GHhqs9Br/qGT+OGCKVkk1WJf1PB4HRHwu8k46120LIj
- PDH2waylB5SM/c2A+ki42oiziu0kS8+coqzRqsAiSZQ2gA1EUSGYucmX8DyefT0E
- ZqMsn54i7Y89l8FFex2XQyJ4HDlFO1ILUlE8s2T/gDVGEIGC4PD6D8nDC7DsNBhk
- Fnlz/kZmirHX3g21HBn3wa+29U0C61VCNJdUGl+Q+vyRzYc1OYg7MT/Z+wkSjH5D
- o+pJQOT+A8YNdti2Hbe1+zxWKSl9bCtotfN6HzAkJAte1NSiByPpmT+fmQoNLArF
- qSeQQKG5bA8mr3IHoJShw==
+ h=cc:cc:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm3; t=1674648479; x=1674734879; bh=DF
+ Ne9qYghXCug/YdqS/utMFk4bq0M24IOJ8OklWGuG8=; b=jrhR6Yg0brTuTCvdcJ
+ F7v0psCXcOqVU1GBBdLGMR9oOEobP2kENS7BHME5pAiitRdUow68419BKzeSLfK3
+ SUuD7BDuGVcy6Hg2hxOxhXVfDYXa/Arix3I0d89UP25DtRHpK24Y70wAtDpfFOZ+
+ r1kZhoMk/2Ck6ggersrkyCrk9Qomd5gopztUek8hHSyF0zsITUvCIl2861fFOx2X
+ reuoDTi1vzFZmomffGcYFE/e0ChskLB3jv9u0fgRVRDWw1hsZ5tca6rFsGOaCrAW
+ +fGPmmfJB5NzHHfgfBg7Q+1tHcZC20inWNAJM21guYbqpIgV3L0IorsR/iPcxngp
+ UXbQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm3; t=1674648203; x=1674734603; bh=emwjPuAJA02+U
- QjUpJ9j6SBs61cts4zb343YeiC8Exw=; b=DpKHuLaiwd3eJEJYICQnRol7s+Ptu
- xXknM4A4Li1yjpuGRojoxJexGfFWGbGJvqoskK6UIZedwQJKI1rlRRczVzLW+ezM
- IoIt6vs0RPGUhOYvqmHxsEQuQcVo8fXKIjVPfkfE27zrOC+yyl3+5n+3M/dhRv+H
- ryuvEF80cQgUh9GaM7vD/o1o8L5waLHwRFJYpMwLLh0CLFv8zZQmH3Lq4eGN6CYk
- VNwzCNKX7VVIpcLEBlR+9JTmyAFu7jB3cN/eXk6frG4rf4Jz8jTtDhWuSJo5HIRB
- +iNwGPHd9/8jU30qZKUWOX6YkzvpEujAD6NER6Ybb8YhNvImpUNekXjlQ==
-X-ME-Sender: <xms:ixrRY0S-3tzrGlVNlNYM_LVTNOlNIL_N3nwX69zoyOvgCKAua6MJig>
- <xme:ixrRYxw3btDGKVmzIcFt_wvRVFrQoDFevMOBVSRg5YSl78T2RQJuQk0gmy4a5eP_k
- B1z06SXlwz_DlmJO1I>
-X-ME-Received: <xmr:ixrRYx33oNEBw5CdP1HGMBVmMA8kYwl-q86MnGTXKD87vah1kn98iCsRBjCN7BsIY6mlcguPx0W-RyZb-YzugRgJ5tdzqa1zCpIk20ffPRn7JWNz-pZajQE>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddvvddgfeehucetufdoteggodetrfdotf
+ messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+ :feedback-id:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to
+ :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm3; t=1674648479; x=1674734879; bh=DFNe9qYghXCug/YdqS/utMFk4bq0
+ M24IOJ8OklWGuG8=; b=Nh5CSV4qyllDh0XwusdKRvHn+YQ79vFCYShS/UPZ3CcJ
+ mXmfuYzswj+in+Zve01+xkMg7joX+xw2V7a8ERFcg9gR1L58eN3+qm++TYFpxvLn
+ oDnbQ/Jn+jaAAKXVYBJwEA/pzHlN1ZfwMZb/aK077j7qJ3o7bnqb5qz21wXavgGH
+ TavNmMl9y8RD4tKxB/2nFf4lOAvnOf1QDtjwod3YcqpBTInyBxANBsksyXpapMwf
+ d1kTDciS48wwBhWLmGaGq9rj12mr7iOEWVLpAbmaZ+vi8TRm2eKQ1WW16tzdYVtk
+ iIaKo8DhhUT7Tn9c1YSNKki44U5QH6NvecuLWgX3rw==
+X-ME-Sender: <xms:nxvRY-rcUyX_BiD3uRcBpIMHwSMffzEsvNPvIq2Rl_56br6mpnum2A>
+ <xme:nxvRY8pn3RhiwgUrDnK64lPIa379hkArHhLAeVl2bji6hHIS23XiPgXNuxFXIsF7T
+ GGueZbOv2Ft4jI_z24>
+X-ME-Received: <xmr:nxvRYzMFHVOBSPeql0FfMeReTTNhMhGlvbWOp7lw72jfGB35_Nzui16Xjywt8bnACVihTLG3BNjvJdgEp5u6X8EcY7Aov-NHzn6X>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedruddvvddgfeeiucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtke
- ertdertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
- rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpedvjefgje
- euvdfguddukeelveetgfdtvefhtdfffeeigfevueetffeivdffkedvtdenucevlhhushht
- vghrufhiiigvpedvnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
- hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:ixrRY4CxLBkkvhuO2afuXqPCUzcVUTA8AhLyEsn1i0yLo56yOkH6ZA>
- <xmx:ixrRY9hXxL2JVUMF9R2ixxFb17jlClKscQC8RSLFDJtsrWQK00ztMg>
- <xmx:ixrRY0oTjP_hARGD2gyMvEn9ZJAVi6zSMXXqKWERG4DdZu_1EhGc9w>
- <xmx:ixrRYwuI4f9425BldjjUg0OPbYpzDrX93e-4u8w56EMm5oSAzO-Gkw>
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepvfgrkhgr
+ shhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhird
+ hjpheqnecuggftrfgrthhtvghrnhepveeilefhudekffehkeffudduvedvfeduleelfeeg
+ ieeljeehjeeuvdeghfetvedvnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlh
+ hushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghs
+ hhhisehsrghkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:nxvRY9507r_LbQ3YVXioK4Upgm-h-AjOasZ1mtoC365C9sc74HCKiQ>
+ <xmx:nxvRY976cnIVSPwQgx3BBNlZPYHIr-mm0-hvqrxklrVJj4lcv15mRw>
+ <xmx:nxvRY9jg5lFDXM7rp8iGq6WeY9Kf3bP5mAuPn9J42XhE1VVXuJvqcA>
+ <xmx:nxvRY3mJSYEYdGSmFvXGgbvF9xRDuYDjcdNBLDWCdXJXCWxcsJ-qfA>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 25 Jan 2023 07:03:22 -0500 (EST)
+ 25 Jan 2023 07:07:57 -0500 (EST)
+Date: Wed, 25 Jan 2023 21:07:55 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: stefanr@s5r6.in-berlin.de
-Subject: [PATCH 11/11] firewire: cdev: implement new event relevant to phy
- packet with time stamp
-Date: Wed, 25 Jan 2023 21:03:01 +0900
-Message-Id: <20230125120301.51585-12-o-takashi@sakamocchi.jp>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20230125120301.51585-1-o-takashi@sakamocchi.jp>
-References: <20230125120301.51585-1-o-takashi@sakamocchi.jp>
+To: Takashi Iwai <tiwai@suse.de>
+Subject: Re: [PATCH 0/3] firewire: use single object for user space listeners
+ to dispatch request to IEC 61883-1 FCP region
+Message-ID: <Y9Ebm7Yw9XT06Hx6@workstation>
+Mail-Followup-To: Takashi Iwai <tiwai@suse.de>, stefanr@s5r6.in-berlin.de,
+ linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
+ alsa-devel@alsa-project.org
+References: <20230120090344.296451-1-o-takashi@sakamocchi.jp>
+ <873581r76s.wl-tiwai@suse.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <873581r76s.wl-tiwai@suse.de>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  In 1394 OHCI,
- the OUTPUT_LAST descriptor of Asynchronous Transmit
- (AT) context has timeStamp field, in which 1394 OHCI controller record the
- isochronous cycle when the packet was sent for the request [...] 
+ Content preview:  Hi, On Mon, Jan 23, 2023 at 09:22:51AM +0100, Takashi Iwai
+ wrote: > On Fri, 20 Jan 2023 10:03:41 +0100, > Takashi Sakamoto wrote: >
+ > > > Hi, > > > > This patch solves long standing issue mentioned by cod [...]
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
  [66.111.4.27 listed in wl.mailspike.net]
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [66.111.4.27 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
-X-Headers-End: 1pKeV1-00FITv-Lf
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [66.111.4.27 listed in list.dnswl.org]
+X-Headers-End: 1pKeZR-0008GW-7Z
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -136,182 +140,54 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: tiwai@suse.de, linux1394-devel@lists.sourceforge.net,
+Cc: alsa-devel@alsa-project.org, linux1394-devel@lists.sourceforge.net,
  linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-In 1394 OHCI, the OUTPUT_LAST descriptor of Asynchronous Transmit (AT)
-context has timeStamp field, in which 1394 OHCI controller record the
-isochronous cycle when the packet was sent for the request subaction.
-Additionally, the trailing quadlet of Asynchronous Receive (AR) context
-has timeStamp field as well in which 1394 OHCI controller record the
-isochronous cycle when the packet arrived. The time stamps are also
-available for the cases to send and receive phy packet.
+Hi,
 
-This commit implements new events with time stamp field for user space.
+On Mon, Jan 23, 2023 at 09:22:51AM +0100, Takashi Iwai wrote:
+> On Fri, 20 Jan 2023 10:03:41 +0100,
+> Takashi Sakamoto wrote:
+> > 
+> > Hi,
+> > 
+> > This patch solves long standing issue mentioned by code comment[1] and a
+> > commit 281e20323ab7 ("firewire: core: fix use-after-free regression in FCP
+> > handler")[2]. This patchset is based on the kernel tree to which another
+> > fix is applied[3].
+> > 
+> > To Iwai-san, I would like to ask you picking them to your local
+> > tree, then send them to mainline tree as well as sound patches when
+> > the merge window is open for v6.3 kernel, unless any question and
+> > objection is posted. (Additionally, I have prepared the other patchset for
+> > the subsystem.)
+> 
+> As those are spontaneous small fixes, now I merged all three patches
+> on topic/firewire branch (on top of the for-linus including your
+> previous FireWire core fix), merged back to for-next branch for 6.3.
 
-Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
----
- drivers/firewire/core-cdev.c | 90 +++++++++++++++++++++++++++---------
- 1 file changed, 68 insertions(+), 22 deletions(-)
+Thanks for your applying.
 
-diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-index 2220de3c945e..6274b86eb943 100644
---- a/drivers/firewire/core-cdev.c
-+++ b/drivers/firewire/core-cdev.c
-@@ -206,6 +206,7 @@ struct outbound_phy_packet_event {
- 	struct fw_packet p;
- 	union {
- 		struct fw_cdev_event_phy_packet without_tstamp;
-+		struct fw_cdev_event_phy_packet2 with_tstamp;
- 	} phy_packet;
- };
- 
-@@ -213,6 +214,7 @@ struct inbound_phy_packet_event {
- 	struct event event;
- 	union {
- 		struct fw_cdev_event_phy_packet without_tstamp;
-+		struct fw_cdev_event_phy_packet2 with_tstamp;
- 	} phy_packet;
- };
- 
-@@ -1555,7 +1557,6 @@ static void outbound_phy_packet_callback(struct fw_packet *packet,
- 		container_of(packet, struct outbound_phy_packet_event, p);
- 	struct client *e_client = e->client;
- 	u32 rcode;
--	struct fw_cdev_event_phy_packet *pp;
- 
- 	switch (status) {
- 	// expected:
-@@ -1583,10 +1584,31 @@ static void outbound_phy_packet_callback(struct fw_packet *packet,
- 		break;
- 	}
- 
--	pp = &e->phy_packet.without_tstamp;
--	pp->rcode = rcode;
--	pp->data[0] = packet->timestamp;
--	queue_event(e->client, &e->event, &e->phy_packet, sizeof(*pp) + pp->length, NULL, 0);
-+	switch (e->phy_packet.without_tstamp.type) {
-+	case FW_CDEV_EVENT_PHY_PACKET_SENT:
-+	{
-+		struct fw_cdev_event_phy_packet *pp = &e->phy_packet.without_tstamp;
-+
-+		pp->rcode = rcode;
-+		pp->data[0] = packet->timestamp;
-+		queue_event(e->client, &e->event, &e->phy_packet, sizeof(*pp) + pp->length,
-+			    NULL, 0);
-+		break;
-+	}
-+	case FW_CDEV_EVENT_PHY_PACKET_SENT2:
-+	{
-+		struct fw_cdev_event_phy_packet2 *pp = &e->phy_packet.with_tstamp;
-+
-+		pp->rcode = rcode;
-+		pp->tstamp = packet->timestamp;
-+		queue_event(e->client, &e->event, &e->phy_packet, sizeof(*pp) + pp->length,
-+			    NULL, 0);
-+		break;
-+	}
-+	default:
-+		WARN_ON(1);
-+		break;
-+	}
- 
- 	client_put(e_client);
- }
-@@ -1596,13 +1618,12 @@ static int ioctl_send_phy_packet(struct client *client, union ioctl_arg *arg)
- 	struct fw_cdev_send_phy_packet *a = &arg->send_phy_packet;
- 	struct fw_card *card = client->device->card;
- 	struct outbound_phy_packet_event *e;
--	struct fw_cdev_event_phy_packet *pp;
- 
- 	/* Access policy: Allow this ioctl only on local nodes' device files. */
- 	if (!client->device->is_local)
- 		return -ENOSYS;
- 
--	e = kzalloc(sizeof(*e) + 4, GFP_KERNEL);
-+	e = kzalloc(sizeof(*e) + sizeof(a->data), GFP_KERNEL);
- 	if (e == NULL)
- 		return -ENOMEM;
- 
-@@ -1616,11 +1637,23 @@ static int ioctl_send_phy_packet(struct client *client, union ioctl_arg *arg)
- 	e->p.header_length	= 12;
- 	e->p.callback		= outbound_phy_packet_callback;
- 
--	pp = &e->phy_packet.without_tstamp;
--	pp->closure = a->closure;
--	pp->type = FW_CDEV_EVENT_PHY_PACKET_SENT;
--	if (is_ping_packet(a->data))
--		pp->length = 4;
-+	if (client->version < FW_CDEV_VERSION_EVENT_ASYNC_TSTAMP) {
-+		struct fw_cdev_event_phy_packet *pp = &e->phy_packet.without_tstamp;
-+
-+		pp->closure = a->closure;
-+		pp->type = FW_CDEV_EVENT_PHY_PACKET_SENT;
-+		if (is_ping_packet(a->data))
-+			pp->length = 4;
-+	} else {
-+		struct fw_cdev_event_phy_packet2 *pp = &e->phy_packet.with_tstamp;
-+
-+		pp->closure = a->closure;
-+		pp->type = FW_CDEV_EVENT_PHY_PACKET_SENT2;
-+		// Keep the data field so that application can match the response event to the
-+		// request.
-+		pp->length = sizeof(a->data);
-+		memcpy(pp->data, a->data, sizeof(a->data));
-+	}
- 
- 	card->driver->send_request(card, &e->p);
- 
-@@ -1655,20 +1688,33 @@ void fw_cdev_handle_phy_packet(struct fw_card *card, struct fw_packet *p)
- 	spin_lock_irqsave(&card->lock, flags);
- 
- 	list_for_each_entry(client, &card->phy_receiver_list, phy_receiver_link) {
--		struct fw_cdev_event_phy_packet *pp;
--
- 		e = kmalloc(sizeof(*e) + 8, GFP_ATOMIC);
- 		if (e == NULL)
- 			break;
- 
--		pp = &e->phy_packet.without_tstamp;
--		pp->closure = client->phy_receiver_closure;
--		pp->type = FW_CDEV_EVENT_PHY_PACKET_RECEIVED;
--		pp->rcode = RCODE_COMPLETE;
--		pp->length = 8;
--		pp->data[0] = p->header[1];
--		pp->data[1] = p->header[2];
--		queue_event(client, &e->event, &e->phy_packet, sizeof(*pp) + 8, NULL, 0);
-+		if (client->version < FW_CDEV_VERSION_EVENT_ASYNC_TSTAMP) {
-+			struct fw_cdev_event_phy_packet *pp = &e->phy_packet.without_tstamp;
-+
-+			pp->closure = client->phy_receiver_closure;
-+			pp->type = FW_CDEV_EVENT_PHY_PACKET_RECEIVED;
-+			pp->rcode = RCODE_COMPLETE;
-+			pp->length = 8;
-+			pp->data[0] = p->header[1];
-+			pp->data[1] = p->header[2];
-+			queue_event(client, &e->event, &e->phy_packet, sizeof(*pp) + 8, NULL, 0);
-+		} else {
-+			struct fw_cdev_event_phy_packet2 *pp = &e->phy_packet.with_tstamp;
-+
-+			pp = &e->phy_packet.with_tstamp;
-+			pp->closure = client->phy_receiver_closure;
-+			pp->type = FW_CDEV_EVENT_PHY_PACKET_RECEIVED2;
-+			pp->rcode = RCODE_COMPLETE;
-+			pp->length = 8;
-+			pp->tstamp = p->timestamp;
-+			pp->data[0] = p->header[1];
-+			pp->data[1] = p->header[2];
-+			queue_event(client, &e->event, &e->phy_packet, sizeof(*pp) + 8, NULL, 0);
-+		}
- 	}
- 
- 	spin_unlock_irqrestore(&card->lock, flags);
--- 
-2.37.2
+> But, I have no will to keep doing this in a long term.  I suppose the
+> best would be that you'd step up as a maintainer for FireWire
+> stack...
 
+Indeed. The next patchset is beyond your courtesy. I posted it to LKML
+with my concern. I'm pleased if you follow to it.
+
+* https://lore.kernel.org/lkml/20230125120301.51585-1-o-takashi@sakamocchi.jp/
+
+> thanks,
+> 
+> Takashi
+
+
+Thanks
+
+Takashi Sakamoto
 
 
 _______________________________________________
