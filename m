@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 860D66DCE5C
-	for <lists+linux1394-devel@lfdr.de>; Tue, 11 Apr 2023 02:06:32 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id D67A16E4B97
+	for <lists+linux1394-devel@lfdr.de>; Mon, 17 Apr 2023 16:36:20 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1pm1Wd-0003L9-Ue;
-	Tue, 11 Apr 2023 00:06:19 +0000
+	id 1poPxh-0005wv-Cz;
+	Mon, 17 Apr 2023 14:36:10 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1pm1WL-0003Kd-WA
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1poPxe-0005we-Pm
  for linux1394-devel@lists.sourceforge.net;
- Tue, 11 Apr 2023 00:06:01 +0000
+ Mon, 17 Apr 2023 14:36:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
  Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Cz6BsumEIt+mTcwd5ko3MSJ+L+18kKloKqkmGXShAw4=; b=agwZKC2BYHRa8MWJ/dPU3bdxwH
- DVALKXBDhQ6XJsIbf57wWjSbsyHkoAo42z90UXNm0Y8tNMaaSL0LbyxtKhsyRZXciCK/WaALyqpFQ
- kbrdOTNO+OnIHYQQ3n/tiHzH5lIDC06aiYC4hcbRrqzd4saDU5zNBZDPy9gL+i4QPIzs=;
+ bh=l15cdflCQ3SxSuEdRTgAeWktejfsY5ZPKXq6m2nekW4=; b=E6oBQn9cGqPdpze3trqSp/vmu+
+ yX7yUDcP1frIjeaKbg0/Bv4Qmwj1TcjpGt5EqGTvXZJ9cJl0ypxe0nWHCGf0E0ADgkWDtd4Kr8FaJ
+ b7dktYhHzNNyEZo6cAI/Qpq/E/LbPIubiQ1fgNZ3S6axHuggHXuHb9mo3doHCByqPA14=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
@@ -31,77 +31,79 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=Cz6BsumEIt+mTcwd5ko3MSJ+L+18kKloKqkmGXShAw4=; b=Pa988DuZ/H6Fzet3Z7dS4opn8G
- sf268I99akYfvtM0VxTIPrOOsOQ87Do6Oc9mTnxw3A2AXzTwtb9xKVoKCYZx/8sq0Gydf3CItRY80
- 9cKcPX+nw5uC+wSihwcGs5hEq7VW4yJoJ8imi/ktrOw9k/9iYOU24ueAXBE04LPUB4Q8=;
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
+ bh=l15cdflCQ3SxSuEdRTgAeWktejfsY5ZPKXq6m2nekW4=; b=QiWKXCNZiIGxXA8DxS/A8MHu+j
+ EjeygdRm1vdBBv8uL0oy9vKTCnOty/mQznPL2vRl3Gyb5iMppB3BiWmI33IAj1y7M50v96Iqr8i0p
+ 6kJxIpistmKQ8OHO2YsXqpTocUpRQ/P1tIvqoBZ4gPdpJMv9anNWAViK4IwN/mJ8LqJ0=;
+Received: from out1-smtp.messagingengine.com ([66.111.4.25])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1pm1WH-0003AR-S2 for linux1394-devel@lists.sourceforge.net;
- Tue, 11 Apr 2023 00:05:59 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
- by mailout.west.internal (Postfix) with ESMTP id 4B2183200495;
- Mon, 10 Apr 2023 20:05:50 -0400 (EDT)
+ id 1poPxZ-0001mv-Vh for linux1394-devel@lists.sourceforge.net;
+ Mon, 17 Apr 2023 14:36:07 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailout.nyi.internal (Postfix) with ESMTP id 556965C00F4;
+ Mon, 17 Apr 2023 10:17:13 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Mon, 10 Apr 2023 20:05:50 -0400
+ by compute1.internal (MEProxy); Mon, 17 Apr 2023 10:17:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm2; t=1681171549; x=
- 1681257949; bh=Cz6BsumEIt+mTcwd5ko3MSJ+L+18kKloKqkmGXShAw4=; b=Z
- KVwQL/vfz5ieR9j/izxkEZuH3iBT5NzmSIYZCDvSa5KsYJXt7jFzooJd5cptarWY
- j23yx18RAZdBr66th9uyIcYTrnxy9Pie8xzqUwwa/Q7B7fmIqHZaZr5tEI1sDUMN
- swIggmG4Cj0vJyur7Biitay3gwgY4C9WtvF2MseOMHXSuSaR8k2Mvn5H06UtNMZN
- kAB3rbWJm0bt08uwFN8Ch58oDavC41vHcbaiPR1BsZD3DR+F+QK06XlP3j1em6Zn
- wedcbXM4OhYXZVG374zryyBZkI5qOVQQAsaLG8+oV15aCnW8MrPMyedoVyuB3hWg
- +hgQZ7Cr138221DcfedEw==
+ :reply-to:sender:subject:subject:to:to; s=fm3; t=1681741033; x=
+ 1681827433; bh=l15cdflCQ3SxSuEdRTgAeWktejfsY5ZPKXq6m2nekW4=; b=G
+ KDDM4yg0ja82PR7UFA2IM88NqCebJi+TFhPe8bF23WcNjhVDQEWCH1TYfg/60PWJ
+ 2eq1+fp8TXDMhTdAo/E2HehgsceviXYt1VyjnZmNLEuWKMgElHZIGn5R/Z6tAA0p
+ Kb3cUaoVqZa3bGq2fJmq8Oj0hhCotfNQiB2IIiaiBIHTmYzZwLT4chniAXhpmBFp
+ UWxYRkEzUNums0CC5f+HhbgYFxsLO+HNXaaL2GbwLbEJJfXPYxN+HlfEJtetklRT
+ SUMhclwXbBISsRIdWft2w+V41XlAI77zXdVkkI3ER0pDvi9eVz0bzuteQWf4+goy
+ BZ8lKRk4DAlOxJdEkJBmQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:sender:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm2; t=1681171549; x=1681257949; bh=Cz6BsumEIt+mT
- cwd5ko3MSJ+L+18kKloKqkmGXShAw4=; b=t10OaKqdX6CE7EYILpyGFrg+jFqRc
- 9/GQceecu2zXzkbqq5XJrcYTZy8jLlIbLYdkLu1sGpG9zvLW29bTvk6Z6+LxzwjY
- +A9CGeYoS9Thu+TAr+wrLawHZ92eZBhDwiOUDThfmk4xNen4XBSsVv6Fn9Juzz6E
- iIHTKK3e2fCxtrwUiQasQnbAdYbuGN2dX8U7lL3/Kd+HUofqpKZH4kQpxHkr3Mz3
- u1981wH/4IqgBz1qqO7DMAXVetko97ZAmxSxJT3QOKKRZiciSWKJGhWhDkICSwXY
- 0rHUU+Z+hKctgke9FxzpJ35Zn6nmgtTxXINXlNh6dY1K5kIM0V8I5lwHw==
-X-ME-Sender: <xms:XKQ0ZHynqOwhXI-9cOGEcCTBhadDdCtYDREVwdqXJVF2a18p76sb-A>
- <xme:XKQ0ZPTTjoB0VJWBK_vt28-8zrBwwaIh28q5VrZyQePuYzuVVxmbKZibL_HoIffNd
- 6_7ZuFnh7rFCjEJg5I>
-X-ME-Received: <xmr:XKQ0ZBXPjQO_juPEWRgAhrpOFdQLNco81VMM1OWZ8Cm_qbgezk-zqCYqIHK2Wv0qar6Wyx7sqaNmijtT439DsCUmLbU>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdekfedgfedvucetufdoteggodetrfdotf
+ :x-sasl-enc; s=fm3; t=1681741033; x=1681827433; bh=l15cdflCQ3SxS
+ uEdRTgAeWktejfsY5ZPKXq6m2nekW4=; b=HF7lLdY3CG29HOuOyGNcjYY41pnEv
+ MWBIHfX4aUc8tAYUFszbitfZZgH2Pfx6i6p48SFWRI+8fqFgrEdyooi7UblPTekR
+ cdHHJP3Iyyf4WrF/QdmlOnQJ51hUmV4FB7Me++xJEC0Xo+etuYcMvn1J9iAK399O
+ V83pXy9XNLaq/hGIJ4qyYd/WVSc0ifeAObIa7Y1gdzbiDkPiAYAp3Vsf2RbFhIeK
+ S1xL91ij3fgpNdT2yUbJwq/RrTdXEBYxzR3H8Obp8+TPmD1U5zaorqbCYhjGlSwO
+ DgoigqphQ21byer1j6UMHCssE1N4zMjFmoeKNXS4vFd9D4SjILRU0orLA==
+X-ME-Sender: <xms:6FQ9ZJ2aK6vxxCPEwnujDN1tMnT7qy31LDz9CRpsNeC_82efDKOFfA>
+ <xme:6FQ9ZAH_KwWWFROQNPE3U6K-723W797rjDrdAbHaVcQwbrlsyIj2Vx5UL53MN2Toq
+ zx_EIw1EnXaXaVflpg>
+X-ME-Received: <xmr:6FQ9ZJ7RIqUMmegwY4RZWC-C74hZarJKOjNk9kPUX5QLRt2sNLUp1-mFKXe_FkxATNT3sxg2MlKll4nDa9H6acQMhQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeliedgjeefucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
  cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepvfgrkhgr
  shhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhird
- hjpheqnecuggftrfgrthhtvghrnhepveeilefhudekffehkeffudduvedvfeduleelfeeg
- ieeljeehjeeuvdeghfetvedvnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlh
- hushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghs
- hhhisehsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:XaQ0ZBh2rU2kPL1ikh3tEzHAhaEKY2MMTyr-prD0_860N3JUbRrxIQ>
- <xmx:XaQ0ZJCcWNWofTis3-SZVAVhUUYDSFKtQbp1hebE8nVtmf-zJkknJg>
- <xmx:XaQ0ZKKlCim2dDa_PfIZXduzkTQflcjpTUnfGpMhzpFfHgBS4WtP9g>
- <xmx:XaQ0ZINdUVsdsRYmKh1RIufPfp743WXjGNEEbCE8NMrcv7vi4GSDxQ>
+ hjpheqnecuggftrfgrthhtvghrnhephfduvedvgfduueekleeuleeihedvffdugffhteei
+ ffevhfeutddtffeijeegueevnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpmhgrrh
+ gtrdhinhhfohenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhr
+ ohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:6FQ9ZG2gsh7a7AfZLmtW0Mo3JYojU-LUQPQvPWGRvm3Xo2FzHL7dVw>
+ <xmx:6FQ9ZMEA8DSYUxX73vgYYLZllY3pCt1BTZl4VCoU8C-J-rLIenRnGA>
+ <xmx:6FQ9ZH9UsLvTi3W8sTDp2Et2voeIOM3YKtRS1VazXkEWWw0R2l8ulg>
+ <xmx:6VQ9ZIjujCh3Rqaai1CTmVOzf24c8eby41BAQB1LRmNrSouq0u8iAA>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 10 Apr 2023 20:05:47 -0400 (EDT)
-Date: Tue, 11 Apr 2023 09:05:43 +0900
+ 17 Apr 2023 10:17:10 -0400 (EDT)
+Date: Mon, 17 Apr 2023 23:17:06 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Randy Dunlap <rdunlap@infradead.org>
-Subject: Re: [PATCH v3] firewire: init_ohci1394_dma: use correct function
- names in comments
-Message-ID: <20230411000543.GA254125@workstation>
-Mail-Followup-To: Randy Dunlap <rdunlap@infradead.org>,
- linux-kernel@vger.kernel.org,
+To: rdunlap@infradead.org
+Subject: Re: [PATCH] MAINTAINERS: replace maintainer of FireWire subsystem
+Message-ID: <20230417141706.GA493669@workstation>
+Mail-Followup-To: rdunlap@infradead.org,
  Stefan Richter <stefanr@s5r6.in-berlin.de>,
- linux1394-devel@lists.sourceforge.net,
- Andrew Morton <akpm@linux-foundation.org>
-References: <20230410011306.26268-1-rdunlap@infradead.org>
+ linux-kernel@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
+ tiwai@suse.de, broonie@kernel.org
+References: <20230306035814.78455-1-o-takashi@sakamocchi.jp>
+ <20230310210356.561dbe63@kant>
+ <20230311080343.GA378828@workstation>
+ <20230311101554.14c211d4@kant>
+ <20230312070728.GA421475@workstation>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230410011306.26268-1-rdunlap@infradead.org>
+In-Reply-To: <20230312070728.GA421475@workstation>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
@@ -109,26 +111,30 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Sun, Apr 09, 2023 at 06:13:06PM -0700, Randy Dunlap wrote:
- > Prevent kernel-doc complaints by using the correct function names in >
- kernel-doc comments: > > drivers/firewire/init_ohci1394_dma.c:258 [...] 
+ Content preview:  Hi Randy, I'm sorry that I didn't notice your reply, but I'm
+ off from the receivers list of the message. > Hi-- > >On 3/11/23 23:07, Takashi
+ Sakamoto wrote: >> Hi, >> >>> >>> It's good to see you being active in the
+ kernel and related userland >>> development/ maintainership, and that you
+ have a plan for [...] 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.147.123.24 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [64.147.123.24 listed in wl.mailspike.net]
+ low trust [66.111.4.25 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [66.111.4.25 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1pm1WH-0003AR-S2
+ -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1poPxZ-0001mv-Vh
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -141,66 +147,51 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: Andrew Morton <akpm@linux-foundation.org>,
- linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
+Cc: tiwai@suse.de, broonie@kernel.org, linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Sun, Apr 09, 2023 at 06:13:06PM -0700, Randy Dunlap wrote:
-> Prevent kernel-doc complaints by using the correct function names in
-> kernel-doc comments:
-> 
-> drivers/firewire/init_ohci1394_dma.c:258: warning: expecting prototype for debug_init_ohci1394_dma(). Prototype was for init_ohci1394_dma_on_all_controllers() instead
-> drivers/firewire/init_ohci1394_dma.c:289: warning: expecting prototype for setup_init_ohci1394_early(). Prototype was for setup_ohci1394_dma() instead
-> 
-> Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-> Cc: Stefan Richter <stefanr@s5r6.in-berlin.de>
-> Cc: linux1394-devel@lists.sourceforge.net
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-> ---
-> v2: rebase/resend, add note to Andrew
-> v3: add Takashi-san
-> 
->  drivers/firewire/init_ohci1394_dma.c |    4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+Hi Randy,
 
-Thank you to remind it to me.
+I'm sorry that I didn't notice your reply, but I'm off from the receivers
+list of the message.
 
-Acked-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+> Hi--
+> 
+>On 3/11/23 23:07, Takashi Sakamoto wrote:
+>> Hi,
+>> 
+>>>
+>>> It's good to see you being active in the kernel and related userland
+>>> development/ maintainership, and that you have a plan for the next years.
+>> 
+>> At the moment, I have a problem about the list archive.
+> 
+> If there is still a problem about the mailing list archives,
+> Hank Leininger at marc.info has been pretty good in the past about providing
+> archives fore lore.kernel.org.
+> See the bottom of https://marc.info/?q=about for his email address.
  
-By the way, I got enough access permission to linux1394.git repository
-and I'm preparing it for maintenance work (not done yet).
+Thanks for the information. As a quick glimpse, linux1394-devel has been
+archived since 2003. It looks to be a good source to push into
+lore.kernel.org, while I know that the list archive should include many
+spams since any one is allowed to post to the list without subscribing and
+being moderated at one time. It is one of my reason not to use the list
+so actively. I need to make filter to remove them before pushing.
+Furthermore, the ownership of list is still unclear to me. I have a small
+hesitation to use it further...
+ 
+> Are you waiting for the kernel.org account before merging the update to the
+> MAINTAINER's file?
 
-* https://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git/
+I've already got the account and enough permission to linux1394
+repository, but The repository is inactive so long, and abandoned. Looking
+ahead to my future work, I'm preparing them at present.
 
-After finishing the preparation (e.g. joining to linux-next integration),
-I'll apply your patch and tell it to you, within the week.
 
-> diff -- a/drivers/firewire/init_ohci1394_dma.c b/drivers/firewire/init_ohci1394_dma.c
-> --- a/drivers/firewire/init_ohci1394_dma.c
-> +++ b/drivers/firewire/init_ohci1394_dma.c
-> @@ -251,7 +251,7 @@ static inline void __init init_ohci1394_
->  }
->  
->  /**
-> - * debug_init_ohci1394_dma - scan for OHCI1394 controllers and init DMA on them
-> + * init_ohci1394_dma_on_all_controllers - scan for OHCI1394 controllers and init DMA on them
->   * Scans the whole PCI space for OHCI1394 controllers and inits DMA on them
->   */
->  void __init init_ohci1394_dma_on_all_controllers(void)
-> @@ -283,7 +283,7 @@ void __init init_ohci1394_dma_on_all_con
->  }
->  
->  /**
-> - * setup_init_ohci1394_early - enables early OHCI1394 DMA initialization
-> + * setup_ohci1394_dma - enables early OHCI1394 DMA initialization
->   */
->  static int __init setup_ohci1394_dma(char *opt)
->  {
-
-Kind regards
+Thanks
 
 Takashi Sakamoto
 
