@@ -2,129 +2,123 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E1AD7003E0
-	for <lists+linux1394-devel@lfdr.de>; Fri, 12 May 2023 11:36:37 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE76B70AC72
+	for <lists+linux1394-devel@lfdr.de>; Sun, 21 May 2023 07:07:29 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1pxPCK-0006nD-Hy;
-	Fri, 12 May 2023 09:36:25 +0000
+	id 1q0bHt-0000lI-3Q;
+	Sun, 21 May 2023 05:07:21 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1pxPCJ-0006n4-BI
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1q0bHr-0000lA-0y
  for linux1394-devel@lists.sourceforge.net;
- Fri, 12 May 2023 09:36:24 +0000
+ Sun, 21 May 2023 05:07:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+ From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=pnfmXPTPbtWTIoaRTw/1W6FSPLFdzGDXUlLgZCpR8eI=; b=aMUPl79axG39YFwZaNKFYJ2olw
- UEGy/USuJ7gmHtc+3nsxJwKjk10LLNdxfhZ1QDjVlp7bSArVwXMNTBXZfkZFtCB6Kzs0Ye2gihxyo
- Hc33a3QmJvr+V79j21giKAzL3PVVyceICSV8J0eZf+mPXxulHLeI6BxT9s7STWzr34J8=;
+ bh=JyjNCR1jGKbtoP7Pkr28ibLSbpbQ2tkQRL67UKxt1PY=; b=Rmr3VxZ1UCByT1wpsE7w9OrhDr
+ Id/EmyM4r0g2c0NI/05LZMpYsOS7skaN2RZEVnNlLZOQZ2xx2ro74+yH0Vr9i8X8Ntd+JFb+qypP7
+ L4N8BTCPL4WiqniWxDt1o4u1rzv7LHAY34lLyxqsMckvuf5Fcoge+uNpn3wCl+FvZAPc=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:To:
- From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=pnfmXPTPbtWTIoaRTw/1W6FSPLFdzGDXUlLgZCpR8eI=; b=ldF0TUP/6s9MzVGt5rLIK32YGL
- PBxubVLSH5tmDIWyV1VOU0bGvrIbS6WaIMFTu4QrNQQki7hwLuN1D9/s7VfIMznMG+hn0ZntkOesS
- AQ8csoNzVEYCNbTAIPXbNuuqzBBTXKFgau8uJNwW6JtJE1+Pob5Fj61n3AUr3pGg5nGs=;
-Received: from out2-smtp.messagingengine.com ([66.111.4.26])
- by sfi-mx-2.v28.lw.sourceforge.com with esmtps
+ h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:
+ Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=JyjNCR1jGKbtoP7Pkr28ibLSbpbQ2tkQRL67UKxt1PY=; b=d
+ OoYJWIHMwS/M5G4fDFXX1ORYbeB31DeYxLtRX2imNrvWB6ubWYD3pKBdo+sLM3bccC7qTik99DtU1
+ CguTVWFhS0iBSIk1ZO+Nslp9f0APjOkTJcaA6M6sB9JE+DLnThqFUdGpdHKxz8KAKAuehDxymSFuX
+ 7+XYfGbCvmY6ssg4=;
+Received: from wout5-smtp.messagingengine.com ([64.147.123.21])
+ by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1pxPCC-0002F7-DK for linux1394-devel@lists.sourceforge.net;
- Fri, 12 May 2023 09:36:24 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.nyi.internal (Postfix) with ESMTP id 4C8B05C034B;
- Fri, 12 May 2023 05:36:08 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Fri, 12 May 2023 05:36:08 -0400
+ id 1q0bHm-00EhuO-UZ for linux1394-devel@lists.sourceforge.net;
+ Sun, 21 May 2023 05:07:18 +0000
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.west.internal (Postfix) with ESMTP id 6D9B5320082A;
+ Sun, 21 May 2023 01:07:07 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute3.internal (MEProxy); Sun, 21 May 2023 01:07:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:content-type:content-type:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm1; t=1683884168; x=1683970568; bh=pn
- fmXPTPbtWTIoaRTw/1W6FSPLFdzGDXUlLgZCpR8eI=; b=emHDmpT7k56UQ/HbVj
- U4UioudLnB5jSoESJqzQGM/KAP+E7lRyAm5sd2RMZbd8/EB8ARY5G3JmP8JHH5C5
- kIaUEdJdEaWUTrHfUmtr2B089AX3ASa6gAxM0ghZkoxQ6HOlIVY1yjXFfWKatqDu
- OuFDQNzyXX2I9VQ1p/yC6lDXlJUj6eMo/9q0gp4hb+rDQ9+tVwfcq2xX+hw8/aBX
- 2BDOpv3y4Rj/w70GNwyu3DLCJkJO6hdkTxoyCVj8kqJRR41jRcqXcX0RFXkoH0Z2
- SgV4+OAKX8hG1Rtqx1bBet+DIazMvoIplVMyNiXTfFtRACvM2zRRl2LQgseE+hwM
- RHSQ==
+ h=cc:cc:content-type:content-type:date:date:from:from
+ :in-reply-to:message-id:mime-version:reply-to:sender:subject
+ :subject:to:to; s=fm1; t=1684645627; x=1684732027; bh=JyjNCR1jGK
+ btoP7Pkr28ibLSbpbQ2tkQRL67UKxt1PY=; b=u7mnEZuJNGO6SvKSwWgUjSmWee
+ Q5MqFw55a4TTOuqmFCgrprDLkF0xP0mMFudgBxoWg1hmztr2lisoxWqWr4cb+/uU
+ hR9TqI1Px8DaYdO5VF81dNBXWvgbRr+bvojrhULlKSKqK3bW/svMo09lb1FJED1k
+ yz3M+iVP6PcRVDGjdVGo0tOOF20K63+x0F2ruJrF08c7Mink+JpROdHFS54G2/sF
+ wjhbD/L91T1dh8IYLWtMBtYPEL+hUlCxF/y2QvQtjJ/ybYS04XaKQ8j2QVo52Zhp
+ nCdnDEaei6OVRuIbU3r1EXI9n4pI8Zez1v4p2E7bwf1KnwKImGr7NKvU3Rqw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; t=1683884168; x=1683970568; bh=pnfmXPTPbtWTI
- oaRTw/1W6FSPLFdzGDXUlLgZCpR8eI=; b=D8xFW1eqZa0uoSog7PkEMjmaxW2Qo
- DJ5JCSVgc6n0Wuris8uoU4zD1j2UiO/fitIpNpS0HGZEnNDu+/+nMmIZcfZwoZeO
- G+2sV1MLIOv5TmtJMRq4ve25si8DI/jFqKZ/h4cjCeEGSSX95pCUOb+ElHT6msis
- UqfJlpysGKXLlNfy2lMsuQHNdv8AzZNyysROgSClsZ9+KniWYB5TUulCGpNso8os
- egYy6MIaPVTvMvtrK2As82QtXn8Z+7NOGCc4if66og6uyA3oi2lsGI2fn8pR+Gnw
- aj9RSjnj9zROk+YyD/JtOyyZetOYNct2oKsf/aePDxuJhLePaeQJXa09w==
-X-ME-Sender: <xms:hwheZEHF_ttmdtdBgTXgXEqdjGTfg04-xCR0wPA2PaPP22OuZ9Kzww>
- <xme:hwheZNV-lA4R4aBsJN0HSqEZTMaBbujP32E1tLZirQVqm_akyUz8QJZdcAvv9CM2h
- biqR_A96Az4x4RMreU>
-X-ME-Received: <xmr:hwheZOK26TjOjRMg1ix1I9JNCAq2EKt3c-ijD1lsCVMdYv7HwMmRXZUoZO9eZrVe6TCFm8cXx4igY7u3ro1j-TEsFU8t>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeehtddgudekucetufdoteggodetrfdotf
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:message-id
+ :mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+ 1684645627; x=1684732027; bh=JyjNCR1jGKbtoP7Pkr28ibLSbpbQ2tkQRL6
+ 7UKxt1PY=; b=ZK7RHv+0C9rPw8C24JSE+l0o/mTpuEeF/Igec0xraZWvo4hXWzi
+ TZaYvSTdQq1NRTGcmp+3+weywyFFxqyKo9kwnlAcgptW88S7GwttyG/c1/CV2lqB
+ bVXSfAE8TebyjNbt8zh+4A6YvgQG/QAKAt11LUgXVK3TjYX6VaVE7F9UoaeQeLpF
+ iUjIsGXyQYPkydH5JRs/nwVnGDaj+IhmQ47lxznKwuOBU9KoWTrU+Q+83cx/wdCH
+ 7HVQdTH3PKyJGsECoGBJ0DmQCHJpaaQNcqqSNOoI3k1AFHtr+6IoxNvScUfUzzhn
+ mzyEZDaEuv9IoAk8Q4mPCEB1kWcXgXNCGQg==
+X-ME-Sender: <xms:-qZpZAQ1AWjSsBRkOqIhCilGXI0yuXPE7khK5Ujf28DWQKJ2XQhiFQ>
+ <xme:-qZpZNxGy_1Hi-J9Aw7cgR1mFPLgwSdsk93TJllHTaYxCqe0Yle9tdscDCbnVAVOC
+ IgMjxqvKcx0qcvHTJ8>
+X-ME-Received: <xmr:-qZpZN0rZ8NhjwguDjrhn_sr3C3FJA8_GCChuipXkniB0uYaiRHZ1Hg5JkoVAc-aWaRzlCjGzdKHMwuMGr0UaSUoALr0xT16muA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeeikedgledtucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvuffkfhggtggujgesthdtre
- dttddtvdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgr
- shhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepjeegieefue
- evueefieeggeejledvgfejgeffjefgvdekleehgfdtfeetjeelkeejnecuffhomhgrihhn
- pehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmh
- grihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:hwheZGFWDQ8MuWJ739vptx0GJeG97g1kNQGir62I25vTsKIL86CVHg>
- <xmx:hwheZKWx-F9LY_nXnxeO9g4Ce-CklFas6X_VtQx_MCkPdGmd-_IPuQ>
- <xmx:hwheZJN9gKfnsOSSN6OXoZRBPX6I41oVL-Cb7plpZEQURRUlGUI8WA>
- <xmx:iAheZNdsug9ZiKFPwTXv8PnmIOk2n5kQvOyaQf5M5hwaWVrlPxT2MA>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfggtggusehttdertd
+ dttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
+ hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeevkeehffdtge
+ etleeujeeuieegtddvheevjeehieeuhfekledtkeeigeduudffkeenucffohhmrghinhep
+ khgvrhhnvghlrdhorhhgpdhorhhguddrihhnpdhgihhthhhusgdrtghomhenucevlhhush
+ htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhi
+ sehsrghkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:-qZpZECn9T7Nz5lSqusdgrjNoQRpCeMz7Q2M2xEn2N-7m7VHB5n9bA>
+ <xmx:-qZpZJh6H27QgM1JUmhMyDH_ydxDb6dv6cpnuU8Fb_y7oM-DZipccg>
+ <xmx:-qZpZApfkoDIGbHkcOx7K6VkDtvlZuEMDPj6Qr9BkjXsg0gWdkUk1Q>
+ <xmx:-6ZpZJIHyQZHLV_zKuinTYJMbMpHb4vU4buu9-0aJydwxB6sO1AOmQ>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 12 May 2023 05:36:06 -0400 (EDT)
-Date: Fri, 12 May 2023 18:36:03 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
+ 21 May 2023 01:07:05 -0400 (EDT)
+Date: Sun, 21 May 2023 14:07:03 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: clemens@ladisch.de, cladisch@googlemail.com,
- linux1394-devel@lists.sourceforge.net
-Subject: Re: linux-firewire-utils in git.kernel.org?
-Message-ID: <20230512093603.GA901787@workstation>
-Mail-Followup-To: clemens@ladisch.de, cladisch@googlemail.com,
- linux1394-devel@lists.sourceforge.net
-References: <20230422010027.GA56586@workstation>
+To: linux1394-devel@lists.sourceforge.net
+Subject: linux-firewire-utils v0.5.0 release
+Message-ID: <20230521050703.GA106678@workstation.local>
+Mail-Followup-To: linux1394-devel@lists.sourceforge.net, clemens@ladisch.de
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230422010027.GA56586@workstation>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, Still no response, while I forked it to git.kernel.org
- for further integration: *
- https://git.kernel.org/pub/scm/utils/ieee1394/linux-firewire-utils.git/
+ Content preview:  Hi, Today I released version 0.5.0 of linux-firewire-utils.
+ You can download the new release from the following URL:
+ https://git.kernel.org/pub/scm/utils/ieee1394/linux-firewire-utils.git/tag/?h=v0.5.0
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [66.111.4.26 listed in wl.mailspike.net]
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [66.111.4.26 listed in list.dnswl.org]
+ low trust [64.147.123.21 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1pxPCC-0002F7-DK
+ valid -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+X-Headers-End: 1q0bHm-00EhuO-UZ
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -143,41 +137,33 @@ Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
 Hi,
 
-Still no response, while I forked it to git.kernel.org for further
-integration:
+Today I released version 0.5.0 of linux-firewire-utils. You can download
+the new release from the following URL:
+https://git.kernel.org/pub/scm/utils/ieee1394/linux-firewire-utils.git/tag/?h=v0.5.0
 
- * https://git.kernel.org/pub/scm/utils/ieee1394/linux-firewire-utils.git/
+This marks the first release since the project was hosted at
+git.kernel.org[1]. In this release, crpp tool has been removed due to
+Python 2 and license issues. Instead, a new tool called
+config-rom-pretty-printer has been added as an alternate. This tool is
+implemented in C language and closely resembles the output of the original
+tool, capturing approximately 80% of its functionality. However some
+legacy functions, such as the firecontrol parser, have been dropped.
 
-The crpp script is written by Python 2 language. Python 2 is outdated. I
-rewrite it by C language and push to the repository.
+The original tool is maintained by Clemens Ladisch and hosted on
+github.com[2]. However there has been no activity on the repository in
+recent years[3]. As a result, the project was forked to git.kernel.org and
+is now maintained by Takashi Sakamoto.
 
-On Sat, Apr 22, 2023 at 10:00:27AM +0900, Takashi Sakamoto wrote:
-> Hi Clemens,
-> 
-> It takes a bit long time since I see you in open list last time. I wish
-> you are still of good cheer.
-> 
-> I decide to take over maintenance of Linux FireWire subsystem[1] and I'm
-> preparing stuffs for the work with help of kernel.org administrators. If
-> thing goes well, I'll start my task in next merge window for Linux kernel
-> v6.4.
-> 
-> Well, if you don't mind, let us move the upstream of your
-> linux-firewire-utils? I already prepared repository directories for
-> utilities of Linux 1394[2]. Your software would locates under the directory.
-> 
-> In the case, I can maintain your software on behalf of you if you don't
-> mind. Especially, I need new version of the software including crpp
-> written by Python 3 for my work.
-> 
-> I'm glad if receiving any of your reply.
-> 
-> 
-> [1] https://lore.kernel.org/lkml/20230306035814.78455-1-o-takashi@sakamocchi.jp/
-> [2] https://git.kernel.org/pub/scm/utils/ieee1394/
+I would like to take this opportunity to express my gratitude for Clemens
+Ladisch's work on the original tool. I am delighted to be able to release
+an updated version after 8 years of silence.
+
+[1] https://git.kernel.org/pub/scm/utils/ieee1394/linux-firewire-utils.git/
+[2] https://github.com/cladisch/linux-firewire-utils/
+[3] https://github.com/cladisch/linux-firewire-utils/pull/1
 
 
-Thanks
+Regards
 
 Takashi Sakamoto
 
