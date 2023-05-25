@@ -2,98 +2,98 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 97B217109DF
+	by mail.lfdr.de (Postfix) with ESMTPS id D8E9B7109E1
 	for <lists+linux1394-devel@lfdr.de>; Thu, 25 May 2023 12:17:03 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1q281a-0006Rd-LE;
-	Thu, 25 May 2023 10:16:51 +0000
+	id 1q281e-0006SH-9d;
+	Thu, 25 May 2023 10:16:54 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1q281Y-0006RD-W9
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1q281Z-0006RQ-S8
  for linux1394-devel@lists.sourceforge.net;
- Thu, 25 May 2023 10:16:49 +0000
+ Thu, 25 May 2023 10:16:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
- In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ In-Reply-To:Message-Id:Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=cS/28RDTzVsKafSd+dry2URWS1xJwH24SgaemkBRLZQ=; b=LhxJMGn2DUEBS0CM4khoOjRos9
- wgHyI6n1M8MlhHXEZstgvH4IyxNbI8PezwTLdzrksM5DHNLotFE7BXkKxeqZ5yluXROZ5eW4QuHNs
- cZRrOeY4RVZ50WENVfSsWKPZchfqa6bup0yHAcIA8p27ddlyDHsx7WO3S87GvtE1L1ME=;
+ bh=19oDU4fEk+sheHYZWOnoN5cHboklhnnlKJrCnG0DjSI=; b=PW68UgwmcwipQfYgW6FYZGKuO+
+ auq3KbLn8f1wQHnJ0wbDTE0zlGqlT+iCUltyg8sTibFRBuQf/igG3aK7GkYznnmyvYqcXznnrp5tq
+ 4MCiQPX+9e3+rkBxIejmwtZ5B+/ai0b2N5I71soLIRpuS+0FxwSzgomCV9E0wLUeE6Kg=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=cS/28RDTzVsKafSd+dry2URWS1xJwH24SgaemkBRLZQ=; b=KZCyVZvw0OxC6Q1QQOB8zhLq4h
- J1xcOd3w3AiNsqgho1CmWunTLR9sTpYb+qzINxKElqmqdD7QEUKu3CmJg0ucy5h4Mzl9PliA2zqBD
- mEKCB4Ff1NLziZzUWI2vaN97X/HVXIBapMDguP3KuYH4bnwM/WmdPiOihYVcFk1ug4I8=;
+ bh=19oDU4fEk+sheHYZWOnoN5cHboklhnnlKJrCnG0DjSI=; b=jnYvsS8SIHW9Vt8d7V0E0h3p/V
+ EFqsG1Q4R3AoKvT9z3Vo9NdH/oGHQizQRKM1oZGaz2M3ptB0fqTJjoyxv6Jp39xgYSQMWRuOeo1TQ
+ lUeSg4Bun+6TBE8IZ7dkDi3YNJ1hOfv7rE+HGNa+qUN2mNPK4jQii0umDUzD9nYKcNZU=;
 Received: from out4-smtp.messagingengine.com ([66.111.4.28])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1q281Y-0029kP-9g for linux1394-devel@lists.sourceforge.net;
- Thu, 25 May 2023 10:16:49 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id DD4055C028E;
- Thu, 25 May 2023 06:16:40 -0400 (EDT)
+ id 1q281Y-0029kQ-P1 for linux1394-devel@lists.sourceforge.net;
+ Thu, 25 May 2023 10:16:50 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.nyi.internal (Postfix) with ESMTP id 323365C0360;
+ Thu, 25 May 2023 06:16:42 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Thu, 25 May 2023 06:16:40 -0400
+ by compute5.internal (MEProxy); Thu, 25 May 2023 06:16:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1685009800; x=
- 1685096200; bh=cS/28RDTzVsKafSd+dry2URWS1xJwH24SgaemkBRLZQ=; b=W
- Y/VGEky1g2eY/d87Y3hj0P5BfYx978NPFTlXWJ+FVQxgiaZTV9yO47scI647nNpK
- lZKBV8tOZdqqVYtsP38CKZftUQuPVCDzyhKqEFzcLRY53aYk0hl0OH3+DIQv8PKE
- 4s5/EcvIempHZFn+RPDjRP8u5Aj5QBvdlJdZ3ZJXVOcSHeX9sn2+kxQrsZvWqamW
- 7K3rTczfZYIycXJYfZiIuqEvXU4vhLq7B+wUsSzOFG8+SgHQy3/V6NOJCESfYLGN
- zTizGBNIxGEAdMC4EU6Wy8GQzDyFcF+3XcPV6loSOSyc+G+HsZFw9T1/NE8rp7kd
- osCPQpxvSrZnNrOrirkaw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
+ h=cc:content-transfer-encoding:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1685009800; x=
- 1685096200; bh=cS/28RDTzVsKafSd+dry2URWS1xJwH24SgaemkBRLZQ=; b=W
- RRPIa3OUnXn1/jj8y2JlGZ5X2RRZvY0yB8vElewa321tTsGy1ADLcINxbILsq8RH
- TS2s24e9/QeXCktAQ/KJad1hdnY0k36ECN0CbFTKdNM1fAwJT/snwdXttdAONyzn
- IyiNp2o6ZmHyeD5AcqfcUOjRFX6OhyVeGiTfm0MaBDdgE0/nvw9UexyOZtNFEBqq
- SVeDB+Wp32qWzvSOzVHGLiHBNQ5oNoYslyd79Nh0xUbh29nz36mMYGOmC+6D60Ha
- FtWSawXWwGg+LTw9YVU2iOxTDYdlovUHCnXGSnRmxoTeXWqCHRXX7i/IkC3sQNcK
- iNCs6g+5WqS97OoLtrkeQ==
-X-ME-Sender: <xms:iDVvZMPTjFRUVmi0xM2V90J0ao-mD0gw1kU9gwnC_h3qi3WhrXBI-w>
- <xme:iDVvZC948R_K6B87I7in_Wb2jOALHEFszBV3Rkrd66KuLPMKBc2I0KJErmu2Di2bT
- vjWFRlQS80JZzH3kDs>
-X-ME-Received: <xmr:iDVvZDS-fhCOKWZrrARBe9uBPxwh4RRPZvxljns58jtktZw18ftRbLb6xt_QUGSLvYLE2o2w3ia680_KNhBhspkeWfX0fEdgX7odJXZDe4UM9g>
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1685009802; x=
+ 1685096202; bh=19oDU4fEk+sheHYZWOnoN5cHboklhnnlKJrCnG0DjSI=; b=r
+ BcmxBjGPa1eBGC55TNvobO2r/EacjmyELkVNJjhNSrrsdqhMUQjGjHbEbHtzkpag
+ BKKj2nUCyldCEcOO15mV8bgnbrr3n6vXwqua9BkYOUcp3sKp/TzoM3Mmr5uhVcZV
+ JZnn5sog2scuNy+fyoopUzm4MWV6NN7cvpO1K/eY9u2ypczIsfNE3yIm99BqF/1A
+ FakuQc+Qo3IOxaXWmk9nCS6aQ9GPfIP9lV2tzgK/Cntu4iYtcDclrNq/Op9pqJtl
+ zVe6Zr9HIK0YdoDkVZrCbkPjG5MF1NVIipQtE9nCofZCyx1e1eE81wbl0QZMskkL
+ 5lJymfrr2Hs7QBU0keIJw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:date:feedback-id:feedback-id:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender
+ :x-me-sender:x-sasl-enc; s=fm1; t=1685009802; x=1685096202; bh=1
+ 9oDU4fEk+sheHYZWOnoN5cHboklhnnlKJrCnG0DjSI=; b=Oba7zdEb4kSo36YfS
+ uIefAHiT5zoGkmJxoesxCekOJJ/x29uz9n3kRQM2nikLOnmOug3omkdHy/v+MDgp
+ FaNNcugGG3/dx25TxkDIndNZ7r28xSGButJYDGo9KXMziNcGPm0QqiLAdR01ENsu
+ /w3RiMSbbZIdAJrqochccTMCq5fDgCVVH2EnbQdCecNF1qzhLHYQFgFSyC87cMRR
+ HwWWiKGM7N9p8jAfWvOxNTnuWUcAL2MjF80/kWJq60wRaK9prlsI33vGOHz5f7ML
+ w+Ne/YCS5ByLy57CdPiidttssGTjJNTMOJH08At4xN150jPIFG8n9BoHlFZChmNa
+ +pH1A==
+X-ME-Sender: <xms:ijVvZEy_JTqJ4VyqDMDxOgHPCHp1RP7znIPmoonMLpvtVwvExwiiNA>
+ <xme:ijVvZITX9jU9z3546ax1iaOsblMtjSq1MetvmanIXyYoLG8_1r7DGaCMfX_AWuB_I
+ X1yxFSaBpR1kVgs-Kg>
+X-ME-Received: <xmr:ijVvZGWzytwpwmEFq1Lvl6Je1V9vCHnFyBZAsVLmvfWjlKwWzRk0HnyHMuApAAhuAKRGOmxO8dhGEGbbfCwTqf_24p48qATAo-iWy9VLCExmGg>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeejjedgvdehucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtke
- ertdertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
- rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpedvjefgje
- euvdfguddukeelveetgfdtvefhtdfffeeigfevueetffeivdffkedvtdenucevlhhushht
- vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
- hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:iDVvZEsgrZmKxT5dkX6Kjj5POQDs1OJ8YAcdbPMQj4sTQptey6BhVw>
- <xmx:iDVvZEfmIQXhsZSt0BltUhGE0l15QIExb9GUpC3UdHh5Fwit9bJhbg>
- <xmx:iDVvZI1yrQBZvowzuyMBCItOfMIWoHMsZnZffyaGnTPuG7VF6gzvag>
- <xmx:iDVvZAHKjbFSbUQQ0C4ssHH0xJjYmAGnXwKEPN1d9mL2UvF8nMiJbg>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgjfhgggfestdekre
+ dtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgr
+ shhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepveefffefke
+ etgfevgeefleehfffhueejtdejveethfekveektdejjedvtdejhfejnecuvehluhhsthgv
+ rhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihessh
+ grkhgrmhhotggthhhirdhjph
+X-ME-Proxy: <xmx:ijVvZCiMelv9h1xiw_AlH6ZlBPisnYfKz3hr6DmPgL6XPxEWCvacDQ>
+ <xmx:ijVvZGBhPS5cWsyy7pFJBx9ijOOu3RpyWBr0VHBAgN7zglddr1IFVg>
+ <xmx:ijVvZDJSBVtaWKGYw5j1cWZV4HBVKgJAPSpTSkYFg-qjZ0Dqtfgfkg>
+ <xmx:ijVvZBr4cixshRFshzLNq0Y5IRJue5awdtUqNSnGYue157xkdhEdDA>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 25 May 2023 06:16:39 -0400 (EDT)
+ 25 May 2023 06:16:41 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 08/12] firewire: cdev: add new event to notify response
- subaction with time stamp
-Date: Thu, 25 May 2023 19:16:21 +0900
-Message-Id: <20230525101625.888906-9-o-takashi@sakamocchi.jp>
+Subject: [PATCH v2 09/12] firewire: cdev: implement new event to notify
+ response subaction with time stamp
+Date: Thu, 25 May 2023 19:16:22 +0900
+Message-Id: <20230525101625.888906-10-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230525101625.888906-1-o-takashi@sakamocchi.jp>
 References: <20230525101625.888906-1-o-takashi@sakamocchi.jp>
@@ -105,11 +105,10 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: This commit adds new event to notify event of response
- subaction
- with time stamp field. Current compiler implementation of System V ABI selects
- one of structure members which has the maximum alignment size in the structure
- to decide the size of structure. In the case of fw_cdev_event_req [...] 
+ Content preview: The callback function now receives an argument for time
+ stamps
+ relevant to asynchronous transaction. This commit implements a new event
+ to notify response subaction with the time stamps for user space [...] 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -126,7 +125,7 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1q281Y-0029kP-9g
+X-Headers-End: 1q281Y-0029kQ-P1
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -139,185 +138,166 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: kunit-dev@googlegroups.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-This commit adds new event to notify event of response subaction with
-time stamp field.
+The callback function now receives an argument for time stamps relevant
+to asynchronous transaction. This commit implements a new event to
+notify response subaction with the time stamps for user space.
 
-Current compiler implementation of System V ABI selects one of structure
-members which has the maximum alignment size in the structure to decide
-the size of structure. In the case of fw_cdev_event_request3 structure,
-it is closure member which has 8 byte storage. The size of alignment for
-the type of 8 byte storage differs depending on architectures; 4 byte for
-i386 architecture and 8 byte for the others including x32 architecture.
-It is inconvenient to device driver developer to use structure layout
-which varies between architectures since the developer takes care of ioctl
-compat layer. This commit adds 32 bit member for padding to keep the
-size of structure as multiples of 8.
-
-Cc: kunit-dev@googlegroups.com
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/uapi-test.c       | 15 ++++++++
- include/uapi/linux/firewire-cdev.h | 59 +++++++++++++++++++++++++-----
- 2 files changed, 64 insertions(+), 10 deletions(-)
+ drivers/firewire/core-cdev.c | 96 ++++++++++++++++++++++++------------
+ 1 file changed, 65 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/firewire/uapi-test.c b/drivers/firewire/uapi-test.c
-index c7c713babaa0..c342ba474ee6 100644
---- a/drivers/firewire/uapi-test.c
-+++ b/drivers/firewire/uapi-test.c
-@@ -45,9 +45,24 @@ static void structure_layout_event_request3(struct kunit *test)
- 	KUNIT_EXPECT_EQ(test, 56, offsetof(struct fw_cdev_event_request3, data));
+diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
+index 315ebc8c545d..8b24abdd51b8 100644
+--- a/drivers/firewire/core-cdev.c
++++ b/drivers/firewire/core-cdev.c
+@@ -172,6 +172,7 @@ struct outbound_transaction_event {
+ 	struct outbound_transaction_resource r;
+ 	union {
+ 		struct fw_cdev_event_response without_tstamp;
++		struct fw_cdev_event_response2 with_tstamp;
+ 	} rsp;
+ };
+ 
+@@ -538,41 +539,64 @@ static void release_transaction(struct client *client,
+ {
  }
  
-+// Added at v6.4.
-+static void structure_layout_event_response2(struct kunit *test)
-+{
-+	KUNIT_EXPECT_EQ(test, 32, sizeof(struct fw_cdev_event_response2));
+-static void complete_transaction(struct fw_card *card, int rcode,
+-				 void *payload, size_t length, void *data)
++static void complete_transaction(struct fw_card *card, int rcode, u32 request_tstamp,
++				 u32 response_tstamp, void *payload, size_t length, void *data)
+ {
+ 	struct outbound_transaction_event *e = data;
+-	struct fw_cdev_event_response *rsp = &e->rsp.without_tstamp;
+ 	struct client *client = e->client;
+ 	unsigned long flags;
+ 
+-	if (length < rsp->length)
+-		rsp->length = length;
+-	if (rcode == RCODE_COMPLETE)
+-		memcpy(rsp->data, payload, rsp->length);
+-
+ 	spin_lock_irqsave(&client->lock, flags);
+ 	idr_remove(&client->resource_idr, e->r.resource.handle);
+ 	if (client->in_shutdown)
+ 		wake_up(&client->tx_flush_wait);
+ 	spin_unlock_irqrestore(&client->lock, flags);
+ 
+-	rsp->type = FW_CDEV_EVENT_RESPONSE;
+-	rsp->rcode = rcode;
++	switch (e->rsp.without_tstamp.type) {
++	case FW_CDEV_EVENT_RESPONSE:
++	{
++		struct fw_cdev_event_response *rsp = &e->rsp.without_tstamp;
 +
-+	KUNIT_EXPECT_EQ(test, 0, offsetof(struct fw_cdev_event_response2, closure));
-+	KUNIT_EXPECT_EQ(test, 8, offsetof(struct fw_cdev_event_response2, type));
-+	KUNIT_EXPECT_EQ(test, 12, offsetof(struct fw_cdev_event_response2, rcode));
-+	KUNIT_EXPECT_EQ(test, 16, offsetof(struct fw_cdev_event_response2, length));
-+	KUNIT_EXPECT_EQ(test, 20, offsetof(struct fw_cdev_event_response2, request_tstamp));
-+	KUNIT_EXPECT_EQ(test, 24, offsetof(struct fw_cdev_event_response2, response_tstamp));
-+	KUNIT_EXPECT_EQ(test, 32, offsetof(struct fw_cdev_event_response2, data));
-+}
++		if (length < rsp->length)
++			rsp->length = length;
++		if (rcode == RCODE_COMPLETE)
++			memcpy(rsp->data, payload, rsp->length);
 +
- static struct kunit_case structure_layout_test_cases[] = {
- 	KUNIT_CASE(structure_layout_event_response),
- 	KUNIT_CASE(structure_layout_event_request3),
-+	KUNIT_CASE(structure_layout_event_response2),
- 	{}
- };
- 
-diff --git a/include/uapi/linux/firewire-cdev.h b/include/uapi/linux/firewire-cdev.h
-index cc9b03244a62..ae8ccf7d7d2a 100644
---- a/include/uapi/linux/firewire-cdev.h
-+++ b/include/uapi/linux/firewire-cdev.h
-@@ -48,6 +48,7 @@
- 
- /* available since kernel version 6.3 */
- #define FW_CDEV_EVENT_REQUEST3				0x0a
-+#define FW_CDEV_EVENT_RESPONSE2				0x0b
- 
- /**
-  * struct fw_cdev_event_common - Common part of all fw_cdev_event_* types
-@@ -106,6 +107,29 @@ struct fw_cdev_event_bus_reset {
-  * @length:	Data length, i.e. the response's payload size in bytes
-  * @data:	Payload data, if any
-  *
-+ * This event is sent instead of &fw_cdev_event_response if the kernel or the client implements
-+ * ABI version <= 5. It has the lack of time stamp field comparing to &fw_cdev_event_response2.
-+ */
-+struct fw_cdev_event_response {
-+	__u64 closure;
-+	__u32 type;
-+	__u32 rcode;
-+	__u32 length;
-+	__u32 data[];
-+};
++		rsp->rcode = rcode;
 +
-+/**
-+ * struct fw_cdev_event_response2 - Sent when a response packet was received
-+ * @closure:	See &fw_cdev_event_common; set by %FW_CDEV_IOC_SEND_REQUEST
-+ *		or %FW_CDEV_IOC_SEND_BROADCAST_REQUEST
-+ *		or %FW_CDEV_IOC_SEND_STREAM_PACKET ioctl
-+ * @type:	See &fw_cdev_event_common; always %FW_CDEV_EVENT_RESPONSE
-+ * @rcode:	Response code returned by the remote node
-+ * @length:	Data length, i.e. the response's payload size in bytes
-+ * @request_tstamp:	The time stamp of isochronous cycle at which the request was sent.
-+ * @request_tstamp:	The time stamp of isochronous cycle at which the response was sent.
-+ * @data:	Payload data, if any
-+ *
-  * This event is sent when the stack receives a response to an outgoing request
-  * sent by %FW_CDEV_IOC_SEND_REQUEST ioctl.  The payload data for responses
-  * carrying data (read and lock responses) follows immediately and can be
-@@ -115,12 +139,25 @@ struct fw_cdev_event_bus_reset {
-  * involve response packets.  This includes unified write transactions,
-  * broadcast write transactions, and transmission of asynchronous stream
-  * packets.  @rcode indicates success or failure of such transmissions.
-+ *
-+ * The value of @request_tstamp expresses the isochronous cycle at which the request was sent to
-+ * initiate the transaction. The value of @response_tstamp expresses the isochronous cycle at which
-+ * the response arrived to complete the transaction. Each value is unsigned 16 bit integer
-+ * containing three low order bits of second field and all 13 bits of cycle field in format of
-+ * CYCLE_TIMER register.
-  */
--struct fw_cdev_event_response {
-+struct fw_cdev_event_response2 {
- 	__u64 closure;
- 	__u32 type;
- 	__u32 rcode;
- 	__u32 length;
-+	__u32 request_tstamp;
-+	__u32 response_tstamp;
-+	/*
-+	 * Padding to keep the size of structure as multiples of 8 in various architectures since
-+	 * 4 byte alignment is used for 8 byte of object type in System V ABI for i386 architecture.
-+	 */
-+	__u32 padding;
- 	__u32 data[];
- };
++		// In the case that sizeof(*rsp) doesn't align with the position of the
++		// data, and the read is short, preserve an extra copy of the data
++		// to stay compatible with a pre-2.6.27 bug.  Since the bug is harmless
++		// for short reads and some apps depended on it, this is both safe
++		// and prudent for compatibility.
++		if (rsp->length <= sizeof(*rsp) - offsetof(typeof(*rsp), data))
++			queue_event(client, &e->event, rsp, sizeof(*rsp), rsp->data, rsp->length);
++		else
++			queue_event(client, &e->event, rsp, sizeof(*rsp) + rsp->length, NULL, 0);
  
-@@ -421,6 +458,7 @@ struct fw_cdev_event_phy_packet {
-  *				%FW_CDEV_EVENT_PHY_PACKET_RECEIVED
-  *
-  * @request3:		Valid if @common.type == %FW_CDEV_EVENT_REQUEST3
-+ * @response2:		Valid if @common.type == %FW_CDEV_EVENT_RESPONSE2
-  *
-  * Convenience union for userspace use.  Events could be read(2) into an
-  * appropriately aligned char buffer and then cast to this union for further
-@@ -441,6 +479,7 @@ union fw_cdev_event {
- 	struct fw_cdev_event_iso_resource	iso_resource;		/* added in 2.6.30 */
- 	struct fw_cdev_event_phy_packet		phy_packet;		/* added in 2.6.36 */
- 	struct fw_cdev_event_request3		request3;		/* added in 6.3 */
-+	struct fw_cdev_event_response2		response2;		/* added in 6.3 */
- };
+-	/*
+-	 * In the case that sizeof(*rsp) doesn't align with the position of the
+-	 * data, and the read is short, preserve an extra copy of the data
+-	 * to stay compatible with a pre-2.6.27 bug.  Since the bug is harmless
+-	 * for short reads and some apps depended on it, this is both safe
+-	 * and prudent for compatibility.
+-	 */
+-	if (rsp->length <= sizeof(*rsp) - offsetof(typeof(*rsp), data))
+-		queue_event(client, &e->event, rsp, sizeof(*rsp),
+-			    rsp->data, rsp->length);
+-	else
+-		queue_event(client, &e->event, rsp, sizeof(*rsp) + rsp->length,
+-			    NULL, 0);
++		break;
++	}
++	case FW_CDEV_EVENT_RESPONSE2:
++	{
++		struct fw_cdev_event_response2 *rsp = &e->rsp.with_tstamp;
++
++		if (length < rsp->length)
++			rsp->length = length;
++		if (rcode == RCODE_COMPLETE)
++			memcpy(rsp->data, payload, rsp->length);
++
++		rsp->rcode = rcode;
++		rsp->request_tstamp = request_tstamp;
++		rsp->response_tstamp = response_tstamp;
++
++		queue_event(client, &e->event, rsp, sizeof(*rsp) + rsp->length, NULL, 0);
++
++		break;
++	default:
++		WARN_ON(1);
++		break;
++	}
++	}
  
- /* available since kernel version 2.6.22 */
-@@ -507,6 +546,7 @@ union fw_cdev_event {
-  *               - added %FW_CDEV_IOC_FLUSH_ISO
-  *  6  (6.4)     - added some event for subactions of asynchronous transaction with time stamp
-  *                   - %FW_CDEV_EVENT_REQUEST3
-+ *                   - %FW_CDEV_EVENT_RESPONSE2
-  */
+ 	/* Drop the idr's reference */
+ 	client_put(client);
+@@ -583,7 +607,6 @@ static int init_request(struct client *client,
+ 			int destination_id, int speed)
+ {
+ 	struct outbound_transaction_event *e;
+-	struct fw_cdev_event_response *rsp;
+ 	void *payload;
+ 	int ret;
  
- /**
-@@ -552,11 +592,11 @@ struct fw_cdev_get_info {
-  * @data:	Userspace pointer to payload
-  * @generation:	The bus generation where packet is valid
-  *
-- * Send a request to the device.  This ioctl implements all outgoing requests.
-- * Both quadlet and block request specify the payload as a pointer to the data
-- * in the @data field.  Once the transaction completes, the kernel writes an
-- * &fw_cdev_event_response event back.  The @closure field is passed back to
-- * user space in the response event.
-+ * Send a request to the device.  This ioctl implements all outgoing requests. Both quadlet and
-+ * block request specify the payload as a pointer to the data in the @data field. Once the
-+ * transaction completes, the kernel writes either &fw_cdev_event_response event or
-+ * &fw_cdev_event_response event back. The @closure field is passed back to user space in the
-+ * response event.
-  */
- struct fw_cdev_send_request {
- 	__u32 tcode;
-@@ -1039,10 +1079,9 @@ struct fw_cdev_allocate_iso_resource {
-  * @generation:	The bus generation where packet is valid
-  * @speed:	Speed to transmit at
-  *
-- * The %FW_CDEV_IOC_SEND_STREAM_PACKET ioctl sends an asynchronous stream packet
-- * to every device which is listening to the specified channel.  The kernel
-- * writes an &fw_cdev_event_response event which indicates success or failure of
-- * the transmission.
-+ * The %FW_CDEV_IOC_SEND_STREAM_PACKET ioctl sends an asynchronous stream packet to every device
-+ * which is listening to the specified channel. The kernel writes either &fw_cdev_event_response
-+ * event or &fw_cdev_event_response2 event which indicates success or failure of the transmission.
-  */
- struct fw_cdev_send_stream_packet {
- 	__u32 length;
+@@ -600,10 +623,21 @@ static int init_request(struct client *client,
+ 		return -ENOMEM;
+ 	e->client = client;
+ 
+-	rsp = &e->rsp.without_tstamp;
+-	rsp->length = request->length;
+-	rsp->closure = request->closure;
+-	payload = rsp->data;
++	if (client->version < FW_CDEV_VERSION_EVENT_ASYNC_TSTAMP) {
++		struct fw_cdev_event_response *rsp = &e->rsp.without_tstamp;
++
++		rsp->type = FW_CDEV_EVENT_RESPONSE;
++		rsp->length = request->length;
++		rsp->closure = request->closure;
++		payload = rsp->data;
++	} else {
++		struct fw_cdev_event_response2 *rsp = &e->rsp.with_tstamp;
++
++		rsp->type = FW_CDEV_EVENT_RESPONSE2;
++		rsp->length = request->length;
++		rsp->closure = request->closure;
++		payload = rsp->data;
++	}
+ 
+ 	if (request->data && copy_from_user(payload, u64_to_uptr(request->data), request->length)) {
+ 		ret = -EFAULT;
+@@ -615,9 +649,9 @@ static int init_request(struct client *client,
+ 	if (ret < 0)
+ 		goto failed;
+ 
+-	fw_send_request(client->device->card, &e->r.transaction, request->tcode, destination_id,
+-			request->generation, speed, request->offset, payload, request->length,
+-			complete_transaction, e);
++	fw_send_request_with_tstamp(client->device->card, &e->r.transaction, request->tcode,
++				    destination_id, request->generation, speed, request->offset,
++				    payload, request->length, complete_transaction, e);
+ 	return 0;
+ 
+  failed:
 -- 
 2.39.2
 
