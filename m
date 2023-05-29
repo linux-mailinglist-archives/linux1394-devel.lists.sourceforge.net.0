@@ -2,128 +2,134 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id CBACE71489D
-	for <lists+linux1394-devel@lfdr.de>; Mon, 29 May 2023 13:34:51 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F8E0715205
+	for <lists+linux1394-devel@lfdr.de>; Tue, 30 May 2023 00:46:12 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1q3b9A-0005US-Lg;
-	Mon, 29 May 2023 11:34:45 +0000
+	id 1q3lcl-0000X7-6J;
+	Mon, 29 May 2023 22:46:00 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1q3b99-0005UE-EC
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1q3lcj-0000Wy-5R
  for linux1394-devel@lists.sourceforge.net;
- Mon, 29 May 2023 11:34:43 +0000
+ Mon, 29 May 2023 22:45:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
- In-Reply-To:Message-Id:Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=CwMQ3mRgLz5XKiLhS8Bwc8Qm3NwjUti4uZQkCUexV3s=; b=EG499uiKOkt7+Tyen4Vvqzyruj
- VQ+jIRis1YP4byrlK/l9uvcCmAa1iCpC/MyKEEj0rMpMe8W9D3ZqC2CYjjA6ZZFRu36mU4l4I+8FV
- XPf7/Bo/SXUc7jwq3uK5W5++wXGbD77U99P7nzGtGt308XwP1fw7kOtInStDRCuztPU4=;
+ bh=bgUG0LgYa+nh+rJ4ie+IkG0Q0XRNLEsbQrNkQi4S5Fo=; b=Y29CNY+RqROUdlwWs/TAxLRabw
+ hyDJvL4/0QSF/5ozjkuq8CCq1e8SzZQTT4k7DXE9KzRIMC24Alyo4oWqCpimQ7cU1oladpLzf8iA0
+ uV5cgHMS7Z28iUkZ4ob47sZrMXESMjMD7EevKHw/8SfLG+UfWTjDztyEHP/2ttxTrUh0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
- Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:Content-ID:
+ h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=CwMQ3mRgLz5XKiLhS8Bwc8Qm3NwjUti4uZQkCUexV3s=; b=NltEJh7RZinP1rB8YurY5KfKDM
- qwuVBuolgTKPaeQECKAwtzrPDpeidCcVQLixtxTghyKo0XSxZR0TxAdUYhWhS2ovJh9b98jK7BJ0P
- CpOtaudaVNc/Mt25507SOWiog9ax2yGwRJy5R3ZEcXlAMHLdB/uquao2p1ywJGanycSc=;
-Received: from wout5-smtp.messagingengine.com ([64.147.123.21])
- by sfi-mx-1.v28.lw.sourceforge.com with esmtps
+ bh=bgUG0LgYa+nh+rJ4ie+IkG0Q0XRNLEsbQrNkQi4S5Fo=; b=SJPMq4lyYl8ylzAAibktLAH/xn
+ w5Mg7oJQ/tyGNV+neawaVsPqI0ZLesWtofBcvxyD1/gwuem6NTrj/pQMToXgAoRjWKAzhv8Ra/h+8
+ jBPPojnFdIt/vfmL2LcnNMuaX6XqrVhc45PGvAlP2DEZ2KKR1REQyXqsP88di2KNpQmE=;
+Received: from out4-smtp.messagingengine.com ([66.111.4.28])
+ by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1q3b99-005hnZ-3e for linux1394-devel@lists.sourceforge.net;
- Mon, 29 May 2023 11:34:43 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
- by mailout.west.internal (Postfix) with ESMTP id 8C4DF320093D;
- Mon, 29 May 2023 07:34:37 -0400 (EDT)
+ id 1q3lch-00031N-R3 for linux1394-devel@lists.sourceforge.net;
+ Mon, 29 May 2023 22:45:57 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.nyi.internal (Postfix) with ESMTP id 2D7B05C007D;
+ Mon, 29 May 2023 18:45:50 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Mon, 29 May 2023 07:34:37 -0400
+ by compute2.internal (MEProxy); Mon, 29 May 2023 18:45:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1685360077; x=
- 1685446477; bh=CwMQ3mRgLz5XKiLhS8Bwc8Qm3NwjUti4uZQkCUexV3s=; b=V
- LGXMcp4ht63Clh35SxVozb6VFsiRHdaUNdo/RlE5pwuoyuK5Z6Tt+29HiJD+02TV
- kJ7TwOw3ZErysVCDPK1NlBfWygR82xnO6BV5BpQDlUkpix5qvKYiTgfen+jqL/4U
- UfN6qd0+6MCyRzWMHoJRl6q8Lkhc+88ioxOpVju37vEIlgBgVM3/dbq65fnWSZSJ
- bwE05tV545c/noUtZVdbN/Dh8n8sK/QiU3qyFRRxw26qVEW7RCPz2mKOG3jc2Z4z
- 6rq3e5A+7wQkEL7H92nrJAY5PsEKzNgmNH/ijEXfIy4UZxF4dleT+Vhrn79zcrA2
- 7G0tZTMguGXxv5JAfhGiQ==
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to;
+ s=fm1; t=1685400350; x=1685486750; bh=bgUG0LgYa+nh+rJ4ie+IkG0Q0
+ XRNLEsbQrNkQi4S5Fo=; b=ddLQxpXTJmdfbY0O8E4Tmy+qs8Orc4cxwMmYMbghr
+ Coy5CGunqgA/jgfnfdKES+ofnIeQ7YEFS7Yx/W4jGFpG83lG6GTiBmc7pb31STso
+ dd3mF9VJ17HzUarq5aII/xMMs05R2spM2LHpnjLr7hNchO+84dnW7xKn4/WVxZtS
+ hmwazfByLtsV0rga1R7JVd2o0lJZ3X/EHO6Xa3FIX3707x47qzAIugBvGqpXtnqX
+ AhVxEgQgjT7dSJaLYFV3Lqlw5zsWaz41igkrg1sURFH9cLbsm8w5D083PacYmEk5
+ euP1ey/ppOniFyXcChvvgAT2pdWNT43syrNkNyh4izP5g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:date:feedback-id:feedback-id:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm1; t=1685360077; x=1685446477; bh=C
- wMQ3mRgLz5XKiLhS8Bwc8Qm3NwjUti4uZQkCUexV3s=; b=WmWPabBhTVuCAushw
- 3v5jJwLROWfCyXLe3wqDCLrgheYHcLC+06904VXoc0+ufYc8nJnvBCLts29SiQkN
- XQSOL3BI/LpE2F9maHT4Ukk9gk8/74vSTie2bWLi9KfWVQFmqFIyY/cpzmXjAy+a
- AUxRdTXOnl9cdNL4xK+m253WGeinqk6JSCZmZSNBoLsrv7hPpPNj4RkV6hiFEsz6
- PipHBRo8LCm8wP0hPUZ0V0tcO84nKIaISzAi24sDiWzNmq9UyCEpy79pem1TK4Gv
- xhxmQ3Dvp7jQqDob4BM8Q/9gL6D1F+143feO/EOkL4dTe6Te+iV/eFWlksEwc+k0
- CFNOA==
-X-ME-Sender: <xms:zY10ZCx1ieC2SMDd1topAglSqmES8wSL9KvH3gdJvGJ7c-YhUy46GQ>
- <xme:zY10ZOSHUo6Mv9hxFJSrL8dPtxhmmHIYj6v8TWqK9p7bMP9sKb_tkBCDJK2-cR0D7
- jaYwG3hJjWLBQz_upg>
-X-ME-Received: <xmr:zY10ZEUMy7RV5WY_2LKSxq6xyzb237-OF8awBYoqykSLJu2bj1ZaJGhce0sBmhYm7CUi1TeyqMjHwGSHvxhccSsvo4cIFKIhFYyWbYMWSEHPvQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeekhedggeduucetufdoteggodetrfdotf
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+ 1685400350; x=1685486750; bh=bgUG0LgYa+nh+rJ4ie+IkG0Q0XRNLEsbQrN
+ kQi4S5Fo=; b=m02MiaP6vAxok/Lty6E/V6DYMW+CyjvuBA6mpiHVkl4phqzCfyN
+ At1JCcjKlEcrGJAUJYMDOc+5f7/p71ycWh60Ycw7HNRCPZlU9+/30/CX5b4kJojh
+ 6bVr9CXui/DhoHQLJ+Y3mH7QtSd0t5LaTYo7vuEQGKY/TfjzBFeYjk+ZjUzY0IkZ
+ qxUvxX54b2u/wmW2ZEAOIplN5ZzPucPcmztvpOnjctNX6qGuaRKlZWD9II/vZk1g
+ w9IKbq2R/Iu87Z4RaoKV/wQZtpw8/5FS7ZiCle/4QqIOReewQuISSlf7Djeb7fEb
+ wyz+TDe/Eow5xkklxQeF/FM9tHZf2q3IqyQ==
+X-ME-Sender: <xms:HSt1ZFCyn9izx8vsp_Vc1U7mY-q0KGKV65h-NxuD9UO5whK0PSEkNA>
+ <xme:HSt1ZDjo6L9ZnrPjCxKZw1GVkdlPFPCdz4SsG2RkQe20tnJY_FnxMiQK7W3YHurNi
+ 45lBCORR_iIVHf0bS4>
+X-ME-Received: <xmr:HSt1ZAmIzZG-HN2zJCEcnP58H3MDBDoYY3KHbbYdqLjIkQeXusO4x807VdI8qt3cu3Gp5hJ8w0RyCggqd1fjSKlrNaaCgZo7x-8>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeekiedgudegucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgjfhgggfestdekre
- dtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgr
- shhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepveefffefke
- etgfevgeefleehfffhueejtdejveethfekveektdejjedvtdejhfejnecuvehluhhsthgv
- rhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihessh
- grkhgrmhhotggthhhirdhjph
-X-ME-Proxy: <xmx:zY10ZIij-dGOIjWSS4NuMXVfqvuS8TDhnVQXDQ9be5DD8gtQk0WXLQ>
- <xmx:zY10ZECV2p3C6sK27O65Rm43nw3mvYjvD7GbrLj4Ah8tdRISsjjtGA>
- <xmx:zY10ZJKoDzAan6UBFb8vdbTg0RE8TP-OKewHKk7dasrZL7f0UJWTEQ>
- <xmx:zY10ZPqMETSksxt4ckpo6WONpU-6nJSvcXBIE3YN8blQEKuWvBkK6Q>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtugfgjgesth
+ ekredttddtjeenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgr
+ khgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnheptedthe
+ egtdfgfffggeehhefgtdefueelteelfeduudeludeggfelffegfeeiudejnecuffhomhgr
+ ihhnpehgihhthhhusgdrtghomhdpghhnuhdrohhrghdpkhgvrhhnvghlrdhorhhgnecuve
+ hluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgr
+ shhhihesshgrkhgrmhhotggthhhirdhjph
+X-ME-Proxy: <xmx:HSt1ZPxt6jcgR1IuHbin3IzMCoQLK7myanau5vZqDzDwvjeFU7DQrQ>
+ <xmx:HSt1ZKQANZZOBjMwQmPmOBaNIM47c5zunCcczG1Cdw-QKiQZ0jR4Bg>
+ <xmx:HSt1ZCY6O-PfoQ75-5ClWhbZosX1DKUbFDzHmbV15U0mKSGlNLpUHQ>
+ <xmx:Hit1ZFf-ufi8dc8V9C2O83rlKmoYQF55qonfSAP9RcCY6DuPNsVX-A>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 29 May 2023 07:34:36 -0400 (EDT)
+ 29 May 2023 18:45:48 -0400 (EDT)
+Date: Tue, 30 May 2023 07:45:46 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: linux1394-devel@lists.sourceforge.net,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 12/12] firewire: cdev: implement new event relevant to phy
- packet with time stamp
-Date: Mon, 29 May 2023 20:34:06 +0900
-Message-Id: <20230529113406.986289-13-o-takashi@sakamocchi.jp>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230529113406.986289-1-o-takashi@sakamocchi.jp>
-References: <20230529113406.986289-1-o-takashi@sakamocchi.jp>
+To: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Subject: Re: [PATCH][next] firewire: Replace zero-length array with
+ flexible-array member
+Message-ID: <20230529224546.GA8560@workstation.local>
+Mail-Followup-To: "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
+ linux-hardening@vger.kernel.org
+References: <ZHT0V3SpvHyxCv5W@work>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <ZHT0V3SpvHyxCv5W@work>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  In 1394 OHCI,
- the OUTPUT_LAST descriptor of Asynchronous Transmit
- (AT) context has timeStamp field, in which 1394 OHCI controller record the
- isochronous cycle when the packet was sent for the request [...] 
+ Content preview:  Hi, On Mon, May 29, 2023 at 12:52:07PM -0600, Gustavo A. R.
+ Silva wrote: > Zero-length and one-element arrays are deprecated, and we
+ are moving > towards adopting C99 flexible-array members, instead. > > [...]
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.147.123.21 listed in list.dnswl.org]
+ low trust [66.111.4.28 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [66.111.4.28 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
-X-Headers-End: 1q3b99-005hnZ-3e
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+X-Headers-End: 1q3lch-00031N-R3
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -136,182 +142,43 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
+ linux-hardening@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-In 1394 OHCI, the OUTPUT_LAST descriptor of Asynchronous Transmit (AT)
-context has timeStamp field, in which 1394 OHCI controller record the
-isochronous cycle when the packet was sent for the request subaction.
-Additionally, the trailing quadlet of Asynchronous Receive (AR) context
-has timeStamp field as well in which 1394 OHCI controller record the
-isochronous cycle when the packet arrived. The time stamps are also
-available for the cases to send and receive phy packet.
-
-This commit implements new events with time stamp field for user space.
-
-Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
----
- drivers/firewire/core-cdev.c | 90 +++++++++++++++++++++++++++---------
- 1 file changed, 68 insertions(+), 22 deletions(-)
-
-diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-index 2220de3c945e..6274b86eb943 100644
---- a/drivers/firewire/core-cdev.c
-+++ b/drivers/firewire/core-cdev.c
-@@ -206,6 +206,7 @@ struct outbound_phy_packet_event {
- 	struct fw_packet p;
- 	union {
- 		struct fw_cdev_event_phy_packet without_tstamp;
-+		struct fw_cdev_event_phy_packet2 with_tstamp;
- 	} phy_packet;
- };
- 
-@@ -213,6 +214,7 @@ struct inbound_phy_packet_event {
- 	struct event event;
- 	union {
- 		struct fw_cdev_event_phy_packet without_tstamp;
-+		struct fw_cdev_event_phy_packet2 with_tstamp;
- 	} phy_packet;
- };
- 
-@@ -1555,7 +1557,6 @@ static void outbound_phy_packet_callback(struct fw_packet *packet,
- 		container_of(packet, struct outbound_phy_packet_event, p);
- 	struct client *e_client = e->client;
- 	u32 rcode;
--	struct fw_cdev_event_phy_packet *pp;
- 
- 	switch (status) {
- 	// expected:
-@@ -1583,10 +1584,31 @@ static void outbound_phy_packet_callback(struct fw_packet *packet,
- 		break;
- 	}
- 
--	pp = &e->phy_packet.without_tstamp;
--	pp->rcode = rcode;
--	pp->data[0] = packet->timestamp;
--	queue_event(e->client, &e->event, &e->phy_packet, sizeof(*pp) + pp->length, NULL, 0);
-+	switch (e->phy_packet.without_tstamp.type) {
-+	case FW_CDEV_EVENT_PHY_PACKET_SENT:
-+	{
-+		struct fw_cdev_event_phy_packet *pp = &e->phy_packet.without_tstamp;
-+
-+		pp->rcode = rcode;
-+		pp->data[0] = packet->timestamp;
-+		queue_event(e->client, &e->event, &e->phy_packet, sizeof(*pp) + pp->length,
-+			    NULL, 0);
-+		break;
-+	}
-+	case FW_CDEV_EVENT_PHY_PACKET_SENT2:
-+	{
-+		struct fw_cdev_event_phy_packet2 *pp = &e->phy_packet.with_tstamp;
-+
-+		pp->rcode = rcode;
-+		pp->tstamp = packet->timestamp;
-+		queue_event(e->client, &e->event, &e->phy_packet, sizeof(*pp) + pp->length,
-+			    NULL, 0);
-+		break;
-+	}
-+	default:
-+		WARN_ON(1);
-+		break;
-+	}
- 
- 	client_put(e_client);
- }
-@@ -1596,13 +1618,12 @@ static int ioctl_send_phy_packet(struct client *client, union ioctl_arg *arg)
- 	struct fw_cdev_send_phy_packet *a = &arg->send_phy_packet;
- 	struct fw_card *card = client->device->card;
- 	struct outbound_phy_packet_event *e;
--	struct fw_cdev_event_phy_packet *pp;
- 
- 	/* Access policy: Allow this ioctl only on local nodes' device files. */
- 	if (!client->device->is_local)
- 		return -ENOSYS;
- 
--	e = kzalloc(sizeof(*e) + 4, GFP_KERNEL);
-+	e = kzalloc(sizeof(*e) + sizeof(a->data), GFP_KERNEL);
- 	if (e == NULL)
- 		return -ENOMEM;
- 
-@@ -1616,11 +1637,23 @@ static int ioctl_send_phy_packet(struct client *client, union ioctl_arg *arg)
- 	e->p.header_length	= 12;
- 	e->p.callback		= outbound_phy_packet_callback;
- 
--	pp = &e->phy_packet.without_tstamp;
--	pp->closure = a->closure;
--	pp->type = FW_CDEV_EVENT_PHY_PACKET_SENT;
--	if (is_ping_packet(a->data))
--		pp->length = 4;
-+	if (client->version < FW_CDEV_VERSION_EVENT_ASYNC_TSTAMP) {
-+		struct fw_cdev_event_phy_packet *pp = &e->phy_packet.without_tstamp;
-+
-+		pp->closure = a->closure;
-+		pp->type = FW_CDEV_EVENT_PHY_PACKET_SENT;
-+		if (is_ping_packet(a->data))
-+			pp->length = 4;
-+	} else {
-+		struct fw_cdev_event_phy_packet2 *pp = &e->phy_packet.with_tstamp;
-+
-+		pp->closure = a->closure;
-+		pp->type = FW_CDEV_EVENT_PHY_PACKET_SENT2;
-+		// Keep the data field so that application can match the response event to the
-+		// request.
-+		pp->length = sizeof(a->data);
-+		memcpy(pp->data, a->data, sizeof(a->data));
-+	}
- 
- 	card->driver->send_request(card, &e->p);
- 
-@@ -1655,20 +1688,33 @@ void fw_cdev_handle_phy_packet(struct fw_card *card, struct fw_packet *p)
- 	spin_lock_irqsave(&card->lock, flags);
- 
- 	list_for_each_entry(client, &card->phy_receiver_list, phy_receiver_link) {
--		struct fw_cdev_event_phy_packet *pp;
--
- 		e = kmalloc(sizeof(*e) + 8, GFP_ATOMIC);
- 		if (e == NULL)
- 			break;
- 
--		pp = &e->phy_packet.without_tstamp;
--		pp->closure = client->phy_receiver_closure;
--		pp->type = FW_CDEV_EVENT_PHY_PACKET_RECEIVED;
--		pp->rcode = RCODE_COMPLETE;
--		pp->length = 8;
--		pp->data[0] = p->header[1];
--		pp->data[1] = p->header[2];
--		queue_event(client, &e->event, &e->phy_packet, sizeof(*pp) + 8, NULL, 0);
-+		if (client->version < FW_CDEV_VERSION_EVENT_ASYNC_TSTAMP) {
-+			struct fw_cdev_event_phy_packet *pp = &e->phy_packet.without_tstamp;
-+
-+			pp->closure = client->phy_receiver_closure;
-+			pp->type = FW_CDEV_EVENT_PHY_PACKET_RECEIVED;
-+			pp->rcode = RCODE_COMPLETE;
-+			pp->length = 8;
-+			pp->data[0] = p->header[1];
-+			pp->data[1] = p->header[2];
-+			queue_event(client, &e->event, &e->phy_packet, sizeof(*pp) + 8, NULL, 0);
-+		} else {
-+			struct fw_cdev_event_phy_packet2 *pp = &e->phy_packet.with_tstamp;
-+
-+			pp = &e->phy_packet.with_tstamp;
-+			pp->closure = client->phy_receiver_closure;
-+			pp->type = FW_CDEV_EVENT_PHY_PACKET_RECEIVED2;
-+			pp->rcode = RCODE_COMPLETE;
-+			pp->length = 8;
-+			pp->tstamp = p->timestamp;
-+			pp->data[0] = p->header[1];
-+			pp->data[1] = p->header[2];
-+			queue_event(client, &e->event, &e->phy_packet, sizeof(*pp) + 8, NULL, 0);
-+		}
- 	}
- 
- 	spin_unlock_irqrestore(&card->lock, flags);
--- 
-2.39.2
-
-
-
-_______________________________________________
-mailing list linux1394-devel@lists.sourceforge.net
-https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+SGksCgpPbiBNb24sIE1heSAyOSwgMjAyMyBhdCAxMjo1MjowN1BNIC0wNjAwLCBHdXN0YXZvIEEu
+IFIuIFNpbHZhIHdyb3RlOgo+IFplcm8tbGVuZ3RoIGFuZCBvbmUtZWxlbWVudCBhcnJheXMgYXJl
+IGRlcHJlY2F0ZWQsIGFuZCB3ZSBhcmUgbW92aW5nCj4gdG93YXJkcyBhZG9wdGluZyBDOTkgZmxl
+eGlibGUtYXJyYXkgbWVtYmVycywgaW5zdGVhZC4KPiAKPiBBZGRyZXNzIHRoZSBmb2xsb3dpbmcg
+d2FybmluZ3MgZm91bmQgd2l0aCBHQ0MtMTMgYW5kCj4gLWZzdHJpY3QtZmxleC1hcnJheXM9MyBl
+bmFibGVkOgo+IHNvdW5kL2ZpcmV3aXJlL2FtZHRwLXN0cmVhbS5jOiBJbiBmdW5jdGlvbiDigJhi
+dWlsZF9pdF9wa3RfaGVhZGVy4oCZOgo+IHNvdW5kL2ZpcmV3aXJlL2FtZHRwLXN0cmVhbS5jOjY5
+NDoxNzogd2FybmluZzog4oCYZ2VuZXJhdGVfY2lwX2hlYWRlcuKAmSBhY2Nlc3NpbmcgOCBieXRl
+cyBpbiBhIHJlZ2lvbiBvZiBzaXplIDAgWy1Xc3RyaW5nb3Atb3ZlcmZsb3c9XQo+ICAgNjk0IHwg
+ICAgICAgICAgICAgICAgIGdlbmVyYXRlX2NpcF9oZWFkZXIocywgY2lwX2hlYWRlciwgZGF0YV9i
+bG9ja19jb3VudGVyLCBzeXQpOwo+ICAgICAgIHwgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+
+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+Cj4gc291bmQv
+ZmlyZXdpcmUvYW1kdHAtc3RyZWFtLmM6Njk0OjE3OiBub3RlOiByZWZlcmVuY2luZyBhcmd1bWVu
+dCAyIG9mIHR5cGUg4oCYX19iZTMyWzJd4oCZIHtha2Eg4oCYdW5zaWduZWQgaW50WzJd4oCZfQo+
+IHNvdW5kL2ZpcmV3aXJlL2FtZHRwLXN0cmVhbS5jOjY2NzoxMzogbm90ZTogaW4gYSBjYWxsIHRv
+IGZ1bmN0aW9uIOKAmGdlbmVyYXRlX2NpcF9oZWFkZXLigJkKPiAgIDY2NyB8IHN0YXRpYyB2b2lk
+IGdlbmVyYXRlX2NpcF9oZWFkZXIoc3RydWN0IGFtZHRwX3N0cmVhbSAqcywgX19iZTMyIGNpcF9o
+ZWFkZXJbMl0sCj4gICAgICAgfCAgICAgICAgICAgICBefn5+fn5+fn5+fn5+fn5+fn5+Cj4gCj4g
+VGhpcyBoZWxwcyB3aXRoIHRoZSBvbmdvaW5nIGVmZm9ydHMgdG8gdGlnaHRlbiB0aGUgRk9SVElG
+WV9TT1VSQ0UKPiByb3V0aW5lcyBvbiBtZW1jcHkoKSBhbmQgaGVscCB1cyBtYWtlIHByb2dyZXNz
+IHRvd2FyZHMgZ2xvYmFsbHkKPiBlbmFibGluZyAtZnN0cmljdC1mbGV4LWFycmF5cz0zIFsxXS4K
+PiAKPiBMaW5rOiBodHRwczovL2dpdGh1Yi5jb20vS1NQUC9saW51eC9pc3N1ZXMvMjEKPiBMaW5r
+OiBodHRwczovL2dpdGh1Yi5jb20vS1NQUC9saW51eC9pc3N1ZXMvMzAzCj4gTGluazogaHR0cHM6
+Ly9nY2MuZ251Lm9yZy9waXBlcm1haWwvZ2NjLXBhdGNoZXMvMjAyMi1PY3RvYmVyLzYwMjkwMi5o
+dG1sIFsxXQo+IFNpZ25lZC1vZmYtYnk6IEd1c3Rhdm8gQS4gUi4gU2lsdmEgPGd1c3Rhdm9hcnNA
+a2VybmVsLm9yZz4KPiAtLS0KPiAgaW5jbHVkZS9saW51eC9maXJld2lyZS5oIHwgMiArLQo+ICAx
+IGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKClRoYW5rcyBmb3Ig
+dGhlIHBhdGNoLiBJIGFwcGxpZWQgaXQgdG8gZm9yLWxpbnVzIGJyYW5jaCBhcyBhIGZpeCBmb3IK
+djYuNC1yYzQsIGluc3RlYWQgb2YgZm9yLW5leHQgYnJhbmNoLgoKKiBodHRwczovL2dpdC5rZXJu
+ZWwub3JnL2llZWUxMzk0L2xpbnV4MTM5NC9jLzQxZGQxMGEwODZjNQoKClRoYW5rcwoKVGFrYXNo
+aSBTYWthbW90bwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCm1haWxpbmcgbGlzdCBsaW51eDEzOTQtZGV2ZWxAbGlzdHMuc291cmNlZm9yZ2UubmV0Cmh0
+dHBzOi8vbGlzdHMuc291cmNlZm9yZ2UubmV0L2xpc3RzL2xpc3RpbmZvL2xpbnV4MTM5NC1kZXZl
+bAo=
