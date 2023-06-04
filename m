@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30C5C7214EF
-	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Jun 2023 07:45:28 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id ACC837214F5
+	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Jun 2023 07:45:36 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1q5gYC-0007FM-SD;
-	Sun, 04 Jun 2023 05:45:13 +0000
+	id 1q5gYP-00055L-Kr;
+	Sun, 04 Jun 2023 05:45:25 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1q5gYB-0007FE-RE
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1q5gYI-00054X-3A
  for linux1394-devel@lists.sourceforge.net;
- Sun, 04 Jun 2023 05:45:12 +0000
+ Sun, 04 Jun 2023 05:45:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-Id:Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=7jRIqu3WK9pbTJJNWXwjuu5GtvOIZ4uZ8MriEr/wEx4=; b=IqLnNrZX3s2UnwGnm7TFmV48Tq
- q/uDXTBvJIHN2TXCJymCBxYd8jriaP5V39Fbzo2SCgyqlX0XuQDrGx/WjqDKTQh0qkXMsM7Gzbfai
- TI+pzNQ3p1zBN1f7LK0xgj/OTsvD6bIojxn/c4UwxYHN1oFKr7bqEt6iyq6iqyIEPCK8=;
+ bh=+SNfvwUr3HkWtVX9bEAgYqWbf/gfUOCX+tboiD/Fg6E=; b=ivOc9cj/ogNhYkeD4dIzrB43Vt
+ zaBFL1jp2QUtcjd7jjrwvHYg0KlyQGRfgZhqU9ZYGMp1+yJl3wc8QscFu72xMfyt1AwHpWf5PIWmp
+ w4a71JQYre3i1Y2jzyHSLiis2zn+FrUMosXB3TGtx0QiWSaPgN4gIy25TO1Oofh5mEEA=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
@@ -31,48 +31,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=7jRIqu3WK9pbTJJNWXwjuu5GtvOIZ4uZ8MriEr/wEx4=; b=W1M739KOwnwcFNBHJBqspI8IcW
- xJpzKG39HbaIIM22QFhcWvdOYFwopOaL6iu3ptw10itI/f6o+ecto/T9GTpZMaYhSIusAvsuayErX
- sgM2rXYIUBoQTHLtM3yD/buXgkfDMp7ufXUS6CBNvi3oB7eR9kbR2y04TYkl1xyXhhJs=;
+ bh=+SNfvwUr3HkWtVX9bEAgYqWbf/gfUOCX+tboiD/Fg6E=; b=AwBa2Nm2L7PsPyDtxFQsfF4lBn
+ QWBLI9RgpAAEttSVLgM8KrFZWwlNZC01NW1C0T6X6ptAAIxXrgXw4rksu8PJ3nglDg4BZ0grU9W2B
+ ad8iFABR6sJqiS899cxprs7ZKic1HGADYblUphDceZAPYwD/BYXZJTOCEgRk7biDvauQ=;
 Received: from out2-smtp.messagingengine.com ([66.111.4.26])
  by sfi-mx-1.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1q5gY7-00AcPL-Di for linux1394-devel@lists.sourceforge.net;
- Sun, 04 Jun 2023 05:45:12 +0000
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailout.nyi.internal (Postfix) with ESMTP id DE92D5C010D;
- Sun,  4 Jun 2023 01:45:01 -0400 (EDT)
+ id 1q5gYH-00AcRM-Hx for linux1394-devel@lists.sourceforge.net;
+ Sun, 04 Jun 2023 05:45:18 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.nyi.internal (Postfix) with ESMTP id 2CDF75C010B;
+ Sun,  4 Jun 2023 01:45:03 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute1.internal (MEProxy); Sun, 04 Jun 2023 01:45:01 -0400
+ by compute2.internal (MEProxy); Sun, 04 Jun 2023 01:45:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:content-transfer-encoding:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1685857501; x=
- 1685943901; bh=7jRIqu3WK9pbTJJNWXwjuu5GtvOIZ4uZ8MriEr/wEx4=; b=k
- u1d6ors0EbpVI5FlR5rTVFzpqJu6LMsMdlTg77PoSIDlXFHX5O0ItTui1zv1qmmv
- J12EqYAdnJ1b2xdfEetGnPPC0P42gASKH5SC15VSKU+32lKQ12qM4ZGpf6rKhdEd
- q/Vk8wNw/ZUqYakRdksyFRuYU7ZHI+XYBi7R19Vt91urwXDjTGHRIBqJJObtnSF1
- MTkIY03DfXgNwH8TXE4ta4mSOau8XlXZqkUpUW7W7M52+OIMOv5Eo0LQKSGo3Y8f
- uJNqo+8S0pVqvh0kYN7VfuayZ7D/5xJ6JfoVz4Hv4l05QSivyClPpQ/At8nDo/CM
- lod4F2prGnST55PUlQcHg==
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1685857503; x=
+ 1685943903; bh=+SNfvwUr3HkWtVX9bEAgYqWbf/gfUOCX+tboiD/Fg6E=; b=U
+ BKnq3yjaySl29OZGcuVREvQa7DIsvzGjsohKjledhFIpHuB+S1t0tmGcbSXr5cuT
+ U0BrjF+Ul6dNeuxKnY1NPpFWcDkOd0mfFt65ZYmcWCnIsg6AAjgnmgesb51knJv4
+ SXP6lmhR3DlSHSJHNng37Fw8vbS5W57BUjifNR4gTfQtSdbM/dvBYLmoNuNFHYzV
+ XeQ50z6xFcLtUZ9wyqsDzqTdwqMq9jJGBkVpOrc8QteyIE1URHXbZXcbrw+kXye7
+ ZqS71cW8lEMieirU/yTGTYFR1kaiIU+vVpVbE/UMhEY/DTqAlsFHQ3C7DsORiQnV
+ RM1HsbK7ea9dMSEt3xuQg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:content-type
  :date:date:feedback-id:feedback-id:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:sender
  :subject:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm1; t=1685857501; x=1685943901; bh=7
- jRIqu3WK9pbTJJNWXwjuu5GtvOIZ4uZ8MriEr/wEx4=; b=C3qj/yvD+wSne5+Hm
- E/Kvl8ozuJo+inh35UDu1w0/F8r8JCY/HIoEWkZ4iD6D9AusN3qV0JlxyTIb1/1p
- lH5TrqTQbuXyFRtFC3haYTctLbgOUwpF2Hijfc2SR4mHCHxu0QacTMU04J0QhIcZ
- VdoIhCCw+U7mRme8w0Awk2+BopYjIqF82iqymS8t49vUwSsycq+77rTkKoALQe4x
- hwVd5B1BOgcKMDkmP4Mjy8PSc2oDTEL7h+7oFnPNqsQ1dA/InfhVqEuhrYkvW+i7
- UxHCZixBeCTcnEkOdJnjnWtJyPBjOoMUXvAgdyH8XLa1O5trBMr4J2wcGK+OYC7U
- GFT8A==
-X-ME-Sender: <xms:3SR8ZCRT4QsDcg41F_5_JAF5n1CRzRLGpyAsYWwtgVyBJIVlk5yCWA>
- <xme:3SR8ZHzayKQaNDwV18GoZYz2W3wOob2L05ro9VEGk8QqVd-bKrfh2m3_okF_G85VF
- 2v0RCoeIY0vx7l5gi0>
-X-ME-Received: <xmr:3SR8ZP3GgIcSzQ4abw45fCLiDnYVWwvFHlOD1iEvd5pYBQd7fpaMBY2O8aKqkdF4VHSAGWzjqwJu1mBcOEaFWgGLY8JBI0-Cr1y-PquIez0>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeeliedguddtudcutefuodetggdotefrod
+ :x-me-sender:x-sasl-enc; s=fm1; t=1685857503; x=1685943903; bh=+
+ SNfvwUr3HkWtVX9bEAgYqWbf/gfUOCX+tboiD/Fg6E=; b=LNqi2PjRROO7RKxpJ
+ yHd/hNIAkT+GCDHleqUSADoh+fg7o4h5WP74eC3oDRYG6EKfYBYnKZz3AcP//k+n
+ j/0UdvBVPPHmeh4n/DsW+McNVTukQF02fP5CLtcrWNJS/yC0ek3oYgg1roeK3FYI
+ ScXei7pSOIH3aNPynV5xtJtn+/xyMb0oRp4KYJlagg05VcJnymaeC+5AakUjh5YA
+ Cvd6c2STF1wAOwgAlYz9Tq1NxhIkZAvYn3ymlOEl7HmSUXaJNkWZnONR+zq3N+fC
+ 2Z1u0CaGCD/vh+mK8Qn6AgF4F7vhMUGGcxW3VqYGxu30zKFXMITm5boEgiOpTo8c
+ LtcWQ==
+X-ME-Sender: <xms:3yR8ZIiKIX02ThH__93_mW-jqro3tbwYbC7Nck870qugw4Yzi6Dv9g>
+ <xme:3yR8ZBBIFFfOcaHiY0NmgJ94aegwr_e4XSnccksuvoTU--D-F1i095NiwBQGowpXc
+ CJHbuVR2RCCwFl_QrU>
+X-ME-Received: <xmr:3yR8ZAFngZJSnQ8drCD-Tb3ROajvjy0TBUNgnr6a6HSRZbDWo5Z7Fe21Nhjm-qkJXajteJ5suxUyUaTJsI-bOUO3ewO6ioo04t-bJIt2pdo>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeeliedguddttdcutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
  necuuegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffojghfggfgsedtke
  ertdertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
@@ -80,19 +80,19 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeeliedguddtudcutefuodetgg
  ektefgveegfeelheffhfeujedtjeevtefhkeevkedtjeejvddtjefhjeenucevlhhushht
  vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
  hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:3SR8ZOBzu4Bw6WrTopGmKoxjePElidT8snqVULV-kjB1WhVRDqAeAw>
- <xmx:3SR8ZLhar4how0Mo-BrEaU2Ego-OKoSPhvw4Qdf92usrbc5buyqLHQ>
- <xmx:3SR8ZKqMsXDAlj3vDexp6Ylbx07eHGSyRpfzRbbSI_rA9j-CYUyPgw>
- <xmx:3SR8ZLLmDoFnFVgMgMlniK8X4o7hNxuB__rc9wjlAye1V_-qIDRRcQ>
+X-ME-Proxy: <xmx:3yR8ZJQtc7t4CAgPtQPjggMx6VafvIJVimbkMJbiTHBCPKoGrUMZoQ>
+ <xmx:3yR8ZFwkseMtEY8ak5MUXRUhiWFmDrdXgVNuwqkEv2l2Obg6fMkfCA>
+ <xmx:3yR8ZH6_zeYEgrLUwBR0nbF86znG9F9opNo8XENOYX3ZKmq7G_D9dw>
+ <xmx:3yR8ZDYDGuzKLkrOxr9ScSx7K0aLFQ_kDOY9OQM2r0TsLAdvqwxplA>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 4 Jun 2023 01:45:00 -0400 (EDT)
+ 4 Jun 2023 01:45:02 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 4/9] firewire: ohci: use devres for misc DMA buffer
-Date: Sun,  4 Jun 2023 14:44:46 +0900
-Message-Id: <20230604054451.161076-5-o-takashi@sakamocchi.jp>
+Subject: [PATCH 5/9] firewire: ohci: use devres for requested IRQ
+Date: Sun,  4 Jun 2023 14:44:47 +0900
+Message-Id: <20230604054451.161076-6-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230604054451.161076-1-o-takashi@sakamocchi.jp>
 References: <20230604054451.161076-1-o-takashi@sakamocchi.jp>
@@ -104,10 +104,11 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: The 1394 OHCI driver allocates a DMA coherent buffer for
- multi-purposes.
- The buffer is split into three region for specific purposes; i.e. 1/4 for
- context descriptors of AR request and response as wel [...] 
+ Content preview: The 1394 OHCI controller register handler to single interrupt
+ number. This commit uses managed device resource to maintain the lifetime
+ of requested IRQ. Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+ --- drivers/firewire/ohci.c | 12 ++++-------- 1 file changed, 4 insertions(+), 
+ 8 deletions(-) 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -126,7 +127,7 @@ X-Spam-Report: Spam detection software,
  envelope-from domain
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1q5gY7-00AcPL-Di
+X-Headers-End: 1q5gYH-00AcRM-Hx
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -143,63 +144,59 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The 1394 OHCI driver allocates a DMA coherent buffer for multi-purposes.
-The buffer is split into three region for specific purposes; i.e. 1/4 for
-context descriptors of AR request and response as well as 1/2 for self
-ID handling.
+The 1394 OHCI controller register handler to single interrupt number.
 
 This commit uses managed device resource to maintain the lifetime of
-buffer.
+requested IRQ.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/ohci.c | 13 +++----------
- 1 file changed, 3 insertions(+), 10 deletions(-)
+ drivers/firewire/ohci.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
-index 26c64b60144d..3b31d90781fe 100644
+index 3b31d90781fe..cb6b43e3f67e 100644
 --- a/drivers/firewire/ohci.c
 +++ b/drivers/firewire/ohci.c
-@@ -3634,17 +3634,15 @@ static int pci_probe(struct pci_dev *dev,
+@@ -3697,17 +3697,16 @@ static int pci_probe(struct pci_dev *dev,
+ 
+ 	if (!(ohci->quirks & QUIRK_NO_MSI))
+ 		pci_enable_msi(dev);
+-	if (request_irq(dev->irq, irq_handler,
+-			pci_dev_msi_enabled(dev) ? 0 : IRQF_SHARED,
+-			ohci_driver_name, ohci)) {
++	err = devm_request_irq(&dev->dev, dev->irq, irq_handler,
++			       pci_dev_msi_enabled(dev) ? 0 : IRQF_SHARED, ohci_driver_name, ohci);
++	if (err < 0) {
+ 		ohci_err(ohci, "failed to allocate interrupt %d\n", dev->irq);
+-		err = -EIO;
+ 		goto fail_msi;
+ 	}
+ 
+ 	err = fw_card_add(&ohci->card, max_receive, link_speed, guid);
+ 	if (err)
+-		goto fail_irq;
++		goto fail_msi;
+ 
+ 	version = reg_read(ohci, OHCI1394_Version) & 0x00ff00ff;
+ 	ohci_notice(ohci,
+@@ -3720,8 +3719,6 @@ static int pci_probe(struct pci_dev *dev,
+ 
+ 	return 0;
+ 
+- fail_irq:
+-	free_irq(dev->irq, ohci);
+  fail_msi:
+ 	pci_disable_msi(dev);
+  fail_contexts:
+@@ -3759,7 +3756,6 @@ static void pci_remove(struct pci_dev *dev)
  	 */
- 	BUILD_BUG_ON(AR_BUFFERS * sizeof(struct descriptor) > PAGE_SIZE/4);
- 	BUILD_BUG_ON(SELF_ID_BUF_SIZE > PAGE_SIZE/2);
--	ohci->misc_buffer = dma_alloc_coherent(ohci->card.device,
--					       PAGE_SIZE,
--					       &ohci->misc_buffer_bus,
--					       GFP_KERNEL);
-+	ohci->misc_buffer = dmam_alloc_coherent(&dev->dev, PAGE_SIZE, &ohci->misc_buffer_bus,
-+						GFP_KERNEL);
- 	if (!ohci->misc_buffer)
- 		return -ENOMEM;
  
- 	err = ar_context_init(&ohci->ar_request_ctx, ohci, 0,
- 			      OHCI1394_AsReqRcvContextControlSet);
- 	if (err < 0)
--		goto fail_misc_buf;
-+		return err;
+ 	software_reset(ohci);
+-	free_irq(dev->irq, ohci);
  
- 	err = ar_context_init(&ohci->ar_response_ctx, ohci, PAGE_SIZE/4,
- 			      OHCI1394_AsRspRcvContextControlSet);
-@@ -3736,9 +3734,6 @@ static int pci_probe(struct pci_dev *dev,
- 	ar_context_release(&ohci->ar_response_ctx);
-  fail_arreq_ctx:
- 	ar_context_release(&ohci->ar_request_ctx);
-- fail_misc_buf:
--	dma_free_coherent(ohci->card.device, PAGE_SIZE,
--			  ohci->misc_buffer, ohci->misc_buffer_bus);
- 
- 	return err;
- }
-@@ -3774,8 +3769,6 @@ static void pci_remove(struct pci_dev *dev)
- 				  ohci->config_rom, ohci->config_rom_bus);
- 	ar_context_release(&ohci->ar_request_ctx);
- 	ar_context_release(&ohci->ar_response_ctx);
--	dma_free_coherent(ohci->card.device, PAGE_SIZE,
--			  ohci->misc_buffer, ohci->misc_buffer_bus);
- 	context_release(&ohci->at_request_ctx);
- 	context_release(&ohci->at_response_ctx);
- 	kfree(ohci->it_context_list);
+ 	if (ohci->next_config_rom && ohci->next_config_rom != ohci->config_rom)
+ 		dma_free_coherent(ohci->card.device, CONFIG_ROM_SIZE,
 -- 
 2.39.2
 
