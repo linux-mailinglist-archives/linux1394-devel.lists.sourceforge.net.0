@@ -2,17 +2,17 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED7C07214EC
-	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Jun 2023 07:45:25 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 87A757214EE
+	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Jun 2023 07:45:26 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1q5gYC-0006Lg-5s;
-	Sun, 04 Jun 2023 05:45:12 +0000
+	id 1q5gYD-00053p-8r;
+	Sun, 04 Jun 2023 05:45:13 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1q5gYB-0006LY-CZ
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1q5gYB-00053Z-Rf
  for linux1394-devel@lists.sourceforge.net;
  Sun, 04 Jun 2023 05:45:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -21,9 +21,9 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=JB7K4eidj7H1KpxfnC6amlDwCbgE0URtV74lvVmVyE0=; b=BcKxbXoro8XZ0IaHzWxykoJo9f
- 3R+ein2J1waugCg2OgWFu4DGDf45GNVU7RbJDm3M1TGqI4MIZJ7mA7VPfejlDl5F4jWc7+YYX4VVv
- VlL111Ha16Et6nmv9V9BOcdmN+PSjHTDIkDbyCoBIhTpXR7Go0FYXNBWQpUBJMQYjKPs=;
+ bh=+LOorxHwbHKlpWuigPekygpArmsdgCBfeAYLfsUoUC8=; b=heuazmeKY9wMZAQ/YuqdAoFvo6
+ S7ziEmYBwId8uPFUAKCVVsT8cT2WA6bYImP1onVE9D40/AphGuhYyz1gMz32757J2bRcgqDaj+Azw
+ devM5ZUitLfNgdd5iylxhIKczsr2IxVia6960WzhrIQQjYtDDj6lvhMxnJdPSwgU65/o=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
@@ -31,47 +31,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=JB7K4eidj7H1KpxfnC6amlDwCbgE0URtV74lvVmVyE0=; b=IvEccyhvHa1bQu9xLyIsY/bStR
- yCBGQkWAqjW2y+Dh4f2Dg5RSXp616yJ7I82zP6OmqkLhjbTdi/NaGp2ucICJdAc8QWQLZM2KAolxQ
- KCcqbZ4nC/V4qTeeABvBDV/X1sV58JM7F+WfATdVB9NyCtzmD6/Mt4Sv/6cEnty/TNNA=;
+ bh=+LOorxHwbHKlpWuigPekygpArmsdgCBfeAYLfsUoUC8=; b=OzWZEIISYoVuqWOeaQSce/5wpp
+ SvhmfihCN2z1LLjwdCz6LMe8sfuZJFTVdowy890nPw5NlP74DavhsjJVCul6oqiuWf3CJiCV5zHKU
+ i9BrZgWOFgclLEJFCgmqlphSJGQqRrFG5UHTI4JCyzdCIyRCBOAype+aKdMywWRh/m9g=;
 Received: from out2-smtp.messagingengine.com ([66.111.4.26])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1q5gY5-00031K-Uf for linux1394-devel@lists.sourceforge.net;
+ id 1q5gY6-00031O-5U for linux1394-devel@lists.sourceforge.net;
  Sun, 04 Jun 2023 05:45:11 +0000
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailout.nyi.internal (Postfix) with ESMTP id E90245C0108;
- Sun,  4 Jun 2023 01:44:57 -0400 (EDT)
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 3F7285C010A;
+ Sun,  4 Jun 2023 01:44:59 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute1.internal (MEProxy); Sun, 04 Jun 2023 01:44:57 -0400
+ by compute4.internal (MEProxy); Sun, 04 Jun 2023 01:44:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:content-transfer-encoding:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm1; t=1685857497; x=
- 1685943897; bh=JB7K4eidj7H1KpxfnC6amlDwCbgE0URtV74lvVmVyE0=; b=Q
- kP7H19xJnIgyVj44WdEVh/W48SS/7U4wOy13xD+fw0ipdjZ3Lm44pZK4ZwrSiJQA
- b6VEyBL9JYFKwNXtOpmpSzEXcFjadgBtOcZTON7R8noC3eMQsYXYnzAa9SijWiDQ
- GujbnoyreZLoBKxS0B/UejA2fIQn3Td48PZf1dTLvsS64G+wB9pnC5jWw1gb/OL7
- 29W4zvSEC3rMf4DNa8TEevjHvOyauK4HYcNbVQaD3/Dex8dHA3S9eDtI0ySGBqSJ
- ZC0DYgZRBK6j/LMCqIIjF5brQsEEiCFORjZaN1fr8xjgh22rBlgtlaBc9srvu6As
- gZEOzyZR2Kn9Bdi40M40A==
+ :reply-to:sender:subject:subject:to:to; s=fm1; t=1685857499; x=
+ 1685943899; bh=+LOorxHwbHKlpWuigPekygpArmsdgCBfeAYLfsUoUC8=; b=l
+ OO8YIkwmgwBmWa9kBcqjRiJ2ecPa213T8+CB2NHgnS9p7JK8j1IDUeTsHRDTu9x1
+ lVczR98SkiknFbOWw0R8kRY4AkKhJcoPkbmfW/e6G0zptmYu9frw0gA98ZQY2P0n
+ 1QK4CmYXkDYTz0u/xJ0HDlk7SkJmVuhtedHOo2/rN4N1zCE3TuDSB/046vfJO+7Y
+ U3UUh7kmPjA9VxsUtXtzLjiCiTgoHJOnBwZVY9AuWAcIN6tgTQqsrqHALD/6hWTj
+ PYcY+odWIPyQxDXNldin//bBHo/YcDChH5Y0BLzBark3fnTAQfGIjfQZBLDhB4kP
+ 5leGVUYBl+cjMpsquMoYw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:content-type
  :date:date:feedback-id:feedback-id:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:sender
  :subject:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm1; t=1685857497; x=1685943897; bh=J
- B7K4eidj7H1KpxfnC6amlDwCbgE0URtV74lvVmVyE0=; b=m507attTArW1hSN37
- 3IFOIT2dhJH/7ohUHGHeD1KsxgIlBbKiEmAukzITKhmgIeJBYxkvhNm25RwEYjXu
- 5ogvxAvVJfXiy1wRNZeu3WC3g3Nvt11G4i8+nZVjQ+cn6gJvMaJ8nf1/Y9vOqkBN
- kuhg7EqpbglPeccNeW1aj+2gWaSW69ZL5phn4cxQspx1pX17U6E1dr856DAl/+SC
- +HZExs++6ocflj5nkSOoePrKZedzosr4115dZ3XKrkXdGLyTAiCLve4m7vSmNSAr
- rp+oWEgEzqIfSZVMkKaohYp9mP3WvNQN/w/ts73g6j4QIs5LT4g+piZku499Ne0w
- Hhgwg==
-X-ME-Sender: <xms:2SR8ZFTzu2ii0RxPfkVkQH3Mjh4UvNaAzvpw2ID4tzpo6BJy3RHxYA>
- <xme:2SR8ZOwuCuYkeozkGXnUmQgHDKz0_enHyCsJCuHFRxb4ON4uGa7GREuvJa36utl3h
- 9_jCQ_aNh6vqOSqdms>
-X-ME-Received: <xmr:2SR8ZK1abvlwMYwZOoZQLIrFO1n8T2s1wYecCJQd56r2HmIygv9hH_zHnE_t_95M4u16NtOyWQkR5pFDo0yFQPygnPpfurx-YULemvsPUZg>
+ :x-me-sender:x-sasl-enc; s=fm1; t=1685857499; x=1685943899; bh=+
+ LOorxHwbHKlpWuigPekygpArmsdgCBfeAYLfsUoUC8=; b=PktUWT3NW9iRawXCV
+ bMT1gmGk2EY+LKBNGle5fSfAxHzKh17G7TigsLwekjIIZnGh1ZYu+uUWncIRRRcL
+ 46hQUDWcWbjNpzOvg25p4aQIdJaD4I+DBzuSgG9rGAkkArPN7vabC9gTNk2VptPR
+ 8HpN82LXkzaiheJH1DZj7hkfMd4M76Te/QyuTh2n73iN6HUBBe04y2ERNX9QS820
+ aMvZdZHUHjEclkrOOtdWoydwaNHzlHadhhbhGDZHwpZe98+ZtVXYjUxTF2bCdjCx
+ s+wbuk728LtyZqGcB4ME+WfeyCzinsQH99inq4I7X1/xk3SiYKFRoHDeJJa/gZKV
+ QeZgA==
+X-ME-Sender: <xms:2yR8ZCDASnmVzG65rg0gklEYExEhz1np70wfhdyKm70SdclnlFuJWg>
+ <xme:2yR8ZMip5vL9xJxXNmhaPcrbdWk3GYruKEyyuHlHPg66lCoLb6U6AYXBAzxEm9QmV
+ X6DGbJw5D_wns_jIKY>
+X-ME-Received: <xmr:2yR8ZFlSgJS3lDLWvIJs09xvnOnik2UBRlPzfY6R_wFE4fbmcfiYk7ZnVo0NQF32j8x9pDqTrqHiMwhPN53Ep8wYq0ss12dI-h8z8EOf4eQ>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeeliedguddtudcutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
  necuuegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffojghfggfgsedtke
@@ -80,20 +80,19 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeeliedguddtudcutefuodetgg
  ektefgveegfeelheffhfeujedtjeevtefhkeevkedtjeejvddtjefhjeenucevlhhushht
  vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
  hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:2SR8ZNB10zvpIP60zGZxQGJrXbCaADwOJWXiH0781Ycq7LnIIi_yQw>
- <xmx:2SR8ZOjN5awH1OLhiXk7XYWbiKJw-eWT2kwZn4M42P_b_UW0yjWN0g>
- <xmx:2SR8ZBq4nZe9KM8pTbd6XEBWGXmoQsk9Oqe7uuSZB4_M3nAn94AkvQ>
- <xmx:2SR8ZGJA2WfHvYozHMmyxw7iOGlJIlGrc7Tpf6-5caTjCsnJkWsRyA>
+X-ME-Proxy: <xmx:2yR8ZAxyjuFht6k4h84ud0_tinPoyERz0MwWHM4CowEu4TRNMq9xuQ>
+ <xmx:2yR8ZHQbccvX8r7gUcxjhjMFUTZew8gXioiA2DGo7_tAaqzD1AH_3Q>
+ <xmx:2yR8ZLaEqaWEqGqF_CPxNDw1YCn9cxTcTDh4W11mb9nWP8qo_9VU8A>
+ <xmx:2yR8ZI4B2i2kVeEoEWbW9Eoe-ZAdI58M_y4gQMvXgO0CoZS2e8lW7Q>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 4 Jun 2023 01:44:56 -0400 (EDT)
+ 4 Jun 2023 01:44:58 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/9] firewire: ohci: use devres for memory object of ohci
- structure
-Date: Sun,  4 Jun 2023 14:44:43 +0900
-Message-Id: <20230604054451.161076-2-o-takashi@sakamocchi.jp>
+Subject: [PATCH 2/9] firewire: ohci: use devres for PCI-related resources
+Date: Sun,  4 Jun 2023 14:44:44 +0900
+Message-Id: <20230604054451.161076-3-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230604054451.161076-1-o-takashi@sakamocchi.jp>
 References: <20230604054451.161076-1-o-takashi@sakamocchi.jp>
@@ -105,12 +104,12 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: The managed device resource (devres) framework is convenient
- to maintain lifetime of allocated memory object for device. This commit
- utilizes
- the framework for the object of ohci structure. The extra operation for power
- management is required in Apple PowerMac based machines, thus release callback
- is assigned to the obj [...] 
+ Content preview: The PCI framework supports managed device resource to
+ maintain
+ the lifetime of PCI specific resources. This commit allows 1394 OHCI driver
+ to utilize it. Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+ --- drivers/firewire/ohci.c | 10 +++------- 1 file changed, 3 insertions(+),
+ 7 deletions(-) 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -127,7 +126,7 @@ X-Spam-Report: Spam detection software,
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1q5gY5-00031K-Uf
+X-Headers-End: 1q5gY6-00031O-5U
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,95 +143,63 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The managed device resource (devres) framework is convenient to maintain
-lifetime of allocated memory object for device.
+The PCI framework supports managed device resource to maintain the
+lifetime of PCI specific resources.
 
-This commit utilizes the framework for the object of ohci structure. The
-extra operation for power management is required in Apple PowerMac based
-machines, thus release callback is assigned to the object to call the
-operation.
+This commit allows 1394 OHCI driver to utilize it.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/ohci.c | 33 +++++++++++++++++----------------
- 1 file changed, 17 insertions(+), 16 deletions(-)
+ drivers/firewire/ohci.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
-index 06386c3b7f03..2b02cebcb0ae 100644
+index 2b02cebcb0ae..f3d0882a876c 100644
 --- a/drivers/firewire/ohci.c
 +++ b/drivers/firewire/ohci.c
-@@ -3557,6 +3557,15 @@ static inline void pmac_ohci_on(struct pci_dev *dev) {}
- static inline void pmac_ohci_off(struct pci_dev *dev) {}
- #endif /* CONFIG_PPC_PMAC */
- 
-+static void release_ohci(struct device *dev, void *data)
-+{
-+	struct pci_dev *pdev = to_pci_dev(dev);
-+
-+	pmac_ohci_off(pdev);
-+
-+	dev_notice(dev, "removed fw-ohci device\n");
-+}
-+
- static int pci_probe(struct pci_dev *dev,
- 			       const struct pci_device_id *ent)
- {
-@@ -3571,25 +3580,22 @@ static int pci_probe(struct pci_dev *dev,
- 		return -ENOSYS;
- 	}
- 
--	ohci = kzalloc(sizeof(*ohci), GFP_KERNEL);
--	if (ohci == NULL) {
--		err = -ENOMEM;
--		goto fail;
--	}
--
-+	ohci = devres_alloc(release_ohci, sizeof(*ohci), GFP_KERNEL);
-+	if (ohci == NULL)
-+		return -ENOMEM;
- 	fw_card_initialize(&ohci->card, &ohci_driver, &dev->dev);
--
-+	pci_set_drvdata(dev, ohci);
+@@ -3588,7 +3588,7 @@ static int pci_probe(struct pci_dev *dev,
  	pmac_ohci_on(dev);
-+	devres_add(&dev->dev, ohci);
+ 	devres_add(&dev->dev, ohci);
  
- 	err = pci_enable_device(dev);
+-	err = pci_enable_device(dev);
++	err = pcim_enable_device(dev);
  	if (err) {
  		dev_err(&dev->dev, "failed to enable OHCI hardware\n");
--		goto fail_free;
+ 		return err;
+@@ -3605,14 +3605,13 @@ static int pci_probe(struct pci_dev *dev,
+ 	if (!(pci_resource_flags(dev, 0) & IORESOURCE_MEM) ||
+ 	    pci_resource_len(dev, 0) < OHCI1394_REGISTER_SIZE) {
+ 		ohci_err(ohci, "invalid MMIO resource\n");
+-		err = -ENXIO;
+-		goto fail_disable;
++		return -ENXIO;
+ 	}
+ 
+ 	err = pci_request_region(dev, 0, ohci_driver_name);
+ 	if (err) {
+ 		ohci_err(ohci, "MMIO resource unavailable\n");
+-		goto fail_disable;
 +		return err;
  	}
  
- 	pci_set_master(dev);
- 	pci_write_config_dword(dev, OHCI1394_PCI_HCI_Control, 0);
--	pci_set_drvdata(dev, ohci);
- 
- 	spin_lock_init(&ohci->lock);
- 	mutex_init(&ohci->phy_reg_mutex);
-@@ -3748,10 +3754,7 @@ static int pci_probe(struct pci_dev *dev,
+ 	ohci->registers = pci_iomap(dev, 0, OHCI1394_REGISTER_SIZE);
+@@ -3752,8 +3751,6 @@ static int pci_probe(struct pci_dev *dev,
+ 	pci_iounmap(dev, ohci->registers);
+  fail_iomem:
  	pci_release_region(dev, 0);
-  fail_disable:
- 	pci_disable_device(dev);
-- fail_free:
--	kfree(ohci);
--	pmac_ohci_off(dev);
-- fail:
-+
+- fail_disable:
+-	pci_disable_device(dev);
+ 
  	return err;
  }
- 
-@@ -3796,10 +3799,8 @@ static void pci_remove(struct pci_dev *dev)
+@@ -3798,7 +3795,6 @@ static void pci_remove(struct pci_dev *dev)
+ 	pci_disable_msi(dev);
  	pci_iounmap(dev, ohci->registers);
  	pci_release_region(dev, 0);
- 	pci_disable_device(dev);
--	kfree(ohci);
--	pmac_ohci_off(dev);
+-	pci_disable_device(dev);
  
--	dev_notice(&dev->dev, "removed fw-ohci device\n");
-+	dev_notice(&dev->dev, "removing fw-ohci device\n");
+ 	dev_notice(&dev->dev, "removing fw-ohci device\n");
  }
- 
- #ifdef CONFIG_PM
 -- 
 2.39.2
 
