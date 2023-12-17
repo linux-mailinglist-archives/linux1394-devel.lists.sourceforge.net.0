@@ -2,17 +2,17 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0E90815E7E
-	for <lists+linux1394-devel@lfdr.de>; Sun, 17 Dec 2023 11:30:55 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id B130B815E7D
+	for <lists+linux1394-devel@lfdr.de>; Sun, 17 Dec 2023 11:30:54 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1rEoQ2-000813-OD;
-	Sun, 17 Dec 2023 10:30:47 +0000
+	id 1rEoQ1-0002i2-NE;
+	Sun, 17 Dec 2023 10:30:46 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1rEoQ0-00080i-Ok
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1rEoQ0-0002hu-TN
  for linux1394-devel@lists.sourceforge.net;
  Sun, 17 Dec 2023 10:30:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -21,9 +21,9 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=FVOqUYZZHPiZAYgPZErncLYHpR
- RhO4YjDjazaxLSGYCHL1ppIkD9OCfdwdMsgWi8ghOLC9lj0sXF8iAMnZI5SWEP5qkJ5aq6eKm3jeX
- K+xl2flQC2Y53FHhDKGLsg3DqU4NPtU/jcTQM8UoOV0/0jEnCKHwDCLAqLNz3gxpToJE=;
+ bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=bXeipX8TNka1aGGQheTDu+0zTU
+ KCaAUaDhasJS5c/bCAw0PoHuQIhETydFcd1xFuZaNcUz01q1An7S+odQYP/r7x2TB1wtoPyugSUKN
+ 3sP+KMh9z8sAiQwAxSoWRjVXNtwIw/egbN9qpyLkywLvVk34yYaKmI756oHfGzBwIuiI=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
@@ -31,47 +31,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=l/Bs6HuiWbE+DB9RiFw08qdlzm
- te54BXL4M6JDDo2NeIZJd8xTeifQPte/e4oDTLbxNbLzBrDKQG0x+C2U0uEax7Skxcx2WwygPQZf3
- 8LXo7Oy/ZxIQFVnCNXZFHKMmlsZBjPbfrPcIU6bfy2Qw7Hy8lScL5NJg3I2TsfonM2ko=;
+ bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=HxAGcdoUrgzTIl6qJN/N21Um4v
+ 5ZGlV8j3+wCrewZUichl0NYHJryLEUp7Sp+22t2kK12/p1MnATJ38irD8xJNSXUEXgTF1x2eVXd3C
+ tRziAgkYb+9YugYXUGpWU78rDytzUDJP8QcAjV/90oALVexk+64em2PgJo9Qs9YezU4w=;
 Received: from out3-smtp.messagingengine.com ([66.111.4.27])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1rEoQ0-000498-HL for linux1394-devel@lists.sourceforge.net;
+ id 1rEoQ0-000497-Gr for linux1394-devel@lists.sourceforge.net;
  Sun, 17 Dec 2023 10:30:45 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
- by mailout.nyi.internal (Postfix) with ESMTP id DDB6B5C0124;
- Sun, 17 Dec 2023 05:30:29 -0500 (EST)
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailout.nyi.internal (Postfix) with ESMTP id 783955C0125;
+ Sun, 17 Dec 2023 05:30:31 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Sun, 17 Dec 2023 05:30:29 -0500
+ by compute1.internal (MEProxy); Sun, 17 Dec 2023 05:30:31 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1702809029; x=
- 1702895429; bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=E
- O4DA1b28hTv8vuM4/sfmjKgMAmMuWZrqriu/6NQl9JMM5QC+Aszgzs6m+lldEYBx
- m5jUtQBlX109BSNbB2vKL8PWSpRoKc/QdtFNNl3P1SatbZaiAB7d9/eTejJr54WT
- ZHlYcCt265eUmfwTSELEDlx3qqe55yBfmEnoqNSu/QM3j5Ix24G7iFo1XKOTIO1R
- +FVRGBCpbT3PU7d2SwY+FNQKzYOd1uh35SQ3UGnJ8TAtA1h0P8nvo7HksbY3VpTi
- 5w3L1BGaWu4sevgVW7nF4/kT/fKhGkHuhHxwgu5oNvAWhyWRzVx8MddzAwhkEfJf
- xuqq+ugOhciCWpdsF3xaQ==
+ :reply-to:subject:subject:to:to; s=fm2; t=1702809031; x=
+ 1702895431; bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=O
+ uHjnjhi0jaHqKYj1X++SCg0PM+W9vd9wJmjYUN5XX87JUwnDzPLmkU9wxzhubLLu
+ oML5gYlSlIGgkzftVYIT/rJMI/V2rYr/FyK9OdmdNqoGQrl3lMBSekFlSRQXIYBs
+ csOyzmg+ZS9nC94Iv8ERLX4bcdNV1idhwiyDoMBWJqJ8SnAaj+ygmjdV9oJH9ZRJ
+ gd9NyYb4MU7UEDUCiRG9EsEh+y46UxhS7KQns5tx3XVhHhzqhcvcgpHaOMjnIei7
+ sXJ2XEIFe+N+3vbt3qY4JOS5woqQKU4EvJ76n07hUV+1t6pTBnAQvCu/dqzlaeVw
+ 7gbMP1+dsOv2s6IPDM1XQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1702809029; x=
- 1702895429; bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=y
- Wh4dFAtNDIymNi8RauPDjeCH6rnCALqBmJE+ydH7D4LPZuQuI/OD3Yhqrjs9afSd
- 2h+XE9SxC51Yr1HUomOrvTquFKawgjzrfZyh5qmfNzFG+ZqHQ06ciPZw/uXwT47B
- tso1Oyx6oHJlvi2WvgzmioryQwpADJCiM1xiG3h7W03iVZC8LWEb5qFKSj58aJ4C
- wbSrdX/g8GWwcA82ekzIx/NP5idKnXgQB6q9ILS2WBDOH1CYoGh6X6Ddfu1DK70u
- X16wb4jiQjA9mf0p1/Q9dzEeJjS/rHZeSEkQfW9UM/OEjhZsNtXdymqtJrw6pHWI
- 0wWbP73aIo57hGQcgbK+Q==
-X-ME-Sender: <xms:xc1-ZSvaIljZNAjFN4HaDurIGA-n9HwsHfQCXUiMi28w9bae2HSxWg>
- <xme:xc1-ZXeic4hJFsRlNoY8XJjRxCYxjq_Qtle3_D5tQVp_Qa1hz20O_YUt7tAZhEk1M
- MfPCgFc0cWwCVBItB4>
-X-ME-Received: <xmr:xc1-ZdxuR-wSnkk9yFJKhfcs940lVuv723C5aE4LgqVG8OqLM_TabU1utWd971Ntz0I8_TvRQZeegK-Yod2CwHPg_eq2uOprAoW1a31rEwasDzU>
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1702809031; x=
+ 1702895431; bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=S
+ 9rUBTE4Ri6Ccm+RtAKvzgTfQqVnaPLoaobNM3jrvWbmXl6hXiEk5dDFH8TbnUmHf
+ P3UolBM9AWABQvSgqVP++zpvRNXlG18w+ugcbFWRWybHqdCI34xrX2ut5dZ5L4/e
+ 6L9FtlTxpWP+ViWcouR8XnO1Z3+QeTMfv2SBA2NEXJ9aGzIAALUKrQWP9yLKc+k7
+ 7codyjuszBI5JlojiN2gDZ5P6D93Lg/ru1SBBGYyYo3Ak1rZAWuQE11LnBgkDJvh
+ d0bNyWfUOfsHun2HoWbdWT4eITNqdgmTw19+F7HPGrWQfgBmyYU308UX8h3Roo9G
+ J0pQptyboMcciwZUhyH5Q==
+X-ME-Sender: <xms:x81-ZRmhcmgluIQVuRNXzfKP_Jqd58nPBu_78XfF0kCT8gDdxq_sHA>
+ <xme:x81-Zc0pje4rPbwfiuOsqn0T3FHqWZ1jjXn9-HsB_eUeEwi6dwY8-EzvudCyQt-DC
+ NDwEXiBaQT0nbASmBc>
+X-ME-Received: <xmr:x81-ZXpSBawnCM8U8Jk_lcZX1gD2dynlBUBlutlE4QfLa_zAx9B0xWkJ9yfo4yBTHeL-2ePFw8p7x3ve9pQ57XKRyLFo6EnKYtAxjsrgeMBmLHY>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvddtiedgudehucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtke
@@ -80,27 +80,27 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvddtiedgudehucetufdoteggod
  euvdfguddukeelveetgfdtvefhtdfffeeigfevueetffeivdffkedvtdenucevlhhushht
  vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
  hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:xc1-ZdNHtweWftRuwm4nl58gBGSzT6zYjYk1G89yOsxNgAF50YU-HQ>
- <xmx:xc1-ZS_rWGAIh5465vPpUjJLnfbBXYKvI_Iyi8MbwFYu2FmDMr7W-A>
- <xmx:xc1-ZVX5Yvv5QFU6MI4isJ8VucguY2eRqRPsiaGgAxjf3SndqEuzYw>
- <xmx:xc1-ZYlaEl4tuXcwMDtHXIGekdYXMuWHiZAosFwohbs-Y_4oI0_e3w>
+X-ME-Proxy: <xmx:x81-ZRkmuR-qlJ8NJJLnhalG9ELl5JCwJ7XMxlWsB65qdRWHnm3Wug>
+ <xmx:x81-Zf1yX-Pe0PgRgyCqnEBkiN8Kzf3x_3bt2qToDm1vtHdncRFLRQ>
+ <xmx:x81-ZQvgFXnNskG5GOh3CjGl7HUzjIMBd6Cz1uttd4fg6uRzY33UIA>
+ <xmx:x81-ZY97ezlF-h5Q2QffM2QH9tMeYXEKCG9jEdUvDdQFhPT1CI3TVg>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 17 Dec 2023 05:30:28 -0500 (EST)
+ 17 Dec 2023 05:30:30 -0500 (EST)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net,
 	linux-kernel@vger.kernel.org
-Subject: [RFC PATCH 8/8] firewire: core: change modalias of unit device and
- loss of backward compatibility
-Date: Sun, 17 Dec 2023 19:30:11 +0900
-Message-Id: <20231217103012.41273-9-o-takashi@sakamocchi.jp>
+Subject: [RFC PATCH 8/8] firewire: core: change modalias of unit device with
+ backward incompatibility
+Date: Sun, 17 Dec 2023 19:30:12 +0900
+Message-Id: <20231217103012.41273-10-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231217103012.41273-1-o-takashi@sakamocchi.jp>
 References: <20231217103012.41273-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
 X-Spam-Score: -1.9 (-)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
@@ -118,15 +118,16 @@ X-Spam-Report: Spam detection software,
  [66.111.4.27 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1rEoQ0-000498-HL
+ -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1rEoQ0-000497-Gr
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
