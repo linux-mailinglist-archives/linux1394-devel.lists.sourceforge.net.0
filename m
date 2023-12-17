@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id B63C8815E7C
-	for <lists+linux1394-devel@lfdr.de>; Sun, 17 Dec 2023 11:30:51 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id A0E90815E7E
+	for <lists+linux1394-devel@lfdr.de>; Sun, 17 Dec 2023 11:30:55 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1rEoPy-0007XT-Qu;
-	Sun, 17 Dec 2023 10:30:42 +0000
+	id 1rEoQ2-000813-OD;
+	Sun, 17 Dec 2023 10:30:47 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1rEoPw-0007XH-Bt
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1rEoQ0-00080i-Ok
  for linux1394-devel@lists.sourceforge.net;
- Sun, 17 Dec 2023 10:30:40 +0000
+ Sun, 17 Dec 2023 10:30:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=z73jY6BHHBYZhY9lJ5vLyunAPVGK9kE6VxjU8LqOq38=; b=QqsQHzz5ETy3ATbfx04bPLkFdW
- yfHP9i3kZyAiU62EOAMGsvxZ/BYCztTfCvIVSPMCCP5ZFu5mPi+SrWhD2PrVjwsjiiwPfjKzqLI7/
- 7HC30mGAZpzPtPIDTFvPVPDTOmWuoFv2bWNfhQ+Oap5B6z9bAeZzRUNFgDpDgjBfLakI=;
+ bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=FVOqUYZZHPiZAYgPZErncLYHpR
+ RhO4YjDjazaxLSGYCHL1ppIkD9OCfdwdMsgWi8ghOLC9lj0sXF8iAMnZI5SWEP5qkJ5aq6eKm3jeX
+ K+xl2flQC2Y53FHhDKGLsg3DqU4NPtU/jcTQM8UoOV0/0jEnCKHwDCLAqLNz3gxpToJE=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
@@ -31,69 +31,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=z73jY6BHHBYZhY9lJ5vLyunAPVGK9kE6VxjU8LqOq38=; b=KUWWIkn/HqE0LZ7PNZOwNFDPcu
- Js06kiUSt7EdSsbOdsMdmhtHqSV1F4NIbfoUvbVBi+D6InlPx0PgreBLOvi43AYKzZmefLtQo6/VF
- sNyT2eB4NRx5mCGfRs2MWwUAwj4XXIEgccEXMW6b2j7R7Ut0lgrpCUL3lyVD+oZCLnZE=;
+ bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=l/Bs6HuiWbE+DB9RiFw08qdlzm
+ te54BXL4M6JDDo2NeIZJd8xTeifQPte/e4oDTLbxNbLzBrDKQG0x+C2U0uEax7Skxcx2WwygPQZf3
+ 8LXo7Oy/ZxIQFVnCNXZFHKMmlsZBjPbfrPcIU6bfy2Qw7Hy8lScL5NJg3I2TsfonM2ko=;
 Received: from out3-smtp.messagingengine.com ([66.111.4.27])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1rEoPv-00048a-Gw for linux1394-devel@lists.sourceforge.net;
- Sun, 17 Dec 2023 10:30:40 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.nyi.internal (Postfix) with ESMTP id 4CBB55C0126;
- Sun, 17 Dec 2023 05:30:28 -0500 (EST)
+ id 1rEoQ0-000498-HL for linux1394-devel@lists.sourceforge.net;
+ Sun, 17 Dec 2023 10:30:45 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+ by mailout.nyi.internal (Postfix) with ESMTP id DDB6B5C0124;
+ Sun, 17 Dec 2023 05:30:29 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Sun, 17 Dec 2023 05:30:28 -0500
+ by compute6.internal (MEProxy); Sun, 17 Dec 2023 05:30:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1702809028; x=
- 1702895428; bh=z73jY6BHHBYZhY9lJ5vLyunAPVGK9kE6VxjU8LqOq38=; b=Q
- xVvzmHNtLvMdgHrGxjwkBlFWXsuhhYJZaIIFCaKiGA/TzDXFuymTP2S+TDIKVNzz
- vPVa+UR4Ey13PcFMasMPcvpggQDTI33dlZfhQ0xVC8vsYlcQnF11gxVNTZUCiIyG
- 7KmHgE3cu52fn0rl8M/7th2ESS4oOJgrjyakhb1naFZKD9Fuor868jUJTxRTaNQ2
- MYtwfXl3jmAe3xJ3vrtnDGfdx/yDkb1Y7PJhKJI1sCJWR+T63Gin9LplhXW8jzBH
- wPyI/eKYTT4xzkxDQOdmq/MwwmojxzCUDVybBCkz7x+94MC5tRWcTLx4K4J0DL9d
- dgpUZfYXy6/wWAA0tthxA==
+ :reply-to:subject:subject:to:to; s=fm2; t=1702809029; x=
+ 1702895429; bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=E
+ O4DA1b28hTv8vuM4/sfmjKgMAmMuWZrqriu/6NQl9JMM5QC+Aszgzs6m+lldEYBx
+ m5jUtQBlX109BSNbB2vKL8PWSpRoKc/QdtFNNl3P1SatbZaiAB7d9/eTejJr54WT
+ ZHlYcCt265eUmfwTSELEDlx3qqe55yBfmEnoqNSu/QM3j5Ix24G7iFo1XKOTIO1R
+ +FVRGBCpbT3PU7d2SwY+FNQKzYOd1uh35SQ3UGnJ8TAtA1h0P8nvo7HksbY3VpTi
+ 5w3L1BGaWu4sevgVW7nF4/kT/fKhGkHuhHxwgu5oNvAWhyWRzVx8MddzAwhkEfJf
+ xuqq+ugOhciCWpdsF3xaQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1702809028; x=
- 1702895428; bh=z73jY6BHHBYZhY9lJ5vLyunAPVGK9kE6VxjU8LqOq38=; b=r
- Iq1W5qfdH6+UiUFI6R6DIKEGU/rj7RiVJTS54GjkUqBl/rk9gsj3rBGqNJspMuVQ
- LJgHTfX23ssDoh/H9C+zpNsRDN4l49ncGyDNRInA/AcTIbsnf6aiM5BFZTJUjKWT
- iwOHEbv52l+k3Z2Qz95eovnI9DkwVyN82Nw+JK4MsD+yDA/PibvBymA/LKMYq5BK
- Vg1fdjZc4PJrMSGrbA/ylZZNu/rCibyx7lyPJN3PW0JcEfmLZ5kLB848qJIk9Kzn
- CMc3LAkmU8dTpOLAu5DacPCYS5yAvL1+aVtbxAdQdqqXzeMR6BMOVQ0aar5LwD9J
- Zp27HMvM6fKt+7TfYxdyw==
-X-ME-Sender: <xms:xM1-ZVYM7kXFYKpu4np6WaJz1C-Z5fTY6Yvk1pw8iggA77bMGqdJ_g>
- <xme:xM1-ZcagruD_GIXPtFSMdNDUmXa4kVeSP3NfYJHCAfssFJ390tsBs1sgD8Ldp6Pmq
- pjpbOD1-EWtmCKJVU4>
-X-ME-Received: <xmr:xM1-ZX-wtHCnvAJmItejaAwp-kjT3bw4c5fCdhzKhLs1rLP24WaTGUb6YhUz9zkUq0JshlkAm11wbJl1-tK0GnYu0-Z0QhDEB94TbeFhuG3iCKQ>
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1702809029; x=
+ 1702895429; bh=GNxJtnuCREIc3LKzjvgp8+1jNOAQR7t6+8ZOIjGQVww=; b=y
+ Wh4dFAtNDIymNi8RauPDjeCH6rnCALqBmJE+ydH7D4LPZuQuI/OD3Yhqrjs9afSd
+ 2h+XE9SxC51Yr1HUomOrvTquFKawgjzrfZyh5qmfNzFG+ZqHQ06ciPZw/uXwT47B
+ tso1Oyx6oHJlvi2WvgzmioryQwpADJCiM1xiG3h7W03iVZC8LWEb5qFKSj58aJ4C
+ wbSrdX/g8GWwcA82ekzIx/NP5idKnXgQB6q9ILS2WBDOH1CYoGh6X6Ddfu1DK70u
+ X16wb4jiQjA9mf0p1/Q9dzEeJjS/rHZeSEkQfW9UM/OEjhZsNtXdymqtJrw6pHWI
+ 0wWbP73aIo57hGQcgbK+Q==
+X-ME-Sender: <xms:xc1-ZSvaIljZNAjFN4HaDurIGA-n9HwsHfQCXUiMi28w9bae2HSxWg>
+ <xme:xc1-ZXeic4hJFsRlNoY8XJjRxCYxjq_Qtle3_D5tQVp_Qa1hz20O_YUt7tAZhEk1M
+ MfPCgFc0cWwCVBItB4>
+X-ME-Received: <xmr:xc1-ZdxuR-wSnkk9yFJKhfcs940lVuv723C5aE4LgqVG8OqLM_TabU1utWd971Ntz0I8_TvRQZeegK-Yod2CwHPg_eq2uOprAoW1a31rEwasDzU>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvddtiedgudehucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtke
  ertdertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
  rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpedvjefgje
  euvdfguddukeelveetgfdtvefhtdfffeeigfevueetffeivdffkedvtdenucevlhhushht
- vghrufhiiigvpedvnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
+ vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
  hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:xM1-ZTqseG_u60pqxb8Y-267sAAIKMQczHEYhYM2Xb2k8spjUlQ9Iw>
- <xmx:xM1-ZQo12S7NxOOtAk4eZXd_VEDJpqnP0kfDdIj3Ee7QHAI98mc7ag>
- <xmx:xM1-ZZQtQSrV5eubT0h8Qg90gDFOwI06-SuP6PDmdGSHkWtbesn6pg>
- <xmx:xM1-ZdBEP1ekeawJFyQR_r6gBf3KKt_qQpKi4GZLixK5X6F31765dg>
+X-ME-Proxy: <xmx:xc1-ZdNHtweWftRuwm4nl58gBGSzT6zYjYk1G89yOsxNgAF50YU-HQ>
+ <xmx:xc1-ZS_rWGAIh5465vPpUjJLnfbBXYKvI_Iyi8MbwFYu2FmDMr7W-A>
+ <xmx:xc1-ZVX5Yvv5QFU6MI4isJ8VucguY2eRqRPsiaGgAxjf3SndqEuzYw>
+ <xmx:xc1-ZYlaEl4tuXcwMDtHXIGekdYXMuWHiZAosFwohbs-Y_4oI0_e3w>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 17 Dec 2023 05:30:26 -0500 (EST)
+ 17 Dec 2023 05:30:28 -0500 (EST)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net,
 	linux-kernel@vger.kernel.org
-Subject: [RFC PATCH 7/8] firewire: core: detect model name for legacy layout
- of configuration ROM
-Date: Sun, 17 Dec 2023 19:30:10 +0900
-Message-Id: <20231217103012.41273-8-o-takashi@sakamocchi.jp>
+Subject: [RFC PATCH 8/8] firewire: core: change modalias of unit device and
+ loss of backward compatibility
+Date: Sun, 17 Dec 2023 19:30:11 +0900
+Message-Id: <20231217103012.41273-9-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231217103012.41273-1-o-takashi@sakamocchi.jp>
 References: <20231217103012.41273-1-o-takashi@sakamocchi.jp>
@@ -105,9 +105,10 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  As the part of support for legacy layout of configuration
+ Content preview: As the last part of support for legacy layout of
+ configuration
  ROM, this commit traverse vendor directory as well as root directory when
- showing device attribute for node device. This change expects 'model [...]
+ constructing modalias for unit device. The change brings loss o [...] 
  Content analysis details:   (-1.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -125,7 +126,7 @@ X-Spam-Report: Spam detection software,
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1rEoPv-00048a-Gw
+X-Headers-End: 1rEoQ0-000498-HL
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -142,79 +143,76 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-As the part of support for legacy layout of configuration ROM, this
-commit traverse vendor directory as well as root directory when showing
-device attribute for node device. This change expects 'model_name'
-attribute appears in node device, however it is probable to see the other
-types of descriptor leaf if the vendor directory includes.
+As the last part of support for legacy layout of configuration ROM, this
+commit traverse vendor directory as well as root directory when
+constructing modalias for unit device. The change brings loss of backward
+compatibility since it can fill 'mo' field which is 0 at current
+implementation in the case. However, we can be optimistic against
+regression for unit drivers in kernel, due to some points:
+
+1. ALSA drivers for audio and music units uses Model fields to match
+   device, however all of supported devices does not have such legacy
+   layout.
+2. the other unit drivers does not use Model field to match device.
+
+The rest of concern is user space application. The most of application
+just take care of node device and does not use the modalias of unit
+device, thus the change does not affect to them. Although, systemd
+project gets affects since it includes hwdb to take udev to configure
+fw character device conveniently. I have a plan to work systemd so that
+the access permission of character device is kept for the previous and
+next version of Linux kernel.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/core-device.c  | 23 ++++++++++++++++-------
- drivers/firewire/csr-api-test.c |  5 +++--
- 2 files changed, 19 insertions(+), 9 deletions(-)
+ drivers/firewire/core-device.c  | 21 +++++++++++++++++++--
+ drivers/firewire/csr-api-test.c |  2 +-
+ 2 files changed, 20 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/firewire/core-device.c b/drivers/firewire/core-device.c
-index dad5c9937b78..f7a11004f972 100644
+index f7a11004f972..e04486c5e0eb 100644
 --- a/drivers/firewire/core-device.c
 +++ b/drivers/firewire/core-device.c
-@@ -315,17 +315,25 @@ static ssize_t show_text_leaf(struct device *dev,
+@@ -153,8 +153,25 @@ static void get_ids(const u32 *directory, int *id)
+ 
+ static void get_modalias_ids(const struct fw_unit *unit, int *id)
  {
- 	struct config_rom_attribute *attr =
- 		container_of(dattr, struct config_rom_attribute, attr);
--	const u32 *dir;
-+	const u32 *directories[] = {NULL, NULL};
- 	size_t bufsize;
- 	char dummy_buf[2];
--	int ret;
-+	int i, ret;
- 
- 	down_read(&fw_device_rwsem);
- 
--	if (is_fw_unit(dev))
--		dir = fw_unit(dev)->directory;
--	else
--		dir = fw_device(dev)->config_rom + ROOT_DIR_OFFSET;
-+	if (is_fw_unit(dev)) {
-+		directories[0] = fw_unit(dev)->directory;
+-	get_ids(&fw_parent_device(unit)->config_rom[ROOT_DIR_OFFSET], id);
+-	get_ids(unit->directory, id);
++	const u32 *root_directory = &fw_parent_device(unit)->config_rom[ROOT_DIR_OFFSET];
++	const u32 *directories[] = {NULL, NULL, NULL};
++	const u32 *vendor_directory;
++	int i;
++
++	directories[0] = root_directory;
++
++	// Legacy layout of configuration ROM described in Annex 1 of 'Configuration ROM for AV/C
++	// Devices 1.0 (December 12, 2000, 1394 Trading Association, TA Document 1999027)'.
++	vendor_directory = search_directory(root_directory, CSR_DIRECTORY | CSR_VENDOR);
++	if (!vendor_directory) {
++		directories[1] = unit->directory;
 +	} else {
-+		const u32 *root_directory = fw_device(dev)->config_rom + ROOT_DIR_OFFSET;
-+
-+		directories[0] = root_directory;
-+
-+		// Legacy layout of configuration ROM described in Annex 1 of 'Configuration ROM
-+		// for AV/C Devices 1.0 (December 12, 2000, 1394 Trading Association, TA Document
-+		// 1999027)'.
-+		directories[1] = search_directory(root_directory, CSR_VENDOR);
++		directories[1] = vendor_directory;
++		directories[2] = unit->directory;
 +	}
- 
- 	if (buf) {
- 		bufsize = PAGE_SIZE - 1;
-@@ -334,7 +342,8 @@ static ssize_t show_text_leaf(struct device *dev,
- 		bufsize = 1;
- 	}
- 
--	ret = fw_csr_string(dir, attr->key, buf, bufsize);
++
 +	for (i = 0; i < ARRAY_SIZE(directories) && directories[i]; ++i)
-+		ret = fw_csr_string(directories[i], attr->key, buf, bufsize);
++		get_ids(directories[i], id);
+ }
  
- 	if (ret >= 0) {
- 		/* Strip trailing whitespace and add newline. */
+ static bool match_ids(const struct ieee1394_device_id *id_table, int *id)
 diff --git a/drivers/firewire/csr-api-test.c b/drivers/firewire/csr-api-test.c
-index 7278e7b927a8..779146d0cfba 100644
+index 779146d0cfba..753d8e83b8c2 100644
 --- a/drivers/firewire/csr-api-test.c
 +++ b/drivers/firewire/csr-api-test.c
-@@ -206,8 +206,9 @@ static void csr_api_legacy_avc_device(struct kunit *test)
- 	// Descriptor leaf entry for vendor is not found.
- 	KUNIT_EXPECT_LT(test, show_text_leaf(node_dev, &config_rom_attributes[5].attr, buf), 0);
- 
--	// Descriptor leaf entry for model is not found.
--	KUNIT_EXPECT_LT(test, show_text_leaf(node_dev, &config_rom_attributes[6].attr, buf), 0);
-+	// Descriptor leaf entry for model is found.
-+	KUNIT_EXPECT_GT(test, show_text_leaf(node_dev, &config_rom_attributes[6].attr, buf), 0);
-+	KUNIT_EXPECT_STREQ(test, buf, "ABCDEFGHIJ\n");
- 
- 	// For entries in unit 0 directory.
+@@ -178,7 +178,7 @@ static void csr_api_legacy_avc_device(struct kunit *test)
+ 	};
+ 	struct device *node_dev = (struct device *)&node.device;
+ 	struct device *unit0_dev = (struct device *)&unit0.device;
+-	static const int unit_expected_ids[] = {0x00012345, 0x00000000, 0x00abcdef, 0x00543210};
++	static const int unit_expected_ids[] = {0x00012345, 0x00fedcba, 0x00abcdef, 0x00543210};
+ 	char *buf = kunit_kzalloc(test, PAGE_SIZE, GFP_KERNEL);
+ 	int ids[4] = {0, 0, 0, 0};
  
 -- 
 2.39.2
