@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8D7482564A
-	for <lists+linux1394-devel@lfdr.de>; Fri,  5 Jan 2024 16:03:00 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id C8AD982E7B1
+	for <lists+linux1394-devel@lfdr.de>; Tue, 16 Jan 2024 02:53:25 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1rLlif-0002ln-U7;
-	Fri, 05 Jan 2024 15:02:45 +0000
+	id 1rPYdN-0004v9-Bw;
+	Tue, 16 Jan 2024 01:52:57 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1rLlie-0002lf-23
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1rPYdK-0004ux-Ja
  for linux1394-devel@lists.sourceforge.net;
- Fri, 05 Jan 2024 15:02:44 +0000
+ Tue, 16 Jan 2024 01:52:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
  Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=xub0mZnJwBOXFWPK5d3E+mhtj+HLfsnOZOXaLy17dZE=; b=JIVnhAehc/SDr7FrUGNqjhJYPw
- uV+9EGqTrKHVSFlxpz5Q27g2Ee4uusCZ9ZHciPVaZI55LgURQL562EaTWZ16mBFA9njsOyH4sl+Y3
- GSpmbHvv5d++BVaZDWd47vJokc2kiyHd1e5lp4toADSZE7rtnyv/2SHZ9+qAbXU0Pcuw=;
+ bh=wbgnsCsaVETUUhxMLbAB2m5OItdgPBL03I59fuZ5Zsc=; b=beZpRNSIDDoWjMGbaFvYWje8Vz
+ QiM+wJjPj2PnpxlFWetDTg+u/wJVald2d3VNEDi1c9PxRYvbAS6VYly5tfgYEnw1bM2S7iOi9zDpT
+ TKJA1iUjC+siOrLcrTvvN3lTQWwIW3RuNv4xyHLJxQCP2z+M8Gipnkj3v2Kf8ktw/pKk=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
@@ -31,74 +31,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=xub0mZnJwBOXFWPK5d3E+mhtj+HLfsnOZOXaLy17dZE=; b=WORB40QJFcQZ/VAMQgH2vcG9yu
- AvAITM0PGIQIn7mqHEYpmIIF8QC81/JZegOzXMGCNLDskF33BGY7Trc+m5u2pB6ld85p94us5skfM
- IjrFjXWgCE+CKjfQZaiWMm7atv2hBD23b5i8n+8k4dow7mQMV3AvxZX0d7naKnEVWKkI=;
-Received: from wout5-smtp.messagingengine.com ([64.147.123.21])
+ bh=wbgnsCsaVETUUhxMLbAB2m5OItdgPBL03I59fuZ5Zsc=; b=EUzrGhrUA6u4/ZXjjomc0/6Oi4
+ gQe30ZcTQJ6qe9VypIOpEigC1BXNWRl5V/c9p52ISZmF4l9YBznJNkMVeYgZMKSGFBa6judCrb3Aq
+ oo1xF+JRMUbMQfxURPeK8idBoiyFSD6fJwblBirLxT9RhbxK0T96dbnnSYwV8ZIGY/v0=;
+Received: from out5-smtp.messagingengine.com ([66.111.4.29])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1rLlia-0004p8-4j for linux1394-devel@lists.sourceforge.net;
- Fri, 05 Jan 2024 15:02:44 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id E99B43200A39;
- Fri,  5 Jan 2024 10:02:26 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Fri, 05 Jan 2024 10:02:27 -0500
+ id 1rPYdG-0006lP-38 for linux1394-devel@lists.sourceforge.net;
+ Tue, 16 Jan 2024 01:52:55 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailout.nyi.internal (Postfix) with ESMTP id 70D4B5C00E3;
+ Mon, 15 Jan 2024 20:52:38 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute1.internal (MEProxy); Mon, 15 Jan 2024 20:52:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1704466946; x=
- 1704553346; bh=xub0mZnJwBOXFWPK5d3E+mhtj+HLfsnOZOXaLy17dZE=; b=B
- CR2bVCE4e3AR69cUK8+bu5ToP5gMzm9XhkEhvj+fPCh5lkX6xlKM8R50+9znYr8c
- dBqGhlyeSWWWN5gD49ynWrWMHhBdCucA7SnfbgWj+2yNptpyN2gLtNG5Zil/jrGj
- toTldC3g++wRMNzkdEqL9GxZVefu/pMJQQJm3oKIVAbxdU76HPItMO7TSOLjqWwj
- 9tIRyoL0R2TnL+8WsFacAnj5KcITJVUhZGZSXWMrUD0fAFWCvDRAP0uUCAxnI2qH
- SHF6aRs3RHqh+ispuYY8dFuZb7pmm33/4DudMIb08mzjTMDopaMltzkRg+zYkNqf
- gB3ow3mWhr3NYREK0kK0w==
+ :reply-to:subject:subject:to:to; s=fm3; t=1705369958; x=
+ 1705456358; bh=wbgnsCsaVETUUhxMLbAB2m5OItdgPBL03I59fuZ5Zsc=; b=i
+ 6o33FZX1mbaRzlxu6Jm7pvHn5xTvgpv0wgEL6eyI7RGJXnNuBDYaDJS2G1CLvkZN
+ svbqfKhli63uqj+NtzmXFo+hmf5eQG6GHzAnw6SzdMMifHuYNrlMFp1ybc7MFII8
+ qIZYYodDVl/Zv9KM9qYOnkAMNMblZOlKuJdK2fbObX2EEgVgnsqTWIY4pxCBlptD
+ h1GB/lF21KywR6RHdvADsXZsadCeDrshcc8LwISuep/RRZWK65RRg0V30H/QYK9d
+ DQb+PW0DcfzbxcPcHLmljGlS5V8eT+22FQO7rZ7YQvpcRFgGivd70yFYk9f3fmSv
+ AXuqJmTWjQJT+r5YZ4O4w==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; t=1704466946; x=1704553346; bh=xub0mZnJwBOXFWPK5d3E+mhtj+HL
- fsnOZOXaLy17dZE=; b=wrBFOkYBZLCiiFHIDD1PyWUJz3ld+BCDw1hxYZVVbE8J
- CCgGWZT6Tm/Xs2WfL321NTRBMAdEAPswWzjEQEuOSE9ODeeUTIOUJquTYCXgLA9E
- gO0gC2H88e7zj5o1cBWzM6h/rnNVHmQdFGgKWszrIA56VfiSXmf+1V607MH7ex77
- fJpNGpsFYdHAk9IxvrsmISfuFwLbfHC/urHencLNS5UFwJ/KqJWGRBtf6nxoYEEk
- /3wttCRXhtQRU2ylwHO/cXMp+9fm8HHldfWroCJRtWZyV9rPuGKbqugbZdrzNLlY
- hs9UmFSb9tS3ValiqKH7h5+p2REDUuXPGuWNVyiDng==
-X-ME-Sender: <xms:ARqYZd4-YlFOk1El2zRbV6syohWLzif_RvT-HTIacCPc7Gn2uaY3Uw>
- <xme:ARqYZa5U7qv_O2tRa6FRECIRvIbquKw_Vcdj6JYam8Kjs-LUyE2Fb3mrqCYgcXcuQ
- LRTzC-dOMv3E2ez7EI>
-X-ME-Received: <xmr:ARqYZUe6VkAySSBkjYAS_rGRVxuFwfbOJvduBsNv9GeEjWuCUHwt8NWodFPBdFlKK7NqM8PcpHN7uAzqFbUgWI9kQOAAf6JKSoo>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvdegledgieekucetufdoteggodetrfdotf
+ fm3; t=1705369958; x=1705456358; bh=wbgnsCsaVETUUhxMLbAB2m5OItdg
+ PBL03I59fuZ5Zsc=; b=dSoa1Wi9yeXwXQGFbO/WSCGZHlWFnrffb393xxDYTROP
+ /mMUarwXFboXyglB+mvRmxF/rjGVb+PPtfe0EAqlv4UjCPBwAG8UcMw7eFDFVJNB
+ unYO1s3CvvHDLnyhLyhEUBe6KoPr1k7utr0Z43LNa3NCC/6hXLvjpvvYWvFuz69z
+ FS3EWBzQxiBwc/+1un2TcuutqYYNnOo8lp06EuM1PyH74V3KzlTDTMzrZaJL9iQs
+ 5qGljni3sUJvkaS+Jlhs6MxOrlcfbbylMcd8CIsTr2AATcZfEDzYx86nuvijW7jt
+ 7kp4gdNeNkLjZJOGN7UVJx+/bbMUiDKj0FTc8B1OJQ==
+X-ME-Sender: <xms:ZuGlZbWznBGdRiojjp1x3iDBvjp7Dtns0-tIkAfy_Kb-sbW8HQRhQg>
+ <xme:ZuGlZTk-_zHHjENs2ivEY0SCriwgxyUvGLhkFhB5W7wr0-pi8YGYb0FXPA-rMKYAq
+ 12OAeEy8mj0PFxtSSw>
+X-ME-Received: <xmr:ZuGlZXYMgV0OAaEvnw6CWYb0toxcP5SK2M4A2m3OyzmdoHzl6HZqmXI16-W2C68SjAz7pq_oTjnVur2-AeIqzXQ5Du4GMewpfYr3>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrvdejvddggedtucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- goufhushhpvggtthffohhmrghinhculdegledmnecujfgurhepfffhvfevuffkfhggtggu
- jgesthdtredttddtvdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceooh
- dqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhep
- teekhfdvkeeltdfhheefhffgfffghfektdeltedtlefhfefhtdekkeejudfgjedtnecuff
- homhgrihhnpehsohhurhgtvghfohhrghgvrdhnvghtpdgrrhgthhhivhgvrdhorhhgpddu
- feelgehtrgdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrih
- hlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:AhqYZWKGoOB09xxxoDnMlMr9Oe_wBCiuO9S1QYdghDUypKH5tvKQPg>
- <xmx:AhqYZRIIsfdVM8zqQzR-Syar-nLZ92i_RhbeBFPCgKF7ueG9XrZsrw>
- <xmx:AhqYZfw3HxEJ5hiFaPMzW1R14_42hdUGlJ7xtyT4oJjXTCpkWsIb8g>
- <xmx:AhqYZTw5cFYHTvw9kM_7WAJ-OmVNTU5utfpj3Ab3pPSPMqIWLy-gqw>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttd
+ ertddttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
+ rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeevieelhf
+ dukeffheekffduudevvdefudelleefgeeileejheejuedvgefhteevvdenucffohhmrghi
+ nhepkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpe
+ hmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjph
+X-ME-Proxy: <xmx:ZuGlZWW-z9bFJGu7MbfQRlfDSsOIMuKoWbL9FYMPtH027PrFPTSjRQ>
+ <xmx:ZuGlZVmT4nIe2K-G-qrlMAwCNmDOZ5cRzVJs3-d1C4-k_wehOZMHdA>
+ <xmx:ZuGlZTdPzf_Es0oupCPtV07Havp06NQlI6_a0SFAZn5KKMzL9odwiA>
+ <xmx:ZuGlZUsCu3P5umf_B68u7BfAEX7Qp4PyH31BJCg6HuXq8Yu6o2eWMw>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 5 Jan 2024 10:02:24 -0500 (EST)
-Date: Sat, 6 Jan 2024 00:02:22 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 15 Jan 2024 20:52:37 -0500 (EST)
+Date: Tue, 16 Jan 2024 10:52:35 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Tasos Sahanidis <tasos@tasossah.com>
-Subject: Re: Question regarding linux1394 and bug report
-Message-ID: <20240105150222.GA11325@workstation.local>
-Mail-Followup-To: Tasos Sahanidis <tasos@tasossah.com>,
+To: Tobias Gruetzmacher <tobias-lists@23.gs>
+Subject: Re: Hard crash when loading firewire-ohci
+Message-ID: <20240116015235.GB89379@workstation.local>
+Mail-Followup-To: Tobias Gruetzmacher <tobias-lists@23.gs>,
  linux1394-devel@lists.sourceforge.net
-References: <67f8f49f-0e95-49d4-abf5-9cb4692d9dd3@tasossah.com>
+References: <20231212001340.t3eo27hjbwj742q3@23.gs>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <67f8f49f-0e95-49d4-abf5-9cb4692d9dd3@tasossah.com>
+In-Reply-To: <20231212001340.t3eo27hjbwj742q3@23.gs>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
@@ -106,29 +104,28 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Fri, Jan 05, 2024 at 02:13:00PM +0200, Tasos Sahanidis
- wrote: > Hi Takashi,
- > > Thank you for your work in the Linux FireWire subsystem, 
- and apologies > for this direct email. > > About a year ago [...] 
+ Content preview:  Hi, The change for 1394 OHCI driver, aimed at suppressing
+ the unexpected system reboot in AMD Ryzen machine[1], has been merged into
+ Linux kernel v6.7[2]. It has also been applied to the following release [...]
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 RCVD_IN_MSPIKE_H5      RBL: Excellent reputation (+5)
- [64.147.123.21 listed in wl.mailspike.net]
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.147.123.21 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ low trust [66.111.4.29 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H5      RBL: Excellent reputation (+5)
+ [66.111.4.29 listed in wl.mailspike.net]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1rLlia-0004p8-4j
+X-Headers-End: 1rPYdG-0006lP-38
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -148,105 +145,95 @@ Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
 Hi,
 
-On Fri, Jan 05, 2024 at 02:13:00PM +0200, Tasos Sahanidis wrote:
-> Hi Takashi,
+The change for 1394 OHCI driver, aimed at suppressing the unexpected
+system reboot in AMD Ryzen machine[1], has been merged into Linux kernel
+v6.7[2]. It has also been applied to the following releases of stable and
+longterm kernels.
+
+* 6.6.11[3]
+* 6.1.72[4]
+* 5.15.147[5]
+* 5.10.208[6]
+* 5.4.267[7]
+* 4.19.305[8]
+* 4.14.336[9]
+
+Once the downstream distribution project provides the corresponding kernel
+packages, you should no longer encounter the unexpected system reboot.
+
+Note that the following combination of hardware is not necessarily suitable,
+depending on your use case:
+
+* Any type of AMD Ryzen machine
+* 1394 OHCI hardware consists of:
+    * Asmedia ASM1083/1085
+    * VIA VT6306/6307/6308
+
+When working with time-aware protocol, such as audio sample processing, it
+is advisable to avoid the combination. The change accompanies a functional
+limitation that the software stack does not provides precise hardware time
+in this case.
+
+If you choose to continue using AMD Ryzen machine, the recommendation is
+to replace the 1394 OHCI hardware with another one. Conversely, if you
+choose to continue using the 1394 OHCI hardware, the recommendation is to
+use the machine provided by vendors other than AMD.
+
+Thanks for your report and long patience.
+
+[1] https://git.kernel.org/torvalds/linux/c/ac9184fbb847
+[2] https://lore.kernel.org/lkml/CAHk-=widprp4XoHUcsDe7e16YZjLYJWra-dK0hE1MnfPMf6C3Q@mail.gmail.com/
+[3] https://lore.kernel.org/lkml/2024011058-sheep-thrower-d2f8@gregkh/
+[4] https://lore.kernel.org/lkml/2024011052-unsightly-bronze-e628@gregkh/
+[5] https://lore.kernel.org/lkml/2024011541-defective-scuff-c55e@gregkh/
+[6] https://lore.kernel.org/lkml/2024011532-lustiness-hybrid-fc72@gregkh/
+[7] https://lore.kernel.org/lkml/2024011519-mating-tag-1f62@gregkh/
+[8] https://lore.kernel.org/lkml/2024011508-shakiness-resonant-f15e@gregkh/
+[9] https://lore.kernel.org/lkml/2024011046-ecology-tiptoeing-ce50@gregkh/
+
+On Tue, Dec 12, 2023 at 01:13:40AM +0100, Tobias Gruetzmacher wrote:
+> [Resend because I wasn't subcribed before]
 > 
-> Thank you for your work in the Linux FireWire subsystem, and apologies
-> for this direct email.
+> Hi,
 > 
-> About a year ago I sent an email [0] to the linux1394 (user) mailing
-> list with a bug report but received no response. I've been subscribed to
-> linux1394-devel as well since and I've seen that it is now active.
+> in recent kernels (noticed with Debian kernel 6.5) I get a hard crash
+> when the firewire-ohci module is loaded.
 > 
-> I remember reading that there is a no cross-posting rule, thus I haven't
-> re-sent my message to linux1394-devel. I have access to this hardware
-> again, and will do for about the next two weeks.
+> I could bisect this issue to commit
 > 
-> Is this something you'd be interested in helping me with? If so, do you
-> want me to re-send the e-mail to linux1394-devel and continue the
-> conversation there? The issue still occurs on Ubuntu 22.04 with kernel
-> 6.6.9.
+> dcadfd7f7c74ef9ee415e072a19bdf6c085159eb is the first bad commit
+> commit dcadfd7f7c74ef9ee415e072a19bdf6c085159eb
+> Author: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+> Date:   Tue May 30 08:12:40 2023 +0900
 > 
-> Thank you for your time and looking forward to your response.
+>     firewire: core: use union for callback of transaction completion
 > 
-> --
-> Tasos
+> But I'm not sure how to continue debugging from here, since I don't get
+> any output after
 > 
-> [0] https://sourceforge.net/p/linux1394/mailman/message/37766465/
-
-I'm not good at any type of video protocol over IEEE 1394, thus less help
-to your issue, sorry.
-
-As a quick glance, you need to identify the direct cause of your issue
-that dvgrab never receives video data at recent version of kernel at
-first, then go to investigate kernel implementation if needed.
-
-In my opinion, the best way is to investigate whether dvgrab (and
-libavc1394) can operate your hardware to transfer isochronous packet
-to your system.
-
-For example, you have dumped the part of communication between dvgrab
-and your hardware for AV/C commands. You can interpret them according to
-specification specific to tape recorder and player protocol. You can see
-two documents in 1394TA site archived by internet-archive project[1].
-
-* AV/C Digital Interface Command Set General Specification Version 4.2
-  (2004006)
-* AV/C Tape Recorder/Player Subunit Specification 2.4 (2004005)
-
-Below communication expresses:
-
-```
- firewire_ohci: AT spd 0 tl 2a, ffc1 -> ffc0, ack_complete, QW req, fffff0000b00 = 0120d07f
- firewire_ohci: AR spd 0 tl 2a, ffc0 -> ffc1, ack_pending , QW req, fffff0000d00 = 0c20c460
- firewire_ohci: AT spd 0 tl 2a, ffc1 -> ffc0, ack_complete, W resp
-```
-
-[dvgrab -> hardware]
-0x01: command type:    status
-0x20: subunit type/id: tape recorder/player
-0xd0: opcode:          transport state: 
-0x7f: operand[0]:      0x7e
-
-[hardware -> dvgrab]
-0x0c: response: stable
-0x20: subunit type/id: tape recorder/player
-0xc4: opcode:          transport_mode:  wind
-0x60: operand[0]:      transport_state: stop
-
-Below communication expresses:
-
-```
- firewire_ohci: AT spd 0 tl 2d, ffc1 -> ffc0, ack_complete, QW req, fffff0000b00 = 0020c375
- firewire_ohci: AR spd 0 tl 2d, ffc0 -> ffc1, ack_pending , QW req, fffff0000d00 = 0920c375
- firewire_ohci: AT spd 0 tl 2d, ffc1 -> ffc0, ack_complete, W resp
-```
-
-[dvgrab -> hardware]
-0x00: command type:    control
-0x20: subunit type/id: tape recorder/player
-0xc3: opcode:          play
-0x75: operand[0]:      playback_mode: forward
-
-[hardware -> dvgrab]
-0x09: response:        accepted
-0x20: subunit type/id: tape recorder/player
-0xc3: opcode:          play
-0x75: operand[0]:      playback_mode: forward
+> [Dec10 19:17] firewire_ohci 0000:0b:00.0: enabling device (0000 -> 0003)
+> [  +0.075791] firewire_ohci 0000:0b:00.0: added OHCI v1.0 device as card 0, 4 IR + 8 IT contexts, quirks 0x11
+> 
+> My hardware is:
+> 
+> 0b:00.0 FireWire (IEEE 1394): VIA Technologies, Inc. VT6306/7/8 [Fire II(M)] IEEE 1394 OHCI Controller (rev c0) (prog-if 10 [OHCI])
+>         Subsystem: VIA Technologies, Inc. VT6306/7/8 [Fire II(M)] IEEE 1394 OHCI Controller
+>         Flags: medium devsel, IRQ 255
+>         Memory at fc800000 (32-bit, non-prefetchable) [disabled] [size=2K]
+>         I/O ports at d000 [disabled] [size=128]
+>         Capabilities: [50] Power Management version 2
+>         Kernel modules: firewire_ohci
+> 
+> There are currently no devices connected.
+> 
+> I could work around the issue by blacklisting the module, since I
+> currently don't use the FireWire hardware (but there are still some DV
+> tapes waiting to be transferred...)
+> 
+> Regards, Tobias
 
 
-I expect that if dvgrab takes the hardware to be prepared, it
-keeps isochronous resources by operating both CHANNEL_AVAILABLE registers
-(0xfffff0000224-0228) and BANDWIDTH_AVAILABLE register (0xfffff0000220),
-and operate plug control registers (0xfffff0000900-0904) according to
-IEC 61883-1. Then the hardware start transmission of isochronous
-packets, defined in IEC 61883-1 and -2/-3/-5.
-
-
-[1] https://web.archive.org/web/20200204014929/1394ta.org/specifications/
-
-
-Regards
+Thanks
 
 Takashi Sakamoto
 
