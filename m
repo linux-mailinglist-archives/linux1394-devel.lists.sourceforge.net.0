@@ -2,98 +2,101 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 035ED842080
-	for <lists+linux1394-devel@lfdr.de>; Tue, 30 Jan 2024 11:04:45 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 155BF842082
+	for <lists+linux1394-devel@lfdr.de>; Tue, 30 Jan 2024 11:04:47 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1rUkyj-0004FI-S8;
-	Tue, 30 Jan 2024 10:04:30 +0000
+	id 1rUkyl-00034M-Bu;
+	Tue, 30 Jan 2024 10:04:31 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1rUkyh-0004F8-5F
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1rUkyj-00034C-RZ
  for linux1394-devel@lists.sourceforge.net;
- Tue, 30 Jan 2024 10:04:27 +0000
+ Tue, 30 Jan 2024 10:04:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
+ In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=vkYxaFes1oZgW4Bo/+u9h7Rx+x8nZ07dK3dg7jhwa6E=; b=Yt6NAKPWQX035E1DSSfxwbdlN9
- 5Tzr763Mt1Vahv2CCcBjmh1RusbBofF1emjgwyeBCR18bDG/1Pg2RH2CUQckfkzdcRdhZ+f74Etl9
- ZPwewmPBbaTu3q8K38PQsFpOBbbgQ02p5HT/4PcjgvkH6uZvnR+l7lS6oAJf0GuRRi30=;
+ bh=MOp/NPYsM+2ldtCEODCGojul6SWgm505LlBTScMMddk=; b=LgH1JCGqWL2OGs7qWLovnJMzio
+ 6+LhS7kiMNSdM81LRBFKZdljgjsCUKs8IZ7fr9nfOpRGi6Mwxy91+bAmKCqtT64zr2/HePZVdRthZ
+ eWf0EJD3IAw+F4ZsTXWG41of0QyOeGvRlCDG//otAxnmDQqvcqqaXQ2nnWYFHJjrI4cs=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From
- :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=vkYxaFes1oZgW4Bo/+u9h7Rx+x8nZ07dK3dg7jhwa6E=; b=U
- qQ4LyctouNwy0hHIM1ODY5L4A/YXhntsVD87pmu41en62X+DxNwxgvZnZiw9g0DVbZYNQjZI9kdUS
- Ai4n2cCNEBaxtV2nLWo0n6zWoggA3CGoQtg3+GMwtdck4aTyitDKAK+GZmIxmlVtzHwJs5DZ8v5EC
- 4jnnLZcDqdxHtj6Y=;
+ h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=MOp/NPYsM+2ldtCEODCGojul6SWgm505LlBTScMMddk=; b=Dz33/7fMmtsXGrj7eaJHLcLJrj
+ zX45zxjr1lyQd6Av15ByONo2FnCKD10D2ZezjgTZKA+f4BPPBhBhktBeaWaTRHbUiLYHs2Jt+yiFF
+ fd5R4O+24b9U4eEq6Q0ypx3XgyFZrtVOBru7UAmjfkN60GbdBUJuDD57+EgIkjbDru4c=;
 Received: from wout5-smtp.messagingengine.com ([64.147.123.21])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1rUkyf-0003K4-HZ for linux1394-devel@lists.sourceforge.net;
- Tue, 30 Jan 2024 10:04:27 +0000
+ id 1rUkyi-0003KE-HA for linux1394-devel@lists.sourceforge.net;
+ Tue, 30 Jan 2024 10:04:29 +0000
 Received: from compute7.internal (compute7.nyi.internal [10.202.2.48])
- by mailout.west.internal (Postfix) with ESMTP id 441433200B3B;
- Tue, 30 Jan 2024 05:04:15 -0500 (EST)
+ by mailout.west.internal (Postfix) with ESMTP id 4DA973200B44;
+ Tue, 30 Jan 2024 05:04:18 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute7.internal (MEProxy); Tue, 30 Jan 2024 05:04:15 -0500
+ by compute7.internal (MEProxy); Tue, 30 Jan 2024 05:04:18 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:message-id:mime-version:reply-to:subject
- :subject:to:to; s=fm3; t=1706609054; x=1706695454; bh=vkYxaFes1o
- ZgW4Bo/+u9h7Rx+x8nZ07dK3dg7jhwa6E=; b=P+3lV22CLGLfCDfpvDORyKC7Hc
- QoBR3AGzjqhAPXOKM28UfXvq7hR+uHFl5HUiKR97N9slT02UbDp2aWjDNsy+sBqE
- mNfBcjMmLEZxjnQWeCBL7L/iBDr3IkOpUQdtUDRiHumnLFaRjtx9N+hHtq/Xd+tp
- 6uSGldMzuoZWkzKxk+/VfqXqC/7xcxx+f2tID4LNXDrOFjPh5IrB6GRvkzo7JHjw
- lNgAiZvE3yT18PcnUpyFiQ+0HxcCWf8LV1IkV2iN8CVMWyDK2UNBTebwcfA3TA9G
- qNMji/VDodSLSUF00aQa3+e4Chb571joenbA0ewd3PDaB4Z+pDDcLuSvbX/g==
+ :from:in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=fm3; t=1706609057; x=
+ 1706695457; bh=MOp/NPYsM+2ldtCEODCGojul6SWgm505LlBTScMMddk=; b=B
+ lnoyXUnB1EVXKFwwzZevYYGTDkRAco1bAjBdrpyuGemnCRCYTRCwHbfhmqU+LN0p
+ kU8BFlr/4CAVwhk5BEpFoJP9r9J7Acv5Nv3lN+M5PLlEIINmbD84eW85WJ7cs5Eu
+ NFV3AsMI/+4+fDCXQzUcYCfaaIfyBpESpFddWoqZeu3n+TTr88J/bU+ZcVC99Qir
+ p0lQGv11XW79m71IHlHndONB4Uww1XA2QoAuDdHpnx+3JE8CBsPWU6oGFooSNk6Y
+ 1VIGhJz3ZFklghDBsBKcxXdaQX9j/8HaMBkBZyYHsHj2lV07jL8kKcqCmVwReDgD
+ 9snneCvz1OR2i/+/dOAyQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1706609054; x=1706695454; bh=vkYxaFes1oZgW4Bo/+u9h7Rx+x8n
- Z07dK3dg7jhwa6E=; b=dBO9EM4YWxLTID2Y2gGjFNZi5YJ/s/tWtZ+afCI5RhLP
- YAxoGO6bqgNb2uKsV0zaRnHL//DT+BWT9hmw1kablSuk54H6igXWodPP1fN+WoVc
- j/FeXrgjspA1wa0nX8kMVTFOtbPmmRB9pc3pIJzS8DxptowSnWXHTUU+o70YSMaK
- foXZhioTC/daH0BITGocVwVt5+Sxm1xRXTWaY7HRxdsx0u0PoIQ55TM+AdypnnmI
- 9E+Sk/3QN8su/dS3i8JPgfWBACQGO10FpTpCzBeI6Pijkw43HwXNuzRCIKcswpPK
- EC0gXoEFjOXR0/kC35ZM10d02nuab0MFt3pu6U0EDg==
-X-ME-Sender: <xms:nsm4ZQ2KvezJle_DV1wnbtNS0X828sTDVWclf3iblOOLRtFmKn3Rdg>
- <xme:nsm4ZbGRregntRQjEhM2HBcZ9obCYGE5nzMdtGlU5TWQ-426THhSnDoqL2HwrCW27
- Fb8W5ZakwmJmVswcBg>
-X-ME-Received: <xmr:nsm4ZY5mWMe1gxKjBoWc2CKG3buiY5cIG8ZAHCtlVc5mZ49441uFtti--KVnML9RCDAfxrRUzYPXNVAd8uzddiiK07asUxzd_Cjdp44PHo62>
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1706609057; x=
+ 1706695457; bh=MOp/NPYsM+2ldtCEODCGojul6SWgm505LlBTScMMddk=; b=a
+ 2I/+iWEmMJuG4igywhCqlfSw0tG9cJs00z5KuHQhakW8JFmw0kEzkWa/kcnYi5+r
+ WDqCbwIDgWB+QPG5z4cscv8yHNy/UFUmPp5js5vW7SAjUN8C+M2wiiPNCN0JrS6c
+ cHzePfquNR408yCW4riQxwmQakoGeC9ywDvaxcnLbTgIddYPRq0NhijaZxp5PckL
+ UVIJWARcPQJUm8bytlTEXFpvG6wmcgFs7omwR+mn8+xMcc2wDE5fTHb59g0RNS9o
+ tzEyw6xdzO09LkxYpipb4UDR8ijpxNxhUgasUTz0VqQgEXAzKvFeTyihOIhErWMN
+ iJWmJb5BAeOXZfgLNPdHQ==
+X-ME-Sender: <xms:ocm4Za6nNUN_3c1CF5KNldJKpCPm71cX9OMvqTUAwZrrhhKHRzGvvQ>
+ <xme:ocm4ZT7V3JIiRGsJDKMf9VDv6PLybrPX3m80jq1IP_DoINHWtcEK1NT4iAV6Pslsh
+ 2FZElUJght7WnLZOoc>
+X-ME-Received: <xmr:ocm4ZZfXJED85smwRPFrD_xjKUkOyMBTQc9F8ay8AzW5zxZnXlSvNpYlztdw4IvcKBE1LSxjIC4GBhBHMq7Al2AJsdMx8DL8Lx52eAgyVrjD>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrfedtiedgudduucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertd
- ertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
- hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeeukeegvefgie
- ehfefhtdethfevjefghfeileehffefgedugeeigfduhfekgeehueenucffohhmrghinhep
- khgvrhhnvghlrdhorhhgpdgrrhgthhhivhgvrdhorhhgpddufeelgehtrgdrohhrghenuc
- evlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghk
- rghshhhisehsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:nsm4ZZ2qkkB5vbHucH_cT4PcnDwwn-v1C2pE4Cl495yUv6JPk4Jwig>
- <xmx:nsm4ZTF3u-6yPlSZB0DewHpeLt-2UBc-vBWHoo1bI8_rBVlWNqcYfQ>
- <xmx:nsm4ZS9i-vIq869PDhPNBzR3SAx0kKtP0BgYRvdCJkLpCOWfFvsVgA>
- <xmx:nsm4ZZOM57Hq8kVZ_8P_nHbMk5kSQ_z-ecBHkocf1Ba3R3c7SAu_vw>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtke
+ ertdertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
+ rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpedvjefgje
+ euvdfguddukeelveetgfdtvefhtdfffeeigfevueetffeivdffkedvtdenucevlhhushht
+ vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
+ hsrghkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:ocm4ZXLheF95n5djwWER7IOgxcwvsj9RFuvW_XSkMV4H26pTt3NpEQ>
+ <xmx:ocm4ZeItYC4f6FlZ3Px5WXxVWM5XKdC98YE3cwe7Q8PjtqGsZ8W3_Q>
+ <xmx:ocm4ZYwxa_FpvyCPavxQJKhPlU765Nbvn0Hwq-qsyHNKCCXwK7ZWYA>
+ <xmx:ocm4ZVVVWnOOmxd2y46WHz5OnLQ7GaA-AJaJF0OUp6rlplwsQKipoA>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 30 Jan 2024 05:04:13 -0500 (EST)
+ 30 Jan 2024 05:04:16 -0500 (EST)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 0/2] firewire: core: optimization for the quirk of Sony
- DVMC-DA1
-Date: Tue, 30 Jan 2024 19:04:07 +0900
-Message-Id: <20240130100409.30128-1-o-takashi@sakamocchi.jp>
+Subject: [PATCH 1/2] firewire: core: correct documentation of fw_csr_string()
+ kernel API
+Date: Tue, 30 Jan 2024 19:04:08 +0900
+Message-Id: <20240130100409.30128-2-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20240130100409.30128-1-o-takashi@sakamocchi.jp>
+References: <20240130100409.30128-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
@@ -102,9 +105,11 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, A quirk was reported that Sony DVMC-DA1 has a quirk in
- its configuration ROM[1]. It has the legacy layout of configuration ROM[2]
- with the quirk that the descriptor leaf entry locates just after the v [...]
+ Content preview:  Against its current description, the kernel API can accepts
+ all types of directory entries. This commit corrects the documentation. Cc:
+ stable@vger.kernel.org Fixes: 3c2c58cb33b3 ("firewire: core: fw_csr_string
+ addendum") Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp> ---
+ drivers/firewire/core-device.c | 7 +++---- 1 fil [...] 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -120,7 +125,7 @@ X-Spam-Report: Spam detection software,
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1rUkyf-0003K4-HZ
+X-Headers-End: 1rUkyi-0003KE-HA
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -133,40 +138,41 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
+Cc: stable@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+Against its current description, the kernel API can accepts all types of
+directory entries.
 
-A quirk was reported that Sony DVMC-DA1 has a quirk in its configuration
-ROM[1]. It has the legacy layout of configuration ROM[2] with the quirk
-that the descriptor leaf entry locates just after the vendor directory
-entry in its root directory. It is not the layout in the documentation
-since the usual descriptor leaf entry locates just after the vendor
-immediate entry. Current implementation of firewire-core fail to pick up
-the content of descriptor leaf for vendor name. 
+This commit corrects the documentation.
 
-This series of changes is to optimize for the quirk, including a slight
-correction of documentation for the relevant kernel API. The changes
-are written to be accepted to the release candidates of v6.8 so that
-they don't conflict to the changes in for-next branch[3], thus they
-do not necessarily have a good look.
+Cc: stable@vger.kernel.org
+Fixes: 3c2c58cb33b3 ("firewire: core: fw_csr_string addendum")
+Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+---
+ drivers/firewire/core-device.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-[1] https://lore.kernel.org/lkml/20240126011705.GA22564@workstation.local/
-[2] Configuration ROM for AV/C Devices 1.0 (1394 Trading Association, Dec
-2000, TA Document 1999027)
-https://web.archive.org/web/20210216003030/http://1394ta.org/wp-content/uploads/2015/07/1999027.pdf
-[3] https://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git/log/?h=for-next
-
-Takashi Sakamoto (2):
-  firewire: core: correct documentation of fw_csr_string() kernel API
-  firewire: core: search descriptor leaf just after vendor directory
-    entry in root directory
-
- drivers/firewire/core-device.c | 18 +++++++++++++-----
- 1 file changed, 13 insertions(+), 5 deletions(-)
-
+diff --git a/drivers/firewire/core-device.c b/drivers/firewire/core-device.c
+index 0547253d16fe..e4cb5106fb7d 100644
+--- a/drivers/firewire/core-device.c
++++ b/drivers/firewire/core-device.c
+@@ -118,10 +118,9 @@ static int textual_leaf_to_string(const u32 *block, char *buf, size_t size)
+  * @buf:	where to put the string
+  * @size:	size of @buf, in bytes
+  *
+- * The string is taken from a minimal ASCII text descriptor leaf after
+- * the immediate entry with @key.  The string is zero-terminated.
+- * An overlong string is silently truncated such that it and the
+- * zero byte fit into @size.
++ * The string is taken from a minimal ASCII text descriptor leaf just after the entry with the
++ * @key. The string is zero-terminated. An overlong string is silently truncated such that it
++ * and the zero byte fit into @size.
+  *
+  * Returns strlen(buf) or a negative error code.
+  */
 -- 
 2.40.1
 
