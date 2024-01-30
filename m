@@ -2,105 +2,125 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06DA783ECD4
-	for <lists+linux1394-devel@lfdr.de>; Sat, 27 Jan 2024 12:14:23 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 035ED842080
+	for <lists+linux1394-devel@lfdr.de>; Tue, 30 Jan 2024 11:04:45 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1rTgdV-0000f7-3N;
-	Sat, 27 Jan 2024 11:14:09 +0000
+	id 1rUkyj-0004FI-S8;
+	Tue, 30 Jan 2024 10:04:30 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <adamg@pobox.com>) id 1rTgdT-0000f1-DW
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1rUkyh-0004F8-5F
  for linux1394-devel@lists.sourceforge.net;
- Sat, 27 Jan 2024 11:14:07 +0000
+ Tue, 30 Jan 2024 10:04:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-Id:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=U/a7o3SBdfEBXbC+z17ANBasnP5SVDcBASF09ZDp25o=; b=g+wyllo5CowGljbe3+jJzU9I91
- 1szLzCoaYa2jSecuG9e7r8HGXQjyvKSCxe8Q8x9aPgIAP89vElKjD8d+KlBiQc6eHYrAiHzhJbUJo
- sBJJoIpdXLEhE2MSBB2a/tpFkK1d/H/Bsq/ol85I1wxXrj24o9kF/MnYcQ73ZFDZ0QX0=;
+ bh=vkYxaFes1oZgW4Bo/+u9h7Rx+x8nZ07dK3dg7jhwa6E=; b=Yt6NAKPWQX035E1DSSfxwbdlN9
+ 5Tzr763Mt1Vahv2CCcBjmh1RusbBofF1emjgwyeBCR18bDG/1Pg2RH2CUQckfkzdcRdhZ+f74Etl9
+ ZPwewmPBbaTu3q8K38PQsFpOBbbgQ02p5HT/4PcjgvkH6uZvnR+l7lS6oAJf0GuRRi30=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=U/a7o3SBdfEBXbC+z17ANBasnP5SVDcBASF09ZDp25o=; b=ila8BBOsomyTDtZ+eIpMBOKWYV
- AJsGglslcfwmpo4DXOo6nqHFE1peat8UW0r8dGuiVtqD2TTFQSlBRHVvzbG/PVwoS5BPSNZMonG1I
- Au/Grvky2s+JS2+9KbtPJq7Z2/uz+qucGK2w9nfVknLBkRBP44p8U3BsjrRvwlOnXbnw=;
-Received: from pb-smtp20.pobox.com ([173.228.157.52])
+ h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=vkYxaFes1oZgW4Bo/+u9h7Rx+x8nZ07dK3dg7jhwa6E=; b=U
+ qQ4LyctouNwy0hHIM1ODY5L4A/YXhntsVD87pmu41en62X+DxNwxgvZnZiw9g0DVbZYNQjZI9kdUS
+ Ai4n2cCNEBaxtV2nLWo0n6zWoggA3CGoQtg3+GMwtdck4aTyitDKAK+GZmIxmlVtzHwJs5DZ8v5EC
+ 4jnnLZcDqdxHtj6Y=;
+Received: from wout5-smtp.messagingengine.com ([64.147.123.21])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1rTgdN-0000Hu-L8 for linux1394-devel@lists.sourceforge.net;
- Sat, 27 Jan 2024 11:14:07 +0000
-Received: from pb-smtp20.pobox.com (unknown [127.0.0.1])
- by pb-smtp20.pobox.com (Postfix) with ESMTP id DE74F39D72;
- Sat, 27 Jan 2024 06:13:51 -0500 (EST) (envelope-from adamg@pobox.com)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=pobox.com; h=date:from
- :to:cc:subject:message-id:references:mime-version:content-type
- :in-reply-to; s=sasl; bh=9kyiI9H7qRjBxoFZ0xNHu3XWQXm7Ns+lYZ/lWQu
- JGSE=; b=QCp/yRnBejPpctSrHLpXnjkiGKYGZPEY7s+KZmpLCkqMND+w/Fc3M68
- CkzAvgS1r7Ug0ekws6LiKK6yjkAs2m10rCGWdpkrPNShqd/pe+Pu/QMQL3DbmTqo
- GzNcGpeKyZqpqXcyEn1LOEnPGJu9QMCP+FKyrZy6OrTssVSiolr0=
-Received: from pb-smtp20.sea.icgroup.com (unknown [127.0.0.1])
- by pb-smtp20.pobox.com (Postfix) with ESMTP id D724E39D71;
- Sat, 27 Jan 2024 06:13:51 -0500 (EST) (envelope-from adamg@pobox.com)
-Received: from pogo.deviceside.com (unknown [71.19.144.253])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by pb-smtp20.pobox.com (Postfix) with ESMTPSA id AFEF339D70;
- Sat, 27 Jan 2024 06:13:48 -0500 (EST) (envelope-from adamg@pobox.com)
-Received: from iguana.24-8.net (99-122-168-208.lightspeed.irvnca.sbcglobal.net
- [99.122.168.208])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (prime256v1) server-signature ECDSA (prime256v1)
- server-digest SHA256) (No client certificate requested)
- (Authenticated sender: iguana@pogo.deviceside.com)
- by pogo.deviceside.com (Postfix) with ESMTPSA id 22255C08DB;
- Sat, 27 Jan 2024 03:13:47 -0800 (PST)
-Date: Sat, 27 Jan 2024 03:13:45 -0800
-From: Adam Goldman <adamg@pobox.com>
-To: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-Subject: Re: [PATCH] firewire: core: send bus reset promptly on gap count error
-Message-ID: <ZbTlaCCbpxQoqo0i@iguana.24-8.net>
-References: <Za90vAQlDhbLpY67@iguana.24-8.net>
- <20240127083730.GA159729@workstation.local>
+ id 1rUkyf-0003K4-HZ for linux1394-devel@lists.sourceforge.net;
+ Tue, 30 Jan 2024 10:04:27 +0000
+Received: from compute7.internal (compute7.nyi.internal [10.202.2.48])
+ by mailout.west.internal (Postfix) with ESMTP id 441433200B3B;
+ Tue, 30 Jan 2024 05:04:15 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute7.internal (MEProxy); Tue, 30 Jan 2024 05:04:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm3; t=1706609054; x=1706695454; bh=vkYxaFes1o
+ ZgW4Bo/+u9h7Rx+x8nZ07dK3dg7jhwa6E=; b=P+3lV22CLGLfCDfpvDORyKC7Hc
+ QoBR3AGzjqhAPXOKM28UfXvq7hR+uHFl5HUiKR97N9slT02UbDp2aWjDNsy+sBqE
+ mNfBcjMmLEZxjnQWeCBL7L/iBDr3IkOpUQdtUDRiHumnLFaRjtx9N+hHtq/Xd+tp
+ 6uSGldMzuoZWkzKxk+/VfqXqC/7xcxx+f2tID4LNXDrOFjPh5IrB6GRvkzo7JHjw
+ lNgAiZvE3yT18PcnUpyFiQ+0HxcCWf8LV1IkV2iN8CVMWyDK2UNBTebwcfA3TA9G
+ qNMji/VDodSLSUF00aQa3+e4Chb571joenbA0ewd3PDaB4Z+pDDcLuSvbX/g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm3; t=1706609054; x=1706695454; bh=vkYxaFes1oZgW4Bo/+u9h7Rx+x8n
+ Z07dK3dg7jhwa6E=; b=dBO9EM4YWxLTID2Y2gGjFNZi5YJ/s/tWtZ+afCI5RhLP
+ YAxoGO6bqgNb2uKsV0zaRnHL//DT+BWT9hmw1kablSuk54H6igXWodPP1fN+WoVc
+ j/FeXrgjspA1wa0nX8kMVTFOtbPmmRB9pc3pIJzS8DxptowSnWXHTUU+o70YSMaK
+ foXZhioTC/daH0BITGocVwVt5+Sxm1xRXTWaY7HRxdsx0u0PoIQ55TM+AdypnnmI
+ 9E+Sk/3QN8su/dS3i8JPgfWBACQGO10FpTpCzBeI6Pijkw43HwXNuzRCIKcswpPK
+ EC0gXoEFjOXR0/kC35ZM10d02nuab0MFt3pu6U0EDg==
+X-ME-Sender: <xms:nsm4ZQ2KvezJle_DV1wnbtNS0X828sTDVWclf3iblOOLRtFmKn3Rdg>
+ <xme:nsm4ZbGRregntRQjEhM2HBcZ9obCYGE5nzMdtGlU5TWQ-426THhSnDoqL2HwrCW27
+ Fb8W5ZakwmJmVswcBg>
+X-ME-Received: <xmr:nsm4ZY5mWMe1gxKjBoWc2CKG3buiY5cIG8ZAHCtlVc5mZ49441uFtti--KVnML9RCDAfxrRUzYPXNVAd8uzddiiK07asUxzd_Cjdp44PHo62>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrfedtiedgudduucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertd
+ ertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
+ hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeeukeegvefgie
+ ehfefhtdethfevjefghfeileehffefgedugeeigfduhfekgeehueenucffohhmrghinhep
+ khgvrhhnvghlrdhorhhgpdgrrhgthhhivhgvrdhorhhgpddufeelgehtrgdrohhrghenuc
+ evlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghk
+ rghshhhisehsrghkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:nsm4ZZ2qkkB5vbHucH_cT4PcnDwwn-v1C2pE4Cl495yUv6JPk4Jwig>
+ <xmx:nsm4ZTF3u-6yPlSZB0DewHpeLt-2UBc-vBWHoo1bI8_rBVlWNqcYfQ>
+ <xmx:nsm4ZS9i-vIq869PDhPNBzR3SAx0kKtP0BgYRvdCJkLpCOWfFvsVgA>
+ <xmx:nsm4ZZOM57Hq8kVZ_8P_nHbMk5kSQ_z-ecBHkocf1Ba3R3c7SAu_vw>
+Feedback-ID: ie8e14432:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 30 Jan 2024 05:04:13 -0500 (EST)
+From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+To: linux1394-devel@lists.sourceforge.net,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/2] firewire: core: optimization for the quirk of Sony
+ DVMC-DA1
+Date: Tue, 30 Jan 2024 19:04:07 +0900
+Message-Id: <20240130100409.30128-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240127083730.GA159729@workstation.local>
-X-Pobox-Relay-ID: 24F1B694-BD05-11EE-A21C-F515D2CDFF5E-07713566!pb-smtp20.pobox.com
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Sat, Jan 27, 2024 at 05:37:30PM +0900,
- Takashi Sakamoto
- wrote: > On Tue, Jan 23, 2024 at 12:11:40AM -0800, Adam Goldman wrote: >
- > If we are bus manager and the bus has inconsistent gap counts, sen [...]
+ Content preview:  Hi, A quirk was reported that Sony DVMC-DA1 has a quirk in
+ its configuration ROM[1]. It has the legacy layout of configuration ROM[2]
+ with the quirk that the descriptor leaf entry locates just after the v [...]
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [173.228.157.52 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ low trust [64.147.123.21 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1rTgdN-0000Hu-L8
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+X-Headers-End: 1rUkyf-0003K4-HZ
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,161 +133,43 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
 Hi,
 
-On Sat, Jan 27, 2024 at 05:37:30PM +0900, Takashi Sakamoto wrote:
-> On Tue, Jan 23, 2024 at 12:11:40AM -0800, Adam Goldman wrote:
-> > If we are bus manager and the bus has inconsistent gap counts, send a 
-> > bus reset immediately instead of trying to read the root node's config 
-> > ROM first. Otherwise, we could spend a lot of time trying to read the 
-> > config ROM but never succeeding.
-> > 
-> > This eliminates a 50+ second delay before the FireWire bus is usable 
-> > after a newly connected device is powered on in certain circumstances.
-> 
-> At first, would I request you to explain about the certain
-> circumstances in the patch comment? It is really helpful to understand
-> the change itself.
+A quirk was reported that Sony DVMC-DA1 has a quirk in its configuration
+ROM[1]. It has the legacy layout of configuration ROM[2] with the quirk
+that the descriptor leaf entry locates just after the vendor directory
+entry in its root directory. It is not the layout in the documentation
+since the usual descriptor leaf entry locates just after the vendor
+immediate entry. Current implementation of firewire-core fail to pick up
+the content of descriptor leaf for vendor name. 
 
-The delay occurs if a gap count inconsistency occurs, we are not the 
-root node, and we become bus manager. One scenario that causes this is 
-with a TI XIO2213B OHCI, the first time a Sony DSR-25 is powered on 
-after being connected to the FireWire cable.
+This series of changes is to optimize for the quirk, including a slight
+correction of documentation for the relevant kernel API. The changes
+are written to be accepted to the release candidates of v6.8 so that
+they don't conflict to the changes in for-next branch[3], thus they
+do not necessarily have a good look.
 
-> > Link: https://sourceforge.net/p/linux1394/mailman/message/58727806/
+[1] https://lore.kernel.org/lkml/20240126011705.GA22564@workstation.local/
+[2] Configuration ROM for AV/C Devices 1.0 (1394 Trading Association, Dec
+2000, TA Document 1999027)
+https://web.archive.org/web/20210216003030/http://1394ta.org/wp-content/uploads/2015/07/1999027.pdf
+[3] https://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git/log/?h=for-next
 
-This link has a longer description and kernel logs.
+Takashi Sakamoto (2):
+  firewire: core: correct documentation of fw_csr_string() kernel API
+  firewire: core: search descriptor leaf just after vendor directory
+    entry in root directory
 
+ drivers/firewire/core-device.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
-> > --- linux-source-6.1.orig/drivers/firewire/core-card.c	2023-09-23 02:11:13.000000000 -0700
-> > +++ linux-source-6.1/drivers/firewire/core-card.c	2024-01-22 04:23:06.000000000 -0800
-> > @@ -435,6 +435,16 @@
-> >  		 * config rom.  In either case, pick another root.
-> >  		 */
-> >  		new_root_id = local_id;
-> > +	} else if (card->gap_count == 0) {
-> > +		/* 
-> > +		 * If self IDs have inconsistent gap counts, do a
-> > +		 * bus reset ASAP. The config rom read might never
-> > +		 * complete, so don't wait for it. However, still
-> > +		 * send a PHY configuration packet prior to the bus
-> > +		 * reset, as permitted by IEEE 1394-2008 8.4.5.2.
-> > +		 */
-> > +		new_root_id = local_id;
-> > +		card->bm_retries = 0;
-> >  	} else if (!root_device_is_running) {
-> >  		/*
-> > 		 * If we haven't probed this device yet, bail out now
-> 
-> Next, after the condition branches, we can see below lines:
-> 
-> ```
-> 	/*
-> 	 * Finally, figure out if we should do a reset or not.  If we have
-> 	 * done less than 5 resets with the same physical topology and we
-> 	 * have either a new root or a new gap count setting, let's do it.
-> 	 */
-> 
-> 	if (card->bm_retries++ < 5 &&
-> 	    (card->gap_count != gap_count || new_root_id != root_id))
-> 		do_reset = true;
-> ```
-> 
-> When the value of "card->gap_count" is zero, it would hit the condition of
-> "card->gap_count != gap_count". I think the transmission of phy config
-> packet and scheduling of short bus reset would be done, regardless of the
-> change. Would I ask the main intention to the additional branch?
+-- 
+2.40.1
 
-Without the additional branch, the !root_device_is_running branch will 
-be taken (because the root node's config ROM hasn't been read yet), and 
-bm_work will go to sleep. Eventually we will give up trying to read the 
-config ROM, the root_device==NULL branch will be taken, and the bus 
-reset will be done. The additional branch eliminates waiting for the 
-config ROM read when gap_count is zero.
-
-Here is the full sequence of events:
-
-1. Bus reset occurs due to newly active device.
-
-2. Self identification process completes. We are not root node. Gap 
-counts are inconsistent.
-
-3. build_tree() notices the gap count error and sets gap_count to 0:
-
-> 		/*
-> 		 * If PHYs report different gap counts, set an invalid count
-> 		 * which will force a gap count reconfiguration and a reset.
-> 		 */
-> 		if (SELF_ID_GAP_COUNT(q) != gap_count)
-> 			gap_count = 0;
-
-4. bm_work() starts and makes us bus manager:
-
-> 		rcode = fw_run_transaction(card, TCODE_LOCK_COMPARE_SWAP,
-> 				irm_id, generation, SCODE_100,
-> 				CSR_REGISTER_BASE + CSR_BUS_MANAGER_ID,
-> 				transaction_data, 8);
-
-5. read_config_rom() starts reading the root node's config ROM.
-
-6. bm_work() wants to know if the root node is cycle master capable. If 
-the root node is cycle master capable, we will leave it as the root 
-node. Otherwise, we will make ourself the root node. To determine if the 
-root node is cycle master capable, we must wait until its config ROM has 
-been read:
-
-> 	} else if (!root_device_is_running) {
-> 		/*
-> 		 * If we haven't probed this device yet, bail out now
-> 		 * and let's try again once that's done.
-> 		 */
-> 		spin_unlock_irq(&card->lock);
-> 		goto out;
-
-7a. Without the patch: read_config_rom() reads the first few quadlets 
-from the config ROM. Due to the gap count inconsistency, eventually one 
-of the reads times out. When read_config_rom() fails, fw_device_init() 
-calls it again until MAX_RETRIES is reached. This takes 50+ seconds.
-
-8a. bm_work() sees that we have given up trying to read the config ROM. 
-It makes us the root node and does a bus reset:
-
-> 	if (root_device == NULL) {
-> 		/*
-> 		 * Either link_on is false, or we failed to read the
-> 		 * config rom.  In either case, pick another root.
-> 		 */
-> 		new_root_id = local_id;
-> ...
-> 	if (card->bm_retries++ < 5 &&
-> 	    (card->gap_count != gap_count || new_root_id != root_id))
-> 		do_reset = true;
-
-7b. With the patch: Because of the gap count inconsistency, bm_work() 
-does not wait for the config ROM to be read. It makes us the root node 
-and does a bus reset immediately:
-
-> 	} else if (card->gap_count == 0) {
-> 		/*
-> 		 * If self IDs have inconsistent gap counts, do a
-> 		 * bus reset ASAP. The config rom read might never
-> 		 * complete, so don't wait for it. However, still
-> 		 * send a PHY configuration packet prior to the
-> 		 * bus reset, as permitted by 1394-2008 8.4.5.2.
-> 		 */
-> 		new_root_id = local_id;
-> 		card->bm_retries = 0;
-> ...
-> 	if (card->bm_retries++ < 5 &&
-> 	    (card->gap_count != gap_count || new_root_id != root_id))
-> 		do_reset = true;
-
--- Adam
 
 
 _______________________________________________
