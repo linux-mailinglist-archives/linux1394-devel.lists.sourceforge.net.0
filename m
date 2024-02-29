@@ -2,107 +2,127 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id E709C86AC73
-	for <lists+linux1394-devel@lfdr.de>; Wed, 28 Feb 2024 12:02:14 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9847886CA7F
+	for <lists+linux1394-devel@lfdr.de>; Thu, 29 Feb 2024 14:41:54 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1rfHhH-0001bf-KT;
-	Wed, 28 Feb 2024 11:02:00 +0000
+	id 1rfgfN-0001a7-Gi;
+	Thu, 29 Feb 2024 13:41:41 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <adamg@pobox.com>) id 1rfHhE-0001bL-IT
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1rfgfM-0001Zw-KO
  for linux1394-devel@lists.sourceforge.net;
- Wed, 28 Feb 2024 11:01:57 +0000
+ Thu, 29 Feb 2024 13:41:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:To:
- From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=RiGKPBITSk4F39lpkuUh8uvPpXq9t3Bcg+0/637290w=; b=lmchuXVxJi8CIYm1biP8kA8Xz5
- xqlUm9vgDk6VQ6uGzj20vDDaXf74Ef4Xg7gHc8QGkBWzsmeDpUMyk7WqFNuzBxOvcO7zJpxSKXsSE
- Q0wajZIRhltgPJjM80Y4iBkd7G++XxqIIyA/621GUrUgKB39NMzkJ+f+o778v1JMSlGw=;
+ bh=P4cLnRFuHCRbRmkUo6yIMPuD8xWhrFOFHVDQrYs2fQY=; b=leRA7nLiZn/1Qk5QHeLkl96mrh
+ 7lPhb+AWo/je98kx2KsFzCwPCNf7OMy/Xnn+khVxeypJMZxfyDzhtFfeFlEP+auJZU8yWAIyyUIja
+ rN++R4fcm1MXq92mK30//zBA9k7ZnokEgo/DApGM8GOKERqwjQ0FC+vDHHUrrYTh7gjg=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:MIME-Version:Message-ID:Subject:To:From:Date:Sender:Reply-To
- :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=RiGKPBITSk4F39lpkuUh8uvPpXq9t3Bcg+0/637290w=; b=F
- DfpQeZ0FhexlYAX6oy8KHrb2XRL+GBM0OYYqrHZtmcxnes8OXaoTmX1cEq4V8IF195hlJeE3yOro2
- Ph5BiLUPIa+sdp9hC8GIoJAyQ+ZTl7OhBq4DJH6K59z0ndgei92q7oyyynXHe8R3oeCYMr7HvdLhf
- ZfAncLsjuPTsIYYg=;
-Received: from pb-smtp2.pobox.com ([64.147.108.71])
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=P4cLnRFuHCRbRmkUo6yIMPuD8xWhrFOFHVDQrYs2fQY=; b=SgFRYxoNgt1phqJI9bi7XNqOiG
+ VTYHjs9OC6mRV90cqHZ/8Rv+RbEhdYEIMdJFmu9BmdyXl1fGvg/FdsEd2RkIjQDrwFuTGv+ultLz2
+ EMPzJXmED7cNqH40hGR5e+AaWGts1p5vb7KXrW0sjs8s8MWIOSI1P/Ye2qOokAbVoQDk=;
+Received: from fout1-smtp.messagingengine.com ([103.168.172.144])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1rfHhE-00033X-4M for linux1394-devel@lists.sourceforge.net;
- Wed, 28 Feb 2024 11:01:57 +0000
-Received: from pb-smtp2.pobox.com (unknown [127.0.0.1])
- by pb-smtp2.pobox.com (Postfix) with ESMTP id 40AE31D8B6A
- for <linux1394-devel@lists.sourceforge.net>;
- Wed, 28 Feb 2024 06:01:45 -0500 (EST) (envelope-from adamg@pobox.com)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=pobox.com; h=date:from
- :to:subject:message-id:mime-version:content-type; s=sasl; bh=rMw
- nVgODEL8zMJH2NV8ovBSFBYMMXQYJHRjxI8k7DAQ=; b=aN2Qa9URcK1uWkuqWkZ
- 00xI9XBn0EZrjqK1s1go02XVezW1j+yeMbZM7DD85Q4k/RqSyBBvXntXsYhgVLUj
- T23MtKDjVyiS1hh51Y3Nkzk8hNzYS2J7noLWAVud7m66LoHAjU3npE9+BFxmetvd
- N5BkNVQeLMvneNRA8Phb3zTw=
-Received: from pb-smtp2.nyi.icgroup.com (unknown [127.0.0.1])
- by pb-smtp2.pobox.com (Postfix) with ESMTP id 376521D8B68
- for <linux1394-devel@lists.sourceforge.net>;
- Wed, 28 Feb 2024 06:01:45 -0500 (EST) (envelope-from adamg@pobox.com)
-Received: from pogo.deviceside.com (unknown [71.19.144.253])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by pb-smtp2.pobox.com (Postfix) with ESMTPSA id A4D7C1D8B67
- for <linux1394-devel@lists.sourceforge.net>;
- Wed, 28 Feb 2024 06:01:44 -0500 (EST) (envelope-from adamg@pobox.com)
-Received: from iguana.24-8.net (99-122-168-208.lightspeed.irvnca.sbcglobal.net
- [99.122.168.208])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (prime256v1) server-signature ECDSA (prime256v1)
- server-digest SHA256) (No client certificate requested)
- (Authenticated sender: iguana@pogo.deviceside.com)
- by pogo.deviceside.com (Postfix) with ESMTPSA id 7B5A2C0317
- for <linux1394-devel@lists.sourceforge.net>;
- Wed, 28 Feb 2024 03:01:43 -0800 (PST)
-Date: Wed, 28 Feb 2024 03:01:41 -0800
-From: Adam Goldman <adamg@pobox.com>
-To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH v2] firewire: core: use long bus reset on gap count error
-Message-ID: <Zd8SlIDexjaO8LNU@iguana.24-8.net>
+ id 1rfgfJ-0004RR-M3 for linux1394-devel@lists.sourceforge.net;
+ Thu, 29 Feb 2024 13:41:40 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+ by mailfout.nyi.internal (Postfix) with ESMTP id EB2B413800BA;
+ Thu, 29 Feb 2024 08:23:36 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute6.internal (MEProxy); Thu, 29 Feb 2024 08:23:36 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
+ h=cc:cc:content-type:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=fm1; t=1709213016; x=
+ 1709299416; bh=P4cLnRFuHCRbRmkUo6yIMPuD8xWhrFOFHVDQrYs2fQY=; b=n
+ l+eRGimaiMb9V9dtS+v0cMwuNAobHhTvq66ZsDrRQg7BZGtH5RH0IfXTaeDbtHS2
+ F6SRAC8q59yUyS2jq6wd/55ELMKuMLDcK2BXKLSx87CuJG/S257FkyhGf9F7INOl
+ NhgU1cZDwVAzzHfg7BgWVeoUP9Ps7EMJ7stwl5X8u28SQzedT9wryXWKykMWBq/c
+ EIv6Y3nTO/TJ0cUS2fQgRyJpupUiPeTYznRQw4W8dk5L6dCY28+45ACwBcAbWrPm
+ tCx34JPRJcYqpEdcVK69k39MbFBvh4srinC/lw+VZYIT/Xnqg7VNEz7JsE1Z5FD2
+ 6teFZcVVrkFVMnQDv794w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm1; t=1709213016; x=1709299416; bh=P4cLnRFuHCRbRmkUo6yIMPuD8xWh
+ rFOFHVDQrYs2fQY=; b=D4bw5lageGzvl2MfOgwUqksEVPjK66H5JHui5/Imjodj
+ hIBxl4rK6awuCG4viYBpnS/MxVVJbfS6u4otw0r26o7xtnXoUEn6MAR4sqbaJpqy
+ rlB3GGB63V6S0HRoALrW3PRzoXQE4mS7sFkWYeD69yjS0BGOSi9JE9na0rKe/sRG
+ Ary19VNTnBlXFSWXbuVyJQDRffKKxU31626j4VzewX+e84Nd4V+CnYZ+/aw6miqY
+ Hj72qw3E5Y0EZbifJ0KqqMPeh1gPotYy3UWJxxNo4THjedKMwVrZmv8Wki6fhZ9A
+ TcLZrVKQHKeqrBjSHZ0kIsy48CZhWq8XZnMyWZpu2A==
+X-ME-Sender: <xms:WIXgZVz4aCHMUOMZqHXOhzNmI6PHrhQ58umZtFZNh2na-CxqvKX9iQ>
+ <xme:WIXgZVSDmo0HW0oWj0eq3RrPODQKTVhGq92LECYOhN-fI-Q1LjS4zC8hW4UWHoqiE
+ 3M6PbCgP18bz2MAQrY>
+X-ME-Received: <xmr:WIXgZfW6l_1tDJgHD2re_MUS419C3BuPXn0vZWD3rwRqK7wSqCpZPDEpkQLFndDTvJiEeNtU072w__cxSLlnxncoRZuXVxTY7YQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrgeelgdehudcutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenog
+ fuuhhsphgvtghtffhomhgrihhnucdlgeelmdenucfjughrpeffhffvvefukfhfgggtuggj
+ sehttdertddttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqd
+ htrghkrghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeej
+ hffhgeeutefhfeeugfeggeduhfekffduhffhheekhfdtveefhfejjefftdfgjeenucffoh
+ hmrghinhepshhouhhrtggvfhhorhhgvgdrnhgvthenucevlhhushhtvghrufhiiigvpedt
+ necurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttg
+ hhihdrjhhp
+X-ME-Proxy: <xmx:WIXgZXgkUmD9GO5gMg870LvKl0C-AHZA2wG-qraYIq51EN06CKCLzg>
+ <xmx:WIXgZXAbobqWjvsTJwI6S7OzwSGlpk5X6BznxVH1HtyjeZIXP8sCkQ>
+ <xmx:WIXgZQLrZSERJWDmh54tmRddwrU92J56EZVprKKnwY0cFKlHLVnVWg>
+ <xmx:WIXgZaMmymIFSjeW9WU5zkMk6druVQVtGCzJmA-BKeh9qKGC9X9seA>
+Feedback-ID: ie8e14432:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 29 Feb 2024 08:23:35 -0500 (EST)
+Date: Thu, 29 Feb 2024 22:23:33 +0900
+From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+To: Adam Goldman <adamg@pobox.com>
+Subject: Re: [PATCH v2] firewire: core: use long bus reset on gap count error
+Message-ID: <20240229132333.GA14133@workstation.local>
+Mail-Followup-To: Adam Goldman <adamg@pobox.com>,
+ linux1394-devel@lists.sourceforge.net
+References: <Zd8SlIDexjaO8LNU@iguana.24-8.net>
 MIME-Version: 1.0
 Content-Disposition: inline
-X-Pobox-Relay-ID: C2993F70-D628-11EE-A3CC-25B3960A682E-07713566!pb-smtp2.pobox.com
-X-Spam-Score: -0.9 (/)
+In-Reply-To: <Zd8SlIDexjaO8LNU@iguana.24-8.net>
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: From: Adam Goldman <adamg@pobox.com> When resetting the bus
- after a gap count error, use a long rather than short bus reset. IEEE 1394-1995
- uses only long bus resets. IEEE 1394a adds the option of short bus resets.
- When video or audio transmission is in progress and a device is hot-plugged
- elsewhere on the bus, the resultin [...] 
- Content analysis details:   (-0.9 points, 6.0 required)
+ Content preview:  Hi, On Wed, Feb 28, 2024 at 03:01:41AM -0800, Adam Goldman
+ wrote: > From: Adam Goldman <adamg@pobox.com> > > When resetting the bus
+ after a gap count error, use a long rather than > short bus reset. > > I [...]
+ Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.147.108.71 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1rfHhE-00033X-4M
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+X-Headers-End: 1rfgfJ-0004RR-M3
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,60 +135,48 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
+Cc: linux1394-devel@lists.sourceforge.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-From: Adam Goldman <adamg@pobox.com>
+Hi,
 
-When resetting the bus after a gap count error, use a long rather than 
-short bus reset.
+On Wed, Feb 28, 2024 at 03:01:41AM -0800, Adam Goldman wrote:
+> From: Adam Goldman <adamg@pobox.com>
+> 
+> When resetting the bus after a gap count error, use a long rather than 
+> short bus reset.
+> 
+> IEEE 1394-1995 uses only long bus resets. IEEE 1394a adds the option of 
+> short bus resets. When video or audio transmission is in progress and a 
+> device is hot-plugged elsewhere on the bus, the resulting bus reset can 
+> cause video frame drops or audio dropouts. Short bus resets reduce or 
+> eliminate this problem. Accordingly, short bus resets are almost always 
+> preferred.
+> 
+> However, on a mixed 1394/1394a bus, a short bus reset can trigger an 
+> immediate additional bus reset. This double bus reset can be interpreted 
+> differently by different nodes on the bus, resulting in an inconsistent gap 
+> count after the bus reset. An inconsistent gap count will cause another bus 
+> reset, leading to a neverending bus reset loop. This only happens for some 
+> bus topologies, not for all mixed 1394/1394a buses.
+> 
+> By instead sending a long bus reset after a gap count inconsistency, we 
+> avoid the doubled bus reset, restoring the bus to normal operation.
+> 
+> Signed-off-by: Adam Goldman <adamg@pobox.com>
+> Link: https://sourceforge.net/p/linux1394/mailman/message/58741624/
+> ---
 
-IEEE 1394-1995 uses only long bus resets. IEEE 1394a adds the option of 
-short bus resets. When video or audio transmission is in progress and a 
-device is hot-plugged elsewhere on the bus, the resulting bus reset can 
-cause video frame drops or audio dropouts. Short bus resets reduce or 
-eliminate this problem. Accordingly, short bus resets are almost always 
-preferred.
+Applied to for-linus branch. I'll send it for v6.8-rc7 in this weekend.
+I guess that the maintainers for the stable and longterm kernel would
+pick it up, like your previous patch.
 
-However, on a mixed 1394/1394a bus, a short bus reset can trigger an 
-immediate additional bus reset. This double bus reset can be interpreted 
-differently by different nodes on the bus, resulting in an inconsistent gap 
-count after the bus reset. An inconsistent gap count will cause another bus 
-reset, leading to a neverending bus reset loop. This only happens for some 
-bus topologies, not for all mixed 1394/1394a buses.
 
-By instead sending a long bus reset after a gap count inconsistency, we 
-avoid the doubled bus reset, restoring the bus to normal operation.
+Thanks
 
-Signed-off-by: Adam Goldman <adamg@pobox.com>
-Link: https://sourceforge.net/p/linux1394/mailman/message/58741624/
----
-
---- linux-6.8-rc1.orig/drivers/firewire/core-card.c	2024-01-21 14:11:32.000000000 -0800
-+++ linux-6.8-rc1/drivers/firewire/core-card.c	2024-02-28 02:23:48.000000000 -0800
-@@ -484,7 +484,19 @@
- 		fw_notice(card, "phy config: new root=%x, gap_count=%d\n",
- 			  new_root_id, gap_count);
- 		fw_send_phy_config(card, new_root_id, generation, gap_count);
--		reset_bus(card, true);
-+		/*
-+		 * Where possible, use a short bus reset to minimize
-+		 * disruption to isochronous transfers. But in the event
-+		 * of a gap count inconsistency, use a long bus reset.
-+		 *
-+		 * As noted in 1394a 8.4.6.2, nodes on a mixed 1394/1394a bus
-+		 * may set different gap counts after a bus reset. On a mixed
-+		 * 1394/1394a bus, a short bus reset can get doubled. Some
-+		 * nodes may treat the double reset as one bus reset and others
-+		 * may treat it as two, causing a gap count inconsistency
-+		 * again. Using a long bus reset prevents this.
-+		 */
-+		reset_bus(card, card->gap_count != 0);
- 		/* Will allocate broadcast channel after the reset. */
- 		goto out;
- 	}
-
+Takashi Sakamoto
 
 
 _______________________________________________
