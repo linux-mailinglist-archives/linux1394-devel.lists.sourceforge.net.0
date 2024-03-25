@@ -2,104 +2,101 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 774DE88851D
-	for <lists+linux1394-devel@lfdr.de>; Mon, 25 Mar 2024 01:58:55 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 040E5888600
+	for <lists+linux1394-devel@lfdr.de>; Mon, 25 Mar 2024 02:22:06 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1roYfg-00050j-Cn;
-	Mon, 25 Mar 2024 00:58:41 +0000
+	id 1roZ2A-0001Hk-Mn;
+	Mon, 25 Mar 2024 01:21:55 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1roYfe-00050M-4e
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1roZ26-0001HZ-6R
  for linux1394-devel@lists.sourceforge.net;
- Mon, 25 Mar 2024 00:58:38 +0000
+ Mon, 25 Mar 2024 01:21:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
+ In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=AmBInRDbGLPNG8rOKA0r7VItOqJAoF9HJEoIM9V+4oY=; b=SzFz+Bhz2dBo6v+54soR0gSHrt
- /5U8zj9jW5LYxr61do49dP1K+tR24zB1hGC4wq25NM/rBfp9YGx/RDSfwgq1FjquTzxetv5pnz4+a
- vZ7ifAL0A/KuhEVwhDGFtg3bvZqbWPVSL9wOiX69vPe+XmtnHS0QP/cmjqVDCdH2iDcM=;
+ bh=O/03a8VUsvCu5Ho2lWofHPeYJCGruXQzjVj9uGmC/bY=; b=QCNuK1qi5Y0jZA6yvcA2E/o9Td
+ wvcgfvAn6iNU5QMAsaDfSuBrttIsNImS0RjZaYRJbSBqjPo972toX+H9WACihN+BemfiRjBepQ4F3
+ LHKdoRMPhyBvEPYLT/aG0gDem7/6TO+5FF2nfjviuK+7iW42lA/3C5bITjLOAoLkk2ys=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=AmBInRDbGLPNG8rOKA0r7VItOqJAoF9HJEoIM9V+4oY=; b=EjEjL5CayQSRLSIR3A5C6nh07m
- +UcTU1iMAO4HCuOGN4/iEpQJwaXQST6QKoDPwNYflE3VmoFezE0+gwBvxBb80K8Xq3hl9r+bjn0mP
- q/dM/jTBhzmLRFDodp2yZJRLcPJ3ufk9W9pwf7AO9qBTLDqAkDH885RA3WU6pOn4Zsnc=;
-Received: from fhigh8-smtp.messagingengine.com ([103.168.172.159])
+ bh=O/03a8VUsvCu5Ho2lWofHPeYJCGruXQzjVj9uGmC/bY=; b=EOe5AmhRmY9L6ZQat01os2Gd95
+ vX5aCksZn8lpENs8ZCnLR+qGNA2BPC3Kld3Roiy4TQv6un77akuCD6mS/mLrWZ98xpeC5so45pMAL
+ H+egkOrmqffRkPQtQiHMQRNAg20dbCJUakAIeUggKhkuIKm4oG7mBRA2r8XRVb+zQjUA=;
+Received: from fout4-smtp.messagingengine.com ([103.168.172.147])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1roYfd-0002IK-5S for linux1394-devel@lists.sourceforge.net;
- Mon, 25 Mar 2024 00:58:38 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailfhigh.nyi.internal (Postfix) with ESMTP id BE5F011400DB;
- Sun, 24 Mar 2024 20:58:31 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Sun, 24 Mar 2024 20:58:31 -0400
+ id 1roZ22-0003IB-Ku for linux1394-devel@lists.sourceforge.net;
+ Mon, 25 Mar 2024 01:21:50 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailfout.nyi.internal (Postfix) with ESMTP id 4651E13800CA;
+ Sun, 24 Mar 2024 21:21:41 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute5.internal (MEProxy); Sun, 24 Mar 2024 21:21:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1711328311; x=
- 1711414711; bh=AmBInRDbGLPNG8rOKA0r7VItOqJAoF9HJEoIM9V+4oY=; b=3
- ldJglBPvUkHNTQKMnOiWflAPoPG/D9xDNfEs886aNIXfQxoWkD0OXSiHd7pdAK13
- QqzvxUrG4LQelkCclliWVeLAlbpck5a9JT+/h6Q0H/VCWTzyeGeTyaZ2JkQU+gZi
- u5UdyAFwVnxa8S7Bgxvu0P+XdrQ9HntYZf8JE2u6nl0cHtXyYsyV90M29MS9GImR
- m8YEMFJUHdB9guHLYoJ6AEOIbNZkmz/6W1IaeDKTpkd1g/BDfWFlKMUQ8xXyHIDn
- MFZ5yoIGX7VIMPMZhC2TdpoaqpXzB9weeY0XOYb6QOy+UOyxBVtpbEwyGsOuXVlp
- w9kPX3osD8pdqELB6SLEA==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=fm2; t=1711329701; x=
+ 1711416101; bh=O/03a8VUsvCu5Ho2lWofHPeYJCGruXQzjVj9uGmC/bY=; b=y
+ /OJEo3ROdrpCl7D1hrNXl7DSKLX9FD1WJkyUa+0KSMIzJ0YEh+PKbx+EYAUp9WgX
+ i1xk+2Pwnb7xfvvrOVJlkAcx63RnI6Zqgty+gpDsWRs8a6QUrDV1fOIb8+1nmTJ2
+ eP/YE/nbFP30xxkxt/ROpUHyti2F4wrODIV7pvPC/eCFCK0n0S86LSb3VbQHGYl9
+ gJZTSJBQqkSbRIBejT0U3prYVxW6U+4oVdu4vHEY+uLKWnhNwGZXXlWX/S66qW7c
+ jce75nhEvXhuBaUB2y35X8He8yTZOVKP85XIC8v6lGp7G/XZKIFQOEnQ8r7S7wzf
+ o3fjAHSnxosjuDk46SHdQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; t=1711328311; x=1711414711; bh=AmBInRDbGLPNG8rOKA0r7VItOqJA
- oF9HJEoIM9V+4oY=; b=gkETL7m4iU/ivMi8XrsIDZhhQpyXdKvfMMDiz6g0jl0w
- MOzOmfJVWTLGr7nNeWb9OgQoNOXMD8Y3vCfgyv89BhCnhSzDnO+qzwcGSCMsGHc7
- VMNjfAU1UdUZy4w1PrPvbjUx/c/xfsRSxI7J64MhtpnuZSYb8rxa+h0MgwwJR1bL
- 2VKyqT35S7aHagt1LLzaumX1IXEsHTY2VX5NUsWipNP+IXMRK7YtTL2Bshv5vNYc
- NMdsy/iiCCp+QbelHB6rq5H2bg0oLg/I6QfNEFJal+NqTVgNPhike77qX5sNfdMJ
- Pu9CwSwU9AJONaXygX6l6xCSkLbZrOXaXSobgvnN5w==
-X-ME-Sender: <xms:N8wAZkM7knHhaReC98k6cETmIEnUJ2zh6yuSarR27kUW2XFzSrn3nQ>
- <xme:N8wAZq-JO8BZbSlEcV0bkeCbhXDT0AXrBv6DF2EuMJi7MrS3x2HmGT6ZlicmA2vtC
- 2uHywMxA0s4RvfZ2qU>
-X-ME-Received: <xmr:N8wAZrQxwf3hiPM-VuuzS4bXH_SQkfkciSdO-reFN0dCcMX_vpXreNWS8S-lW_CrxqFUEoZMq9E67WN27bzQ5oNJE9aduzxtnuc>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledruddtkedgvdelucetufdoteggodetrfdotf
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1711329701; x=
+ 1711416101; bh=O/03a8VUsvCu5Ho2lWofHPeYJCGruXQzjVj9uGmC/bY=; b=E
+ Zf8j4k4eUdifg3IS1Yaqfm187P578wbwEV++ixbC9d5YbPUEgweuNPWKk3uGW3zF
+ H9u/7uWDIDEHWsnNFA9TOLWbnXnZIhyD0H5SLcpivFFU9PEUbTPfyuOOzP6wnm2G
+ weRHeI3crgu4TgvS+PJESpNLavxI7pvIuvkmyk+8nT/UqRHHd4UEQjfzd8NoyV6C
+ 2moG2xBCq2NJHWblarhelQVjtSpPmCPlT4nIVOQ1mNiK7F3CmP1BntAHbWjQXcPC
+ aPPEeqbhVJ8ssvGzwQVZynvPii+n6+JDY1YbnAuxjtOq7yPs0Cf5LmR9GOda5P0Y
+ eGV2KsLKWukIBOLIC3usA==
+X-ME-Sender: <xms:pdEAZtxasYvljIvamxA5bdUkcgTtCEWJAKlKZEB6q8T5tH4mQ1fwbA>
+ <xme:pdEAZtRz66QLj3WqwaXB2S2_MQz3bobFyKeH4PB_LFw5J9jCgWneexWBUi2OhBE01
+ xMhewZvxxRYT2BqKZ8>
+X-ME-Received: <xmr:pdEAZnUhIVmVbf2E6MOecKYA2LPuVyNiBWUJHXGFiAas1foKC1vVJGh-bnYWbco3EkY7N_MkYv11rawLIvqVzmdCC3Jlb42T6K0sKfFdrmkAyg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledruddtkedgfeegucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepvfgrkhgr
- shhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhird
- hjpheqnecuggftrfgrthhtvghrnhepveeilefhudekffehkeffudduvedvfeduleelfeeg
- ieeljeehjeeuvdeghfetvedvnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlh
- hushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghs
- hhhisehsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:N8wAZstNvcyvaJlCS9c8GrR0LMMi0eDqPwfANW0FnTMtdDw9ILp0GA>
- <xmx:N8wAZsdF5j3ezqqkHvFTNSglW3kIC29av6TCl2MNZ3UyVfxjcpRfXw>
- <xmx:N8wAZg0cF6Q_9d67qyrFgbnvX3ecW_h8xP2yTRsgZ9xH1onuLMybtg>
- <xmx:N8wAZg8xpDUZSFD9_zxOq0e8Ho-mXuhZLfnak3_6Rt73RqA6HGddNQ>
- <xmx:N8wAZr4yv6G2wY1t8M3kAzy7A4psO-0g7lbPisKJTLaByC43GW5KQA>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtke
+ ertdertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
+ rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpedvjefgje
+ euvdfguddukeelveetgfdtvefhtdfffeeigfevueetffeivdffkedvtdenucevlhhushht
+ vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
+ hsrghkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:pdEAZvjI6UkRMGqDA56AYdcjkx2E2t9-ptwnHB6Jx-cjpbZxzPpblQ>
+ <xmx:pdEAZvAl_RMjVzVaA0CTDho29A8axqxZlZaHXWcJWF0VUgfzSXx5Vw>
+ <xmx:pdEAZoJjBY0S_doiRlJnn4RvVPNekpI7FN--hQRzElaq4NUD6P1IYw>
+ <xmx:pdEAZuC7J80cl9yvKyXEwMS2qqcWX9PwjQQmlPYI3dw4Oc3LR7a2OA>
+ <xmx:pdEAZh0v2zFFBSbDAV_oi1fAvIozFOZW4PO0PZn5hsZa_TTGCRp8mw>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 24 Mar 2024 20:58:30 -0400 (EDT)
-Date: Mon, 25 Mar 2024 09:58:28 +0900
+ 24 Mar 2024 21:21:39 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Adam Goldman <adamg@pobox.com>
-Subject: Re: [PATCH] firewire: ohci: mask bus reset interrupts between ISR
- and bottom half
-Message-ID: <20240325005828.GB21329@workstation.local>
-Mail-Followup-To: Adam Goldman <adamg@pobox.com>,
- linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
-References: <ZfqpJ061hLtPT8XL@iguana.24-8.net>
+To: helgaas@kernel.org
+Subject: Re: [PATCH v2] PCI: Mark LSI FW643 to avoid bus reset
+Date: Mon, 25 Mar 2024 10:21:35 +0900
+Message-ID: <20240325012135.36861-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240229230013.GA369538@bhelgaas>
+References: <20240229230013.GA369538@bhelgaas>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ZfqpJ061hLtPT8XL@iguana.24-8.net>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
@@ -107,14 +104,14 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Wed, Mar 20, 2024 at 02:15:19AM -0700, Adam Goldman
- wrote: > In the FireWire OHCI interrupt handler, if a bus reset interrupt
- has > occurred, mask bus reset interrupts until bus_reset_work has serv [...]
+ Content preview:  Hi Bjorn Helgaas,
+ (C.C.ed to linux1394-devel@lists.sourceforge.net)
+ I have an objection to applying the change. 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [103.168.172.159 listed in list.dnswl.org]
+ low trust [103.168.172.147 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -124,7 +121,7 @@ X-Spam-Report: Spam detection software,
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
-X-Headers-End: 1roYfd-0002IK-5S
+X-Headers-End: 1roZ22-0003IB-Ku
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -137,106 +134,172 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
+Cc: linux-pci@vger.kernel.org, edmund.raile@proton.me,
+ linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+Hi Bjorn Helgaas,
 
-On Wed, Mar 20, 2024 at 02:15:19AM -0700, Adam Goldman wrote:
-> In the FireWire OHCI interrupt handler, if a bus reset interrupt has 
-> occurred, mask bus reset interrupts until bus_reset_work has serviced and 
-> cleared the interrupt.
+(C.C.ed to linux1394-devel@lists.sourceforge.net)
+
+I have an objection to applying the change.
+
+I've been using the issued 1394 OHCI hardware in my development for recent
+years, while I have never faced the reported trouble. I think there are
+any misunderstanding or misjudge somwhow in the review process to apply it.
+
+Would I ask your precise advice to regenerate the reported issue in my
+local?
+
+This is my 1394 OHCI hardware.
+
+```
+$ sudo lspci -vvvnns 06:00.0
+06:00.0 FireWire (IEEE 1394) [0c00]: LSI Corporation FW643 [TrueFire] PCIe 1394b Controller [11c1:5901] (rev 06) (prog-if 10 [OHCI])
+        Subsystem: LSI Corporation FW643 [TrueFire] PCIe 1394b Controller [11c1:5900]
+        Control: I/O- Mem- BusMaster- SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx-
+        Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+        Interrupt: pin A routed to IRQ 255
+        IOMMU group: 17
+        Region 0: Memory at fc700000 (64-bit, non-prefetchable) [disabled] [size=4K]
+        Capabilities: [44] Power Management version 3
+                Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=375mA PME(D0+,D1+,D2+,D3hot+,D3cold+)
+                Status: D3 NoSoftRst- PME-Enable+ DSel=0 DScale=0 PME-
+        Capabilities: [4c] MSI: Enable- Count=1/1 Maskable- 64bit+
+                Address: 0000000000000000  Data: 0000
+        Capabilities: [60] Express (v1) Endpoint, MSI 00
+                DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s <4us, L1 <64us
+                        ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset- SlotPowerLimit 0W
+                DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+                        RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop-
+                        MaxPayload 128 bytes, MaxReadReq 512 bytes
+                DevSta: CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr+ TransPend-
+                LnkCap: Port #0, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s <512ns, L1 <64us
+                        ClockPM+ Surprise- LLActRep- BwNot- ASPMOptComp-
+                LnkCtl: ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+                        ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+                LnkSta: Speed 2.5GT/s, Width x1
+                        TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+        Capabilities: [100 v1] Advanced Error Reporting
+                UESta:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                UEMsk:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                UESvrt: DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+                CESta:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr-
+                CEMsk:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+                AERCap: First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+                        MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+                HeaderLog: 00000000 00000000 00000000 00000000
+        Capabilities: [140 v1] Virtual Channel
+                Caps:   LPEVC=0 RefClk=100ns PATEntryBits=1
+                Arb:    Fixed- WRR32- WRR64- WRR128-
+                Ctrl:   ArbSelect=Fixed
+                Status: InProgress-
+                VC0:    Caps:   PATOffset=00 MaxTimeSlots=1 RejSnoopTrans-
+                        Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR256-
+                        Ctrl:   Enable+ ID=0 ArbSelect=Fixed TC/VC=01
+                        Status: NegoPending- InProgress-
+                VC1:    Caps:   PATOffset=00 MaxTimeSlots=1 RejSnoopTrans-
+                        Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR256-
+                        Ctrl:   Enable- ID=1 ArbSelect=Fixed TC/VC=00
+                        Status: NegoPending- InProgress-
+        Capabilities: [170 v1] Device Serial Number 12-34-56-10-12-30-00-86
+        Kernel driver in use: vfio-pci
+        Kernel modules: firewire_ohci
+```
+
+I use it in the following environment at present:
+
+* Host system
+    * AMD Ryzen 5 2400G
+    * TUF GAMING X570-PLUS with BIOS 5003 (AGESA ComboV2PI 1.2.0.B)
+        * SMT enabled
+        * SVM enabled
+        * IOMMU enabled
+        * Secure boot disabled
+    * Ubuntu 24.04 LTS amd64
+        * linux-image-6.8.0-11-generic (6.8.0-11.11)
+            * default kernel cmdline
+        * QEMU 8.2.1 (1:8.2.1+ds-1ubuntu1)
+        * Libvert 10.0.0 (10.0.0-2ubuntu1)
+* Guest system
+    * UEFI using OVMF
+        * Seecure boot enabled
+    * Ubuntu 24.04 LTS amd64 (the same as above)
+        * default kernel cmdline
+
+> Using LSI / Agere FW643 with vfio-pci will exhaust all
+> pci_reset_fn_methods, the bus reset at the end causes a broken link
+> only recoverable by removing power
+> (power-off / suspend + rescan).
+> Prevent this bus reset.
+> With this change, the device can be assigned to VMs with VFIO.
+> Note that it will not be reset, resulting in leaking state between VMs
+> and host.
 > 
-> Normally, we always leave bus reset interrupts masked. We infer the bus 
-> reset from the self-ID interrupt that happens shortly thereafter. A 
-> scenario where we unmask bus reset interrupts was introduced in 2008 in 
-> a007bb857e0b26f5d8b73c2ff90782d9c0972620: If 
-> OHCI_PARAM_DEBUG_BUSRESETS (8) is set in the debug parameter bitmask, we 
-> will unmask bus reset interrupts so we can log them.
+> Signed-off-by: Edmund Raile <edmund.raile@proton.me>
 > 
-> irq_handler logs the bus reset interrupt. However, we can't clear the bus 
-> reset event flag in irq_handler, because we won't service the event until 
-> later. irq_handler exits with the event flag still set. If the 
-> corresponding interrupt is still unmasked, the first bus reset will 
-> usually freeze the system due to irq_handler being called again each 
-> time it exits. This freeze can be reproduced by loading firewire_ohci 
-> with "modprobe firewire_ohci debug=-1" (to enable all debugging output). 
-> Apparently there are also some cases where bus_reset_work will get called 
-> soon enough to clear the event, and operation will continue normally.
+> I sincerely thank you for your patience and explaining
+> the background of pci resets which I lacked.
+> The commit message and comment now describe it correctly.
+> The comment on leaking states was added.
 > 
-> This freeze was first reported a few months after a007bb85 was committed, 
-> but until now it was never fixed. The debug level could safely be set 
-> to -1 through sysfs after the module was loaded, but this would be 
-> ineffectual in logging bus reset interrupts since they were only 
-> unmasked during initialization.
+> Usefulness:
 > 
-> irq_handler will now leave the event flag set but mask bus reset 
-> interrupts, so irq_handler won't be called again and there will be no 
-> freeze. If OHCI_PARAM_DEBUG_BUSRESETS is enabled, bus_reset_work will 
-> unmask the interrupt after servicing the event, so future interrupts 
-> will be caught as desired.
+> The LSI FW643 PCIe->FireWire 800 interface may be EOL but it is
+> the only one that does not use a PCIe->PCI bridge.
+> It is reliable and enables FireWire audio interfaces to be used
+> on modern machines.
 > 
-> As a side effect to this change, OHCI_PARAM_DEBUG_BUSRESETS can now be 
-> enabled through sysfs in addition to during initial module loading. 
-> However, when enabled through sysfs, logging of bus reset interrupts will 
-> be effective only starting with the second bus reset, after 
-> bus_reset_work has executed.
+> Virtualization allows for flexible access to professional audio
+> software.
 > 
-> Signed-off-by: Adam Goldman <adamg@pobox.com>
-> ---
+> It has been used in at least the following Apple machines:
+> MacBookPro10,1
+> MacBookPro9,2
+> MacBookPro6,2
+> MacBookPro5,1
+> Macmini6,1
+> Macmini3,1
+> iMac12,2
+> iMac9,1
+> iMac8,1
 > 
-> --- linux-6.8-rc1.orig/drivers/firewire/ohci.c	2024-01-21 14:11:32.000000000 -0800
-> +++ linux-6.8-rc1/drivers/firewire/ohci.c	2024-03-12 01:15:10.000000000 -0700
-> @@ -2060,6 +2060,8 @@ static void bus_reset_work(struct work_s
+> Implementation:
+> 
+> PCI_VENDOR_ID_ATT was reused as they are identical.
+> 
+>  drivers/pci/quirks.c | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
+> 
+> diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+> index d797df6e5f3e..e0e4ad9e6d50 100644
+> --- a/drivers/pci/quirks.c
+> +++ b/drivers/pci/quirks.c
+> @@ -3765,6 +3765,19 @@ DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_ATHEROS, 0x003e, quirk_no_bus_reset);
+>   */
+>  DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_CAVIUM, 0xa100, quirk_no_bus_reset);
 >  
->  	ohci->generation = generation;
->  	reg_write(ohci, OHCI1394_IntEventClear, OHCI1394_busReset);
-> +	if (param_debug & OHCI_PARAM_DEBUG_BUSRESETS)
-> +		reg_write(ohci, OHCI1394_IntMaskSet, OHCI1394_busReset);
->  
->  	if (ohci->quirks & QUIRK_RESET_PACKET)
->  		ohci->request_generation = generation;
-> @@ -2125,12 +2127,14 @@ static irqreturn_t irq_handler(int irq,
->  		return IRQ_NONE;
->  
->  	/*
-> -	 * busReset and postedWriteErr must not be cleared yet
-> +	 * busReset and postedWriteErr events must not be cleared yet
->  	 * (OHCI 1.1 clauses 7.2.3.2 and 13.2.8.1)
->  	 */
->  	reg_write(ohci, OHCI1394_IntEventClear,
->  		  event & ~(OHCI1394_busReset | OHCI1394_postedWriteErr));
->  	log_irqs(ohci, event);
-> +	if (event & OHCI1394_busReset)
-> +		reg_write(ohci, OHCI1394_IntMaskClear, OHCI1394_busReset);
->  
->  	if (event & OHCI1394_selfIDComplete)
->  		queue_work(selfid_workqueue, &ohci->bus_reset_work);
-
-Thanks for the patch. I pushed topic branch[1] for it, since I'm
-considering about whether to send it to stable and longterm releases.
-
-I had realized that the debug=8 for firewire-ohci module provides tons
-of logs triggering by the irq handler, since the irq for bus reset is
-not unmasked, so I rely on selfID events when debugging bus-reset. I have
-few objections to the change.
-
-My concern is how much invasive it is. The unmasking is kept until
-bus_reset_work() is executed in the workqueue. When considering about
-the delay of workqueue (since it is a kind of schedulable task), many
-irq events for bus reset is potentially skipped from the logging. Of
-course, it is the aim of change.
-
-Let me take more time to evaluate the change, but I'm willing to send it
-to upstream until -rc3 or -rc4, at least, if receiving no objections
-from the others.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git/log/?h=v6.9-firewire-mask-bus-reset-event-during-handling
+> +/*
+> + * Using LSI / Agere FW643 with vfio-pci will exhaust all
+> + * pci_reset_fn_methods, the bus reset at the end causes a broken link
+> + * only recoverable by removing power
+> + * (power-off / suspend + rescan).
+> + * Prevent this bus reset.
+> + * With this change, the device can be assigned to VMs with VFIO.
+> + * Note that it will not be reset, resulting in leaking state between VMs
+> + * and host.
+> + */
+> +DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_ATT, 0x5900, quirk_no_bus_reset);
+> +DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_ATT, 0x5901, quirk_no_bus_reset);
+> +
+>  /*
+>   * Some TI KeyStone C667X devices do not support bus/hot reset.  The PCIESS
+>   * automatically disables LTSSM when Secondary Bus Reset is received and
 
 
-Thanks
+Regards
 
 Takashi Sakamoto
 
