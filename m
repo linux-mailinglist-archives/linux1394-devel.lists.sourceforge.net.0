@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E05288B965
-	for <lists+linux1394-devel@lfdr.de>; Tue, 26 Mar 2024 05:20:10 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B42288C1E6
+	for <lists+linux1394-devel@lfdr.de>; Tue, 26 Mar 2024 13:19:10 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1royHz-0002mT-LW;
-	Tue, 26 Mar 2024 04:19:55 +0000
+	id 1rp5lZ-0005LU-Rr;
+	Tue, 26 Mar 2024 12:18:58 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1royHx-0002mH-Jn
+ (envelope-from <adamg@pobox.com>) id 1rp5lY-0005LO-Da
  for linux1394-devel@lists.sourceforge.net;
- Tue, 26 Mar 2024 04:19:53 +0000
+ Tue, 26 Mar 2024 12:18:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
  Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=TT6J81xAiZUuDsQWd9ABaj4hlEzDlXvyJDw3uKeZE4E=; b=nBMrMJR0Gg9qGokm+N4SeUa4At
- dnKyY3E3Oxbv1Bmmtd85xKx6LdM9tvfd84pEtEUBZvwlhQIKJaBwOYcJnMAHzB/fddLK+9x7eLrxr
- d/01v0eOXBuF6IK+rDZEEAiCYLwv0zszqn9DD7PafHgR8eJND7t4ySlCDnSUOWwF56TQ=;
+ bh=ZKndFoDTnJn0xXQw708FXn3YQv04K5kIqT6IbG108v4=; b=b7Bsw+k4hGWk9YhV+WqxI8ePYw
+ Us8pJWeaossdgBCMEaQoxRL0IXwrHsoIi1LBM9H5ogwwTGaadki7BIwlePuJl+HqJeXDxFJIKHAA+
+ Iqih/NsDqjleu/Z3iil7bZPcQYn6jcvlfblJkbLiwRKuXN1DBpMJRbXX7oAf1xpNgqYo=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
@@ -31,75 +31,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=TT6J81xAiZUuDsQWd9ABaj4hlEzDlXvyJDw3uKeZE4E=; b=URverOlPX4gwbHeVy7xeJ/fp+f
- yCujsYcDTO5tcltoLmb43rD3CeAGJTjzaI14b6TsSShS5Gn6wGF1pR6tYuLNTddzTLZmzIHHoXijD
- fdzl5e1n3vYaW26HeqNvRbtKLt1N7B6jwnyCoRsAGfQRV7phg92kFQOKHLrz1ewn7Vyg=;
-Received: from wfhigh4-smtp.messagingengine.com ([64.147.123.155])
+ bh=ZKndFoDTnJn0xXQw708FXn3YQv04K5kIqT6IbG108v4=; b=VSkCWVbgcKRVywh+XhRwjFZL3/
+ zoi1T9LEliYR5FM+N7O5gMrKLwLBleReM6YJiQUgmi6ZJkvtVTy8S0ka3kQk4hJOQKcI8dY7gSy7h
+ HUGYAEi53DMaM2rJcxk5MIwmdiwDwkvLdTzaakzI9Hv2s/mgIFe38dtn8PlnpvGcFFto=;
+Received: from pb-smtp21.pobox.com ([173.228.157.53])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1royHv-0000CM-Sp for linux1394-devel@lists.sourceforge.net;
- Tue, 26 Mar 2024 04:19:53 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailfhigh.west.internal (Postfix) with ESMTP id 30BAF18000B9;
- Tue, 26 Mar 2024 00:19:46 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Tue, 26 Mar 2024 00:19:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1711426785; x=
- 1711513185; bh=TT6J81xAiZUuDsQWd9ABaj4hlEzDlXvyJDw3uKeZE4E=; b=d
- 0XGAgRnUX/SpXskLPOgDm46idTKhNSW8mQ2EmXy2f7AvQ9tZfPAsWymBmn+QlEE2
- IllDpgcXbQnRffR/mu+3MYRSET+8MnkFeemg+C5gye6XCQWSulycctKArNLyqCKs
- 8dvpsAmxoUDTyCu14m91Hg6MNPol6wiAEtx8d+LbdXY5Z+oqpxACtiLx2GqpV9r6
- 6d3DRkGrhrtnzE3WnkdXaIvyifhoEKPw0qM3F6QP/iloPNHx58ISuj/48FCnnNQi
- u/3S1rzeOWJP7LjcOlAeHzs4PCntdxSfiV2fRXydicX95jonnFDvjZ6VlgtR6tFH
- ocJmE/d2DFux0I+HdR8uQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; t=1711426785; x=1711513185; bh=TT6J81xAiZUuDsQWd9ABaj4hlEzD
- lXvyJDw3uKeZE4E=; b=ofr96o99qsHLVlNXCAZyd3LU9JEseKIHMv7eC1RMVS5e
- +EDWxzZmh4NB0MUFJGQa6n4npCwoUMr01D8ZOT9reorLlV2NAPPemkiR4SiNLTvF
- LT1V89Q+Krpu1+eOmxwqeIuNrX9dHVTyMOat7hMDvBjiiN+SpKdpMhebtZywy98G
- CW5e7mBoP4SY6VU8OJdpwgyyNhW/cGMRfCIXMx4VNdy6EGWT3ufgpWtsQMs9aCRz
- ZZ3Hbi7VK/1A1Ga7Sd93PZcGkTTQvMdZpbXYUBfWXQYQW5m04GGALYbkqHXf9Efs
- Z65ssIdOaQ2iSuMpru1qoiNeb3z9CUWck61fODzA1w==
-X-ME-Sender: <xms:4UwCZpLouFRNYiqnuik4b8ks8DGZvnV5SSgWbgAYdGE77YEEV0s9hA>
- <xme:4UwCZlJOPH70pxL2W7jnwK__AVLHzTSIru2VmRF_qJHhj6cZr1hAoQJoOHYspHohA
- 7X81hQwH8KAn-1N95o>
-X-ME-Received: <xmr:4UwCZhtdAzVCwGdyE17zaS6S51tEBDy4OLfZ1rYUo1PWxA6YT70S7vfN4JFCU3WudMqqqsZ2DV69nDJJIMKw0svvuGEn9uXrtfE>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudduvddgieelucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttd
- ertddttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
- rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhte
- etgfekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushht
- vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
- hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:4UwCZqZS3Bsf3gJXHTUAAcM2EFJmSQqX8v5ISEe09pSzQrdZy7ytUQ>
- <xmx:4UwCZgYZXDCq7mZWssSno2bRh5rQdTjvXGl9C_LO_qo8-lzdWY2msw>
- <xmx:4UwCZuCnIBy3BLF5laZAarIUQP9JCoODXlMx6e5kVAOSq3rOMNau6A>
- <xmx:4UwCZuZL2MWXrAmZENCG02s5Fn7wS_rafueOlLLdf6T1oVbla-h3gQ>
- <xmx:4UwCZvwiOrat0zjOe76hS0XwESBBaFtDMCFuOCgIu1FHottTWZ-wrxt6Pw0>
-Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 26 Mar 2024 00:19:43 -0400 (EDT)
-Date: Tue, 26 Mar 2024 13:19:41 +0900
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-Subject: Re: [PATCH][next] firewire: Annotate struct fw_iso_packet with
- __counted_by()
-Message-ID: <20240326041941.GA122990@workstation.local>
-Mail-Followup-To: "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
- linux-hardening@vger.kernel.org
-References: <ZgIrOuR3JI/jzqoH@neat>
+ id 1rp5lX-0002OY-FS for linux1394-devel@lists.sourceforge.net;
+ Tue, 26 Mar 2024 12:18:56 +0000
+Received: from pb-smtp21.pobox.com (unknown [127.0.0.1])
+ by pb-smtp21.pobox.com (Postfix) with ESMTP id 880F02C922;
+ Tue, 26 Mar 2024 08:18:49 -0400 (EDT) (envelope-from adamg@pobox.com)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=pobox.com; h=date:from
+ :to:cc:subject:message-id:references:mime-version:content-type
+ :in-reply-to; s=sasl; bh=9rVUUhguyKYMjkeTWxNxhL0yTS4z2tHrtGbc79u
+ 6mko=; b=NXOHwlrMWUP7qjUopdi3LnPUUiyMrHbjOrHxw9nV7K+9jYBWy8YFJp6
+ 32GlGuJiiDLm0er1k20roY0S0N9i9QoI7DTK2IWm34F+IiEYbDTdOB9sKvQ027aL
+ CuMLraUvew8rGNaRmLtGKlbbWCEt6lw0qsbqWOJf0OMNgWHnEu3g=
+Received: from pb-smtp21.sea.icgroup.com (unknown [127.0.0.1])
+ by pb-smtp21.pobox.com (Postfix) with ESMTP id 72CA82C921;
+ Tue, 26 Mar 2024 08:18:49 -0400 (EDT) (envelope-from adamg@pobox.com)
+Received: from pogo.deviceside.com (unknown [71.19.144.253])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by pb-smtp21.pobox.com (Postfix) with ESMTPSA id 1503D2C91F;
+ Tue, 26 Mar 2024 08:18:46 -0400 (EDT) (envelope-from adamg@pobox.com)
+Received: from iguana.24-8.net (99-122-168-208.lightspeed.irvnca.sbcglobal.net
+ [99.122.168.208])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (prime256v1) server-signature ECDSA (prime256v1)
+ server-digest SHA256) (No client certificate requested)
+ (Authenticated sender: iguana@pogo.deviceside.com)
+ by pogo.deviceside.com (Postfix) with ESMTPSA id 89215C01CE;
+ Tue, 26 Mar 2024 05:18:44 -0700 (PDT)
+Date: Tue, 26 Mar 2024 05:18:32 -0700
+From: Adam Goldman <adamg@pobox.com>
+To: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+Subject: Re: [PATCH] firewire: core: option to log bus reset initiation
+Message-ID: <ZgK9GNLURNg63zRU@iguana.24-8.net>
+References: <Zfqo43xhFluOgO01@iguana.24-8.net>
+ <20240325004134.GA21329@workstation.local>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <ZgIrOuR3JI/jzqoH@neat>
+In-Reply-To: <20240325004134.GA21329@workstation.local>
+X-Pobox-Relay-ID: FE53D1C2-EB6A-11EE-82F6-A19503B9AAD1-07713566!pb-smtp21.pobox.com
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
@@ -107,24 +82,25 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Mon, Mar 25, 2024 at 07:56:10PM -0600, Gustavo A. R.
- Silva wrote: > Prepare for the coming implementation by GCC and Clang of
- the __counted_by > attribute. Flexible array members annotated with __c [...]
+ Content preview:  Hi Takashi, On Mon, Mar 25, 2024 at 09:41:34AM +0900, Takashi
+ Sakamoto wrote: > Now we have two debug parameters per module for the
+ slightly-similar
+ > purpose. In my opinion, it is a pretty cumbersome to enable t [...] 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.147.123.155 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [173.228.157.53 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1royHv-0000CM-Sp
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+X-Headers-End: 1rp5lX-0002OY-FS
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -137,33 +113,52 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
- linux-hardening@vger.kernel.org
+Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+Hi Takashi,
 
-On Mon, Mar 25, 2024 at 07:56:10PM -0600, Gustavo A. R. Silva wrote:
-> Prepare for the coming implementation by GCC and Clang of the __counted_by
-> attribute. Flexible array members annotated with __counted_by can have
-> their accesses bounds-checked at run-time via CONFIG_UBSAN_BOUNDS (for
-> array indexing) and CONFIG_FORTIFY_SOURCE (for strcpy/memcpy-family
-> functions).
+On Mon, Mar 25, 2024 at 09:41:34AM +0900, Takashi Sakamoto wrote:
+> Now we have two debug parameters per module for the slightly-similar
+> purpose. In my opinion, it is a pretty cumbersome to enable them when
+> checking bus-reset behaviour. I think it is time to investigate the other
+> way.
 > 
-> Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
-> ---
->  include/linux/firewire.h | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+> Linux Kernel Tracepoints[2] is one of options. Roughly describing, the
+> tracepoints mechanism allows users to deliver structured data from kernel
+> space to user space via ring-buffer when enabling it by either sysfs or
+> kernel command-line parameters. Linux kernel also has a command-line
+> parameter to redirect the human-readable formatted data to kernel log[3].
+> I think it is suitable in the case.
+> 
+> It requires many work to replace the existent debug parameter of
+> firewire-ohci, while it is a good start to work just for bus-reset debug.
+> The data structure layout should be pre-defined in each subsystem, thus we
+> need to decide it. In my opinion, it would be like:
+> 
+> ```
+> struct bus_reset_event {
+>     enum reason {
+>         Initiate,
+> 	Schedule,
+> 	Postpone,
+> 	Detect,
+>     },
+>     // We can put any other data if prefering.
+> }
+> ```
 
-Applied to for-next branch, since it demands no code changes to the other
-subsystem.
+Maybe these should be four separate trace events?
 
+> Would I ask your opinion about my idea?
 
-Thanks
+It seems that tracepoints are the modern way to make debugging logs, so 
+if we want to modernize the FireWire driver, we should replace the 
+existent logging with tracepoints.
 
-Takashi Sakamoto
+-- Adam
 
 
 _______________________________________________
