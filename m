@@ -2,127 +2,137 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C89F8956C2
-	for <lists+linux1394-devel@lfdr.de>; Tue,  2 Apr 2024 16:33:25 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DBE88986C0
+	for <lists+linux1394-devel@lfdr.de>; Thu,  4 Apr 2024 14:04:06 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1rrfCH-0006VP-RL;
-	Tue, 02 Apr 2024 14:33:10 +0000
+	id 1rsLot-0003Y4-5t;
+	Thu, 04 Apr 2024 12:03:51 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1rrfCG-0006VA-Qc
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1rsLor-0003Xw-Rs
  for linux1394-devel@lists.sourceforge.net;
- Tue, 02 Apr 2024 14:33:09 +0000
+ Thu, 04 Apr 2024 12:03:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:Subject:To:From:Date:References:
- In-Reply-To:Message-Id:MIME-Version:Sender:Reply-To:Cc:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=R7MrZr6+haq9txW+uvT45D7qianey0qksQR6eWh9E/8=; b=ZY+Y5Tnw/PpEJCo9te15MRMTGx
- 3z87hMeWqMFftT3dpv9PxwdBk+2u0OLur0ubPt7vA6BHzu1EU9zmRpROjqZKigPBJa8GOV0sjYu4j
- PU+Iz3rOFy6unXqy7qXDX/XvP/quZjxJLAXwOrvXNpgLQXDDu76sP5JjMNXyImHBaPTE=;
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=88x9mxGPrlrm2/bVzjR/yAKPi5qnyN26p02qH751umI=; b=EtXzcIE1yqcuQjNXQzSkapjgAD
+ oOauAb1brEGyJ0ilrUp9bDdoIuOFfaePNRVd+GNHM72Pz7jNVnTHxTFE9KLt5HU6DepYhfNj358hC
+ A4WFpiQ7/oFhLYkw1ujlM5bFuqo8fK6s91WMIygUl+Vts5BwTAPlMsCyYpF3GxuAvwdc=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:Subject:To:From:Date:References:In-Reply-To:Message-Id:
- MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=R7MrZr6+haq9txW+uvT45D7qianey0qksQR6eWh9E/8=; b=CazXkMkN+WEVyWvA95IH83jJwg
- z2G9w6zDrV5aQv2MJ1tsaeYC1oHuqPVYFNQOpS8k5LBNfTUxHiB8mMulTlhD3naiEFYpSN4l5deUN
- uFOe4FOhIWX0PZqs/Fz25OtL4OVpTV2j8MjPdEybIrX6EzM26KuP9cTXREz3bEqwo5dY=;
-Received: from wfhigh3-smtp.messagingengine.com ([64.147.123.154])
+ bh=88x9mxGPrlrm2/bVzjR/yAKPi5qnyN26p02qH751umI=; b=irRSeyueZXxpyn9PgUfSDHt5Pw
+ kJxuNHfCfLRCKnK+t0qQLQUayiKA4Fq2jrnUMDd6AEhd+9LYzW5zFvkwrIhKZ5hqGMgPUXGqVJIoh
+ EOot2k/iGCXAvaUdCaq0x7pJW8DFn/TZV5Se/AeLPG804X3Iwy8n8818EdHZHe8f5oiI=;
+Received: from wfout7-smtp.messagingengine.com ([64.147.123.150])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1rrfCC-0006zu-OG for linux1394-devel@lists.sourceforge.net;
- Tue, 02 Apr 2024 14:33:08 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailfhigh.west.internal (Postfix) with ESMTP id 2728E18000CA;
- Tue,  2 Apr 2024 10:32:59 -0400 (EDT)
-Received: from imap44 ([10.202.2.94])
- by compute3.internal (MEProxy); Tue, 02 Apr 2024 10:32:59 -0400
+ id 1rsLon-0003L2-Nr for linux1394-devel@lists.sourceforge.net;
+ Thu, 04 Apr 2024 12:03:50 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailfout.west.internal (Postfix) with ESMTP id DC1DD1C00121;
+ Thu,  4 Apr 2024 08:03:34 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute5.internal (MEProxy); Thu, 04 Apr 2024 08:03:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:content-type:content-type:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:subject
- :subject:to:to; s=fm2; t=1712068378; x=1712154778; bh=R7MrZr6+ha
- q9txW+uvT45D7qianey0qksQR6eWh9E/8=; b=VAHeMmS1tccWgjTd3Fl35ibMTH
- Gy40sZjGlierzwaC0qZ83igXSsLjY7Yca5OpwxNxFlyKT+JerrR9D5qd8yZW3PY2
- pAbcwjBs8g8OcQ09A9n3+1OvEPNrS7/t/s/l4IgZZTiQpptKdBj6pqzpTrdmtaPa
- 5HGTAjaAGYpwqFSMSNXgY6NCtL3/3TI6UaGaOkkr2c0NBF3ANmlXJCoIJIFZ1q9+
- 4uV7yLc1ch8WrTNzUJGks9JduJe7PwnRZDc4Kc+3p7sKq3AVqHlc803sa8SXzizu
- UA+ZpOE9KlF8kuVhLiTjJfnhwPgwnnR2KT04utO1wGDD1OGPY+UEoZWPt7jA==
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:subject:subject:to:to; s=fm2;
+ t=1712232214; x=1712318614; bh=88x9mxGPrlrm2/bVzjR/yAKPi5qnyN26
+ p02qH751umI=; b=0dsmgDBuPnZAu/TkkrqdMUouB9Gi9muvjgwr6IftDzfPCFJ8
+ DRoNQQcAd4nIH7qFXXQpDmhs/6VkwXOYXQV6UNI2QT2cNjno5gInKAUd9qBL8lgR
+ 95ri9f8CSwCUq1PO9TJ1aMQaqZIqdCDcDNuoqS8DVVsz9rF8oYAKt6g8MdVlgxAh
+ Es8yvwfFwQMWs9KBLKLhPz9SySKU3q2E4uRwyAb62F57ghgL+8X3dZlZlRHzf+y9
+ B9+GV8LY2714RFMbr94BpedLMMtAtDWpzurklJM8dDGry7NhmqHqRsxHq3O2Ik0q
+ 5YcZISaot8wEkfYVkVwHQM4+G36p01YYazyTsg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; t=1712068378; x=1712154778; bh=R7MrZr6+haq9txW+uvT45D7qiane
- y0qksQR6eWh9E/8=; b=UR+fEVKW8QqOO0wXXd5458ZbZhxXZAxf1XXPeH6ZZCle
- HhMk+MzWfL9tvSumEmP4Okd0AGdO32KlUBGQzpN8zEUw9UdJppaNAZFymcgVBvkZ
- isXrISoQAXowrYFgwfUcWypfhMroU9F8QFv3Cl4OPJMkEHlo5pyCeurLk0F5vcc8
- w5ypWWNhjsQag4K4Gv6aoQgbsiuPLEyP4i89glpIz4uMkYfrbZc0wAFCuoZxRLvQ
- LG73064436m25mw7fYcLt6eov9PTB9mb+ORbT58XkmVDsC7x60aR8kSNkTkl7km3
- yKsSAZqmFr/9Mey4vFsbWi9ND9yapk4zGqO9KZ4gmw==
-X-ME-Sender: <xms:GhcMZvte1-b2DLUHVZQ_Zn1w7YGu3E_hk6NOuvqS0ZgPa1ImZ0Z0jA>
- <xme:GhcMZgcPY0rC646rNoPHHgEUBkyjk1JrGTZOml87EDJptoelojc6tqhrN80eoRBGa
- ZH26SeqXQkBTMWzzvk>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudefvddgjeekucetufdoteggodetrfdotf
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1712232214; x=
+ 1712318614; bh=88x9mxGPrlrm2/bVzjR/yAKPi5qnyN26p02qH751umI=; b=S
+ yMu+MEFEI2BAvzdnyOebMqF5UVND4EH72vzZqaWIVeq2OEH6VRsWhIRv3sItlvJw
+ 9aQV7cfzG48In81HNoxjYlIbqlfPU1TpKlv8kKhZGEYR+WDtrIQ62Eeb/El4o9Z0
+ lUupFO/YygMYh+Dvrj5V5VWHF4smrmLhX4FbVoaicb0/lkLVAeAsYx4WJE9ecLGc
+ BDoLEKzajCpvYr0/o63M57bJ3hkM/MNcf1ZQMWdmKWdcr2O1tgnHY8y9IdQMgY/y
+ 2j1vJg8GPPAoh0FxHOyS9bwyTFhudFub3iKXuQ/CTVpil+D4I9j6fVi0HDiDA8QU
+ GfNOCLuaPwlFT/z2PwUSA==
+X-ME-Sender: <xms:FpcOZlJh_UeagPKv9qc3QoQVjZyHDt8Km0OfV9O0Xjphh_NfYxYRrA>
+ <xme:FpcOZhI44GdJJW0W_R_do5GgvOYiZ5hQOf8Bj9xKFyCqYlC7rv-1nQTCf11WrjM8x
+ vnS0dxErhDwZ2EaM2w>
+X-ME-Received: <xmr:FpcOZttj0PAn4XWDT488Q5dvR-v7N1eNZSE6uE0asKjGyTgOcTIDF_2IVATRGHClCe42s7VDN8lLg4ASyQMtoG5YbXgG0eepjlY>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudefkedggeejucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvffutgesthdtredtreertdenucfhrhhomhepfdfvrghk
- rghshhhiucfurghkrghmohhtohdfuceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthh
- hirdhjpheqnecuggftrfgrthhtvghrnhepkeekgfdtiefggfehfeeludevfedvveegheff
- teejgffhjeehffduudeiveevvdeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrg
- hmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjph
-X-ME-Proxy: <xmx:GhcMZiwIgo99S6U-3AAlUxwyNeKKz2_UhDzsXliw9D9nz0Xvp2OFHQ>
- <xmx:GhcMZuNuKOMpy-2RImmHHYijFRuRqeww1YS0NbysDtG-7pE_5ifEPQ>
- <xmx:GhcMZv_sXlsgx8qEw5ccgUG0I3pYx3Jn21CwCvmWr55NIl4M7oeeww>
- <xmx:GhcMZuWeUk7e6K5p4QAsRfbNLkXPDikss7hJI0bgu8lBkfjKXVVv7w>
- <xmx:GhcMZhL7FBuoG8jVjwXaQFvKYH4wpzpa8ufYTa8CCn6pWOU-31_-WaFp>
+ cujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttdejnecuhfhrohhmpefvrghk
+ rghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhih
+ drjhhpqeenucggtffrrghtthgvrhhnpeefheffffduffehhfdvteeuvdfhkeekffdvgfej
+ heeujeevhfekudefteelfffgffenucffohhmrghinhepkhgvrhhnvghlrdhorhhgpdhgih
+ hthhhusgdrtghomhenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhl
+ fhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:FpcOZmayOP-a52bsc0igkZ24M3gN9dJ23VUPNuY9i8fdAZxhfouqNw>
+ <xmx:FpcOZsZdt8GZ6gIll1kgxu3LKFo0FyiHxM46Y4wdIDd5TwX3eGcZDA>
+ <xmx:FpcOZqBtweASGhlLeU5NvpdpvoZoeAVmhyzOf6i6nUgoVxepa3zrHQ>
+ <xmx:FpcOZqb-9rzkH60iNdMVhBQhJNiD83imMa8Zs0GpSuc9Vv2mJe2rKg>
+ <xmx:FpcOZhO_rcZr6ZqVekcAiq5tapf1WR6JfZyq7upAv8AX4drkG2mrY2WL>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 3A2E436A0076; Tue,  2 Apr 2024 10:32:58 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.11.0-alpha0-333-gbfea15422e-fm-20240327.001-gbfea1542
-MIME-Version: 1.0
-Message-Id: <b260bb9c-edf8-4bfd-8a3f-2257f31bc9ee@app.fastmail.com>
-In-Reply-To: <CAFK=-gY++P_fUyEz36CE8U7qER2_ebJMTkb6-d4Ts6XpcHBzaQ@mail.gmail.com>
-References: <CAFK=-gY++P_fUyEz36CE8U7qER2_ebJMTkb6-d4Ts6XpcHBzaQ@mail.gmail.com>
-Date: Tue, 02 Apr 2024 23:32:35 +0900
-From: "Takashi Sakamoto" <o-takashi@sakamocchi.jp>
-To: "Thanassis Avgerinos" <thanassis.avgerinos@gmail.com>,
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 4 Apr 2024 08:03:32 -0400 (EDT)
+Date: Thu, 4 Apr 2024 21:03:30 +0900
+From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+To: Allen Pais <apais@linux.microsoft.com>
+Subject: Re: [PATCH] firewire: Convert from tasklet to BH workqueue
+Message-ID: <20240404120330.GA303033@workstation.local>
+Mail-Followup-To: Allen Pais <apais@linux.microsoft.com>,
+ linux-kernel@vger.kernel.org, tj@kernel.org, keescook@chromium.org,
  linux1394-devel@lists.sourceforge.net
-Subject: Re: Security issue in linux/drivers/firewire/nosy.c
+References: <20240403144558.13398-1-apais@linux.microsoft.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240403144558.13398-1-apais@linux.microsoft.com>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi Thanassis,
- Thanks for your contacting to me about the issue.
- On Tue, Apr 2, 2024, at 22:56, Thanassis Avgerinos wrote: > Dear Sakamoto-san, 
- > > I apologize for the email - I am sure you are very busy. Thank you for
- > all the work to help maintain firewire in th [...] 
+ Content preview:  Hi, Thanks for the patch. The replacement of tasklet with
+ workqueue is one of my TODO list, and the change would be helpful. On Wed,
+ Apr 03, 2024 at 02:45:58PM +0000,
+ Allen Pais wrote: > The only generic interface
+ to execute asynchronously in the BH context is > tasklet; however, it's marked
+ deprecated and has some design f [...] 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ 0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
+ blocked.  See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URIs: sakamocchi.jp]
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.147.123.154 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ low trust [64.147.123.150 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1rrfCC-0006zu-OG
+X-Headers-End: 1rsLon-0003L2-Nr
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -135,55 +145,54 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: tj@kernel.org, linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org, keescook@chromium.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi Thanassis,
-
-Thanks for your contacting to me about the issue.
-
-On Tue, Apr 2, 2024, at 22:56, Thanassis Avgerinos wrote:
-> Dear Sakamoto-san,
->
-> I apologize for the email - I am sure you are very busy. Thank you for 
-> all the work to help maintain firewire in the Linux trunk.
->
-> I will be brief to not waste your time. I am contacting you to report a 
-> possible security issue in firewire/nosy.c:L151 which reads:
->
-> ```
-> /* FIXME: Check length <= user_length. */
->
-> end = buffer->data + buffer->capacity;
-> length = buffer->head->length;
->
-> if (&buffer->head->data[length] < end) {
-> if (copy_to_user(data, buffer->head->data, length))
-> return -EFAULT;
-> ```
->
-> Note that the user-supplied length is not respected at all when reading 
-> bytes from the wire which can lead to a number of issues (including 
-> security ones such as overflows).
->
-> I believe this is potentially serious but also quite fixable. Would you 
-> accept a patch? Should I contact the security team instead?
->
-> Thank you for your time.
-
-I'm pleased to review your fix for the issue;) I don't mind that you post it just
-to me, since any mailing list demands you to subscribe it in advance when
-posting, and it is a bit cumbersome just to send patches. Additionally, I
-don't mind the patch format as long as it includes enough fractions to fix
-the issue. In the case, I'll revise it for the complete patches, alternatively.
-
-
-Thanks
-
-Takashi Sakamoto
-
-
-_______________________________________________
-mailing list linux1394-devel@lists.sourceforge.net
-https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+SGksCgpUaGFua3MgZm9yIHRoZSBwYXRjaC4gVGhlIHJlcGxhY2VtZW50IG9mIHRhc2tsZXQgd2l0
+aCB3b3JrcXVldWUgaXMgb25lCm9mIG15IFRPRE8gbGlzdCwgYW5kIHRoZSBjaGFuZ2Ugd291bGQg
+YmUgaGVscGZ1bC4KCk9uIFdlZCwgQXByIDAzLCAyMDI0IGF0IDAyOjQ1OjU4UE0gKzAwMDAsIEFs
+bGVuIFBhaXMgd3JvdGU6Cj4gVGhlIG9ubHkgZ2VuZXJpYyBpbnRlcmZhY2UgdG8gZXhlY3V0ZSBh
+c3luY2hyb25vdXNseSBpbiB0aGUgQkggY29udGV4dCBpcwo+IHRhc2tsZXQ7IGhvd2V2ZXIsIGl0
+J3MgbWFya2VkIGRlcHJlY2F0ZWQgYW5kIGhhcyBzb21lIGRlc2lnbiBmbGF3cy4gVG8KPiByZXBs
+YWNlIHRhc2tsZXRzLCBCSCB3b3JrcXVldWUgc3VwcG9ydCB3YXMgcmVjZW50bHkgYWRkZWQuIEEg
+Qkggd29ya3F1ZXVlCj4gYmVoYXZlcyBzaW1pbGFybHkgdG8gcmVndWxhciB3b3JrcXVldWVzIGV4
+Y2VwdCB0aGF0IHRoZSBxdWV1ZWQgd29yayBpdGVtcwo+IGFyZSBleGVjdXRlZCBpbiB0aGUgQkgg
+Y29udGV4dC4KPiAKPiBUaGlzIHBhdGNoIGNvbnZlcnRzIGRyaXZlcnMvZmlyZXdpcmUvKiBmcm9t
+IHRhc2tsZXQgdG8gQkggd29ya3F1ZXVlLgo+IAo+IEJhc2VkIG9uIHRoZSB3b3JrIGRvbmUgYnkg
+VGVqdW4gSGVvIDx0akBrZXJuZWwub3JnPgo+IEJyYW5jaDogaHR0cHM6Ly9naXQua2VybmVsLm9y
+Zy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdGovd3EuZ2l0IGRpc2FibGVfd29yay12MQo+IAo+
+IENoYW5nZXMgYXJlIHRlc3RlZCBieTogQHJlY2FsbG1lbm90Cj4gKGh0dHBzOi8vZ2l0aHViLmNv
+bS9hbGxlbnBhaXMvZm9yLTYuOS1iaC1jb252ZXJzaW9ucy9pc3N1ZXMvMSkKPiAKPiBTaWduZWQt
+b2ZmLWJ5OiBBbGxlbiBQYWlzIDxhbGxlbi5sa21sQGdtYWlsLmNvbT4KPiAtLS0KPiAgZHJpdmVy
+cy9maXJld2lyZS9vaGNpLmMgfCA1NCArKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0t
+LS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMjYgaW5zZXJ0aW9ucygrKSwgMjggZGVsZXRpb25z
+KC0pCgpIb3dldmVyLCB0aGUgY2hhbmdlcyBsb29rIHRvIGJlIHRvbyBlYXJseSwgc2luY2Ugc29t
+ZSBrZXJuZWwgQVBJcwphcmUgcmVmZXJyZWQgZnJvbSB0aGUgY2hhbmdlIGJ1dCBsb2NhdGUganVz
+dCBpbiBIZW8ncyB0cmVlLiBUaHVzLAphbnkgYXBwbGljYXRpb24gb2YgdGhlIHBhdGNoIGJyaW5n
+cyBidWlsZCBmYWlsdXJlLCBsaWtlOgoKYGBgCmRyaXZlcnMvZmlyZXdpcmUvb2hjaS5jOiBJbiBm
+dW5jdGlvbiDigJhhdF9jb250ZXh0X2ZsdXNo4oCZOgpkcml2ZXJzL2ZpcmV3aXJlL29oY2kuYzox
+NDYzOjk6IGVycm9yOiBpbXBsaWNpdCBkZWNsYXJhdGlvbiBvZiBmdW5jdGlvbiDigJhkaXNhYmxl
+X3dvcmtfc3luY+KAmTsgZGlkIHlvdSBtZWFuIOKAmGRpc2FibGVfaXJxX25vc3luY+KAmT8gWy1X
+ZXJyb3I9aW1wbGljaXQtZnVuY3Rpb24tZGVjbGFyYXRpb25dCiAxNDYzIHwgICAgICAgICBkaXNh
+YmxlX3dvcmtfc3luYygmY3R4LT53b3JrKTsKICAgICAgfCAgICAgICAgIF5+fn5+fn5+fn5+fn5+
+fn5+CiAgICAgIHwgICAgICAgICBkaXNhYmxlX2lycV9ub3N5bmMKZHJpdmVycy9maXJld2lyZS9v
+aGNpLmM6MTQ2ODo5OiBlcnJvcjogaW1wbGljaXQgZGVjbGFyYXRpb24gb2YgZnVuY3Rpb24g4oCY
+ZW5hYmxlX2FuZF9xdWV1ZV93b3Jr4oCZIFstV2Vycm9yPWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xh
+cmF0aW9uXQogMTQ2OCB8ICAgICAgICAgZW5hYmxlX2FuZF9xdWV1ZV93b3JrKHN5c3RlbV9iaF93
+cSwgJmN0eC0+d29yayk7CiAgICAgIHwgICAgICAgICBefn5+fn5+fn5+fn5+fn5+fn5+fn4KYGBg
+CgpJbiBteSBodW1ibGUgb3BpbmlvbiwgdGhlIGNoYW5nZSBwcm9wb3NhbCBzaG91bGQgYmUgcG9z
+dGVkIGFmdGVyIG1lcmdpbmcKSGVvJ3Mgd29yaywgdG8gcHJldmVudCBkZXZlbG9wZXJzIGFuZCB1
+c2VycyBmcm9tIGJlaW5nIHB1enpsZWQuCkZ1cnRoZXJtb3JlLCBhbnkga2luZCBvZiByZXBvcnQg
+Zm9yIHRoZSBwZXJmb3JtYW5jZSB0ZXN0IGlzIHByZWZlcmFibGUuCgpFc3BlY2lhbGx5LCBpbiBG
+aXJlV2lyZSBzdWJzeXN0ZW0sIDEzOTQgT0hDSSBJVC9JUiBjb250ZXh0cyBjYW4gYmUKcHJvY2Vz
+c2VkIGJ5IGJvdGggdGFza2xldCBhbmQgcHJvY2VzcyAoZS5nLiBpb2N0bCksIHRodXMgdGhlIGV4
+Y2x1c2l2ZQpjb250cm9sIG9mIHdvcmtxdWV1ZSBmb3IgdGhlIGNvbnRleHRzIGlzIGltcG9ydGFu
+dCBiZXR3ZWVuIHRoZW0uIEkgd2lzaAppdCBpcyBkb25lIHN1Y2Nlc3NmdWxseSBieSB0aGUgbmV3
+IHBhaXIgb2YgZW5hYmxpbmcvZGlzYWJsaW5nIHdvcmtxdWV1ZQpBUEksIGFuZCBuZWVkIG1vcmUg
+aW5mb3JtYXRpb24gYWJvdXQgaXQuCgoKVGhhbmtzCgpUYWthc2hpIFNha2Ftb3RvCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbWFpbGluZyBsaXN0IGxp
+bnV4MTM5NC1kZXZlbEBsaXN0cy5zb3VyY2Vmb3JnZS5uZXQKaHR0cHM6Ly9saXN0cy5zb3VyY2Vm
+b3JnZS5uZXQvbGlzdHMvbGlzdGluZm8vbGludXgxMzk0LWRldmVsCg==
