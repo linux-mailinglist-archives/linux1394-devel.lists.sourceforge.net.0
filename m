@@ -2,104 +2,98 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 066488A953E
-	for <lists+linux1394-devel@lfdr.de>; Thu, 18 Apr 2024 10:45:20 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 854888A95EA
+	for <lists+linux1394-devel@lfdr.de>; Thu, 18 Apr 2024 11:23:57 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1rxNOC-0001mv-WD;
-	Thu, 18 Apr 2024 08:45:05 +0000
+	id 1rxNza-0001m8-Dc;
+	Thu, 18 Apr 2024 09:23:42 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1rxNOA-0001mk-T8
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1rxNzI-0001lE-Dg
  for linux1394-devel@lists.sourceforge.net;
- Thu, 18 Apr 2024 08:45:03 +0000
+ Thu, 18 Apr 2024 09:23:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=ft8I0I3DZvF751Ix+ST0rnfKqxUTk2FXU2cgVw0SvD8=; b=IVexGIKKju99dulIbkV4SJYhve
- KYtYwh1clpXPBYnVenGqbxLMaJFXgCwr/9DwDdrMhlMhUigXuQKdQ7x1umanMdHnawI0WaVaWSEcd
- iGAHMrNr0OV5s6LT/AfocSXLGmjh5QcWdU3RPm5e3sE0A/XC4ou+dBWpqQ1+5Y8py5pw=;
+ bh=b5uV8UhRzVktf5c7Ro3Gio5czUP975e887v2Xxyituo=; b=cYIkP9RkylXPuYuYifgv83w5jw
+ 4x+IILL8luw42DO+6CZmpKRTXlQnEdmANVtqjjVA60gCYxFqJDdemK99gbyCaSXY1ctU5J+O9Fbbx
+ H1YgeqEIbs/xzdWx9uIsyaY7phEMBFGcpcml7h55Sa7j8O9iqwdN/FhBdcCv/A7hVrEY=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=ft8I0I3DZvF751Ix+ST0rnfKqxUTk2FXU2cgVw0SvD8=; b=H/lnr2Pc4p0JkoITFJURyaMwlL
- tFTf3XbZTylCdEauAdUVW/7ILTKmXZItMpILBrjiFC8+iFrPvgJ1XjddLzhhuPAD1zZw5NaFmOtUb
- pGH5LkISK6YkphYsyYSGA0Cvf2UCgbEo4/bdfQ1D+bIYd1QK2HT51V/MOLOYBaABFzAA=;
-Received: from fout5-smtp.messagingengine.com ([103.168.172.148])
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=b5uV8UhRzVktf5c7Ro3Gio5czUP975e887v2Xxyituo=; b=R
+ 3yKVdaLyfD/LGpAIUh2rRJjjz3f4y2FUFA8cNuXonN5MyQmTAgrpacOAAMgiR+qK5YJvoauW/EFWg
+ z6f//y2ETBVCtMg2PE/FRwrWeHAQ1mEwqx95kM3K9BqNs+87IlY8gJdzj24yhrR6UGSeXfPZw9h/N
+ cbRbcVBc6l+pY7xQ=;
+Received: from fout6-smtp.messagingengine.com ([103.168.172.149])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1rxNO9-0007jU-JM for linux1394-devel@lists.sourceforge.net;
- Thu, 18 Apr 2024 08:45:03 +0000
+ id 1rxNzH-0001PZ-Lx for linux1394-devel@lists.sourceforge.net;
+ Thu, 18 Apr 2024 09:23:24 +0000
 Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailfout.nyi.internal (Postfix) with ESMTP id C710F138010D;
- Thu, 18 Apr 2024 04:44:50 -0400 (EDT)
+ by mailfout.nyi.internal (Postfix) with ESMTP id 4E0F313800CE;
+ Thu, 18 Apr 2024 05:23:07 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute1.internal (MEProxy); Thu, 18 Apr 2024 04:44:50 -0400
+ by compute1.internal (MEProxy); Thu, 18 Apr 2024 05:23:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1713429890; x=
- 1713516290; bh=ft8I0I3DZvF751Ix+ST0rnfKqxUTk2FXU2cgVw0SvD8=; b=Q
- PKKjFxjsEubpTKsR6W1TE/08Z/9DdkkfsU+DQFGsTqIzY1mTzm4o+zVLQpzwTFWG
- C0KIZj9o3liRq9/8Bas1oSN03mhQTtOtOz4m04D91Qtv6+KCdlBqcMvDewDMYvL1
- q2nYSmIhod6pDN60oYtT8cJ+rXls//2qYp23FmsVNViNWjOIMOgnqOmB6Ncl9F43
- lN8060ECR1+724LZr1z1nqrYOHYDXVV9kE/7tN6CPC7QV119UasEVrnPF4uHCw2W
- ByVjcWWATtoLnNeP7l16L+Ab5jyMxm40AbHticY6s5IuX6OCTAOLCftdUmkQ17jJ
- TVe4B70dBLNFMBVjl+xAA==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm3; t=1713432187; x=1713518587; bh=b5uV8UhRzV
+ ktf5c7Ro3Gio5czUP975e887v2Xxyituo=; b=OCOwZLhx5Dx1cIqlG4Dj32G1Um
+ Smk0SucGCk78DBvddZXcMV2Fm4Mv/stnFwj2v6PWjGm1Nk6RrmF9hCElgcTMmErj
+ uQH937teoa9i3Lgh04n810b/6dlXX0LtznKVMaHxZebdVKKLG1CWkE/O/Bks5YyH
+ 1dTAFGLBBq+d1XhoYFc8kbPKFNeIO6QTFAJc+qZoNm/bnNMsudpZKfD/804yIAMy
+ MSuZFh7TfOj9owsWc2V3XZqoCTRHC30kbaR1QYSOLmA4kQQUdEat7yu7Gcve53Kj
+ CqlQyvTt4ZCaCa29F7XeC3yR1TkYJD+I0vTqE5oQIMDdkOKJIpmAJk3F06sw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1713429890; x=1713516290; bh=ft8I0I3DZvF751Ix+ST0rnfKqxUT
- k2FXU2cgVw0SvD8=; b=RV7WxhWxKvTCySJYgiWlwMXUPk6NL4u0o/Ha5jA7u2wT
- ZTXbWFcjVu1izfctKxL51I0o1ty1ffiQAwCb/AMN8kXtB0yPMntRk4I2edHqKJLV
- 71DijHeksWU7flLqgC7FU1KQuuS74NNcc92Ax6s6TKJvVaPvWXPI3J5eNpZ61Fg7
- T1g2oVios/svqKg/qkH+qAcZmIVGHX9ydvhIAH73t04aACnBgfVyTiazmh0YAf4/
- NgYJ380pdAdXHaTpt6FAWDfFLX9NSKl4pmp/BbSN3pTGX/YUotJp7Z26TDTwaRD6
- oxffTO6Zkre3FuO+COS66L6taHDU4a9wc199VWhAkA==
-X-ME-Sender: <xms:gt0gZr4SWau-800YxJ0LkuHAGuAvrd7lVy4pynY1REHW5M9RGLwsdw>
- <xme:gt0gZg7L4U4fA9tT-QKdg4prvGBuUcpSxGcQ344GruW-IBBw9GbVRFhXKIucnHP6c
- LmUEUDPTFTsE1Pm5lE>
-X-ME-Received: <xmr:gt0gZidh2r44Lwg2hBd3A64baU0yI7EnMrLlTu7mhN5FQmTAVGzbVrF31B9Y6qjdNS1rkYp_8sUDzJ1jYGNunJp7aoH6aDXIth0>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudektddgtdejucetufdoteggodetrfdotf
+ fm3; t=1713432187; x=1713518587; bh=b5uV8UhRzVktf5c7Ro3Gio5czUP9
+ 75e887v2Xxyituo=; b=enHVTZU8c75Uf5DkONAJl1L9MBH1u+xVi3oRL24IUivU
+ uYU0EHPcBBGriOxzy2PdoTH48iNle8M7zPv7oberGjljNvyW9onmHGpEypxL3V6D
+ dB3NkWzearEPEyOEyO4SS+EAykIJe6X9Lh5Xo24HBoRgSCultXEdpKZYinLgZ5d5
+ vbWPx08Wlip9mVdtCGM7fL7a21wDWnh8JRwxbUi56MqceBmAg6k3NrRokuAuG49C
+ 1VcG9z43TBeGU9USY5ybyCyeTYaJt8nJPHbLbiCfzX6J1zz+oPpLajGriqS1Y6Ar
+ jHrlyKzeAgnCgrQb5HDXhTJtqHsx+vs30wmv3tifYw==
+X-ME-Sender: <xms:e-YgZuabLTlhFX7e9_S8EdqfudrR6YmANelvLt5y1Vxu6S3oKNY6wQ>
+ <xme:e-YgZhYhesaiNMZQuvaTn5Kex6fWXBuY4JKfnewsY2441oXsOD4dpmRC6pvqss082
+ rV-lh5Rfo9m_VF8cJQ>
+X-ME-Received: <xmr:e-YgZo8yYsf6PU6fL_RZWLIAoCoIrkndaSq1gJAFxExJ1NWsCxrHWSg6P5lNJMOUqID79GlXH8fXUv3FgUcIPLFhpSyJoguvi8LVB7DLC8wW8w>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudektddgudehucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepvfgrkhgr
- shhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhird
- hjpheqnecuggftrfgrthhtvghrnhephefhhfettefgkedvieeuffevveeufedtlefhjeei
- ieetvdelfedtgfefuedukeeunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpe
- hmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjph
-X-ME-Proxy: <xmx:gt0gZsLTGx3ZfHvfNCa_b4jvfsReU6WVuHEudX0-bsxFghdOXexUFw>
- <xmx:gt0gZvI5NRSGErusnTGK4lRQa7WwVvAScYYdSNac1cZQueHVXG1fEQ>
- <xmx:gt0gZly0tzTxyT4Cir3XB12l2I7sUcOuZ95iC162Q28OCjbsY_s6gg>
- <xmx:gt0gZrIEsP1gq7KhBinvLaIsb3sFfBSary6eRxvM1oylMVUSUqBbEg>
- <xmx:gt0gZmXTnhTRQuXFZRmJjc-9JaM3k4OpmGwHBffLOG5R-VPlqXFHPJ8b>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertd
+ ertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
+ hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeffvdeuleffve
+ ekudfhteejudffgefhtedtgfeutdfgvdfgueefudehveehveekkeenucevlhhushhtvghr
+ ufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrg
+ hkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:e-YgZgpt8wA9jDIzJrY8_cnpFkalYu5wekAusk90aLEMMUzroUEguw>
+ <xmx:e-YgZpotGIkYE4d7Ge335sRemqEdrg8D7564P7Bsxdi9FZsrquaqbw>
+ <xmx:e-YgZuRiIi82SFG8tp5pJ7MxP_SnLmx7VO--hsOE3YvtBdQS9lB3ZA>
+ <xmx:e-YgZpqESkvWz5b7XKHvzHlhM8Ozc14iVIDzpOIXAusaJJTr84KJPA>
+ <xmx:e-YgZg2UfapCPgrrccKFcue7vQUuWQLgoTWZ6MQns28MZlUwQps_snqT>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 18 Apr 2024 04:44:49 -0400 (EDT)
-Date: Thu, 18 Apr 2024 17:44:46 +0900
+ 18 Apr 2024 05:23:06 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Thanassis Avgerinos <thanassis.avgerinos@gmail.com>
-Subject: Re: Security issue in linux/drivers/firewire/nosy.c
-Message-ID: <20240418084446.GA16391@workstation.local>
-Mail-Followup-To: Thanassis Avgerinos <thanassis.avgerinos@gmail.com>,
- linux1394-devel@lists.sourceforge.net
-References: <CAFK=-gY++P_fUyEz36CE8U7qER2_ebJMTkb6-d4Ts6XpcHBzaQ@mail.gmail.com>
- <b260bb9c-edf8-4bfd-8a3f-2257f31bc9ee@app.fastmail.com>
- <CAFK=-gZm4iOVJKi7_1UVx2vMwFZmKs54vbXVowbqnoAiBZfZUQ@mail.gmail.com>
+To: linux1394-devel@lists.sourceforge.net
+Subject: [RFC PATCH 00/13] firewire: add tracepoints events for asynchronous
+ communication
+Date: Thu, 18 Apr 2024 18:22:50 +0900
+Message-ID: <20240418092303.19725-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAFK=-gZm4iOVJKi7_1UVx2vMwFZmKs54vbXVowbqnoAiBZfZUQ@mail.gmail.com>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
@@ -107,10 +101,11 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Wed, Apr 17, 2024 at 11:46:47AM -0400,
- Thanassis Avgerinos
- wrote: > Hi Takashi, > > Apologies for the delay, and thank you for the super
- fast response! Please > find attached a possible patch for t [...] 
+ Content preview:  Hi, In a view of IEEE 1394 bus, the main function of kernel
+ core is to provide transaction service to the bus. It is helpful to have
+ some mechanisms to trace any action of the service. This series of changes
+ adds some tracepoints events for the purpose. It adds the following
+ tracepoints events via firewire subsystem: 
  Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -127,7 +122,7 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
-X-Headers-End: 1rxNO9-0007jU-JM
+X-Headers-End: 1rxNzH-0001PZ-Lx
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -140,78 +135,93 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net
+Cc: linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
 Hi,
 
-On Wed, Apr 17, 2024 at 11:46:47AM -0400, Thanassis Avgerinos wrote:
-> Hi Takashi,
-> 
-> Apologies for the delay, and thank you for the super fast response! Please
-> find attached a possible patch for this issue. It should be
-> self-explanatory but you may have a better suggestion on how to handle it.
-> Please let me know and I'm happy to make changes as needed.
-> 
-> After this is patched, would it be possible to issue a CVE for it? Would
-> you be the best person to help me with this?
-> 
-> Best,
-> Thanassis
+In a view of IEEE 1394 bus, the main function of kernel core is to
+provide transaction service to the bus. It is helpful to have some
+mechanisms to trace any action of the service.
 
-Thanks for the patch to fix the TODO, however would I ask you to send it
-again with your `Sign-off-by:` tag? It is mandatory in usual kernel
-development process, and I can not apply any modification about it, with
-the respect to copyright, sorry.
+This series of changes adds some tracepoints events for the purpose.
+It adds the following tracepoints events via firewire subsystem:
 
-I have a nitpick about the return value at the case that the user
-process provides the insufficient size of buffer against the data stored
-in kernel space. In the case, the typical UNIX-like kernel returns zero
-instead of -EINVAL. We should follow to the convention if we have no
-specific reason, in my opinion.
+* For outbound transactions (e.g. initiated by user process)
+    * async_request_outbound_initiate
+    * async_request_outbound_complete
+    * async_response_inbound
+* For inbound transactions (e.g. initiated by the other nodes in the bus)
+    * async_request_inbound
+    * async_response_outbound_initiate
+    * async_response_outbound_complete
 
-> From f7ee97fabe1519225ba30fd9454344d0a75f4d94 Mon Sep 17 00:00:00 2001
-> From: Thanassis Avgerinos <thanassis.avgerinos@gmail.com>
-> Date: Wed, 17 Apr 2024 11:30:02 -0400
-> Subject: [PATCH] firewire: nosy: ensure user_length is taken into account when
->  fetching packet contents
-> 
-> Ensure that packet_buffer_get respects the user_length provided. If
-> the length of the head packet exceeds the user_length, packet_buffer_get
-> will now return -EINVAL to signify to the user that a larger data
-> buffer is required. Helps prevent user space overflows.
-> ---
->  drivers/firewire/nosy.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/firewire/nosy.c b/drivers/firewire/nosy.c
-> index b0d671db178a..b1dccf3ba8f9 100644
-> --- a/drivers/firewire/nosy.c
-> +++ b/drivers/firewire/nosy.c
-> @@ -148,10 +148,12 @@ packet_buffer_get(struct client *client, char __user *data, size_t user_length)
->  	if (atomic_read(&buffer->size) == 0)
->  		return -ENODEV;
->  
-> -	/* FIXME: Check length <= user_length. */
-> +	length = buffer->head->length;
-> +
-> +	if (length > user_length)
-> +		return -EINVAL;
->  
->  	end = buffer->data + buffer->capacity;
-> -	length = buffer->head->length;
->  
->  	if (&buffer->head->data[length] < end) {
->  		if (copy_to_user(data, buffer->head->data, length))
-> -- 
-> 2.23.0
+When probing these tracepoints events, the content of 'struct fw_packet'
+passed between the core function and 1394 OHCI driver is recorded with
+the fields of header and packet data. For example of the outbound
+transaction:
 
+async_request_outbound_initiate: \
+    transaction=0xffffb7e382373718 scode=2 generation=6 dst_id=0xffc0 \
+    tlabel=59 retry=1 tcode=1 priority=0 src_id=0xffc1 \
+    offset=0xecc000000000 \
+    data={0x6000000,0x1000000,0x40000100,0x3000000,0x1000000,0x0}
+async_request_outbound_complete: \
+    transaction=0xffffb7e382373718 scode=2 generation=6 ack=2 \
+    timestamp=0x2296
+async_response_inbound: \
+    transaction=0xffffb7e382373718 scode=2 timestamp=0x2297 dst_id=0xffc1 \
+    tlabel=59 retry=1 tcode=2 priority=0 src_id=0xffc0 rcode=0 data={}
 
-Thanks
+To provide the parsed fields of header, the series adds some helper
+incline functions for this purpose, then refactors the existent code in
+both core and 1394 OHCI driver with sufficient tests.
 
-Takashi Sakamoto
+Takashi Sakamoto (13):
+  firewire: core: add common inline functions to serialize/deserialize
+    asynchronous packet header
+  firewire: core: replace local macros with common inline functions for
+    asynchronous packet header
+  firewire: ohci: replace local macros with common inline functions for
+    asynchronous packet header
+  firewire: ohci: replace hard-coded values with inline functions for
+    asynchronous packet header
+  firewire: ohci: replace hard-coded values with common macros
+  firewire: core: obsolete tcode check macros with inline functions
+  firewire: core: add common macro to serialize/deserialize isochronous
+    packet header
+  firewire: core: replace local macros with common inline functions for
+    isochronous packet header
+  firewire: core: add support for Linux kernel tracepoints
+  firewire: core: add tracepoints events for asynchronous outbound
+    request
+  firewire: core: add tracepoints event for asynchronous inbound
+    response
+  firewire: core: add tracepoint event for asynchronous inbound request
+  firewire: core: add tracepoints events for asynchronous outbound
+    response
+
+ drivers/firewire/.kunitconfig                |   1 +
+ drivers/firewire/Kconfig                     |  16 +
+ drivers/firewire/Makefile                    |   8 +-
+ drivers/firewire/core-transaction.c          | 239 ++++----
+ drivers/firewire/core.h                      |  21 +-
+ drivers/firewire/ohci.c                      |  78 +--
+ drivers/firewire/packet-header-definitions.h | 234 ++++++++
+ drivers/firewire/packet-serdes-test.c        | 582 +++++++++++++++++++
+ drivers/firewire/trace.c                     |   5 +
+ drivers/firewire/trace.h                     | 265 +++++++++
+ 10 files changed, 1280 insertions(+), 169 deletions(-)
+ create mode 100644 drivers/firewire/packet-header-definitions.h
+ create mode 100644 drivers/firewire/packet-serdes-test.c
+ create mode 100644 drivers/firewire/trace.c
+ create mode 100644 drivers/firewire/trace.h
+
+-- 
+2.43.0
+
 
 
 _______________________________________________
