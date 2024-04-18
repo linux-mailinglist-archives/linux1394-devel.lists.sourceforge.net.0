@@ -2,137 +2,132 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1DBE88986C0
-	for <lists+linux1394-devel@lfdr.de>; Thu,  4 Apr 2024 14:04:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 066488A953E
+	for <lists+linux1394-devel@lfdr.de>; Thu, 18 Apr 2024 10:45:20 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
 	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1rsLot-0003Y4-5t;
-	Thu, 04 Apr 2024 12:03:51 +0000
+	id 1rxNOC-0001mv-WD;
+	Thu, 18 Apr 2024 08:45:05 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1rsLor-0003Xw-Rs
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1rxNOA-0001mk-T8
  for linux1394-devel@lists.sourceforge.net;
- Thu, 04 Apr 2024 12:03:50 +0000
+ Thu, 18 Apr 2024 08:45:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=88x9mxGPrlrm2/bVzjR/yAKPi5qnyN26p02qH751umI=; b=EtXzcIE1yqcuQjNXQzSkapjgAD
- oOauAb1brEGyJ0ilrUp9bDdoIuOFfaePNRVd+GNHM72Pz7jNVnTHxTFE9KLt5HU6DepYhfNj358hC
- A4WFpiQ7/oFhLYkw1ujlM5bFuqo8fK6s91WMIygUl+Vts5BwTAPlMsCyYpF3GxuAvwdc=;
+ bh=ft8I0I3DZvF751Ix+ST0rnfKqxUTk2FXU2cgVw0SvD8=; b=IVexGIKKju99dulIbkV4SJYhve
+ KYtYwh1clpXPBYnVenGqbxLMaJFXgCwr/9DwDdrMhlMhUigXuQKdQ7x1umanMdHnawI0WaVaWSEcd
+ iGAHMrNr0OV5s6LT/AfocSXLGmjh5QcWdU3RPm5e3sE0A/XC4ou+dBWpqQ1+5Y8py5pw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=88x9mxGPrlrm2/bVzjR/yAKPi5qnyN26p02qH751umI=; b=irRSeyueZXxpyn9PgUfSDHt5Pw
- kJxuNHfCfLRCKnK+t0qQLQUayiKA4Fq2jrnUMDd6AEhd+9LYzW5zFvkwrIhKZ5hqGMgPUXGqVJIoh
- EOot2k/iGCXAvaUdCaq0x7pJW8DFn/TZV5Se/AeLPG804X3Iwy8n8818EdHZHe8f5oiI=;
-Received: from wfout7-smtp.messagingengine.com ([64.147.123.150])
+ bh=ft8I0I3DZvF751Ix+ST0rnfKqxUTk2FXU2cgVw0SvD8=; b=H/lnr2Pc4p0JkoITFJURyaMwlL
+ tFTf3XbZTylCdEauAdUVW/7ILTKmXZItMpILBrjiFC8+iFrPvgJ1XjddLzhhuPAD1zZw5NaFmOtUb
+ pGH5LkISK6YkphYsyYSGA0Cvf2UCgbEo4/bdfQ1D+bIYd1QK2HT51V/MOLOYBaABFzAA=;
+Received: from fout5-smtp.messagingengine.com ([103.168.172.148])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1rsLon-0003L2-Nr for linux1394-devel@lists.sourceforge.net;
- Thu, 04 Apr 2024 12:03:50 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailfout.west.internal (Postfix) with ESMTP id DC1DD1C00121;
- Thu,  4 Apr 2024 08:03:34 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute5.internal (MEProxy); Thu, 04 Apr 2024 08:03:35 -0400
+ id 1rxNO9-0007jU-JM for linux1394-devel@lists.sourceforge.net;
+ Thu, 18 Apr 2024 08:45:03 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailfout.nyi.internal (Postfix) with ESMTP id C710F138010D;
+ Thu, 18 Apr 2024 04:44:50 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute1.internal (MEProxy); Thu, 18 Apr 2024 04:44:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-transfer-encoding:content-type:content-type
- :date:date:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:subject:subject:to:to; s=fm2;
- t=1712232214; x=1712318614; bh=88x9mxGPrlrm2/bVzjR/yAKPi5qnyN26
- p02qH751umI=; b=0dsmgDBuPnZAu/TkkrqdMUouB9Gi9muvjgwr6IftDzfPCFJ8
- DRoNQQcAd4nIH7qFXXQpDmhs/6VkwXOYXQV6UNI2QT2cNjno5gInKAUd9qBL8lgR
- 95ri9f8CSwCUq1PO9TJ1aMQaqZIqdCDcDNuoqS8DVVsz9rF8oYAKt6g8MdVlgxAh
- Es8yvwfFwQMWs9KBLKLhPz9SySKU3q2E4uRwyAb62F57ghgL+8X3dZlZlRHzf+y9
- B9+GV8LY2714RFMbr94BpedLMMtAtDWpzurklJM8dDGry7NhmqHqRsxHq3O2Ik0q
- 5YcZISaot8wEkfYVkVwHQM4+G36p01YYazyTsg==
+ h=cc:cc:content-type:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=fm3; t=1713429890; x=
+ 1713516290; bh=ft8I0I3DZvF751Ix+ST0rnfKqxUTk2FXU2cgVw0SvD8=; b=Q
+ PKKjFxjsEubpTKsR6W1TE/08Z/9DdkkfsU+DQFGsTqIzY1mTzm4o+zVLQpzwTFWG
+ C0KIZj9o3liRq9/8Bas1oSN03mhQTtOtOz4m04D91Qtv6+KCdlBqcMvDewDMYvL1
+ q2nYSmIhod6pDN60oYtT8cJ+rXls//2qYp23FmsVNViNWjOIMOgnqOmB6Ncl9F43
+ lN8060ECR1+724LZr1z1nqrYOHYDXVV9kE/7tN6CPC7QV119UasEVrnPF4uHCw2W
+ ByVjcWWATtoLnNeP7l16L+Ab5jyMxm40AbHticY6s5IuX6OCTAOLCftdUmkQ17jJ
+ TVe4B70dBLNFMBVjl+xAA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:content-type:date:date:feedback-id:feedback-id
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1712232214; x=
- 1712318614; bh=88x9mxGPrlrm2/bVzjR/yAKPi5qnyN26p02qH751umI=; b=S
- yMu+MEFEI2BAvzdnyOebMqF5UVND4EH72vzZqaWIVeq2OEH6VRsWhIRv3sItlvJw
- 9aQV7cfzG48In81HNoxjYlIbqlfPU1TpKlv8kKhZGEYR+WDtrIQ62Eeb/El4o9Z0
- lUupFO/YygMYh+Dvrj5V5VWHF4smrmLhX4FbVoaicb0/lkLVAeAsYx4WJE9ecLGc
- BDoLEKzajCpvYr0/o63M57bJ3hkM/MNcf1ZQMWdmKWdcr2O1tgnHY8y9IdQMgY/y
- 2j1vJg8GPPAoh0FxHOyS9bwyTFhudFub3iKXuQ/CTVpil+D4I9j6fVi0HDiDA8QU
- GfNOCLuaPwlFT/z2PwUSA==
-X-ME-Sender: <xms:FpcOZlJh_UeagPKv9qc3QoQVjZyHDt8Km0OfV9O0Xjphh_NfYxYRrA>
- <xme:FpcOZhI44GdJJW0W_R_do5GgvOYiZ5hQOf8Bj9xKFyCqYlC7rv-1nQTCf11WrjM8x
- vnS0dxErhDwZ2EaM2w>
-X-ME-Received: <xmr:FpcOZttj0PAn4XWDT488Q5dvR-v7N1eNZSE6uE0asKjGyTgOcTIDF_2IVATRGHClCe42s7VDN8lLg4ASyQMtoG5YbXgG0eepjlY>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudefkedggeejucetufdoteggodetrfdotf
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm3; t=1713429890; x=1713516290; bh=ft8I0I3DZvF751Ix+ST0rnfKqxUT
+ k2FXU2cgVw0SvD8=; b=RV7WxhWxKvTCySJYgiWlwMXUPk6NL4u0o/Ha5jA7u2wT
+ ZTXbWFcjVu1izfctKxL51I0o1ty1ffiQAwCb/AMN8kXtB0yPMntRk4I2edHqKJLV
+ 71DijHeksWU7flLqgC7FU1KQuuS74NNcc92Ax6s6TKJvVaPvWXPI3J5eNpZ61Fg7
+ T1g2oVios/svqKg/qkH+qAcZmIVGHX9ydvhIAH73t04aACnBgfVyTiazmh0YAf4/
+ NgYJ380pdAdXHaTpt6FAWDfFLX9NSKl4pmp/BbSN3pTGX/YUotJp7Z26TDTwaRD6
+ oxffTO6Zkre3FuO+COS66L6taHDU4a9wc199VWhAkA==
+X-ME-Sender: <xms:gt0gZr4SWau-800YxJ0LkuHAGuAvrd7lVy4pynY1REHW5M9RGLwsdw>
+ <xme:gt0gZg7L4U4fA9tT-QKdg4prvGBuUcpSxGcQ344GruW-IBBw9GbVRFhXKIucnHP6c
+ LmUEUDPTFTsE1Pm5lE>
+X-ME-Received: <xmr:gt0gZidh2r44Lwg2hBd3A64baU0yI7EnMrLlTu7mhN5FQmTAVGzbVrF31B9Y6qjdNS1rkYp_8sUDzJ1jYGNunJp7aoH6aDXIth0>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrudektddgtdejucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddttdejnecuhfhrohhmpefvrghk
- rghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhih
- drjhhpqeenucggtffrrghtthgvrhhnpeefheffffduffehhfdvteeuvdfhkeekffdvgfej
- heeujeevhfekudefteelfffgffenucffohhmrghinhepkhgvrhhnvghlrdhorhhgpdhgih
- hthhhusgdrtghomhenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhl
- fhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:FpcOZmayOP-a52bsc0igkZ24M3gN9dJ23VUPNuY9i8fdAZxhfouqNw>
- <xmx:FpcOZsZdt8GZ6gIll1kgxu3LKFo0FyiHxM46Y4wdIDd5TwX3eGcZDA>
- <xmx:FpcOZqBtweASGhlLeU5NvpdpvoZoeAVmhyzOf6i6nUgoVxepa3zrHQ>
- <xmx:FpcOZqb-9rzkH60iNdMVhBQhJNiD83imMa8Zs0GpSuc9Vv2mJe2rKg>
- <xmx:FpcOZhO_rcZr6ZqVekcAiq5tapf1WR6JfZyq7upAv8AX4drkG2mrY2WL>
+ cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepvfgrkhgr
+ shhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhird
+ hjpheqnecuggftrfgrthhtvghrnhephefhhfettefgkedvieeuffevveeufedtlefhjeei
+ ieetvdelfedtgfefuedukeeunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpe
+ hmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjph
+X-ME-Proxy: <xmx:gt0gZsLTGx3ZfHvfNCa_b4jvfsReU6WVuHEudX0-bsxFghdOXexUFw>
+ <xmx:gt0gZvI5NRSGErusnTGK4lRQa7WwVvAScYYdSNac1cZQueHVXG1fEQ>
+ <xmx:gt0gZly0tzTxyT4Cir3XB12l2I7sUcOuZ95iC162Q28OCjbsY_s6gg>
+ <xmx:gt0gZrIEsP1gq7KhBinvLaIsb3sFfBSary6eRxvM1oylMVUSUqBbEg>
+ <xmx:gt0gZmXTnhTRQuXFZRmJjc-9JaM3k4OpmGwHBffLOG5R-VPlqXFHPJ8b>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 4 Apr 2024 08:03:32 -0400 (EDT)
-Date: Thu, 4 Apr 2024 21:03:30 +0900
+ 18 Apr 2024 04:44:49 -0400 (EDT)
+Date: Thu, 18 Apr 2024 17:44:46 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Allen Pais <apais@linux.microsoft.com>
-Subject: Re: [PATCH] firewire: Convert from tasklet to BH workqueue
-Message-ID: <20240404120330.GA303033@workstation.local>
-Mail-Followup-To: Allen Pais <apais@linux.microsoft.com>,
- linux-kernel@vger.kernel.org, tj@kernel.org, keescook@chromium.org,
+To: Thanassis Avgerinos <thanassis.avgerinos@gmail.com>
+Subject: Re: Security issue in linux/drivers/firewire/nosy.c
+Message-ID: <20240418084446.GA16391@workstation.local>
+Mail-Followup-To: Thanassis Avgerinos <thanassis.avgerinos@gmail.com>,
  linux1394-devel@lists.sourceforge.net
-References: <20240403144558.13398-1-apais@linux.microsoft.com>
+References: <CAFK=-gY++P_fUyEz36CE8U7qER2_ebJMTkb6-d4Ts6XpcHBzaQ@mail.gmail.com>
+ <b260bb9c-edf8-4bfd-8a3f-2257f31bc9ee@app.fastmail.com>
+ <CAFK=-gZm4iOVJKi7_1UVx2vMwFZmKs54vbXVowbqnoAiBZfZUQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240403144558.13398-1-apais@linux.microsoft.com>
-X-Spam-Score: -0.9 (/)
+In-Reply-To: <CAFK=-gZm4iOVJKi7_1UVx2vMwFZmKs54vbXVowbqnoAiBZfZUQ@mail.gmail.com>
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, Thanks for the patch. The replacement of tasklet with
- workqueue is one of my TODO list, and the change would be helpful. On Wed,
- Apr 03, 2024 at 02:45:58PM +0000,
- Allen Pais wrote: > The only generic interface
- to execute asynchronously in the BH context is > tasklet; however, it's marked
- deprecated and has some design f [...] 
- Content analysis details:   (-0.9 points, 6.0 required)
+ Content preview:  Hi, On Wed, Apr 17, 2024 at 11:46:47AM -0400,
+ Thanassis Avgerinos
+ wrote: > Hi Takashi, > > Apologies for the delay, and thank you for the super
+ fast response! Please > find attached a possible patch for t [...] 
+ Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: sakamocchi.jp]
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.147.123.150 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ for more information. [URIs: messagingengine.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1rsLon-0003L2-Nr
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+X-Headers-End: 1rxNO9-0007jU-JM
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -145,54 +140,80 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: tj@kernel.org, linux1394-devel@lists.sourceforge.net,
- linux-kernel@vger.kernel.org, keescook@chromium.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux1394-devel@lists.sourceforge.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-SGksCgpUaGFua3MgZm9yIHRoZSBwYXRjaC4gVGhlIHJlcGxhY2VtZW50IG9mIHRhc2tsZXQgd2l0
-aCB3b3JrcXVldWUgaXMgb25lCm9mIG15IFRPRE8gbGlzdCwgYW5kIHRoZSBjaGFuZ2Ugd291bGQg
-YmUgaGVscGZ1bC4KCk9uIFdlZCwgQXByIDAzLCAyMDI0IGF0IDAyOjQ1OjU4UE0gKzAwMDAsIEFs
-bGVuIFBhaXMgd3JvdGU6Cj4gVGhlIG9ubHkgZ2VuZXJpYyBpbnRlcmZhY2UgdG8gZXhlY3V0ZSBh
-c3luY2hyb25vdXNseSBpbiB0aGUgQkggY29udGV4dCBpcwo+IHRhc2tsZXQ7IGhvd2V2ZXIsIGl0
-J3MgbWFya2VkIGRlcHJlY2F0ZWQgYW5kIGhhcyBzb21lIGRlc2lnbiBmbGF3cy4gVG8KPiByZXBs
-YWNlIHRhc2tsZXRzLCBCSCB3b3JrcXVldWUgc3VwcG9ydCB3YXMgcmVjZW50bHkgYWRkZWQuIEEg
-Qkggd29ya3F1ZXVlCj4gYmVoYXZlcyBzaW1pbGFybHkgdG8gcmVndWxhciB3b3JrcXVldWVzIGV4
-Y2VwdCB0aGF0IHRoZSBxdWV1ZWQgd29yayBpdGVtcwo+IGFyZSBleGVjdXRlZCBpbiB0aGUgQkgg
-Y29udGV4dC4KPiAKPiBUaGlzIHBhdGNoIGNvbnZlcnRzIGRyaXZlcnMvZmlyZXdpcmUvKiBmcm9t
-IHRhc2tsZXQgdG8gQkggd29ya3F1ZXVlLgo+IAo+IEJhc2VkIG9uIHRoZSB3b3JrIGRvbmUgYnkg
-VGVqdW4gSGVvIDx0akBrZXJuZWwub3JnPgo+IEJyYW5jaDogaHR0cHM6Ly9naXQua2VybmVsLm9y
-Zy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdGovd3EuZ2l0IGRpc2FibGVfd29yay12MQo+IAo+
-IENoYW5nZXMgYXJlIHRlc3RlZCBieTogQHJlY2FsbG1lbm90Cj4gKGh0dHBzOi8vZ2l0aHViLmNv
-bS9hbGxlbnBhaXMvZm9yLTYuOS1iaC1jb252ZXJzaW9ucy9pc3N1ZXMvMSkKPiAKPiBTaWduZWQt
-b2ZmLWJ5OiBBbGxlbiBQYWlzIDxhbGxlbi5sa21sQGdtYWlsLmNvbT4KPiAtLS0KPiAgZHJpdmVy
-cy9maXJld2lyZS9vaGNpLmMgfCA1NCArKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0t
-LS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMjYgaW5zZXJ0aW9ucygrKSwgMjggZGVsZXRpb25z
-KC0pCgpIb3dldmVyLCB0aGUgY2hhbmdlcyBsb29rIHRvIGJlIHRvbyBlYXJseSwgc2luY2Ugc29t
-ZSBrZXJuZWwgQVBJcwphcmUgcmVmZXJyZWQgZnJvbSB0aGUgY2hhbmdlIGJ1dCBsb2NhdGUganVz
-dCBpbiBIZW8ncyB0cmVlLiBUaHVzLAphbnkgYXBwbGljYXRpb24gb2YgdGhlIHBhdGNoIGJyaW5n
-cyBidWlsZCBmYWlsdXJlLCBsaWtlOgoKYGBgCmRyaXZlcnMvZmlyZXdpcmUvb2hjaS5jOiBJbiBm
-dW5jdGlvbiDigJhhdF9jb250ZXh0X2ZsdXNo4oCZOgpkcml2ZXJzL2ZpcmV3aXJlL29oY2kuYzox
-NDYzOjk6IGVycm9yOiBpbXBsaWNpdCBkZWNsYXJhdGlvbiBvZiBmdW5jdGlvbiDigJhkaXNhYmxl
-X3dvcmtfc3luY+KAmTsgZGlkIHlvdSBtZWFuIOKAmGRpc2FibGVfaXJxX25vc3luY+KAmT8gWy1X
-ZXJyb3I9aW1wbGljaXQtZnVuY3Rpb24tZGVjbGFyYXRpb25dCiAxNDYzIHwgICAgICAgICBkaXNh
-YmxlX3dvcmtfc3luYygmY3R4LT53b3JrKTsKICAgICAgfCAgICAgICAgIF5+fn5+fn5+fn5+fn5+
-fn5+CiAgICAgIHwgICAgICAgICBkaXNhYmxlX2lycV9ub3N5bmMKZHJpdmVycy9maXJld2lyZS9v
-aGNpLmM6MTQ2ODo5OiBlcnJvcjogaW1wbGljaXQgZGVjbGFyYXRpb24gb2YgZnVuY3Rpb24g4oCY
-ZW5hYmxlX2FuZF9xdWV1ZV93b3Jr4oCZIFstV2Vycm9yPWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xh
-cmF0aW9uXQogMTQ2OCB8ICAgICAgICAgZW5hYmxlX2FuZF9xdWV1ZV93b3JrKHN5c3RlbV9iaF93
-cSwgJmN0eC0+d29yayk7CiAgICAgIHwgICAgICAgICBefn5+fn5+fn5+fn5+fn5+fn5+fn4KYGBg
-CgpJbiBteSBodW1ibGUgb3BpbmlvbiwgdGhlIGNoYW5nZSBwcm9wb3NhbCBzaG91bGQgYmUgcG9z
-dGVkIGFmdGVyIG1lcmdpbmcKSGVvJ3Mgd29yaywgdG8gcHJldmVudCBkZXZlbG9wZXJzIGFuZCB1
-c2VycyBmcm9tIGJlaW5nIHB1enpsZWQuCkZ1cnRoZXJtb3JlLCBhbnkga2luZCBvZiByZXBvcnQg
-Zm9yIHRoZSBwZXJmb3JtYW5jZSB0ZXN0IGlzIHByZWZlcmFibGUuCgpFc3BlY2lhbGx5LCBpbiBG
-aXJlV2lyZSBzdWJzeXN0ZW0sIDEzOTQgT0hDSSBJVC9JUiBjb250ZXh0cyBjYW4gYmUKcHJvY2Vz
-c2VkIGJ5IGJvdGggdGFza2xldCBhbmQgcHJvY2VzcyAoZS5nLiBpb2N0bCksIHRodXMgdGhlIGV4
-Y2x1c2l2ZQpjb250cm9sIG9mIHdvcmtxdWV1ZSBmb3IgdGhlIGNvbnRleHRzIGlzIGltcG9ydGFu
-dCBiZXR3ZWVuIHRoZW0uIEkgd2lzaAppdCBpcyBkb25lIHN1Y2Nlc3NmdWxseSBieSB0aGUgbmV3
-IHBhaXIgb2YgZW5hYmxpbmcvZGlzYWJsaW5nIHdvcmtxdWV1ZQpBUEksIGFuZCBuZWVkIG1vcmUg
-aW5mb3JtYXRpb24gYWJvdXQgaXQuCgoKVGhhbmtzCgpUYWthc2hpIFNha2Ftb3RvCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbWFpbGluZyBsaXN0IGxp
-bnV4MTM5NC1kZXZlbEBsaXN0cy5zb3VyY2Vmb3JnZS5uZXQKaHR0cHM6Ly9saXN0cy5zb3VyY2Vm
-b3JnZS5uZXQvbGlzdHMvbGlzdGluZm8vbGludXgxMzk0LWRldmVsCg==
+Hi,
+
+On Wed, Apr 17, 2024 at 11:46:47AM -0400, Thanassis Avgerinos wrote:
+> Hi Takashi,
+> 
+> Apologies for the delay, and thank you for the super fast response! Please
+> find attached a possible patch for this issue. It should be
+> self-explanatory but you may have a better suggestion on how to handle it.
+> Please let me know and I'm happy to make changes as needed.
+> 
+> After this is patched, would it be possible to issue a CVE for it? Would
+> you be the best person to help me with this?
+> 
+> Best,
+> Thanassis
+
+Thanks for the patch to fix the TODO, however would I ask you to send it
+again with your `Sign-off-by:` tag? It is mandatory in usual kernel
+development process, and I can not apply any modification about it, with
+the respect to copyright, sorry.
+
+I have a nitpick about the return value at the case that the user
+process provides the insufficient size of buffer against the data stored
+in kernel space. In the case, the typical UNIX-like kernel returns zero
+instead of -EINVAL. We should follow to the convention if we have no
+specific reason, in my opinion.
+
+> From f7ee97fabe1519225ba30fd9454344d0a75f4d94 Mon Sep 17 00:00:00 2001
+> From: Thanassis Avgerinos <thanassis.avgerinos@gmail.com>
+> Date: Wed, 17 Apr 2024 11:30:02 -0400
+> Subject: [PATCH] firewire: nosy: ensure user_length is taken into account when
+>  fetching packet contents
+> 
+> Ensure that packet_buffer_get respects the user_length provided. If
+> the length of the head packet exceeds the user_length, packet_buffer_get
+> will now return -EINVAL to signify to the user that a larger data
+> buffer is required. Helps prevent user space overflows.
+> ---
+>  drivers/firewire/nosy.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/firewire/nosy.c b/drivers/firewire/nosy.c
+> index b0d671db178a..b1dccf3ba8f9 100644
+> --- a/drivers/firewire/nosy.c
+> +++ b/drivers/firewire/nosy.c
+> @@ -148,10 +148,12 @@ packet_buffer_get(struct client *client, char __user *data, size_t user_length)
+>  	if (atomic_read(&buffer->size) == 0)
+>  		return -ENODEV;
+>  
+> -	/* FIXME: Check length <= user_length. */
+> +	length = buffer->head->length;
+> +
+> +	if (length > user_length)
+> +		return -EINVAL;
+>  
+>  	end = buffer->data + buffer->capacity;
+> -	length = buffer->head->length;
+>  
+>  	if (&buffer->head->data[length] < end) {
+>  		if (copy_to_user(data, buffer->head->data, length))
+> -- 
+> 2.23.0
+
+
+Thanks
+
+Takashi Sakamoto
+
+
+_______________________________________________
+mailing list linux1394-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/linux1394-devel
