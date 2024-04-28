@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 138828B4A62
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F0968B4A63
 	for <lists+linux1394-devel@lfdr.de>; Sun, 28 Apr 2024 09:14:22 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1s0yjl-00070r-7G;
-	Sun, 28 Apr 2024 07:14:13 +0000
+	id 1s0yjm-00048j-7i;
+	Sun, 28 Apr 2024 07:14:14 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1s0yjh-00070c-IL
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1s0yjj-00048O-I0
  for linux1394-devel@lists.sourceforge.net;
- Sun, 28 Apr 2024 07:14:09 +0000
+ Sun, 28 Apr 2024 07:14:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=L/RXyIBehhYux/Or0vr4pakBmao+Fg8KZrIh09642yE=; b=OYPoEqcWzgab4U0NktUpDBHPqW
- eEwZRFz05VbjMBoWtdD6fYYdU3PtfIvSkSuOkqToJzFxKngVJaa34Q/mBAFNnxqV4AYLNmFspvzTu
- CjzQJBI78LfczDzYznHKrygp2Ma41c4Xn0eG0+ZQkoz+Tzo/eJRgcU4NYTj/MEOGLArk=;
+ bh=29saDBiucRwDFm2Dxf2GJ51sLzVdC8ydOKBz+0kYKWI=; b=W6xdS+qvzqjLoCcMrKBL27NZTF
+ hAnMJHjtZEEMal3dXujkziB1Gop94um16zOEyXRqXscC1p3vzcN6u/ZiTxq2IQvSJBudRGHozyc4o
+ ZWWYrvpiTa2Prm2+vLkZ6SoRTG/pQTikFeRsCJIPxm2e/O7itP3M2cC8QnlW5QXdWsGQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -31,47 +31,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=L/RXyIBehhYux/Or0vr4pakBmao+Fg8KZrIh09642yE=; b=Mtta8zoKh0IfFK0O4zoeEG59CZ
- cBhBU/OIwrBY27mNffvv3jiXxHhEBBnBMCJf1LqSeXBr2MoFu5cDdUO6oIICCug3jvv3Quiowe7+k
- kyDC561Ufgszhzxj2rrliFrWZipBHVzFNw2334qQihAMO2sl5I4DuPhNLCBLDJFslzRA=;
-Received: from wfhigh4-smtp.messagingengine.com ([64.147.123.155])
+ bh=29saDBiucRwDFm2Dxf2GJ51sLzVdC8ydOKBz+0kYKWI=; b=ADWnNvLoezsNKt1cA7UCPc130q
+ h7S/U5Uw6KztRqKmxIE0UtDnOKUSR83fKQFMYsxOD2wdTPQHNHa6vlUSawbRYeAYxbXmxXTPXezqj
+ Hh1O72xdNx8dzX+BE5G/cwGRmY8rPDnX7Kj5lTaDErr0SPRnbLyZpYdMp/i3dUvH/S+A=;
+Received: from wfout2-smtp.messagingengine.com ([64.147.123.145])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1s0yjg-0000HP-PD for linux1394-devel@lists.sourceforge.net;
- Sun, 28 Apr 2024 07:14:09 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
- by mailfhigh.west.internal (Postfix) with ESMTP id 82BFA18000DF;
- Sun, 28 Apr 2024 03:14:03 -0400 (EDT)
+ id 1s0yjj-0000HT-0J for linux1394-devel@lists.sourceforge.net;
+ Sun, 28 Apr 2024 07:14:12 +0000
+Received: from compute7.internal (compute7.nyi.internal [10.202.2.48])
+ by mailfout.west.internal (Postfix) with ESMTP id C336D1C0010E;
+ Sun, 28 Apr 2024 03:14:05 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Sun, 28 Apr 2024 03:14:03 -0400
+ by compute7.internal (MEProxy); Sun, 28 Apr 2024 03:14:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1714288443; x=
- 1714374843; bh=L/RXyIBehhYux/Or0vr4pakBmao+Fg8KZrIh09642yE=; b=W
- tvjpqUubt161YGVTW1Rws77Fn/buXIZeCo4Pen1YMoN92WydCKHLZahDRJ5UqVUC
- cNqAS6L0ev7t2OwZo6orfEkqTetkTUKgZXGiwcq8/t6bJCYafMjOaqm8VZrb2Kth
- e0qr1cVPO7SkBhMAuOn9JO5riww9SIRmmQb6VxFbLdIuFFRiu11J59RAlkroi3qx
- yGdDd59dEq038wD0rU8eQhSMeGdZ8j2mmhsRPfJD3OdRNhnEMwQZdZkn6/GWPAJN
- K2GXkYfioIHUqUDkuh98P0m1rHoteFZABjF4djxx1z1nGjuRd6zRZoYEbNOX1u0E
- 6oDFt85ga91pGvlePKiBQ==
+ :reply-to:subject:subject:to:to; s=fm3; t=1714288445; x=
+ 1714374845; bh=29saDBiucRwDFm2Dxf2GJ51sLzVdC8ydOKBz+0kYKWI=; b=D
+ 8Nn7C3LYgunlA2nvLOeV4pixwLbMAnsueIACChcxEn24JVQlgteE/8twmdO31K5s
+ D8IEgdQi2KT0Kq6HzWfEAwGNdulFBe+0Xa7jVB1/Bfrf8lRqYRBRu1bkBWf408nq
+ j8h+4sg6WevcRiLkyGBTR8QtriEyHi06fK2H/GdXP8bi64OWRaCt81jCKMebAVGE
+ 1u/B7oq2DANF+F551MUnOaNHfAOSqDlvJQnaNp2ZnS2AIYCcfUiC9mY/KQU+fBGd
+ +J9ntILYMNNQAEiKzwAoTW5mPHkJifeKon569dHvnyZeNaTAPnirZ4Et3Mgj/S3H
+ DbIsyhq27tFpYJJH/+yZQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1714288443; x=
- 1714374843; bh=L/RXyIBehhYux/Or0vr4pakBmao+Fg8KZrIh09642yE=; b=J
- o1KtoeWtX7K9GT0S73UqzZvVFj1Ix9pnrkDpPV6zhAlGtWWakUvfpfFGTFQuRltk
- J3el6msTNrDXfCuMU+pIrGTGnCQ8arpmfEhmgDFUwLSs3dPemgcAEEI14s/VjfK8
- YcVmgqZElmvxO2Fkab58H7BmmbEYaVfq4TAITIbtY8VvYMx7xCE8qQFCRJO2rdw4
- vkgvvMJrvD7ZcaCsqxYJXO1i+Lqx5lEDy9Zlcp7cj0STbA0IhFCyJni5xe3vQkuj
- OJia3B31EnhXUBxDY2TVqiSGx2Iooe5nvD/8rNsLu5TAo1k5ahWc44hK7hZrjlOL
- pDpBhfWGLSvmcnospPVoQ==
-X-ME-Sender: <xms:OvctZmPitrAL7EhHFhkVj-ku0xhT_ECm6FtN0Bscy03Pxe-vgWaGSA>
- <xme:OvctZk9yfWJPi4QML_dQBXiwRaBVPvTaoGTNd2svMPVkhF_TRgKSKKEsCzZJGKRgt
- nOFZzbpOoN2gexKD9c>
-X-ME-Received: <xmr:OvctZtT9UH7bkCwYiFPYXPq9UF4GBmFHh2FQzm8GCG2jj9RQ86z4NABQ38cgUSCkcKij_ecWi1QvcSY7_xUUqegKECZg3gUL5QfgKuX-cJTueg>
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1714288445; x=
+ 1714374845; bh=29saDBiucRwDFm2Dxf2GJ51sLzVdC8ydOKBz+0kYKWI=; b=N
+ F90Df3Vb5Tz84EVApIVzt2YxT8p3xgVDtCTxfCTxpg0B1A9TewWhXPKDvmFN9Kk/
+ rFiZZkr4nDJPdaCC5A04fR+SQAHp/6ZqMCIWeixGXD2HWxxv6HO2nEjctee75Pjz
+ uHVJCZrPZry8demuk3o2SxndasM4H9nkAd6U9UWaJaIkSKTvj07CaE3Stvoq6uN6
+ yvW4mvLP1Ujsvy989PiLKOCcK19You9GlQhT6Rppa3IKz6OxEialqd9vHNI012pa
+ nXwViTiSzihjpFkrebzwo1qxAKQmDOUuRmTYmcNroGAwddoowhcfaY+4NYXe00PT
+ F4o39IxnidTmNE9wVw9/A==
+X-ME-Sender: <xms:PfctZgV37ZvTIZKZYqWVV0ZPMHpuILJyz2F3OxtoUmhC2OGPKEVDIA>
+ <xme:PfctZklHnBOGM2cyvXu8MbxHe00q1U_5KF-W6vsBKsYA5TS7y90mJqls5aLJ94Xch
+ Gh8l8hPp9jEhkkDMGg>
+X-ME-Received: <xmr:PfctZkZIQr4tB92zQujP2g1kzPklb9RWUa03Rvb1xxwRRsKY51pqk4sQv7_SPEtW62KQEXDaeypXY0On_xBx56ENARPV6xX6Cu79ORT-gy-5Tw>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvddtgedgvddtucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtke
@@ -80,47 +80,47 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvddtgedgvddtucetufdoteggod
  euvdfguddukeelveetgfdtvefhtdfffeeigfevueetffeivdffkedvtdenucevlhhushht
  vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
  hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:OvctZmv326hozKHpvYmGotA2_M_YTCYkG6qscayQVg-yEvvjdaRy3g>
- <xmx:OvctZuc-2qKYTZBM4ueUFJ2Y8N2rQt-uHNgETKQPZhVutUBVU51vaw>
- <xmx:OvctZq3uSjte4P4yB8iTTeyomMbLl4zY6Fb18hq3qbgdUBSN_JJSOQ>
- <xmx:OvctZi-fcBEdGIWpgzlkBV-VvclWcrFdrcCZsE4ZzV-52FVreEBifw>
- <xmx:O_ctZvqhYdh_epz2FOTPzfxe37ZW7t_YodGS29B1RaX8hhrBPczGzAS5>
+X-ME-Proxy: <xmx:PfctZvUVkyjeGoZ5rYlixXydMvONPw6h08rfQQ9ZNw_snEwJIYDdxA>
+ <xmx:PfctZqk7elx4pxaeSwxbpHDjT_3OyGf8eatXvAvfJFslURyaw1umYw>
+ <xmx:PfctZkfZV0ABpAn_ymli62MiJOH5grMR-F8hHM0QTez0bW4paCU0BQ>
+ <xmx:PfctZsHerqSHDMQy5EuC8-aYCBpjYd13fx1VjN7rQVncjm7S6AlygA>
+ <xmx:PfctZvy0Byp59UWpFosU6QXr6dp893x2PA9MH3A2hAfDdrljFScHpJJT>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 28 Apr 2024 03:14:01 -0400 (EDT)
+ 28 Apr 2024 03:14:04 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 5/8] firewire: ohci: replace hard-coded values with common
- macros
-Date: Sun, 28 Apr 2024 16:13:43 +0900
-Message-ID: <20240428071347.409202-6-o-takashi@sakamocchi.jp>
+Subject: [PATCH 6/8] firewire: core: obsolete tcode check macros with inline
+ functions
+Date: Sun, 28 Apr 2024 16:13:44 +0900
+Message-ID: <20240428071347.409202-7-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240428071347.409202-1-o-takashi@sakamocchi.jp>
 References: <20240428071347.409202-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
-X-Spam-Score: -5.2 (-----)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: In the helper function for logging in 1394 ohci driver
- includes
- the hard-coded variables for transaction code. They can be replaced with
- the enumerations in UAPI header. Signed-off-by: Takashi Sakamoto
+ Content preview: This commit declares the helper functions to check tcode to
+ obsolete the functional macros. Signed-off-by: Takashi Sakamoto
  <o-takashi@sakamocchi.jp>
- --- drivers/firewire/ohci.c | 18 ++++++++++++++---- 1 file changed,
- 14 insertions(+), 4 deletions(-) 
- Content analysis details:   (-5.2 points, 6.0 required)
+ --- drivers/firewire/core-transaction.c | 4 ++-- drivers/firewire/core.h
+ | 21 ++++++++++++++------- drivers/firewire/ohci.c | 6 +++--- 3 files [...]
+ Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
  for more information. [URIs: messagingengine.com]
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [64.147.123.155 listed in list.dnswl.org]
+ 0.0 RCVD_IN_DNSWL_BLOCKED  RBL: ADMINISTRATOR NOTICE: The query to
+ DNSWL was blocked.  See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [64.147.123.145 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -130,7 +130,7 @@ X-Spam-Report: Spam detection software,
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
-X-Headers-End: 1s0yjg-0000HP-PD
+X-Headers-End: 1s0yjj-0000HT-0J
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -148,61 +148,101 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-In the helper function for logging in 1394 ohci driver includes the
-hard-coded variables for transaction code. They can be replaced with
-the enumerations in UAPI header.
+This commit declares the helper functions to check tcode to obsolete
+the functional macros.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/ohci.c | 18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
+ drivers/firewire/core-transaction.c |  4 ++--
+ drivers/firewire/core.h             | 21 ++++++++++++++-------
+ drivers/firewire/ohci.c             |  6 +++---
+ 3 files changed, 19 insertions(+), 12 deletions(-)
 
+diff --git a/drivers/firewire/core-transaction.c b/drivers/firewire/core-transaction.c
+index a113f801cf33..45ea15342ab8 100644
+--- a/drivers/firewire/core-transaction.c
++++ b/drivers/firewire/core-transaction.c
+@@ -972,7 +972,7 @@ void fw_core_handle_request(struct fw_card *card, struct fw_packet *p)
+ 	if (p->ack != ACK_PENDING && p->ack != ACK_COMPLETE)
+ 		return;
+ 
+-	if (TCODE_IS_LINK_INTERNAL(async_header_get_tcode(p->header))) {
++	if (tcode_is_link_internal(async_header_get_tcode(p->header))) {
+ 		fw_cdev_handle_phy_packet(card, p);
+ 		return;
+ 	}
+@@ -1109,7 +1109,7 @@ static void handle_topology_map(struct fw_card *card, struct fw_request *request
+ {
+ 	int start;
+ 
+-	if (!TCODE_IS_READ_REQUEST(tcode)) {
++	if (!tcode_is_read_request(tcode)) {
+ 		fw_send_response(card, request, RCODE_TYPE_ERROR);
+ 		return;
+ 	}
+diff --git a/drivers/firewire/core.h b/drivers/firewire/core.h
+index ff96e5456b5d..5097c7a270b4 100644
+--- a/drivers/firewire/core.h
++++ b/drivers/firewire/core.h
+@@ -225,13 +225,20 @@ static inline bool is_next_generation(int new_generation, int old_generation)
+ 
+ #define TCODE_LINK_INTERNAL		0xe
+ 
+-#define TCODE_IS_READ_REQUEST(tcode)	(((tcode) & ~1) == 4)
+-#define TCODE_IS_BLOCK_PACKET(tcode)	(((tcode) &  1) != 0)
+-#define TCODE_IS_LINK_INTERNAL(tcode)	((tcode) == TCODE_LINK_INTERNAL)
+-#define TCODE_IS_REQUEST(tcode)		(((tcode) &  2) == 0)
+-#define TCODE_IS_RESPONSE(tcode)	(((tcode) &  2) != 0)
+-#define TCODE_HAS_REQUEST_DATA(tcode)	(((tcode) & 12) != 4)
+-#define TCODE_HAS_RESPONSE_DATA(tcode)	(((tcode) & 12) != 0)
++static inline bool tcode_is_read_request(unsigned int tcode)
++{
++	return (tcode & ~1u) == 4u;
++}
++
++static inline bool tcode_is_block_packet(unsigned int tcode)
++{
++	return (tcode & 1u) != 0u;
++}
++
++static inline bool tcode_is_link_internal(unsigned int tcode)
++{
++	return (tcode == TCODE_LINK_INTERNAL);
++}
+ 
+ #define LOCAL_BUS 0xffc0
+ 
 diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
-index be8ede492ead..4811e3255ca8 100644
+index 4811e3255ca8..6116153f0ce6 100644
 --- a/drivers/firewire/ohci.c
 +++ b/drivers/firewire/ohci.c
-@@ -533,11 +533,17 @@ static void log_ar_at_event(struct fw_ohci *ohci,
- 	}
+@@ -1382,7 +1382,7 @@ static int at_context_queue_packet(struct context *ctx,
+ 					(packet->header[0] & 0xffff0000));
+ 		header[2] = cpu_to_le32(packet->header[2]);
  
- 	switch (tcode) {
--	case 0x0: case 0x6: case 0x8:
-+	case TCODE_WRITE_QUADLET_REQUEST:
-+	case TCODE_READ_QUADLET_RESPONSE:
-+	case TCODE_CYCLE_START:
- 		snprintf(specific, sizeof(specific), " = %08x",
- 			 be32_to_cpu((__force __be32)header[3]));
- 		break;
--	case 0x1: case 0x5: case 0x7: case 0x9: case 0xb:
-+	case TCODE_WRITE_BLOCK_REQUEST:
-+	case TCODE_READ_BLOCK_REQUEST:
-+	case TCODE_READ_BLOCK_RESPONSE:
-+	case TCODE_LOCK_REQUEST:
-+	case TCODE_LOCK_RESPONSE:
- 		snprintf(specific, sizeof(specific), " %x,%x",
- 			 async_header_get_data_length(header),
- 			 async_header_get_extended_tcode(header));
-@@ -547,7 +553,7 @@ static void log_ar_at_event(struct fw_ohci *ohci,
- 	}
+-		if (TCODE_IS_BLOCK_PACKET(tcode))
++		if (tcode_is_block_packet(tcode))
+ 			header[3] = cpu_to_le32(packet->header[3]);
+ 		else
+ 			header[3] = (__force __le32) packet->header[3];
+@@ -1568,7 +1568,7 @@ static void handle_local_rom(struct fw_ohci *ohci,
+ 	int tcode, length, i;
  
- 	switch (tcode) {
--	case 0xa:
-+	case TCODE_STREAM_DATA:
- 		ohci_notice(ohci, "A%c %s, %s\n",
- 			    dir, evts[evt], tcodes[tcode]);
- 		break;
-@@ -555,7 +561,11 @@ static void log_ar_at_event(struct fw_ohci *ohci,
- 		ohci_notice(ohci, "A%c %s, PHY %08x %08x\n",
- 			    dir, evts[evt], header[1], header[2]);
- 		break;
--	case 0x0: case 0x1: case 0x4: case 0x5: case 0x9:
-+	case TCODE_WRITE_QUADLET_REQUEST:
-+	case TCODE_WRITE_BLOCK_REQUEST:
-+	case TCODE_READ_QUADLET_REQUEST:
-+	case TCODE_READ_BLOCK_REQUEST:
-+	case TCODE_LOCK_REQUEST:
- 		ohci_notice(ohci,
- 			    "A%c spd %x tl %02x, %04x -> %04x, %s, %s, %012llx%s\n",
- 			    dir, speed, async_header_get_tlabel(header),
+ 	tcode = async_header_get_tcode(packet->header);
+-	if (TCODE_IS_BLOCK_PACKET(tcode))
++	if (tcode_is_block_packet(tcode))
+ 		length = async_header_get_data_length(packet->header);
+ 	else
+ 		length = 4;
+@@ -1577,7 +1577,7 @@ static void handle_local_rom(struct fw_ohci *ohci,
+ 	if (i + length > CONFIG_ROM_SIZE) {
+ 		fw_fill_response(&response, packet->header,
+ 				 RCODE_ADDRESS_ERROR, NULL, 0);
+-	} else if (!TCODE_IS_READ_REQUEST(tcode)) {
++	} else if (!tcode_is_read_request(tcode)) {
+ 		fw_fill_response(&response, packet->header,
+ 				 RCODE_TYPE_ERROR, NULL, 0);
+ 	} else {
 -- 
 2.43.0
 
