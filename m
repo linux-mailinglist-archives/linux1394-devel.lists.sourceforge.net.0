@@ -2,133 +2,132 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35B958B4F34
-	for <lists+linux1394-devel@lfdr.de>; Mon, 29 Apr 2024 03:26:46 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6448E8B5038
+	for <lists+linux1394-devel@lfdr.de>; Mon, 29 Apr 2024 06:32:49 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1s1Fms-0002ZM-NO;
-	Mon, 29 Apr 2024 01:26:35 +0000
+	id 1s1Igt-0000rD-81;
+	Mon, 29 Apr 2024 04:32:35 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1s1Fmq-0002Z7-RI;
- Mon, 29 Apr 2024 01:26:33 +0000
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1s1Igs-0000r2-N6
+ for linux1394-devel@lists.sourceforge.net;
+ Mon, 29 Apr 2024 04:32:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=+J8zA8zQbdC43bXktQ9i0H2MmdEkxFgcfIeAsLIuBvk=; b=iuiEhYbQiEZWmlrYuay5FD58DZ
- nLzhTaEWL8z76T6BY1YYYkLXcZOnr6yeVrqTUQ7r5jGDmDYoTMACOyY8ulSWsHZzYCJncaltEONQS
- XtLhHxcPUiyOgcjcM8woR9W8CG3Hbm42VpYE5Le3Cnh3zRlOVKPpz7bZCZrpd0+fB0wE=;
+ bh=SOhiZLaSJMK3vRwXHVf80avqHnvi4hJiW4QMdFB5tDo=; b=Dzi+Bp67RLcUx2ugijob0I/o9+
+ QR+Brq9skxH8ZxinihTy1/Jey3pIpAueu989RfuIk3+RwHPF0mr5ptYYLPm9vf6l0yfemWgJ8ro5r
+ MbF4qRh9Vp5+ThjPBgZNqymmuuIe3ROUdpxAva12mEz1y76AEohd8NZsBlo3iVAPKhkE=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:To:
- From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=+J8zA8zQbdC43bXktQ9i0H2MmdEkxFgcfIeAsLIuBvk=; b=TIcJestU0iZzHHMCimuL0fD0wV
- sgkm/pP0zgs0Q7SbrIvU5FXthLkoD6rNdOI2B60/y8XgBSPgfGHlcXt+iQRTaqfkJIVYuODAesnsU
- XE9CLeMRZeuXVDgDEGLpjg57S9+xJ1fPNzvxaYW6co9PNNcCNiXBgtUOvGbpsyGo23iw=;
-Received: from fhigh8-smtp.messagingengine.com ([103.168.172.159])
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=SOhiZLaSJMK3vRwXHVf80avqHnvi4hJiW4QMdFB5tDo=; b=B
+ QWqqLuiYp80Az7yJOVlCS36145EWnZgLY4+nYv3ioXDg3cd36khxNMOkBtu4sN1P9HCAc/0zAxY29
+ vdPT2G9USWdoKs15O0D0NZYGjs5TgeFw4CCB/m+jeavC1PWR4xoT3JN9HXh4ym2NNnSYsVRDEBfF5
+ U2sRMI6hGR1b3XKw=;
+Received: from fout6-smtp.messagingengine.com ([103.168.172.149])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1s1Fmp-0003C6-UD; Mon, 29 Apr 2024 01:26:33 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
- by mailfhigh.nyi.internal (Postfix) with ESMTP id B3AB51140126;
- Sun, 28 Apr 2024 21:26:21 -0400 (EDT)
+ id 1s1Igr-0003BJ-CU for linux1394-devel@lists.sourceforge.net;
+ Mon, 29 Apr 2024 04:32:34 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailfout.nyi.internal (Postfix) with ESMTP id 46A831380228;
+ Mon, 29 Apr 2024 00:32:23 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Sun, 28 Apr 2024 21:26:21 -0400
+ by compute4.internal (MEProxy); Mon, 29 Apr 2024 00:32:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:content-type:content-type:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:subject
- :subject:to:to; s=fm3; t=1714353981; x=1714440381; bh=+J8zA8zQbd
- C43bXktQ9i0H2MmdEkxFgcfIeAsLIuBvk=; b=LPPRuyhH4dMtEaUzM8mD/plp0v
- cR6qPvII5SY0Wbm1rLngxaM2p3nnjTzdzGA59M+Pv99qIJlC0eenHfWHPpFW1EZl
- xJ59VVA7Ng4VxvMx1wfBVfAD1+7NvOC9it9VN2PWbXXIrC1fCJjS19D0k/oSyoCx
- 2J627MCAaX/LnlNGULvhz9EGb+E6apmgIPtDczlL76BN2TkgIYWbZlPDD3mMD4db
- NOxWzB5Pg3JfTMfHzzcBSScA9REqcn1wNmJc0NTDytxolHy5RHUyOCBPPAkPu/nP
- 9H8iIhZwEbZsUmHUlXqeqVRHfOXssA9ZjUnS3ZG4rm4O9vGdMBmojCIt/o5A==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm3; t=1714365143; x=1714451543; bh=SOhiZLaSJM
+ K3vRwXHVf80avqHnvi4hJiW4QMdFB5tDo=; b=IYdEDpOalzPZbEZWa3eINnTYv8
+ vrwutmxYOYrGrhUl8ZRkMmgvTcQKnr5cPPsMCwNXPGq/TN8wXIUk5O/8auutTncO
+ A8DiQR4xHgaLVLJs/stCK80DS7KyeCAE913DSg9VvJQuQ9Csj+wZqzxkwzDq4RQ2
+ nZD9ZcTQJ2uXLIRX8wksGI8CREOPZkrgwvI/Tv5OcZwdlI8qYxKsIElBLq5WQ2ZH
+ vRgx2bngFmk0qBg0wmkcMfoipjEQnnUqgHovp9SBe5yu3AXvB62dL3jJj4eiM2mz
+ Iv/61JytAp4uNtrMRcnP/XLYYn/5io2w7cf+59yrZ/3CBc2KIXO14+myRHAg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1714353981; x=1714440381; bh=+J8zA8zQbdC43bXktQ9i0H2MmdEk
- xFgcfIeAsLIuBvk=; b=D/Fi3uNGHX2WcQZozHhk+TspIMYVtiY8eySO5CUFxNVh
- ZGu/6HK3bF3IQLMS5IH3Hxkc8SmakHmSqN4DtsYUiDWLypHGTPpDlgGzMQTs6Iis
- ttn4kfppsAlmk8eZqc96b6dtuMTuoA1HQuPjxCfGq/69VtdIdBNy2gmbaI4x7KhU
- 7SHQh29mlLMOfOrClDnJ+/Q8TdUxs4gwqM36vC2ZefAlAtIIeCShOLzBuxeyv2+E
- LwfYhYsE7MyZ2Kyb9upWtaFE+onTZTVVhtqAHB08DKbPflP6kW8YAqHO0jb3symN
- fDujmiIYG8XdIXGV9Hx0/FQfu4LDxtpwK4zU5EPwYQ==
-X-ME-Sender: <xms:PfcuZgkH9xDoFeRgiXjMyKmwdLRgNf9OFxLorz6r595Tvi3Ox7ZVJw>
- <xme:PfcuZv0wwrtWdYgFowrTRC4yvgV2mP_RQv7Ur5rTN16HAzwefFPtYudFZFMjcW-gQ
- rggDN4p8eN53sMxW-Y>
-X-ME-Received: <xmr:PfcuZuqBTvD-cj7DczKGPq5rcLfQrmcwW2fTJwldGLiRnMtE7AUzY9Sfv8LjpIxXbnKhws4mxra3gmIPnfZ0bTm0k9RLVKDtMCI>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvddtjedguddvucetufdoteggodetrfdotf
+ fm3; t=1714365143; x=1714451543; bh=SOhiZLaSJMK3vRwXHVf80avqHnvi
+ 4hJiW4QMdFB5tDo=; b=XWtCMm3XCG3Pi8vbCsp6ih+BY8w+rqdO2u2dHd9BGywE
+ NJgUpGETTb6ToJuXEuJwWp+pfD6o3W8ziW1M9YUpWQ8rrcPHz3Ej2OCzlFT/XW87
+ z1RH35nTl7zKXel40F6ONWWNe5h9+u1Cc/H69jWhRE6X/U6XsyGL/TrQfCh5VArJ
+ LUms+OzzdgXdIvs+Rth7tP6ng4/i11MmXLY8RM88DrQVJiVSm2fuW7UMNWco8LQD
+ SPgxy6OS0M0KB2tQOwyuQqHalnp4QXptbGmSsU7z1E1orsRLzZ3eMlrM+fl5fRsp
+ DmTU529PNI1yaTS3WTEkpLgElyyB4oTmtOKaIMpuqw==
+X-ME-Sender: <xms:1yIvZo4TJMBShdOty7YQF9qWl8wJL3ToH3-AUggp7dH4hTPqWlBKGQ>
+ <xme:1yIvZp4DzKtypy3bfqQXFaoVr1YVbTLiLNwQQGeAl3V8jkWfjBvfanJ9eSM0cSr4-
+ JB5zIPhpSfNh9NVW-0>
+X-ME-Received: <xmr:1yIvZnfWJcI0jvM1F6OIQh3yS0QYkK9Wut3NcnUKEvTnu3kvY1qc6ASO2jdb0RJkNbckLfdAjGlTwX2es_fKjt0-ztuP2B6lUlW_u0tyA4ggIw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvddtledgtdegucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefvrghkrghs
- hhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjh
- hpqeenucggtffrrghtthgvrhhnpeelhfeugedvjefgjefgudekfedutedvtddutdeuieev
- tddtgeetjeekvdefgeefhfenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmh
- grihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:PfcuZsn4wM6jgRj4TQLISVMhUY_o-koYraXSKb9sZpEkVlDp7BWjow>
- <xmx:PfcuZu1HPks0S-m0Rlq_D9Ul-_9rz_5sThQvcXYFHvc82dfggs3c-A>
- <xmx:PfcuZjsqhlPS7YvbITv2by-UiTK_KoHESJf9OXs-kOTNUiTmtnIT1w>
- <xmx:PfcuZqWOEqW7PuC_g-fEJckVi7Zwz7OiFZ-922K9KRljUET60lFQ4A>
- <xmx:PfcuZjx8tb1CXbGp7y5sYybbB9SM7aZrF2WM-YLbZrPrOtOxKnOTMa8I>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertd
+ ertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
+ hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeeggfehleehje
+ eileehveefkefhtdeffedtfeeghfekffetudevjeegkeevhfdvueenucffohhmrghinhep
+ khgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrg
+ hilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjph
+X-ME-Proxy: <xmx:1yIvZtKmYtVRBqZY0WQISGaNIQS8sNCVI07p3e1CAp2WG-CJov3ywg>
+ <xmx:1yIvZsJ3vZ5CGODP9Aa88Q2ezF-ljH1dVJ3tkh4JuE8gmrMAkaWpYg>
+ <xmx:1yIvZuzlAvQbYXM6sBji1Dd3QYNCiOjoFfek3LqA8W9RJ86aRbTczA>
+ <xmx:1yIvZgJ_-4_XksZ0KycyF3dmmBwd1Yfw8zhjCPgt9jAOMn_GIjfh6A>
+ <xmx:1yIvZjX7oq1zWA8vNxis0y--8L7YmUOSCKrxPBjG00PKnTwvxiUDZpi4>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 28 Apr 2024 21:26:20 -0400 (EDT)
-Date: Mon, 29 Apr 2024 10:26:17 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 29 Apr 2024 00:32:22 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: "Joerg M. Sigle" <joerg.sigle@jsigle.com>,
- linux1394-devel@lists.sourceforge.net, ffado-devel@lists.sourceforge.net
-Subject: Re: Fwd: Requested configuration data - Re: Is there support for the
- Tascam DM-4800 / IF-FW DM Version 2 or could you guide me to try
- making it?
-Message-ID: <20240429012617.GA495894@workstation.local>
-Mail-Followup-To: "Joerg M. Sigle" <joerg.sigle@jsigle.com>,
- linux1394-devel@lists.sourceforge.net,
- ffado-devel@lists.sourceforge.net
-References: <206e7a47-ba27-a2b4-3611-2d548dff5995@jsigle.com>
- <5d60e9a5-b594-5edd-19c2-e38ea210eeaa@jsigle.com>
- <20240429010558.GA494058@workstation.local>
+To: linux1394-devel@lists.sourceforge.net
+Subject: [PATCH 0/5] firewire: add tracepoints events for asynchronous
+ transaction
+Date: Mon, 29 Apr 2024 13:32:13 +0900
+Message-ID: <20240429043218.609398-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240429010558.GA494058@workstation.local>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: P.S. the content of configuration ROM can be dumped by
- config-rom-pretty-printer
- in linux-firewire-utils. The node of your device has: guid: 0x22e0001800000
- vendor_id: 0x00022e model_id: 0x800006 
+ Content preview:  Hi, The series of changes in this patchse is to revise the
+ previous RFC:
+ https://lore.kernel.org/lkml/20240418092303.19725-1-o-takashi@sakamocchi.jp/
+ In a view of IEEE 1394 bus, the main function of kernel core is to provide
+ transaction service to the bus. It is helpful to have some mechanisms to
+ trace any action of the service. 
  Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: sakamocchi.jp]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ for more information. [URIs: messagingengine.com]
+ 0.0 RCVD_IN_DNSWL_BLOCKED  RBL: ADMINISTRATOR NOTICE: The query to
+ DNSWL was blocked.  See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [103.168.172.149 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
-X-Headers-End: 1s1Fmp-0003C6-UD
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+X-Headers-End: 1s1Igr-0003BJ-CU
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -141,92 +140,70 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
+Cc: linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-P.S. the content of configuration ROM can be dumped by
-config-rom-pretty-printer in linux-firewire-utils.
+Hi,
 
-The node of your device has:
+The series of changes in this patchse is to revise the previous RFC:
+https://lore.kernel.org/lkml/20240418092303.19725-1-o-takashi@sakamocchi.jp/
 
-guid:      0x22e0001800000
-vendor_id: 0x00022e
-model_id:  0x800006
+In a view of IEEE 1394 bus, the main function of kernel core is to
+provide transaction service to the bus. It is helpful to have some
+mechanisms to trace any action of the service.
 
-It includes one unit:
+This series of changes adds some tracepoints events for the purpose.
+It adds the following tracepoints events via 'firewire' subsystem:
 
-specifier id: 0x00022e  
-version:      0x800006  
-model_id:     0x00022e  
+* For outbound transactions (e.g. initiated by user process)
+    * async_request_outbound_initiate
+    * async_request_outbound_complete
+    * async_response_inbound
+* For inbound transactions (e.g. initiated by the other nodes in the bus)
+    * async_request_inbound
+    * async_response_outbound_initiate
+    * async_response_outbound_complete
 
-It is odd that the node and unit has the different values for their
-model_id fields. I think Tascam programmer applied the wrong configuration
-to them when developing dice firmware
+When probing these tracepoints events, the content of 'struct fw_packet'
+passed between the core function and 1394 OHCI driver is recorded with
+the fields of header and packet data. For example of the outbound
+split transaction:
 
-Note that ALSA dice driver is bound to the unit, thus both vendor_id and
-model_id should be 0x00022e.
+async_request_outbound_initiate: \
+    transaction=0xffff955fc6a07b30 generation=5 scode=2 dst_id=0xffc0 \
+    tlabel=18 tcode=9 src_id=0xffc1 offset=0xfffff0000984 \
+    header={0xffc04990,0xffc1ffff,0xf0000984,0x80002} data={0x81,0x80}
+async_request_outbound_complete: \
+    transaction=0xffff955fc6a07b30 generation=5 scode=2 status=2 \
+    timestamp=0xeabf
+async_response_inbound: \
+    transaction=0xffff955fc6a07b30 generation=5 scode=2 status=1 \
+    timestamp=0xeac2 dst_id=0xffc1 tlabel=18 tcode=11 src_id=0xffc0 \
+    rcode=0 header={0xffc149b0,0xffc00000,0x0,0x40002} data={0x81}
 
-$ config-rom-pretty-printer < audio_and_music/dice/tascam-iffw2.img 
-               ROM header and bus information block
-               -----------------------------------------------------------------
-1024  04042ec6  bus_info_length 4, crc_length 4, crc 11974
-1028  31333934  bus_name "1394"
-1032  e0ff8112  irmc 1, cmc 1, isc 1, bmc 0, pmc 0, cyc_clk_acc 255,
-               max_rec 8 (512), max_rom 1, gen 1, spd 2 (S400)
-1036  00022e00  company_id 00022e     | 
-1040  01800000  device_id 0025165824  | EUI-64 0613527513464832
+Takashi Sakamoto (5):
+  firewire: core: add support for Linux kernel tracepoints
+  firewire: core: add tracepoints events for asynchronous outbound
+    request
+  firewire: core: add tracepoints event for asynchronous inbound
+    response
+  firewire: core: add tracepoint event for asynchronous inbound request
+  firewire: core: add tracepoints events for asynchronous outbound
+    response
 
-               root directory
-               -----------------------------------------------------------------
-1044  0006f261  directory_length 6, crc 62049
-1048  0300022e  vendor
-1052  8100000a  --> descriptor leaf at 1092
-1056  17800006  model
-1060  8100000d  --> descriptor leaf at 1112
-1064  0c0087c0  node capabilities: per IEEE 1394
-1068  d1000001  --> unit directory at 1072
+ drivers/firewire/Makefile           |   2 +-
+ drivers/firewire/core-trace.c       |   5 +
+ drivers/firewire/core-transaction.c |  93 +++++++-----
+ include/trace/events/firewire.h     | 211 ++++++++++++++++++++++++++++
+ 4 files changed, 276 insertions(+), 35 deletions(-)
+ create mode 100644 drivers/firewire/core-trace.c
+ create mode 100644 include/trace/events/firewire.h
 
-               unit directory at 1072
-               -----------------------------------------------------------------
-1072  000411c4  directory_length 4, crc 4548
-1076  1200022e  specifier id
-1080  13800006  version
-1084  1700022e  model
-1088  8100000d  --> descriptor leaf at 1140
+-- 
+2.43.0
 
-               descriptor leaf at 1092
-               -----------------------------------------------------------------
-1092  0004a79e  leaf_length 4, crc 42910
-1096  00000000  textual descriptor
-1100  00000000  minimal ASCII
-1104  54415343  "TASC"
-1108  414d0000  "AM"
-
-               descriptor leaf at 1112
-               -----------------------------------------------------------------
-1112  00066bda  leaf_length 6, crc 27610
-1116  00000000  textual descriptor
-1120  00000000  minimal ASCII
-1124  49462d46  "IF-F"
-1128  572f444d  "W/DM"
-1132  206d6b49  " mkI"
-1136  49000000  "I"
-
-               descriptor leaf at 1140
-               -----------------------------------------------------------------
-1140  00066bda  leaf_length 6, crc 27610
-1144  00000000  textual descriptor
-1148  00000000  minimal ASCII
-1152  49462d46  "IF-F"
-1156  572f444d  "W/DM"
-1160  206d6b49  " mkI"
-1164  49000000  "I"
-
-
-Regards
-
-Takashi Sakamoto
 
 
 _______________________________________________
