@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1B138B9218
-	for <lists+linux1394-devel@lfdr.de>; Thu,  2 May 2024 01:14:38 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id AD86B8B922F
+	for <lists+linux1394-devel@lfdr.de>; Thu,  2 May 2024 01:19:52 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1s2J9b-0001p9-4o;
-	Wed, 01 May 2024 23:14:23 +0000
+	id 1s2JEk-0004lI-Gi;
+	Wed, 01 May 2024 23:19:42 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1s2J9a-0001ou-3H
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1s2JEj-0004l9-7t
  for linux1394-devel@lists.sourceforge.net;
- Wed, 01 May 2024 23:14:23 +0000
+ Wed, 01 May 2024 23:19:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
  Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=LGBpfsfi1Wa2XZqumOpfSa70+soAJ7ROMnIXyxLaxJM=; b=KXPbAYH5UnKCM/QF0L5o+QPQ7c
- H+TfHfGJHziPKK9Pus+dqgxnWMb0pQv2GjKAFnsX2QyFXcCPJZQ7QGg8PEdRN6Sppjdc/Ce3cPMJh
- pPdG4me9IAYCGdaDm8VW2wTUx1illv0MpaTZyDIuCN7pEN6QqH/ad7L2P1cJ8Pc9484Y=;
+ bh=aJ9bQTQ0bXFx75w1V4iyVyCDpPwSIeyvhFaFFkaoznc=; b=HU9NkBJPU6WlYhWv/2qvWx88M3
+ JPjNL2cAkyoZg1KOkdZOSKmmVCAOVu5GLZHdHM+3vGy1avUj1x5AihA/gm04seoOIBkIHZggBWrgx
+ cbF5RIT64DE4QiABB5lg+3+wi9K4zC+r2LehLIA0MZpMlBaUXxVgeGQiX50lEOssmAaI=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
@@ -31,106 +31,110 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=LGBpfsfi1Wa2XZqumOpfSa70+soAJ7ROMnIXyxLaxJM=; b=JjxQ3w68TRY5ziy/2WggpqjymD
- XqD3PxIOvtqMroJpG7cws2ga+q1mWkVJGxvF+u/w9D+BALULCSK8P0BLwews5CCPVijovXFC6q2tp
- rx9veXB0vJEkcr2ivmFMQ+6XuCCtkegPB3JNksqSALLCTvHc+sVWJu0KyEtHvKJTdj3Y=;
-Received: from wfhigh3-smtp.messagingengine.com ([64.147.123.154])
+ bh=aJ9bQTQ0bXFx75w1V4iyVyCDpPwSIeyvhFaFFkaoznc=; b=EwtDZTF6HMdNgTBFgcG3/9K3Pw
+ DVdb7k2MW2ckWqH7vQPPBO0F0/hR3XfhdJHzUhVoQyok/TD5zissBuoTviGzvfE6u9mNDpZEBcg7s
+ 5QToAAQWE5jlh2KHw4SVMdQmBDyI45q7BkJTXr41YdEHEU5W0SHP2pZLJ+PbIXkk7VxU=;
+Received: from wfout1-smtp.messagingengine.com ([64.147.123.144])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1s2J9Y-0003SH-V0 for linux1394-devel@lists.sourceforge.net;
- Wed, 01 May 2024 23:14:22 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
- by mailfhigh.west.internal (Postfix) with ESMTP id C63D718001AE;
- Wed,  1 May 2024 19:14:14 -0400 (EDT)
+ id 1s2JEi-0004Je-4V for linux1394-devel@lists.sourceforge.net;
+ Wed, 01 May 2024 23:19:41 +0000
+Received: from compute7.internal (compute7.nyi.internal [10.202.2.48])
+ by mailfout.west.internal (Postfix) with ESMTP id C91B01C0016C;
+ Wed,  1 May 2024 19:19:34 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Wed, 01 May 2024 19:14:14 -0400
+ by compute7.internal (MEProxy); Wed, 01 May 2024 19:19:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1714605254; x=
- 1714691654; bh=LGBpfsfi1Wa2XZqumOpfSa70+soAJ7ROMnIXyxLaxJM=; b=L
- xhr1KIBXSIGKhTDSwFtwCxJrtrg8yLtZkfRbApMQk04ZvCjFemUooob0vRLimEV0
- aUrcUvqU5P8oAdxfkFPMwJpGZhdOEmMx/NRNRjKygZijwp1IuCAI6eQlIPHVQGiy
- /9HhjnrX7zOP/mHbbeQW4gSku6QeU0SuUi2+kbPuGykOsVts6YQeQ1q43cy3f8Mi
- zZIkthpQ1plC31UFghzp4DtpddeNIKgCg0EdwfpQccemf3OwIZsX8vPHlSjGWrtt
- JqU9ZV/Vw1BGiEFY51KudZAxECn7dAJW01TZPf5xkGOapuNag6AmdG4NIRNPucj/
- Lh84X4uj6mWdsASfH0J7Q==
+ :reply-to:subject:subject:to:to; s=fm3; t=1714605574; x=
+ 1714691974; bh=aJ9bQTQ0bXFx75w1V4iyVyCDpPwSIeyvhFaFFkaoznc=; b=n
+ EPLbHnvn7kk3Q6HYjNnt/OXnh2RN8kQC3XElkRXx4fy6QTwG9blEl6lkid8ZwMim
+ 8FQi8ec1df3ls65liqVggKMSjpM+QBFJr/mddTOIjhWNETefC3/JXegbfOaBUjer
+ JISoUSTAo7y804jT37zdEoPkQsZQPeL0dAl9yMsNVDHOdjFD873E9eSfrldfA/pX
+ ajgFI5Y5/gDTED430KysQOfkugOQII5d40QyYK6mUXwso3a2kxYYuMCq7z5yEF/W
+ ZM4KeW4ndUPYoRjnqbzG0XQARkQGUo+eW/tDQI++l+Dl5CK/nAL2j3r2GIyz2z4R
+ dvCZSoYSQKWDHva1v/niw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1714605254; x=1714691654; bh=LGBpfsfi1Wa2XZqumOpfSa70+soA
- J7ROMnIXyxLaxJM=; b=SQmShT7USHei3dws+1rm3m1358/r2FIN/MpbL8TlQM1K
- 0yEAnspPLQGPaBVuGiV9yETrJ21SvQBPCZrG8gAYQDtAArC10LmaDIhPgGs4VWSV
- d3SZxX8KVX+xMWcv+XasS59eJdwKAJ2SkIRzF+8JneWJskHjE0iBE5shEn5Ws36N
- kWqqrVgVSuysnBScPDFa/dMokZXx0DiqQ4edqBp8/kWvZsmlSnZg1TZDVSHKq4Gx
- Q4QdVIGkVxufsrag34rDjbZX1POWQyzPcw8De6It5hg1hTimXuDgb09hDJSKewn7
- cNK7pu0c6Z692I7uEbG1fYV4aBmBAuQpb57Ho6fbig==
-X-ME-Sender: <xms:xswyZqtsg806iXZeFUmHer5HpTnVbqnDLtuFKFPCrkkhD_WB5WXItg>
- <xme:xswyZvcCMVTlEETK4SbEXyp8AaFlFT5610dFLx7fc7Cnscbk12eq8z3_MqPo7iYsZ
- ejkKbnSaRIh8qg2uoc>
-X-ME-Received: <xmr:xswyZlyFnMZdPRaLTd0LJ1JVOxeU3gmJN5tz-lISapdkkDk4bv2ci0rGJnwkwtC7267PWy3mW6FyKqtvlZbvmLorvefp9lj5>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvddujedgvddtucetufdoteggodetrfdotf
+ fm3; t=1714605574; x=1714691974; bh=aJ9bQTQ0bXFx75w1V4iyVyCDpPwS
+ IeyvhFaFFkaoznc=; b=H4vhHlVXcT7kw8wLXefLQE0IW9kvUA1YOGNJ+6u3jMt5
+ r9vulwR5ilNwStsg3THwnqPVsQ8u0Zac1wWi3eB6BRtNa1THS5QbRUZUzOf0OOdJ
+ 0qa07qFx5UdseBIzTtekvG7ovSPmFR9sCXiAed/1opVbxbHoWzIW+8mVWzc53W16
+ 608mf3dInts22j0emQNJYmmmj0vyuQ/ZNO1FQ1TyzWh6NuoIriE3rojrou9dQ3Gy
+ 5vzRy0ksA6XriYxxs6C4/YI1PMypzbGdP31xC/+GGZMRhlmdK+IvkHLcjVZsIdp2
+ /T9AVVm7Q5J+i4rhTgqFeAE4ivCYYBJ/gopfF7mwyA==
+X-ME-Sender: <xms:Bs4yZuRj43ouOoEpzP8FU7k6rpScrGu09QeP69ppwqQFsSLibHkkmA>
+ <xme:Bs4yZjx8trRk0btoDEE8pQ_n7Ao6XmyIkqVKoP2oF0zL8UKnvFIyhQldpBP9aJ-64
+ AGYops0DDXj2DO3Uz4>
+X-ME-Received: <xmr:Bs4yZr0lAWzSUccET_TrZW6auV7zr4dIt8Z8_5_4q_KoQG-UT9lA90VPCdVHNAz_CDB0ECLb8kVf8G2S6eDc0MnORsuCrzjg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvddujedgvddvucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttd
- ertddttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
- rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhte
- etgfekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushht
- vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
- hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:xswyZlPcKC7QkqKMf-KT4Y0O9y1C5Z_aVIisCvtuLX60K8G611pHZw>
- <xmx:xswyZq8lILCgqTDBmRVpJ4cg3OQFM3t-wkx_tYvq15czWMkgSnGTIA>
- <xmx:xswyZtXhxd_NvAsUPWZGV-Zd9PEmzdJtsGvWM5T9iFTtGnPRhVeQCQ>
- <xmx:xswyZjcXIGk6yNSkgscSanAhaxb2BZkBd_UFpsEX3plTl1rMREDIfg>
- <xmx:xswyZsKZoov1_uTTV5OYBRRJUXI2Xwif-29k72jphASDbw7u8tIcmH6D>
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepvfgrkhgr
+ shhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhird
+ hjpheqnecuggftrfgrthhtvghrnhepveeilefhudekffehkeffudduvedvfeduleelfeeg
+ ieeljeehjeeuvdeghfetvedvnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlh
+ hushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghs
+ hhhisehsrghkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:Bs4yZqBLhPn0s0kH3DDdkD0LhW7U9VHdrcG9Y54R4AsKQLO1k8xytg>
+ <xmx:Bs4yZni3Cc1erQbDWL2xgUxdnkm_4V0xAmlv22bP1KhhpJUSDqoQ6g>
+ <xmx:Bs4yZmqKf7uSx2_MfxSilQVE_d4GtThPJjKXXLt00SZVYdHP-mPWjw>
+ <xmx:Bs4yZqi8_mMMxL-AffjltSMYssZjEvGhCbK7cxX6NpBoWfxmvVq_wg>
+ <xmx:Bs4yZksTYx_eDfEVfaQ_VLIuW8wInPg7bPWNQ18YPbp18VlzDcERlPMq>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 1 May 2024 19:14:13 -0400 (EDT)
-Date: Thu, 2 May 2024 08:14:10 +0900
+ 1 May 2024 19:19:32 -0400 (EDT)
+Date: Thu, 2 May 2024 08:19:31 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: linux1394-devel@lists.sourceforge.net
-Subject: Re: [PATCH 0/5] firewire: core/ohci: add tracepoints events for
- bus-reset
-Message-ID: <20240501231410.GA106963@workstation.local>
-Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
- linux-kernel@vger.kernel.org
-References: <20240501073238.72769-1-o-takashi@sakamocchi.jp>
+To: Adam Goldman <adamg@pobox.com>
+Subject: Re: [PATCH] firewire: ohci: mask bus reset interrupts between ISR
+ and bottom half
+Message-ID: <20240501231931.GB106963@workstation.local>
+Mail-Followup-To: Adam Goldman <adamg@pobox.com>,
+ linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
+References: <ZfqpJ061hLtPT8XL@iguana.24-8.net>
+ <20240325005828.GB21329@workstation.local>
+ <20240401121800.GA220025@workstation.local>
+ <ZjIp68AqHhegFmDv@iguana.24-8.net>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240501073238.72769-1-o-takashi@sakamocchi.jp>
+In-Reply-To: <ZjIp68AqHhegFmDv@iguana.24-8.net>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Wed, May 01, 2024 at 04:32:33PM +0900,
- Takashi Sakamoto
- wrote: > Hi, > > IEEE 1394 bus is under bus-reset state when the physical
- state of bus is > changed; e.g. bus topology change by adding new n [...]
+ Content preview:  Hi Adam, On Wed, May 01, 2024 at 04:39:23AM -0700,
+ Adam Goldman
+ wrote: > Hi Takashi, > > On Mon, Apr 01, 2024 at 09:18:00PM +0900, Takashi
+ Sakamoto wrote: > > I sent an additional patch[1] to handle the bus-re [...]
  Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: messagingengine.com]
+ for more information. [URIs: sakamocchi.jp]
  0.0 RCVD_IN_DNSWL_BLOCKED  RBL: ADMINISTRATOR NOTICE: The query to
  DNSWL was blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [64.147.123.154 listed in list.dnswl.org]
+ for more information. [64.147.123.144 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
-X-Headers-End: 1s2J9Y-0003SH-V0
+X-Headers-End: 1s2JEi-0004Je-4V
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -143,46 +147,61 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org
+Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+Hi Adam,
 
-On Wed, May 01, 2024 at 04:32:33PM +0900, Takashi Sakamoto wrote:
-> Hi,
+On Wed, May 01, 2024 at 04:39:23AM -0700, Adam Goldman wrote:
+> Hi Takashi,
 > 
-> IEEE 1394 bus is under bus-reset state when the physical state of bus is
-> changed; e.g. bus topology change by adding new nodes in the bus. It is
-> important to handle the state appropriately for the maintenance of bus.
+> On Mon, Apr 01, 2024 at 09:18:00PM +0900, Takashi Sakamoto wrote:
+> > I sent an additional patch[1] to handle the bus-reset event at the first
+> > time. I'd like you to review and test it as well, especially under your
+> > environment in which 1394:1995 and 1394a phys exist.
+> > 
+> > [1] https://lore.kernel.org/lkml/20240401121200.220013-1-o-takashi@sakamocchi.jp/
 > 
-> This series of change adds some tracepoints events to trace the events
-> related to bus-reset. Some kernel log messages are obsoleted and
-> deleted. It also includes for 1394 OHCI driver so that bus-reset IRQ
-> event is recorded as much as possible, and obsoletes bus-resets bit
-> from debug parameter successfully.
+> I'm sorry for another very late reply.
 > 
-> Takashi Sakamoto (5):
->   firewire: ohci: add bus-reset event for initial set of handled irq
->   firewire: ohci: obsolete OHCI_PARAM_DEBUG_BUSRESETS from debug module
->     parameter
->   firewire: core: add tracepoints events for initiating bus reset
->   Revert "firewire: core: option to log bus reset initiation"
->   firewire: core: add tracepoint event for handling bus reset
+> Now that we eliminated the IRQ storm, it makes sense to always enable 
+> the bus-reset interrupt at startup. I tested your patch with various 
+> devices, with a FW800 repeater, with a FW400 hub, without a hub, etc. 
+> Everything works OK. However, I only tested with XIO2213B OHCI.
 > 
->  drivers/firewire/core-card.c        | 13 +++---
->  drivers/firewire/core-topology.c    |  3 ++
->  drivers/firewire/core-transaction.c |  7 ----
->  drivers/firewire/core.h             |  4 --
->  drivers/firewire/ohci.c             | 18 +++------
->  include/trace/events/firewire.h     | 61 ++++++++++++++++++++++++++++-
->  6 files changed, 73 insertions(+), 33 deletions(-)
+> -- Adam
 
-Applied to for-next branch.
+Thanks for your test. The content of patch is equivalent to the first
+one in the candidate series[1], so I appended Tested-by tag when
+applying to for-next branch.
+
+The for-next branch includes the commits to provide the following
+tracepoints events:
+
+* firewire:async_request_outbound_initiate
+* firewire:async_request_outbound_complete
+* firewire:async_response_inbound
+* firewire:async_request_inbound
+* firewire:async_response_outbound_initiate
+* firewire:async_response_outbound_complete
+* firewire:async_phy_outbound_initiate
+* firewire:async_phy_outbound_complete
+* firewire:async_phy_inbound
+* firewire:bus_reset_initiate
+* firewire:bus_reset_schedule
+* firewire:bus_reset_postpone
+* firewire:bus_reset_handle
+
+All of them are used to trace the action of firewire core function,
+instead of 1394 OHCI driver. I think they are helpful to debug the kind
+of issue which we handled for v6.8 kernel.
+
+[1] https://lore.kernel.org/lkml/20240501073238.72769-1-o-takashi@sakamocchi.jp/
 
 
-Regards
+Thanks
 
 Takashi Sakamoto
 
