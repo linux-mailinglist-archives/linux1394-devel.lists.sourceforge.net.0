@@ -2,109 +2,113 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A9EA8BFB59
-	for <lists+linux1394-devel@lfdr.de>; Wed,  8 May 2024 12:54:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D5D838C079F
+	for <lists+linux1394-devel@lfdr.de>; Thu,  9 May 2024 01:22:54 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1s4ew5-00051l-Fg;
-	Wed, 08 May 2024 10:54:09 +0000
+	id 1s4qcU-0007Dp-AM;
+	Wed, 08 May 2024 23:22:42 +0000
 Received: from [172.30.20.202] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1s4ew3-00051a-JS
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1s4qcT-0007Dh-6Z
  for linux1394-devel@lists.sourceforge.net;
- Wed, 08 May 2024 10:54:08 +0000
+ Wed, 08 May 2024 23:22:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=a0fVWCNAeCMRWZmQr1IdFElN2UvdC3kfZOmfXavatBA=; b=gTAGcAytYhuf4sbDeO8SoUlUTt
- g6O93+8t5cLhFUw8PEG9YtvmRb59GKWoC3DdmDrJkYZWIS6gKTyHiUTv7V/+AkyvrplKYgz5DhSNj
- 9qwOj7ubdrdFnLOBD0mqYJN3wbd697YxW4wlyK1o0N9Xe+BQOwb6TLO9sCvaOJCO/xGk=;
+ bh=PqBmtiMR6pS/tekKeSNhOa3yqevNRmTxuIESSK02LFc=; b=DqSdkuhNdDCZIgyHM2WJurnCEW
+ jNAWivvqHdzkWWSzHDlJOJwg3PFxhWrrRBQ1TxyN0j5cK4coM/iH8FbUc7FyNc1Y6eSlqmmANP4wo
+ g0VkshNH7Mpxyxa16Vd/k3+ssK5qNQ2+qG5YDc2wBATX0F2PTt7BeB0Vzb1aB5M34ThE=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
- :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=a0fVWCNAeCMRWZmQr1IdFElN2UvdC3kfZOmfXavatBA=; b=f
- lPilWiBRyqmukcJPs5heb67/Q5k7dNBUaH+/OgJ26SRplTZdkdPG1Q9ydg0QnzeB0e4fF10hR0tVn
- HwT5BafwKrKgOe12KYp9TWcHzJDFb2ypLTuPyCZDvwhFhde6F3JlS3WL4UylmtTdWW1IaqUZu99Yj
- zi2gZCtpCcjW2bOg=;
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=PqBmtiMR6pS/tekKeSNhOa3yqevNRmTxuIESSK02LFc=; b=I/DU6nUfO5IxwlMS87gfAtLM8v
+ m0WyiYD3RmJixvQlW+KIZ/wtv+Rh9X33SWF0xhx8+JOOsvOgzAlqBD9ogg0qu8wJ/1IwdxchdsE9R
+ 9LB7FxOwb51pEQmgJvmmM8xngqRlrQUsLYZQBMNoXmIWpgcfdwr7UI++GhwpBxqH+B1s=;
 Received: from fhigh4-smtp.messagingengine.com ([103.168.172.155])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1s4ew4-0005Az-12 for linux1394-devel@lists.sourceforge.net;
- Wed, 08 May 2024 10:54:07 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailfhigh.nyi.internal (Postfix) with ESMTP id 8D80C114022C;
- Wed,  8 May 2024 06:53:56 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Wed, 08 May 2024 06:53:56 -0400
+ id 1s4qcT-0003mw-Dp for linux1394-devel@lists.sourceforge.net;
+ Wed, 08 May 2024 23:22:41 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailfhigh.nyi.internal (Postfix) with ESMTP id EF2B61140165;
+ Wed,  8 May 2024 19:22:29 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute5.internal (MEProxy); Wed, 08 May 2024 19:22:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:message-id:mime-version:reply-to:subject
- :subject:to:to; s=fm3; t=1715165636; x=1715252036; bh=a0fVWCNAeC
- MRWZmQr1IdFElN2UvdC3kfZOmfXavatBA=; b=GJT7++4cguQLEh5f6Lv1LRxE5o
- 052OK5bew6Z3Fc4esTYE3aRGI68+xobUHL1PbZxp+iQp0yJU7KciV14P9GArcNg3
- vy/ZD7CBNKBF6c7lKzeey0Ax7KqhXsbaxJZaMke4unThnHaFaYr1/yvemxeIKx3T
- 2IQdEPNXThMMr5mT36LOi4NdSylz53K9WmmyqrJBs5eiCgLOs0xljQvhs9n4wjKM
- kpVaPfJr2NEGh5iWp69BTUMzZPWZCypLk9m3hg2u6xoSIjO6NiBm9gXnIOxDK+IC
- ap8JAenZMCOgJqLJlkiTayfqugK9JTlMuhyCJKCRieyeYTBrOFQc3bpnZ8rQ==
+ h=cc:cc:content-type:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=fm3; t=1715210549; x=
+ 1715296949; bh=PqBmtiMR6pS/tekKeSNhOa3yqevNRmTxuIESSK02LFc=; b=L
+ XoP1o3/MaG7ZKFLGJn9zRvBzslXe0kASTMbNYLTvh9oLGHqcbTTL7JF07E5lkQUd
+ kNEJxmCnP4b4xzLcLGQA3sEei0QaXHTghCaItqUPu+7PR7/5ftT5t3x5BxYfhPgn
+ oMiGHO/SSoa0Mg9zhABoBocPbMlUaGOBFwhiszLk8FMb7YNb5z0+RqJiYCE+4p58
+ LYelow9xtIa5QNJBhxuHuyag7C6oqDvTY/sO0l5i6aZMWmaP7Mj3anjNDJxkfO0P
+ ezMdTTn4rgmX9MWS/rq5QXK9yf9ahY2fffvZgJd+h580ykX3Fb58rgI2F9rVNpcR
+ eZ7gqVNM7udaX8CDK406A==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1715165636; x=1715252036; bh=a0fVWCNAeCMRWZmQr1IdFElN2Uvd
- C3kfZOmfXavatBA=; b=UCf3mFh579BeYi7sIKB0gJv4qYNLyVoXAdTKhEepwcHF
- P5ct3dSNUeZlzRR0wval38raDWA2uH7so9jlvlzawBlta+tUcePL9HdxrdCA9Hyq
- MrppLBE1l/2h/ILlo9hVtdmb/ytD4/9RosH3BvROn+9XmV27LhYg/gD4IDJs7y6X
- 3kq0jPJlz2qnyoQKgvVmYdwr6tl8QqGBuoO+r9nYEeVstii28LNfeIKxHrluJbTN
- rRSObxpLwNBP8e2JWrY5vCLniYXKJSCLULkyQfM5qE0cEh87f13m/i3kqMx4C8KD
- 8AU/nK2BcH0F0RMbGAZkXvooghGpL9Fsc/w23UXlCA==
-X-ME-Sender: <xms:xFk7ZsfjNba-SWcGXmXu1JN7u0UCcETnXovOKR46qW6CEh0KiY4pjA>
- <xme:xFk7ZuPhANVOxMWSHGm-6EYXb95E4BdLOsMb9ZEoJDUVMRUHtTWVzLGMAFPck7r_p
- GEXmiPN7-LRC7uzEsQ>
-X-ME-Received: <xmr:xFk7Zth39orj5eFV7jj3_I9syqNhZX15q9VkmSptbAKGTqmdOStCj51GQ2OPYpNY_Vrt1PhKZs9pKtYa7LxqarmiREngQMiw1KTm4_kFumQYMQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvdeftddgfedvucetufdoteggodetrfdotf
+ fm3; t=1715210549; x=1715296949; bh=PqBmtiMR6pS/tekKeSNhOa3yqevN
+ RmTxuIESSK02LFc=; b=DamMVyl5VV4JB02JP6Gg309He8zHcpTAouBNipQ07axb
+ aJJGxNLmEDgud1NCzenP+OUoRfJfiSuzzwqiXmXpRz4S0obKKbCeFyUg/ngfI7w9
+ qPkr3C5TzxlXltuyfSPD8Gq1ufWBpAFAnZI4Mi0XT4+VgNJ36LH/R2QynzYAh5YJ
+ VB7JdUyEzcaiviid1DaMu3mSyQlbLoGDgXn4TyujUyzLnb+we4LpT6kN/S3cjCTA
+ rSTCUjP24g8xy57qJZnFZXtG0WCEfh8Savy+/AbqiWair7ObowyRkIrejnmU973s
+ 9Z7bpzmk7QWkhHfo44TV8AUk02/EsEizxPcMV83eUw==
+X-ME-Sender: <xms:NQk8Zqs7t7v_OnhC-VlHZmnMu-hqq3MhAWRS219DexdzGyW70ab9mA>
+ <xme:NQk8ZvclOiA7V-yrUoH0xe-LxOwwW91oI6QtwdDniKSgnCVeb3Pnb8P2doTuyAyfB
+ vx9dNzgRtQLXdyrfLc>
+X-ME-Received: <xmr:NQk8Zlxs8h_MenB-tD5zjk97eoAxJ4MFA5OTt7bKyLrcJLoaEhmHW_YhqVxRuKF0pDEgxN-sI8yN_egklIDBmXsSBk-P94lOKQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvdefuddgvdduucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertd
- ertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
- hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeffvdeuleffve
- ekudfhteejudffgefhtedtgfeutdfgvdfgueefudehveehveekkeenucevlhhushhtvghr
- ufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrg
- hkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:xFk7Zh-DoKo9K5SNWrw42e9tJszulcgeSmnVNyiKlNOxvRrH9xV5fQ>
- <xmx:xFk7Zoty_dp35Yu6yL1me9BmCD0V2DrvOcRELfSdseZQsn-8G5wW6w>
- <xmx:xFk7ZoFD3ZWK770tabiv7cGALPtksUxKdQCUOggglK_68KvvZ_AAgQ>
- <xmx:xFk7ZnM1ZSVRokpB3XqYvOWTdY1gNQGLqYl2vUBP7MI9pljPE04azw>
- <xmx:xFk7Zh4mskRZt1wz95iQcPNAWj_qHcXpJ-HB6-Af_EJatV0jUkpo6Y8p>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttd
+ ertddttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
+ rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhte
+ etgfekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushht
+ vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
+ hsrghkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:NQk8ZlM3RlkRmooEL5722T4VR-7oXnq6lSPQuY8LnmBw_nsvD6RyrA>
+ <xmx:NQk8Zq_kYU9F2HkRKzxaNE1MtCMx5DzXi7RuTBTn4cgerCt85tY9_g>
+ <xmx:NQk8ZtU0XtRYl4phR9EcREhxl4WtLWYWolfWnAj4gN_2zTh2aurnpQ>
+ <xmx:NQk8ZjdujezXgOd5eoCKF464krudlM9tQRTvncRNfMrQmgqhAT8YRw>
+ <xmx:NQk8ZsI4vYP--ZOmKsfJKcvixDYopFHPx8pUs4VOgftb7xcP50hCYW8T>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 8 May 2024 06:53:55 -0400 (EDT)
+ 8 May 2024 19:22:28 -0400 (EDT)
+Date: Thu, 9 May 2024 08:22:26 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH] firewire: obsolete usage of *-objs in Makefile for KUnit test
-Date: Wed,  8 May 2024 19:53:51 +0900
-Message-ID: <20240508105351.532693-1-o-takashi@sakamocchi.jp>
-X-Mailer: git-send-email 2.43.0
+Subject: Re: [PATCH] firewire: obsolete usage of *-objs in Makefile for KUnit
+ test
+Message-ID: <20240508232226.GA31582@workstation.local>
+Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
+References: <20240508105351.532693-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240508105351.532693-1-o-takashi@sakamocchi.jp>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Nowadays *-objs list is just for user space programs. This
- commit obsolete the usage, and simplify Makefile for firewire KUnit tests
- since the tests are not composite objects. Signed-off-by: Takashi Sakamoto
- <o-takashi@sakamocchi.jp> --- drivers/firewire/Makefile | 7 ++----- 1 file
- changed, 2 insertions(+), 5 deletions(-) 
+ Content preview:  On Wed, May 08, 2024 at 07:53:51PM +0900, Takashi Sakamoto
+ wrote: > Nowadays *-objs list is just for user space programs. > > This commit
+ obsolete the usage, and simplify Makefile for firewire KUnit > [...] 
  Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -112,16 +116,20 @@ X-Spam-Report: Spam detection software,
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
  for more information. [URIs: messagingengine.com]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 RCVD_IN_DNSWL_BLOCKED  RBL: ADMINISTRATOR NOTICE: The query to
+ DNSWL was blocked.  See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [103.168.172.155 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
-X-Headers-End: 1s4ew4-0005Az-12
+X-Headers-End: 1s4qcT-0003mw-Dp
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -139,34 +147,41 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Nowadays *-objs list is just for user space programs.
+On Wed, May 08, 2024 at 07:53:51PM +0900, Takashi Sakamoto wrote:
+> Nowadays *-objs list is just for user space programs.
+> 
+> This commit obsolete the usage, and simplify Makefile for firewire KUnit
+> tests since the tests are not composite objects.
+> 
+> Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+> ---
+>  drivers/firewire/Makefile | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/firewire/Makefile b/drivers/firewire/Makefile
+> index 013e1f2641bd..75c47d046925 100644
+> --- a/drivers/firewire/Makefile
+> +++ b/drivers/firewire/Makefile
+> @@ -16,8 +16,5 @@ obj-$(CONFIG_FIREWIRE_NET)  += firewire-net.o
+>  obj-$(CONFIG_FIREWIRE_NOSY) += nosy.o
+>  obj-$(CONFIG_PROVIDE_OHCI1394_DMA_INIT) += init_ohci1394_dma.o
+>  
+> -firewire-uapi-test-objs += uapi-test.o
+> -firewire-packet-serdes-test-objs += packet-serdes-test.o
+> -
+> -obj-$(CONFIG_FIREWIRE_KUNIT_UAPI_TEST) += firewire-uapi-test.o
+> -obj-$(CONFIG_FIREWIRE_KUNIT_PACKET_SERDES_TEST) += firewire-packet-serdes-test.o
+> +obj-$(CONFIG_FIREWIRE_KUNIT_UAPI_TEST) += uapi-test.o
+> +obj-$(CONFIG_FIREWIRE_KUNIT_PACKET_SERDES_TEST) += packet-serdes-test.o
+> -- 
+> 2.43.0
 
-This commit obsolete the usage, and simplify Makefile for firewire KUnit
-tests since the tests are not composite objects.
+Applied to for-next branch.
 
-Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
----
- drivers/firewire/Makefile | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/firewire/Makefile b/drivers/firewire/Makefile
-index 013e1f2641bd..75c47d046925 100644
---- a/drivers/firewire/Makefile
-+++ b/drivers/firewire/Makefile
-@@ -16,8 +16,5 @@ obj-$(CONFIG_FIREWIRE_NET)  += firewire-net.o
- obj-$(CONFIG_FIREWIRE_NOSY) += nosy.o
- obj-$(CONFIG_PROVIDE_OHCI1394_DMA_INIT) += init_ohci1394_dma.o
- 
--firewire-uapi-test-objs += uapi-test.o
--firewire-packet-serdes-test-objs += packet-serdes-test.o
--
--obj-$(CONFIG_FIREWIRE_KUNIT_UAPI_TEST) += firewire-uapi-test.o
--obj-$(CONFIG_FIREWIRE_KUNIT_PACKET_SERDES_TEST) += firewire-packet-serdes-test.o
-+obj-$(CONFIG_FIREWIRE_KUNIT_UAPI_TEST) += uapi-test.o
-+obj-$(CONFIG_FIREWIRE_KUNIT_PACKET_SERDES_TEST) += packet-serdes-test.o
--- 
-2.43.0
+Regards
 
+Takashi Sakamoto
 
 
 _______________________________________________
