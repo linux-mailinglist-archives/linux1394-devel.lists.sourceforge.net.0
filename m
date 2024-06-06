@@ -2,113 +2,108 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 830148FF7E4
-	for <lists+linux1394-devel@lfdr.de>; Fri,  7 Jun 2024 00:56:25 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id D2DB18FF850
+	for <lists+linux1394-devel@lfdr.de>; Fri,  7 Jun 2024 01:51:55 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1sFM1l-0003Dg-Uk;
-	Thu, 06 Jun 2024 22:56:13 +0000
+	id 1sFMtV-00068C-F7;
+	Thu, 06 Jun 2024 23:51:46 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1sFM1j-0003DV-TT
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1sFMtU-000684-94
  for linux1394-devel@lists.sourceforge.net;
- Thu, 06 Jun 2024 22:56:11 +0000
+ Thu, 06 Jun 2024 23:51:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=uWKKo+Z8UTJJDqqZjBiSEu6T/aRvEGy74QcpJ0XTx8U=; b=XXQqXrEycuhs2Sbl41fGm0OjCl
- g2aKIo+Q8jP4bo+XVw53AyIw+TfzUaXOasdX04xmdxwQbtFD0WH/+JUXJzTauseeI37d/D1QbBQog
- O5w4UziVHMxzGSzhoOnRSkidXKAX7NCAFtsWX/lUSFypNgl/bw+jSd2kAIEdYR25d1UQ=;
+ bh=sbGYsNm3EAX9zOM5lpa8OVKFNwjt6nSlwmTErxltP9E=; b=kZqU62g/uP1mxLDGjMDXI63piv
+ L4xvAvklUt1IUp2POpJHcoMI2NE6Xgc7wXiSJrSXgrq75GHaOnYlljf/pq/jtnm+LcDPk4i5O+B0v
+ nbm/W5kwoZXfEzeY6D3rCsSP/jgBsd2xcdx2cBWcCQMhAsFEhIVKWr+XaAIe93zw7ex4=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=uWKKo+Z8UTJJDqqZjBiSEu6T/aRvEGy74QcpJ0XTx8U=; b=WN6mg4TaLzV1sXbElGLA/VRyJY
- YU0fVhiCdrl9FGi9/FP8ILGsHWtuT2tW8Ei4wbZl9EuFnk+z7BSi4kJVna6t7syR5jHvJpRx285af
- ANkpUelsx1KBRRfIW/LjL0HH7vq+q4/A6SZd1E8NoX0r9g4ISUH4vZxohw2Y/l4jByg4=;
-Received: from wfout1-smtp.messagingengine.com ([64.147.123.144])
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=sbGYsNm3EAX9zOM5lpa8OVKFNwjt6nSlwmTErxltP9E=; b=a
+ 9roXL81dfZ9uq38q6tJUamq+JliDex6dK24AsL3sE/UIfSey0+jKdHIqPo2Baxy/DMP0N2RUCHaIN
+ IJeor7tk78ACoyH1peEC1cCNcqqQsH45iEn6VeR0o1/YT2EJN/Nm76yZEmWLKLox4XD8ynmlXbW17
+ TeTREnL5S2ZUm9sg=;
+Received: from wfhigh4-smtp.messagingengine.com ([64.147.123.155])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1sFM1i-0005j0-P3 for linux1394-devel@lists.sourceforge.net;
- Thu, 06 Jun 2024 22:56:11 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailfout.west.internal (Postfix) with ESMTP id 7431B1C0010F;
- Thu,  6 Jun 2024 18:56:03 -0400 (EDT)
+ id 1sFMtV-00080O-Ii for linux1394-devel@lists.sourceforge.net;
+ Thu, 06 Jun 2024 23:51:45 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailfhigh.west.internal (Postfix) with ESMTP id 16A3E18000BD;
+ Thu,  6 Jun 2024 19:51:39 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Thu, 06 Jun 2024 18:56:03 -0400
+ by compute2.internal (MEProxy); Thu, 06 Jun 2024 19:51:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1717714563; x=
- 1717800963; bh=uWKKo+Z8UTJJDqqZjBiSEu6T/aRvEGy74QcpJ0XTx8U=; b=Q
- OsGYsoppG7dFB8jiHpKxVcxe6gRsKERnijgQ/xZOBha5oXB5+6tdWgFpdkA5GBWx
- hn6RxEreTSG8UwdCTPaVn31gTeWOUyd8GwJJDq0wSIpwUeKgSm66WrQj3DDt9bKX
- 7QU/20XPiUfWl0qN40udqn0L1BQsYnb6OU0Oq4E5V8/UVU1ziCuMRQKUPhkUbnmq
- gKIKExyS3p7/A3qsPz1mX67CgNJ7yhKMSqEnLoMNblIQ34NyZ+EDlSpdmfmrkW3Q
- R5o9z4w8cNgCCSOKuiS4BUw507eFl0jtmfNznSL7wtk/su/yvScdon7ApjrmzkMX
- mbVySl0qBJsb86hcr/D+w==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm1; t=1717717898; x=1717804298; bh=sbGYsNm3EA
+ X9zOM5lpa8OVKFNwjt6nSlwmTErxltP9E=; b=Ozhe14neVtqdfE6HxMlDBpme2t
+ UspFX9oV4hSNMM0iQQSFkP3I45hz/GoFbe/L06h7uA361EtLf3YvYQKY2kadm/hH
+ mnY9gG0/jkpy41NIpyTJYfSp9AfoCTIEE8VbeoumvMO397LVooDXFiAiJX9Ju1Rz
+ DyJ6l+XxcZWuDZKNn8RDoHHnI3mR7qQMQWp5FpKMhreHwwOzEXKax7YFZEqtfy7H
+ b7xr4oq2/5MwCe2RmRL826COYtiHU8PFJeOzPFV0aR/3i80C0SiGwwaFcMKbbq32
+ OOxtk5FdH1lZfJsalpF5hQ9h2QwcJNPH8Cfgi0H8H6TwQUC4/CSWn+UAQl/Q==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1717714563; x=1717800963; bh=uWKKo+Z8UTJJDqqZjBiSEu6T/aRv
- EGy74QcpJ0XTx8U=; b=ZIxlo2X5hw0KFX5P+wnncHigxcha3u+cD7Npo+sGSwtI
- Nm+aYT7rH6YQFsLF6v95o+dwLHI3UV957XsT4HYwnuyJMZLdiprZgSB8uoTjep0v
- XtSaIYTOhy403jGw1YDw23macw6RseGVemYZAqq8ZUUYXD94bFGRD7mMDDJjuyVF
- 2zlY37mrBIUNW27cPXceb42s09odVHrefPthbA7pJ1d46gF4ULfGgJr5EN0M/kZW
- 3cnZy/w8hQFTXT1J0OiiXVbdsEKd9tUIM2G27FxoWEo5oMdPyNg2OmWWV1KjfLYD
- coYQtd87ASFVo5x7y6v4wTs/gFypQn/nXj1ZjNWCig==
-X-ME-Sender: <xms:gj5iZtHH3SzNFE6pXiB77fd9uz0MVNwcvXeBBb3Tw4KgB1W9XWmXPw>
- <xme:gj5iZiX2lRY9gYZ5RI4AJ5987UqmcNMttsnpZo-yl0RoUZoHP1PWY4zLcqAQE9Due
- v03iZMZ8fZ3kya59G0>
-X-ME-Received: <xmr:gj5iZvJje1DyQI2y_SMUQRuzNBul5V239c4St7A3wWBBe6H7xUhi7FZUrHnBxpsP55vbDe7bsy2Nex5s5JdcOMFizj43q6dV3NI>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvdelledgudeiucetufdoteggodetrfdotf
+ fm1; t=1717717898; x=1717804298; bh=sbGYsNm3EAX9zOM5lpa8OVKFNwjt
+ 6nSlwmTErxltP9E=; b=RvRJ654rPuK4cXr1gcIE9Bpf7/rmZ0CqUfL+mnVxSwQQ
+ DfWi1pj/2P7d7BRmkqWvtHkx0LejkYXUVSUcYIKQMNjjUqIbyA23FUhfB257/ui3
+ pG+FBiCjewuDM4skM91/hP1JqHCmZ6NuDnvZPDlt8a5ilG4YiQMrX87VYkGSfy12
+ sWfZiMacavcE2IX2LO7IYIdMzH/+G8VFKhBtoHE0FFgKkxApE/WmU82TWEI/cvw5
+ jyZe4NVVzMJZTnoD6y+3d83uadXkJNqhVZWzgQGvMkTgX5ueDliUxuxFSuiU8w3R
+ Ax92SLexaIuT9jtdqrdD00WNRf2fWBBrglwvzwCb2w==
+X-ME-Sender: <xms:iktiZtQ1TyciYjdZIvjiXQ6K69e3rWXzNYzJwrB2YLIJhDgsfI-i1w>
+ <xme:iktiZmx_fKbdcc8_4uEasX0Pw-X9tvFYu0ckwEOwy-o2m7LZnQSAbxQm5U4u8t3js
+ JxdJkOm1U_C6eMIW7c>
+X-ME-Received: <xmr:iktiZi2hbdQH0htPzpSEXsp9DUF2OTedyIsN917qypx61BRgMY24nhoxDRH91ElNk39IXRdVO5fEmwNpbm2tBZx2PjtFG_AaMjEYb4uvM6iV5A>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvdelledgvdejucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttd
- ertddttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
- rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhte
- etgfekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushht
- vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
- hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:gj5iZjFmUGQP7iWnhe5oJVPqUw9rF4WZ76GoLzx6lp6tMB-LYmsRwg>
- <xmx:gj5iZjVNe-GjKOIRne3QltgnFBEuVH3HksvKd5dt0E19taMEMk8-yg>
- <xmx:gj5iZuMZoGz0ifLv54qHgT1emz8GMMGC0zjDMuGbpI6etdCFBlWx_Q>
- <xmx:gj5iZi2JTkFx0-BNKPaENCmg-OmlrwNMopdc6DnnfYk584pm6gFuqg>
- <xmx:gz5iZgjsTHY7VdEZRRKhXdPAhSK_YG6Ok8-wUhkUlq6Ssz2gCVio2wBJ>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertd
+ ertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
+ hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeffvdeuleffve
+ ekudfhteejudffgefhtedtgfeutdfgvdfgueefudehveehveekkeenucevlhhushhtvghr
+ ufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrg
+ hkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:iktiZlB629F4SpCCiDuNgsQ3kPhgDmNAeNH2RTAdOg3_tHa9N6hD5Q>
+ <xmx:iktiZmi4WuhaH9Tf0T0KyeuWwbwjJBTifNqmdDAlHEwJqtQgGRI1Jg>
+ <xmx:iktiZpqQFCGcx51z4KRjmmvoPMNUrNzQVUxvVCeDpOWrfGKWTqU83A>
+ <xmx:iktiZhh_QdymlzSURVFARojBB4bifAgSgyb4D3DzRZF_g8tsEtfbHw>
+ <xmx:iktiZptqDUhSFUqg-VBoQILGLkfcyg2A387rHEo5QP_4dcIzJsLrS9Sl>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 6 Jun 2024 18:56:01 -0400 (EDT)
-Date: Fri, 7 Jun 2024 07:55:59 +0900
+ 6 Jun 2024 19:51:37 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: Re: [PATCH 00/11] firewire: add tracepoints events for self ID
- sequence
-Message-ID: <20240606225559.GA179534@workstation.local>
-Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
- linux-kernel@vger.kernel.org
-References: <20240605235155.116468-1-o-takashi@sakamocchi.jp>
+Subject: [PATCH 0/2] firewire: add helper functions for phy configuration
+ packet
+Date: Fri,  7 Jun 2024 08:51:31 +0900
+Message-ID: <20240606235133.231543-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240605235155.116468-1-o-takashi@sakamocchi.jp>
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Thu, Jun 06, 2024 at 08:51:44AM +0900, Takashi Sakamoto
- wrote: > Hi, > > In core function, the enumeration of self ID sequences is
- the first step > to build bus topology for the current generation. [...] 
+ Content preview:  Hi, In recent months, the batch of helper functions was added
+ to serialize and deserialize content of packet in IEEE 1394 protocol. This
+ series of changes includes some helper functions for phy configurat [...]
  Content analysis details:   (-5.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -116,29 +111,28 @@ X-Spam-Report: Spam detection software,
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
  for more information. [URIs: messagingengine.com]
- 0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
- query to Validity was blocked.  See
- https://knowledge.validity.com/hc/en-us/articles/20961730681243
- for more information.
- [64.147.123.144 listed in bl.score.senderscore.com]
  0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE:
  The query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [64.147.123.144 listed in sa-accredit.habeas.com]
+ [64.147.123.155 listed in sa-trusted.bondedsender.org]
+ 0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
+ query to Validity was blocked.  See
+ https://knowledge.validity.com/hc/en-us/articles/20961730681243
+ for more information.
+ [64.147.123.155 listed in bl.score.senderscore.com]
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [64.147.123.144 listed in list.dnswl.org]
+ high trust [64.147.123.155 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1sFM1i-0005j0-P3
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+X-Headers-End: 1sFMtV-00080O-Ii
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -156,63 +150,27 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Thu, Jun 06, 2024 at 08:51:44AM +0900, Takashi Sakamoto wrote:
-> Hi,
-> 
-> In core function, the enumeration of self ID sequences is the first step
-> to build bus topology for the current generation. Currently, 1394 OHCI
-> driver has a module option to dump the content of self ID sequence, while
-> it is implemented by printk. My recent work is going to replace such
-> logging with tracepoints events, and this series of changes is for the
-> self ID sequence.
-> 
-> The content of self ID sequence is delivered by a kind of phy packet,
-> and its serialization and deserialization codes exist in both core function
-> and 1394 OHCI driver. They include some redundancies, and the series of
-> changes includes some inline helper functions to replace them.
-> 
-> In the series of changes, some KUnit tests are added to check behaviour
-> of the enumeration and the helper functions.
-> 
-> Takashi Sakamoto (11):
->   firewire: core: add enumerator of self ID sequences and its KUnit test
->   firewire: core: add helper function to handle port status from self ID
->     sequence and its KUnit test
->   firewire: core: minor code refactoring for topology builder
->   firewire: ohci: minor code refactoring for self ID logging
->   firewire: core: use helper functions for self ID sequence
->   firewire: ohci: use helper functions for self ID sequence
->   firewire: core: add common inline functions to serialize/deserialize
->     self ID packet
->   firewire: core: use helper inline functions to deserialize self ID
->     packet
->   firewire: ohci: use helper inline functions to serialize/deserialize
->     self ID packet
->   firewire: core: arrangement header inclusion for tracepoints events
->   firewire: core: add tracepoints event for self_id_sequence
-> 
->  drivers/firewire/.kunitconfig                 |   1 +
->  drivers/firewire/Kconfig                      |  15 ++
->  drivers/firewire/Makefile                     |   1 +
->  drivers/firewire/core-topology.c              | 219 ++++++---------
->  drivers/firewire/core-trace.c                 |  18 ++
->  drivers/firewire/core-transaction.c           |   2 +-
->  drivers/firewire/ohci.c                       | 148 ++++++----
->  drivers/firewire/packet-header-definitions.h  |   2 +
->  drivers/firewire/packet-serdes-test.c         | 255 ++++++++++++++++++
->  drivers/firewire/phy-packet-definitions.h     | 247 +++++++++++++++++
->  .../firewire/self-id-sequence-helper-test.c   | 152 +++++++++++
->  include/trace/events/firewire.h               |  61 ++++-
->  12 files changed, 935 insertions(+), 186 deletions(-)
->  create mode 100644 drivers/firewire/phy-packet-definitions.h
->  create mode 100644 drivers/firewire/self-id-sequence-helper-test.c
+Hi,
 
-Applied to for-next branch.
+In recent months, the batch of helper functions was added to serialize
+and deserialize content of packet in IEEE 1394 protocol. This series of
+changes includes some helper functions for phy configuration packet as
+well as some KUnit tests for them.
 
+Takashi Sakamoto (2):
+  firewire: core: add tests for serialization/deserialization of phy
+    config packet
+  firewire: core: use inline helper functions to serialize phy config
+    packet
 
-Regards
+ drivers/firewire/core-transaction.c       | 22 +++----
+ drivers/firewire/packet-serdes-test.c     | 79 +++++++++++++++++++++++
+ drivers/firewire/phy-packet-definitions.h | 55 ++++++++++++++++
+ 3 files changed, 144 insertions(+), 12 deletions(-)
 
-Takashi Sakamoto
+-- 
+2.43.0
+
 
 
 _______________________________________________
