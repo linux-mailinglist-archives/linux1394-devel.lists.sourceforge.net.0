@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 426EA90963A
-	for <lists+linux1394-devel@lfdr.de>; Sat, 15 Jun 2024 08:01:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CF5A90963C
+	for <lists+linux1394-devel@lfdr.de>; Sat, 15 Jun 2024 08:02:11 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1sIMTh-0004qA-AT;
-	Sat, 15 Jun 2024 06:01:30 +0000
+	id 1sIMUB-0004rI-0Y;
+	Sat, 15 Jun 2024 06:02:00 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1sIMTe-0004q0-QH
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1sIMU9-0004r8-54
  for linux1394-devel@lists.sourceforge.net;
- Sat, 15 Jun 2024 06:01:29 +0000
+ Sat, 15 Jun 2024 06:01:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
  Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=pVkvcR5Mh/CuKy7u+0e9iN5sR7E/3l6Wx4z3fQhdZjU=; b=hJRDsk5Ge/k9Y37l0kN5epDlHl
- q6Ausn+/bCy3JjTeMl+K1hCFagsk1QFSOqPHeL4ZeQD5PlvRB2qvGDowvsTrH4MPrJhzH0TYxAMVf
- VsRC4z0Ve3v7hL49VDbsvcmejxyLbh02wZZdNSwrFfwJe1gWOwfCSF7pNBza0lnkDWBs=;
+ bh=Ut+CKX+eYnOgJHTPoNOfgg3PZFekCdvoV0ptxsFX8P4=; b=h+QiN3TG/304Ys/MlfNHY4A66J
+ eQSry2b1XTlckpWvPmEychMfWNXuECFKKVEv4Bwp17EcBQ06VSJOZtwto+tsv6PLgNA4gg0puAB8d
+ TBi2ka6AUcyEfJXXYUK4UQydH7gBIayi4AYsqLK55flk9y2e5AMitLmMtgkahLCeUejw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
@@ -31,84 +31,84 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=pVkvcR5Mh/CuKy7u+0e9iN5sR7E/3l6Wx4z3fQhdZjU=; b=UJAajQkPoYkQYKyDiVWfWxXkf6
- MHKpDA2A2DswNSimBBJXL0TA8vxBMWnacHSJyNnpKW1sFAcCR2MfbqeK5R5HDNA7y86sufGajUnMD
- U7Mj8jj6yx1x9vTty9E4EzWiZoBjOgdViBNonDK16OxUHAyuaQqWIKW4FglfzyKKg3wE=;
+ bh=Ut+CKX+eYnOgJHTPoNOfgg3PZFekCdvoV0ptxsFX8P4=; b=bGgf8YSMIA4Bko1IRAAwGJ16dH
+ qKMy4ysA8mbqPG3Gj5TYhbrMqIKVsVya4JQ5CbSUodAOzZAiBZUtzJYyyVPrFcVQxEy/vN25w2TAZ
+ 3+1RiuCJ6xTvOlyXAa6tvNUXJVsatmmC6tMGkrSgTlfKRL5ikHILQdvaWNGvcHkZUtPE=;
 Received: from fout8-smtp.messagingengine.com ([103.168.172.151])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1sIMTe-00028w-69 for linux1394-devel@lists.sourceforge.net;
- Sat, 15 Jun 2024 06:01:27 +0000
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailfout.nyi.internal (Postfix) with ESMTP id B7B69138030D;
- Sat, 15 Jun 2024 02:01:19 -0400 (EDT)
+ id 1sIMUA-0002Aq-AY for linux1394-devel@lists.sourceforge.net;
+ Sat, 15 Jun 2024 06:01:58 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailfout.nyi.internal (Postfix) with ESMTP id EADBC13802E0;
+ Sat, 15 Jun 2024 02:01:46 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute1.internal (MEProxy); Sat, 15 Jun 2024 02:01:19 -0400
+ by compute5.internal (MEProxy); Sat, 15 Jun 2024 02:01:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1718431279; x=
- 1718517679; bh=pVkvcR5Mh/CuKy7u+0e9iN5sR7E/3l6Wx4z3fQhdZjU=; b=a
- 5lOoSE+miL9JdhfK+Du4a+OVtOLtDCHCUIPDY5YQEK5nO+eI3uyHjDBSh3rGDKH2
- OH5xVRbmmg9EJQiEIkywKbdSUK6wtSeN0C0G3K0hbvCgyfUL2uBnc5vpykRaThON
- 9j7el1bnQSsl2UWr2Tlfg47a/8Lo2UYJQqBZYJoNt46sU3HYEmsRPQjAtzL4aICe
- eusrKbrhLi9qNCE4Vjt1GfBc2WxJ9YMYy3TO47aFXsQQbS01RyrbpgGbeBJhRC0f
- dDSNJGsaxPDjb6dmwBz1uG1hrOhmo7gbQJetb4Dq9/diVFMZR0HOOaeFOagRGsa7
- eS63wSOzGSW2dk7DC7Jng==
+ :reply-to:subject:subject:to:to; s=fm1; t=1718431306; x=
+ 1718517706; bh=Ut+CKX+eYnOgJHTPoNOfgg3PZFekCdvoV0ptxsFX8P4=; b=M
+ IeIXuv6UsRJTUvaKnxGh+dyKSt0FqTUQSpZU7Op/eB4ab+9ZBrQI8SIhdrg71lAc
+ TBvcbD+2914XUalxlPnLkWsisoMl2Me0w8pAmRTEK17GW8YDvNfficb3Ns0fzzWr
+ ySTe8sL0OQv97QXchCbG+9kpysJornRPljyCk+nVDjQwclXyrRKS1H3qa8IYUnoj
+ 9zgfLX0HL6cZJtf8xtmQDz9qS2BqvQs0g2X6RqijRZuP2eo6qxHjX6RW4Z2ywkLa
+ I/ac/E8M/Dtdwu/aMQQdeholtq/LI0YkxWwd0oYyJHARU/jztUR9tW3pG+FjPvXe
+ WNEJWeI5eZLWvyhUGg9XA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1718431279; x=1718517679; bh=pVkvcR5Mh/CuKy7u+0e9iN5sR7E/
- 3l6Wx4z3fQhdZjU=; b=mZ5dDT5pTJ191Zcgo763UUeyxtCHRc1CRLu78QDyAwRS
- /uQ80UgeAZNO7bX6S6kmdOcWHyrjTdQK3aZKgr5fqJ0TreR4zGwNIWHKVV95bvl1
- vB8Hwbot1VBcusMJt1ITAt0qinEOr8QNTdn88OBcMVpkVjfXu/r+CagXFNK0AEyI
- yb9aEN3cFOLPWsoq4GWpFVkSYvbcU5Vn05Czz1fz4JI0HoG3WLO4s2NnlkTnkw/P
- BFHualGOsxCgOmh/WKPWvCIzjd4/HwQIX52NU+M+uMF+0c3moHv8vrVVIFipPMBp
- q5DNPB1VY9WsK5JxPmnX402biPSrgxPAgJHgv81P8A==
-X-ME-Sender: <xms:Ly5tZgI2qR4RiBk4zQI3rNVe7pd6o8_aMiIhtnXbChFwrrAvFRz4vw>
- <xme:Ly5tZgLnX-JozYQPiuYp-IqraX77lYub3-rr2GZBqKT99GfORIojHmA98pHC6yIGL
- AtunFOa4O7tX9CXIaU>
-X-ME-Received: <xmr:Ly5tZguAmTUA_HFCrixg67nxflqsPSOI0QJJw594FPL1XZ_TpmXN5uiV5BFYFgZraNRnZ25vjPEGG3PcdwOBmbGbISR8VMBnNyiH>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrfedvtddgleelucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttd
- ertddttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
- rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhte
- etgfekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushht
- vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
- hsrghkrghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:Ly5tZtbSbJThrsagKvWGfZGsO9lZZH5Y4FH1kopGyyonKOLBmF8x9A>
- <xmx:Ly5tZnbNTSW5iMqcgyT2T3pZ0ZrHFaHRj9BBm0_46rSJUtR1j5JLAA>
- <xmx:Ly5tZpAbZwa0NUHdCdGJ3oNub4-AqJtxb6XUu16kWfXJYXZ927_GMw>
- <xmx:Ly5tZtatBxjQU9cLqCzm4yaqH0HJNSu2Zc-x24RKWM4QMORdKKPg0Q>
- <xmx:Ly5tZmnTfNrFElbb4lVSchkkZ5wHIv-kvQ__91PoNouX4L-KNR-z5WNg>
+ fm1; t=1718431306; x=1718517706; bh=Ut+CKX+eYnOgJHTPoNOfgg3PZFek
+ CdvoV0ptxsFX8P4=; b=RTwuwVLTWHaQn6lHJlKNTsDg6e6SgMfwd8+PXUNFYSF/
+ NPdoOCeKi27VTIL+lkx4ephbg/A4lEam7NE4+37wPwUwdUrnV17lMjWcdK1iGzQz
+ Am5t72LKD1RAdAYLOaB76nrDKqptp76KQpAcMBr8+NklcizglcGCYHK5xc03pEvj
+ QFi58nUAtAxSF3mrmvMMA+nCsQmk9T7lCKe12ztkEbVLyKzkiM1JRXtNkjXm33zn
+ PIsTHZj+oNEbxEhz5NLW2CIpAC2NXhsG+6U/tEIdqlAs7o5hg3tl5E8woCwyYIMP
+ sSUdWytuTxIqbgB5B5ZsbN/I/LiBnPueQvcNSvzaVQ==
+X-ME-Sender: <xms:Si5tZsHeneIYr2DFcYsa6fAlzIouPLLxl4FNqy0dO6Tpvf3KXHu6GA>
+ <xme:Si5tZlVaO1NtKEjFXwmnpGJfjO300ojv15w8b4-cIjwesRrXDZ43eeToWjtq_nug6
+ 1v6in79WeBZx1-GPKg>
+X-ME-Received: <xmr:Si5tZmIsKre5V2qpsQwuIVbNiibR5aW00m5BhjOhBjfr12nq10ZClfxHv-GLNei3_xmHHS99YpHOzVGFfAoeFMflsYj7tjsGuiZY>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrfedvtddguddttdcutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecunecujfgurhepfffhvfevuffkfhggtggujgesth
+ dtredttddtvdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgr
+ khgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhephefhhf
+ ettefgkedvieeuffevveeufedtlefhjeeiieetvdelfedtgfefuedukeeunecuvehluhhs
+ thgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhih
+ esshgrkhgrmhhotggthhhirdhjph
+X-ME-Proxy: <xmx:Si5tZuFdEAyXGcBC7RniVCQ4G1Fl2qIrluXWWxOi_EJ-2cOH-fwJFg>
+ <xmx:Si5tZiXj_7y0bJSONoWhmxMCP0p4Vtu7xVxhYFYe0naP-A71JmSLvg>
+ <xmx:Si5tZhORCVwgppsXhFBCCvj6LDzBwtKdtbsfxiL4ikFGg3quWR3_3w>
+ <xmx:Si5tZp1oi3JiYetMLlt4enaYii_6WlLnTEMXSmwfaug7kaW684ymjA>
+ <xmx:Si5tZvhPNNdyiL2JrS7Pe4CTCB1pOcqPYhzrHkE40AbtYnW6eBh7HXx9>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 15 Jun 2024 02:01:18 -0400 (EDT)
-Date: Sat, 15 Jun 2024 15:01:15 +0900
+ 15 Jun 2024 02:01:45 -0400 (EDT)
+Date: Sat, 15 Jun 2024 15:01:43 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: Re: [PATCH] firewire: core: record card index in tracepoints event
- for self ID sequence
-Message-ID: <20240615060115.GA497879@workstation.local>
+Subject: Re: [PATCH 0/8] firewire: store the numeric identifier of card in
+ data structure for tracepoint events
+Message-ID: <20240615060143.GB497879@workstation.local>
 Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
  linux-kernel@vger.kernel.org
-References: <20240614004251.460649-1-o-takashi@sakamocchi.jp>
+References: <20240613131440.431766-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240614004251.460649-1-o-takashi@sakamocchi.jp>
+In-Reply-To: <20240613131440.431766-1-o-takashi@sakamocchi.jp>
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Fri, Jun 14, 2024 at 09:42:51AM +0900, Takashi Sakamoto
- wrote: > This patch is for for-next branch. > > The selfIDComplete event
- occurs in the bus managed by one of 1394 OHCI > controller in Linux [...] 
+ Content preview:  On Thu, Jun 13, 2024 at 10:14:32PM +0900, Takashi Sakamoto
+ wrote: > Hi, > > In v6.10 kernel, some tracepoints events are added to record
+ > IEEE 1394 asynchronous communication. In the case that multip [...] 
  Content analysis details:   (-5.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -116,29 +116,29 @@ X-Spam-Report: Spam detection software,
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
  for more information. [URIs: sakamocchi.jp]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [103.168.172.151 listed in list.dnswl.org]
+ 0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The
+ query to Validity was blocked.  See
+ https://knowledge.validity.com/hc/en-us/articles/20961730681243
+ for more information.
+ [103.168.172.151 listed in sa-trusted.bondedsender.org]
  0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
  query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
  [103.168.172.151 listed in bl.score.senderscore.com]
- 0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The
- query to Validity was blocked.  See
- https://knowledge.validity.com/hc/en-us/articles/20961730681243
- for more information.
- [103.168.172.151 listed in sa-accredit.habeas.com]
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [103.168.172.151 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1sIMTe-00028w-69
+X-Headers-End: 1sIMUA-0002Aq-AY
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -156,24 +156,50 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Fri, Jun 14, 2024 at 09:42:51AM +0900, Takashi Sakamoto wrote:
-> This patch is for for-next branch.
+On Thu, Jun 13, 2024 at 10:14:32PM +0900, Takashi Sakamoto wrote:
+> Hi,
 > 
-> The selfIDComplete event occurs in the bus managed by one of 1394 OHCI
-> controller in Linux system, while the existing tracepoints events has
-> the lack of data about it to distinguish the issued hardware from the
-> others.
+> In v6.10 kernel, some tracepoints events are added to record
+> IEEE 1394 asynchronous communication. In the case that multiple 1394 OHCI
+> controllers are available in Linux system, it is hard to distinguish
+> the controller used for the communication, since these events have no
+> member in their data structure to express the used controller. It is a
+> bit inconvenient to diagnose things.
 > 
-> This commit adds card_index member into event structure to store the index
-> of host controller in use, and prints it.
+> This series of patches is an attempt to solve the issue. In Linux
+> FireWire core, the available controllers are maintained in list, and
+> each of them has its own numeric identifier (=card_index). In this
+> series, the index value is added to the data structure.
 > 
-> Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-> ---
->  drivers/firewire/core-topology.c | 2 +-
->  include/trace/events/firewire.h  | 9 ++++++---
->  2 files changed, 7 insertions(+), 4 deletions(-)
+> I would like to put the change to v6.10-rc4 (or later) as the part of
+> fixes if receiving no objections.
+> 
+> Takashi Sakamoto (8):
+>   firewire: core: record card index in tracepoinrts events derived from
+>     async_outbound_complete_template
+>   firewire: core: record card index in tracepoinrts events derived from
+>     async_outbound_initiate_template
+>   firewire: core: record card index in tracepoinrts events derived from
+>     async_inbound_template
+>   firewire: core: record card index in async_phy_outbound_initiate
+>     tracepoints event
+>   firewire: core: record card index in async_phy_outbound_complete
+>     tracepoints event
+>   firewire: core: record card index in async_phy_inbound tracepoints
+>     event
+>   firewire: core: record card index in tracepoinrts events derived from
+>     bus_reset_arrange_template
+>   firewire: core: record card index in bus_reset_handle tracepoints
+>     event
+> 
+>  drivers/firewire/core-card.c        |   6 +-
+>  drivers/firewire/core-cdev.c        |   6 +-
+>  drivers/firewire/core-topology.c    |   2 +-
+>  drivers/firewire/core-transaction.c |  30 ++++----
+>  include/trace/events/firewire.h     | 113 +++++++++++++++++-----------
+>  5 files changed, 92 insertions(+), 65 deletions(-)
 
-Applied to for-next branch.
+Applied to for-linus branch.
 
 
 Thanks
