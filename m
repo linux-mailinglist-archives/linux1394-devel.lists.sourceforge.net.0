@@ -2,103 +2,103 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81D3E913ED4
-	for <lists+linux1394-devel@lfdr.de>; Mon, 24 Jun 2024 00:09:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AE219159ED
+	for <lists+linux1394-devel@lfdr.de>; Tue, 25 Jun 2024 00:35:34 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
 	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1sLVOm-00045s-H7;
-	Sun, 23 Jun 2024 22:09:23 +0000
+	id 1sLsHR-0002CM-9F;
+	Mon, 24 Jun 2024 22:35:20 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1sLVOl-00045h-8i
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1sLsHP-0002CD-QL
  for linux1394-devel@lists.sourceforge.net;
- Sun, 23 Jun 2024 22:09:22 +0000
+ Mon, 24 Jun 2024 22:35:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
- In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=SbytbCOXN4nSm+jv3TMP9PFpjfKgobFm/O7hJMPsTzI=; b=JbeJPGfoDVlNhwA8dLNYaXIFBh
- JEbTkvi80OphEaT19ZJeXJdSDm9y9jh1u9GmHlz01PnB5AFGOJD6NqJd0/RL/oIf133uZZT6uRsTB
- e0NjCIhMFlZc6++y4wt3nZ7S7dd4NLLb4w4ICjNKtV9CgYdqQvo5l64o4SY61qxLEJPU=;
+ bh=vLjiFJxOdYepXvTDQroB0EYKMbWZPsdolq8sznSWlMs=; b=YiNlyCMnSwGJEVEXaIlR05GJgo
+ Qxe6gX7dk+/gaml9rurOZrjyc2SIKTvz2OJ+QxauEqcD066o/Lbbugxd+RFgifEZle9iLMV5vXKms
+ EUufzMmoiOLpU8Sfsy9avu4ylToiWdoP27rlqndbWyC9K7ccRGTo4lpeHNxHmhKdEcbE=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=SbytbCOXN4nSm+jv3TMP9PFpjfKgobFm/O7hJMPsTzI=; b=kOs8juZ5Shtl/cw5nwKoAyxEjP
- kfTEqcN0T3cNeyeVZte87dsn1zeSJkeG1dKgIBzX1MPWQOhqnkj8bhtxqK5Hz54yZNGg9GL71gPd9
- qc7Ii3MvvYE/C1DLX+hVqlRaWuh7qqK7J0O9QW1Vm6+hmxp7Q66mvC/NDXnlHJJi+c5w=;
-Received: from fout1-smtp.messagingengine.com ([103.168.172.144])
+ bh=vLjiFJxOdYepXvTDQroB0EYKMbWZPsdolq8sznSWlMs=; b=NNiA31UT62lXkz5h2Atc8K/znu
+ jBzU0s4wW6ho/4VsYibRcS8Q1clR0dAsASegQUMuLexe6BLgtPGx2HdxT2a/PVFeqTBxA7q9jCFUz
+ JrWjq6ni/vl+yvPCpXsJKVj6LblsNH5rcZiKXVQ/gwLW7kVKv4ZvBnKNvWknKXPxeaXw=;
+Received: from fhigh5-smtp.messagingengine.com ([103.168.172.156])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1sLVOk-0002Kf-Gh for linux1394-devel@lists.sourceforge.net;
- Sun, 23 Jun 2024 22:09:22 +0000
+ id 1sLsHO-0001xp-Vg for linux1394-devel@lists.sourceforge.net;
+ Mon, 24 Jun 2024 22:35:19 +0000
 Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailfout.nyi.internal (Postfix) with ESMTP id 2CE3C1380223;
- Sun, 23 Jun 2024 18:09:16 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Sun, 23 Jun 2024 18:09:16 -0400
+ by mailfhigh.nyi.internal (Postfix) with ESMTP id 905891140098;
+ Mon, 24 Jun 2024 18:35:07 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute2.internal (MEProxy); Mon, 24 Jun 2024 18:35:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1719180556; x=
- 1719266956; bh=SbytbCOXN4nSm+jv3TMP9PFpjfKgobFm/O7hJMPsTzI=; b=c
- r8kAC5SCVHYxDqnXRStkbHyGSblKdYnjcaEDQtnaUF0J2w/5pTrwzFP6wcst/J3g
- i7dUMSs5+X5EN6gsw2B45Lqgld17NxutYPkUj7UfTrulQZu/+ZtXhrZu84WzuI6r
- +DHK/7vKSqvVuoyTKpTUzhqnLY6Lkb1p7hZRy3AkhH5CqP5TpviHbY/SUcHWjHm0
- XTOScLx5hdy1LRTxlKy2gTS1laiilSGoy7e96xloEMqATdIC08+NLPLWO7xjh+Wk
- LR4dURf6I5SOjYCvrsTwGNkfGOEX5GpEqazZzGzWWr39n3WNGvx5DZ2K9W+eTBfA
- FC+Ygm/Ckw/03VIWnEzLQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
+ h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1719180556; x=
- 1719266956; bh=SbytbCOXN4nSm+jv3TMP9PFpjfKgobFm/O7hJMPsTzI=; b=m
- 2w/O2LzPTudsaeGdGuw71cvMaiYS/19PzzdwsflrLljs1Ccq+9+V3q3RhAjOfJRN
- Fy6nuzcoydoVHDBcDrUPvWiMaa5f4DHzbho3xrMto2hdDt0baIZb9cIxTVWS+viI
- RiytrToH5BT4j7+aNAsJ0zBOzYBKYS4A3a3TZ9x43fqTq9XhfJvdBuDeMvE7tVYy
- SUzgsu+uI4cwp+qaoEJ1hPUPb1GBdOWOtWibkOx1uo+M7i5ODzMKKdsZl4B97l+o
- M9nqPc28f5LjHYDLXVTIGenpSqAYeWu6UqDjAqMXDH98xzWst/7bsvUcIpuzrlmv
- /aOfGVMyAXOO1mT65p6dQ==
-X-ME-Sender: <xms:C514ZvrxLQsSozj_yA6Yry_zjdPJLIS4BxshfogtGPodUk6DAAMhyQ>
- <xme:C514Zpq_ZDDpkSRq7oyB9xHfnoVv5McEmrg1-5JOEphOTltZWL8eg7osa1LxmRjqt
- gKBJ9FJGGzvtRCcy7U>
-X-ME-Received: <xmr:C514ZsNIYkSFDYvMMEbqKbm6T5fsIPTCeNirrGFAANFn25O8Ik4zhZzFdQFdZdTFM9lYNiD5uIlbqIEVDmT0BhyPx5KauD8A9P_Ww3Zenhcf>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrfeegtddgtdeiucetufdoteggodetrfdotf
+ :reply-to:subject:subject:to:to; s=fm2; t=1719268507; x=
+ 1719354907; bh=vLjiFJxOdYepXvTDQroB0EYKMbWZPsdolq8sznSWlMs=; b=c
+ nbjUSLi0y3fVTXvUsjB8bo884WeQyaoKdUCMDa0QdsMgxxOlJjKf0W6mRIN3Up8n
+ uSFlBhajk6RcLbBE+/n7XHV0BhuDXrVit+DS5eMYXpPEumqr0stY7U9UkiRTbmMW
+ aMCnQFMlgbFClCPqBHBsw3puHJyCALLZtZ9iw7Tj5dseva+ciLi2xu8/rtVZnRnT
+ pNoFFCEEQ+WFG/YT8bW3J6EDFQDjZzRNlbBkjv4Ts/+8ha+dQYDxnkRQchJ5N1Md
+ xKpSAlz93jqKMarHENcz3kC7eYkKok824/PgyyQL7HLJ6OzH8m8U+CkWsFZaXQ1A
+ L8WBwFeGb3grKCqQXpHAw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm2; t=1719268507; x=1719354907; bh=vLjiFJxOdYepXvTDQroB0EYKMbWZ
+ Psdolq8sznSWlMs=; b=J7hn6uLSuIOVQ/XD+0lXN4rsCJbwtAsoysgcgZNW0M4J
+ X+nLMb/By3zbWuG1joYuX7/kL2a38zYucSu4HPI6AIrUChPv2ohtKJt81XwjxZ7T
+ iK8LmjcS4AuqlLFATdp0N6HUfvZVYVfU18kL7rAHOYohVMeSLieBjn2jVP1NihqE
+ 5O+kbQHqqadKSw7JfyKA8bY80b9AUSq4nMKOBOkT1pvp0VVu4KbOtl3ftBJJtn9s
+ Nsdotrb96SwJXE7HzCJBy8h2TW+OvYvuGbzfqW5967lhNjWIGs+VF6e6kjIpugCQ
+ JhmM6xyhdwt1AfokboiWEoc9t3y3Zb+yNAMAOXgQsg==
+X-ME-Sender: <xms:m_R5Zv28NqJAFCZlmfjkjF-zf1JWEhe2tzCkHK7dxfW4LdJkrH_MlA>
+ <xme:m_R5ZuHhSyb7RBAZCLpJJ1KPu906dtHqS-oY8pmXxqoxHZJvbbBgib9hU0KzJb8jP
+ Rb_R8fvf-IeICfcirQ>
+X-ME-Received: <xmr:m_R5Zv6qC8z1ZcCinHUIwkS1jBLd4K9MK5_nC-SEGMva9HyDXJQ7fN6EtZcn5aa1GMaauPbE9oQF0LoRAHvZI9dG5PqhWKpuqJE>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrfeegvddgudefucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtke
- ertdertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
- rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeeufedtge
- fhvdettefhgffhgedttdekveejudefledtgeekjedtgedthfeljedvleenucffohhmrghi
- nheptggrlhhlsggrtghkrdhstgdptggrlhhlsggrtghkrdhmtgenucevlhhushhtvghruf
- hiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghk
- rghmohgttghhihdrjhhp
-X-ME-Proxy: <xmx:DJ14Zi6Z392curT0bWbMOTT31-cyqPUOqw5AoKVui4CYJ7XSBobyrg>
- <xmx:DJ14Zu5Qf7Ip4u1mkN9iwpYfSuGuLcC1y41ISktkvF8hT4XKjjQDZg>
- <xmx:DJ14ZqjlOeM-sguEkl1jH8uYqlkfD-MafwRPY1DX6FvI-bna06eUdA>
- <xmx:DJ14Zg5KeZ1OCpdxsUPvNFNNB0Ro5fC0YXUbotPw5wbKRCbvRNtqgQ>
- <xmx:DJ14ZuFN3lYqN5IY8mXAXsCzNeGODbrWt_UPWxc_4HKyIqEF84OPWaGW>
+ uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttd
+ ertddttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghk
+ rghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhte
+ etgfekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushht
+ vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhise
+ hsrghkrghmohgttghhihdrjhhp
+X-ME-Proxy: <xmx:m_R5Zk1uo4eK0ILrWeOyfAjtmbMFxRK8GeSawl-ACEByCraCaMDaQQ>
+ <xmx:m_R5ZiHp7kZq8R9dJzUO4uo9I6f6TTb4HxfWBO6cfYzoUDIluliLBg>
+ <xmx:m_R5Zl-Ff-KWkyrMjNy5hIEtHx9iFDhub3qI4YUwU95zemp-otYNVA>
+ <xmx:m_R5Zvm0UMrnE5GpchvJUjLq4WyjrgPN0jvCIe8fpnIjpGP5yZiyYQ>
+ <xmx:m_R5ZnSZJ3VMZ_nBF2TzWZa8bVCkI1eIczIkgCZVDCMCxPr0J5s0znxj>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 23 Jun 2024 18:09:14 -0400 (EDT)
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 24 Jun 2024 18:35:06 -0400 (EDT)
+Date: Tue, 25 Jun 2024 07:35:03 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 7/7] firewire: core: add tracepoints events for completions of
- packets in isochronous context
-Date: Mon, 24 Jun 2024 07:08:58 +0900
-Message-ID: <20240623220859.851685-8-o-takashi@sakamocchi.jp>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240623220859.851685-1-o-takashi@sakamocchi.jp>
+Subject: Re: [PATCH 0/7] firewire: core: add tracepoints events for
+ isochronous context
+Message-ID: <20240624223503.GA914180@workstation.local>
+Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
 References: <20240623220859.851685-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240623220859.851685-1-o-takashi@sakamocchi.jp>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
@@ -106,39 +106,38 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: It is helpful to trace completion of packets in isochronous
- context when the core function is requested them by both in-kernel units
- driver and userspace applications. This commit adds some tracepoints events
- for the aim. 
+ Content preview:  On Mon, Jun 24, 2024 at 07:08:51AM +0900, Takashi Sakamoto
+ wrote: > Hi, > > It is helpful to trace any operation for isochronous context
+ for > debugging purposes. This series of changes is the last pa [...] 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: sakamocchi.jp]
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [103.168.172.144 listed in list.dnswl.org]
- 0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
- query to Validity was blocked.  See
- https://knowledge.validity.com/hc/en-us/articles/20961730681243
- for more information.
- [103.168.172.144 listed in bl.score.senderscore.com]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ for more information. [URIs: messagingengine.com]
  0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE:
  The query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [103.168.172.144 listed in sa-trusted.bondedsender.org]
+ [103.168.172.156 listed in sa-trusted.bondedsender.org]
+ 0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
+ query to Validity was blocked.  See
+ https://knowledge.validity.com/hc/en-us/articles/20961730681243
+ for more information.
+ [103.168.172.156 listed in bl.score.senderscore.com]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [103.168.172.156 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
-X-Headers-End: 1sLVOk-0002Kf-Gh
+X-Headers-End: 1sLsHO-0001xp-Vg
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -156,208 +155,40 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-It is helpful to trace completion of packets in isochronous context when
-the core function is requested them by both in-kernel units driver and
-userspace applications.
+On Mon, Jun 24, 2024 at 07:08:51AM +0900, Takashi Sakamoto wrote:
+> Hi,
+> 
+> It is helpful to trace any operation for isochronous context for
+> debugging purposes. This series of changes is the last part to add
+> tracepoints events into core function.
+> 
+> Takashi Sakamoto (7):
+>   firewire: core: add tracepoints events for allocation/deallocation of
+>     isochronous context
+>   firewire: core: add tracepoints events for setting channels of
+>     multichannel context
+>   firewire: core: add tracepoints events for starting/stopping of
+>     isochronous context
+>   firewire: core: add tracepoints events for flushing of isochronous
+>     context
+>   firewire: core: add tracepoints events for flushing completions of
+>     isochronous context
+>   firewire: core: add tracepoints events for queueing packets of
+>     isochronous context
+>   firewire: core: add tracepoints events for completions of packets in
+>     isochronous context
+> 
+>  drivers/firewire/core-iso.c     |  32 +++
+>  drivers/firewire/core-trace.c   |   4 +
+>  drivers/firewire/ohci.c         |  25 +-
+>  include/trace/events/firewire.h | 463 ++++++++++++++++++++++++++++++++
+>  4 files changed, 518 insertions(+), 6 deletions(-)
 
-This commit adds some tracepoints events for the aim.
+Applied to for-next branch.
 
-Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
----
- drivers/firewire/core-trace.c   |  4 ++
- drivers/firewire/ohci.c         | 23 +++++++---
- include/trace/events/firewire.h | 78 +++++++++++++++++++++++++++++++++
- 3 files changed, 99 insertions(+), 6 deletions(-)
+Regards
 
-diff --git a/drivers/firewire/core-trace.c b/drivers/firewire/core-trace.c
-index c9bc4990d66e..5acb02c18a47 100644
---- a/drivers/firewire/core-trace.c
-+++ b/drivers/firewire/core-trace.c
-@@ -20,4 +20,8 @@ void copy_port_status(u8 *port_status, unsigned int port_capacity,
- 			self_id_sequence_get_port_status(self_id_sequence, quadlet_count, port_index);
- 	}
- }
-+
-+EXPORT_TRACEPOINT_SYMBOL_GPL(isoc_inbound_single_completions);
-+EXPORT_TRACEPOINT_SYMBOL_GPL(isoc_inbound_multiple_completions);
-+EXPORT_TRACEPOINT_SYMBOL_GPL(isoc_outbound_completions);
- #endif
-diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
-index f35d6e193bcb..bdb206157118 100644
---- a/drivers/firewire/ohci.c
-+++ b/drivers/firewire/ohci.c
-@@ -2833,8 +2833,13 @@ static void ohci_write_csr(struct fw_card *card, int csr_offset, u32 value)
- 	}
- }
- 
--static void flush_iso_completions(struct iso_context *ctx)
-+static void flush_iso_completions(struct iso_context *ctx, enum fw_iso_context_completions_cause cause)
- {
-+	trace_isoc_inbound_single_completions(&ctx->base, ctx->last_timestamp, cause, ctx->header,
-+					      ctx->header_length);
-+	trace_isoc_outbound_completions(&ctx->base, ctx->last_timestamp, cause, ctx->header,
-+					ctx->header_length);
-+
- 	ctx->base.callback.sc(&ctx->base, ctx->last_timestamp,
- 			      ctx->header_length, ctx->header,
- 			      ctx->base.callback_data);
-@@ -2848,7 +2853,7 @@ static void copy_iso_headers(struct iso_context *ctx, const u32 *dma_hdr)
- 	if (ctx->header_length + ctx->base.header_size > PAGE_SIZE) {
- 		if (ctx->base.drop_overflow_headers)
- 			return;
--		flush_iso_completions(ctx);
-+		flush_iso_completions(ctx, FW_ISO_CONTEXT_COMPLETIONS_CAUSE_HEADER_OVERFLOW);
- 	}
- 
- 	ctx_hdr = ctx->header + ctx->header_length;
-@@ -2897,7 +2902,7 @@ static int handle_ir_packet_per_buffer(struct context *context,
- 	copy_iso_headers(ctx, (u32 *) (last + 1));
- 
- 	if (last->control & cpu_to_le16(DESCRIPTOR_IRQ_ALWAYS))
--		flush_iso_completions(ctx);
-+		flush_iso_completions(ctx, FW_ISO_CONTEXT_COMPLETIONS_CAUSE_IRQ);
- 
- 	return 1;
- }
-@@ -2932,6 +2937,9 @@ static int handle_ir_buffer_fill(struct context *context,
- 				      completed, DMA_FROM_DEVICE);
- 
- 	if (last->control & cpu_to_le16(DESCRIPTOR_IRQ_ALWAYS)) {
-+		trace_isoc_inbound_multiple_completions(&ctx->base, completed,
-+							FW_ISO_CONTEXT_COMPLETIONS_CAUSE_IRQ);
-+
- 		ctx->base.callback.mc(&ctx->base,
- 				      buffer_dma + completed,
- 				      ctx->base.callback_data);
-@@ -2948,6 +2956,9 @@ static void flush_ir_buffer_fill(struct iso_context *ctx)
- 				      ctx->mc_buffer_bus & ~PAGE_MASK,
- 				      ctx->mc_completed, DMA_FROM_DEVICE);
- 
-+	trace_isoc_inbound_multiple_completions(&ctx->base, ctx->mc_completed,
-+						FW_ISO_CONTEXT_COMPLETIONS_CAUSE_FLUSH);
-+
- 	ctx->base.callback.mc(&ctx->base,
- 			      ctx->mc_buffer_bus + ctx->mc_completed,
- 			      ctx->base.callback_data);
-@@ -3012,7 +3023,7 @@ static int handle_it_packet(struct context *context,
- 	if (ctx->header_length + 4 > PAGE_SIZE) {
- 		if (ctx->base.drop_overflow_headers)
- 			return 1;
--		flush_iso_completions(ctx);
-+		flush_iso_completions(ctx, FW_ISO_CONTEXT_COMPLETIONS_CAUSE_HEADER_OVERFLOW);
- 	}
- 
- 	ctx_hdr = ctx->header + ctx->header_length;
-@@ -3023,7 +3034,7 @@ static int handle_it_packet(struct context *context,
- 	ctx->header_length += 4;
- 
- 	if (last->control & cpu_to_le16(DESCRIPTOR_IRQ_ALWAYS))
--		flush_iso_completions(ctx);
-+		flush_iso_completions(ctx, FW_ISO_CONTEXT_COMPLETIONS_CAUSE_IRQ);
- 
- 	return 1;
- }
-@@ -3588,7 +3599,7 @@ static int ohci_flush_iso_completions(struct fw_iso_context *base)
- 		case FW_ISO_CONTEXT_TRANSMIT:
- 		case FW_ISO_CONTEXT_RECEIVE:
- 			if (ctx->header_length != 0)
--				flush_iso_completions(ctx);
-+				flush_iso_completions(ctx, FW_ISO_CONTEXT_COMPLETIONS_CAUSE_FLUSH);
- 			break;
- 		case FW_ISO_CONTEXT_RECEIVE_MULTICHANNEL:
- 			if (ctx->mc_completed != 0)
-diff --git a/include/trace/events/firewire.h b/include/trace/events/firewire.h
-index 0381b3ca4d0e..d9158a134beb 100644
---- a/include/trace/events/firewire.h
-+++ b/include/trace/events/firewire.h
-@@ -821,6 +821,84 @@ TRACE_EVENT_CONDITION(isoc_inbound_multiple_queue,
- #undef TP_STRUCT__entry_iso_packet
- #undef TP_fast_assign_iso_packet
- 
-+#ifndef show_cause
-+enum fw_iso_context_completions_cause {
-+	FW_ISO_CONTEXT_COMPLETIONS_CAUSE_FLUSH = 0,
-+	FW_ISO_CONTEXT_COMPLETIONS_CAUSE_IRQ,
-+	FW_ISO_CONTEXT_COMPLETIONS_CAUSE_HEADER_OVERFLOW,
-+};
-+#define show_cause(cause) 								\
-+	__print_symbolic(cause,								\
-+		{ FW_ISO_CONTEXT_COMPLETIONS_CAUSE_FLUSH, "FLUSH" },			\
-+		{ FW_ISO_CONTEXT_COMPLETIONS_CAUSE_IRQ, "IRQ" },			\
-+		{ FW_ISO_CONTEXT_COMPLETIONS_CAUSE_HEADER_OVERFLOW, "HEADER_OVERFLOW" }	\
-+	)
-+#endif
-+
-+DECLARE_EVENT_CLASS(isoc_single_completions_template,
-+	TP_PROTO(const struct fw_iso_context *ctx, u16 timestamp, enum fw_iso_context_completions_cause cause, const u32 *header, unsigned int header_length),
-+	TP_ARGS(ctx, timestamp, cause, header, header_length),
-+	TP_STRUCT__entry(
-+		__field(u64, context)
-+		__field(u8, card_index)
-+		__field(u16, timestamp)
-+		__field(u8, cause)
-+		__dynamic_array(u32, header, header_length / QUADLET_SIZE)
-+	),
-+	TP_fast_assign(
-+		__entry->context = (uintptr_t)ctx;
-+		__entry->card_index = ctx->card->index;
-+		__entry->timestamp = timestamp;
-+		__entry->cause = cause;
-+		memcpy(__get_dynamic_array(header), header, __get_dynamic_array_len(header));
-+	),
-+	TP_printk(
-+		"context=0x%llx card_index=%u timestap=0x%04x cause=%s header=%s",
-+		__entry->context,
-+		__entry->card_index,
-+		__entry->timestamp,
-+		show_cause(__entry->cause),
-+		__print_array(__get_dynamic_array(header),
-+			      __get_dynamic_array_len(header) / QUADLET_SIZE, QUADLET_SIZE)
-+	)
-+)
-+
-+DEFINE_EVENT_CONDITION(isoc_single_completions_template, isoc_outbound_completions,
-+	TP_PROTO(const struct fw_iso_context *ctx, u16 timestamp, enum fw_iso_context_completions_cause cause, const u32 *header, unsigned int header_length),
-+	TP_ARGS(ctx, timestamp, cause, header, header_length),
-+	TP_CONDITION(ctx->type == FW_ISO_CONTEXT_TRANSMIT)
-+);
-+
-+DEFINE_EVENT_CONDITION(isoc_single_completions_template, isoc_inbound_single_completions,
-+	TP_PROTO(const struct fw_iso_context *ctx, u16 timestamp, enum fw_iso_context_completions_cause cause, const u32 *header, unsigned int header_length),
-+	TP_ARGS(ctx, timestamp, cause, header, header_length),
-+	TP_CONDITION(ctx->type == FW_ISO_CONTEXT_RECEIVE)
-+);
-+
-+TRACE_EVENT(isoc_inbound_multiple_completions,
-+	TP_PROTO(const struct fw_iso_context *ctx, unsigned int completed, enum fw_iso_context_completions_cause cause),
-+	TP_ARGS(ctx, completed, cause),
-+	TP_STRUCT__entry(
-+		__field(u64, context)
-+		__field(u8, card_index)
-+		__field(u16, completed)
-+		__field(u8, cause)
-+	),
-+	TP_fast_assign(
-+		__entry->context = (uintptr_t)ctx;
-+		__entry->card_index = ctx->card->index;
-+		__entry->completed = completed;
-+		__entry->cause = cause;
-+	),
-+	TP_printk(
-+		"context=0x%llx card_index=%u comleted=%u cause=%s",
-+		__entry->context,
-+		__entry->card_index,
-+		__entry->completed,
-+		show_cause(__entry->cause)
-+	)
-+);
-+
- #undef QUADLET_SIZE
- 
- #endif // _FIREWIRE_TRACE_EVENT_H
--- 
-2.43.0
-
+Takashi Sakamoto
 
 
 _______________________________________________
