@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15E4E946ED1
-	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Aug 2024 15:02:58 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id F28E9946ECC
+	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Aug 2024 15:02:54 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1saass-0006Tb-Jy;
-	Sun, 04 Aug 2024 13:02:51 +0000
+	id 1saasl-0004t6-4N;
+	Sun, 04 Aug 2024 13:02:43 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1saasm-0006T4-UT
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1saasj-0004sr-Lh
  for linux1394-devel@lists.sourceforge.net;
- Sun, 04 Aug 2024 13:02:45 +0000
+ Sun, 04 Aug 2024 13:02:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=8IZ5bfVFLX4rIiQS2rZQ4M3BHJvsAdGdGKx2Wo29X3M=; b=Qf2eBD0CyX/mSp1/9OxgBepCH+
- 4SXqy80s3uNH6Te9YU48FT+g7ajDYn/HJ8QOYEA7biowWHJG1SqL2dPo4yZ0335YsSrXNRyAZCAI7
- gpB/P4okdRXcwC0jp4CmIyuZxyilrsr2uLL1JpdPWyRHZxpLSfgS19NQaB3vxGplnXwA=;
+ bh=umV/dIhWSMe39OeV812KLlWHxNO+f3xTH4ZsEWLWI7U=; b=lR3p5umsRutGu0OdRtpM3wh8FL
+ 4ud8YbUquxZ+7B7pz6ulorjmGJDkpdq87TRWjKpYPJnlAKBvsXnj2MH2bXIwy5z7naZdWC5lF9wnj
+ Qevy/oWfYePeX2nC5mPMhN57Q7zYwnrOoH7+TgUVYZ2Wl1NzGFp0cjlQgUJIU0HwnbSA=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -31,47 +31,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=8IZ5bfVFLX4rIiQS2rZQ4M3BHJvsAdGdGKx2Wo29X3M=; b=ZAgD89zqgdA5BlQ7QZUNnfSJG5
- lI3l17cGDUWqaj80msdbtRmTU3QN01DYG4FD616S0+DZBhXJ7gq4CGSTcqmfUgjBUCCpBrl2YwQwg
- TinbGJObokheVz/U7aUb+JW8cWFpxQWSwN2Xash4y/DDVuIheyKcaJluEuuxP4twzVlo=;
+ bh=umV/dIhWSMe39OeV812KLlWHxNO+f3xTH4ZsEWLWI7U=; b=BCy73s1zyYO3Hl3mcLydzT956U
+ ++778WeW6/w7DTdh1HXtAkXlNxHnRglvvgq6vxY//dlcu84LFX0gc2hACfxJZ4kJcd9imAal+k4I7
+ diOaQebhRlIZk+KOsvR05haHLEln92HmbuiBbQbZEeB0YPAs3W8s3STFddLfokOUr6tI=;
 Received: from fout3-smtp.messagingengine.com ([103.168.172.146])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1saasm-0001Dc-7g for linux1394-devel@lists.sourceforge.net;
- Sun, 04 Aug 2024 13:02:44 +0000
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailfout.nyi.internal (Postfix) with ESMTP id A59251388027;
- Sun,  4 Aug 2024 09:02:33 -0400 (EDT)
+ id 1saasi-0001DS-Is for linux1394-devel@lists.sourceforge.net;
+ Sun, 04 Aug 2024 13:02:41 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailfout.nyi.internal (Postfix) with ESMTP id EACC413807E7;
+ Sun,  4 Aug 2024 09:02:34 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute1.internal (MEProxy); Sun, 04 Aug 2024 09:02:33 -0400
+ by compute5.internal (MEProxy); Sun, 04 Aug 2024 09:02:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1722776553; x=
- 1722862953; bh=8IZ5bfVFLX4rIiQS2rZQ4M3BHJvsAdGdGKx2Wo29X3M=; b=T
- 13axiZ2v/1vg5Aa1EwHifIKLIvzas8XqIQCVCX5hlwnMaKTmjwP2KU0cyHZX7deW
- YME6ZH9UrsrqRnu5/XmApXleJR7ocAMx3LMc41XoHEfeNbu1AKr1gO9vbEK/Zsy1
- /iIu+9+8W24v4/Z/iIfn8DgZlswQGEWM69C7URqmHIPcSgWk859zl32cLhzoATSp
- e78uLU2tZlgIPit/WaJzvurbJdrYHGC+/uw4YDqS6CpQmiGSL+lG1Ik2P3V9VBSp
- LpMXRCp2R6ugndHN48nemEumyQa02JsrX+sXk7b1n2fpv4mfpba6u0IyMTVXQU3Q
- wNjZmvAL/V1O5OIqN40yA==
+ :reply-to:subject:subject:to:to; s=fm3; t=1722776554; x=
+ 1722862954; bh=umV/dIhWSMe39OeV812KLlWHxNO+f3xTH4ZsEWLWI7U=; b=h
+ cTiCBRMHcnfZcrEhwQIemboRFgT4OhvxPVVIuUd0kiYkF/vy/IlXXVeveEAb2szV
+ kXuXhbWDhRN3P8+8KkMScvxKf854rBUNVjEpepAj32Y7T1OUhzbu9Xw8V8OG4pjG
+ vCz9Q8kpNzyuEnOPQ1r8c8p9dAIu1ZCdOmo/8CEzhXP/DqVTWxVzR7scigNnNi64
+ 38WBCz4JqEMKB2rjwF9N4sOh3wPjbEtqqfo89CqXVlCWBoPxi01qJm+65kxae7Iu
+ 0PuGHAll/sWn0m9HM5RpZExKHBUbjse6rw+f5pow9FeVF2Ou+VoQWncQueVk2kqe
+ pZ+XedhDE0EkopN/fiulg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1722776553; x=
- 1722862953; bh=8IZ5bfVFLX4rIiQS2rZQ4M3BHJvsAdGdGKx2Wo29X3M=; b=q
- Gaf0/AfPyGgMOEPDl8qZ+QHhvk6qy0CuM+U/2I9H2j5/ejtWxeFK29cp+a1yB+ZM
- ldCxe+L0DywFWjANCrlBkS9dlru/Qj10HN7sZqnjBLA2iGKOyXbRlKiVVeoc/02M
- gg8P35BUpidelYE/galFAaDg29fNjDmE+RVYGWoT1w54QEGMfpT3UbGDhpiOdfnF
- TlLOJ6qsW8wpVPUpO6TbOiHyKt+W4T2w/A87jfmKfNxBmGR3EVVg8GtPZ6X4/0oP
- TfGTp8OVAWRDMQxuiw9k4ZnzJqIBvPGXFC5X9bcaSAPT6lNSQ3k4o5LeFtmPeMQ5
- oBkSX5/pboJ3yfhfyQYzw==
-X-ME-Sender: <xms:6XuvZlJgtw0_AQNJs9WXiTbI8ln5jvsT6RBOSB3z8uYpxylekaWkvA>
- <xme:6XuvZhLLK8clcV5jb8BhI49je5TYSzybWwcTB-c_cEEseHkU1rndKLbGtigc17nRH
- 3e-ZXrDskJ2yWmQ-vA>
-X-ME-Received: <xmr:6XuvZtv6D-4WZAvClY8zBk_IXoRbeWHSFxjQK4i-3khwtJ0SU-CoRHOHcxs0zd5_DOdq_ngiwMBz-WqB5U4yxa6WTA5dlnOJX0D6dUjFuMwf_A>
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1722776554; x=
+ 1722862954; bh=umV/dIhWSMe39OeV812KLlWHxNO+f3xTH4ZsEWLWI7U=; b=T
+ gLILsy23ycuxII2aVp9gPz8CbzA7O7MHV5dIwDQeOchKOQnXIow7lsl5UBObO3Ij
+ xtZcBG9tfQHJDmXerFiNsknfjFkWRD0p7RXkTLKqVSA+veuxdwR/c3nL7a3iyPA5
+ 62SnIY03plDbQsFqS/Q7Q26uZgSiESpsvF31jSJBnxGxs+koViENMdKVx6xwiCVW
+ hgbafr0aVSysqRrob4e2NkzZ6Kf/lF3aV2N61fG8UdSjrlW17wu9Iw7yq+U1v2Zn
+ T8Q0ZAbg3G9UgG/EHoNy4nrRrdLZCi7/Otj8U+UyVdlPdaXRnzZ4I0c5SoIOL9hq
+ e8Hp2xaQccyLwhCOpI0BA==
+X-ME-Sender: <xms:6nuvZvgpjWESoyt_ELMGRaiuD4nzodpBit02Hq0sFKwqTX_sFOvBzQ>
+ <xme:6nuvZsDKZWUCOL6yrVDBp809S_a_5JO0wuh9XwXssb9y03ziroI3ExwZIkIIWZVaC
+ saWAH51vsu25cF22cE>
+X-ME-Received: <xmr:6nuvZvEr4ABNBfRdvjha5ojza9eOU4FmlgOvBmPu1crU2Otvf03H6BD1oUvInayUeaHomfSujxd8mo47a72FBoIv5TF95Cm0oSImtIYy7YQ-pg>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrkeeggdehlecutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
  uegrihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekre
@@ -80,20 +80,20 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrkeeggdehlecutefuodetggdote
  dvgfduudekleevtefgtdevhfdtffefiefgveeuteffiedvffekvddtnecuvehluhhsthgv
  rhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihessh
  grkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtoheptd
-X-ME-Proxy: <xmx:6XuvZmb99ShGjn-VFtMSoLR93EV9YCtHTxcYMW9Ie0ktidnyXlc2sw>
- <xmx:6XuvZsZMsrygfPlJl-P6V7yb5E9fA9Cw4K0UMgabgFr6_HzCXZzaWg>
- <xmx:6XuvZqAwU4R7W5Qk8LATYkpCIdS5mIXIgkEWBHRdAyoVNRQoaHZziA>
- <xmx:6XuvZqYFORueeMctSSx6ZVeGSYMmObhzSEG2L5qho2zWCkhlWEASEA>
- <xmx:6XuvZrnsE-CsGcsrBq3JeGqDFluCnOhBxf2H_k7rME97e9mcFXiXESu9>
+X-ME-Proxy: <xmx:6nuvZsSn_IvbPFgGyV4Dg84kRLF8BsZFcNB5YqisWxyfAIwcOT20Tg>
+ <xmx:6nuvZsxKQXaePv4-3wX6GqoXaswKsXEQFebH4bH9-KOQQuCLH9a_9w>
+ <xmx:6nuvZi699l9f6HRwGuCC2VmOKDxJsI4NK7qqzxIdhZDl5-rjYb3wcw>
+ <xmx:6nuvZhxyC0feluFLQS3LdiQtaUk83vQapzDP8LM-Cnaytk5sDdi5xQ>
+ <xmx:6nuvZn9lJgyAWv6ktOU8UKBP3Qgv9DtooDRIO3Rh7lkKBWYpYFPpbvWM>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 4 Aug 2024 09:02:32 -0400 (EDT)
+ 4 Aug 2024 09:02:33 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 03/17] firewire: core: use guard macro to maintain the list of
- cdev clients
-Date: Sun,  4 Aug 2024 22:02:10 +0900
-Message-ID: <20240804130225.243496-4-o-takashi@sakamocchi.jp>
+Subject: [PATCH 04/17] firewire: ohci: use guard macro to serialize accesses
+ to phy registers
+Date: Sun,  4 Aug 2024 22:02:11 +0900
+Message-ID: <20240804130225.243496-5-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240804130225.243496-1-o-takashi@sakamocchi.jp>
 References: <20240804130225.243496-1-o-takashi@sakamocchi.jp>
@@ -105,28 +105,29 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  The core function maintains userspace clients by the list
- in fw_device object associated to the operated character device. The
- concurrent
- access to the list is protected by mutex in the object. This commit uses
- guard macro to maintain the mutex. 
+ Content preview: The 1394 OHCI driver protects concurrent accesses to phy
+ registers
+ by mutex object in fw_ohci structure. This commit uses guard macro to maintain
+ the mutex. Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp> ---
+ drivers/firewire/ohci.c | 71 +++++++++++++++++++++ 1 file changed,
+ 36 insertions(+), 35 deletions(-) 
  Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: messagingengine.com]
+ for more information. [URIs: sakamocchi.jp]
+ 0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The
+ query to Validity was blocked.  See
+ https://knowledge.validity.com/hc/en-us/articles/20961730681243
+ for more information.
+ [103.168.172.146 listed in sa-trusted.bondedsender.org]
  0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
  query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
  [103.168.172.146 listed in bl.score.senderscore.com]
- 0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The
- query to Validity was blocked.  See
- https://knowledge.validity.com/hc/en-us/articles/20961730681243
- for more information.
- [103.168.172.146 listed in sa-accredit.habeas.com]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -136,7 +137,7 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
-X-Headers-End: 1saasm-0001Dc-7g
+X-Headers-End: 1saasi-0001DS-Is
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -154,64 +155,124 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The core function maintains userspace clients by the list in fw_device
-object associated to the operated character device. The concurrent
-access to the list is protected by mutex in the object.
+The 1394 OHCI driver protects concurrent accesses to phy registers by
+mutex object in fw_ohci structure.
 
 This commit uses guard macro to maintain the mutex.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/core-cdev.c | 13 +++++--------
- 1 file changed, 5 insertions(+), 8 deletions(-)
+ drivers/firewire/ohci.c | 71 +++++++++++++++++++++--------------------
+ 1 file changed, 36 insertions(+), 35 deletions(-)
 
-diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-index 619048dcfd72..a51aabb963fb 100644
---- a/drivers/firewire/core-cdev.c
-+++ b/drivers/firewire/core-cdev.c
-@@ -375,10 +375,10 @@ static void for_each_client(struct fw_device *device,
+diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
+index 8f2bbd0569fb..1461e008d265 100644
+--- a/drivers/firewire/ohci.c
++++ b/drivers/firewire/ohci.c
+@@ -713,26 +713,20 @@ static int read_paged_phy_reg(struct fw_ohci *ohci, int page, int addr)
+ static int ohci_read_phy_reg(struct fw_card *card, int addr)
  {
- 	struct client *c;
+ 	struct fw_ohci *ohci = fw_ohci(card);
+-	int ret;
  
--	mutex_lock(&device->client_list_mutex);
-+	guard(mutex)(&device->client_list_mutex);
+-	mutex_lock(&ohci->phy_reg_mutex);
+-	ret = read_phy_reg(ohci, addr);
+-	mutex_unlock(&ohci->phy_reg_mutex);
++	guard(mutex)(&ohci->phy_reg_mutex);
+ 
+-	return ret;
++	return read_phy_reg(ohci, addr);
+ }
+ 
+ static int ohci_update_phy_reg(struct fw_card *card, int addr,
+ 			       int clear_bits, int set_bits)
+ {
+ 	struct fw_ohci *ohci = fw_ohci(card);
+-	int ret;
+ 
+-	mutex_lock(&ohci->phy_reg_mutex);
+-	ret = update_phy_reg(ohci, addr, clear_bits, set_bits);
+-	mutex_unlock(&ohci->phy_reg_mutex);
++	guard(mutex)(&ohci->phy_reg_mutex);
+ 
+-	return ret;
++	return update_phy_reg(ohci, addr, clear_bits, set_bits);
+ }
+ 
+ static inline dma_addr_t ar_buffer_bus(struct ar_context *ctx, unsigned int i)
+@@ -1882,13 +1876,15 @@ static int get_status_for_port(struct fw_ohci *ohci, int port_index,
+ {
+ 	int reg;
+ 
+-	mutex_lock(&ohci->phy_reg_mutex);
+-	reg = write_phy_reg(ohci, 7, port_index);
+-	if (reg >= 0)
++	scoped_guard(mutex, &ohci->phy_reg_mutex) {
++		reg = write_phy_reg(ohci, 7, port_index);
++		if (reg < 0)
++			return reg;
 +
- 	list_for_each_entry(c, &device->client_list, link)
- 		callback(c);
--	mutex_unlock(&device->client_list_mutex);
+ 		reg = read_phy_reg(ohci, 8);
+-	mutex_unlock(&ohci->phy_reg_mutex);
+-	if (reg < 0)
+-		return reg;
++		if (reg < 0)
++			return reg;
++	}
+ 
+ 	switch (reg & 0x0f) {
+ 	case 0x06:
+@@ -1929,26 +1925,31 @@ static int get_self_id_pos(struct fw_ohci *ohci, u32 self_id,
+ static bool initiated_reset(struct fw_ohci *ohci)
+ {
+ 	int reg;
+-	int ret = false;
+ 
+-	mutex_lock(&ohci->phy_reg_mutex);
+-	reg = write_phy_reg(ohci, 7, 0xe0); /* Select page 7 */
+-	if (reg >= 0) {
+-		reg = read_phy_reg(ohci, 8);
+-		reg |= 0x40;
+-		reg = write_phy_reg(ohci, 8, reg); /* set PMODE bit */
+-		if (reg >= 0) {
+-			reg = read_phy_reg(ohci, 12); /* read register 12 */
+-			if (reg >= 0) {
+-				if ((reg & 0x08) == 0x08) {
+-					/* bit 3 indicates "initiated reset" */
+-					ret = true;
+-				}
+-			}
+-		}
+-	}
+-	mutex_unlock(&ohci->phy_reg_mutex);
+-	return ret;
++	guard(mutex)(&ohci->phy_reg_mutex);
++
++	// Select page 7
++	reg = write_phy_reg(ohci, 7, 0xe0);
++	if (reg < 0)
++		return reg;
++
++	reg = read_phy_reg(ohci, 8);
++	if (reg < 0)
++		return reg;
++
++	// set PMODE bit
++	reg |= 0x40;
++	reg = write_phy_reg(ohci, 8, reg);
++	if (reg < 0)
++		return reg;
++
++	// read register 12
++	reg = read_phy_reg(ohci, 12);
++	if (reg < 0)
++		return reg;
++
++	// bit 3 indicates "initiated reset"
++	return !!((reg & 0x08) == 0x08);
  }
  
- static int schedule_reallocations(int id, void *p, void *data)
-@@ -470,7 +470,7 @@ static int ioctl_get_info(struct client *client, union ioctl_arg *arg)
- 	if (ret != 0)
- 		return -EFAULT;
- 
--	mutex_lock(&client->device->client_list_mutex);
-+	guard(mutex)(&client->device->client_list_mutex);
- 
- 	client->bus_reset_closure = a->bus_reset_closure;
- 	if (a->bus_reset != 0) {
-@@ -481,8 +481,6 @@ static int ioctl_get_info(struct client *client, union ioctl_arg *arg)
- 	if (ret == 0 && list_empty(&client->link))
- 		list_add_tail(&client->link, &client->device->client_list);
- 
--	mutex_unlock(&client->device->client_list_mutex);
--
- 	return ret ? -EFAULT : 0;
- }
- 
-@@ -1884,9 +1882,8 @@ static int fw_device_op_release(struct inode *inode, struct file *file)
- 	list_del(&client->phy_receiver_link);
- 	spin_unlock_irq(&client->device->card->lock);
- 
--	mutex_lock(&client->device->client_list_mutex);
--	list_del(&client->link);
--	mutex_unlock(&client->device->client_list_mutex);
-+	scoped_guard(mutex, &client->device->client_list_mutex)
-+		list_del(&client->link);
- 
- 	if (client->iso_context)
- 		fw_iso_context_destroy(client->iso_context);
+ /*
 -- 
 2.43.0
 
