@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC422946ED5
-	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Aug 2024 15:03:03 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id E0735946ED8
+	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Aug 2024 15:03:08 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1saasw-0004uv-Qz;
-	Sun, 04 Aug 2024 13:02:54 +0000
+	id 1saat5-0005fc-14;
+	Sun, 04 Aug 2024 13:03:02 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1saasv-0004ue-5u
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1saasy-0005eu-QN
  for linux1394-devel@lists.sourceforge.net;
- Sun, 04 Aug 2024 13:02:53 +0000
+ Sun, 04 Aug 2024 13:02:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=cnExW14OrezM7AAY2ZcP4bF1stBaSNMPihuGoMDdgLg=; b=DxygIVfnKNTjHu4bDsP3+z9ga2
- o/sMRaEO+cSFP84Km3mJOKQ27v3GsF22EKN9fCWOFyH9Ovbs7UgfdlGuCwL9cvIb19E/B1OLdRvzk
- Qw8s3kfZmcfBQwejNAbPqqC8syJzyaQZgRlnVUahiMGkA0PWFHmjTieWSSukZbx4IMWc=;
+ bh=z5mX0VvBucVVAQ3hVsBzbK3EagpAINO+dbqWRzZbXyg=; b=WMivbX3N+YVT7gO/P2qz1ZhlQG
+ 2asrFS8OcFNy8kDbT0S7VLh+7Bs3phNm3DPtKoJFTHq+4gd3HeYO/0zP+HcZLb7ckGa1CB/Lbu+2i
+ 1fWuBTBANf6f0hfx5oga2YFey501g1c6DD6WTWp5rvGGbNgKiciyuL8bRRnHo7Y8PfF0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -31,47 +31,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=cnExW14OrezM7AAY2ZcP4bF1stBaSNMPihuGoMDdgLg=; b=fYXuCJj7EErLxByg1huNyF+CTj
- xU9Ar+lllZA1ioGAlfJAFYc2RuLeXc9f4NYr00i/qFohgQI4Z4KIJG/oYoOtkVT8YYpU7YbG+ytwg
- uA4EIeBfMyETYrZ9NKut1rvVkXmBjPlcIbfEGkn5jiS/RkKIsV3UrOtNbinDMFevC+40=;
-Received: from fout3-smtp.messagingengine.com ([103.168.172.146])
+ bh=z5mX0VvBucVVAQ3hVsBzbK3EagpAINO+dbqWRzZbXyg=; b=EEUOy2IDKgw4A77ZyxVF90x3H2
+ IiOtI7cqcHt8SfiLRxockp/M7C8SckZ9feOlo+lbuhK0ouJc+spT+SE+QsoSoemTC8zA/poj3RyVu
+ MB1bOPTBIOcxqLozopDxolAmFu5pzGt7tGbySDU8Stlg6uSvJDcl7DNx9uxOef81oFWo=;
+Received: from fhigh8-smtp.messagingengine.com ([103.168.172.159])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1saasu-0001EL-CC for linux1394-devel@lists.sourceforge.net;
- Sun, 04 Aug 2024 13:02:53 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailfout.nyi.internal (Postfix) with ESMTP id A388F138817A;
- Sun,  4 Aug 2024 09:02:41 -0400 (EDT)
+ id 1saasv-0001ET-J5 for linux1394-devel@lists.sourceforge.net;
+ Sun, 04 Aug 2024 13:02:54 +0000
+Received: from compute7.internal (compute7.nyi.internal [10.202.2.48])
+ by mailfhigh.nyi.internal (Postfix) with ESMTP id 08BC21146FED;
+ Sun,  4 Aug 2024 09:02:43 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Sun, 04 Aug 2024 09:02:41 -0400
+ by compute7.internal (MEProxy); Sun, 04 Aug 2024 09:02:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1722776561; x=
- 1722862961; bh=cnExW14OrezM7AAY2ZcP4bF1stBaSNMPihuGoMDdgLg=; b=I
- hSBqh1gvrjtcsEc0nKOcGMM5dpTiQtMkhlsnKMX/GrX748Mwsxc99mAOuSCoRAdH
- W+QoaDEg4pCiOVqk4jF2EdNjX0R0XTc55c9+jkq3fz1jJLpScfsiIT7bL8+bcRO8
- TTC4ybgMzEhQpG1zRrXDpU7aOJb9mY5aMBw9dSifXONmfY6RNYOeu1T3gTT8ZCJ3
- mH+VgTfkHufa4KXNmroiSuPJhSigHPeB/4W825hL4HPuE1m2V1GBXuI2aOD4xHa2
- rnBNn90kz3RDfO4bmzUdmvDBjb/6a16fBO8wefeC+SO79RVj0dx+E29QE+X1u2Ng
- 1W9b2hskRPQenduOZfwrg==
+ :reply-to:subject:subject:to:to; s=fm3; t=1722776563; x=
+ 1722862963; bh=z5mX0VvBucVVAQ3hVsBzbK3EagpAINO+dbqWRzZbXyg=; b=K
+ wAn0Dmm8EP66ftwA1UfXu/YuaeSi/ekZ5wS6rJBuTodqkgxOdo3UfY/y378K5KKx
+ hY54sGBPcaau/hzyKNNEmHs3Vu2eoxY/S//bwv6oRGRUxiLy2EubkyaI0w9U6cdK
+ Xkks8ZGBJFOxKi6Kxs7dA+s5EtJBnUdMoIh+LxtxwKZ+S8BvOZmI7Gl+a3fVxa60
+ N0QY8Y7+s4HNRqQYBMFvkRUTiIbmgFQi7ZX8iRkIY5kYxNgp8z5RTbTUUlUJ6ZdX
+ KZMXDn8oyTKE7sZwgb7a7r9Iv9n9eQT0i70BJb/a74DmG6LRfPGqiKWJpzb3zl+p
+ WA5S6W8uycZh0wksWBP0w==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1722776561; x=
- 1722862961; bh=cnExW14OrezM7AAY2ZcP4bF1stBaSNMPihuGoMDdgLg=; b=S
- Fki4GMwOEDoZK8ctjVyZ3LgSQvwT+4TaR8tQcI8KUVK92bw3C3ODJvQgNoicwyo4
- aboA8yb0tYl4Ekbb00KkphIZSb8NP7A0r/ykQOIA4UOSETXqNRfLAowERfS2oamU
- vUA7PtJ2AlCXhr+beIgxhpvFQzvxtEF9edtdatCBuD3iubjPze75AHkbq0Z1UTty
- OYDn7n+v/GX+LuV208ESMPIa3HX1xpznXVUrfSDaBu7uMp3vr91oPyjWOwKh4ojV
- E+LlKpSvaEq0sfwyD+JW8Kh0pa4YRTQt/nwKDZLzOlBlVvUq1FLHFjJyotUCv53z
- aR4ToR4EwREGRHTM6euxw==
-X-ME-Sender: <xms:8XuvZn3D8FSh53nYrPNrteV-Yug4vUQJhWXwl1kiCYg44ODzRO7r8A>
- <xme:8XuvZmGmV18mt356_7ncmLmaU2HPbF_qOw-oOzoRCpEgeacC_MWsFmxbgg3OIMG1x
- 3hsXP0Qt_dTDARiJxw>
-X-ME-Received: <xmr:8XuvZn5Vmc72em-U_r2VKncAe7OW1XPj8iH0qO_dwHsJJxV5wEV8xeVYmrC2-PPRs0PTTCCY56xQEawXFsOZNXI_iIA6DgiRJ1rIx-2LUUOZtQ>
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1722776563; x=
+ 1722862963; bh=z5mX0VvBucVVAQ3hVsBzbK3EagpAINO+dbqWRzZbXyg=; b=c
+ BCyvJZA1pMufc0/Jft9+oMbPFJiaDgj1G+36aCVefN20VVI7u1eeZDc3CiB/vbXE
+ SWCVMaiBw6vKA6A8FGuKePt8tEQBXReJHwy+hRoHv2ru5dDn5Qc1PPnQOH1GWxUy
+ mB6VCpIy5nwMAcp6jyXgfDs6bk/vuEEMybhI3iCpGYwimrvDdCjoZJscY9649d5x
+ X1jFGwhYYIFw2ZmgQsE1ZuH/SeJ1t/EaxxSdolXL/9bMe+4bclnNvZL8z4F1Pjfz
+ RfB7ljEi7GBprJ+mZslb4cyvkRBNl4mEWpa6VQJ4N/1zcJexZxZF+yHAfcC0sRoC
+ IGeItAShRoingxjQ9fRPQ==
+X-ME-Sender: <xms:8nuvZiJ6Dz5l9aEyRJh29R348vxvxPcwQL1ZrNRv5x4xYMjYwC8X3g>
+ <xme:8nuvZqKon6_y8ReK6WUIA9Jih7HyzNxVNtLPGzSfUaUgq7TubKyTLJP-1WWXtnA7S
+ 8fEXFXfEFlfER6rBPs>
+X-ME-Received: <xmr:8nuvZiuxNCGwScpH0yeF-MaMbB3XchS6dzsTIm-3WsfPnVlSHax7PeC_tvJGMhj0mmtPNs7k7ixGAxDfIr-f11lbPOrjiSk8I1Pdh3kiNknoHA>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrkeeggdehlecutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
  uegrihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekre
@@ -80,20 +80,20 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrkeeggdehlecutefuodetggdote
  dvgfduudekleevtefgtdevhfdtffefiefgveeuteffiedvffekvddtnecuvehluhhsthgv
  rhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihessh
  grkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtoheptd
-X-ME-Proxy: <xmx:8XuvZs0GJBNThAt_fkNbaupspV0VxrhnLx2zcgc0TgLbWz3IdmM0xw>
- <xmx:8XuvZqHXssuQniB9MlIDCp7OllbiUProQkgqqaiXYwIEE7Jst71zmA>
- <xmx:8XuvZt8RM1AUKovIejb62x0H-YkK5fJ1WhjKx9Z0M1efU6V_XyCuWA>
- <xmx:8XuvZnmH_lWuYm5lH3FUg_-21GYY_wy-0HoBkWKtChK77lZVBvf6Rg>
- <xmx:8XuvZvTXCjwV-wtF9E3muvzK4WKUDN5f0nfguULuKUokt9dcxO-J6jku>
+X-ME-Proxy: <xmx:8nuvZnZ9I11JcE3wVCIFkQOlYYKetRikz24m0Nl_RPuME-Rvzs8H-Q>
+ <xmx:8nuvZpYz4MOtm1_WbdTrD-6-HuTY-RygC2uzJS9dp1HicUCEguNjuA>
+ <xmx:8nuvZjBX_fcAZCY5lHnamnGqkuj780dG5KruNhnW8Agq3LZ0UdecdA>
+ <xmx:8nuvZvbQEKZCjlsn7-hCa3JDu0OE9RYXeo-_DRvdAHp35OWrcIzmhQ>
+ <xmx:83uvZondadvXHqumLmvotdujaRDnVY1JabWyRMYveXHB7MCrwrm3_gr6>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 4 Aug 2024 09:02:40 -0400 (EDT)
+ 4 Aug 2024 09:02:41 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 09/17] firewire: core: use guard macro to maintain list of
- events for userspace clients
-Date: Sun,  4 Aug 2024 22:02:16 +0900
-Message-ID: <20240804130225.243496-10-o-takashi@sakamocchi.jp>
+Subject: [PATCH 10/17] firewire: core: use guard macro to maintain IDR of
+ isochronous resources for userspace clients
+Date: Sun,  4 Aug 2024 22:02:17 +0900
+Message-ID: <20240804130225.243496-11-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240804130225.243496-1-o-takashi@sakamocchi.jp>
 References: <20240804130225.243496-1-o-takashi@sakamocchi.jp>
@@ -105,29 +105,31 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  The core function maintains events to userspace by list in
- the instance of client. The concurrent access to the list is protected by
- spinlock in the instance. This commit uses guard macro to maintain the
- spinlock.
+ Content preview: The core function provides UAPI to maintain isochronous
+ resources
+ allocated by userspace clients across bus resets automatically. The resources
+ are maintained by IDR and the concurrent access to it is [...] 
  Content analysis details:   (-5.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: messagingengine.com]
+ for more information. [URIs: sakamocchi.jp]
+ -0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [103.168.172.159 listed in wl.mailspike.net]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [103.168.172.159 listed in list.dnswl.org]
  0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The
  query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [103.168.172.146 listed in sa-trusted.bondedsender.org]
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [103.168.172.146 listed in list.dnswl.org]
+ [103.168.172.159 listed in sa-trusted.bondedsender.org]
  0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
  query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [103.168.172.146 listed in bl.score.senderscore.com]
+ [103.168.172.159 listed in bl.score.senderscore.com]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -137,7 +139,8 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
-X-Headers-End: 1saasu-0001EL-CC
+ -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1saasv-0001ET-J5
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -155,74 +158,223 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The core function maintains events to userspace by list in the instance of
-client. The concurrent access to the list is protected by spinlock in
-the instance.
+The core function provides UAPI to maintain isochronous resources allocated
+by userspace clients across bus resets automatically. The resources are
+maintained by IDR and the concurrent access to it is protected by spinlock
+in the instance of client.
 
 This commit uses guard macro to maintain the spinlock.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/core-cdev.c | 27 ++++++++++++---------------
- 1 file changed, 12 insertions(+), 15 deletions(-)
+ drivers/firewire/core-cdev.c | 131 ++++++++++++++++-------------------
+ 1 file changed, 59 insertions(+), 72 deletions(-)
 
 diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-index 90e9dfed8681..2e2199eaa05b 100644
+index 2e2199eaa05b..c2d24cc5c1f1 100644
 --- a/drivers/firewire/core-cdev.c
 +++ b/drivers/firewire/core-cdev.c
-@@ -287,19 +287,17 @@ static int fw_device_op_open(struct inode *inode, struct file *file)
- static void queue_event(struct client *client, struct event *event,
- 			void *data0, size_t size0, void *data1, size_t size1)
- {
--	unsigned long flags;
--
- 	event->v[0].data = data0;
- 	event->v[0].size = size0;
- 	event->v[1].data = data1;
- 	event->v[1].size = size1;
+@@ -399,9 +399,9 @@ static void queue_bus_reset_event(struct client *client)
+ 	queue_event(client, &e->event,
+ 		    &e->reset, sizeof(e->reset), NULL, 0);
  
+-	spin_lock_irq(&client->lock);
++	guard(spinlock_irq)(&client->lock);
++
+ 	idr_for_each(&client->resource_idr, schedule_reallocations, client);
+-	spin_unlock_irq(&client->lock);
+ }
+ 
+ void fw_device_cdev_update(struct fw_device *device)
+@@ -483,25 +483,23 @@ static int add_client_resource(struct client *client,
+ 			       struct client_resource *resource, gfp_t gfp_mask)
+ {
+ 	bool preload = gfpflags_allow_blocking(gfp_mask);
+-	unsigned long flags;
+ 	int ret;
+ 
+ 	if (preload)
+ 		idr_preload(gfp_mask);
 -	spin_lock_irqsave(&client->lock, flags);
+ 
 -	if (client->in_shutdown)
--		kfree(event);
+-		ret = -ECANCELED;
 -	else
--		list_add_tail(&event->link, &client->event_list);
--	spin_unlock_irqrestore(&client->lock, flags);
+-		ret = idr_alloc(&client->resource_idr, resource, 0, 0,
+-				GFP_NOWAIT);
+-	if (ret >= 0) {
+-		resource->handle = ret;
+-		client_get(client);
+-		schedule_if_iso_resource(resource);
 +	scoped_guard(spinlock_irqsave, &client->lock) {
 +		if (client->in_shutdown)
-+			kfree(event);
++			ret = -ECANCELED;
 +		else
-+			list_add_tail(&event->link, &client->event_list);
-+	}
++			ret = idr_alloc(&client->resource_idr, resource, 0, 0, GFP_NOWAIT);
++		if (ret >= 0) {
++			resource->handle = ret;
++			client_get(client);
++			schedule_if_iso_resource(resource);
++		}
+ 	}
  
- 	wake_up_interruptible(&client->wait);
- }
-@@ -321,10 +319,10 @@ static int dequeue_event(struct client *client,
- 		       fw_device_is_shutdown(client->device))
- 		return -ENODEV;
+-	spin_unlock_irqrestore(&client->lock, flags);
+ 	if (preload)
+ 		idr_preload_end();
+ 
+@@ -514,14 +512,14 @@ static int release_client_resource(struct client *client, u32 handle,
+ {
+ 	struct client_resource *resource;
  
 -	spin_lock_irq(&client->lock);
--	event = list_first_entry(&client->event_list, struct event, link);
--	list_del(&event->link);
+-	if (client->in_shutdown)
+-		resource = NULL;
+-	else
+-		resource = idr_find(&client->resource_idr, handle);
+-	if (resource && resource->release == release)
+-		idr_remove(&client->resource_idr, handle);
 -	spin_unlock_irq(&client->lock);
 +	scoped_guard(spinlock_irq, &client->lock) {
-+		event = list_first_entry(&client->event_list, struct event, link);
-+		list_del(&event->link);
++		if (client->in_shutdown)
++			resource = NULL;
++		else
++			resource = idr_find(&client->resource_idr, handle);
++		if (resource && resource->release == release)
++			idr_remove(&client->resource_idr, handle);
 +	}
  
- 	total = 0;
- 	for (i = 0; i < ARRAY_SIZE(event->v) && total < count; i++) {
-@@ -1887,9 +1885,8 @@ static int fw_device_op_release(struct inode *inode, struct file *file)
- 		fw_iso_buffer_destroy(&client->buffer, client->device->card);
+ 	if (!(resource && resource->release == release))
+ 		return -EINVAL;
+@@ -546,13 +544,12 @@ static void complete_transaction(struct fw_card *card, int rcode, u32 request_ts
+ {
+ 	struct outbound_transaction_event *e = data;
+ 	struct client *client = e->client;
+-	unsigned long flags;
  
- 	/* Freeze client->resource_idr and client->event_list */
+-	spin_lock_irqsave(&client->lock, flags);
+-	idr_remove(&client->resource_idr, e->r.resource.handle);
+-	if (client->in_shutdown)
+-		wake_up(&client->tx_flush_wait);
+-	spin_unlock_irqrestore(&client->lock, flags);
++	scoped_guard(spinlock_irqsave, &client->lock) {
++		idr_remove(&client->resource_idr, e->r.resource.handle);
++		if (client->in_shutdown)
++			wake_up(&client->tx_flush_wait);
++	}
+ 
+ 	switch (e->rsp.without_tstamp.type) {
+ 	case FW_CDEV_EVENT_RESPONSE:
+@@ -1307,25 +1304,24 @@ static void iso_resource_work(struct work_struct *work)
+ 	int generation, channel, bandwidth, todo;
+ 	bool skip, free, success;
+ 
 -	spin_lock_irq(&client->lock);
--	client->in_shutdown = true;
+-	generation = client->device->generation;
+-	todo = r->todo;
+-	/* Allow 1000ms grace period for other reallocations. */
+-	if (todo == ISO_RES_ALLOC &&
+-	    time_before64(get_jiffies_64(),
+-			  client->device->card->reset_jiffies + HZ)) {
+-		schedule_iso_resource(r, DIV_ROUND_UP(HZ, 3));
+-		skip = true;
+-	} else {
+-		/* We could be called twice within the same generation. */
+-		skip = todo == ISO_RES_REALLOC &&
+-		       r->generation == generation;
++	scoped_guard(spinlock_irq, &client->lock) {
++		generation = client->device->generation;
++		todo = r->todo;
++		// Allow 1000ms grace period for other reallocations.
++		if (todo == ISO_RES_ALLOC &&
++		    time_before64(get_jiffies_64(), client->device->card->reset_jiffies + HZ)) {
++			schedule_iso_resource(r, DIV_ROUND_UP(HZ, 3));
++			skip = true;
++		} else {
++			// We could be called twice within the same generation.
++			skip = todo == ISO_RES_REALLOC &&
++			       r->generation == generation;
++		}
++		free = todo == ISO_RES_DEALLOC ||
++		       todo == ISO_RES_ALLOC_ONCE ||
++		       todo == ISO_RES_DEALLOC_ONCE;
++		r->generation = generation;
+ 	}
+-	free = todo == ISO_RES_DEALLOC ||
+-	       todo == ISO_RES_ALLOC_ONCE ||
+-	       todo == ISO_RES_DEALLOC_ONCE;
+-	r->generation = generation;
 -	spin_unlock_irq(&client->lock);
-+	scoped_guard(spinlock_irq, &client->lock)
-+		client->in_shutdown = true;
  
- 	wait_event(client->tx_flush_wait, !has_outbound_transactions(client));
+ 	if (skip)
+ 		goto out;
+@@ -1348,24 +1344,20 @@ static void iso_resource_work(struct work_struct *work)
  
+ 	success = channel >= 0 || bandwidth > 0;
+ 
+-	spin_lock_irq(&client->lock);
+-	/*
+-	 * Transit from allocation to reallocation, except if the client
+-	 * requested deallocation in the meantime.
+-	 */
+-	if (r->todo == ISO_RES_ALLOC)
+-		r->todo = ISO_RES_REALLOC;
+-	/*
+-	 * Allocation or reallocation failure?  Pull this resource out of the
+-	 * idr and prepare for deletion, unless the client is shutting down.
+-	 */
+-	if (r->todo == ISO_RES_REALLOC && !success &&
+-	    !client->in_shutdown &&
+-	    idr_remove(&client->resource_idr, r->resource.handle)) {
+-		client_put(client);
+-		free = true;
++	scoped_guard(spinlock_irq, &client->lock) {
++		// Transit from allocation to reallocation, except if the client
++		// requested deallocation in the meantime.
++		if (r->todo == ISO_RES_ALLOC)
++			r->todo = ISO_RES_REALLOC;
++		// Allocation or reallocation failure?  Pull this resource out of the
++		// idr and prepare for deletion, unless the client is shutting down.
++		if (r->todo == ISO_RES_REALLOC && !success &&
++		    !client->in_shutdown &&
++		    idr_remove(&client->resource_idr, r->resource.handle)) {
++			client_put(client);
++			free = true;
++		}
+ 	}
+-	spin_unlock_irq(&client->lock);
+ 
+ 	if (todo == ISO_RES_ALLOC && channel >= 0)
+ 		r->channels = 1ULL << channel;
+@@ -1403,10 +1395,10 @@ static void release_iso_resource(struct client *client,
+ 	struct iso_resource *r =
+ 		container_of(resource, struct iso_resource, resource);
+ 
+-	spin_lock_irq(&client->lock);
++	guard(spinlock_irq)(&client->lock);
++
+ 	r->todo = ISO_RES_DEALLOC;
+ 	schedule_iso_resource(r, 0);
+-	spin_unlock_irq(&client->lock);
+ }
+ 
+ static int init_iso_resource(struct client *client,
+@@ -1845,14 +1837,9 @@ static int is_outbound_transaction_resource(int id, void *p, void *data)
+ 
+ static int has_outbound_transactions(struct client *client)
+ {
+-	int ret;
++	guard(spinlock_irq)(&client->lock);
+ 
+-	spin_lock_irq(&client->lock);
+-	ret = idr_for_each(&client->resource_idr,
+-			   is_outbound_transaction_resource, NULL);
+-	spin_unlock_irq(&client->lock);
+-
+-	return ret;
++	return idr_for_each(&client->resource_idr, is_outbound_transaction_resource, NULL);
+ }
+ 
+ static int shutdown_resource(int id, void *p, void *data)
 -- 
 2.43.0
 
