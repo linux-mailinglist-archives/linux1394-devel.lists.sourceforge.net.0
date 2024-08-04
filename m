@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id E317B946ECF
-	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Aug 2024 15:02:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CC422946ED5
+	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Aug 2024 15:03:03 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1saasq-0004tm-Hj;
-	Sun, 04 Aug 2024 13:02:48 +0000
+	id 1saasw-0004uv-Qz;
+	Sun, 04 Aug 2024 13:02:54 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1saaso-0004tT-KI
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1saasv-0004ue-5u
  for linux1394-devel@lists.sourceforge.net;
- Sun, 04 Aug 2024 13:02:46 +0000
+ Sun, 04 Aug 2024 13:02:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=riXT/ZPaI3yITLXofYuDWzvYYTW64WraJqRL8dIk1u8=; b=Gl58y41Y236MZZWehYttCiHA5P
- VtnSsdn6uqNg4j0usxeJBW1zAKnYJH8fDM0gMITPiPQkt93faQbeq6WeOZCqGir/1zUiBkkHt4jg7
- /VfffZdHDn5Da6sJLmKG90mycawK748+GBb7QULO0q8kRi8Q1Luxqu8L50I6EJYiQeLo=;
+ bh=cnExW14OrezM7AAY2ZcP4bF1stBaSNMPihuGoMDdgLg=; b=DxygIVfnKNTjHu4bDsP3+z9ga2
+ o/sMRaEO+cSFP84Km3mJOKQ27v3GsF22EKN9fCWOFyH9Ovbs7UgfdlGuCwL9cvIb19E/B1OLdRvzk
+ Qw8s3kfZmcfBQwejNAbPqqC8syJzyaQZgRlnVUahiMGkA0PWFHmjTieWSSukZbx4IMWc=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -31,68 +31,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=riXT/ZPaI3yITLXofYuDWzvYYTW64WraJqRL8dIk1u8=; b=VANWFU23Y81Qqfne4vUgu6zY7Q
- NzMmpOgH8xF602jlsI50iuytMAH30EufidF4flF3CNtK357fFVAlXb5/ANEAlefzJEons2tLHZKGQ
- gGokUZq+WFrUUfxNcL8vzEW+PxRJpXyRBjjovGLbxCEUmm/0w2JjqFSnkjAQW3+B+CCY=;
+ bh=cnExW14OrezM7AAY2ZcP4bF1stBaSNMPihuGoMDdgLg=; b=fYXuCJj7EErLxByg1huNyF+CTj
+ xU9Ar+lllZA1ioGAlfJAFYc2RuLeXc9f4NYr00i/qFohgQI4Z4KIJG/oYoOtkVT8YYpU7YbG+ytwg
+ uA4EIeBfMyETYrZ9NKut1rvVkXmBjPlcIbfEGkn5jiS/RkKIsV3UrOtNbinDMFevC+40=;
 Received: from fout3-smtp.messagingengine.com ([103.168.172.146])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1saasn-0001Dh-TH for linux1394-devel@lists.sourceforge.net;
- Sun, 04 Aug 2024 13:02:46 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailfout.nyi.internal (Postfix) with ESMTP id 55AAA1388062;
- Sun,  4 Aug 2024 09:02:40 -0400 (EDT)
+ id 1saasu-0001EL-CC for linux1394-devel@lists.sourceforge.net;
+ Sun, 04 Aug 2024 13:02:53 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailfout.nyi.internal (Postfix) with ESMTP id A388F138817A;
+ Sun,  4 Aug 2024 09:02:41 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Sun, 04 Aug 2024 09:02:40 -0400
+ by compute2.internal (MEProxy); Sun, 04 Aug 2024 09:02:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1722776560; x=
- 1722862960; bh=riXT/ZPaI3yITLXofYuDWzvYYTW64WraJqRL8dIk1u8=; b=j
- sgF6qVnFxJ9MLP3LeORc+R1PNncoIFM9zgGsyGdkUPE+VW3VN1Ja51EWMWpxnSn3
- pDNsVO6yLFDl2ScXZEHuzZnSfv2ykIZDHijt2kW6/QsIb9Fx/D0OY98NNIWykKbh
- iPV2Czbb6d2OuGdw9st6R4DiVm3pT3bEsk8nu5BNfyWESaER8n/MhUKE3+JsA337
- eLlFgs/qkmBL3nYZQnzWFtwIRDhQTFO8IRC5NnIKPBDYqjeX2FbfSx1hB+Yieg5P
- XR6e4O4m0fIu386ZteCH6GA0fzCxMDoXoUnDbaADxMsVVaAoheReARD3XBkuGb+M
- E073eCAh4cc6dHG4Z4P1w==
+ :reply-to:subject:subject:to:to; s=fm3; t=1722776561; x=
+ 1722862961; bh=cnExW14OrezM7AAY2ZcP4bF1stBaSNMPihuGoMDdgLg=; b=I
+ hSBqh1gvrjtcsEc0nKOcGMM5dpTiQtMkhlsnKMX/GrX748Mwsxc99mAOuSCoRAdH
+ W+QoaDEg4pCiOVqk4jF2EdNjX0R0XTc55c9+jkq3fz1jJLpScfsiIT7bL8+bcRO8
+ TTC4ybgMzEhQpG1zRrXDpU7aOJb9mY5aMBw9dSifXONmfY6RNYOeu1T3gTT8ZCJ3
+ mH+VgTfkHufa4KXNmroiSuPJhSigHPeB/4W825hL4HPuE1m2V1GBXuI2aOD4xHa2
+ rnBNn90kz3RDfO4bmzUdmvDBjb/6a16fBO8wefeC+SO79RVj0dx+E29QE+X1u2Ng
+ 1W9b2hskRPQenduOZfwrg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1722776560; x=
- 1722862960; bh=riXT/ZPaI3yITLXofYuDWzvYYTW64WraJqRL8dIk1u8=; b=i
- c0zytlny3tW5mxYP9Q96bT+HC5/eGZ4+XbqhrHtj7oSPjGkgdsIQsvvj8qOaGyZX
- TdafKBoqN1ovXhgOHMWNTdlbTHTD+W3KVfVXGV7iqVxDn0UTn74gDuI0dAB3ic2X
- zS0CfxxJZIw1ypWuUjvYGyyh9W8QkX0xqRs19QMxBBTbW5ZNthDASwtO5D2Dyrqj
- B3hnqJRuOKezzOJuR/oO36IKSHw1nEDsqwNtBbnj1QtvZgW4OftQYY2d7CRHrshT
- cKm3SZ2NmI5p7A5Q7ZHeziG/HdhSXA4h+/PJVca5P6zbLk3gggNgcA60PiKED+my
- krK5Rus4OlhIzvV125SHg==
-X-ME-Sender: <xms:8HuvZnk5jbHd5FWrhKTIauz1eiLD1U3AEJYPqVnXokppjjBkiwf4_g>
- <xme:8HuvZq1KRqyyVbYwScZWuZWw9s3hnPW1W6W0tlf10MBpUjFEO49G98mfG1LZ13cgY
- af15ZB2aun8SiOYJPw>
-X-ME-Received: <xmr:8HuvZtqR4VV_22Sa4xPxaqR1XkZoOf1RBi6d6ufaPVfGr_T1yMkeqDKi1eAlLu_hes_Ph2Csvnoan5uy4GolKMPDEl57nxhjK_5qs23XBDtl5Q>
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1722776561; x=
+ 1722862961; bh=cnExW14OrezM7AAY2ZcP4bF1stBaSNMPihuGoMDdgLg=; b=S
+ Fki4GMwOEDoZK8ctjVyZ3LgSQvwT+4TaR8tQcI8KUVK92bw3C3ODJvQgNoicwyo4
+ aboA8yb0tYl4Ekbb00KkphIZSb8NP7A0r/ykQOIA4UOSETXqNRfLAowERfS2oamU
+ vUA7PtJ2AlCXhr+beIgxhpvFQzvxtEF9edtdatCBuD3iubjPze75AHkbq0Z1UTty
+ OYDn7n+v/GX+LuV208ESMPIa3HX1xpznXVUrfSDaBu7uMp3vr91oPyjWOwKh4ojV
+ E+LlKpSvaEq0sfwyD+JW8Kh0pa4YRTQt/nwKDZLzOlBlVvUq1FLHFjJyotUCv53z
+ aR4ToR4EwREGRHTM6euxw==
+X-ME-Sender: <xms:8XuvZn3D8FSh53nYrPNrteV-Yug4vUQJhWXwl1kiCYg44ODzRO7r8A>
+ <xme:8XuvZmGmV18mt356_7ncmLmaU2HPbF_qOw-oOzoRCpEgeacC_MWsFmxbgg3OIMG1x
+ 3hsXP0Qt_dTDARiJxw>
+X-ME-Received: <xmr:8XuvZn5Vmc72em-U_r2VKncAe7OW1XPj8iH0qO_dwHsJJxV5wEV8xeVYmrC2-PPRs0PTTCCY56xQEawXFsOZNXI_iIA6DgiRJ1rIx-2LUUOZtQ>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrkeeggdehlecutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
  uegrihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekre
  dtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgr
  shhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepvdejgfejue
  dvgfduudekleevtefgtdevhfdtffefiefgveeuteffiedvffekvddtnecuvehluhhsthgv
- rhfuihiivgepudenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihessh
+ rhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihessh
  grkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtoheptd
-X-ME-Proxy: <xmx:8HuvZvlh8P-Hj7GiMND1-be3ADT016lnynvvFDryW8WPBQt2SlSTug>
- <xmx:8HuvZl0xL20k9DrqdB2VA00IeLInpPY7w6SQPkOaVN9aKbVshkUBkw>
- <xmx:8HuvZusuFIy4VyEArVFZ-8Fr89DQUffpzdEaWKTIZniICh2S5HOLWw>
- <xmx:8HuvZpWtAETnh6bjgL40PerGn4zaeBNn4GsNY1bvWsnUDAWnLiUJvQ>
- <xmx:8HuvZjAt-gTKyCc7f6Yot7PYNQK953SRydj7aZkBkrnpmr5kYfje2MHB>
+X-ME-Proxy: <xmx:8XuvZs0GJBNThAt_fkNbaupspV0VxrhnLx2zcgc0TgLbWz3IdmM0xw>
+ <xmx:8XuvZqHXssuQniB9MlIDCp7OllbiUProQkgqqaiXYwIEE7Jst71zmA>
+ <xmx:8XuvZt8RM1AUKovIejb62x0H-YkK5fJ1WhjKx9Z0M1efU6V_XyCuWA>
+ <xmx:8XuvZnmH_lWuYm5lH3FUg_-21GYY_wy-0HoBkWKtChK77lZVBvf6Rg>
+ <xmx:8XuvZvTXCjwV-wtF9E3muvzK4WKUDN5f0nfguULuKUokt9dcxO-J6jku>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 4 Aug 2024 09:02:39 -0400 (EDT)
+ 4 Aug 2024 09:02:40 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 08/17] firewire: core: use guard macro to disable local IRQ
-Date: Sun,  4 Aug 2024 22:02:15 +0900
-Message-ID: <20240804130225.243496-9-o-takashi@sakamocchi.jp>
+Subject: [PATCH 09/17] firewire: core: use guard macro to maintain list of
+ events for userspace clients
+Date: Sun,  4 Aug 2024 22:02:16 +0900
+Message-ID: <20240804130225.243496-10-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240804130225.243496-1-o-takashi@sakamocchi.jp>
 References: <20240804130225.243496-1-o-takashi@sakamocchi.jp>
@@ -104,17 +105,22 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: The core function provides an operation for userspace
- application
- to retrieve current value of CYCLE_TIMER register with several types of system
- time. In the operation, local interrupt is disables so [...] 
+ Content preview:  The core function maintains events to userspace by list in
+ the instance of client. The concurrent access to the list is protected by
+ spinlock in the instance. This commit uses guard macro to maintain the
+ spinlock.
  Content analysis details:   (-5.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: sakamocchi.jp]
+ for more information. [URIs: messagingengine.com]
+ 0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The
+ query to Validity was blocked.  See
+ https://knowledge.validity.com/hc/en-us/articles/20961730681243
+ for more information.
+ [103.168.172.146 listed in sa-trusted.bondedsender.org]
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
  high trust [103.168.172.146 listed in list.dnswl.org]
  0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
@@ -122,11 +128,6 @@ X-Spam-Report: Spam detection software,
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
  [103.168.172.146 listed in bl.score.senderscore.com]
- 0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The
- query to Validity was blocked.  See
- https://knowledge.validity.com/hc/en-us/articles/20961730681243
- for more information.
- [103.168.172.146 listed in sa-trusted.bondedsender.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -136,7 +137,7 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
-X-Headers-End: 1saasn-0001Dh-TH
+X-Headers-End: 1saasu-0001EL-CC
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -154,57 +155,74 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The core function provides an operation for userspace application to
-retrieve current value of CYCLE_TIMER register with several types of
-system time. In the operation, local interrupt is disables so that the
-access of the register and ktime are done atomically.
+The core function maintains events to userspace by list in the instance of
+client. The concurrent access to the list is protected by spinlock in
+the instance.
 
-This commit uses guard macro to disable/enable local interrupts.
+This commit uses guard macro to maintain the spinlock.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/core-cdev.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+ drivers/firewire/core-cdev.c | 27 ++++++++++++---------------
+ 1 file changed, 12 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-index c3baf688bb70..90e9dfed8681 100644
+index 90e9dfed8681..2e2199eaa05b 100644
 --- a/drivers/firewire/core-cdev.c
 +++ b/drivers/firewire/core-cdev.c
-@@ -1263,29 +1263,27 @@ static int ioctl_get_cycle_timer2(struct client *client, union ioctl_arg *arg)
- 	struct fw_card *card = client->device->card;
- 	struct timespec64 ts = {0, 0};
- 	u32 cycle_time = 0;
--	int ret = 0;
-+	int ret;
+@@ -287,19 +287,17 @@ static int fw_device_op_open(struct inode *inode, struct file *file)
+ static void queue_event(struct client *client, struct event *event,
+ 			void *data0, size_t size0, void *data1, size_t size1)
+ {
+-	unsigned long flags;
+-
+ 	event->v[0].data = data0;
+ 	event->v[0].size = size0;
+ 	event->v[1].data = data1;
+ 	event->v[1].size = size1;
  
--	local_irq_disable();
-+	guard(irq)();
+-	spin_lock_irqsave(&client->lock, flags);
+-	if (client->in_shutdown)
+-		kfree(event);
+-	else
+-		list_add_tail(&event->link, &client->event_list);
+-	spin_unlock_irqrestore(&client->lock, flags);
++	scoped_guard(spinlock_irqsave, &client->lock) {
++		if (client->in_shutdown)
++			kfree(event);
++		else
++			list_add_tail(&event->link, &client->event_list);
++	}
  
- 	ret = fw_card_read_cycle_time(card, &cycle_time);
- 	if (ret < 0)
--		goto end;
-+		return ret;
- 
- 	switch (a->clk_id) {
- 	case CLOCK_REALTIME:      ktime_get_real_ts64(&ts);	break;
- 	case CLOCK_MONOTONIC:     ktime_get_ts64(&ts);		break;
- 	case CLOCK_MONOTONIC_RAW: ktime_get_raw_ts64(&ts);	break;
- 	default:
--		ret = -EINVAL;
-+		return -EINVAL;
- 	}
--end:
--	local_irq_enable();
- 
- 	a->tv_sec      = ts.tv_sec;
- 	a->tv_nsec     = ts.tv_nsec;
- 	a->cycle_timer = cycle_time;
- 
--	return ret;
-+	return 0;
+ 	wake_up_interruptible(&client->wait);
  }
+@@ -321,10 +319,10 @@ static int dequeue_event(struct client *client,
+ 		       fw_device_is_shutdown(client->device))
+ 		return -ENODEV;
  
- static int ioctl_get_cycle_timer(struct client *client, union ioctl_arg *arg)
+-	spin_lock_irq(&client->lock);
+-	event = list_first_entry(&client->event_list, struct event, link);
+-	list_del(&event->link);
+-	spin_unlock_irq(&client->lock);
++	scoped_guard(spinlock_irq, &client->lock) {
++		event = list_first_entry(&client->event_list, struct event, link);
++		list_del(&event->link);
++	}
+ 
+ 	total = 0;
+ 	for (i = 0; i < ARRAY_SIZE(event->v) && total < count; i++) {
+@@ -1887,9 +1885,8 @@ static int fw_device_op_release(struct inode *inode, struct file *file)
+ 		fw_iso_buffer_destroy(&client->buffer, client->device->card);
+ 
+ 	/* Freeze client->resource_idr and client->event_list */
+-	spin_lock_irq(&client->lock);
+-	client->in_shutdown = true;
+-	spin_unlock_irq(&client->lock);
++	scoped_guard(spinlock_irq, &client->lock)
++		client->in_shutdown = true;
+ 
+ 	wait_event(client->tx_flush_wait, !has_outbound_transactions(client));
+ 
 -- 
 2.43.0
 
