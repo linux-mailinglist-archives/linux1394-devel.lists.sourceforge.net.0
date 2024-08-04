@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id F28E9946ECC
-	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Aug 2024 15:02:54 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED96D946ED0
+	for <lists+linux1394-devel@lfdr.de>; Sun,  4 Aug 2024 15:02:57 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1saasl-0004t6-4N;
-	Sun, 04 Aug 2024 13:02:43 +0000
+	id 1saasr-0005eI-NK;
+	Sun, 04 Aug 2024 13:02:49 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1saasj-0004sr-Lh
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1saasq-0005e6-8A
  for linux1394-devel@lists.sourceforge.net;
- Sun, 04 Aug 2024 13:02:42 +0000
+ Sun, 04 Aug 2024 13:02:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=umV/dIhWSMe39OeV812KLlWHxNO+f3xTH4ZsEWLWI7U=; b=lR3p5umsRutGu0OdRtpM3wh8FL
- 4ud8YbUquxZ+7B7pz6ulorjmGJDkpdq87TRWjKpYPJnlAKBvsXnj2MH2bXIwy5z7naZdWC5lF9wnj
- Qevy/oWfYePeX2nC5mPMhN57Q7zYwnrOoH7+TgUVYZ2Wl1NzGFp0cjlQgUJIU0HwnbSA=;
+ bh=Qc/S6YXZ+4o3poTVbyilyGCeWi9HX+4N+cgNY9BibBI=; b=KpzKiRRjDfg7txBob8Sz7zqNoY
+ 44DvxV5CHGkhdaFrsFbQ9pABlR7tW2v9jz9CYYkdtNZD8A2Wl8//HLsX/EquBSSG1XzH42PPGvq0t
+ uyTGMOMg8bTq2qsV8RstQVyVNu6chCqe+qp4Q4/Lm5HFRCs5cbiE8vQgCfZDs2nArafA=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -31,47 +31,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=umV/dIhWSMe39OeV812KLlWHxNO+f3xTH4ZsEWLWI7U=; b=BCy73s1zyYO3Hl3mcLydzT956U
- ++778WeW6/w7DTdh1HXtAkXlNxHnRglvvgq6vxY//dlcu84LFX0gc2hACfxJZ4kJcd9imAal+k4I7
- diOaQebhRlIZk+KOsvR05haHLEln92HmbuiBbQbZEeB0YPAs3W8s3STFddLfokOUr6tI=;
-Received: from fout3-smtp.messagingengine.com ([103.168.172.146])
+ bh=Qc/S6YXZ+4o3poTVbyilyGCeWi9HX+4N+cgNY9BibBI=; b=ifw5nC+8ElaMiXc0R0QhW1JPlw
+ 7IGG3dlWR72a8izY5ufWVb/RoYqxTKtZxUsC/GVU3MTBNDPP3nZBoPpHn3i62/XFU3lAn+pig8ZuD
+ AebYbUJDL9jy7SaEHTVgqtdAU/UJvM/VKqD07CV1pazTrVEHoDfoHEvvRMq1dJj+R3lk=;
+Received: from fhigh8-smtp.messagingengine.com ([103.168.172.159])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1saasi-0001DS-Is for linux1394-devel@lists.sourceforge.net;
- Sun, 04 Aug 2024 13:02:41 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailfout.nyi.internal (Postfix) with ESMTP id EACC413807E7;
- Sun,  4 Aug 2024 09:02:34 -0400 (EDT)
+ id 1saaso-0001Dn-Ru for linux1394-devel@lists.sourceforge.net;
+ Sun, 04 Aug 2024 13:02:47 +0000
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailfhigh.nyi.internal (Postfix) with ESMTP id 4B17B11481EB;
+ Sun,  4 Aug 2024 09:02:36 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Sun, 04 Aug 2024 09:02:34 -0400
+ by compute3.internal (MEProxy); Sun, 04 Aug 2024 09:02:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1722776554; x=
- 1722862954; bh=umV/dIhWSMe39OeV812KLlWHxNO+f3xTH4ZsEWLWI7U=; b=h
- cTiCBRMHcnfZcrEhwQIemboRFgT4OhvxPVVIuUd0kiYkF/vy/IlXXVeveEAb2szV
- kXuXhbWDhRN3P8+8KkMScvxKf854rBUNVjEpepAj32Y7T1OUhzbu9Xw8V8OG4pjG
- vCz9Q8kpNzyuEnOPQ1r8c8p9dAIu1ZCdOmo/8CEzhXP/DqVTWxVzR7scigNnNi64
- 38WBCz4JqEMKB2rjwF9N4sOh3wPjbEtqqfo89CqXVlCWBoPxi01qJm+65kxae7Iu
- 0PuGHAll/sWn0m9HM5RpZExKHBUbjse6rw+f5pow9FeVF2Ou+VoQWncQueVk2kqe
- pZ+XedhDE0EkopN/fiulg==
+ :reply-to:subject:subject:to:to; s=fm3; t=1722776556; x=
+ 1722862956; bh=Qc/S6YXZ+4o3poTVbyilyGCeWi9HX+4N+cgNY9BibBI=; b=v
+ 4dlk2CgeNhcL7Ly2ue62WFXDjfMN/Bu806IMPBop8oqOYineurANx4G5ddPG6m4S
+ +qT3tU3xv64Lo3wjYA+Kb3knaCGOIprhSv/n9iM/9i3nXp45lftExODrKZahcBXk
+ cjlg+ZFSzbj/W5ea0AnrB39SquPVF+MlC+fZkqP3D6GYcRNz4T+mNKMv/5cHkmuX
+ YizP6AFMn4Ay5o2z87S/5/wSR/8wkTbpJpiyY3614TwQ6bGB9BxOyFQ3yG6/H65h
+ 8h7V2MMT3ks9qeBlulO5wiCG+X67Iqda64aVGG8MTnkr0qhO5FPXgb0EwU8BleqH
+ B5ryVKxuU9qruQ1aq320g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1722776554; x=
- 1722862954; bh=umV/dIhWSMe39OeV812KLlWHxNO+f3xTH4ZsEWLWI7U=; b=T
- gLILsy23ycuxII2aVp9gPz8CbzA7O7MHV5dIwDQeOchKOQnXIow7lsl5UBObO3Ij
- xtZcBG9tfQHJDmXerFiNsknfjFkWRD0p7RXkTLKqVSA+veuxdwR/c3nL7a3iyPA5
- 62SnIY03plDbQsFqS/Q7Q26uZgSiESpsvF31jSJBnxGxs+koViENMdKVx6xwiCVW
- hgbafr0aVSysqRrob4e2NkzZ6Kf/lF3aV2N61fG8UdSjrlW17wu9Iw7yq+U1v2Zn
- T8Q0ZAbg3G9UgG/EHoNy4nrRrdLZCi7/Otj8U+UyVdlPdaXRnzZ4I0c5SoIOL9hq
- e8Hp2xaQccyLwhCOpI0BA==
-X-ME-Sender: <xms:6nuvZvgpjWESoyt_ELMGRaiuD4nzodpBit02Hq0sFKwqTX_sFOvBzQ>
- <xme:6nuvZsDKZWUCOL6yrVDBp809S_a_5JO0wuh9XwXssb9y03ziroI3ExwZIkIIWZVaC
- saWAH51vsu25cF22cE>
-X-ME-Received: <xmr:6nuvZvEr4ABNBfRdvjha5ojza9eOU4FmlgOvBmPu1crU2Otvf03H6BD1oUvInayUeaHomfSujxd8mo47a72FBoIv5TF95Cm0oSImtIYy7YQ-pg>
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1722776556; x=
+ 1722862956; bh=Qc/S6YXZ+4o3poTVbyilyGCeWi9HX+4N+cgNY9BibBI=; b=a
+ hxdGVbH5i/BdKRRvPn6D+pfzOPcEREtFwXJslIsJhLm4/r6Cw3BT2OD7aF11rOKf
+ m8sEUseNk8iIOK1mKHhcDWfyouZfxuXcR1hqssnLtYX/oq2I0Dupq2YjrIuMEfrl
+ 3YloQ0abnE4GpvvXaORFSTxJdlohZZdwpyTKnS+WVjbcnFz8/1R0xIQrN9n5w0r0
+ qxEl6Z68k4dRebt5RQVL0aanQYuxpea16mmmGKNCyiuVKQ3bj2BV/s1Edpm9ZJfY
+ 9o1FAiSSEDJYoNYeU1uAO3gFp2yz0aRS32z5weydfOiz0sn2QSzXoPSEF8FHivda
+ hYj8ZACP++3iwFMu4T6MQ==
+X-ME-Sender: <xms:7HuvZgd8-bbR5SoBxsDtxNxLhMhbtGoIN1gp6aynoPgSKm9qMDRm8w>
+ <xme:7HuvZiM1Er7aXYw3_BRMR7VuYXSJWWyxmNB8_rx1lBGrIrPcyu8mJ55RPHjkumtQo
+ _doY71gach-PTL4shI>
+X-ME-Received: <xmr:7HuvZhhqIpf11NoZQN5WHBb0cypo7pQXQ3kiqIpim1bNtKWUc8JK-rI_o9oIX2bRUltGdD9MXP6ATHb2dPXpK6bK7aNw5JAXM-o4sSgCMFFM8Q>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrkeeggdehlecutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
  uegrihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekre
@@ -80,38 +80,37 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrkeeggdehlecutefuodetggdote
  dvgfduudekleevtefgtdevhfdtffefiefgveeuteffiedvffekvddtnecuvehluhhsthgv
  rhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihessh
  grkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtoheptd
-X-ME-Proxy: <xmx:6nuvZsSn_IvbPFgGyV4Dg84kRLF8BsZFcNB5YqisWxyfAIwcOT20Tg>
- <xmx:6nuvZsxKQXaePv4-3wX6GqoXaswKsXEQFebH4bH9-KOQQuCLH9a_9w>
- <xmx:6nuvZi699l9f6HRwGuCC2VmOKDxJsI4NK7qqzxIdhZDl5-rjYb3wcw>
- <xmx:6nuvZhxyC0feluFLQS3LdiQtaUk83vQapzDP8LM-Cnaytk5sDdi5xQ>
- <xmx:6nuvZn9lJgyAWv6ktOU8UKBP3Qgv9DtooDRIO3Rh7lkKBWYpYFPpbvWM>
+X-ME-Proxy: <xmx:7HuvZl8o_CeAf8cT6PMMlhlQZz5tEs6eDA1FUKVx5lf0fRAF6DRMxg>
+ <xmx:7HuvZstOemiNmSnJxcgC63ReJNeSTnDmdK7BHsyz4bWxWzhrO299Eg>
+ <xmx:7HuvZsGK6IxyEYKGHLA86SY5N6vV5hLAaPEsaHH76L3X7-nzGsn84g>
+ <xmx:7HuvZrMLNqYaAxJ_Vi-5zZrBSqeytuQ8z4ytyGVqYyhFMa41SBec3w>
+ <xmx:7HuvZl5K1qP2XYeUxM8_pByw_mf95kf90xmCSETj0CIdyhFTEp2fCh3C>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 4 Aug 2024 09:02:33 -0400 (EDT)
+ 4 Aug 2024 09:02:35 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 04/17] firewire: ohci: use guard macro to serialize accesses
- to phy registers
-Date: Sun,  4 Aug 2024 22:02:11 +0900
-Message-ID: <20240804130225.243496-5-o-takashi@sakamocchi.jp>
+Subject: [PATCH 05/17] firewire: core: use guard macro to maintain RCU scope
+ for transaction address handler
+Date: Sun,  4 Aug 2024 22:02:12 +0900
+Message-ID: <20240804130225.243496-6-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240804130225.243496-1-o-takashi@sakamocchi.jp>
 References: <20240804130225.243496-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
-X-Spam-Score: -0.2 (/)
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: The 1394 OHCI driver protects concurrent accesses to phy
- registers
- by mutex object in fw_ohci structure. This commit uses guard macro to maintain
- the mutex. Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp> ---
- drivers/firewire/ohci.c | 71 +++++++++++++++++++++ 1 file changed,
- 36 insertions(+), 35 deletions(-) 
- Content analysis details:   (-0.2 points, 6.0 required)
+ Content preview:  The core function maintains address handlers by list. RCU
+ is utilized for efficient read access to any entries in the list. This commit
+ uses guard macro to maintain RCU locking and releasing. Signed-off-by: Takashi
+ Sakamoto <o-takashi@sakamocchi.jp> --- drivers/firewire/core-transaction.c
+ | 35 +++++++++++++ 1 file changed, 15 insertions(+), 20 deletions(-) 
+ Content analysis details:   (-5.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
@@ -122,12 +121,16 @@ X-Spam-Report: Spam detection software,
  query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [103.168.172.146 listed in sa-trusted.bondedsender.org]
+ [103.168.172.159 listed in sa-trusted.bondedsender.org]
+ -0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [103.168.172.159 listed in wl.mailspike.net]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [103.168.172.159 listed in list.dnswl.org]
  0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
  query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [103.168.172.146 listed in bl.score.senderscore.com]
+ [103.168.172.159 listed in bl.score.senderscore.com]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -137,7 +140,8 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
-X-Headers-End: 1saasi-0001DS-Is
+ -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1saaso-0001Dn-Ru
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -155,124 +159,70 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The 1394 OHCI driver protects concurrent accesses to phy registers by
-mutex object in fw_ohci structure.
+The core function maintains address handlers by list. RCU is utilized
+for efficient read access to any entries in the list.
 
-This commit uses guard macro to maintain the mutex.
+This commit uses guard macro to maintain RCU locking and releasing.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/ohci.c | 71 +++++++++++++++++++++--------------------
- 1 file changed, 36 insertions(+), 35 deletions(-)
+ drivers/firewire/core-transaction.c | 35 +++++++++++++----------------
+ 1 file changed, 15 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
-index 8f2bbd0569fb..1461e008d265 100644
---- a/drivers/firewire/ohci.c
-+++ b/drivers/firewire/ohci.c
-@@ -713,26 +713,20 @@ static int read_paged_phy_reg(struct fw_ohci *ohci, int page, int addr)
- static int ohci_read_phy_reg(struct fw_card *card, int addr)
- {
- 	struct fw_ohci *ohci = fw_ohci(card);
--	int ret;
+diff --git a/drivers/firewire/core-transaction.c b/drivers/firewire/core-transaction.c
+index 2a2cbd6e2f9b..a0224d4d8e11 100644
+--- a/drivers/firewire/core-transaction.c
++++ b/drivers/firewire/core-transaction.c
+@@ -925,16 +925,14 @@ static void handle_exclusive_region_request(struct fw_card *card,
+ 	if (tcode == TCODE_LOCK_REQUEST)
+ 		tcode = 0x10 + async_header_get_extended_tcode(p->header);
  
--	mutex_lock(&ohci->phy_reg_mutex);
--	ret = read_phy_reg(ohci, addr);
--	mutex_unlock(&ohci->phy_reg_mutex);
-+	guard(mutex)(&ohci->phy_reg_mutex);
- 
--	return ret;
-+	return read_phy_reg(ohci, addr);
- }
- 
- static int ohci_update_phy_reg(struct fw_card *card, int addr,
- 			       int clear_bits, int set_bits)
- {
- 	struct fw_ohci *ohci = fw_ohci(card);
--	int ret;
- 
--	mutex_lock(&ohci->phy_reg_mutex);
--	ret = update_phy_reg(ohci, addr, clear_bits, set_bits);
--	mutex_unlock(&ohci->phy_reg_mutex);
-+	guard(mutex)(&ohci->phy_reg_mutex);
- 
--	return ret;
-+	return update_phy_reg(ohci, addr, clear_bits, set_bits);
- }
- 
- static inline dma_addr_t ar_buffer_bus(struct ar_context *ctx, unsigned int i)
-@@ -1882,13 +1876,15 @@ static int get_status_for_port(struct fw_ohci *ohci, int port_index,
- {
- 	int reg;
- 
--	mutex_lock(&ohci->phy_reg_mutex);
--	reg = write_phy_reg(ohci, 7, port_index);
--	if (reg >= 0)
-+	scoped_guard(mutex, &ohci->phy_reg_mutex) {
-+		reg = write_phy_reg(ohci, 7, port_index);
-+		if (reg < 0)
-+			return reg;
-+
- 		reg = read_phy_reg(ohci, 8);
--	mutex_unlock(&ohci->phy_reg_mutex);
--	if (reg < 0)
--		return reg;
-+		if (reg < 0)
-+			return reg;
+-	rcu_read_lock();
+-	handler = lookup_enclosing_address_handler(&address_handler_list,
+-						   offset, request->length);
+-	if (handler)
+-		handler->address_callback(card, request,
+-					  tcode, destination, source,
+-					  p->generation, offset,
+-					  request->data, request->length,
+-					  handler->callback_data);
+-	rcu_read_unlock();
++	scoped_guard(rcu) {
++		handler = lookup_enclosing_address_handler(&address_handler_list, offset,
++							   request->length);
++		if (handler)
++			handler->address_callback(card, request, tcode, destination, source,
++						  p->generation, offset, request->data,
++						  request->length, handler->callback_data);
 +	}
  
- 	switch (reg & 0x0f) {
- 	case 0x06:
-@@ -1929,26 +1925,31 @@ static int get_self_id_pos(struct fw_ohci *ohci, u32 self_id,
- static bool initiated_reset(struct fw_ohci *ohci)
- {
- 	int reg;
--	int ret = false;
+ 	if (!handler)
+ 		fw_send_response(card, request, RCODE_ADDRESS_ERROR);
+@@ -967,17 +965,14 @@ static void handle_fcp_region_request(struct fw_card *card,
+ 		return;
+ 	}
  
--	mutex_lock(&ohci->phy_reg_mutex);
--	reg = write_phy_reg(ohci, 7, 0xe0); /* Select page 7 */
--	if (reg >= 0) {
--		reg = read_phy_reg(ohci, 8);
--		reg |= 0x40;
--		reg = write_phy_reg(ohci, 8, reg); /* set PMODE bit */
--		if (reg >= 0) {
--			reg = read_phy_reg(ohci, 12); /* read register 12 */
--			if (reg >= 0) {
--				if ((reg & 0x08) == 0x08) {
--					/* bit 3 indicates "initiated reset" */
--					ret = true;
--				}
--			}
--		}
--	}
--	mutex_unlock(&ohci->phy_reg_mutex);
--	return ret;
-+	guard(mutex)(&ohci->phy_reg_mutex);
-+
-+	// Select page 7
-+	reg = write_phy_reg(ohci, 7, 0xe0);
-+	if (reg < 0)
-+		return reg;
-+
-+	reg = read_phy_reg(ohci, 8);
-+	if (reg < 0)
-+		return reg;
-+
-+	// set PMODE bit
-+	reg |= 0x40;
-+	reg = write_phy_reg(ohci, 8, reg);
-+	if (reg < 0)
-+		return reg;
-+
-+	// read register 12
-+	reg = read_phy_reg(ohci, 12);
-+	if (reg < 0)
-+		return reg;
-+
-+	// bit 3 indicates "initiated reset"
-+	return !!((reg & 0x08) == 0x08);
+-	rcu_read_lock();
+-	list_for_each_entry_rcu(handler, &address_handler_list, link) {
+-		if (is_enclosing_handler(handler, offset, request->length))
+-			handler->address_callback(card, request, tcode,
+-						  destination, source,
+-						  p->generation, offset,
+-						  request->data,
+-						  request->length,
+-						  handler->callback_data);
++	scoped_guard(rcu) {
++		list_for_each_entry_rcu(handler, &address_handler_list, link) {
++			if (is_enclosing_handler(handler, offset, request->length))
++				handler->address_callback(card, request, tcode, destination, source,
++							  p->generation, offset, request->data,
++							  request->length, handler->callback_data);
++		}
+ 	}
+-	rcu_read_unlock();
+ 
+ 	fw_send_response(card, request, RCODE_COMPLETE);
  }
- 
- /*
 -- 
 2.43.0
 
