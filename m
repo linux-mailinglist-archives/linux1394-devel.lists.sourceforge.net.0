@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 722C59477A8
-	for <lists+linux1394-devel@lfdr.de>; Mon,  5 Aug 2024 10:54:54 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 031099477AA
+	for <lists+linux1394-devel@lfdr.de>; Mon,  5 Aug 2024 10:54:57 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1satUK-0005KS-VY;
-	Mon, 05 Aug 2024 08:54:44 +0000
+	id 1satUO-0006AF-Rg;
+	Mon, 05 Aug 2024 08:54:48 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1satUJ-0005K1-Fu
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1satUL-00069o-L2
  for linux1394-devel@lists.sourceforge.net;
- Mon, 05 Aug 2024 08:54:43 +0000
+ Mon, 05 Aug 2024 08:54:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=bU5KUiELPtrWttit1O/f/6nD4P98n+MP8Do0wq0HKos=; b=fs0m6+yHR51atSPOs6vBVXCkD+
- U3GoOnL3nND+Dl/8sYAjwkaR2D3M6jdsDb7kwnivfvvruyc3wZCUk6u+AgsJACYwCbyn35rXSk0WZ
- Sc5gWCPuU8sXpO8b485IwaStm//qe+P9wrt12PcV18mFtsBDTCTxVqtF85Z17KUrO9HI=;
+ bh=oi4YF8S7QF5qtDuzwiUeYwReqaCDQcNumgOf6dEv5Us=; b=LkKT1BDlmSRjVvsQ1Vg2PxW2fX
+ WtUu8vGz5gUi+eEb2nmp20pfDB1YgVdXYpASM5YyNQqkptCjkpYGtZrO8IPrX1eq2sS1fMEC0f/ke
+ 0EX+Hu1aNue1SwZAvLlg1fiTYgi/HQFwCPnqgbPTixi6VAgaKHOGUfOXedxFQz4e/yxQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -31,68 +31,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=bU5KUiELPtrWttit1O/f/6nD4P98n+MP8Do0wq0HKos=; b=XsrMUsLseWjLz/cbF0YQ07FLNz
- kFJX71URvZmShtc8NJ8naCotFnYYLapQFZ03BAvtqmx2DHpoFqhM44BNk64GXhnN2ggIZwrXSNmsP
- XPGdirgWzuvSj0maJi3qTvw97b0TGmbWPfVdx/1MrhqB0nB3oqj9xpTlWeTrUu63xVAg=;
+ bh=oi4YF8S7QF5qtDuzwiUeYwReqaCDQcNumgOf6dEv5Us=; b=hkm9dpkjJrQIRI+Nhgrjc3O+Lu
+ bEDIEpH6V/dyyN9jA5dfQLKQDIYvMzL1ZoVPXgu7lsDt56vqLDXFpzenxklo8fMg1USl3AfgT0uwv
+ Nydb0jb3h0gwNh7DrVX35T7/XIob7cpgOLZTly0XstnkjIa+/8FYIxBCRQQywLmepH/Q=;
 Received: from fhigh4-smtp.messagingengine.com ([103.168.172.155])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1satUI-0002u9-My for linux1394-devel@lists.sourceforge.net;
- Mon, 05 Aug 2024 08:54:43 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailfhigh.nyi.internal (Postfix) with ESMTP id 2050E1151C9F;
- Mon,  5 Aug 2024 04:54:32 -0400 (EDT)
+ id 1satUK-0002uV-0Z for linux1394-devel@lists.sourceforge.net;
+ Mon, 05 Aug 2024 08:54:44 +0000
+Received: from compute8.internal (compute8.nyi.internal [10.202.2.227])
+ by mailfhigh.nyi.internal (Postfix) with ESMTP id 7053D1146CF3;
+ Mon,  5 Aug 2024 04:54:33 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Mon, 05 Aug 2024 04:54:32 -0400
+ by compute8.internal (MEProxy); Mon, 05 Aug 2024 04:54:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1722848072; x=
- 1722934472; bh=bU5KUiELPtrWttit1O/f/6nD4P98n+MP8Do0wq0HKos=; b=U
- UWVPq4RhDGuoy+6iLlfbjECLslTp4D+cpXH4gh+uzXBd3sd49MXiYresZR2rAt7U
- Ua3M8mTVJTcEI57T4VRNkKBBK4EY4ECo+1A9AjZwsTDbZT+9hUjD/XkWq4Howa+7
- JAs9HVr4G8Ai2YYtkuLaYuWI5HMsCea/WAoTucRZm5WSGxgNtb4WnK+oyYI0qveK
- 8I1f9aXqX1m2j/fZ6ClDLqYcdlMT84FwpNaunzOfO05kmkHkpB5OKd8lNSj1REQl
- kSG+Y6MiuaLPYQF7yQmHydzAwBGyDFx7MLO7An8Ey3z1tKY3bcP1u0ve3hQfc2Mj
- EiZlZ1x4EPCHBtFUh59KQ==
+ :reply-to:subject:subject:to:to; s=fm3; t=1722848073; x=
+ 1722934473; bh=oi4YF8S7QF5qtDuzwiUeYwReqaCDQcNumgOf6dEv5Us=; b=k
+ l9oVQ4VWf1ZHKtR0U7bspOKPvUuIK3Ja/mN0JRyMimU+xEtseMtDqLXY8BbFd+tK
+ Iuth4xSawSPSYlR4nXtcSme4jxpsCqsh/47Gc3aJS3jQQYyNyTD2btRnm9QpBbaI
+ djfD7Phe1EPN7o/cXG4xvKW+M23RaE3bh//lCLu6t6v++ft/b0Vzl4xosbk9jCFI
+ ehTrCh44rbKQVehwfBu1mY+ZM+Nh++GpSIq9FEHaheZ0PcJA8H0jG80YklIas63A
+ Qy4EDw7X83he71SpUB7cYNz/IJvUG6URnKrgp0B32LlQ13KRDhtIqKkswnFdXpmN
+ hwpL8+qbm2YbAqr3TUDvg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1722848072; x=
- 1722934472; bh=bU5KUiELPtrWttit1O/f/6nD4P98n+MP8Do0wq0HKos=; b=T
- 6KwmugROEJoY7e7AddtH/VGvfrbtzCCMq338ggrDLwfQhQarRNzF1L28vTBeqmBS
- Z6juhpiLZt34+ZAovOPVi1L4rHyfNP76kpDUlrqEcoksILCt6dB9sq0vpyWtaqwt
- QlAaH9mktITsDjkuwaseVz6XvMCBkszJYEUh42vL/rdhIQKDUmjTdXouoeW6hvSA
- MZvyr5nv4/OE7rZ6/o5K9Qw+Q6BXr9JmG8r8VAqP6pSrKNJROmZg0B2nZ+MDEt9l
- /ekEDb2N+j/o+lOqA8jKTpPUq0PGprta0sYOPWJGZwJs8ITEpiPYYHPpMiW2zfly
- w78D8PL58q8HaAMDAWq2Q==
-X-ME-Sender: <xms:SJOwZhhTPWqmgw2qomngcYpYnjzlnFeYKV-5tzuEvhszLirS8gv_TA>
- <xme:SJOwZmAN2gb0Pj34OvK7ZV6ORK1Fb0Tc1OGJ-RLtwysctK98EmzaJkq3Ml4uKYkwc
- wtRZmWYTEr4t_bp328>
-X-ME-Received: <xmr:SJOwZhFKvF7z9UR-aIzFT5T5keqMkGEmY9h_m1J5fp3xEjm8PLveSmtVvRTocY8IP1iq740G8ryxab0yZRVU9GVNrA5naiMQNrz8TkKCu90>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrkeeigddutdcutefuodetggdotefrodftvf
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1722848073; x=
+ 1722934473; bh=oi4YF8S7QF5qtDuzwiUeYwReqaCDQcNumgOf6dEv5Us=; b=n
+ OORla6/K40B/DPuFMbzSUFrvxuUZEX/hpNaRLwU2Kj1qBWGWxtpozzj28rvhWrIS
+ L85NuDNt0nnOXb7hcTU4PRksfvPm504psELLvv0lGoYcGXnlNmaKvfMcrEMUIQyX
+ Fkae2nYJa94XtzK3Q9c9EpoSbMcTgNJId9TG0BxuhKip7Wh+JHIvxS+IJV6WqYwC
+ dPMeQGvDdbHTk6pI7Db+rzgkrhGykP3pEfhmU1TcjRVPnRBNDWtfgOAGspX/nqTc
+ 34FCYYeSYfSmgDEgp7VJTjaJJLqT3Am5hmEUfpFJ2x80/SpYXt1Z69g6QNoFZIXi
+ vw++aPf+T9crzrcRXLvmw==
+X-ME-Sender: <xms:SZOwZgSRh32jV5jmV3G65TWRYCVVBTg87q-Gp1TX1KqRwyyxMjj_rg>
+ <xme:SZOwZtxyqK6GAfBQAPzISESwKMSQdshB8A_-3vOZBGxU6-1rG-npY8yUBQATV77Cx
+ 3i6GkG2vu1P-11XvDE>
+X-ME-Received: <xmr:SZOwZt3nGlc2MESmh6F-TEtza5R6s2knDm5-NA4CwlJApCHoaYhShheCXAo2UMJIiQyfNH6OwomOzqMqawGY8pwS6hJdOwCN1wGe2G3exUc>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrkeeigddtlecutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
  uegrihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekre
  dtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgr
  shhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepvdejgfejue
  dvgfduudekleevtefgtdevhfdtffefiefgveeuteffiedvffekvddtnecuvehluhhsthgv
- rhfuihiivgepgeenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihessh
+ rhfuihiivgepvdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihessh
  grkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtoheptd
-X-ME-Proxy: <xmx:SJOwZmQ7RssWEX5a1s0Ra5g2ua_u3pPv0h89QhfAXl0PFm7842nwVw>
- <xmx:SJOwZuzltloc_SMtO-WUn9fsqQoaO4ftUbTcxyVwyKnzdvsvtmfIdQ>
- <xmx:SJOwZs6J6BD8qGduYwE0qNnke3IXq19gngeI4fL7hozPmdXi298oXQ>
- <xmx:SJOwZjxSVz8mj1qYoXU1H0Nkhg_bUnD6VoUa_UfxnAxTUK8gTmG1RA>
- <xmx:SJOwZp9ESNZwdNOydLdVL8QCymaRaEYUddpn4poT1YARl61Oj7j14Iv1>
+X-ME-Proxy: <xmx:SZOwZkCzZO1jqNz9SmIq4MJryD2_zEq4O5Z6ZPSpe_9RLTBgwsd24g>
+ <xmx:SZOwZpiWL4g5soeK0gGUvk7fGemU_4w4m25i9YZDkhVbzYBLdJoDkg>
+ <xmx:SZOwZgpLluL4opqURMd3mjpnr5SFXCUkgEI8hTN0frMuCi-XovSNtA>
+ <xmx:SZOwZsiAPs1foZZpn357cQpvYQ8CfeDIHUAayryukGZx8gXlvUM7Eg>
+ <xmx:SZOwZsvebQWGXATkMG3z0cYNg8IGUXg9tchGlmvW3xW2IeWVYmxRpEy_>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 5 Aug 2024 04:54:31 -0400 (EDT)
+ 5 Aug 2024 04:54:32 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH v2 15/17] firewire: ohci: use guard macro to maintain bus time
-Date: Mon,  5 Aug 2024 17:54:06 +0900
-Message-ID: <20240805085408.251763-16-o-takashi@sakamocchi.jp>
+Subject: [PATCH v2 16/17] firewire: ohci: use guard macro to maintain image of
+ configuration ROM
+Date: Mon,  5 Aug 2024 17:54:07 +0900
+Message-ID: <20240805085408.251763-17-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240805085408.251763-1-o-takashi@sakamocchi.jp>
 References: <20240805085408.251763-1-o-takashi@sakamocchi.jp>
@@ -104,12 +105,12 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: The 1394 OHCI driver maintains bus time to respond to
- querying
- request. The concurrent access to the bus time is protected by spinlock.
- This commit uses guard macro to maintain the spinlock. Signed-off-by: Takashi
- Sakamoto <o-takashi@sakamocchi.jp> --- drivers/firewire/ohci.c | 30
- ++++++++++++ 1 file changed, 12 insertions(+), 18 deletions(-) 
+ Content preview: The 1394 OHCI driver uses spinlock for the process to update
+ local configuration ROM. This commit uses guard macro to maintain the
+ spinlock.
+ Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp> ---
+ drivers/firewire/ohci.c
+ | 116 +++++++++++++++++ 1 file changed, 49 insertions(+), 67 deletions(-)
  Content analysis details:   (-5.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -119,16 +120,16 @@ X-Spam-Report: Spam detection software,
  for more information. [URIs: sakamocchi.jp]
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
  high trust [103.168.172.155 listed in list.dnswl.org]
- 0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
- query to Validity was blocked.  See
- https://knowledge.validity.com/hc/en-us/articles/20961730681243
- for more information.
- [103.168.172.155 listed in bl.score.senderscore.com]
  0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE:
  The query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
  [103.168.172.155 listed in sa-accredit.habeas.com]
+ 0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
+ query to Validity was blocked.  See
+ https://knowledge.validity.com/hc/en-us/articles/20961730681243
+ for more information.
+ [103.168.172.155 listed in bl.score.senderscore.com]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -138,7 +139,7 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
-X-Headers-End: 1satUI-0002u9-My
+X-Headers-End: 1satUK-0002uV-0Z
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -156,88 +157,157 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The 1394 OHCI driver maintains bus time to respond to querying request.
-The concurrent access to the bus time is protected by spinlock.
+The 1394 OHCI driver uses spinlock for the process to update local
+configuration ROM.
 
 This commit uses guard macro to maintain the spinlock.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/ohci.c | 30 ++++++++++++------------------
- 1 file changed, 12 insertions(+), 18 deletions(-)
+ drivers/firewire/ohci.c | 116 +++++++++++++++++-----------------------
+ 1 file changed, 49 insertions(+), 67 deletions(-)
 
 diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
-index 1461e008d265..5cb7c7603c2c 100644
+index 5cb7c7603c2c..368420e4b414 100644
 --- a/drivers/firewire/ohci.c
 +++ b/drivers/firewire/ohci.c
-@@ -2300,9 +2300,8 @@ static irqreturn_t irq_handler(int irq, void *data)
- 		handle_dead_contexts(ohci);
+@@ -2139,53 +2139,42 @@ static void bus_reset_work(struct work_struct *work)
+ 	at_context_flush(&ohci->at_request_ctx);
+ 	at_context_flush(&ohci->at_response_ctx);
  
- 	if (event & OHCI1394_cycle64Seconds) {
--		spin_lock(&ohci->lock);
-+		guard(spinlock)(&ohci->lock);
- 		update_bus_time(ohci);
--		spin_unlock(&ohci->lock);
- 	} else
- 		flush_writes(ohci);
- 
-@@ -2762,7 +2761,6 @@ static int ohci_enable_phys_dma(struct fw_card *card,
- static u32 ohci_read_csr(struct fw_card *card, int csr_offset)
- {
- 	struct fw_ohci *ohci = fw_ohci(card);
--	unsigned long flags;
- 	u32 value;
- 
- 	switch (csr_offset) {
-@@ -2786,16 +2784,14 @@ static u32 ohci_read_csr(struct fw_card *card, int csr_offset)
- 		return get_cycle_time(ohci);
- 
- 	case CSR_BUS_TIME:
--		/*
--		 * We might be called just after the cycle timer has wrapped
--		 * around but just before the cycle64Seconds handler, so we
--		 * better check here, too, if the bus time needs to be updated.
--		 */
--		spin_lock_irqsave(&ohci->lock, flags);
--		value = update_bus_time(ohci);
--		spin_unlock_irqrestore(&ohci->lock, flags);
--		return value;
-+	{
-+		// We might be called just after the cycle timer has wrapped around but just before
-+		// the cycle64Seconds handler, so we better check here, too, if the bus time needs
-+		// to be updated.
- 
-+		guard(spinlock_irqsave)(&ohci->lock);
-+		return update_bus_time(ohci);
-+	}
- 	case CSR_BUSY_TIMEOUT:
- 		value = reg_read(ohci, OHCI1394_ATRetries);
- 		return (value >> 4) & 0x0ffff00f;
-@@ -2813,7 +2809,6 @@ static u32 ohci_read_csr(struct fw_card *card, int csr_offset)
- static void ohci_write_csr(struct fw_card *card, int csr_offset, u32 value)
- {
- 	struct fw_ohci *ohci = fw_ohci(card);
--	unsigned long flags;
- 
- 	switch (csr_offset) {
- 	case CSR_STATE_CLEAR:
-@@ -2849,12 +2844,11 @@ static void ohci_write_csr(struct fw_card *card, int csr_offset, u32 value)
- 		break;
- 
- 	case CSR_BUS_TIME:
--		spin_lock_irqsave(&ohci->lock, flags);
--		ohci->bus_time = (update_bus_time(ohci) & 0x40) |
--		                 (value & ~0x7f);
--		spin_unlock_irqrestore(&ohci->lock, flags);
-+	{
-+		guard(spinlock_irqsave)(&ohci->lock);
-+		ohci->bus_time = (update_bus_time(ohci) & 0x40) | (value & ~0x7f);
- 		break;
+-	spin_lock_irq(&ohci->lock);
 -
+-	ohci->generation = generation;
+-	reg_write(ohci, OHCI1394_IntEventClear, OHCI1394_busReset);
+-	reg_write(ohci, OHCI1394_IntMaskSet, OHCI1394_busReset);
+-
+-	if (ohci->quirks & QUIRK_RESET_PACKET)
+-		ohci->request_generation = generation;
+-
+-	/*
+-	 * This next bit is unrelated to the AT context stuff but we
+-	 * have to do it under the spinlock also.  If a new config rom
+-	 * was set up before this reset, the old one is now no longer
+-	 * in use and we can free it. Update the config rom pointers
+-	 * to point to the current config rom and clear the
+-	 * next_config_rom pointer so a new update can take place.
+-	 */
+-
+-	if (ohci->next_config_rom != NULL) {
+-		if (ohci->next_config_rom != ohci->config_rom) {
+-			free_rom      = ohci->config_rom;
+-			free_rom_bus  = ohci->config_rom_bus;
++	scoped_guard(spinlock_irq, &ohci->lock) {
++		ohci->generation = generation;
++		reg_write(ohci, OHCI1394_IntEventClear, OHCI1394_busReset);
++		reg_write(ohci, OHCI1394_IntMaskSet, OHCI1394_busReset);
++
++		if (ohci->quirks & QUIRK_RESET_PACKET)
++			ohci->request_generation = generation;
++
++		// This next bit is unrelated to the AT context stuff but we have to do it under the
++		// spinlock also. If a new config rom was set up before this reset, the old one is
++		// now no longer in use and we can free it. Update the config rom pointers to point
++		// to the current config rom and clear the next_config_rom pointer so a new update
++		// can take place.
++		if (ohci->next_config_rom != NULL) {
++			if (ohci->next_config_rom != ohci->config_rom) {
++				free_rom      = ohci->config_rom;
++				free_rom_bus  = ohci->config_rom_bus;
++			}
++			ohci->config_rom      = ohci->next_config_rom;
++			ohci->config_rom_bus  = ohci->next_config_rom_bus;
++			ohci->next_config_rom = NULL;
++
++			// Restore config_rom image and manually update config_rom registers.
++			// Writing the header quadlet will indicate that the config rom is ready,
++			// so we do that last.
++			reg_write(ohci, OHCI1394_BusOptions, be32_to_cpu(ohci->config_rom[2]));
++			ohci->config_rom[0] = ohci->next_header;
++			reg_write(ohci, OHCI1394_ConfigROMhdr, be32_to_cpu(ohci->next_header));
+ 		}
+-		ohci->config_rom      = ohci->next_config_rom;
+-		ohci->config_rom_bus  = ohci->next_config_rom_bus;
+-		ohci->next_config_rom = NULL;
+ 
+-		/*
+-		 * Restore config_rom image and manually update
+-		 * config_rom registers.  Writing the header quadlet
+-		 * will indicate that the config rom is ready, so we
+-		 * do that last.
+-		 */
+-		reg_write(ohci, OHCI1394_BusOptions,
+-			  be32_to_cpu(ohci->config_rom[2]));
+-		ohci->config_rom[0] = ohci->next_header;
+-		reg_write(ohci, OHCI1394_ConfigROMhdr,
+-			  be32_to_cpu(ohci->next_header));
+-	}
+-
+-	if (param_remote_dma) {
+-		reg_write(ohci, OHCI1394_PhyReqFilterHiSet, ~0);
+-		reg_write(ohci, OHCI1394_PhyReqFilterLoSet, ~0);
++		if (param_remote_dma) {
++			reg_write(ohci, OHCI1394_PhyReqFilterHiSet, ~0);
++			reg_write(ohci, OHCI1394_PhyReqFilterLoSet, ~0);
++		}
+ 	}
+ 
+-	spin_unlock_irq(&ohci->lock);
+-
+ 	if (free_rom)
+ 		dmam_free_coherent(ohci->card.device, CONFIG_ROM_SIZE, free_rom, free_rom_bus);
+ 
+@@ -2626,33 +2615,26 @@ static int ohci_set_config_rom(struct fw_card *card,
+ 	if (next_config_rom == NULL)
+ 		return -ENOMEM;
+ 
+-	spin_lock_irq(&ohci->lock);
+-
+-	/*
+-	 * If there is not an already pending config_rom update,
+-	 * push our new allocation into the ohci->next_config_rom
+-	 * and then mark the local variable as null so that we
+-	 * won't deallocate the new buffer.
+-	 *
+-	 * OTOH, if there is a pending config_rom update, just
+-	 * use that buffer with the new config_rom data, and
+-	 * let this routine free the unused DMA allocation.
+-	 */
+-
+-	if (ohci->next_config_rom == NULL) {
+-		ohci->next_config_rom = next_config_rom;
+-		ohci->next_config_rom_bus = next_config_rom_bus;
+-		next_config_rom = NULL;
+-	}
++	scoped_guard(spinlock_irq, &ohci->lock) {
++		// If there is not an already pending config_rom update, push our new allocation
++		// into the ohci->next_config_rom and then mark the local variable as null so that
++		// we won't deallocate the new buffer.
++		//
++		// OTOH, if there is a pending config_rom update, just use that buffer with the new
++		// config_rom data, and let this routine free the unused DMA allocation.
++		if (ohci->next_config_rom == NULL) {
++			ohci->next_config_rom = next_config_rom;
++			ohci->next_config_rom_bus = next_config_rom_bus;
++			next_config_rom = NULL;
++		}
+ 
+-	copy_config_rom(ohci->next_config_rom, config_rom, length);
++		copy_config_rom(ohci->next_config_rom, config_rom, length);
+ 
+-	ohci->next_header = config_rom[0];
+-	ohci->next_config_rom[0] = 0;
++		ohci->next_header = config_rom[0];
++		ohci->next_config_rom[0] = 0;
+ 
+-	reg_write(ohci, OHCI1394_ConfigROMmap, ohci->next_config_rom_bus);
+-
+-	spin_unlock_irq(&ohci->lock);
++		reg_write(ohci, OHCI1394_ConfigROMmap, ohci->next_config_rom_bus);
 +	}
- 	case CSR_BUSY_TIMEOUT:
- 		value = (value & 0xf) | ((value & 0xf) << 4) |
- 			((value & 0xf) << 8) | ((value & 0x0ffff000) << 4);
+ 
+ 	/* If we didn't use the DMA allocation, delete it. */
+ 	if (next_config_rom != NULL) {
 -- 
 2.43.0
 
