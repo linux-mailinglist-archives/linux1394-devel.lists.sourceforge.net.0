@@ -2,143 +2,138 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id A61BB94775D
-	for <lists+linux1394-devel@lfdr.de>; Mon,  5 Aug 2024 10:34:16 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 21E53947797
+	for <lists+linux1394-devel@lfdr.de>; Mon,  5 Aug 2024 10:54:27 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1satAN-0003J2-DB;
-	Mon, 05 Aug 2024 08:34:07 +0000
+	id 1satTw-000675-24;
+	Mon, 05 Aug 2024 08:54:19 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1satAH-0003IM-JD
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1satTv-00066v-3R
  for linux1394-devel@lists.sourceforge.net;
- Mon, 05 Aug 2024 08:34:01 +0000
+ Mon, 05 Aug 2024 08:54:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=zJ9UFW3JNgRiKo3q812jCKGIld512jGf9/66Tll64Ls=; b=HLfRVfRjLtvvcKNXLB4H8fKvN2
- lsRls6V8x7O+mE12l2wYRGhxoOUGAtmUnfTRwUP0D5e26SM7zzwPUu7pBLbKuKjYZa6bgt6UzudoR
- /X90xzko0QfEuxJ/5KyfcfBLLIO3onc6rvC+J0o3xITgC9OA4d13VZ6NMiLy2N5dRZRQ=;
+ bh=i+Ir2QJeVdEs1CTqER7N3iE55rTpvUreoCyf0MkTYpY=; b=M0uZLKp/soCuGDhwTf48mrcJKH
+ ztT+VC5mmSMxURuVrC6aOyUSMCI0h3zl3b3xc244cK13D9mffAsRBDtCGKiurOOVXbJ10Qi0NOLLq
+ 0gMZHDyHeS/AHHtBVLRPAQvebWGCSEJjNW8X7HsSEnPEwVhwDlLsc+7Kt2OETj9MI668=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=zJ9UFW3JNgRiKo3q812jCKGIld512jGf9/66Tll64Ls=; b=JEQukyakd4jZE++WwpIzXxzLNt
- VAFn41G7myzMqO4jDQdeCpxkrFi3ikT3+5zghJSwQ/N5TunJpU/ygReeKts5NQQqWQ42zESOzaSIR
- v50fqO2VNl6Sl4jt0dGdcuQ8kkRMzyWBHaupbzoW0Gkv6GtPGhUhvbOflolvhx18+XiE=;
-Received: from fhigh4-smtp.messagingengine.com ([103.168.172.155])
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=i+Ir2QJeVdEs1CTqER7N3iE55rTpvUreoCyf0MkTYpY=; b=A
+ 3btcWu2UV9dSxoeg5DK0Fu0UBOrqfcIT6SdbFfVnvTB/toXd8nIeUFC1xKZiYrPwGEyyawa2EcQuz
+ eboFi8Bxha5dL1uMHzqwj3j4TC0/61m0Nu8JyFUkvdHa6Vymd/+y5bO1ejMGX1vBSXQh8EBLxRfOy
+ HkJJXgesTFjJCIhY=;
+Received: from fout7-smtp.messagingengine.com ([103.168.172.150])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1satAG-0000fa-HS for linux1394-devel@lists.sourceforge.net;
- Mon, 05 Aug 2024 08:34:01 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailfhigh.nyi.internal (Postfix) with ESMTP id DC4C51151DC2;
- Mon,  5 Aug 2024 04:33:49 -0400 (EDT)
+ id 1satTt-0002o0-J6 for linux1394-devel@lists.sourceforge.net;
+ Mon, 05 Aug 2024 08:54:18 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailfout.nyi.internal (Postfix) with ESMTP id F3AC9138FDDF;
+ Mon,  5 Aug 2024 04:54:11 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute3.internal (MEProxy); Mon, 05 Aug 2024 04:33:49 -0400
+ by compute4.internal (MEProxy); Mon, 05 Aug 2024 04:54:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1722846829; x=
- 1722933229; bh=zJ9UFW3JNgRiKo3q812jCKGIld512jGf9/66Tll64Ls=; b=c
- 1xn301eGytn+wVO1yDQK7keAg51KkyefkwH7umZ/HpnpT34xYA1IkNaB3yMOGUNj
- WYuV9aAKj91S4rnDu9sVYy3ZVDtt9T7bafSwW5nWmzFt7oaOqz8NDuEAAhTmi3/B
- I4nRCrY1hWoutdn559YzWyIsVuTbMDPNrX8aqHNN6oOlkTQUs/TedrJy5elpzTKG
- wkzMhwrX0xF+zN0ZOSQBGx/ooRnNdD8CZbyL/J97uOD95fs9RkRbGn/6vN90SnD5
- DJDn2BMWHXG/CyFDOGqtT2b4K0y2dT/3b3NUeKNu3/CKzzm4kucfQ7BklXWfWk3k
- jHDixHmoqugSeSi0OthRQ==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm3; t=1722848051; x=1722934451; bh=i+Ir2QJeVd
+ Es1CTqER7N3iE55rTpvUreoCyf0MkTYpY=; b=D23uQAm7Gbv3zbKOO8lRbv+pGT
+ gGQ6xvSnbrHOvSiG1KTLeGb7DqpsQBFp9KSKatziSelem+t89C69UzBzFH20QtZ7
+ +foZDEdeDpaGTglGqCVjqFPLzQQ4djGDimIcsjhoalHA/gFjMhoK12PfXQ+wJ8MD
+ TD1pGPM9bmMq4p3lYpJ9hQP2VKnMfP1mBDh2QOqmneYhVM35Uc2Za87tZDdxjIJ9
+ 9FgjuITAw4yDQgkWDEpfvJjuweZ5+ZOp1BM7+rUb3QJF6ZK1/+HaVVSkZ2Xjan0+
+ hkqoFaIz32v4XY50F9CJxPiBnSRutzvwR+8pPo/vQTnAD6e9YQGSx1oaOBuw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1722846829; x=1722933229; bh=zJ9UFW3JNgRiKo3q812jCKGIld51
- 2jGf9/66Tll64Ls=; b=SeD4BYcxOLcdEs4eGIo4ctBaMjlGxDgRPHyUERRUd2sy
- 2m6bAtjpv86yMUcbFy0zf4MAIQKYNS72ZyzfBA2XmFxKMQfOOT4kCAg8c457e6nf
- /5kRdmgoJYoShFN9G2pRSuYkxMbCW9YsIPJz6VdPf11r5Cn2ss9JEy+m6iHk8Wji
- paJViiJhGtMkatlEJXZtgfVc+OBEh/vpldpQ2OA5AV4c6bwqMj7qhUZzM9NLSYsO
- ZRuPQgdwZkGkvj1i417xhyD6pIWMhavNvuv3wmN+yvopMjQgjLbVZTP3AIDFIOkf
- 4otq5ieKzMTspcd4BbfLGCJGdtoZBEBKAIokjqw8JA==
-X-ME-Sender: <xms:bY6wZuW6MrqXscaKw96EOb09DPNSNZ2F8-PY1mNQwNgwoDO3Q1Mddw>
- <xme:bY6wZqltlQSjtmcKH2AFgoIrat0L7puMtpAKLR_joOHXCDD9RvrjVBN35OZO9DU2w
- wjkLG3KeXu2wzOFtms>
-X-ME-Received: <xmr:bY6wZibfUdEzWvs66yiMn9QTiRa8ulogjtgIW6Tr_pP0Kvcz9hrcgO86gEcc-dMKDKzl_3IuE0tGaS6h8icJFUjoUM7BOH-t>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrkeeigddthecutefuodetggdotefrodftvf
+ fm3; t=1722848051; x=1722934451; bh=i+Ir2QJeVdEs1CTqER7N3iE55rTp
+ vUreoCyf0MkTYpY=; b=NV+YLifkCajeOllmhIeuDqu5/SMX9qXf76V+O2A+MfrK
+ eyOnnQABck3KTZah3UI1VSyXNkvx/lvjTowbaJypiqf4Lo9rNxaZp7U4YSvC3DeJ
+ Gj7mcyEf3qFbSlY8Bc2h7zU7yPElSzIhR+W8WqZieCn6W/Yy75CK9NYpxpFEh8SJ
+ Od5AFwrWbKtIPwMnKe0k0bdcnuhglr3qXmKnrsoa434KG2b9UlSbIbYmgrVIhIXm
+ PJtqNhrUcXMShLmu9OdvFEMTCcVF6UYiQoZSX+ywPKXaC0/HOXzPTR3waF2v7oTr
+ Pyzqzs04JhKNS3iCvts5r2dFIteZUfOR8h0CsdNnYw==
+X-ME-Sender: <xms:M5OwZjUInO545kkjCYrLdqyLXXMDEh-yzLCZxY9ES1eqgB4eJc-KVw>
+ <xme:M5OwZrk4oZYpd_m30sP4YXxxjXtb_ivzIcchoOK4dxZyDeV4x5mNaJAqy_oDQ0eyV
+ H6mi4T1vAjAJzekKYM>
+X-ME-Received: <xmr:M5OwZva0h6tpotlik70eS4WhnkvI8ltzvzDhuCy_EBPlZ5qlxI_b69CoNi4IPIx1dFPgxVItJmlJXKAxFADXWH43uUGsVbMl9gDyCZXUXM0>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrkeeigddutdcutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecunecujfgurhepfffhvfevuffkfhggtggujgesthdtre
- dttddtvdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgr
- shhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepuedvffegge
- egfeevheehlefhgfevfedtgfffgeelhefghffhvdetheefhffggfefnecuffhomhgrihhn
- pehgihhthhhusgdrtghomhdpkhgvrhhnvghlrdhorhhgpddtuddrohhrghenucevlhhush
- htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhi
- sehsrghkrghmohgttghhihdrjhhppdhnsggprhgtphhtthhopedt
-X-ME-Proxy: <xmx:bY6wZlWTQ547DS4fWmLXjwiIoby65VXO52Z_LbjYyeuBx_lEI86DnA>
- <xmx:bY6wZondw92IWsNK9FMn2WQsO__X_1HBICUvAtUNUgH8CRNrkdupUw>
- <xmx:bY6wZqcFoe6J9m34l78kpaT5HnuJq_Mo4W49YUG00w3jc2BZ4wqxPQ>
- <xmx:bY6wZqEDNcC63EOcAdKDflUcaZag9oIzUe4IdJ1vXdkfHueQCMVFDg>
- <xmx:bY6wZnu00_6EF5ZhaP14cmFuDlIzVPv_d-ML7vLJiXjeYKmo2yysEHzO>
+ uegrihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgggfestdekredtre
+ dttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhh
+ ihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepgefgheelheejie
+ elheevfeekhfdtfeeftdefgefhkeffteduveejgeekvefhvdeunecuffhomhgrihhnpehk
+ vghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrih
+ hlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgt
+ phhtthhopedt
+X-ME-Proxy: <xmx:M5OwZuV8CGGKHzXJktg2m65pe-vOB5h3UAgJTMwF9fP2E9tI9UIQ9g>
+ <xmx:M5OwZtmvMuYaNoMjZYGCgPJiT5UJ7Tz-y_5kmJsnRQ_dY9T85nqRRg>
+ <xmx:M5OwZrdxhFgixsfhZdataRju4jxB--DXJP6HddoOHSAS3f_7Pxs1xQ>
+ <xmx:M5OwZnFm4KcJSLlPmL1NGMIbiw5ZChd6QAuzuvRRT-MqnIPLGmtSRQ>
+ <xmx:M5OwZix_6BWh9t5Ggd5Q-BRmY6FhEZHP55F48h-S8xUqtC8i9-gjRvin>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 5 Aug 2024 04:33:48 -0400 (EDT)
-Date: Mon, 5 Aug 2024 17:33:45 +0900
+ 5 Aug 2024 04:54:10 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: kernel test robot <lkp@intel.com>
-Subject: Re: [PATCH 17/17] firewire: ohci: use guard macro to serialize
- operations for isochronous contexts
-Message-ID: <20240805083345.GA248096@workstation.local>
-Mail-Followup-To: kernel test robot <lkp@intel.com>,
- linux1394-devel@lists.sourceforge.net, llvm@lists.linux.dev,
- oe-kbuild-all@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20240804130225.243496-18-o-takashi@sakamocchi.jp>
- <202408050730.y1eyRcTv-lkp@intel.com>
+To: linux1394-devel@lists.sourceforge.net
+Subject: [PATCH v2 00/17] firewire: core/ohci: use guard macro for any type of
+ lock primitives
+Date: Mon,  5 Aug 2024 17:53:51 +0900
+Message-ID: <20240805085408.251763-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <202408050730.y1eyRcTv-lkp@intel.com>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Mon, Aug 05, 2024 at 07:33:01AM +0800, kernel test robot
- wrote: > url:
- https://github.com/intel-lab-lkp/linux/commits/Takashi-Sakamoto/firewire-core-use-guard-macro-to-maintain-static-packet-data-f
- [...] Content analysis details:   (-0.2 points, 6.0 required)
+ Content preview:  Hi, This patchset is a revised version of the previous one.
+ https://lore.kernel.org/lkml/20240804130225.243496-1-o-takashi@sakamocchi.jp/
+ Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
  for more information. [URIs: messagingengine.com]
- 0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE:
- The query to Validity was blocked.  See
- https://knowledge.validity.com/hc/en-us/articles/20961730681243
- for more information.
- [103.168.172.155 listed in sa-accredit.habeas.com]
  0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
  query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [103.168.172.155 listed in bl.score.senderscore.com]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ [103.168.172.150 listed in bl.score.senderscore.com]
+ 0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE:
+ The query to Validity was blocked.  See
+ https://knowledge.validity.com/hc/en-us/articles/20961730681243
+ for more information.
+ [103.168.172.150 listed in sa-accredit.habeas.com]
+ 0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
+ [103.168.172.150 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
-X-Headers-End: 1satAG-0000fa-HS
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1satTt-0002o0-J6
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -151,51 +146,68 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, llvm@lists.linux.dev,
- linux-kernel@vger.kernel.org, oe-kbuild-all@lists.linux.dev
+Cc: linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Mon, Aug 05, 2024 at 07:33:01AM +0800, kernel test robot wrote:
-> url:    https://github.com/intel-lab-lkp/linux/commits/Takashi-Sakamoto/firewire-core-use-guard-macro-to-maintain-static-packet-data-for-phy-configuration/20240804-210645
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git for-next
-> patch link:    https://lore.kernel.org/r/20240804130225.243496-18-o-takashi%40sakamocchi.jp
-> patch subject: [PATCH 17/17] firewire: ohci: use guard macro to serialize operations for isochronous contexts
-> config: arm64-randconfig-003-20240805 (https://download.01.org/0day-ci/archive/20240805/202408050730.y1eyRcTv-lkp@intel.com/config)
-> compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
-> reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240805/202408050730.y1eyRcTv-lkp@intel.com/reproduce)
-> 
-> If you fix the issue in a separate patch/commit (i.e. not just a new version of
-> the same patch/commit), kindly add following tags
-> | Reported-by: kernel test robot <lkp@intel.com>
-> | Closes: https://lore.kernel.org/oe-kbuild-all/202408050730.y1eyRcTv-lkp@intel.com/
-> 
-> All errors (new ones prefixed by >>):
-> 
-> >> drivers/firewire/ohci.c:3138:2: error: expected expression
->     3138 |         guard(spinlock_irq)(&ohci->lock);
->          |         ^
->    include/linux/cleanup.h:167:2: note: expanded from macro 'guard'
->      167 |         CLASS(_name, __UNIQUE_ID(guard))
->          |         ^
->    include/linux/cleanup.h:122:2: note: expanded from macro 'CLASS'
->      122 |         class_##_name##_t var __cleanup(class_##_name##_destructor) =   \
->          |         ^
->    <scratch space>:133:1: note: expanded from here
->      133 | class_spinlock_irq_t
->          | ^
->    1 error generated.
+Hi,
 
-The macro expands a declaration, while the line just after the label
-should be still any statement in C11.
+This patchset is a revised version of the previous one.
 
-I'll post take 2 patchset.
+https://lore.kernel.org/lkml/20240804130225.243496-1-o-takashi@sakamocchi.jp/
 
+The guard macro was firstly introduced in v6.5 kernel, and already
+available for spin_lock, mutex, RCU, and R/W semaphore. It is useful to
+ensure releasing lock in block.
 
-Thanks
+This patchset includes changes to replace lock/release codes with the guard
+macro.
 
-Takashi Sakamoto
+* Changes in v2:
+  * use scoped_guard() instead of guard() just after label so that
+    statements are expanded there instead of declarations.
+
+Takashi Sakamoto (17):
+  firewire: core: use guard macro to maintain static packet data for phy
+    configuration
+  firewire: core: use guard macro to maintain the list of card
+  firewire: core: use guard macro to maintain the list of cdev clients
+  firewire: ohci: use guard macro to serialize accesses to phy registers
+  firewire: core: use guard macro to maintain RCU scope for transaction
+    address handler
+  firewire: core: use guard macro to access to IDR for fw_device
+  firewire: core: use guard macro to maintain the list of address
+    handler for transaction
+  firewire: core: use guard macro to disable local IRQ
+  firewire: core: use guard macro to maintain list of events for
+    userspace clients
+  firewire: core: use guard macro to maintain IDR of isochronous
+    resources for userspace clients
+  firewire: core: use guard macro to maintain isochronous context for
+    userspace client
+  firewire: core: use guard macro to maintain list of receivers for phy
+    configuration packets
+  firewire: core: use guard macro to maintain list of asynchronous
+    transaction
+  firewire: core: use guard macro to maintain properties of fw_card
+  firewire: ohci: use guard macro to maintain bus time
+  firewire: ohci: use guard macro to maintain image of configuration ROM
+  firewire: ohci: use guard macro to serialize operations for
+    isochronous contexts
+
+ drivers/firewire/core-card.c        |  60 ++---
+ drivers/firewire/core-cdev.c        | 252 ++++++++----------
+ drivers/firewire/core-device.c      |  83 +++---
+ drivers/firewire/core-iso.c         |   5 +-
+ drivers/firewire/core-topology.c    |   5 +-
+ drivers/firewire/core-transaction.c | 146 ++++------
+ drivers/firewire/ohci.c             | 399 ++++++++++++----------------
+ 7 files changed, 403 insertions(+), 547 deletions(-)
+
+-- 
+2.43.0
+
 
 
 _______________________________________________
