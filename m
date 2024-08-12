@@ -2,135 +2,138 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB85994DF2F
-	for <lists+linux1394-devel@lfdr.de>; Sun, 11 Aug 2024 00:33:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BAD3394E48B
+	for <lists+linux1394-devel@lfdr.de>; Mon, 12 Aug 2024 03:43:21 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1scueV-0006Tc-PP;
-	Sat, 10 Aug 2024 22:33:35 +0000
+	id 1sdK5V-0008TR-3F;
+	Mon, 12 Aug 2024 01:43:09 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1scueU-0006TU-Jc
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1sdK5T-0008TJ-SV
  for linux1394-devel@lists.sourceforge.net;
- Sat, 10 Aug 2024 22:33:34 +0000
+ Mon, 12 Aug 2024 01:43:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=16V/ecT+Q3nGYJ/WX/ghSoW8dgWNcKTfOO+4QSdRadY=; b=WrJVdxt7GIuh9puDD+ff7uiFKC
- XN8TVJVfALttG5DOH5YCewwg65UGEDA/NiOqh2QOJfJMVk8f6i6g5+epTTOZOOkZjR+TQXujRg9sf
- 1bhtgi7hu0YbQEnLDj2UC0wdJd+nbUOYr9Qu3k7VfhkhFv+IAbaiGANhxC8HqZl6tPHo=;
+ bh=ZiDTMdIzAfO3sACDBpZRIVM7mN18dHms2sa6dSgiMJk=; b=ikOxdX9zgWcdUDmulDFiDsnglJ
+ 75IanlY5Yc8uSLb8AIQ3c7/IlhXTrkwQNh/zValjHeug0k4LliB0kQsn+6sOmuEdZR9L5VLGbw17r
+ MZHvDnNd+Vf7ow1UXP0ADVwO82W96egMCTQiSEoXqbsA7yoEn0FlfxynS00toYtTm76Q=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=16V/ecT+Q3nGYJ/WX/ghSoW8dgWNcKTfOO+4QSdRadY=; b=PusrSfpSi8Cy3YCXr1ilJWqFdX
- f1i83jD2Viidv4FydlJ4bTZ0VILxvViQ+WHeWP1m4UGovlS7Fzh3+1xLhdSoGqluSr9QXv7kCZN4c
- YS+pK+qRU5SjREqW22m4HBnB6Z25vscBtyqkMgrQKwfjFJl/Sl8rW3foW+p9MSWQ6pMg=;
-Received: from fhigh1-smtp.messagingengine.com ([103.168.172.152])
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=ZiDTMdIzAfO3sACDBpZRIVM7mN18dHms2sa6dSgiMJk=; b=K
+ itxBAWsJH08G2dYKgm3XcLCgmQG4R8WhouUqsEA+oFF4jNKukZXOfMPDfJ9Je2Zaaxs9aEFxiRq2N
+ JTyv6/iAtev0BsjWAiUn2IrfEANTXntrHgB9JX76/iuCfBy1C0GNOUF3hqUtjjrDI2N15heDoz/tq
+ gb9Ck4CKRqqtRZG8=;
+Received: from fout7-smtp.messagingengine.com ([103.168.172.150])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1scueT-0000ZJ-JX for linux1394-devel@lists.sourceforge.net;
- Sat, 10 Aug 2024 22:33:34 +0000
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailfhigh.nyi.internal (Postfix) with ESMTP id E632E1151B6A;
- Sat, 10 Aug 2024 18:33:22 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute1.internal (MEProxy); Sat, 10 Aug 2024 18:33:22 -0400
+ id 1sdK5S-0006A0-IQ for linux1394-devel@lists.sourceforge.net;
+ Mon, 12 Aug 2024 01:43:07 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+ by mailfout.nyi.internal (Postfix) with ESMTP id DA05A13854CF;
+ Sun, 11 Aug 2024 21:42:55 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute6.internal (MEProxy); Sun, 11 Aug 2024 21:42:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1723329202; x=
- 1723415602; bh=16V/ecT+Q3nGYJ/WX/ghSoW8dgWNcKTfOO+4QSdRadY=; b=D
- x9UXrTvKdqX+nV/Z/ORnMEifuI+9V87tT29ac83M+HQ+DiRMhYBc87yR4qimd7dN
- YNauDOelBteJLGjFELjc4vd/HCP+Lz9fQrCKhtURsOrxUuHE/NKvik5iEV+lxsuU
- xxrm5HE0IalRrZeaXJ9Rj8O0qrcep9SGO8nXo3kVjB2YgTf0TITzaf1KU/+AXnRT
- 6s2StbX+bCdEs4X2FDqByur7v2g0RZ+GUdp1pSKLXjqTMfveZ1u+ChltJ00lTjNy
- 6Yhjgmqxd/sqc5vFYVg8fQI1/eWoNSnboUTcRWVaPSzQPkdrhJDWBiB3Es/JPU/a
- 9fHOnOJZJQ/itcXpEnEzw==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm3; t=1723426975; x=1723513375; bh=ZiDTMdIzAf
+ O3sACDBpZRIVM7mN18dHms2sa6dSgiMJk=; b=UVg+UuwZuYPH7KLqT72kJMuz0X
+ EkgT954BDNgWRN/L1OIsb5MkzvGoU38j9jBRzHT7XDRUUewm5NjQNYKxvkEpB/Gx
+ wWIDtzbjXNE8olB7sMUiE6xBqQRm96kSNxg7zG8r9qU4jGDsD+jeEXqCiXnrP9gJ
+ GA66D+CFFtIuDx9FB9Z1t8Vm2K/Li0l1TojmfljQ+FmiymFjNvTGP37NMdK0YPkY
+ ugB9hPQ5E1AzYQPgr9SxIFgS1Z4DKS+R/eB33/eAWYbULmWwIDWE67xNnFIQ1pgU
+ KBhA0dsrq25JfDRqCXOAuK7EomoxCe6zpCUZ9EKmHkVhU1qHufcPmdmCRVbw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1723329202; x=1723415602; bh=16V/ecT+Q3nGYJ/WX/ghSoW8dgWN
- cKTfOO+4QSdRadY=; b=nowOQL6tUJAneBxZDncGR01PWucfnuYH6t6L3Ayts/xI
- t0H/NgmsOTCuA9oJf5sy4LW6ftkHpWhyfr1CKGh4+jp1oBjSqrLHCiiSEiC8FrdR
- GFdTXWB2MgpOHGuWji3lgoqGVlzOAjsOUSGKntUEiND+0u2qWBS9PD8v2LS7XU6d
- knV4r+SwBszePmgd+chFYHsmn5PRWjM/M4cOAXxPJ7b5OqWtPCjOg1yl4Z8RFXHe
- vjF2V4gqiKmmyEJxaq+EzTF8VKGjsOIAWr6fO6yqEsHIC2aAVomjK092iQoynBS+
- ozNjF+opgXWzHGAuRXNdszxa2bsyhGRzJAeuOGTCtg==
-X-ME-Sender: <xms:suq3ZsHh5uLV4Oyi1SJOMoskaxDmyMTmyPjGAdNxcHh2jd2o8h3LpQ>
- <xme:suq3ZlWhA8-Ay1aUp7ezPvOwFFcQoMw79YVL1q_dBjzsNbpYC2vzNInwcMrwMeBme
- -qIRKPij3jI4fUO6S0>
-X-ME-Received: <xmr:suq3ZmJnOs-calY88B6bmtJU0YES_MASIop1Lc0IuqCbo35aNLd23GmKy_6keDpmAAItTjcmdMeqf6SAzcTo9rgUkk80hzYn>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrleejgdduvdcutefuodetggdotefrodftvf
+ fm3; t=1723426975; x=1723513375; bh=ZiDTMdIzAfO3sACDBpZRIVM7mN18
+ dHms2sa6dSgiMJk=; b=TTVVxOuviZoD62rOeHX++ppFYV35hFaEe+D7jreyKTsv
+ Bky0CVDaohhUHoH6KnTVdEqBBH2o/yfMatroiZtzsDEUi3iFIJUyKMT8v3zzWYWO
+ cU4iXUWZ4VHowo4o/0G0hV5gd3QvldLGbZUdlnhov8Vlf21gtM6hSvhC4innFTDu
+ L3e6DOVfA2xzS9o5jrLWCa+QcBV8jpeyuVnAAUkDSoTg9eEwlXHUzKdTmnIbb0a0
+ eLrlflWUAc8eYIdJg7LJblj6mRNMf0dkf0vGjoE35OwZSa+9gxcyS51ZO80tD2H4
+ uuxojAjRw2uH/zHF1bZ/oqThXNg3pvVQ/+bYwH66xw==
+X-ME-Sender: <xms:n2i5ZoDTOcIZ6SaNoqPOHn6ECRrNdMOaq8HN_e5q_7h1YNy-CCVZ5Q>
+ <xme:n2i5Zqgpmuglol0WD1LhGlwKoWDfW6x4ibgsoSKP5IQacW-GUdNVl4RqxwGoNn0Iz
+ n3nIRP3hm_lsB3Lbks>
+X-ME-Received: <xmr:n2i5ZrkEUZnhORYv6ycDUgzKp_xZYfXPN3RsRVhhtE5nc3QSvGbf1fWQU2nobyqYxkHbesl3XY6papvHxd27i2uC5SZuwPvPAeQV52pvf-N6nw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrleelgdehudcutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpggftfghnshhusghstghrihgsvgdpuffr
- tefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecunecujfgurhepfffhvfevuf
- fkfhggtggujgesthdtredttddtvdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhho
- thhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrth
- htvghrnhephefhhfettefgkedvieeuffevveeufedtlefhjeeiieetvdelfedtgfefuedu
- keeunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepoh
- dqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtohepvddp
- mhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlh
- eslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhig
- qdhkvghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:suq3ZuF8-0NrgniJFrLNw4UjS9S3GY2ypvJpARbCN78YkoC7sSfq2g>
- <xmx:suq3ZiUW9l0P3l1waHLXozA61BQh8cQGHXxa2cOLTaGpTWgWDoGkmQ>
- <xmx:suq3ZhNIrxo4WB7tVmh-Y4pJ-rJ1JTtW-lqwHS91VNsALmW_CqdoeA>
- <xmx:suq3Zp1ThDUrqxw32QXPk1ajwN9ZVBSsjwYHU0GX7tqxvaz3CB6eiw>
- <xmx:suq3Zvjind_N46F0aB10i2IFblgaLc6Npgd0qxeDn-9K9VZwVYlu3yXj>
+ tefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecunecujfgurhephffvvefuff
+ fkofgggfestdekredtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothho
+ uceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvg
+ hrnhepffdvueelffevkeduhfetjeduffeghfettdfguedtgfdvgfeufeduheevheevkeek
+ necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqth
+ grkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtohepvddpmhho
+ uggvpehsmhhtphhouhhtpdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslh
+ hishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhk
+ vghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:n2i5ZuykLB-BEbLasE0oSG5SD2GCn0oW5FV5bjP3TxMp_8I7iUZ_VQ>
+ <xmx:n2i5ZtQEAlARQuZB8P2wGxF2f3j6Y5TL4FlYKmEy4zGJ49Atb_9Vgw>
+ <xmx:n2i5ZpYiia2Nb5wNS1DSzup-9L1PLmSGtCGXPW3G09XyKGP3TAW6Kg>
+ <xmx:n2i5ZmQPXIFVK994kiff7BHOqD36S1GKwOGvK0BMs08l7rDdzDScKQ>
+ <xmx:n2i5ZodYsawScSv4n_GYStBPD1nDceSodU8YgNFtKXM2nIp8JzSZM0N5>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 10 Aug 2024 18:33:21 -0400 (EDT)
-Date: Sun, 11 Aug 2024 07:33:18 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
+ 11 Aug 2024 21:42:54 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: Re: [PATCH] firewire: core: correct range of block for case of
- switch statement
-Message-ID: <20240810223318.GA74211@workstation.local>
-Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
- linux-kernel@vger.kernel.org
-References: <20240810070403.36801-1-o-takashi@sakamocchi.jp>
+Subject: [PATCH 0/2] firewire: core: use XArray to maintain firewire device
+ nodes
+Date: Mon, 12 Aug 2024 10:42:49 +0900
+Message-ID: <20240812014251.165492-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240810070403.36801-1-o-takashi@sakamocchi.jp>
-X-Spam-Score: -5.2 (-----)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Sat, Aug 10, 2024 at 04:04:03PM +0900, Takashi Sakamoto
- wrote: > A commit d8527cab6c31 ("firewire: cdev: implement new event to notify
- > response subaction with time stamp") adds an additional case [...] 
- Content analysis details:   (-5.2 points, 6.0 required)
+ Content preview:  Hi, In core function,
+ the instances of fw_device corresponding
+ to firewire device node in system are maintained by IDR. As of kernel v6.0,
+ IDR has been superseded by XArray and deprecated. This series of changes
+ is to obsolete the usage of IDR with XArray. 
+ Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
  for more information. [URIs: messagingengine.com]
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [103.168.172.152 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
+ [103.168.172.150 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_DNSWL_BLOCKED  RBL: ADMINISTRATOR NOTICE: The query to
+ DNSWL was blocked.  See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [103.168.172.150 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
-X-Headers-End: 1scueT-0000ZJ-JX
+ -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+X-Headers-End: 1sdK5S-0006A0-IQ
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -148,47 +151,26 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Sat, Aug 10, 2024 at 04:04:03PM +0900, Takashi Sakamoto wrote:
-> A commit d8527cab6c31 ("firewire: cdev: implement new event to notify
-> response subaction with time stamp") adds an additional case,
-> FW_CDEV_EVENT_RESPONSE2, into switch statement in complete_transaction().
-> However, the range of block is beyond to the case label and reaches
-> neibour default label.
-> 
-> This commit corrects the range of block. Fortunately, it has few impacts
-> in practice since the local variable in the scope under the label is not
-> used in codes under default label.
-> 
-> Fixes: d8527cab6c31 ("firewire: cdev: implement new event to notify response subaction with time stamp")
-> Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-> ---
->  drivers/firewire/core-cdev.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-> index 672a37fa8343..c211bb19c94e 100644
-> --- a/drivers/firewire/core-cdev.c
-> +++ b/drivers/firewire/core-cdev.c
-> @@ -589,11 +589,11 @@ static void complete_transaction(struct fw_card *card, int rcode, u32 request_ts
->  		queue_event(client, &e->event, rsp, sizeof(*rsp) + rsp->length, NULL, 0);
->  
->  		break;
-> +	}
->  	default:
->  		WARN_ON(1);
->  		break;
->  	}
-> -	}
->  
->  	/* Drop the idr's reference */
->  	client_put(client);
+Hi,
 
-Applied for-next branch.
+In core function, the instances of fw_device corresponding to firewire device
+node in system are maintained by IDR. As of kernel v6.0, IDR has been
+superseded by XArray and deprecated.
 
+This series of changes is to obsolete the usage of IDR with XArray.
 
-Regards
+Takashi Sakamoto (2):
+  firewire: core: replace IDR with XArray to maintain fw_device
+  firewire: core: use lock in Xarray instead of local R/W semaphore
 
-Takashi Sakamoto
+ drivers/firewire/core-device.c      | 30 ++++++++++++-----------------
+ drivers/firewire/core-transaction.c |  3 +--
+ drivers/firewire/core.h             |  3 ++-
+ 3 files changed, 15 insertions(+), 21 deletions(-)
+
+-- 
+2.43.0
+
 
 
 _______________________________________________
