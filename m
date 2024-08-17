@@ -2,108 +2,104 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 786DF9535BA
-	for <lists+linux1394-devel@lfdr.de>; Thu, 15 Aug 2024 16:41:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 81FD19556AB
+	for <lists+linux1394-devel@lfdr.de>; Sat, 17 Aug 2024 11:11:58 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1sebf2-0004M6-Ci;
-	Thu, 15 Aug 2024 14:41:08 +0000
+	id 1sfFTM-0006Kd-Q0;
+	Sat, 17 Aug 2024 09:11:44 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1sebf0-0004Ls-N6
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1sfFTI-0006K9-Jp
  for linux1394-devel@lists.sourceforge.net;
- Thu, 15 Aug 2024 14:41:07 +0000
+ Sat, 17 Aug 2024 09:11:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=FFQ2p3371KOY8jkyNU3vlSfsWExltDzk/PmGj1mRgnk=; b=XNTzYVc9cASa97zXSqq0xRobsj
- NHJNcPD1whBwripKMKZjWhNjkZLL6+Xp0w+bdBnn+5VPIAijAEN/0831K4RUlneru/GrMrXPPNbWd
- Oq0DQuNKNFoWCC46MKaTwCkkkxN1xO8Io9dZQluU5Mp0cGjzR+y777D4x4CDKZkFzRu8=;
+ bh=f0gyP4x/rZij5x6yxUUAtFK2OLWmK/9anptWI0/I9oQ=; b=jwWsWDnAKFkld10AvNzHdfAezE
+ hP0Uv10SF3lwyLIJL5gi2vt0JIiX8eur/ZJlOjkV0NokAnBGAYnUZcjXRN/Fgz8vr330JzDkaF4AL
+ TW812k+AMlzWBk71/j+d4ADzvpHSXSVZiWjL9TvpITH0NAMtJXIJWqGxoHogJLu2CK4I=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=FFQ2p3371KOY8jkyNU3vlSfsWExltDzk/PmGj1mRgnk=; b=b1o/F4RJa20oxJT6XOBkTo8E9+
- EU4xfhLtJ1tQdq7sRgD/jQB4TS4wRIJ9/NXvg20AtxTvUbDgR13TiYpW/SKSUIQaCYLTvMOj5SpoK
- K7XNu3KYL9JSwrXLkf1bXW+byTJ8iw/r/vgELIFdKIX1J/sxIiUkiLbd+gEIZw/LUtLk=;
-Received: from fhigh6-smtp.messagingengine.com ([103.168.172.157])
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=f0gyP4x/rZij5x6yxUUAtFK2OLWmK/9anptWI0/I9oQ=; b=D
+ 32Km+biqH5SlWqv6bJbyoK0Zxl2e9QpJ1ajIX2CXrhgnbrD+3Ksjnj6XKQJVj7zCcuWilse3ktwf1
+ zuE8OwwCN0wdDLu+GUvG551bTBD+e8W1JVq34EgRTGYUkhnK36ohraet51tN1c3lPMw9W2Mpqmk81
+ yourbMLRO9j5ziO0=;
+Received: from fhigh1-smtp.messagingengine.com ([103.168.172.152])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1sebez-00064Y-7A for linux1394-devel@lists.sourceforge.net;
- Thu, 15 Aug 2024 14:41:06 +0000
-Received: from phl-compute-08.internal (phl-compute-08.nyi.internal
- [10.202.2.48])
- by mailfhigh.nyi.internal (Postfix) with ESMTP id 92A221151B6B;
- Thu, 15 Aug 2024 10:40:59 -0400 (EDT)
+ id 1sfFTH-0004Tq-CV for linux1394-devel@lists.sourceforge.net;
+ Sat, 17 Aug 2024 09:11:40 +0000
+Received: from phl-compute-05.internal (phl-compute-05.nyi.internal
+ [10.202.2.45])
+ by mailfhigh.nyi.internal (Postfix) with ESMTP id B66091151BB5;
+ Sat, 17 Aug 2024 05:11:33 -0400 (EDT)
 Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-08.internal (MEProxy); Thu, 15 Aug 2024 10:40:59 -0400
+ by phl-compute-05.internal (MEProxy); Sat, 17 Aug 2024 05:11:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1723732859; x=
- 1723819259; bh=FFQ2p3371KOY8jkyNU3vlSfsWExltDzk/PmGj1mRgnk=; b=w
- hLmXyqIVd5stUOlxw5n9DM5uSY/lbw1WPd7g71WpcoP23mB1khgOr6nhvtCXs52s
- yq9ZyTfT4mkwIpFTyosQ3/l2hKg0YLfW5mNtLbb6CDcnHHgOVGPAUpRwtD7Ui5cL
- fOQa9L7SDb7UtBBBt+n++RTt5hQ4C3bKgfaMJl8sXVVHsI6Z2C+8u8T445esfEwh
- A89T64khaS/jlgATDeQERAqAVDWvL6HsroE5UTPq03RW+AIH0uegTFpDPP6V8Q2h
- kLVwK+enI1uzWNjZjdEEix+RtbUUPy0tLCDfGKi1LmDTl3RjjeyFdT6iqBp0WUM/
- 8v2V4z+kGXvn000bfib7A==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm3; t=1723885893; x=1723972293; bh=f0gyP4x/rZ
+ ij5x6yxUUAtFK2OLWmK/9anptWI0/I9oQ=; b=n4QGgbTuDqyGzyEhyedr85PXQb
+ Icj0XJNlBRNfIIDWHZqrE4dla4nG+YhcXYOfMXJk4+1Zop0cqGAAuVkZT5uAO0Gj
+ gdyCtb30YpM34x2BapQzJuDo4jiUEopiNmUrlJmRxuu7mdrC7tKfPvLz7n/XjDFd
+ QHY92y7Z5WS6/QWoNqrT7v9YofkLX+UWoYK8gNypSENSU/UYxgrNOhWomjyBH+FH
+ 1M1w4tdERqwZ4JZCfXoM/uNA/Av/+9OqKwXnwU8dPcd6MXyucMJxrVqRy2St0KvY
+ bdg/XLJcEK7E/3Zs/nxGScKPdfAR6Wz5E5tgOPYuAGM4DMOSeTe65qbH2bsg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm3; t=1723732859; x=1723819259; bh=FFQ2p3371KOY8jkyNU3vlSfsWExl
- tDzk/PmGj1mRgnk=; b=YSCwy+xn5Kp8VkcBH3Wnhul2KuwKIY/fKiQ7wlNSPVaV
- cAqRObnMSAkWKXT4407uYBEiWnfZBSg3hSOnDG6eFV9ubPS0WgAKZKbmnlByrsoR
- I3KguXg0b5dGcWHLELU09ev/vXPUtSTsEAxkQxUteyNiRRLvYGAcoY4qZRwQfmnZ
- RdtKIqfX99B8KI6U05pKSLGMmhknk8/xyxpl5aPlRP/zHhATovJvoipL5dI2JLaX
- eMTHIh/cJ1a5OHiJvB6kbAqEc15pLD0uG34XaDTb0juWRWLd7z4BFg+SY0ARg2H1
- Mc4qRs95eB20QmhnXj+hhvLWxhP+iHvbMZyMu5vN4A==
-X-ME-Sender: <xms:exO-Zncnh__DgB74SOqZoLdvUdLilJWwTJVMpnzgX1KZqLeW8ZYAGQ>
- <xme:exO-ZtPTqhW7OHO3tA2JcagD5ubBMrjaloaahZ4C46QDJBmhq5AIwyioKORe4OYwm
- OSWBEd0YuEvvoFgV8w>
-X-ME-Received: <xmr:exO-Zggb8OsMlswXnbEvERrbrTytErUKO87Y-a13s056J895tnZDvZ69-m8_FJhf8FXX8q1rV00LJUbSO_Hxc5Q5YtJ7Zqo8d-I>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddruddtiedgjeelucetufdoteggodetrfdotf
+ fm3; t=1723885893; x=1723972293; bh=f0gyP4x/rZij5x6yxUUAtFK2OLWm
+ K/9anptWI0/I9oQ=; b=L7RhsaH06+J16CutMW2D3gkEV1QhSwD6myQNLiWglVgC
+ Hy0lDv0gK+IeELWay2IXVFl0t+zgL/rIbBiNDK1xIQxvLLf0e6ZSafeHI1D9bHcA
+ 3Z5xW0nl2FrrXbHztb8soEkdjVpgpEq2JHR9ZScLe5OTECevbm24+E0M5z8RR6fB
+ v7ilc4ZVTMQjADks5zZugqLOfXp2fZe3I7yRsZK6hCn5eDFEK0Vt9pjbwUZ1DYFa
+ qSV/2O94p0ENBzbfBs9g/H8PRdisau8vcsQXViP3HN5ZDZzvBKMyn5euspFBsWPt
+ mUKDS5dhOZhThx5SZ/KotOIJB3kcsEuKL8PhIl2Euw==
+X-ME-Sender: <xms:RWnAZgMjQ0L_9YVzPFHGPI_FwUjgvf4c3wYxzTfsbn_OYcuunS3Z_A>
+ <xme:RWnAZm-2xLCi9yhfvNPGf8hn5L58Hb4frdVSbh3Vs3rTW5B2zLQT-Fe5a5RAfxlKn
+ Vi9SjTgBm54TlM4NIA>
+X-ME-Received: <xmr:RWnAZnS_XWfep5GarjMvJIrOnR95m29k6B69BhIYLmN35x3EvxzV87RqrjShsRHMjs_rI1Qu1P3BvUGP0bEutJVe3omEJ88L3wCZ_MQ94IwvOQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddruddutddguddvucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
  rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnh
- htshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvden
- ucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihessh
- grkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhephefhhfettefgkedvieeu
- ffevveeufedtlefhjeeiieetvdelfedtgfefuedukeeunecuvehluhhsthgvrhfuihiivg
- eptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhho
- tggthhhirdhjphdpnhgspghrtghpthhtohepvddpmhhouggvpehsmhhtphhouhhtpdhrtg
- hpthhtohepuggrnhdrtggrrhhpvghnthgvrheslhhinhgrrhhordhorhhgpdhrtghpthht
- oheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfhhorhhgvg
- drnhgvth
-X-ME-Proxy: <xmx:exO-Zo8eyE0XNLaZ3vHvOGABtn-BTRZvYkrwRGlNbaOtcRxkXGB2jg>
- <xmx:exO-ZjtBwVP9VcOwmkBJbo7QpZ-bZq1fdijI3553wTwbW2boaCw7cA>
- <xmx:exO-ZnFkLheGC64Xc-jsCAuydJ_z1CHmX8SIEkcdM0iS_YS5vP87bQ>
- <xmx:exO-ZqPbx5Ue0YK675pFQCm4kWu4wO4JqQOKUEfdmE-sgO6jMb0Ivg>
- <xmx:exO-Zs4av6L9tONJn17-VdHDwmVW46I8tpI-nTVPlPm3Wj40cGQ3pVux>
+ htshculddquddttddmnecujfgurhephffvvefufffkofgggfestdekredtredttdenucfh
+ rhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihesshgrkh
+ grmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepffdvueelffevkeduhfetjedu
+ ffeghfettdfguedtgfdvgfeufeduheevheevkeeknecuvehluhhsthgvrhfuihiivgeptd
+ enucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggt
+ hhhirdhjphdpnhgspghrtghpthhtohepfedpmhhouggvpehsmhhtphhouhhtpdhrtghpth
+ htoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfhhorhhg
+ vgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnh
+ gvlhdrohhrghdprhgtphhtthhopegurghnrdgtrghrphgvnhhtvghrsehlihhnrghrohdr
+ ohhrgh
+X-ME-Proxy: <xmx:RWnAZosowJgTL14O3xE_xLnyEwx0TRRbzsfB4wAUqTDs2DmfoE3jtg>
+ <xmx:RWnAZofppdTq_ZP_wzmNL11bJ7l-kblVJRsVs8Q56nVF0lxmwKcjyw>
+ <xmx:RWnAZs1UznVSjFpEN8dMhbPNsgIpZPZNOQxXvT3Q1leghcBxieEr-A>
+ <xmx:RWnAZs_ao-5FJh4PrOBdDdQxS_moEXXgRspLBif6kkchmjEi5dL-8A>
+ <xmx:RWnAZg6njdCqRHjFugfa6RHzGyMvJQzxs1tq-1EZJfwb4HGpHh2eU_h4>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 15 Aug 2024 10:40:58 -0400 (EDT)
-Date: Thu, 15 Aug 2024 23:40:54 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 17 Aug 2024 05:11:32 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Subject: Re: [bug report] firewire: ohci: use guard macro to serialize
- accesses to phy registers
-Message-ID: <20240815144054.GA118524@workstation.local>
-Mail-Followup-To: Dan Carpenter <dan.carpenter@linaro.org>,
- linux1394-devel@lists.sourceforge.net
-References: <bc125b2f-d038-4a14-bc11-93f40f024c95@stanley.mountain>
+To: linux1394-devel@lists.sourceforge.net
+Subject: [PATCH] firewire: ohci: fix error path to detect initiated reset in
+ TI TSB41BA3D phy
+Date: Sat, 17 Aug 2024 18:11:28 +0900
+Message-ID: <20240817091128.180303-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <bc125b2f-d038-4a14-bc11-93f40f024c95@stanley.mountain>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
@@ -111,27 +107,26 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Thu, Aug 15, 2024 at 10:08:27AM +0300, Dan Carpenter
- wrote: > Hello Takashi Sakamoto, > > Commit 404957c1e207 ("firewire: ohci:
- use guard macro to serialize > accesses to phy registers") from Aug 5 [...]
- Content analysis details:   (-0.2 points, 6.0 required)
+ Content preview:  A commit 404957c1e207 ("firewire: ohci: use guard macro to
+ serialize accesses to phy registers") refactored initiated_reset() helper
+ function, while the error path was changed wrongly. This commit fixes the
+ bug. Content analysis details:   (-0.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
  for more information. [URIs: messagingengine.com]
- 0.0 RCVD_IN_DNSWL_BLOCKED  RBL: ADMINISTRATOR NOTICE: The query to
- DNSWL was blocked.  See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [103.168.172.157 listed in list.dnswl.org]
  0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The
  query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [103.168.172.157 listed in sa-trusted.bondedsender.org]
- 0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
- [103.168.172.157 listed in wl.mailspike.net]
+ [103.168.172.152 listed in sa-accredit.habeas.com]
+ 0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
+ query to Validity was blocked.  See
+ https://knowledge.validity.com/hc/en-us/articles/20961730681243
+ for more information.
+ [103.168.172.152 listed in bl.score.senderscore.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -141,8 +136,7 @@ X-Spam-Report: Spam detection software,
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid -0.0 T_SCC_BODY_TEXT_LINE   No description available.
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1sebez-00064Y-7A
+X-Headers-End: 1sfFTH-0004Tq-CV
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -155,73 +149,81 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net
+Cc: linux-kernel@vger.kernel.org, Dan Carpenter <dan.carpenter@linaro.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+A commit 404957c1e207 ("firewire: ohci: use guard macro to serialize
+accesses to phy registers") refactored initiated_reset() helper function,
+while the error path was changed wrongly.
 
-On Thu, Aug 15, 2024 at 10:08:27AM +0300, Dan Carpenter wrote:
-> Hello Takashi Sakamoto,
-> 
-> Commit 404957c1e207 ("firewire: ohci: use guard macro to serialize
-> accesses to phy registers") from Aug 5, 2024 (linux-next), leads to
-> the following Smatch static checker warning:
-> 
-> 	drivers/firewire/ohci.c:1927 initiated_reset()
-> 	warn: potential negative cast to bool 'reg'
-> 
-> drivers/firewire/ohci.c
->     1923 static bool initiated_reset(struct fw_ohci *ohci)
->     1924 {
->     1925         int reg;
->     1926 
-> --> 1927         guard(mutex)(&ohci->phy_reg_mutex);
-> 
-> I'm not sure why Smatch is blaming this line...
-> 
->     1928 
->     1929         // Select page 7
->     1930         reg = write_phy_reg(ohci, 7, 0xe0);
->     1931         if (reg < 0)
->     1932                 return reg;
-> 
-> This is a bool function.  I think these should be return false, instead of
-> return negative/true.
-> 
->     1933 
->     1934         reg = read_phy_reg(ohci, 8);
->     1935         if (reg < 0)
->     1936                 return reg;
->                          ^^^^^^^^^^
-> 
->     1937 
->     1938         // set PMODE bit
->     1939         reg |= 0x40;
->     1940         reg = write_phy_reg(ohci, 8, reg);
->     1941         if (reg < 0)
->     1942                 return reg;
->                          ^^^^^^^^^^
-> 
->     1943 
->     1944         // read register 12
->     1945         reg = read_phy_reg(ohci, 12);
->     1946         if (reg < 0)
->     1947                 return reg;
->                          ^^^^^^^^^^
-> 
->     1948 
->     1949         // bit 3 indicates "initiated reset"
->     1950         return !!((reg & 0x08) == 0x08);
->     1951 }
+This commit fixes the bug.
 
-Indeed. It is my mistake, and I'll fix it soon.
+Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+Fixes: 404957c1e207 ("firewire: ohci: use guard macro to serialize accesses to phy registers")
+Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+---
+ drivers/firewire/ohci.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
+diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
+index 53132eae37fe..a3a37955b174 100644
+--- a/drivers/firewire/ohci.c
++++ b/drivers/firewire/ohci.c
+@@ -1919,7 +1919,7 @@ static int get_self_id_pos(struct fw_ohci *ohci, u32 self_id,
+ 	return i;
+ }
+ 
+-static bool initiated_reset(struct fw_ohci *ohci)
++static int detect_initiated_reset(struct fw_ohci *ohci, bool *is_initiated_reset)
+ {
+ 	int reg;
+ 
+@@ -1946,7 +1946,9 @@ static bool initiated_reset(struct fw_ohci *ohci)
+ 		return reg;
+ 
+ 	// bit 3 indicates "initiated reset"
+-	return !!((reg & 0x08) == 0x08);
++	*is_initiated_reset = !!((reg & 0x08) == 0x08);
++
++	return 0;
+ }
+ 
+ /*
+@@ -1956,7 +1958,8 @@ static bool initiated_reset(struct fw_ohci *ohci)
+  */
+ static int find_and_insert_self_id(struct fw_ohci *ohci, int self_id_count)
+ {
+-	int reg, i, pos;
++	int reg, i, pos, err;
++	bool is_initiated_reset;
+ 	u32 self_id = 0;
+ 
+ 	// link active 1, speed 3, bridge 0, contender 1, more packets 0.
+@@ -1985,7 +1988,6 @@ static int find_and_insert_self_id(struct fw_ohci *ohci, int self_id_count)
+ 
+ 	for (i = 0; i < 3; i++) {
+ 		enum phy_packet_self_id_port_status status;
+-		int err;
+ 
+ 		err = get_status_for_port(ohci, i, &status);
+ 		if (err < 0)
+@@ -1994,7 +1996,10 @@ static int find_and_insert_self_id(struct fw_ohci *ohci, int self_id_count)
+ 		self_id_sequence_set_port_status(&self_id, 1, i, status);
+ 	}
+ 
+-	phy_packet_self_id_zero_set_initiated_reset(&self_id, initiated_reset(ohci));
++	err = detect_initiated_reset(ohci, &is_initiated_reset);
++	if (err < 0)
++		return err;
++	phy_packet_self_id_zero_set_initiated_reset(&self_id, is_initiated_reset);
+ 
+ 	pos = get_self_id_pos(ohci, self_id, self_id_count);
+ 	if (pos >= 0) {
+-- 
+2.43.0
 
-Thanks
-
-Takashi Sakamoto
 
 
 _______________________________________________
