@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0413959FBD
-	for <lists+linux1394-devel@lfdr.de>; Wed, 21 Aug 2024 16:26:16 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id C3D61959FDE
+	for <lists+linux1394-devel@lfdr.de>; Wed, 21 Aug 2024 16:29:45 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1sgmHk-0004Nw-MX;
-	Wed, 21 Aug 2024 14:26:04 +0000
+	id 1sgmLD-00042X-Ec;
+	Wed, 21 Aug 2024 14:29:38 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1sgmHi-0004Nn-Os
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1sgmLC-00042O-4f
  for linux1394-devel@lists.sourceforge.net;
- Wed, 21 Aug 2024 14:26:03 +0000
+ Wed, 21 Aug 2024 14:29:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
  Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=z5hmVB1UaluQWMIWgCRGfRfSmwBjFSaGxlbnQm46kVI=; b=KkZdCCiDEvQVRd4iVUK3afPXqC
- 0bZ0e1PzIwDtul4ZlUeUoudrUL04GS5Cel6kHI4BhzJPJLUpXUFoA/xYJjitnUdzJwYZ+ptXqJfU5
- kFn3N8+8b8ivZ829KgtOskoUoz81LOpVa8Lgj0ZDoY453Kc3f45TwYmanCSVQHB+cfok=;
+ bh=KjMAVAcSGnfZBXM47hogT6pOxUn239BFkFX3wckyOlU=; b=S4NFEwjxobotkLEgySAnAOLDpj
+ kqSG8E8vYObVFRQiX6w6mtobGpbFxPSyFSDrNVOCo8Sknqi2f6Kbeth8rrITAVg2dsLLu3OBTFsL4
+ oYs0sUZIK/Kr20KlXFk/tA7o/m+LQXwBapRhifpYo+pwIe8tYq4ugtZYUX+N+BxIqugk=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
@@ -31,89 +31,95 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=z5hmVB1UaluQWMIWgCRGfRfSmwBjFSaGxlbnQm46kVI=; b=fyOD9FXbSQ+tT15HQ8xs5nx2WJ
- li1mBgbXfF+15hXnC3jXsUlYjHXJ3HyWCDi+2HXGVA6hRfFBljKoO8oabDbW5HoabxtYiQPH8jkUe
- R8roJ5QO+SNbwnAdCpdO1rYlLpNjHaZ86m5CL0xDudYJ6si9VujzTT87TfMvp06WsdXM=;
+ bh=KjMAVAcSGnfZBXM47hogT6pOxUn239BFkFX3wckyOlU=; b=ecN2+2xktbCxt4f0tswk4VEVvD
+ pCdbnd7IvsModNOtZ2cQNmYjmUgJboZI9/UXgVFVCEkMXyvT6y3Wmdi1khG5PaJ/XhMKcDhAfeVJW
+ uYbJ2QOkf0D+1I+cDC5q7IJUOCxKMXr9Oaylnpwy9uEjIh3Zr6ZJh4+i5Z53zumYqUZ8=;
 Received: from fout4-smtp.messagingengine.com ([103.168.172.147])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1sgmHh-0001Bt-9z for linux1394-devel@lists.sourceforge.net;
- Wed, 21 Aug 2024 14:26:02 +0000
-Received: from phl-compute-01.internal (phl-compute-01.nyi.internal
- [10.202.2.41])
- by mailfout.nyi.internal (Postfix) with ESMTP id 9E225138FF42;
- Wed, 21 Aug 2024 10:25:50 -0400 (EDT)
+ id 1sgmL8-0001Nl-Ma for linux1394-devel@lists.sourceforge.net;
+ Wed, 21 Aug 2024 14:29:37 +0000
+Received: from phl-compute-06.internal (phl-compute-06.nyi.internal
+ [10.202.2.46])
+ by mailfout.nyi.internal (Postfix) with ESMTP id 16E47138FEBB;
+ Wed, 21 Aug 2024 10:29:24 -0400 (EDT)
 Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-01.internal (MEProxy); Wed, 21 Aug 2024 10:25:50 -0400
+ by phl-compute-06.internal (MEProxy); Wed, 21 Aug 2024 10:29:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1724250350; x=
- 1724336750; bh=z5hmVB1UaluQWMIWgCRGfRfSmwBjFSaGxlbnQm46kVI=; b=F
- dUspjj71mFgkp71yMyJmaNBf2sZc/DOIO22J8CywXwDYb/ibX4EhcFcnj2Vg2arz
- NW9JW0NxGKY2qN5PYK8atXzpbloVfZRr9zDPcDFT2RYOFJtGzQ+KKGe03vg64vY6
- TgrQAvthnHSag62uANGago7cAHRQfSXw1QVcuQBMnPGkakhF2oTAA8zE9pd6Ryrf
- YeQoqDvCvgMYeRRn9TbuP4S8/Rc95XNBrWlfIvtx/mRyPt6XXR6kP+2t2ZZT41mO
- DXy4+K8iiAlFFz9wMi48H7wuYVO1yUJUGmEj5zLl/RiDwesp3GJy8vwpJsIUqFnr
- TRMZLF2/IGhvaaj4u7QiQ==
+ :reply-to:subject:subject:to:to; s=fm1; t=1724250564; x=
+ 1724336964; bh=KjMAVAcSGnfZBXM47hogT6pOxUn239BFkFX3wckyOlU=; b=G
+ cT3GiWTC7Yi+d9iN2CIMzd5qiDYwKM6oRIhBMN5KMJmHVEov1ur/+Un2IJiDx5xl
+ BhKsg9z65d7N6YXP/79cZeVB1U5Vhc5bUhoXYb+x+jb/xoFsNAUWFDQCyfgobPvp
+ 6IeVCLk6vgw1bp+vdKKqIciNz5A6lX9edWA4f5Yt5aBvopE826k5ysLuF4xTcjXY
+ lArH48j3znArJTgMlA/DFn0/jlutGrt0oPqiYSMAdtDxIP3i6a9ldY7eaOqpTbiN
+ em01updDc0Cfc2KQJPoyM0LFZSHkAQswotuq1DweG2WDGD5szvmC1QsNgcQMYyht
+ wN9ndDlZ1UoEdYWBeIxuw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1724250350; x=1724336750; bh=z5hmVB1UaluQWMIWgCRGfRfSmwBj
- FSaGxlbnQm46kVI=; b=XnNvnt6gomwBEuHM2fRninJMHuasSml99lB/Q6Cz+AKT
- Wa8JqpeF8SbY7KMBtRyJJ50TwQ23LmUx9zlDiVN4+r0c9eo6e2yTTYfWDTJq9h+L
- 9DMt8JN+ZsQ8ZF65L/VrulZf4TluVVufYyhnNhMORSnC0xy1fkGxznu8dC2gS5qM
- lDcYZmUENhM4uTV/xzrXmSWlV8NGNYqX5DHkdarUSb8Uw7xLWO5tAxEgKmLs5f3D
- VcxsJPxmawn9CLienZbNPJGRjKUoBobIhRLQMRwtLWDHl2hYxBilxMpT9/GoNtIt
- P5YgEt4sJeNTmGUzCtJU6p5VCedmJdCHOQasxrQXZw==
-X-ME-Sender: <xms:7vjFZu9FCwZaJ-y9xYQEw2yIJMbusC9JGteh5u-tyxxHc3QNo1EPRg>
- <xme:7vjFZuuc67XqPkG3iCdFc3qNzcKRyyScXa2lcRWTFUADUhI5mNGDuhZdubnnVx5ab
- Hakvjf3lGNcwUezeSk>
-X-ME-Received: <xmr:7vjFZkBKUY60thNjM-EUKkgcl3gc6WXGXMdMvi0XKQOt64w87mCRH5fyLTEZUpz2htRX1DJqzglYwAIfAt6S-Va04eub-0KhMw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddruddukedgjeeiucetufdoteggodetrfdotf
+ fm1; t=1724250564; x=1724336964; bh=KjMAVAcSGnfZBXM47hogT6pOxUn2
+ 39BFkFX3wckyOlU=; b=M6jgqntJrns2iOEYOiIQmoVudHIeOXMio/xIEH4l4dIo
+ AQ2HbTy3wmZggKB5jHpFKpC9X+wP7YVkm/iPJl+RvHHis5hByFxR6hE2SlZRYZJe
+ 7tIAOQZtdHMjB4aY99SSwbxrqkVmdnkw/Wm2BucA/WjHjL9T2lTGwql1RsoM4AN5
+ ut5ve9n1dRhIFWKoiQAIT1pBlTVzPeNUUo6EkJJf51IRRfzeAjOlLGo/U/jc9EP0
+ zktojJIguoi+BkQa+Xsa6gJ6h11wPtmrL3WNGiOFUQApZqaFMMJX/6NwMOYbU12v
+ Xkcfmh9YsYSlTUs43qz70Tfc9HnAHggG6nY9NVHG4Q==
+X-ME-Sender: <xms:w_nFZiGDFi5l0IA-jMps3FdZQyJ34M0yzlvZFW7bj4exrZTVerfBcw>
+ <xme:w_nFZjWXx6GDAVNeLhmLbwLNPoXERZE5IPweZCqhtqz_dMOXUHg4N3zPygVNaKWjX
+ BB_Jyj-_B7g5EQlvmc>
+X-ME-Received: <xmr:w_nFZsJXEYZbHC7O3rNwvLbXevtsPdu4kldutezou54ub7a58tXdCYUzmVXfZC82deQrFYcAEdnGNPe2Zf5mlbJ2MzSrMbNthg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddruddukedgjeejucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
  rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnh
  htshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvden
  ucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihessh
- grkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhephefhhfettefgkedvieeu
- ffevveeufedtlefhjeeiieetvdelfedtgfefuedukeeunecuvehluhhsthgvrhfuihiivg
- eptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhho
- tggthhhirdhjphdpnhgspghrtghpthhtohepfedpmhhouggvpehsmhhtphhouhhtpdhrtg
- hpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfhho
- rhhgvgdrnhgvthdprhgtphhtthhopeiiihhjuhhnpghhuhesihgtlhhouhgurdgtohhmpd
- hrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:7vjFZmeJNdmiJEnPhVCc7L-Yh0pV2-QJBTX6lUqgnXsPMU3Ms7vyPQ>
- <xmx:7vjFZjPPdc65QJ1HGLf7kzstW2t74S4K7hoVQ6Aq_7hnNjUpw2Jt7g>
- <xmx:7vjFZgmnO35moMLOwDVkiL_CEK5iDvMycdcVCKtfKeUuDLQDW482rA>
- <xmx:7vjFZlvGYZQzKuuh-ppb4ugHpruxf9pIzMzFTDsm-Lotz2HBdGRFoQ>
- <xmx:7vjFZsqEZPMs0rB5LbnWB0zsSefRJWoc83pOiQUO8s_NbnrNTNJJoViZ>
+ grkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepveeilefhudekffehkeff
+ udduvedvfeduleelfeegieeljeehjeeuvdeghfetvedvnecuffhomhgrihhnpehkvghrnh
+ gvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhr
+ ohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgtphhtth
+ hopeehpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopeiiihhjuhhnpghhuhesihgt
+ lhhouhgurdgtohhmpdhrtghpthhtohepghhrvghgkhhhsehlihhnuhigfhhouhhnuggrth
+ hiohhnrdhorhhgpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgv
+ rhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhish
+ htshdrshhouhhrtggvfhhorhhgvgdrnhgvthdprhgtphhtthhopehquhhitggpiihijhhu
+ hhhusehquhhitghinhgtrdgtohhm
+X-ME-Proxy: <xmx:w_nFZsEV9hGT29NSd3GTszkMnbeY_p-VkBdZq4W8FW6Beyv0Yf4Zag>
+ <xmx:w_nFZoVtgmVLpU-DIwoT4WPHH0SGMIa_w-YzyA6LOeq4dGvVnhspkQ>
+ <xmx:w_nFZvO7cDQ9kaXvQgt3tu0Yldah_-UbOeedohmTCsEivo6DeHbYzg>
+ <xmx:w_nFZv3pfQ3VXWv0tv_p3BW01BzNeUZ9sAckDGj6GuuKeRqB9Czfvw>
+ <xmx:xPnFZidrllUSAVrqmNu5iz32rfTVBLTTRW5iYAXPjFF7KCntB0GGSWx0>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 21 Aug 2024 10:25:49 -0400 (EDT)
-Date: Wed, 21 Aug 2024 23:25:46 +0900
+ 21 Aug 2024 10:29:22 -0400 (EDT)
+Date: Wed, 21 Aug 2024 23:29:20 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: linux1394-devel@lists.sourceforge.net
-Subject: Re: [PATCH] firewire: core: update fw_device outside of
- device_find_child()
-Message-ID: <20240821142546.GA48808@workstation.local>
-Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
- Zijun Hu <zijun_hu@icloud.com>, linux-kernel@vger.kernel.org
-References: <20240820132132.28839-1-o-takashi@sakamocchi.jp>
+To: Zijun Hu <zijun_hu@icloud.com>
+Subject: Re: [PATCH v2 3/4] firewire: core: Prevent device_find_child() from
+ modifying caller's match data
+Message-ID: <20240821142920.GB48808@workstation.local>
+Mail-Followup-To: Zijun Hu <zijun_hu@icloud.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
+ Zijun Hu <quic_zijuhu@quicinc.com>
+References: <20240815-const_dfc_prepare-v2-0-8316b87b8ff9@quicinc.com>
+ <20240815-const_dfc_prepare-v2-3-8316b87b8ff9@quicinc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240820132132.28839-1-o-takashi@sakamocchi.jp>
+In-Reply-To: <20240815-const_dfc_prepare-v2-3-8316b87b8ff9@quicinc.com>
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Tue, Aug 20, 2024 at 10:21:32PM +0900, Takashi Sakamoto
- wrote: > When detecting updates of bus topology, the data of fw_device is
- newly > allocated and caches the content of configuration ROM from [...] 
+ Content preview:  Hi, On Thu, Aug 15, 2024 at 10:58:04PM +0800, Zijun Hu wrote:
+ > From: Zijun Hu <quic_zijuhu@quicinc.com> > > To prepare for constifying
+ the following old driver core API: > > struct device *device_find_ch [...]
  Content analysis details:   (-5.2 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -121,28 +127,29 @@ X-Spam-Report: Spam detection software,
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
  for more information. [URIs: messagingengine.com]
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [103.168.172.147 listed in list.dnswl.org]
- 0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE:
- The query to Validity was blocked.  See
- https://knowledge.validity.com/hc/en-us/articles/20961730681243
- for more information.
- [103.168.172.147 listed in sa-accredit.habeas.com]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
  query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
  [103.168.172.147 listed in bl.score.senderscore.com]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The
+ query to Validity was blocked.  See
+ https://knowledge.validity.com/hc/en-us/articles/20961730681243
+ for more information.
+ [103.168.172.147 listed in sa-trusted.bondedsender.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1sgmHh-0001Bt-9z
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [103.168.172.147 listed in list.dnswl.org]
+ -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+X-Headers-End: 1sgmL8-0001Nl-Ma
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -155,34 +162,44 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: Zijun Hu <zijun_hu@icloud.com>, linux-kernel@vger.kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux1394-devel@lists.sourceforge.net, Zijun Hu <quic_zijuhu@quicinc.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Tue, Aug 20, 2024 at 10:21:32PM +0900, Takashi Sakamoto wrote:
-> When detecting updates of bus topology, the data of fw_device is newly
-> allocated and caches the content of configuration ROM from the
-> corresponding node. Then, the tree of device is sought to find the
-> previous data of fw_device corresponding to the node. If found, the
-> previous data is updated and reused and the data of fw_device newly
-> allocated is going to be released.
+Hi,
+
+On Thu, Aug 15, 2024 at 10:58:04PM +0800, Zijun Hu wrote:
+> From: Zijun Hu <quic_zijuhu@quicinc.com>
 > 
-> The above procedure is done in the call of device_find_child(), however it
-> is a bit abusing against the intention of the helper function, since it is
-> preferable to find only without updating.
+> To prepare for constifying the following old driver core API:
 > 
-> This commit splits the update outside of the call.
+> struct device *device_find_child(struct device *dev, void *data,
+> 		int (*match)(struct device *dev, void *data));
+> to new:
+> struct device *device_find_child(struct device *dev, const void *data,
+> 		int (*match)(struct device *dev, const void *data));
 > 
-> Cc: Zijun Hu <zijun_hu@icloud.com>
-> Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+> The new API does not allow its match function (*match)() to modify
+> caller's match data @*data, but lookup_existing_device() as the old
+> API's match function indeed modifies relevant match data, so it is not
+> suitable for the new API any more, fixed by implementing a equivalent
+> fw_device_find_child() instead of the old API usage.
+> 
+> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
 > ---
->  drivers/firewire/core-device.c | 116 +++++++++++++++++----------------
->  1 file changed, 59 insertions(+), 57 deletions(-)
+>  drivers/firewire/core-device.c | 37 +++++++++++++++++++++++++++++++++++--
+>  1 file changed, 35 insertions(+), 2 deletions(-)
 
-Applied to for-next branch.
+Please drop this patch from your series since I applied another patch[1] to
+for-next branch.
 
-Regards
+
+[1] https://lore.kernel.org/r/20240820132132.28839-1-o-takashi@sakamocchi.jp
+
+Thanks
 
 Takashi Sakamoto
 
