@@ -2,154 +2,132 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3D61959FDE
-	for <lists+linux1394-devel@lfdr.de>; Wed, 21 Aug 2024 16:29:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AFD495E527
+	for <lists+linux1394-devel@lfdr.de>; Sun, 25 Aug 2024 22:32:18 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
 	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1sgmLD-00042X-Ec;
-	Wed, 21 Aug 2024 14:29:38 +0000
+	id 1siJu5-00044m-05;
+	Sun, 25 Aug 2024 20:32:00 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1sgmLC-00042O-4f
+ (envelope-from <andrewferguson500@gmail.com>) id 1siJu3-00044f-SW
  for linux1394-devel@lists.sourceforge.net;
- Wed, 21 Aug 2024 14:29:37 +0000
+ Sun, 25 Aug 2024 20:31:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
+ MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=KjMAVAcSGnfZBXM47hogT6pOxUn239BFkFX3wckyOlU=; b=S4NFEwjxobotkLEgySAnAOLDpj
- kqSG8E8vYObVFRQiX6w6mtobGpbFxPSyFSDrNVOCo8Sknqi2f6Kbeth8rrITAVg2dsLLu3OBTFsL4
- oYs0sUZIK/Kr20KlXFk/tA7o/m+LQXwBapRhifpYo+pwIe8tYq4ugtZYUX+N+BxIqugk=;
+ bh=cfUmi+aq/V9LEOjItiNPBkdIJUrTXbwZCgQ2s5D46l0=; b=LKYyrsMVOnAbpaw+0+f2DqErRz
+ Yh0XDfw+iselcqoiyGXC5BChKU2EUY52mJycTaGXnhIUR/7bZCjwATW24s71TYAJxU1KBLC2FJQUz
+ DB9QSs2h8099WCxXN2Xengo/flaU8eVWnrGAX/jqhiDSCyQfVQ4dbLiDlysWAqVIAF54=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=KjMAVAcSGnfZBXM47hogT6pOxUn239BFkFX3wckyOlU=; b=ecN2+2xktbCxt4f0tswk4VEVvD
- pCdbnd7IvsModNOtZ2cQNmYjmUgJboZI9/UXgVFVCEkMXyvT6y3Wmdi1khG5PaJ/XhMKcDhAfeVJW
- uYbJ2QOkf0D+1I+cDC5q7IJUOCxKMXr9Oaylnpwy9uEjIh3Zr6ZJh4+i5Z53zumYqUZ8=;
-Received: from fout4-smtp.messagingengine.com ([103.168.172.147])
+ h=Content-Type:To:Subject:Message-ID:Date:From:MIME-Version:Sender:Reply-To
+ :Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=cfUmi+aq/V9LEOjItiNPBkdIJUrTXbwZCgQ2s5D46l0=; b=e
+ sZCxjnlCtElCEGf84NfDtLo+Xfm7zBVCMgb1/FrR3utJUiFUmkAEsZN+FzZEUvLom7hQpePG84Xm6
+ FbGPl7Dlb18GYcQM7eTVdcDig98FN6F0t3hKYKt7CZ2PIuPTwCsCQNKtLRK8weBis/YmsTBh7KbC/
+ 5jawJDvUFOhIxFNs=;
+Received: from mail-wm1-f43.google.com ([209.85.128.43])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
- (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1sgmL8-0001Nl-Ma for linux1394-devel@lists.sourceforge.net;
- Wed, 21 Aug 2024 14:29:37 +0000
-Received: from phl-compute-06.internal (phl-compute-06.nyi.internal
- [10.202.2.46])
- by mailfout.nyi.internal (Postfix) with ESMTP id 16E47138FEBB;
- Wed, 21 Aug 2024 10:29:24 -0400 (EDT)
-Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-06.internal (MEProxy); Wed, 21 Aug 2024 10:29:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1724250564; x=
- 1724336964; bh=KjMAVAcSGnfZBXM47hogT6pOxUn239BFkFX3wckyOlU=; b=G
- cT3GiWTC7Yi+d9iN2CIMzd5qiDYwKM6oRIhBMN5KMJmHVEov1ur/+Un2IJiDx5xl
- BhKsg9z65d7N6YXP/79cZeVB1U5Vhc5bUhoXYb+x+jb/xoFsNAUWFDQCyfgobPvp
- 6IeVCLk6vgw1bp+vdKKqIciNz5A6lX9edWA4f5Yt5aBvopE826k5ysLuF4xTcjXY
- lArH48j3znArJTgMlA/DFn0/jlutGrt0oPqiYSMAdtDxIP3i6a9ldY7eaOqpTbiN
- em01updDc0Cfc2KQJPoyM0LFZSHkAQswotuq1DweG2WDGD5szvmC1QsNgcQMYyht
- wN9ndDlZ1UoEdYWBeIxuw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1724250564; x=1724336964; bh=KjMAVAcSGnfZBXM47hogT6pOxUn2
- 39BFkFX3wckyOlU=; b=M6jgqntJrns2iOEYOiIQmoVudHIeOXMio/xIEH4l4dIo
- AQ2HbTy3wmZggKB5jHpFKpC9X+wP7YVkm/iPJl+RvHHis5hByFxR6hE2SlZRYZJe
- 7tIAOQZtdHMjB4aY99SSwbxrqkVmdnkw/Wm2BucA/WjHjL9T2lTGwql1RsoM4AN5
- ut5ve9n1dRhIFWKoiQAIT1pBlTVzPeNUUo6EkJJf51IRRfzeAjOlLGo/U/jc9EP0
- zktojJIguoi+BkQa+Xsa6gJ6h11wPtmrL3WNGiOFUQApZqaFMMJX/6NwMOYbU12v
- Xkcfmh9YsYSlTUs43qz70Tfc9HnAHggG6nY9NVHG4Q==
-X-ME-Sender: <xms:w_nFZiGDFi5l0IA-jMps3FdZQyJ34M0yzlvZFW7bj4exrZTVerfBcw>
- <xme:w_nFZjWXx6GDAVNeLhmLbwLNPoXERZE5IPweZCqhtqz_dMOXUHg4N3zPygVNaKWjX
- BB_Jyj-_B7g5EQlvmc>
-X-ME-Received: <xmr:w_nFZsJXEYZbHC7O3rNwvLbXevtsPdu4kldutezou54ub7a58tXdCYUzmVXfZC82deQrFYcAEdnGNPe2Zf5mlbJ2MzSrMbNthg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddruddukedgjeejucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
- rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnh
- htshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvden
- ucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihessh
- grkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepveeilefhudekffehkeff
- udduvedvfeduleelfeegieeljeehjeeuvdeghfetvedvnecuffhomhgrihhnpehkvghrnh
- gvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhr
- ohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgtphhtth
- hopeehpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopeiiihhjuhhnpghhuhesihgt
- lhhouhgurdgtohhmpdhrtghpthhtohepghhrvghgkhhhsehlihhnuhigfhhouhhnuggrth
- hiohhnrdhorhhgpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgv
- rhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhish
- htshdrshhouhhrtggvfhhorhhgvgdrnhgvthdprhgtphhtthhopehquhhitggpiihijhhu
- hhhusehquhhitghinhgtrdgtohhm
-X-ME-Proxy: <xmx:w_nFZsEV9hGT29NSd3GTszkMnbeY_p-VkBdZq4W8FW6Beyv0Yf4Zag>
- <xmx:w_nFZoVtgmVLpU-DIwoT4WPHH0SGMIa_w-YzyA6LOeq4dGvVnhspkQ>
- <xmx:w_nFZvO7cDQ9kaXvQgt3tu0Yldah_-UbOeedohmTCsEivo6DeHbYzg>
- <xmx:w_nFZv3pfQ3VXWv0tv_p3BW01BzNeUZ9sAckDGj6GuuKeRqB9Czfvw>
- <xmx:xPnFZidrllUSAVrqmNu5iz32rfTVBLTTRW5iYAXPjFF7KCntB0GGSWx0>
-Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 21 Aug 2024 10:29:22 -0400 (EDT)
-Date: Wed, 21 Aug 2024 23:29:20 +0900
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Zijun Hu <zijun_hu@icloud.com>
-Subject: Re: [PATCH v2 3/4] firewire: core: Prevent device_find_child() from
- modifying caller's match data
-Message-ID: <20240821142920.GB48808@workstation.local>
-Mail-Followup-To: Zijun Hu <zijun_hu@icloud.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
- Zijun Hu <quic_zijuhu@quicinc.com>
-References: <20240815-const_dfc_prepare-v2-0-8316b87b8ff9@quicinc.com>
- <20240815-const_dfc_prepare-v2-3-8316b87b8ff9@quicinc.com>
+ (TLS1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.95)
+ id 1siJu2-0000ks-Hu for linux1394-devel@lists.sourceforge.net;
+ Sun, 25 Aug 2024 20:31:59 +0000
+Received: by mail-wm1-f43.google.com with SMTP id
+ 5b1f17b1804b1-4281c164408so31415025e9.1
+ for <linux1394-devel@lists.sourceforge.net>;
+ Sun, 25 Aug 2024 13:31:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1724617912; x=1725222712; darn=lists.sourceforge.net;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=cfUmi+aq/V9LEOjItiNPBkdIJUrTXbwZCgQ2s5D46l0=;
+ b=WnrovKsQmfz0Z83m7Oa4aVnVDy4aib/+lBsWrCLZZRwLe5Cun4/trzhOyKWEIgaQpc
+ cgYKqpeSosRa1JUKdXuda2PSRsbb81tr0r2I3oUCQvm+9s8IVxefqHKOgeN1iaGg646T
+ 5eQIjj7n8ep32wXGXpeR5vzZpyLZ4poaQVdKOm15IG1t6mvh/BYqZ4RN/a1nO59Wh7pm
+ IhuVEZ4OQ4bJFdvLXpJhFEDC3XjmeeceEvpttVcU7ecQw1Aa1IpKja8Y6NTQS/6Xq9S0
+ mqiyO2xj+KBZWn82tF8ixaXW5/vYsteLijzj6zb+smWVChzJGQcK8rBIpmsCkyuQAKm9
+ IYlg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1724617912; x=1725222712;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=cfUmi+aq/V9LEOjItiNPBkdIJUrTXbwZCgQ2s5D46l0=;
+ b=fpXhxPgIr5MsqBXVEFLkJLrbbgRduAxEshSsYgzgC9iMocSW87aTwGl6tJXilphMUG
+ ssoWtjy4P0auByF+U9t9oFnmqZxT18rXwNRYL/RN/JqM/wsLv+3lbsXmtdS/16LI1O9B
+ H4RD+ykZJfZ1r2N6iB8HxJ0QBd1+/Ra2SgASG/LYmFw3GsN+/ryBCbEhDX3bUaroz1ec
+ b2Kma89R7+jRX1zeZ28C7GAXvu0zUuVFU7OO0KN956fJzH3Je65HdPfCRlkvZK2y/BeR
+ HRyz7bKyjM9kwAFl0DTH0zqw/tESq0xMeaR4zbsuM2RTNh4fRMKWhHvvmCh7UsoxPco4
+ ErrA==
+X-Gm-Message-State: AOJu0Yy8ubQM6ShioGxQbLNEFK7QoV+d/WlUaxI7Vq+/7mcy6+dHt4Yz
+ 8toI0qu9jjatMnvutZEAxNFpzwuxedP/gX6rO7cC2csTZgoAQ+sOo8gfkXxxS/RUtxzWjOVCNDS
+ dt5J/Phi/aFBWzdvVbfbLZBp1uiSLGQ==
+X-Google-Smtp-Source: AGHT+IElww3NR/yNokSJcqLvcBHNU6q1l/SkLk7Xk5VbHByrTjI42/AX25a2cwGVaQgySuuGjvSJ+rOcz0JZKjbLKes=
+X-Received: by 2002:a5d:6b86:0:b0:368:71bc:2b0c with SMTP id
+ ffacd0b85a97d-373118523cfmr4922154f8f.10.1724617911433; Sun, 25 Aug 2024
+ 13:31:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240815-const_dfc_prepare-v2-3-8316b87b8ff9@quicinc.com>
-X-Spam-Score: -5.2 (-----)
+From: Andrew Ferguson <andrewferguson500@gmail.com>
+Date: Sun, 25 Aug 2024 21:31:40 +0100
+Message-ID: <CAFvb365w5QXB8kGizFjytkg+Ag_bY_SB5B3LhHx2wSt7dtL1TQ@mail.gmail.com>
+Subject: Bug report: Mac Target Disk Mode not working in some cases
+To: linux1394-devel@lists.sourceforge.net
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Thu, Aug 15, 2024 at 10:58:04PM +0800, Zijun Hu wrote:
- > From: Zijun Hu <quic_zijuhu@quicinc.com> > > To prepare for constifying
- the following old driver core API: > > struct device *device_find_ch [...]
- Content analysis details:   (-5.2 points, 6.0 required)
+ Content preview:  Hello, I firstly wanted to thank the maintainers for working
+ on the ieee1394 system for Linux. It's great to see continuing support for
+ firewire in Linux. I have encountered a bug in that some Macs are not detected
+ in Linux,
+ when the Mac is being used in "Target Disk Mode". For those unfamiliar, 
+ Target Disk Mode boots an older (firewire-compatible) Mac [...] 
+ Content analysis details:   (-5.0 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was
  blocked.  See
  http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URIs: messagingengine.com]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ for more information. [URIs: wikipedia.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.85.128.43 listed in list.dnswl.org]
  0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
  query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [103.168.172.147 listed in bl.score.senderscore.com]
- 0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The
- query to Validity was blocked.  See
+ [209.85.128.43 listed in bl.score.senderscore.com]
+ 0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE:
+ The query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [103.168.172.147 listed in sa-trusted.bondedsender.org]
+ [209.85.128.43 listed in sa-accredit.habeas.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [andrewferguson500[at]gmail.com]
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [andrewferguson500[at]gmail.com]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.128.43 listed in wl.mailspike.net]
+ 0.0 HTML_MESSAGE           BODY: HTML included in message
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [103.168.172.147 listed in list.dnswl.org]
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1sgmL8-0001Nl-Ma
+X-Headers-End: 1siJu2-0000ks-Hu
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -162,48 +140,106 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux1394-devel@lists.sourceforge.net, Zijun Hu <quic_zijuhu@quicinc.com>,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5278450732500028070=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+--===============5278450732500028070==
+Content-Type: multipart/alternative; boundary="000000000000fc0216062087e5ae"
 
-On Thu, Aug 15, 2024 at 10:58:04PM +0800, Zijun Hu wrote:
-> From: Zijun Hu <quic_zijuhu@quicinc.com>
-> 
-> To prepare for constifying the following old driver core API:
-> 
-> struct device *device_find_child(struct device *dev, void *data,
-> 		int (*match)(struct device *dev, void *data));
-> to new:
-> struct device *device_find_child(struct device *dev, const void *data,
-> 		int (*match)(struct device *dev, const void *data));
-> 
-> The new API does not allow its match function (*match)() to modify
-> caller's match data @*data, but lookup_existing_device() as the old
-> API's match function indeed modifies relevant match data, so it is not
-> suitable for the new API any more, fixed by implementing a equivalent
-> fw_device_find_child() instead of the old API usage.
-> 
-> Signed-off-by: Zijun Hu <quic_zijuhu@quicinc.com>
-> ---
->  drivers/firewire/core-device.c | 37 +++++++++++++++++++++++++++++++++++--
->  1 file changed, 35 insertions(+), 2 deletions(-)
+--000000000000fc0216062087e5ae
+Content-Type: text/plain; charset="UTF-8"
 
-Please drop this patch from your series since I applied another patch[1] to
-for-next branch.
+Hello,
+
+I firstly wanted to thank the maintainers for working on the ieee1394
+system for Linux. It's great to see continuing support for firewire in
+Linux.
+
+I have encountered a bug in that some Macs are not detected in Linux, when
+the Mac is being used in "Target Disk Mode". For those unfamiliar, Target
+Disk Mode boots an older (firewire-compatible) Mac in a mode where
+connecting it to another computer via firewire causes the Mac to appear as
+an external firewire hard drive. See the Wikipedia article
+<https://en.wikipedia.org/wiki/Target_Disk_Mode> for more information. To
+be clear, I am not trying to run the Linux1394 system on an older Mac; I am
+trying to connect a Mac in Target Disk Mode to a regular PC running Linux
+over firewire. The Mac should appear as an external firewire hard drive. On
+some Mac models, it works just fine. However on other models, it doesn't
+work. If I connect one of these non-working models to a Mac running OS X,
+it does work, so it does appear to be an issue with Linux1394.
+
+Mac models that work:
+Macbook Pro late 2008
+iMac G4
+
+Mac models that do not work:
+iBook G4
+Powerbook G4
+
+I have access to more Mac models to test if necessary - the benefits of
+hoarding old electronics!
+
+If the maintainers are interested in investigating this issue, what sort of
+debugging information can I provide? There's only a few lines in dmesg that
+to my eyes look useful ("sbp_scsi_abort" is one) but I can provide full
+dmesg output if helpful. I have a number of different Firewire PCI / PCIe
+cards I can use, including one that should be able to run the "nosy"
+ieee1394 packet sniffer (although I have no clue how to set that up!).
+
+Many thanks, and kind regards,
+Andrew
+
+--000000000000fc0216062087e5ae
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello,<div><br></div><div>I firstly wanted to thank the ma=
+intainers for working on the ieee1394 system for Linux. It&#39;s great to s=
+ee continuing support for firewire in Linux.</div><div><br></div><div>I hav=
+e encountered a bug in that some Macs are not detected in Linux, when the M=
+ac is being used in &quot;Target Disk Mode&quot;. For those unfamiliar, Tar=
+get Disk Mode boots an older (firewire-compatible) Mac in a mode where conn=
+ecting it to another computer via firewire causes the Mac to appear as an e=
+xternal firewire hard drive. See the <a href=3D"https://en.wikipedia.org/wi=
+ki/Target_Disk_Mode">Wikipedia article</a> for more information. To be clea=
+r, I am not trying to run the Linux1394 system on an older Mac; I am trying=
+ to connect a Mac in Target Disk Mode to a regular PC running Linux over fi=
+rewire. The Mac should appear as an external firewire hard drive. On some M=
+ac models, it works just fine. However on other models, it doesn&#39;t work=
+. If I connect one of these non-working models to a Mac running OS X, it do=
+es work, so it does appear to be an issue with Linux1394.</div><div><br></d=
+iv><div>Mac models that work:</div><div>Macbook Pro late 2008</div><div>iMa=
+c G4</div><div><br></div><div>Mac models that do not work:</div><div>iBook =
+G4</div><div>Powerbook G4</div><div><br></div><div>I have access to more Ma=
+c models to test if necessary - the benefits of hoarding old electronics!</=
+div><div><br></div><div>If the maintainers are interested in investigating =
+this issue, what sort of debugging information can I provide? There&#39;s o=
+nly a few lines in dmesg that to my eyes look useful (&quot;sbp_scsi_abort&=
+quot; is one) but I can provide full dmesg output if helpful. I have a numb=
+er of different Firewire PCI / PCIe cards I can use, including one that sho=
+uld be able to run the &quot;nosy&quot; ieee1394 packet sniffer (although I=
+ have no clue how to set that up!).</div><div><br></div><div>Many thanks, a=
+nd kind regards,</div><div>Andrew</div></div>
+
+--000000000000fc0216062087e5ae--
 
 
-[1] https://lore.kernel.org/r/20240820132132.28839-1-o-takashi@sakamocchi.jp
+--===============5278450732500028070==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-Thanks
 
-Takashi Sakamoto
-
+--===============5278450732500028070==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============5278450732500028070==--
+
