@@ -2,103 +2,105 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC60F96761C
-	for <lists+linux1394-devel@lfdr.de>; Sun,  1 Sep 2024 13:16:47 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 62CA1967618
+	for <lists+linux1394-devel@lfdr.de>; Sun,  1 Sep 2024 13:16:36 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1skiZV-0000wW-6u;
-	Sun, 01 Sep 2024 11:16:41 +0000
+	id 1skiZJ-0001bI-84;
+	Sun, 01 Sep 2024 11:16:29 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1skiZL-0000vp-2O
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1skiZI-0001b9-29
  for linux1394-devel@lists.sourceforge.net;
- Sun, 01 Sep 2024 11:16:31 +0000
+ Sun, 01 Sep 2024 11:16:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
- Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
+ In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=QSZie+xNlecYmlWibU9RZ5KAvJ2n8qZrhof1Voi0CRA=; b=Is4rDl+zZpjayJI1ythOQSqO0M
- fYgbjlrsmR67+Qz5X4N1FnueaR4GW86WK53kU/LZUKghtigPq+qZAkwFsxhaYlCnF7WCYJW22dBcd
- YdYZETwtR0Gqxon9xtpry90yYrUldCiQ6573YEVKrmQ+3BWEX6XOw/JgEYdsSa0JfJYA=;
+ bh=2SEHXfPMMbG/XZRxOUGUorrs5TFwh/6sxr7DMq7qodg=; b=F1UNYO8cx8embcRzPp6ZteYPlv
+ sqv6fkmydvd1USf2KXFk0nvk6T/lsEwjFkqcFG4CDE+gOKDBjpVAWY5vra7qwAhoBtcFRcdX/HD4j
+ U2RiJ8kH3GO5XoqqEj1jQ//QtZ3RIKuXWi6xynq3WTAV3eRqoZcVkVfNgpKRwEKIFFww=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
- Sender:Reply-To:Cc:Content-Type:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=QSZie+xNlecYmlWibU9RZ5KAvJ2n8qZrhof1Voi0CRA=; b=O
- 9lZGKkQL5dtXToBakDBmnF+IufR1I87YC4noCAxkKnxVPl9uymN3VUEkPD1OEMkbhxoldgEXoTunG
- cwwdGL88u0InC/LS1Z9x8oLY2Nrwx1NNRXGT8CRGEXLQ0CwEt7OW9k9ulrp0/ISuoqPRAWkCAe/xF
- wmFhTdI2kvIEcQQ8=;
+ h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
+ Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=2SEHXfPMMbG/XZRxOUGUorrs5TFwh/6sxr7DMq7qodg=; b=c+x5IdW2/FZ6//JTXAin1iFinP
+ Xc6OwVWYsxkLNEeJhJ2Rj7Ky2har9GcNthV7hSL776C4L/h58MXjbAE9IYp0Sq9Ite08jh+0XaezR
+ I2fF54U9heY/h7hgGcusD9e/VyApLhHherwRb3fDb4UfYT/Yssnh/uvRQed+6uVMP4Xw=;
 Received: from fhigh2-smtp.messagingengine.com ([103.168.172.153])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1skiZK-0006ns-6A for linux1394-devel@lists.sourceforge.net;
- Sun, 01 Sep 2024 11:16:30 +0000
-Received: from phl-compute-05.internal (phl-compute-05.nyi.internal
- [10.202.2.45])
- by mailfhigh.nyi.internal (Postfix) with ESMTP id 9C8EF114026F
+ id 1skiZH-0006nj-Au for linux1394-devel@lists.sourceforge.net;
+ Sun, 01 Sep 2024 11:16:27 +0000
+Received: from phl-compute-08.internal (phl-compute-08.nyi.internal
+ [10.202.2.48])
+ by mailfhigh.nyi.internal (Postfix) with ESMTP id C535411400DC
  for <linux1394-devel@lists.sourceforge.net>;
- Sun,  1 Sep 2024 07:16:19 -0400 (EDT)
+ Sun,  1 Sep 2024 07:16:21 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-05.internal (MEProxy); Sun, 01 Sep 2024 07:16:19 -0400
+ by phl-compute-08.internal (MEProxy); Sun, 01 Sep 2024 07:16:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
- :to; s=fm1; t=1725189379; x=1725275779; bh=QSZie+xNlecYmlWibU9RZ
- 5KAvJ2n8qZrhof1Voi0CRA=; b=VooPoDRfJ0VVs/yVIKNQL9naKuSN8NR/34hNC
- nv/foEInxmKwj26t5rP+N3HYUdWvtoRQ081hY/qpfkC+/MbGTgbEDeoll5+f6U8e
- Va4wvnVgGsNCpKFMKwUR2xzvvkt70sss2bV0YnKDq1DdD/B5MUlBnKBSg9DvD329
- GD9SRcJOKmrF+kCKzzPpJpNuoeaDz8BR1kR4VcsfP6A8N153nfXw+ob7CGUEAaY7
- DJR4rH/aAY3cV5I0Oh80SyHKlNDnOhCoGc5XF/PBHNANdTCcvzCFnXpEMeuAlGG3
- VDK54DC/hazvAcd6Vv4YPrvcBp5WWhlpxhBHm5iooXDkziLFA==
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=fm1; t=1725189381; x=
+ 1725275781; bh=2SEHXfPMMbG/XZRxOUGUorrs5TFwh/6sxr7DMq7qodg=; b=M
+ OXjC9W/8AXne+fwpZYKeltTlwGwWDEm7XgVBSx5tKwnd/wFdz4nWmgj5TZ5Nh/K8
+ g6VdCgS0QoaG+vCIaU+l9tukFF6lhMJzxKzoSuBuyucdvEOuo6+rjqLnFzWyUlE1
+ WfDk7X/4jgC9mLv2HfIfrpGlA/SQNqQ8wSdzBhBm6iv+n7nuNNubizbtIWP8BBwn
+ 0DQ8WOg19lkJFr21s9vRAq2j2YhQRG3NLkTR5g2HKdYYiGO5k6nw0Y+9qmVQ/2AC
+ flfTvMmHiEtWhAMuxaqRWb8O804dHlmi7///Bx1qIML7s22cbTRR6kaunkMS5biM
+ FI5BqyRJd3Ws9u9mt7LEA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:content-type
  :date:date:feedback-id:feedback-id:from:from:in-reply-to
- :message-id:mime-version:reply-to:subject:subject:to:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1725189379; x=1725275779; bh=QSZie+xNlecYmlWibU9RZ5KAvJ2n
- 8qZrhof1Voi0CRA=; b=MJfTH/bp5S+Yhgt5GF3lLjn9EnXk2IolYzieDOjPiNXa
- /arNsApU/R2qCvl8cmyu1ihFJbDPCnqxUELs7JzFNA4wLaTiFVrmgeuMGnm2oBwg
- 4bZa1jpEu1xH6u4JfOBN+uDWNFYYw8OrX1dwzULpNzhHZ25o385ZabRHSuGpUpNq
- ci3CamAHjpTYVV8sG8O8RiUQpgkBOWKKIVgijrNTT4/l+d5mtUnI7ywRhBTjRz3U
- gDclFuSe7/DgdtF+ZFxQ0gmRczjLYodmAnKZHDBoVmamuqm3xdk4eItzO+4RHsYc
- 3U5nWkhoBEYzhYx6M8TyIVJgdbEod0lU24/lASe03w==
-X-ME-Sender: <xms:A03UZgmAADWcZQ-_ByJzvBHxNogS-F6Mdlwc8q3cClbrg3HlAfNVyA>
- <xme:A03UZv21gCKhGFpPA4Lsh9YcarNwD4j3MxImbZ8Tx6_HYgCnjZsiVlpRkfaW7CHzI
- uHJxqwLydqN4NEUXIs>
-X-ME-Received: <xmr:A03UZuoi63bZIb3Dv5kP_J9Ooo8M5iJuxYJfb22pvBPzLt-G0vg163XZRnFaDXki1hL8Lw8askkUVXd5a3iRb8OYk-meUvUvDl6QvjFia24>
+ :in-reply-to:message-id:mime-version:references:reply-to:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; t=1725189381; x=1725275781; bh=2SEHXfPMMbG/X
+ ZRxOUGUorrs5TFwh/6sxr7DMq7qodg=; b=XIKRQuv/QHTCXUyXFLGTLprGhfaY4
+ MpU7BT0fNguA5Of7m3inM0ffm4lK53tS12032fSKsn4QllgEYsgHzQt/cUNwe1X2
+ sFgptDDY8Ct+sY9+MD64b/gubKD/I+Sa6PFdepu2ORNvgcLPQxXeD/NcFxLyqkb1
+ ZO57VMg57oM9YiAuvbCTio10Cb3YD27n0r8MJ1IYZNW7d1DLAWeqFtaZF2RLdbTj
+ HtNygpnzhsxFvCXb5F+XDXGik95xWzM4zEcVYCD6zFyhfooqsFCxdmCCDtRNgRiz
+ Dt9pP6sbJlvbMX5oHffdmg2fRWANzwUjbiarOxsXYdgEcR2wZd5I1yF7Q==
+X-ME-Sender: <xms:BU3UZiGYQ0_oFuU7Mdi7R3yV2sAYq6ciAkd8tjoAd9F_eqGVF3yCGg>
+ <xme:BU3UZjWI1546T2A89IE3URMvnivzBelnRtRI13DC_6Y2JqQWYK1IFBFrfohdFD5Fc
+ 43j5mg-zbFV4nnEDzY>
+X-ME-Received: <xmr:BU3UZsL0YMSyrjiG2QB30DpCCcCv1r0RG2m--3PPyzTcZHdjDQ6LhGKeFL0mE5AwyzsqKF7Q-iemWnVss-6NIyfChqixRZWCSuMOPbQ8sWQ>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudeghedgudegucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
  rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucenucfjughrpefhvffuff
- fkofgggfestdekredtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothho
- uceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvg
- hrnhepkedtvdduhfekfefhfeduffffvdfhieduveegleekveehveefvdffudefudejfefg
- necuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpghhithhhuhgsrdgtohhmnecuvehluh
- hsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhh
- ihesshgrkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtohepuddpmhhouggvpehsmh
- htphhouhhtpdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdr
- shhouhhrtggvfhhorhhgvgdrnhgvth
-X-ME-Proxy: <xmx:A03UZsmFF0Tmq2BicdOxF-WK9uRiUHSTfe2-qo0L7aoksIXVjkX1Mg>
- <xmx:A03UZu1Qxv9WDV3f4FxK6V4sc5Pir3qY8c3KmSSE7szx9Vx7cgZWLA>
- <xmx:A03UZjv_h7WxVW39v0Ejmfq-SP9sIjWgIu7u2xldHx0P0tW1wjj0RA>
- <xmx:A03UZqU_OGE11FU56-bUk5PSMUlLA-F-0KGSJpDSSYm_yNWvqLrPOA>
- <xmx:A03UZj8hhKuOzDqmFOsF5iLQ0cx31WvuI2Rc_2nqpTy6dmtuCxw7F-fp>
+ fkofgjfhgggfestdekredtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhho
+ thhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrth
+ htvghrnhepveefffefkeetgfevgeefleehfffhueejtdejveethfekveektdejjedvtdej
+ hfejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepoh
+ dqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtohepuddp
+ mhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlh
+ eslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvth
+X-ME-Proxy: <xmx:BU3UZsHu6dw7WXJ-p0rCiTS6NZCi2dxl74nri9xpx9jDQu7fBm4iZQ>
+ <xmx:BU3UZoXSS_BbNHPgTgfz4HGf4QyMdT6ZQfUOKunTbo-LTMvvyHevug>
+ <xmx:BU3UZvO87ljD6ziaInY_y1hYbZODLUkLP3udMB4Y5O-v6ziMz9Vjig>
+ <xmx:BU3UZv1WCrhhV-LStzvriXNrCLhyXaLqT2WZHjFxGhSfxBY_51iVcw>
+ <xmx:BU3UZjexrUGlZ9zSKGoW6kPwtbr8oWXOmB5QrYWur5LKKJgPD5DOLy8_>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA for
  <linux1394-devel@lists.sourceforge.net>; Sun,
- 1 Sep 2024 07:16:18 -0400 (EDT)
+ 1 Sep 2024 07:16:20 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [RFT][PATCH 0/5] firewire: use sleepable workqueue to handle 1394
- OHCI IT/IR context events
-Date: Sun,  1 Sep 2024 20:16:11 +0900
-Message-ID: <20240901111616.155464-1-o-takashi@sakamocchi.jp>
+Subject: [RFT][PATCH 2/5] firewire: core: add local API for work items
+ scheduled to workqueue specific to isochronous contexts
+Date: Sun,  1 Sep 2024 20:16:13 +0900
+Message-ID: <20240901111616.155464-3-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240901111616.155464-1-o-takashi@sakamocchi.jp>
+References: <20240901111616.155464-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
@@ -107,19 +109,19 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: (resend to linux1394-devel since the post is waiting for
- moderator
- approval. Please refer to the original post for any reply:
- https://lore.kernel.org/lkml/20240901110642.154523-1-o-takashi@sakamocchi.
- [...] Content analysis details:   (-0.9 points, 6.0 required)
+ Content preview:  In the previous commit,
+ the workqueue is added per the instance
+ of fw_card structure for isochronous contexts. The workqueue is designed
+ to be used by the implementation of fw_card_driver structure un [...] 
+ Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
  low trust [103.168.172.153 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
- [103.168.172.153 listed in wl.mailspike.net]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
+ [103.168.172.153 listed in wl.mailspike.net]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -129,7 +131,7 @@ X-Spam-Report: Spam detection software,
  envelope-from domain
  -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1skiZK-0006ns-6A
+X-Headers-End: 1skiZH-0006nj-Au
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -146,99 +148,98 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-(resend to linux1394-devel since the post is waiting for moderator
-approval. Please refer to the original post for any reply:
-https://lore.kernel.org/lkml/20240901110642.154523-1-o-takashi@sakamocchi.jp/)
+In the previous commit, the workqueue is added per the instance of fw_card
+structure for isochronous contexts. The workqueue is designed to be used by
+the implementation of fw_card_driver structure underlying the fw_card.
 
-Hi,
+This commit adds some local APIs to be used by the implementation.
 
-This series of change is inspired by BH workqueue available in recent
-kernel.
+Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+---
+ drivers/firewire/core-iso.c | 22 ++++++++++++++++++++--
+ drivers/firewire/core.h     | 10 ++++++++++
+ include/linux/firewire.h    |  1 +
+ 3 files changed, 31 insertions(+), 2 deletions(-)
 
-In Linux FireWire subsystem, tasklet softIRQ context has been utilized to
-operate 1394 OHCI Isochronous Transmit (IT) and Isochronous Receive (IR)
-contexts. The tasklet context is not preferable, as you know.
-
-I have already received a proposal[1][2] to replace the usage of tasklet
-with BH workqueue. However, the proposal includes bare replacement for 1394
-OHCI IT, IR, Asynchronous Transmit (AT), and Asynchronous Receive (AR)
-contexts with neither any care of actual usage for each context nor
-practical test reports. In theory, this kind of change should be done by
-step by step with enough amount of evaluation over software design to avoid
-any disorder.
-
-In this series of changes, the usage of tasklet for 1394 OHCI IT/IR
-contexts is just replaced, as a first step. In 1394 OHCI IR/IT events,
-software is expected to process the content of page dedicated to DMA
-transmission for each isochronous context. It means that the content can be
-processed concurrently per isochronous context. Additionally, the content
-of page is immutable as long as the software schedules the transmission
-again for the page. It means that the task to process the content can sleep
-or be preempted. Due to the characteristics, BH workqueue is _not_ used.
-
-At present, 1394 OHCI driver is responsible for the maintenance of tasklet
-context, while in this series of change the core function is responsible
-for the maintenance of workqueue and work items. This change is an attempt
-to let each implementation focus on own task.
-
-The change affects the following implementations of unit protocols which
-operate isochronous contexts:
-
-- firewire-net for IP over 1394 (RFC 2734/3146)
-- firedtv
-- drivers in ALSA firewire stack for IEC 61883-1/6
-- user space applications
-
-As long as reading their codes, the first two drivers look to require no
-change. While the drivers in ALSA firewire stack require change to switch
-the type of context in which callback is executed. The series of change
-includes a patch for them to adapt to work process context.
-
-Finally, these changes are tested by devices supported by ALSA firewire
-stack with/without no-period-wakeup runtime of PCM substream. I also tested
-examples in libhinoko[3] as samples of user space applications. Currently I
-face no issue.
-
-On the other hand, I have neither tested for firewire-net nor firedtv,
-since I have never used these functions. If someone has any experience to
-use them, I would request to test the change.
-
-[1] https://lore.kernel.org/lkml/20240403144558.13398-1-apais@linux.microsoft.com/
-[2] https://github.com/allenpais/for-6.9-bh-conversions/issues/1
-[3] https://git.kernel.org/pub/scm/libs/ieee1394/libhinoko.git/
-
-
-Regards
-
-Takashi Sakamoto (5):
-  firewire: core: allocate workqueue to handle isochronous contexts in
-    card
-  firewire: core: add local API for work items scheduled to workqueue
-    specific to isochronous contexts
-  firewire: ohci: process IT/IR events in sleepable work process to
-    obsolete tasklet softIRQ
-  firewire: core: non-atomic memory allocation for isochronous event to
-    user client
-  ALSA: firewire: use nonatomic PCM operation
-
- drivers/firewire/core-card.c             | 31 +++++++++++--
- drivers/firewire/core-cdev.c             |  4 +-
- drivers/firewire/core-iso.c              | 22 ++++++++-
- drivers/firewire/core.h                  | 14 +++++-
- drivers/firewire/ohci.c                  | 57 +++++++++++++++++++-----
- include/linux/firewire.h                 |  3 ++
- sound/firewire/amdtp-stream.c            |  9 +++-
- sound/firewire/bebob/bebob_pcm.c         |  1 +
- sound/firewire/dice/dice-pcm.c           |  1 +
- sound/firewire/digi00x/digi00x-pcm.c     |  1 +
- sound/firewire/fireface/ff-pcm.c         |  1 +
- sound/firewire/fireworks/fireworks_pcm.c |  1 +
- sound/firewire/isight.c                  |  1 +
- sound/firewire/motu/motu-pcm.c           |  1 +
- sound/firewire/oxfw/oxfw-pcm.c           |  1 +
- sound/firewire/tascam/tascam-pcm.c       |  1 +
- 16 files changed, 128 insertions(+), 21 deletions(-)
-
+diff --git a/drivers/firewire/core-iso.c b/drivers/firewire/core-iso.c
+index 101433b8bb51..124579a9c657 100644
+--- a/drivers/firewire/core-iso.c
++++ b/drivers/firewire/core-iso.c
+@@ -211,21 +211,39 @@ EXPORT_SYMBOL(fw_iso_context_queue_flush);
+ 
+ int fw_iso_context_flush_completions(struct fw_iso_context *ctx)
+ {
++	int err;
++
+ 	trace_isoc_outbound_flush_completions(ctx);
+ 	trace_isoc_inbound_single_flush_completions(ctx);
+ 	trace_isoc_inbound_multiple_flush_completions(ctx);
+ 
+-	return ctx->card->driver->flush_iso_completions(ctx);
++	might_sleep();
++
++	disable_work_sync(&ctx->work);
++
++	err = ctx->card->driver->flush_iso_completions(ctx);
++
++	enable_work(&ctx->work);
++
++	return err;
+ }
+ EXPORT_SYMBOL(fw_iso_context_flush_completions);
+ 
+ int fw_iso_context_stop(struct fw_iso_context *ctx)
+ {
++	int err;
++
+ 	trace_isoc_outbound_stop(ctx);
+ 	trace_isoc_inbound_single_stop(ctx);
+ 	trace_isoc_inbound_multiple_stop(ctx);
+ 
+-	return ctx->card->driver->stop_iso(ctx);
++	might_sleep();
++
++	err = ctx->card->driver->stop_iso(ctx);
++
++	cancel_work_sync(&ctx->work);
++
++	return err;
+ }
+ EXPORT_SYMBOL(fw_iso_context_stop);
+ 
+diff --git a/drivers/firewire/core.h b/drivers/firewire/core.h
+index 96ae366889e0..1b78d66a88a0 100644
+--- a/drivers/firewire/core.h
++++ b/drivers/firewire/core.h
+@@ -159,6 +159,16 @@ int fw_iso_buffer_alloc(struct fw_iso_buffer *buffer, int page_count);
+ int fw_iso_buffer_map_dma(struct fw_iso_buffer *buffer, struct fw_card *card,
+ 			  enum dma_data_direction direction);
+ 
++static inline void fw_iso_context_init_work(struct fw_iso_context *ctx, work_func_t func)
++{
++	INIT_WORK(&ctx->work, func);
++}
++
++static inline void fw_iso_context_schedule_work(struct fw_iso_context *ctx)
++{
++	queue_work(ctx->card->isoc_wq, &ctx->work);
++}
++
+ 
+ /* -topology */
+ 
+diff --git a/include/linux/firewire.h b/include/linux/firewire.h
+index 10e135d60824..72f497b61739 100644
+--- a/include/linux/firewire.h
++++ b/include/linux/firewire.h
+@@ -511,6 +511,7 @@ union fw_iso_callback {
+ 
+ struct fw_iso_context {
+ 	struct fw_card *card;
++	struct work_struct work;
+ 	int type;
+ 	int channel;
+ 	int speed;
 -- 
 2.43.0
 
