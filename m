@@ -2,131 +2,121 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27C4C96761D
-	for <lists+linux1394-devel@lfdr.de>; Sun,  1 Sep 2024 13:16:49 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FD4A968B98
+	for <lists+linux1394-devel@lfdr.de>; Mon,  2 Sep 2024 18:08:18 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1skiZX-0006Cf-7G;
-	Sun, 01 Sep 2024 11:16:42 +0000
+	id 1sl9b4-0001fo-WC;
+	Mon, 02 Sep 2024 16:08:07 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1skiZP-0006CP-GX
+ (envelope-from <andrewferguson500@gmail.com>) id 1sl9b3-0001fc-LZ
  for linux1394-devel@lists.sourceforge.net;
- Sun, 01 Sep 2024 11:16:34 +0000
+ Mon, 02 Sep 2024 16:08:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
- In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=//0Au4s75rwOEPL1M/L4VrMh9aoaUHrkh76N1UUAiIU=; b=Fk8DeTaYf1GnJuZjxNC7uY7kXO
- c4svCypwPlPHqxXClP1EOJF262i+0U9ne+uub8gyVai37hbpyV7xKhuW9y+BupFNfWSuXOGohhOwc
- 26RKGcjig213VpozPuNWSpn2/K4odKP6zAKGnyPyol4bgs4XzRzO8A3JXxIziLaj2Dtg=;
+ d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
+ In-Reply-To:References:MIME-Version:Sender:Reply-To:Cc:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=sVNzmh1Ag8cOCyBK3gOyM/a1bcIB6EjbWgA2b6+NxzU=; b=bsMWlINCQDxZxtSj1JuKJ5ktYM
+ hN2QtTawrVKWQ4I8TKLi62jWbkYS+Jw08Et5RUi0UssGGTsYAp4GJqL72dv3D4EM3oJzAZ5eQaWpR
+ A+mVGhSQxlgPoDWBz39mBINNEe9LVRX44wwTXitF3mL3IZW+jUIn3UzltDjvvaMWXPgQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
- Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:Content-ID:
+ h=Content-Type:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+ MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=//0Au4s75rwOEPL1M/L4VrMh9aoaUHrkh76N1UUAiIU=; b=WtZrJKLrzfH/oqVWAK7S4j9LtS
- i+pdEQYBrE3D5/Dsg6WpMA7aore4ndBhxHEB8/uBFyW4EwEfiJtN+lfjXDvsRRqLV3Wm0Gh6XIb5n
- pE/qKBBXS4hozC/W961P1gHIOYNHH6TQ5bTw2cy6/6rTUgWgal4gp3zMOh6D1HSSAV7o=;
-Received: from fout6-smtp.messagingengine.com ([103.168.172.149])
+ bh=sVNzmh1Ag8cOCyBK3gOyM/a1bcIB6EjbWgA2b6+NxzU=; b=HCl7KutcaXB+a/nMoglSy2yMYB
+ eayJCE2QfL0ABT3BkHoWJhgcIIrnOth3fGTIjU9/9JBP+U1YVRufFl19zW6Yz7kwqk+vn4CdcT0td
+ vWh8LqlB9RtYV3byEb7lkgg8jursm2c/6d3xKhTqHwhKhSlmKKMgBeVq0wwO17ENWKFA=;
+Received: from mail-wm1-f50.google.com ([209.85.128.50])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
- (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1skiZK-0006nt-In for linux1394-devel@lists.sourceforge.net;
- Sun, 01 Sep 2024 11:16:31 +0000
-Received: from phl-compute-01.internal (phl-compute-01.nyi.internal
- [10.202.2.41])
- by mailfout.nyi.internal (Postfix) with ESMTP id 0CCDC1380307
+ (TLS1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.95)
+ id 1sl9b1-00063R-Kg for linux1394-devel@lists.sourceforge.net;
+ Mon, 02 Sep 2024 16:08:05 +0000
+Received: by mail-wm1-f50.google.com with SMTP id
+ 5b1f17b1804b1-42bb8c6e250so33516325e9.1
  for <linux1394-devel@lists.sourceforge.net>;
- Sun,  1 Sep 2024 07:16:25 -0400 (EDT)
-Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-01.internal (MEProxy); Sun, 01 Sep 2024 07:16:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1725189385; x=
- 1725275785; bh=//0Au4s75rwOEPL1M/L4VrMh9aoaUHrkh76N1UUAiIU=; b=d
- mAij5onsmO8oaU+eqwLhf7t8iiPfGl/tWlDbPIxvP2gtP9JfuWbrkQLOTmxF8RcB
- QEZ96v1ajhUMQGz2fVQeyIPNeG1XotudKuQPBdV1auSlojfWu0iKmV7p1YVihRR8
- dfhuuCwoOz0l0FymeN1tDxnNm0GE5KLK6jWdHiWOG+a5qRB895ikhonr9ueWeHHQ
- hP2A15E7Ve4KVfRAc/2L/Ok+dXMf4ZqyZYOuxILkevfx0YZUq3Ts2B2BGHTMwMpL
- dKlOsCRa8wJgw6hocYjhCzukMZz0SZs+uHTF++bh3hZNfFo2n7jpezePefGPNs0W
- +2w6KXFQplxJ+tFBHlFJw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:date:feedback-id:feedback-id:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; t=1725189385; x=1725275785; bh=//0Au4s75rwOE
- PL1M/L4VrMh9aoaUHrkh76N1UUAiIU=; b=P4fuXDIYjs1Zcc4rp4Ad49jPMcL9r
- oa36H+DXoHnYaC6N40DeWHJrYAUbnEUoxsgdqUpTkWSPWDKRRcQiU6dFEURkXOd8
- fFHAcu0vYYrarwSzn10VUIzz340bvWyJS0ptejDpPb0u65IYfdom0G/S1bGWvSvk
- 1XAjyigO50FuInl53hCBWqL19ldFrhLGe0xNQ8TJp6xRcVZj6VWAvv6TbsqmNG/a
- IXTx+S1R/7WNVA+xCqrQhnT6uWnoP/IYVzzN972/1md4goFJc+DXwdER6QOsxrsI
- +4h/sBrjk2v2bRHOGngSV0QYvIz5pUJJ/0FfK/PTOUDKrqBsTS4Nfqn0w==
-X-ME-Sender: <xms:CE3UZkahEd7867JY-ftBD9ieEXCZPR1OmiEKKMLTm0PFuwnrPB2pKQ>
- <xme:CE3UZvaq5Aw66APYzFHJmRmW1Famjp4gBMp4Czorgzi77DlqyY1ToKg2eVjVsaUSW
- MHo0y0fBBbOwlMle-M>
-X-ME-Received: <xmr:CE3UZu8mHtUTker_vdQheyEk0nA82CeeGycRVW9f-ulRknQugo4A4OG7JsLcMlZb8HS842ishx0CHTpKNn0Jqvk7LYtDDP4mFr-AeK12tlo>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudeghedgudehucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
- rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucenucfjughrpefhvffuff
- fkofgjfhgggfestdekredtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhho
- thhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrth
- htvghrnhepveefffefkeetgfevgeefleehfffhueejtdejveethfekveektdejjedvtdej
- hfejnecuvehluhhsthgvrhfuihiivgepvdenucfrrghrrghmpehmrghilhhfrhhomhepoh
- dqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtohepuddp
- mhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlh
- eslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvth
-X-ME-Proxy: <xmx:CE3UZuq5CEAghd6VC-vh4WDOszJZbOCDIW-JOtJnHJUGkcOd15a9OQ>
- <xmx:CE3UZvoou6ZQZFMpRd8ZNsMbO7-usqRxVEFmcOrAOls7U0gX2bFUeQ>
- <xmx:CE3UZsSq3zelQB4KZ4qiyJJeMEaoHBBSUrPZiB9cWB8KYn_14GqNSg>
- <xmx:CE3UZvpe9ZQjJ80gikLf_l5AcDtP6nDPyJVG9k0LjIoeV675y43T9Q>
- <xmx:CU3UZoBYwfz_UWor65nVzOe0kb1dE7Nq4d3w37nwet2BqC4UK3wnCgxN>
-Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA for
- <linux1394-devel@lists.sourceforge.net>; Sun,
- 1 Sep 2024 07:16:24 -0400 (EDT)
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: linux1394-devel@lists.sourceforge.net
-Subject: [RFT][PATCH 5/5] ALSA: firewire: use nonatomic PCM operation
-Date: Sun,  1 Sep 2024 20:16:16 +0900
-Message-ID: <20240901111616.155464-6-o-takashi@sakamocchi.jp>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240901111616.155464-1-o-takashi@sakamocchi.jp>
-References: <20240901111616.155464-1-o-takashi@sakamocchi.jp>
+ Mon, 02 Sep 2024 09:08:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1725293272; x=1725898072; darn=lists.sourceforge.net;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=sVNzmh1Ag8cOCyBK3gOyM/a1bcIB6EjbWgA2b6+NxzU=;
+ b=TKo/T+x8udTrYw9byFrURA5Cs4m46jzsONBY1Vt5tb8ex4rAJVbDpMLGl8Gb4Ac5iU
+ xRMczJk8Qw4nmRyapcRkm000x6nY4509nfsL7cn/HZ9ytB0WIkGGAXEkcrv3A/RdBoxl
+ 4iHoqToV5fkQvU0XJHIG843L4Xx/RVku1MK5UNwA+hdppq+7nfjD/wECp25ZdC7hM2pT
+ PHc5sYHhiffRBHxoZ1bVTBLVEAk8A5u3ObSQ+cpo3HEdTKVVM5upoz+fNTpwPd3pkXME
+ HAZsIZ/Sjl2XXQEXeDlL3ZUqES35nnxM+I37urkKvs8zitIIYB555R2Mwtt8ITs0XuO4
+ sRpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725293272; x=1725898072;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sVNzmh1Ag8cOCyBK3gOyM/a1bcIB6EjbWgA2b6+NxzU=;
+ b=LBi2HTcv6ZY5vtwEi6HfAeCOw5h3j+ojWD1qYMHDdn+fb7/kOH2h75jGOQDIk2xEQ/
+ PGtdP6Fdf4vjJTC0dIn1Dcc1Eo/0rOpDYGDeRpSQnpKcKEjVJP799HMzuJHD5KpH259u
+ Ry3T5j3MGlIYNXWyjdeSyc/bKuhTTmadhMrALDSUHQe8A7wXXYkkFlq8fjNQZQ7TloNd
+ 65YNrI2Hzdzi6uf8WRHaf2I1Q6fYXBlv3sHOBXBq5rcOxSyGfkuWlsS6dFfdRFXq6C/0
+ GoBQ5C2GDZcWnQAMV/R2ib7lk8DcL3qixmEw3HZ7o42shURAA1J6vAXE/PSKAcCBEFNT
+ nH8A==
+X-Gm-Message-State: AOJu0YxzeP1WFdoEpq3ssKkoq8v7vVB+xzcoRHsjsszXq2ZvA1Z6Bn0d
+ Esh39KJhwHkKw0zH8/IyiIerGNbngTu2jw2Zz2UPQ5MtLTNjWgkHdA/mK7/nTbmy0UvlURhjzn6
+ nL41HpVDoaVpxOCn+nvylsKZ3AgvT0Zyq
+X-Google-Smtp-Source: AGHT+IGEtKlBM0I1Kf0eCEdgA91LeSvGwe704vnenezYPtCrVcX23LbS9WnQ7C8V9lOpXldwf4RndAJO1T6qmZEAQ2A=
+X-Received: by 2002:adf:ec4b:0:b0:374:8f90:b78b with SMTP id
+ ffacd0b85a97d-374c947188fmr2871385f8f.44.1725293271561; Mon, 02 Sep 2024
+ 09:07:51 -0700 (PDT)
 MIME-Version: 1.0
-X-Spam-Score: -0.9 (/)
+References: <CAFvb365w5QXB8kGizFjytkg+Ag_bY_SB5B3LhHx2wSt7dtL1TQ@mail.gmail.com>
+ <ZtLpkQguwX2I19rI@iguana.24-8.net>
+In-Reply-To: <ZtLpkQguwX2I19rI@iguana.24-8.net>
+From: Andrew Ferguson <andrewferguson500@gmail.com>
+Date: Mon, 2 Sep 2024 17:07:40 +0100
+Message-ID: <CAFvb367Ov3PN0g2cZm+QOWBk9_cH02ovO63h0GiOs76wwSov_g@mail.gmail.com>
+Subject: Re: Bug report: Mac Target Disk Mode not working in some cases
+To: linux1394-devel@lists.sourceforge.net
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-1.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  In the former commits, the callback of isochronous context
- runs on work process. In the case, ALSA PCM device has a flag, nonatomic,
- to acquire mutex lock instead of spin lock for PCM substream group. 
- Content analysis details:   (-0.9 points, 6.0 required)
+ Content preview:  Hello Takashi,
+ Adam. Thanks both for the replies (and apologies
+ for the tardiness of my response). Takashi, I completely understand that
+ this is of less interest to you - it is an extremely niche case. Your work
+ on the ALSA drivers is amazing. Just a few weeks ago I was helping a friend
+ setup a Dig [...] 
+ Content analysis details:   (0.0 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [103.168.172.149 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.128.50 listed in list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [andrewferguson500[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [andrewferguson500[at]gmail.com]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.128.50 listed in wl.mailspike.net]
+ 0.0 HTML_MESSAGE           BODY: HTML included in message
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1skiZK-0006nt-In
+X-Headers-End: 1sl9b1-00063R-Kg
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -139,168 +129,148 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4873483031901692093=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-In the former commits, the callback of isochronous context runs on work
-process. In the case, ALSA PCM device has a flag, nonatomic, to acquire
-mutex lock instead of spin lock for PCM substream group.
+--===============4873483031901692093==
+Content-Type: multipart/alternative; boundary="00000000000095c1880621252446"
 
-This commit uses the flag. It has an advantage in the case that ALSA PCM
-application uses the large size of intermediate buffer, since it takes
-too long time even in tasklet softIRQ to process many of isochronous
-packets. It could result in the delay of system event due to disabled
-IRQ so long.
+--00000000000095c1880621252446
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
----
- sound/firewire/amdtp-stream.c            | 9 ++++++++-
- sound/firewire/bebob/bebob_pcm.c         | 1 +
- sound/firewire/dice/dice-pcm.c           | 1 +
- sound/firewire/digi00x/digi00x-pcm.c     | 1 +
- sound/firewire/fireface/ff-pcm.c         | 1 +
- sound/firewire/fireworks/fireworks_pcm.c | 1 +
- sound/firewire/isight.c                  | 1 +
- sound/firewire/motu/motu-pcm.c           | 1 +
- sound/firewire/oxfw/oxfw-pcm.c           | 1 +
- sound/firewire/tascam/tascam-pcm.c       | 1 +
- 10 files changed, 17 insertions(+), 1 deletion(-)
+Hello Takashi, Adam.
 
-diff --git a/sound/firewire/amdtp-stream.c b/sound/firewire/amdtp-stream.c
-index c827d7d8d800..7e97ad133874 100644
---- a/sound/firewire/amdtp-stream.c
-+++ b/sound/firewire/amdtp-stream.c
-@@ -1055,8 +1055,15 @@ static void generate_rx_packet_descs(struct amdtp_stream *s, struct pkt_desc *de
- 
- static inline void cancel_stream(struct amdtp_stream *s)
- {
-+	struct work_struct *work = current_work();
-+
- 	s->packet_index = -1;
--	if (in_softirq())
-+
-+	// Detect work items for any isochronous context. The work item for pcm_period_work()
-+	// should be avoided since the call of snd_pcm_period_elapsed() can reach via
-+	// snd_pcm_ops.pointer() under acquiring PCM stream(group) lock and causes dead lock at
-+	// snd_pcm_stop_xrun().
-+	if (work && work != &s->period_work)
- 		amdtp_stream_pcm_abort(s);
- 	WRITE_ONCE(s->pcm_buffer_pointer, SNDRV_PCM_POS_XRUN);
- }
-diff --git a/sound/firewire/bebob/bebob_pcm.c b/sound/firewire/bebob/bebob_pcm.c
-index ce49eef0fcba..360ebf3c4ca2 100644
---- a/sound/firewire/bebob/bebob_pcm.c
-+++ b/sound/firewire/bebob/bebob_pcm.c
-@@ -367,6 +367,7 @@ int snd_bebob_create_pcm_devices(struct snd_bebob *bebob)
- 		goto end;
- 
- 	pcm->private_data = bebob;
-+	pcm->nonatomic = true;
- 	snprintf(pcm->name, sizeof(pcm->name),
- 		 "%s PCM", bebob->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &playback_ops);
-diff --git a/sound/firewire/dice/dice-pcm.c b/sound/firewire/dice/dice-pcm.c
-index d64366217d57..2cf2adb48f2a 100644
---- a/sound/firewire/dice/dice-pcm.c
-+++ b/sound/firewire/dice/dice-pcm.c
-@@ -441,6 +441,7 @@ int snd_dice_create_pcm(struct snd_dice *dice)
- 		if (err < 0)
- 			return err;
- 		pcm->private_data = dice;
-+		pcm->nonatomic = true;
- 		strcpy(pcm->name, dice->card->shortname);
- 
- 		if (capture > 0)
-diff --git a/sound/firewire/digi00x/digi00x-pcm.c b/sound/firewire/digi00x/digi00x-pcm.c
-index 3bd1575c9d9c..85e65cbc00c4 100644
---- a/sound/firewire/digi00x/digi00x-pcm.c
-+++ b/sound/firewire/digi00x/digi00x-pcm.c
-@@ -350,6 +350,7 @@ int snd_dg00x_create_pcm_devices(struct snd_dg00x *dg00x)
- 		return err;
- 
- 	pcm->private_data = dg00x;
-+	pcm->nonatomic = true;
- 	snprintf(pcm->name, sizeof(pcm->name),
- 		 "%s PCM", dg00x->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &playback_ops);
-diff --git a/sound/firewire/fireface/ff-pcm.c b/sound/firewire/fireface/ff-pcm.c
-index ec915671a79b..63457d24a288 100644
---- a/sound/firewire/fireface/ff-pcm.c
-+++ b/sound/firewire/fireface/ff-pcm.c
-@@ -390,6 +390,7 @@ int snd_ff_create_pcm_devices(struct snd_ff *ff)
- 		return err;
- 
- 	pcm->private_data = ff;
-+	pcm->nonatomic = true;
- 	snprintf(pcm->name, sizeof(pcm->name),
- 		 "%s PCM", ff->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &pcm_playback_ops);
-diff --git a/sound/firewire/fireworks/fireworks_pcm.c b/sound/firewire/fireworks/fireworks_pcm.c
-index c3c21860b245..eaf7778211de 100644
---- a/sound/firewire/fireworks/fireworks_pcm.c
-+++ b/sound/firewire/fireworks/fireworks_pcm.c
-@@ -397,6 +397,7 @@ int snd_efw_create_pcm_devices(struct snd_efw *efw)
- 		goto end;
- 
- 	pcm->private_data = efw;
-+	pcm->nonatomic = true;
- 	snprintf(pcm->name, sizeof(pcm->name), "%s PCM", efw->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &playback_ops);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_CAPTURE, &capture_ops);
-diff --git a/sound/firewire/isight.c b/sound/firewire/isight.c
-index 806f82c9ceee..b1e059f0d473 100644
---- a/sound/firewire/isight.c
-+++ b/sound/firewire/isight.c
-@@ -454,6 +454,7 @@ static int isight_create_pcm(struct isight *isight)
- 	if (err < 0)
- 		return err;
- 	pcm->private_data = isight;
-+	pcm->nonatomic = true;
- 	strcpy(pcm->name, "iSight");
- 	isight->pcm = pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream;
- 	isight->pcm->ops = &ops;
-diff --git a/sound/firewire/motu/motu-pcm.c b/sound/firewire/motu/motu-pcm.c
-index d410c2efbde5..f3b48495acae 100644
---- a/sound/firewire/motu/motu-pcm.c
-+++ b/sound/firewire/motu/motu-pcm.c
-@@ -360,6 +360,7 @@ int snd_motu_create_pcm_devices(struct snd_motu *motu)
- 	if (err < 0)
- 		return err;
- 	pcm->private_data = motu;
-+	pcm->nonatomic = true;
- 	strcpy(pcm->name, motu->card->shortname);
- 
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_CAPTURE, &capture_ops);
-diff --git a/sound/firewire/oxfw/oxfw-pcm.c b/sound/firewire/oxfw/oxfw-pcm.c
-index 5f43a0b826d2..8ca9dde54ec6 100644
---- a/sound/firewire/oxfw/oxfw-pcm.c
-+++ b/sound/firewire/oxfw/oxfw-pcm.c
-@@ -440,6 +440,7 @@ int snd_oxfw_create_pcm(struct snd_oxfw *oxfw)
- 		return err;
- 
- 	pcm->private_data = oxfw;
-+	pcm->nonatomic = true;
- 	strcpy(pcm->name, oxfw->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &playback_ops);
- 	if (cap > 0)
-diff --git a/sound/firewire/tascam/tascam-pcm.c b/sound/firewire/tascam/tascam-pcm.c
-index f6da571707ac..a73003ac11e6 100644
---- a/sound/firewire/tascam/tascam-pcm.c
-+++ b/sound/firewire/tascam/tascam-pcm.c
-@@ -279,6 +279,7 @@ int snd_tscm_create_pcm_devices(struct snd_tscm *tscm)
- 		return err;
- 
- 	pcm->private_data = tscm;
-+	pcm->nonatomic = true;
- 	snprintf(pcm->name, sizeof(pcm->name),
- 		 "%s PCM", tscm->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &playback_ops);
--- 
-2.43.0
+Thanks both for the replies (and apologies for the tardiness of my
+response).
+
+Takashi, I completely understand that this is of less interest to you - it
+is an extremely niche case. Your work on the ALSA drivers is amazing. Just
+a few weeks ago I was helping a friend setup a Digidesign 002R on Linux
+(thanks to the ALSA drivers). They will be using it to record their
+Wurlitzer theatre organ for conversion to a "sample pack" to allow them to
+play it digitally on their computer. I also have used a Mackie Onyx 400F
+with my 8-track analogue tape recorder, although I managed to break it (the
+Mackie) by accidentally looping phantom power into it. There's a Focusrite
+Liquid Saffire 56 on ebay I may get as a replacement - I need 192kHz input.
+
+I don't have any experience of kernel development, but I know C through
+various work on 5G network stacks. So there is (some!) hope that I will be
+able to fumble my way to a solution. Thank you for your advice about the
+tracepoint events - I will investigate this. (I'm about to go on a trip
+abroad for work reasons, so no / few updates doesn't mean that I'm not
+interested in solving this!).
+
+Adam, would you be willing to send me the serial number of the PowerBook G4
+you used? That lets me see all of the specs and whether or not it is
+similar to mine. Separately (and very much a n00b question!), what's the
+best / easiest way to get kernel version 6.8-rc1? is there a specific
+distro that ships with development / rc builds of the kernel, or is it
+better to install something like Debian Stable and then compile / install a
+development build? Ideally I'd replicate your setup to confirm it isn't an
+issue on my end.
+
+Thanks!
+Andrew
+
+On Sat, 31 Aug 2024 at 10:59, Adam Goldman <adamg@pobox.com> wrote:
+
+> On Sun, Aug 25, 2024 at 09:31:40PM +0100, Andrew Ferguson wrote:
+> > I have encountered a bug in that some Macs are not detected in Linux,
+> when
+> > the Mac is being used in "Target Disk Mode".
+> [...]
+> > Mac models that do not work:
+> > iBook G4
+> > Powerbook G4
+>
+> Hi Andrew,
+>
+> I did a quick test with kernel 6.8-rc1 and a titanium Powerbook G4
+> (powerbook3,4 A1001). I held down T and turned on the Powerbook. After
+> about 25 seconds, the FireWire logo appeared on the screen, and the
+> drive appeared on Linux as sdb. I was able to read from the drive with
+> dd.
+>
+> Can you provide steps to reproduce the problem?
+>
+> -- Adam
+>
+
+--00000000000095c1880621252446
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello Takashi, Adam.<div><br></div><div>Thanks both for th=
+e replies (and apologies for the tardiness of my response).</div><div><br><=
+/div><div>Takashi, I completely understand that this is of less interest to=
+ you - it is an extremely niche case. Your work on the ALSA drivers is amaz=
+ing. Just a few weeks ago I was helping a friend setup a Digidesign 002R on=
+ Linux (thanks to the ALSA drivers). They will be using it to record their =
+Wurlitzer theatre organ for conversion to a &quot;sample pack&quot; to allo=
+w them to play it digitally on their computer. I also have used a=C2=A0Mack=
+ie Onyx 400F with my 8-track analogue tape recorder, although I managed to =
+break it (the Mackie) by accidentally looping phantom power into it. There&=
+#39;s a=C2=A0Focusrite Liquid Saffire 56 on ebay I may get as a replacement=
+ - I need 192kHz input.<br></div><div><br></div><div>I don&#39;t have any e=
+xperience of kernel development, but I know C through various work on 5G ne=
+twork stacks. So there is (some!) hope that I will be able to fumble my way=
+ to a solution. Thank you for your advice about the tracepoint events - I w=
+ill investigate this. (I&#39;m about to go on a trip abroad for work reason=
+s, so no / few updates doesn&#39;t mean that I&#39;m not interested in solv=
+ing this!).</div><div><br></div><div>Adam, would you be willing to send me =
+the serial number of the PowerBook G4 you used? That lets me see all of the=
+ specs and whether or not it is similar to mine. Separately (and very much =
+a n00b question!), what&#39;s the best / easiest way to get kernel version =
+6.8-rc1? is there a specific distro that ships with development / rc builds=
+ of the kernel, or is it better to install something like Debian Stable and=
+ then compile / install a development build? Ideally I&#39;d replicate your=
+ setup to confirm it isn&#39;t an issue on my end.=C2=A0</div><div><br></di=
+v><div>Thanks!</div><div>Andrew</div></div><br><div class=3D"gmail_quote"><=
+div dir=3D"ltr" class=3D"gmail_attr">On Sat, 31 Aug 2024 at 10:59, Adam Gol=
+dman &lt;<a href=3D"mailto:adamg@pobox.com">adamg@pobox.com</a>&gt; wrote:<=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Sun, Aug 25, =
+2024 at 09:31:40PM +0100, Andrew Ferguson wrote:<br>
+&gt; I have encountered a bug in that some Macs are not detected in Linux, =
+when<br>
+&gt; the Mac is being used in &quot;Target Disk Mode&quot;.<br>
+[...]<br>
+&gt; Mac models that do not work:<br>
+&gt; iBook G4<br>
+&gt; Powerbook G4<br>
+<br>
+Hi Andrew,<br>
+<br>
+I did a quick test with kernel 6.8-rc1 and a titanium Powerbook G4 <br>
+(powerbook3,4 A1001). I held down T and turned on the Powerbook. After <br>
+about 25 seconds, the FireWire logo appeared on the screen, and the <br>
+drive appeared on Linux as sdb. I was able to read from the drive with <br>
+dd.<br>
+<br>
+Can you provide steps to reproduce the problem?<br>
+<br>
+-- Adam<br>
+</blockquote></div>
+
+--00000000000095c1880621252446--
 
 
+--===============4873483031901692093==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============4873483031901692093==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============4873483031901692093==--
+
