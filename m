@@ -2,77 +2,77 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7DF19699D9
-	for <lists+linux1394-devel@lfdr.de>; Tue,  3 Sep 2024 12:15:27 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id AF6D79699DD
+	for <lists+linux1394-devel@lfdr.de>; Tue,  3 Sep 2024 12:15:52 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1slQZ7-0004L1-FA;
-	Tue, 03 Sep 2024 10:15:13 +0000
+	id 1slQZT-0004k4-BF;
+	Tue, 03 Sep 2024 10:15:36 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1slQZ6-0004Kt-6A
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1slQZR-0004ju-5g
  for linux1394-devel@lists.sourceforge.net;
- Tue, 03 Sep 2024 10:15:12 +0000
+ Tue, 03 Sep 2024 10:15:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
  Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=cQ3Cmnl22pJyvQzeMH+44ginKFaS1ZMnNT2AenBDixc=; b=WxosL+OSxHePaElOaLlQfw3FB3
- w/ygJjpr3lJtBZBdpDv8+MRp4IeijwfhsYPvm6rSuFWaFPeOlvEPWXOMcJWPC4MkLLeB7WMf3ryWM
- RBoNrWZYRc0Tn+ypFMCKV2e7CoiVgd9NlfEEnJ58xqnTOSoLbu1EfiNOmYYtcNDnE7GE=;
+ bh=hievqMDYxfTONiyF8th4rDfFHnRvVJ8WTM3zZAohKSo=; b=fkuTaRhX4ygFe4Ly3Jok2TCWe6
+ pfNjSyNQ8fNWQ+BhijDyAQfb/rFDy5lldxMsd6T8i1e5Gq5BJlcgBjtBBZ8SxlqFU8cskqzqpGZ9O
+ QSZp4a/h1MzHbb41YLlqaUe8JZhFI/KsfgCNxUhZFqYCTl0h2wtJAMAAOpIvVxqEUZKo=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
  :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
  Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=cQ3Cmnl22pJyvQzeMH+44ginKFaS1ZMnNT2AenBDixc=; b=N
- 8cdo8CA8aFhTsxfJ41I6J1GksnrFa/zGG2A5VDqZQ/iTDhEnl6oiEVGV2coTHI6oMriqa1ymyot8v
- Ww+kiy4y0Zb9tkrLAvYgBZHKN8jQyY8fWSKFfTao/suVCx4CReSon2zo53RNlpL/QMVf8G+0VLNQ4
- kuQ/UtULjXSGIt80=;
+ List-Owner:List-Archive; bh=hievqMDYxfTONiyF8th4rDfFHnRvVJ8WTM3zZAohKSo=; b=L
+ Ikdfgyh7vibUDT93X0fqN5a+r1NzErb7C3ilJDtZUgfBUS/3SN5EPyKlMm/Zo6DNR93K5Q1BAKso3
+ MlUn06/QDhxvJRMY4EgjkK5EJhuveEEa6ftEoSvAHBRyXOcahbjGPQZj6T2Sb2I1aDXdyQ34j/Fkl
+ gjulA0jKzPZD6LHQ=;
 Received: from fhigh7-smtp.messagingengine.com ([103.168.172.158]
  helo=pfhigh7-smtp.messagingengine.com)
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1slQZ4-00084Y-7g for linux1394-devel@lists.sourceforge.net;
- Tue, 03 Sep 2024 10:15:12 +0000
-Received: from phl-compute-04.internal (phl-compute-04.phl.internal
- [10.202.2.44])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 961811140100;
- Tue,  3 Sep 2024 06:14:59 -0400 (EDT)
+ id 1slQZQ-00085S-GG for linux1394-devel@lists.sourceforge.net;
+ Tue, 03 Sep 2024 10:15:33 +0000
+Received: from phl-compute-05.internal (phl-compute-05.phl.internal
+ [10.202.2.45])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id EDEE91140100;
+ Tue,  3 Sep 2024 06:15:26 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-04.internal (MEProxy); Tue, 03 Sep 2024 06:14:59 -0400
+ by phl-compute-05.internal (MEProxy); Tue, 03 Sep 2024 06:15:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:message-id:mime-version:reply-to:subject
- :subject:to:to; s=fm1; t=1725358499; x=1725444899; bh=cQ3Cmnl22p
- JyvQzeMH+44ginKFaS1ZMnNT2AenBDixc=; b=G8DkbHzpEnATt0/HLcv+Eqf8B/
- JAtOAzQkCI+wbkXCIYHblnwv09ze9cLfpiTNAdOjMBMWOJSZWGHkU8e47ihEiYqP
- rG8mPpBYflwF3JdfX68t9ddVcYw/g8SbtAypJPisZfubdfMPpQwzUynh+quOfuFA
- qTfE3FmzgVUQdcg58C/Sh1oyu6kFiq8QabUU0FHKhXNUs0kvtnYRuFu7ukAq2CRI
- Uo952jgQiN+xQebqnIcApr/eXlT5Iyh7/HuMVOoZ5bTH15tpSsXRMYaKQaqBBqEW
- KX8jPjMUwQmKN/CkKB5Dh42s5AYgiBZ6DXR/QrvbtpNDL14t4K2LdI7tH38g==
+ :subject:to:to; s=fm1; t=1725358526; x=1725444926; bh=hievqMDYxf
+ TONiyF8th4rDfFHnRvVJ8WTM3zZAohKSo=; b=cSLMPLFktmplNGaHNwoeAaYyZc
+ S6Um4dWP4cQnpmmUIoPHX2JBBGN92pXhMIaYEcrJwWJ2A0p0x2BJeqYoF3BmJHhz
+ Ae6cu0Nemawze80s2gSpQf899n4Rpf03/3odFBiao9V41m3JrIZSccSFztWBXi0L
+ bhmyiKFWmwYf6+LaHUFMSoEu2PNqV50SLWdHMj5zk1QgOrZyrlsYIGAqgi7c3E1e
+ 6gRmv+tvcmlpvkrbrtdf8kAxGWP4SauJ0N9yMzLAw0S85e7MI87svgkf9o+eGykB
+ +lBMh1/HloTZuwok+GH2K69NRiuqAKTI0GOCo+mK8abW695Ue7hA3FyduTGg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1725358499; x=1725444899; bh=cQ3Cmnl22pJyvQzeMH+44ginKFaS
- 1ZMnNT2AenBDixc=; b=H8ejT175tuxnTA/zEuvxb2q7daPqZTApKJm9L2p5Rx2O
- F7e8tZbYcGpJTZegJnfMKMwxx3gOBHecsNxBCVaj2l6VHKDzcmv1oiHkO1sGNvSO
- Kh1GABW0YJIumAiVp2tu90vqfoSmrbFkSh0XxkVQJp8SXO4TqUyP4iLm5kzUONK1
- vDGsYUje7UKWDY3L882Uxw+OOTMMFsXRC1UANNr7QIMJxb94qgmzWNLJAgLlDXw2
- 9wtTvqqU5x7H2pfELlCXVN4lI4/aEh6Jz+2tLtVEweC7Bs576gFLjP6oakiDFXmF
- gqpPGxz9h/38w9OBRfJGtZ/GyYZ+XFPL7tYA2SgymQ==
-X-ME-Sender: <xms:o-HWZo054JaJ3lOuPgU8Zo2-XHyBYMJLjiQtBI9ygEaTJNm7TyUChg>
- <xme:o-HWZjFLH02RWtKnqnOXdefSLO74dvctreUuCOf3XsE8N2OKMRfTyNo94cw2EDac8
- -zn901fXEsC3Tvbqzw>
-X-ME-Received: <xmr:o-HWZg5ibbplkm1ZxSIJnaLcluKbqqgsODC0FNdbk4HB_QNF4OJ9McZgLa9Gm54PongqhP7QtW7d0xIOBgaicI0AU1vjGlDVQ7v8mwbX3R1PuA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehhedgvdegucetufdoteggodetrfdotf
+ fm1; t=1725358526; x=1725444926; bh=hievqMDYxfTONiyF8th4rDfFHnRv
+ VJ8WTM3zZAohKSo=; b=pkaA3Df1Lb6hzf8S27UsEXHjrwjb74RrVzs2H4PUn5kY
+ c/xFT5bP/9IiolwQbfGcx0h7DL72gtJ1hvDQ6+h643drKDf2bwmtS0skIPRcyawd
+ azC0u0upH4HOShHMxFdWQQYHU1srj9k0KZWwVobM9KrtV8AeGoarVzSlCvlWWSbC
+ qA0LbUO3rhrxjDTSxDtz5Xuaf5sz3ZnEQQUW9kfmsDCHK0q2ldVsCeL+KDnflwOD
+ EBolFXi6ss7nsECjIiE782d1R7x4+iYbfoGc7wRBHKomK1T/bXIKcr6KyF5ab3/F
+ 2hqL1SRXDjcM1SrgKtuqIhpttZxLthFUkxzRJUmrOg==
+X-ME-Sender: <xms:vuHWZj0F5aBvNcVcBgB0Uv6PuYDOhx-RsVj25bgY0ajTB-4C9nr10Q>
+ <xme:vuHWZiElakYQcKiCjHVwBcfQQ3k9Hut8vCFdp30xIsVksoJO7OHmAc2f5YaHOUea0
+ 2UJzKlKPVfGMX0ocs4>
+X-ME-Received: <xmr:vuHWZj7NWSjty0DeozbvaolcsXvCQ9dzEBa_Dk0dmM3j6nKqMh_5umm23SAFpT3okp6aN-nCOGV13PHjwsq9tc71uJIE7Hu5C9E5bkFqUlVoGQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehhedgvdehucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
  rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevuf
  ffkffoggfgsedtkeertdertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohht
@@ -83,19 +83,19 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehhedgvdegucetufdoteggod
  ohguvgepshhmthhpohhuthdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlse
  hlihhsthhsrdhsohhurhgtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidq
  khgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:o-HWZh3AdnT27DnwCDYexig2V01iRdXitTHh5LawfvrViJAPd9L-Kw>
- <xmx:o-HWZrGeKcRoeIb59nwQKimJjm3ZDkdnn5FSNJiRFjzaueyroZpbmQ>
- <xmx:o-HWZq8zXjS14HO7rTnAbTBmN3FhaPbFfzO5ZHMp3bSOQyf37gW1Eg>
- <xmx:o-HWZgnNfMiw6x1nf6LBS05yHkzxLjQ9sAUaRXDJCBefl_8lUma-Eg>
- <xmx:o-HWZgRxTb4i0V9DPMWNLx5a8UoWiCC-MvcWmB6qVN_WeucYV5nQdjKw>
+X-ME-Proxy: <xmx:vuHWZo2DrRq6ozn1huYI-HqipG1JF88pAn38hxceFwhHAQ65E_Zekg>
+ <xmx:vuHWZmF1UQiJdvOCCCkDNgbOSlIKVZG2l71t7rOnBnbsf0SWmMkY5w>
+ <xmx:vuHWZp-8do5SBL04WzLxSbH04w7t8CZH25z900p3U34V9NTHj8hx_g>
+ <xmx:vuHWZjm7No31pM5IOJpBWnhabwQAK6BOeL61piPIpci5yUA2Mz5uGA>
+ <xmx:vuHWZrRtN51pSlboahwEvWXUenjKXPQQjr4tywg84PeHpKL0_YboUljL>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 3 Sep 2024 06:14:58 -0400 (EDT)
+ 3 Sep 2024 06:15:25 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH] firewire: ohci: deprecate debug parameter
-Date: Tue,  3 Sep 2024 19:14:55 +0900
-Message-ID: <20240903101455.317067-1-o-takashi@sakamocchi.jp>
+Subject: [PATCH] firewire: ohci: obsolete direct usage of printk_ratelimit()
+Date: Tue,  3 Sep 2024 19:15:23 +0900
+Message-ID: <20240903101523.317110-1-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-Spam-Score: -0.9 (/)
@@ -105,11 +105,12 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: Many tracepoints events have been added to 6.10 and 6.11
- kernels.
- They are available as an alternative of debug parameter in firewire-ohci
- module. The logging messages enabled by the parameter require some cumbersomes
- in a point of maintenance; e.g. the code to decode transaction frame. 
+ Content preview: A commit 77006a0a8282 ("ratelimit: add comment warning people
+ off printk_ratelimit()") has already deprecated printk_ratelimit(). This
+ commit uses alternative functions to obsolete its usage. Signed-off-by:
+ Takashi
+ Sakamoto <o-takashi@sakamocchi.jp> --- drivers/firewire/ohci.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-) 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -125,7 +126,7 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1slQZ4-00084Y-7g
+X-Headers-End: 1slQZQ-00085S-GG
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -143,44 +144,46 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Many tracepoints events have been added to 6.10 and 6.11 kernels. They are
-available as an alternative of debug parameter in firewire-ohci module.
+A commit 77006a0a8282 ("ratelimit: add comment warning people off
+printk_ratelimit()") has already deprecated printk_ratelimit().
 
-The logging messages enabled by the parameter require some cumbersomes in
-a point of maintenance; e.g. the code to decode transaction frame.
-
-This commit adds deprecation text to conduct users to them..
+This commit uses alternative functions to obsolete its usage.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/ohci.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/firewire/ohci.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
-index a3a37955b174..e662dc30c21f 100644
+index e662dc30c21f..3930fdd56155 100644
 --- a/drivers/firewire/ohci.c
 +++ b/drivers/firewire/ohci.c
-@@ -396,7 +396,7 @@ MODULE_PARM_DESC(quirks, "Chip quirks (default = 0"
+@@ -2268,13 +2268,11 @@ static irqreturn_t irq_handler(int irq, void *data)
+ 		reg_read(ohci, OHCI1394_PostedWriteAddressLo);
+ 		reg_write(ohci, OHCI1394_IntEventClear,
+ 			  OHCI1394_postedWriteErr);
+-		if (printk_ratelimit())
+-			ohci_err(ohci, "PCI posted write error\n");
++		dev_err_ratelimited(ohci->card.device, "PCI posted write error\n");
+ 	}
  
- static int param_debug;
- module_param_named(debug, param_debug, int, 0644);
--MODULE_PARM_DESC(debug, "Verbose logging (default = 0"
-+MODULE_PARM_DESC(debug, "Verbose logging, deprecated in v6.11 kernel or later. (default = 0"
- 	", AT/AR events = "	__stringify(OHCI_PARAM_DEBUG_AT_AR)
- 	", self-IDs = "		__stringify(OHCI_PARAM_DEBUG_SELFIDS)
- 	", IRQs = "		__stringify(OHCI_PARAM_DEBUG_IRQS)
-@@ -2197,6 +2197,11 @@ static irqreturn_t irq_handler(int irq, void *data)
- 	if (!event || !~event)
- 		return IRQ_NONE;
+ 	if (unlikely(event & OHCI1394_cycleTooLong)) {
+-		if (printk_ratelimit())
+-			ohci_notice(ohci, "isochronous cycle too long\n");
++		dev_notice_ratelimited(ohci->card.device, "isochronous cycle too long\n");
+ 		reg_write(ohci, OHCI1394_LinkControlSet,
+ 			  OHCI1394_LinkControl_cycleMaster);
+ 	}
+@@ -2286,8 +2284,7 @@ static irqreturn_t irq_handler(int irq, void *data)
+ 		 * stop active cycleMatch iso contexts now and restart
+ 		 * them at least two cycles later.  (FIXME?)
+ 		 */
+-		if (printk_ratelimit())
+-			ohci_notice(ohci, "isochronous cycle inconsistent\n");
++		dev_notice_ratelimited(ohci->card.device, "isochronous cycle inconsistent\n");
+ 	}
  
-+	if (unlikely(param_debug > 0)) {
-+		dev_notice_ratelimited(ohci->card.device,
-+				       "The debug parameter is superceded by tracepoints events, and deprecated.");
-+	}
-+
- 	/*
- 	 * busReset and postedWriteErr events must not be cleared yet
- 	 * (OHCI 1.1 clauses 7.2.3.2 and 13.2.8.1)
+ 	if (unlikely(event & OHCI1394_unrecoverableError))
 -- 
 2.43.0
 
