@@ -2,121 +2,130 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FD4A968B98
-	for <lists+linux1394-devel@lfdr.de>; Mon,  2 Sep 2024 18:08:18 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id D7DF19699D9
+	for <lists+linux1394-devel@lfdr.de>; Tue,  3 Sep 2024 12:15:27 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1sl9b4-0001fo-WC;
-	Mon, 02 Sep 2024 16:08:07 +0000
+	id 1slQZ7-0004L1-FA;
+	Tue, 03 Sep 2024 10:15:13 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <andrewferguson500@gmail.com>) id 1sl9b3-0001fc-LZ
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1slQZ6-0004Kt-6A
  for linux1394-devel@lists.sourceforge.net;
- Mon, 02 Sep 2024 16:08:05 +0000
+ Tue, 03 Sep 2024 10:15:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:To:Subject:Message-ID:Date:From:
- In-Reply-To:References:MIME-Version:Sender:Reply-To:Cc:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=sVNzmh1Ag8cOCyBK3gOyM/a1bcIB6EjbWgA2b6+NxzU=; b=bsMWlINCQDxZxtSj1JuKJ5ktYM
- hN2QtTawrVKWQ4I8TKLi62jWbkYS+Jw08Et5RUi0UssGGTsYAp4GJqL72dv3D4EM3oJzAZ5eQaWpR
- A+mVGhSQxlgPoDWBz39mBINNEe9LVRX44wwTXitF3mL3IZW+jUIn3UzltDjvvaMWXPgQ=;
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=cQ3Cmnl22pJyvQzeMH+44ginKFaS1ZMnNT2AenBDixc=; b=WxosL+OSxHePaElOaLlQfw3FB3
+ w/ygJjpr3lJtBZBdpDv8+MRp4IeijwfhsYPvm6rSuFWaFPeOlvEPWXOMcJWPC4MkLLeB7WMf3ryWM
+ RBoNrWZYRc0Tn+ypFMCKV2e7CoiVgd9NlfEEnJ58xqnTOSoLbu1EfiNOmYYtcNDnE7GE=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:To:Subject:Message-ID:Date:From:In-Reply-To:References:
- MIME-Version:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=sVNzmh1Ag8cOCyBK3gOyM/a1bcIB6EjbWgA2b6+NxzU=; b=HCl7KutcaXB+a/nMoglSy2yMYB
- eayJCE2QfL0ABT3BkHoWJhgcIIrnOth3fGTIjU9/9JBP+U1YVRufFl19zW6Yz7kwqk+vn4CdcT0td
- vWh8LqlB9RtYV3byEb7lkgg8jursm2c/6d3xKhTqHwhKhSlmKKMgBeVq0wwO17ENWKFA=;
-Received: from mail-wm1-f50.google.com ([209.85.128.50])
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=cQ3Cmnl22pJyvQzeMH+44ginKFaS1ZMnNT2AenBDixc=; b=N
+ 8cdo8CA8aFhTsxfJ41I6J1GksnrFa/zGG2A5VDqZQ/iTDhEnl6oiEVGV2coTHI6oMriqa1ymyot8v
+ Ww+kiy4y0Zb9tkrLAvYgBZHKN8jQyY8fWSKFfTao/suVCx4CReSon2zo53RNlpL/QMVf8G+0VLNQ4
+ kuQ/UtULjXSGIt80=;
+Received: from fhigh7-smtp.messagingengine.com ([103.168.172.158]
+ helo=pfhigh7-smtp.messagingengine.com)
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
- (TLS1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.95)
- id 1sl9b1-00063R-Kg for linux1394-devel@lists.sourceforge.net;
- Mon, 02 Sep 2024 16:08:05 +0000
-Received: by mail-wm1-f50.google.com with SMTP id
- 5b1f17b1804b1-42bb8c6e250so33516325e9.1
- for <linux1394-devel@lists.sourceforge.net>;
- Mon, 02 Sep 2024 09:08:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1725293272; x=1725898072; darn=lists.sourceforge.net;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :from:to:cc:subject:date:message-id:reply-to;
- bh=sVNzmh1Ag8cOCyBK3gOyM/a1bcIB6EjbWgA2b6+NxzU=;
- b=TKo/T+x8udTrYw9byFrURA5Cs4m46jzsONBY1Vt5tb8ex4rAJVbDpMLGl8Gb4Ac5iU
- xRMczJk8Qw4nmRyapcRkm000x6nY4509nfsL7cn/HZ9ytB0WIkGGAXEkcrv3A/RdBoxl
- 4iHoqToV5fkQvU0XJHIG843L4Xx/RVku1MK5UNwA+hdppq+7nfjD/wECp25ZdC7hM2pT
- PHc5sYHhiffRBHxoZ1bVTBLVEAk8A5u3ObSQ+cpo3HEdTKVVM5upoz+fNTpwPd3pkXME
- HAZsIZ/Sjl2XXQEXeDlL3ZUqES35nnxM+I37urkKvs8zitIIYB555R2Mwtt8ITs0XuO4
- sRpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725293272; x=1725898072;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=sVNzmh1Ag8cOCyBK3gOyM/a1bcIB6EjbWgA2b6+NxzU=;
- b=LBi2HTcv6ZY5vtwEi6HfAeCOw5h3j+ojWD1qYMHDdn+fb7/kOH2h75jGOQDIk2xEQ/
- PGtdP6Fdf4vjJTC0dIn1Dcc1Eo/0rOpDYGDeRpSQnpKcKEjVJP799HMzuJHD5KpH259u
- Ry3T5j3MGlIYNXWyjdeSyc/bKuhTTmadhMrALDSUHQe8A7wXXYkkFlq8fjNQZQ7TloNd
- 65YNrI2Hzdzi6uf8WRHaf2I1Q6fYXBlv3sHOBXBq5rcOxSyGfkuWlsS6dFfdRFXq6C/0
- GoBQ5C2GDZcWnQAMV/R2ib7lk8DcL3qixmEw3HZ7o42shURAA1J6vAXE/PSKAcCBEFNT
- nH8A==
-X-Gm-Message-State: AOJu0YxzeP1WFdoEpq3ssKkoq8v7vVB+xzcoRHsjsszXq2ZvA1Z6Bn0d
- Esh39KJhwHkKw0zH8/IyiIerGNbngTu2jw2Zz2UPQ5MtLTNjWgkHdA/mK7/nTbmy0UvlURhjzn6
- nL41HpVDoaVpxOCn+nvylsKZ3AgvT0Zyq
-X-Google-Smtp-Source: AGHT+IGEtKlBM0I1Kf0eCEdgA91LeSvGwe704vnenezYPtCrVcX23LbS9WnQ7C8V9lOpXldwf4RndAJO1T6qmZEAQ2A=
-X-Received: by 2002:adf:ec4b:0:b0:374:8f90:b78b with SMTP id
- ffacd0b85a97d-374c947188fmr2871385f8f.44.1725293271561; Mon, 02 Sep 2024
- 09:07:51 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAFvb365w5QXB8kGizFjytkg+Ag_bY_SB5B3LhHx2wSt7dtL1TQ@mail.gmail.com>
- <ZtLpkQguwX2I19rI@iguana.24-8.net>
-In-Reply-To: <ZtLpkQguwX2I19rI@iguana.24-8.net>
-From: Andrew Ferguson <andrewferguson500@gmail.com>
-Date: Mon, 2 Sep 2024 17:07:40 +0100
-Message-ID: <CAFvb367Ov3PN0g2cZm+QOWBk9_cH02ovO63h0GiOs76wwSov_g@mail.gmail.com>
-Subject: Re: Bug report: Mac Target Disk Mode not working in some cases
+ (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
+ id 1slQZ4-00084Y-7g for linux1394-devel@lists.sourceforge.net;
+ Tue, 03 Sep 2024 10:15:12 +0000
+Received: from phl-compute-04.internal (phl-compute-04.phl.internal
+ [10.202.2.44])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id 961811140100;
+ Tue,  3 Sep 2024 06:14:59 -0400 (EDT)
+Received: from phl-mailfrontend-02 ([10.202.2.163])
+ by phl-compute-04.internal (MEProxy); Tue, 03 Sep 2024 06:14:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm1; t=1725358499; x=1725444899; bh=cQ3Cmnl22p
+ JyvQzeMH+44ginKFaS1ZMnNT2AenBDixc=; b=G8DkbHzpEnATt0/HLcv+Eqf8B/
+ JAtOAzQkCI+wbkXCIYHblnwv09ze9cLfpiTNAdOjMBMWOJSZWGHkU8e47ihEiYqP
+ rG8mPpBYflwF3JdfX68t9ddVcYw/g8SbtAypJPisZfubdfMPpQwzUynh+quOfuFA
+ qTfE3FmzgVUQdcg58C/Sh1oyu6kFiq8QabUU0FHKhXNUs0kvtnYRuFu7ukAq2CRI
+ Uo952jgQiN+xQebqnIcApr/eXlT5Iyh7/HuMVOoZ5bTH15tpSsXRMYaKQaqBBqEW
+ KX8jPjMUwQmKN/CkKB5Dh42s5AYgiBZ6DXR/QrvbtpNDL14t4K2LdI7tH38g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm1; t=1725358499; x=1725444899; bh=cQ3Cmnl22pJyvQzeMH+44ginKFaS
+ 1ZMnNT2AenBDixc=; b=H8ejT175tuxnTA/zEuvxb2q7daPqZTApKJm9L2p5Rx2O
+ F7e8tZbYcGpJTZegJnfMKMwxx3gOBHecsNxBCVaj2l6VHKDzcmv1oiHkO1sGNvSO
+ Kh1GABW0YJIumAiVp2tu90vqfoSmrbFkSh0XxkVQJp8SXO4TqUyP4iLm5kzUONK1
+ vDGsYUje7UKWDY3L882Uxw+OOTMMFsXRC1UANNr7QIMJxb94qgmzWNLJAgLlDXw2
+ 9wtTvqqU5x7H2pfELlCXVN4lI4/aEh6Jz+2tLtVEweC7Bs576gFLjP6oakiDFXmF
+ gqpPGxz9h/38w9OBRfJGtZ/GyYZ+XFPL7tYA2SgymQ==
+X-ME-Sender: <xms:o-HWZo054JaJ3lOuPgU8Zo2-XHyBYMJLjiQtBI9ygEaTJNm7TyUChg>
+ <xme:o-HWZjFLH02RWtKnqnOXdefSLO74dvctreUuCOf3XsE8N2OKMRfTyNo94cw2EDac8
+ -zn901fXEsC3Tvbqzw>
+X-ME-Received: <xmr:o-HWZg5ibbplkm1ZxSIJnaLcluKbqqgsODC0FNdbk4HB_QNF4OJ9McZgLa9Gm54PongqhP7QtW7d0xIOBgaicI0AU1vjGlDVQ7v8mwbX3R1PuA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehhedgvdegucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
+ rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevuf
+ ffkffoggfgsedtkeertdertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohht
+ ohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtth
+ gvrhhnpeffvdeuleffveekudfhteejudffgefhtedtgfeutdfgvdfgueefudehveehveek
+ keenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqd
+ htrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgtphhtthhopedvpdhm
+ ohguvgepshhmthhpohhuthdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlse
+ hlihhsthhsrdhsohhurhgtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidq
+ khgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
+X-ME-Proxy: <xmx:o-HWZh3AdnT27DnwCDYexig2V01iRdXitTHh5LawfvrViJAPd9L-Kw>
+ <xmx:o-HWZrGeKcRoeIb59nwQKimJjm3ZDkdnn5FSNJiRFjzaueyroZpbmQ>
+ <xmx:o-HWZq8zXjS14HO7rTnAbTBmN3FhaPbFfzO5ZHMp3bSOQyf37gW1Eg>
+ <xmx:o-HWZgnNfMiw6x1nf6LBS05yHkzxLjQ9sAUaRXDJCBefl_8lUma-Eg>
+ <xmx:o-HWZgRxTb4i0V9DPMWNLx5a8UoWiCC-MvcWmB6qVN_WeucYV5nQdjKw>
+Feedback-ID: ie8e14432:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 3 Sep 2024 06:14:58 -0400 (EDT)
+From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-X-Spam-Score: 0.0 (/)
+Subject: [PATCH] firewire: ohci: deprecate debug parameter
+Date: Tue,  3 Sep 2024 19:14:55 +0900
+Message-ID: <20240903101455.317067-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hello Takashi,
- Adam. Thanks both for the replies (and apologies
- for the tardiness of my response). Takashi, I completely understand that
- this is of less interest to you - it is an extremely niche case. Your work
- on the ALSA drivers is amazing. Just a few weeks ago I was helping a friend
- setup a Dig [...] 
- Content analysis details:   (0.0 points, 6.0 required)
+ Content preview: Many tracepoints events have been added to 6.10 and 6.11
+ kernels.
+ They are available as an alternative of debug parameter in firewire-ohci
+ module. The logging messages enabled by the parameter require some cumbersomes
+ in a point of maintenance; e.g. the code to decode transaction frame. 
+ Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.128.50 listed in list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [andrewferguson500[at]gmail.com]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [103.168.172.158 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit [andrewferguson500[at]gmail.com]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.128.50 listed in wl.mailspike.net]
- 0.0 HTML_MESSAGE           BODY: HTML included in message
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1sl9b1-00063R-Kg
+X-Headers-End: 1slQZ4-00084Y-7g
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -129,148 +138,54 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4873483031901692093=="
+Cc: linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============4873483031901692093==
-Content-Type: multipart/alternative; boundary="00000000000095c1880621252446"
+Many tracepoints events have been added to 6.10 and 6.11 kernels. They are
+available as an alternative of debug parameter in firewire-ohci module.
 
---00000000000095c1880621252446
-Content-Type: text/plain; charset="UTF-8"
+The logging messages enabled by the parameter require some cumbersomes in
+a point of maintenance; e.g. the code to decode transaction frame.
 
-Hello Takashi, Adam.
+This commit adds deprecation text to conduct users to them..
 
-Thanks both for the replies (and apologies for the tardiness of my
-response).
+Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+---
+ drivers/firewire/ohci.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-Takashi, I completely understand that this is of less interest to you - it
-is an extremely niche case. Your work on the ALSA drivers is amazing. Just
-a few weeks ago I was helping a friend setup a Digidesign 002R on Linux
-(thanks to the ALSA drivers). They will be using it to record their
-Wurlitzer theatre organ for conversion to a "sample pack" to allow them to
-play it digitally on their computer. I also have used a Mackie Onyx 400F
-with my 8-track analogue tape recorder, although I managed to break it (the
-Mackie) by accidentally looping phantom power into it. There's a Focusrite
-Liquid Saffire 56 on ebay I may get as a replacement - I need 192kHz input.
-
-I don't have any experience of kernel development, but I know C through
-various work on 5G network stacks. So there is (some!) hope that I will be
-able to fumble my way to a solution. Thank you for your advice about the
-tracepoint events - I will investigate this. (I'm about to go on a trip
-abroad for work reasons, so no / few updates doesn't mean that I'm not
-interested in solving this!).
-
-Adam, would you be willing to send me the serial number of the PowerBook G4
-you used? That lets me see all of the specs and whether or not it is
-similar to mine. Separately (and very much a n00b question!), what's the
-best / easiest way to get kernel version 6.8-rc1? is there a specific
-distro that ships with development / rc builds of the kernel, or is it
-better to install something like Debian Stable and then compile / install a
-development build? Ideally I'd replicate your setup to confirm it isn't an
-issue on my end.
-
-Thanks!
-Andrew
-
-On Sat, 31 Aug 2024 at 10:59, Adam Goldman <adamg@pobox.com> wrote:
-
-> On Sun, Aug 25, 2024 at 09:31:40PM +0100, Andrew Ferguson wrote:
-> > I have encountered a bug in that some Macs are not detected in Linux,
-> when
-> > the Mac is being used in "Target Disk Mode".
-> [...]
-> > Mac models that do not work:
-> > iBook G4
-> > Powerbook G4
->
-> Hi Andrew,
->
-> I did a quick test with kernel 6.8-rc1 and a titanium Powerbook G4
-> (powerbook3,4 A1001). I held down T and turned on the Powerbook. After
-> about 25 seconds, the FireWire logo appeared on the screen, and the
-> drive appeared on Linux as sdb. I was able to read from the drive with
-> dd.
->
-> Can you provide steps to reproduce the problem?
->
-> -- Adam
->
-
---00000000000095c1880621252446
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hello Takashi, Adam.<div><br></div><div>Thanks both for th=
-e replies (and apologies for the tardiness of my response).</div><div><br><=
-/div><div>Takashi, I completely understand that this is of less interest to=
- you - it is an extremely niche case. Your work on the ALSA drivers is amaz=
-ing. Just a few weeks ago I was helping a friend setup a Digidesign 002R on=
- Linux (thanks to the ALSA drivers). They will be using it to record their =
-Wurlitzer theatre organ for conversion to a &quot;sample pack&quot; to allo=
-w them to play it digitally on their computer. I also have used a=C2=A0Mack=
-ie Onyx 400F with my 8-track analogue tape recorder, although I managed to =
-break it (the Mackie) by accidentally looping phantom power into it. There&=
-#39;s a=C2=A0Focusrite Liquid Saffire 56 on ebay I may get as a replacement=
- - I need 192kHz input.<br></div><div><br></div><div>I don&#39;t have any e=
-xperience of kernel development, but I know C through various work on 5G ne=
-twork stacks. So there is (some!) hope that I will be able to fumble my way=
- to a solution. Thank you for your advice about the tracepoint events - I w=
-ill investigate this. (I&#39;m about to go on a trip abroad for work reason=
-s, so no / few updates doesn&#39;t mean that I&#39;m not interested in solv=
-ing this!).</div><div><br></div><div>Adam, would you be willing to send me =
-the serial number of the PowerBook G4 you used? That lets me see all of the=
- specs and whether or not it is similar to mine. Separately (and very much =
-a n00b question!), what&#39;s the best / easiest way to get kernel version =
-6.8-rc1? is there a specific distro that ships with development / rc builds=
- of the kernel, or is it better to install something like Debian Stable and=
- then compile / install a development build? Ideally I&#39;d replicate your=
- setup to confirm it isn&#39;t an issue on my end.=C2=A0</div><div><br></di=
-v><div>Thanks!</div><div>Andrew</div></div><br><div class=3D"gmail_quote"><=
-div dir=3D"ltr" class=3D"gmail_attr">On Sat, 31 Aug 2024 at 10:59, Adam Gol=
-dman &lt;<a href=3D"mailto:adamg@pobox.com">adamg@pobox.com</a>&gt; wrote:<=
-br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Sun, Aug 25, =
-2024 at 09:31:40PM +0100, Andrew Ferguson wrote:<br>
-&gt; I have encountered a bug in that some Macs are not detected in Linux, =
-when<br>
-&gt; the Mac is being used in &quot;Target Disk Mode&quot;.<br>
-[...]<br>
-&gt; Mac models that do not work:<br>
-&gt; iBook G4<br>
-&gt; Powerbook G4<br>
-<br>
-Hi Andrew,<br>
-<br>
-I did a quick test with kernel 6.8-rc1 and a titanium Powerbook G4 <br>
-(powerbook3,4 A1001). I held down T and turned on the Powerbook. After <br>
-about 25 seconds, the FireWire logo appeared on the screen, and the <br>
-drive appeared on Linux as sdb. I was able to read from the drive with <br>
-dd.<br>
-<br>
-Can you provide steps to reproduce the problem?<br>
-<br>
--- Adam<br>
-</blockquote></div>
-
---00000000000095c1880621252446--
+diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
+index a3a37955b174..e662dc30c21f 100644
+--- a/drivers/firewire/ohci.c
++++ b/drivers/firewire/ohci.c
+@@ -396,7 +396,7 @@ MODULE_PARM_DESC(quirks, "Chip quirks (default = 0"
+ 
+ static int param_debug;
+ module_param_named(debug, param_debug, int, 0644);
+-MODULE_PARM_DESC(debug, "Verbose logging (default = 0"
++MODULE_PARM_DESC(debug, "Verbose logging, deprecated in v6.11 kernel or later. (default = 0"
+ 	", AT/AR events = "	__stringify(OHCI_PARAM_DEBUG_AT_AR)
+ 	", self-IDs = "		__stringify(OHCI_PARAM_DEBUG_SELFIDS)
+ 	", IRQs = "		__stringify(OHCI_PARAM_DEBUG_IRQS)
+@@ -2197,6 +2197,11 @@ static irqreturn_t irq_handler(int irq, void *data)
+ 	if (!event || !~event)
+ 		return IRQ_NONE;
+ 
++	if (unlikely(param_debug > 0)) {
++		dev_notice_ratelimited(ohci->card.device,
++				       "The debug parameter is superceded by tracepoints events, and deprecated.");
++	}
++
+ 	/*
+ 	 * busReset and postedWriteErr events must not be cleared yet
+ 	 * (OHCI 1.1 clauses 7.2.3.2 and 13.2.8.1)
+-- 
+2.43.0
 
 
---===============4873483031901692093==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============4873483031901692093==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============4873483031901692093==--
-
