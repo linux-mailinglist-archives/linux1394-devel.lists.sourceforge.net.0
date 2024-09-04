@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFC0296BD66
-	for <lists+linux1394-devel@lfdr.de>; Wed,  4 Sep 2024 14:59:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B0E396BD68
+	for <lists+linux1394-devel@lfdr.de>; Wed,  4 Sep 2024 14:59:07 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1slpaw-0002dO-NY;
-	Wed, 04 Sep 2024 12:58:46 +0000
+	id 1slpaq-0002cY-Dg;
+	Wed, 04 Sep 2024 12:58:40 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1slpar-0002ci-EP
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1slpan-0002c7-Nn
  for linux1394-devel@lists.sourceforge.net;
- Wed, 04 Sep 2024 12:58:41 +0000
+ Wed, 04 Sep 2024 12:58:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=RSfspq38f8gW7QJFYGIc1REufVKmHzw31V7N3gqLU3w=; b=kvRk6v2eTTsgzcYn4qs+87PnXS
- G2hGMZhJXOsZpfOPTRDwtlMaRDsX907sJu9yrI853GCOeX0dG/1RPRG4eWnJvyoZC0ds0DQXPbe/T
- 4VPWxox183odMUa+pw+bhX6OlZWJOUnH3qf7hKnLI85clI6MxPFITOVlIj/i3ZEL1Io0=;
+ bh=VM4mJNaEoxxS6lwu2GiAK2Ilo54NSX6YDae+GK8Khnc=; b=KWIAGjePaHcKeBAOn0SImQmuEa
+ qZa/pH4eME98m0Tv5TJJnDvxfhsmiIVN+TuB2Dm2tteP8UQGKUiN/lPcrHS9V0A1UKNrA7PDLHIfY
+ luKaItuIzLbXRHi/vUfXUx7PC3ea7nlgWzg7ImjTl/D8W5zMqXPwFdJDJwZKtpUKO2oc=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -31,49 +31,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=RSfspq38f8gW7QJFYGIc1REufVKmHzw31V7N3gqLU3w=; b=lDQACQpslefKzxTPVdj1AAJkQd
- Hz3BrdGcilm8qnVKX8uUshi8ZGxI93GGrlmFrkqSr56YfHeo25yKppztdt7hy4IYQD9YfoOkB5JvK
- 3gO7mlQg1HqaARGURq/8TE1au7Ai2SL7b7JuFuhbV0QwwvZoBtm4iLJZMG0SJQ9HgaeY=;
+ bh=VM4mJNaEoxxS6lwu2GiAK2Ilo54NSX6YDae+GK8Khnc=; b=gvUr7Eo1LsKDRQQGS/SwSZ91NJ
+ HfnTb17dlyk/xNRo8qkIrWJBENp9T9ztTmKPIBfDXZUOVbBdX6cdZGLOnXORlOc+2m4KCe9PCwk3E
+ YlfwO2Y6I9gnpJo94H5jerzoFPZrJE5lIQljbZwOfVNuBbi2lN8s4uztahRiuEfpX08k=;
 Received: from fhigh8-smtp.messagingengine.com ([103.168.172.159])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1slpaq-0000S9-Ll for linux1394-devel@lists.sourceforge.net;
- Wed, 04 Sep 2024 12:58:41 +0000
-Received: from phl-compute-07.internal (phl-compute-07.phl.internal
- [10.202.2.47])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 23F5011401DF
+ id 1slpam-0000Rn-Nh for linux1394-devel@lists.sourceforge.net;
+ Wed, 04 Sep 2024 12:58:37 +0000
+Received: from phl-compute-04.internal (phl-compute-04.phl.internal
+ [10.202.2.44])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id 32DFD1140256
  for <linux1394-devel@lists.sourceforge.net>;
- Wed,  4 Sep 2024 08:58:30 -0400 (EDT)
+ Wed,  4 Sep 2024 08:58:31 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-07.internal (MEProxy); Wed, 04 Sep 2024 08:58:30 -0400
+ by phl-compute-04.internal (MEProxy); Wed, 04 Sep 2024 08:58:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:content-transfer-encoding:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1725454710; x=
- 1725541110; bh=RSfspq38f8gW7QJFYGIc1REufVKmHzw31V7N3gqLU3w=; b=Y
- JzG1wRAQ1ZpipYKLo0mTW7M+vGaNVMgjX8ySfJY+1U6sLs10PgO91pis9UCDsp3v
- /YzWa4vKX31+GMUW53xQSzL2laglBOnNMN1751G7qtNBYvTsw45Jqzd+gcq3fjkM
- dSvN9bN7Ko1NGjc7Q18O+ehqy/Zm8Cbg/pSx62PCZFUBd4bzNdXy+SCBnSJyVAvq
- 95TZCNChX5gyF6X/mr4MeZ4ZGPGBhwY8iqI+obeOxQGviVQoJ3bye2qb9SpKpdNs
- WEuVVhdnfiE7X8pA/Tr7JRhFSDapUsWf4Wxpxj2B3nZwJ38y5540jKb/oAyPFqEr
- 6sziVkwApxdeOvvQRPvhg==
+ :reply-to:subject:subject:to:to; s=fm1; t=1725454711; x=
+ 1725541111; bh=VM4mJNaEoxxS6lwu2GiAK2Ilo54NSX6YDae+GK8Khnc=; b=H
+ yoKmXJ/UGHiV74+CyyrBDa0yn53MomDqVEql5o6k87x2RUta5/HO/oyZ+MoccAWs
+ 0gBV2HK92sZOjYuyZIjGOMMwehgoyaarRcfeDRrgA8ET1sMIWS1Z0crq+4Pmfnn6
+ cxFzd7tsGif8gw9oIejU5KfpyYZ47i8Is05PwmKV7xDhzaHfuR/6SRN8VLvkWe5g
+ kKHF2q3MwrfVO3CD3skVIS2oLmOhhKajKW2d2QlaYyiyd2AurzaZZa9W6yQmb0f+
+ fbn3BidQYlwwgh4420vqUg8aPhzcU8lNwAtAZ4Kgcq077u+O0L0LMxZTPsunPsYd
+ cY2oZipIzSgU5bxzrZADg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:content-type
  :date:date:feedback-id:feedback-id:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; t=1725454710; x=1725541110; bh=RSfspq38f8gW7
- QJFYGIc1REufVKmHzw31V7N3gqLU3w=; b=X2hyXyhJk+nO9C4oGTLFBSYn5S12U
- VGLT9AerBs3WyYeDVqy2vdnO/HejKeFJyf97wswLCTKfZCcwFL/ZRCTE/j7ww7mR
- 9phR0SpxsdLqsQoN8B9exDzw652GWThcjlK2tR1aoQWjsAyMyZbMe+qzq/FUv7oS
- KV4DhabfZmV/YND+SlyherIPti0vwOVo21+oIExlBKzOCakzZ2WN1skxqbHJdXjc
- oMHVAEK28jdy/9HCCT+wFdFRxgQCmN1krU631L8KHG/tu9T2SM/WKgSXBwSyYeUg
- j1qvTl7LHQTB7BeERXd5HP9tqmqdGYRKIf5icVUaQ5DpahfsqUbb0PpCg==
-X-ME-Sender: <xms:dlnYZv4fwSM3npI1Ua2XkXQSPMT2q3sif7kBcpMUxp78DVCeny97pA>
- <xme:dlnYZk7vFsb1l24O_AMSn7nIcZtdoq35Sg-aF4bZPEnFkKKTe4NvJ1-oisMlwg2BJ
- 3KA4y9rVydEDZoP8zc>
-X-ME-Received: <xmr:dlnYZmdQDCrwJgI57Ifoo-Z3UFAWXSV4uZ3kt4wDTZUVLbVHyxnrOL_JaAVOhC_lohRYbsiuVkjm1oijGhqUA5UfwN-HarqqF9lq2C9ZAfGVjw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehjedgheelucetufdoteggodetrfdotf
+ :x-sasl-enc; s=fm1; t=1725454711; x=1725541111; bh=VM4mJNaEoxxS6
+ lwu2GiAK2Ilo54NSX6YDae+GK8Khnc=; b=hh+kWqj4Ex+3rStKTwd4FHSLLqZuR
+ s86UeJYGN+TjxjScw3t9WkafW/h0+T1OS7POd5U/eV1vCRQ9aRIqGMbyshuzKLuV
+ kXC3of6qfvx2APYps/yzlKazRG8sT1ErdjAZ2aptSEqvdHsStzA5AM4DRafVet5S
+ SJnT3Ine8nWaQY4XOQOnTPtow6ZWc5U2G/r84qaRkAoP6qpELsf/tCQud0N+PCxw
+ /oBTGlcFi/pJVHtWK/Fry006D1B1eEpSVLVDuPWVuCsOrX6WRi4sPmLmwNPlZKbI
+ bQMRwm4bvhal44K6m40zWmd6nIPHD9ZFspcZsrGvuezfI0i0N3MbLna+w==
+X-ME-Sender: <xms:d1nYZgWigKj6BBbkBLUx0CYaLa2oEJcopaJUMea47aQMlgZD_nZvEQ>
+ <xme:d1nYZkmW50oDOBsc1kIsdjaMBPzk3rS5KBqwT5yQ72Psu1egmeQ-h7ZuZ8Ou5JHeb
+ WISA3sTp3I4sBFDWy8>
+X-ME-Received: <xmr:d1nYZkbrTMbuH_vXP0YzpRMhOLQTYcmzzlyyn0nFF2erkQL1wvdGbqVgt62VsxpOAGTZGP7zW17DLygATdGIIr7W0MlAgPBOlYnRIjUSdQJ9zg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehjedgheekucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
  rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucenucfjughrpefhvffuff
  fkofgjfhgggfestdekredtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhho
@@ -83,36 +83,38 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehjedgheelucetufdoteggod
  dqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtohepuddp
  mhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlh
  eslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvth
-X-ME-Proxy: <xmx:dlnYZgIyUq2jRpDx6i4L39KeYF5Pih5KY_KL-XcA-Vs9u5NXzyHl3A>
- <xmx:dlnYZjLbCLdYI_ckem2M_4b2KXd6vsZUJfJKwaFrRcjiT9rWgrf-KQ>
- <xmx:dlnYZpzcstINZJ46RaLTRM9DdPDCvv5LUZp2I4BxWNov7hU7EdiDUQ>
- <xmx:dlnYZvKnyYIwN5Gzbpu8pzpwsScSKNtBdXFJ1j5acMGHq2wtYwypdw>
- <xmx:dlnYZpi7SPgCf6SsSy1zkxh2g8AbW8jHwXi-oJWX2lTnxihWk5R5pSx7>
+X-ME-Proxy: <xmx:d1nYZvV8jGemt-fDCT_TdM4_O5cp6BYAYEZpyJ51yc6BuQIFPZZNIg>
+ <xmx:d1nYZqkWNTNJdmxeXQQGYxvLd1JHNRbSmlAUCIHIgBhxyKvSkJ2c6g>
+ <xmx:d1nYZkcYqXIncptIpb2MLUUYjJ_F7w9GZbFSZcf60mbGKnH4KD_0Cw>
+ <xmx:d1nYZsGx4CO9PiCMMgwUqwWr6g_lDu5yN2SazCDafvF13kAB1qeLkw>
+ <xmx:d1nYZutRePCTZhvlTU42q3JUKCuVlFz9_X9vBnDZyHAwGRJ7n1Kd-X8s>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA for
  <linux1394-devel@lists.sourceforge.net>; Wed,
- 4 Sep 2024 08:58:29 -0400 (EDT)
+ 4 Sep 2024 08:58:30 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 2/5] firewire: core: add local API to queue work item to
- workqueue specific to isochronous contexts
-Date: Wed,  4 Sep 2024 21:58:21 +0900
-Message-ID: <20240904125824.462786-3-o-takashi@sakamocchi.jp>
+Subject: [PATCH 3/5] firewire: ohci: operate IT/IR events in sleepable work
+ process instead of tasklet softIRQ
+Date: Wed,  4 Sep 2024 21:58:22 +0900
+Message-ID: <20240904125824.462786-4-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240904125824.462786-1-o-takashi@sakamocchi.jp>
 References: <20240904125824.462786-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  In the previous commit,
- the workqueue is added per the instance
- of fw_card structure for isochronous contexts. The workqueue is designed
- to be used by the implementation of fw_card_driver structure un [...] 
+ Content preview: This commit queues work item for IT/IR events at hardIRQ
+ handler
+ to operate the corresponding isochronous context. The work item is queued
+ to any of worker-pools. The callback for either the implementation of unit
+ protocol and user space clients is executed in sleepable work process context.
+ The change could results in any errors of concurrent processing as wel [...]
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -120,15 +122,14 @@ X-Spam-Report: Spam detection software,
  low trust [103.168.172.159 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1slpaq-0000S9-Ll
+ valid -0.0 T_SCC_BODY_TEXT_LINE   No description available.
+X-Headers-End: 1slpam-0000Rn-Nh
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -145,106 +146,129 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-In the previous commit, the workqueue is added per the instance of fw_card
-structure for isochronous contexts. The workqueue is designed to be used by
-the implementation of fw_card_driver structure underlying the fw_card.
+This commit queues work item for IT/IR events at hardIRQ handler to operate
+the corresponding isochronous context. The work item is queued to any of
+worker-pools.
 
-This commit adds some local APIs to be used by the implementation.
+The callback for either the implementation of unit protocol and user space
+clients is executed in sleepable work process context. The change could
+results in any errors of concurrent processing as well as sleep at atomic
+context. These errors are fixed by the following commits.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/core-iso.c | 30 ++++++++++++++++++++++++++++--
- drivers/firewire/core.h     | 10 ++++++++++
- include/linux/firewire.h    |  1 +
- 3 files changed, 39 insertions(+), 2 deletions(-)
+ drivers/firewire/ohci.c | 55 +++++++++++++++++++++++++++++++++--------
+ 1 file changed, 45 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/firewire/core-iso.c b/drivers/firewire/core-iso.c
-index 101433b8bb51..af76fa1823f1 100644
---- a/drivers/firewire/core-iso.c
-+++ b/drivers/firewire/core-iso.c
-@@ -211,21 +211,47 @@ EXPORT_SYMBOL(fw_iso_context_queue_flush);
- 
- int fw_iso_context_flush_completions(struct fw_iso_context *ctx)
- {
-+	int err;
-+
- 	trace_isoc_outbound_flush_completions(ctx);
- 	trace_isoc_inbound_single_flush_completions(ctx);
- 	trace_isoc_inbound_multiple_flush_completions(ctx);
- 
--	return ctx->card->driver->flush_iso_completions(ctx);
-+	might_sleep();
-+
-+	// Avoid dead lock due to programming mistake.
-+	if (WARN_ON(current_work() == &ctx->work))
-+		return 0;
-+
-+	disable_work_sync(&ctx->work);
-+
-+	err = ctx->card->driver->flush_iso_completions(ctx);
-+
-+	enable_work(&ctx->work);
-+
-+	return err;
+diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
+index 50627b8fc38f..d0b1fccc450f 100644
+--- a/drivers/firewire/ohci.c
++++ b/drivers/firewire/ohci.c
+@@ -1182,6 +1182,47 @@ static void context_tasklet(unsigned long data)
+ 	}
  }
- EXPORT_SYMBOL(fw_iso_context_flush_completions);
  
- int fw_iso_context_stop(struct fw_iso_context *ctx)
- {
-+	int err;
-+
- 	trace_isoc_outbound_stop(ctx);
- 	trace_isoc_inbound_single_stop(ctx);
- 	trace_isoc_inbound_multiple_stop(ctx);
- 
--	return ctx->card->driver->stop_iso(ctx);
-+	might_sleep();
-+
-+	// Avoid dead lock due to programming mistake.
-+	if (WARN_ON(current_work() == &ctx->work))
-+		return 0;
-+
-+	err = ctx->card->driver->stop_iso(ctx);
-+
-+	cancel_work_sync(&ctx->work);
-+
-+	return err;
- }
- EXPORT_SYMBOL(fw_iso_context_stop);
- 
-diff --git a/drivers/firewire/core.h b/drivers/firewire/core.h
-index 96ae366889e0..2874f316156a 100644
---- a/drivers/firewire/core.h
-+++ b/drivers/firewire/core.h
-@@ -159,6 +159,16 @@ int fw_iso_buffer_alloc(struct fw_iso_buffer *buffer, int page_count);
- int fw_iso_buffer_map_dma(struct fw_iso_buffer *buffer, struct fw_card *card,
- 			  enum dma_data_direction direction);
- 
-+static inline void fw_iso_context_init_work(struct fw_iso_context *ctx, work_func_t func)
++static void ohci_isoc_context_work(struct work_struct *work)
 +{
-+	INIT_WORK(&ctx->work, func);
++	struct fw_iso_context *base = container_of(work, struct fw_iso_context, work);
++	struct iso_context *isoc_ctx = container_of(base, struct iso_context, base);
++	struct context *ctx = &isoc_ctx->context;
++	struct descriptor *d, *last;
++	u32 address;
++	int z;
++	struct descriptor_buffer *desc;
++
++	desc = list_entry(ctx->buffer_list.next, struct descriptor_buffer, list);
++	last = ctx->last;
++	while (last->branch_address != 0) {
++		struct descriptor_buffer *old_desc = desc;
++
++		address = le32_to_cpu(last->branch_address);
++		z = address & 0xf;
++		address &= ~0xf;
++		ctx->current_bus = address;
++
++		// If the branch address points to a buffer outside of the current buffer, advance
++		// to the next buffer.
++		if (address < desc->buffer_bus || address >= desc->buffer_bus + desc->used)
++			desc = list_entry(desc->list.next, struct descriptor_buffer, list);
++		d = desc->buffer + (address - desc->buffer_bus) / sizeof(*d);
++		last = find_branch_descriptor(d, z);
++
++		if (!ctx->callback(ctx, d, last))
++			break;
++
++		if (old_desc != desc) {
++			// If we've advanced to the next buffer, move the previous buffer to the
++			// free list.
++			old_desc->used = 0;
++			guard(spinlock_irqsave)(&ctx->ohci->lock);
++			list_move_tail(&old_desc->list, &ctx->buffer_list);
++		}
++		ctx->last = last;
++	}
 +}
 +
-+static inline void fw_iso_context_queue_work(struct fw_iso_context *ctx)
-+{
-+	queue_work(ctx->card->isoc_wq, &ctx->work);
-+}
-+
+ /*
+  * Allocate a new buffer and add it to the list of free buffers for this
+  * context.  Must be called with ohci->lock held.
+@@ -2242,8 +2283,7 @@ static irqreturn_t irq_handler(int irq, void *data)
  
- /* -topology */
+ 		while (iso_event) {
+ 			i = ffs(iso_event) - 1;
+-			tasklet_schedule(
+-				&ohci->ir_context_list[i].context.tasklet);
++			fw_iso_context_queue_work(&ohci->ir_context_list[i].base);
+ 			iso_event &= ~(1 << i);
+ 		}
+ 	}
+@@ -2254,8 +2294,7 @@ static irqreturn_t irq_handler(int irq, void *data)
  
-diff --git a/include/linux/firewire.h b/include/linux/firewire.h
-index 10e135d60824..72f497b61739 100644
---- a/include/linux/firewire.h
-+++ b/include/linux/firewire.h
-@@ -511,6 +511,7 @@ union fw_iso_callback {
+ 		while (iso_event) {
+ 			i = ffs(iso_event) - 1;
+-			tasklet_schedule(
+-				&ohci->it_context_list[i].context.tasklet);
++			fw_iso_context_queue_work(&ohci->it_context_list[i].base);
+ 			iso_event &= ~(1 << i);
+ 		}
+ 	}
+@@ -3130,6 +3169,7 @@ static struct fw_iso_context *ohci_allocate_iso_context(struct fw_card *card,
+ 	ret = context_init(&ctx->context, ohci, regs, callback);
+ 	if (ret < 0)
+ 		goto out_with_header;
++	fw_iso_context_init_work(&ctx->base, ohci_isoc_context_work);
  
- struct fw_iso_context {
- 	struct fw_card *card;
-+	struct work_struct work;
- 	int type;
- 	int channel;
- 	int speed;
+ 	if (type == FW_ISO_CONTEXT_RECEIVE_MULTICHANNEL) {
+ 		set_multichannel_mask(ohci, 0);
+@@ -3227,7 +3267,6 @@ static int ohci_stop_iso(struct fw_iso_context *base)
+ 	}
+ 	flush_writes(ohci);
+ 	context_stop(&ctx->context);
+-	tasklet_kill(&ctx->context.tasklet);
+ 
+ 	return 0;
+ }
+@@ -3584,10 +3623,8 @@ static int ohci_flush_iso_completions(struct fw_iso_context *base)
+ 	struct iso_context *ctx = container_of(base, struct iso_context, base);
+ 	int ret = 0;
+ 
+-	tasklet_disable_in_atomic(&ctx->context.tasklet);
+-
+ 	if (!test_and_set_bit_lock(0, &ctx->flushing_completions)) {
+-		context_tasklet((unsigned long)&ctx->context);
++		ohci_isoc_context_work(&base->work);
+ 
+ 		switch (base->type) {
+ 		case FW_ISO_CONTEXT_TRANSMIT:
+@@ -3607,8 +3644,6 @@ static int ohci_flush_iso_completions(struct fw_iso_context *base)
+ 		smp_mb__after_atomic();
+ 	}
+ 
+-	tasklet_enable(&ctx->context.tasklet);
+-
+ 	return ret;
+ }
+ 
 -- 
 2.43.0
 
