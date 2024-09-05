@@ -2,116 +2,102 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0216596D1CB
-	for <lists+linux1394-devel@lfdr.de>; Thu,  5 Sep 2024 10:18:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 39C9B96D9DF
+	for <lists+linux1394-devel@lfdr.de>; Thu,  5 Sep 2024 15:10:57 +0200 (CEST)
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1sm7hL-0003gh-RO;
-	Thu, 05 Sep 2024 08:18:36 +0000
+	id 1smCG5-0003IX-UG;
+	Thu, 05 Sep 2024 13:10:46 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1sm7hI-0003ex-9j
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1smCG5-0003IN-8a
  for linux1394-devel@lists.sourceforge.net;
- Thu, 05 Sep 2024 08:18:33 +0000
+ Thu, 05 Sep 2024 13:10:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=WtwEAKrZrYNRLzgPZ4AVqDwICtzLdQID0hX5HloQEWA=; b=jX1zQfUki8Bl7W+OTSCOoLTdeT
- 2BI/NbwVtlqp6l+/D9ZbzdlUJ0kr8q9emZdQ+bd/UGMvL7ba3OgVIBwq25lxv3ZumLDH8PM3Yoj2u
- +D1qpIKrV3wfqCK2/mNMV/zr7x2QX5is9/YJdKSpQnFEsEcPHTTiGUjQNAwJn/+z8dIQ=;
+ bh=mECBbq8SLaUTywVVUUZTVtpP3ufj6mxHVK9noi6AziY=; b=ba4MAIynWu29+hLhYtZ4Ua06VN
+ HaF3vbxdmtXYpeD8ufYltzj7J+y7XDbsfjMfB8CVitcPSJCnETvrtl6sna00Pq3dChxQGW0MbiXA0
+ ObvC/2Is2Sq5fa7baPP0Y0vBUhqr0k5zaOL6jzZoa/IiYB/HCfPy6GuKCu80GwVj1lyw=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=WtwEAKrZrYNRLzgPZ4AVqDwICtzLdQID0hX5HloQEWA=; b=TRi2Xr0vJl3tkobf4VeJWbk4c5
- XDnYo3mXag0K+NnjUkxRS3VcpN2hKUfa7AR8wTb9olGIX1omZanQAraDYk/yI4oCMbewnaKevOiHw
- SJe6/RCQQ3TKWShss8AvCv10mJWJG6X9JtK4xO+zTqPlBv8fgCSURsnwafg7T4NPm+zo=;
-Received: from fhigh4-smtp.messagingengine.com ([103.168.172.155])
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=mECBbq8SLaUTywVVUUZTVtpP3ufj6mxHVK9noi6AziY=; b=R
+ ThYNus188WS9FKCfp0iNDHC5vKDIZDIv3rt6ICgXvHpkWQsAlsTK+KT+B7Kahg4DR0Z2pJIe7e8NO
+ 0Hcw3++CpzJiVbJwZT2j1yNuUPIzK8s6qGJTFMQdwpgOz0dpCn+1dhi6I3i/FI0Li/+RA7dTVOqn5
+ yyyO6lGTfFRgj6eE=;
+Received: from fhigh7-smtp.messagingengine.com ([103.168.172.158])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1sm7hH-0004D1-R7 for linux1394-devel@lists.sourceforge.net;
- Thu, 05 Sep 2024 08:18:32 +0000
+ id 1smCG5-0001X0-0e for linux1394-devel@lists.sourceforge.net;
+ Thu, 05 Sep 2024 13:10:45 +0000
 Received: from phl-compute-01.internal (phl-compute-01.phl.internal
  [10.202.2.41])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 3847D1140148;
- Thu,  5 Sep 2024 04:18:21 -0400 (EDT)
+ by mailfhigh.phl.internal (Postfix) with ESMTP id 648241140273;
+ Thu,  5 Sep 2024 09:10:34 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-01.internal (MEProxy); Thu, 05 Sep 2024 04:18:21 -0400
+ by phl-compute-01.internal (MEProxy); Thu, 05 Sep 2024 09:10:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1725524301; x=
- 1725610701; bh=WtwEAKrZrYNRLzgPZ4AVqDwICtzLdQID0hX5HloQEWA=; b=d
- ll2UKheBld8xZn7xfP5XDo30Ak91d0zncH6xgyS6EcJk1sWZBUHh4DokZRcR/Igy
- 7tylCoEN3JzM9CWEyHLRW/CuQt3aSApMXci47yLYkSEOyZsT7RUxU/MEdyvXnkMw
- MKQvMmd0ZeikRz7UOqJmx3HcrMzPN2dzyCnAqPjn0LAqAxqrgUdjqyB9bOLQWHDB
- 2dXYZKOq6QmdG/IJn3sjK7cd03jRbruV5my85FKV4aKzrjPW3GYG6FGL+RZyB/y+
- t9TLS2P2t6B+RSP/htVqcn4gEqDMqhUSBvmImjb2X35VO1m8MPt58dfn2vH3ds61
- nyWWH8/88j88gR7iD4jvA==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm1; t=1725541834; x=1725628234; bh=mECBbq8SLa
+ UTywVVUUZTVtpP3ufj6mxHVK9noi6AziY=; b=ClwoRogjF6MhifPzTJuH6QRObr
+ pVZRgyFEDvmxdeCgRvS430y5nkwSb/0dmAi3+10QQ+i1kjBTSMoTVZKSvue28cLa
+ xHLISwr4MmskNZWPbH5uo2gfBCi9w/SzJIF+dfFtEn6l6DSLgNXJXBzcaTu6msNf
+ szhxvhxxcpzxa0iiZvWwKX2fnMEql4mjUpDxF6GkvBD1dE37Z1xW6KdzSdVWJOPA
+ pmUvWRsLztFwN7/dfa4VE6Th9DzNJ/ya4ES1rIjfqf+tKV9tXp3zLSLkvoKuhLdE
+ I++hMCGoYArV/dY/FupYouExujEZWSduHa4BNhbsvamTuqiKTuYO85r341WQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1725524301; x=1725610701; bh=WtwEAKrZrYNRLzgPZ4AVqDwICtzL
- dQID0hX5HloQEWA=; b=Z8BONe1tT4yBkhN2aUY2c4mI2fQdAPdHb/xDOne4EMGD
- SBOs6ZhitVGIlTM/p67+hYIhws9v55oW0uZ9/1e9R1GexCSa5POKBmn5OIcrlDfi
- kKUOrB4HE/MEgZmBcuWR2qMFU39UX+hTs9wanEmp68c3Brsf54cp7Tm10iT1+7vJ
- irjZpbTJDybY6d2CABgTofum8KUPdTdnZhcJ5tgaNjaLHZUIqCa+e1rMqXMQvdto
- 4AjqZefMOgQkcW4T3GNW6+T4afYLbKIJofF+//UMrNla3rUNCZ7vZch9zY1HaFNB
- W1EwRa0yVN1T2f4+W+5Yxvl98OZbKQ7+fJRKqN1CTQ==
-X-ME-Sender: <xms:TWnZZumR37ykvPpir5EHJJmOk126_GJQg5GyWeX0LRLBdXRAm94vVg>
- <xme:TWnZZl2SCiHw1PoHuL44iOElqGFmcr7-otr01jImQKwZpaOgR7KGJSM3hG5ABy20k
- EpV2mfnvZcOcAWOR48>
-X-ME-Received: <xmr:TWnZZso3HByT3ORO2aWsPehBW1_ZZSq3E4szd5o4MjZ5s9yg8oWzjOySIxjQJ9zWZNnOMJhL4_ZONOdnobjQdhUgtjl291g2MBo>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehledgtddvucetufdoteggodetrfdotf
+ fm1; t=1725541834; x=1725628234; bh=mECBbq8SLaUTywVVUUZTVtpP3ufj
+ 6mxHVK9noi6AziY=; b=g4/XoqNWetmRsYwaQPURTTf9stoOuQLU98AE5eZzfXvR
+ yv0gpmE5HIhMk05mD8j3iX8VgPaDdtunxyuRNXnJC1RaMdcMw9EkKhrmxCbngtBD
+ aDIQ+HC9vpX5yl5A7RbXTI5AmxyTgIz5RoY7e/XIjY/2RGX6kyalZLAPBuFKsplX
+ lmA02ZhognxHe3ZEwIv7UC+mzcHSlyi7uti3ebTtQnBRcnSIomqqUizyVqmkZNyr
+ mDSADiYzLovI0tWm2/ztU/3oMCZ7PVGt0Xjphv0RscczbPfpilbCM58O7TFzzON6
+ er2wzT1yH0C6iSmLm8cxSmYLtAE9G26JtnMtWm5CIw==
+X-ME-Sender: <xms:yq3ZZt2-SL7e6mBTz6xiQl6cjgzxRsHveceP_lUmKw3matVw0277PA>
+ <xme:yq3ZZkHuJUJqeR7JP7PwInbPxvjo6W2iuTRDJ-4gw265p2mPE1F8jhocNA6FVR5vX
+ H21GSqCTRW5b1h_nHM>
+X-ME-Received: <xmr:yq3ZZt4vgTcWa6iB_0vYemk0buDBFwO2daKSvPtEg2PM2XnkRvv4BxSZCZp9abB8wOEZZQBFThydVqh2SuQ_S8vNDyVUWJ-GcvKwRhwlVd2w>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehledgieduucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
  rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnh
- htshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvden
- ucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihessh
- grkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepueeiueevleefvedttefg
- vdeutdekveduheevffdvhfeluefhgfdtgeeutedtudejnecuffhomhgrihhnpehkvghrnh
- gvlhdrohhrghdpghhithhhuhgsrdgtohhmnecuvehluhhsthgvrhfuihiivgeptdenucfr
- rghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhird
- hjphdpnhgspghrtghpthhtohepjedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohep
- vggumhhunhgurdhrrghilhgvsehprhhothhonhhmrghilhdrtghomhdprhgtphhtthhope
- grphgrihhssehlihhnuhigrdhmihgtrhhoshhofhhtrdgtohhmpdhrtghpthhtoheplhhi
- nhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplh
- hinhhugidqmhgvughirgesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehl
- ihhnuhigqdhsohhunhgusehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplh
- hinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgv
- thdprhgtphhtthhopehnvghtuggvvhesvhhgvghrrdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:TWnZZimpPjErUb-PX7e37cNm4G2_5vHHy5fvyCWjHbx4NXjmHP6nrQ>
- <xmx:TWnZZs2guP9gekben1zbRpXN8leD9-48kUsmzENVuKM66e-RnSa1WQ>
- <xmx:TWnZZptB90Wh407iaVDtp_tzH9BKaPdf_7pPo-4VgEgMD-DgfNOp9w>
- <xmx:TWnZZoXCuUbGB3vrG6SrQ9rvXqUNT6PZ1O1EbsKfYvhgQSMIejTV3Q>
- <xmx:TWnZZtltYZ3GNZzUZFZINzsr1jCQaeYMYXPSK8ALWPnmJXpkuPtz9fTh>
+ htshculddquddttddmnecujfgurhephffvvefufffkofgggfestdekredtredttdenucfh
+ rhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihesshgrkh
+ grmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepffdvueelffevkeduhfetjedu
+ ffeghfettdfguedtgfdvgfeufeduheevheevkeeknecuvehluhhsthgvrhfuihiivgeptd
+ enucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggt
+ hhhirdhjphdpnhgspghrtghpthhtohepfedpmhhouggvpehsmhhtphhouhhtpdhrtghpth
+ htoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfhhorhhg
+ vgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnh
+ gvlhdrohhrghdprhgtphhtthhopehtihifrghisehsuhhsvgdruggv
+X-ME-Proxy: <xmx:yq3ZZq1Bjpw5RBC46rK_Rmoc8UbnsGxBSEt5cY_uL9UwPT1N9IKMxg>
+ <xmx:yq3ZZgEpU0Vyb13z1kafJlIVWpS8-DH-vsOID9fc8ECO9SsX0ce2Sw>
+ <xmx:yq3ZZr_3EWegdmX4t7zyfqBTnNpBYm4ZXR5rNvrsfDzloa1Rh68xGQ>
+ <xmx:yq3ZZtmn7X_h4t_MkYA7KGCuzwqeBI1aruBfq-Jf1FVRzkt4FsQJUQ>
+ <xmx:yq3ZZkD2c8cIDDT-irj8z8T9g7J2Z_mBZeXlxBpOUDNkn5j_buI7CsWO>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 5 Sep 2024 04:18:19 -0400 (EDT)
-Date: Thu, 5 Sep 2024 17:18:17 +0900
+ 5 Sep 2024 09:10:32 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Edmund Raile <edmund.raile@protonmail.com>
-Subject: Re: firewire: use sleepable workqueue to handle 1394 OHCI IT/IR
- context events: test 1
-Message-ID: <20240905081817.GC486563@workstation.local>
-Mail-Followup-To: Edmund Raile <edmund.raile@protonmail.com>,
- apais@linux.microsoft.com, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-sound@vger.kernel.org,
- linux1394-devel@lists.sourceforge.net, netdev@vger.kernel.org
-References: <20240901110642.154523-1-o-takashi@sakamocchi.jp>
- <20240904204531.154290-1-edmund.raile@protonmail.com>
+To: linux1394-devel@lists.sourceforge.net
+Subject: [PATCH] firewire: core: use WARN_ON_ONCE() to avoid superfluous dumps
+Date: Thu,  5 Sep 2024 22:10:29 +0900
+Message-ID: <20240905131029.6433-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240904204531.154290-1-edmund.raile@protonmail.com>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
@@ -119,15 +105,15 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, Thanks for your test. On Wed, Sep 04, 2024 at 08:45:51PM
- +0000, Edmund Raile wrote: > Hello Sakamoto-San, I very much appreciate the
- idea and effort to take on the tasklet conversion in small steps instead
- of all-at-once! [...] 
+ Content preview:  It is enough to notify programming mistakes to programmers
+ just once. Suggested-by: Takashi Iwai <tiwai@suse.de> Signed-off-by: Takashi
+ Sakamoto <o-takashi@sakamocchi.jp> --- drivers/firewire/core-iso.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-) 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [103.168.172.155 listed in list.dnswl.org]
+ low trust [103.168.172.158 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -138,7 +124,7 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1sm7hH-0004D1-R7
+X-Headers-End: 1smCG5-0001X0-0e
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -151,127 +137,44 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-sound@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
- apais@linux.microsoft.com, linux-media@vger.kernel.org
+Cc: Takashi Iwai <tiwai@suse.de>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+It is enough to notify programming mistakes to programmers just once.
 
-Thanks for your test.
+Suggested-by: Takashi Iwai <tiwai@suse.de>
+Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+---
+ drivers/firewire/core-iso.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On Wed, Sep 04, 2024 at 08:45:51PM +0000, Edmund Raile wrote:
-> Hello Sakamoto-San, I very much appreciate the idea and effort to take on the tasklet conversion in small steps instead of all-at-once!
-> 
-> I also thank you for the CC, I'd like to be the testing canary for the coal mine of firewire ALSA with RME FireFace!
-> The ALSA mailing list is a bit overwhelming and I'll likely unsubscribe so a direct CC for anything I can test is a good idea.
-> 
-> Trying to apply patch 1 of 5 to mainline, your kernel tree appears to be out of sync with mainline!
-> It was missing b171e20 from 2009 and a7ecbe9 from 2022!
-> I hope nothing else important is missing!
+diff --git a/drivers/firewire/core-iso.c b/drivers/firewire/core-iso.c
+index af76fa1823f1..a249974a0f87 100644
+--- a/drivers/firewire/core-iso.c
++++ b/drivers/firewire/core-iso.c
+@@ -220,7 +220,7 @@ int fw_iso_context_flush_completions(struct fw_iso_context *ctx)
+ 	might_sleep();
  
-Yes. The series of changes is prepared for the next merge window to
-v6.12 kernel. It is on the top of for-next branch in linux1394 tree.
-You can see some patches on v6.12-rc2 tag.
+ 	// Avoid dead lock due to programming mistake.
+-	if (WARN_ON(current_work() == &ctx->work))
++	if (WARN_ON_ONCE(current_work() == &ctx->work))
+ 		return 0;
+ 
+ 	disable_work_sync(&ctx->work);
+@@ -244,7 +244,7 @@ int fw_iso_context_stop(struct fw_iso_context *ctx)
+ 	might_sleep();
+ 
+ 	// Avoid dead lock due to programming mistake.
+-	if (WARN_ON(current_work() == &ctx->work))
++	if (WARN_ON_ONCE(current_work() == &ctx->work))
+ 		return 0;
+ 
+ 	err = ctx->card->driver->stop_iso(ctx);
+-- 
+2.43.0
 
-https://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git/log/?h=for-next
-
-> Since in fw_card_initialize, ret is tested to be 0 we'd need an else instead, is this correct?
-> 
-> I edited these functions of patch 1, now everything applies just fine:
-> 
-> @@ -571,11 +571,28 @@ void fw_card_initialize(struct fw_card *card,
->  }
->  EXPORT_SYMBOL(fw_card_initialize);
->  
-> -int fw_card_add(struct fw_card *card,
-> -		u32 max_receive, u32 link_speed, u64 guid)
-> +int fw_card_add(struct fw_card *card, u32 max_receive, u32 link_speed, u64 guid,
-> +		unsigned int supported_isoc_contexts)
->  {
-> +	struct workqueue_struct *isoc_wq;
->  	int ret;
->  
-> +	// This workqueue should be:
-> +	//  * != WQ_BH			Sleepable.
-> +	//  * == WQ_UNBOUND		Any core can process data for isoc context. The
-> +	//				implementation of unit protocol could consumes the core
-> +	//				longer somehow.
-> +	//  * != WQ_MEM_RECLAIM		Not used for any backend of block device.
-> +	//  * == WQ_HIGHPRI		High priority to process semi-realtime timestamped data.
-> +	//  * == WQ_SYSFS		Parameters are available via sysfs.
-> +	//  * max_active == n_it + n_ir	A hardIRQ could notify events for multiple isochronous
-> +	//				contexts if they are scheduled to the same cycle.
-> +	isoc_wq = alloc_workqueue("firewire-isoc-card%u",
-> +				  WQ_UNBOUND | WQ_HIGHPRI | WQ_SYSFS,
-> +				  supported_isoc_contexts, card->index);
-> +	if (!isoc_wq)
-> +		return -ENOMEM;
-> +
->  	card->max_receive = max_receive;
->  	card->link_speed = link_speed;
->  	card->guid = guid;
-> @@ -584,9 +601,13 @@ int fw_card_add(struct fw_card *card,
->  
->  	generate_config_rom(card, tmp_config_rom);
->  	ret = card->driver->enable(card, tmp_config_rom, config_rom_length);
->  	if (ret == 0)
->  		list_add_tail(&card->link, &card_list);
-> +	else
-> +		destroy_workqueue(isoc_wq);
-> +
-> +	card->isoc_wq = isoc_wq;
-> 
->  	mutex_unlock(&card_mutex);
-> 
->  	return ret;
-> @@ -709,7 +729,9 @@ void fw_core_remove_card(struct fw_card *card)
->  {
->  	struct fw_card_driver dummy_driver = dummy_driver_template;
->  	unsigned long flags;
->  
-> +	might_sleep();
-> +
->  	card->driver->update_phy_reg(card, 4,
->  				     PHY_LINK_ACTIVE | PHY_CONTENDER, 0);
->  	fw_schedule_bus_reset(card, false, true);
-> @@ -719,6 +741,7 @@ void fw_core_remove_card(struct fw_card *card)
->  	dummy_driver.free_iso_context	= card->driver->free_iso_context;
->  	dummy_driver.stop_iso		= card->driver->stop_iso;
->  	card->driver = &dummy_driver;
-> +	drain_workqueue(card->isoc_wq);
->  
->  	spin_lock_irqsave(&card->lock, flags);
->  	fw_destroy_nodes(card);
-> 
-> Building a kernel with the patch produced 6.11.0-rc6-1-mainline-00019-g67784a74e258-dirty.
-> Testing it with TI XIO2213B and RME Fireface 800 so far > 1 hour reveals no issues at all.
-> ALSA streaming works fine:
->   mpv --audio-device=alsa/sysdefault:CARD=Fireface800 Spor-Ignition.flac
-> 
-> Though I haven't the faintest clue how to measure CPU usage impact of the patch, it looks like it would be neglible.
-> 
-> As of finishing this, I noticed you released [2] https://lore.kernel.org/lkml/20240904125155.461886-1-o-takashi@sakamocchi.jp/T/
-> I'll get around to testing that one too, but tomorrow at the earliest.
-> 
-> Kind regards,
-> Edmund Raile.
-> 
-> Signed-off-by: Edmund Raile <edmund.raile@protonmail.com>
-> Tested-by: Edmund Raile <edmund.raile@protonmail.com>
-
-If using v6.11 kernel, it is convenient to use my remote repository to
-backport changes for v6.12. But let you be careful to the history of
-changes anyway.
-
-* https://github.com/takaswie/linux-firewire-dkms/
-
-
-Thanks
-
-Takashi Sakamoto
 
 
 _______________________________________________
