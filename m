@@ -2,133 +2,143 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7132E96BD6B
-	for <lists+linux1394-devel@lfdr.de>; Wed,  4 Sep 2024 14:59:11 +0200 (CEST)
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0216596D1CB
+	for <lists+linux1394-devel@lfdr.de>; Thu,  5 Sep 2024 10:18:50 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1slpb0-0003JJ-Kq;
-	Wed, 04 Sep 2024 12:58:50 +0000
+	id 1sm7hL-0003gh-RO;
+	Thu, 05 Sep 2024 08:18:36 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1slpav-0003Iz-OO
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1sm7hI-0003ex-9j
  for linux1394-devel@lists.sourceforge.net;
- Wed, 04 Sep 2024 12:58:45 +0000
+ Thu, 05 Sep 2024 08:18:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
- In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=nv0xbhGWiRX7u7gz9SGKHEd/5MDr79jm+xvr16IY/JI=; b=M20/vZQT/B+Yx+Z8GbIio9XuHx
- LUBO1Eg08ggW38jLZsb2uMVPr+vWX79Npchu+oh8XRA0pHBQfdeCsJscfMqy5yAh2MdePc9gSeEuS
- gI4EAZgelAU0jrif47E4EOBeyujw/aFU1r+IMt1JWRjLvaHAyCV+3eBRS6YTkZpWpMeU=;
+ bh=WtwEAKrZrYNRLzgPZ4AVqDwICtzLdQID0hX5HloQEWA=; b=jX1zQfUki8Bl7W+OTSCOoLTdeT
+ 2BI/NbwVtlqp6l+/D9ZbzdlUJ0kr8q9emZdQ+bd/UGMvL7ba3OgVIBwq25lxv3ZumLDH8PM3Yoj2u
+ +D1qpIKrV3wfqCK2/mNMV/zr7x2QX5is9/YJdKSpQnFEsEcPHTTiGUjQNAwJn/+z8dIQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
- Date:Subject:To:From:Sender:Reply-To:Cc:Content-Type:Content-ID:
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=nv0xbhGWiRX7u7gz9SGKHEd/5MDr79jm+xvr16IY/JI=; b=Lz9LWmR8OClp2S4zZpm04uUyll
- w4EbNQfnOzicb2LQ535vfaSxZH0jEI9JjRYpsrwyqbvdP0e/i+uGDkTjEHfQCbcVdapeaxuVq94V8
- AqCjrVaI9ibRwRkg9YqrW9KzPOmGc4s4ZomNbZ3/eoKIkuxPrYrJ2qflkpc7HeTBMJpU=;
-Received: from fhigh8-smtp.messagingengine.com ([103.168.172.159])
+ bh=WtwEAKrZrYNRLzgPZ4AVqDwICtzLdQID0hX5HloQEWA=; b=TRi2Xr0vJl3tkobf4VeJWbk4c5
+ XDnYo3mXag0K+NnjUkxRS3VcpN2hKUfa7AR8wTb9olGIX1omZanQAraDYk/yI4oCMbewnaKevOiHw
+ SJe6/RCQQ3TKWShss8AvCv10mJWJG6X9JtK4xO+zTqPlBv8fgCSURsnwafg7T4NPm+zo=;
+Received: from fhigh4-smtp.messagingengine.com ([103.168.172.155])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1slpau-0000SZ-26 for linux1394-devel@lists.sourceforge.net;
- Wed, 04 Sep 2024 12:58:45 +0000
-Received: from phl-compute-05.internal (phl-compute-05.phl.internal
- [10.202.2.45])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 834171140248
- for <linux1394-devel@lists.sourceforge.net>;
- Wed,  4 Sep 2024 08:58:33 -0400 (EDT)
+ id 1sm7hH-0004D1-R7 for linux1394-devel@lists.sourceforge.net;
+ Thu, 05 Sep 2024 08:18:32 +0000
+Received: from phl-compute-01.internal (phl-compute-01.phl.internal
+ [10.202.2.41])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id 3847D1140148;
+ Thu,  5 Sep 2024 04:18:21 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-05.internal (MEProxy); Wed, 04 Sep 2024 08:58:33 -0400
+ by phl-compute-01.internal (MEProxy); Thu, 05 Sep 2024 04:18:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:content-transfer-encoding:content-type:date:date:from:from
+ h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1725454713; x=
- 1725541113; bh=nv0xbhGWiRX7u7gz9SGKHEd/5MDr79jm+xvr16IY/JI=; b=U
- DsLXNJZvm4Z1gJXcPvooN6EF1W8+evxxxPp9OiJcvDf34Kie9vqSkX+fnvpaQJd9
- EomJQihYupcuxccp91qJmUoHbKJ3yZB246rwdJPQv7FrYs+TlVbHZk3tuGshfcAS
- TJJ6oUXjCn8x/gJkDF3+uEsbg/7+AppE/aW2+lppJqoNL1FEq5yGUaadaZ/yyRNS
- 7m0PW2mdoasXRm5BD82zFd8ow5LQOyqFFeNeC/SBiBh4CwpvxNiZTZG+30lT+tXb
- zqmRIfvWitEVYSCYre5AZss7iilUPXXuWsVW71nZuR7h29if5mqagtncloet5jd/
- r4kE9aCeTXSrHsvaraUqw==
+ :reply-to:subject:subject:to:to; s=fm1; t=1725524301; x=
+ 1725610701; bh=WtwEAKrZrYNRLzgPZ4AVqDwICtzLdQID0hX5HloQEWA=; b=d
+ ll2UKheBld8xZn7xfP5XDo30Ak91d0zncH6xgyS6EcJk1sWZBUHh4DokZRcR/Igy
+ 7tylCoEN3JzM9CWEyHLRW/CuQt3aSApMXci47yLYkSEOyZsT7RUxU/MEdyvXnkMw
+ MKQvMmd0ZeikRz7UOqJmx3HcrMzPN2dzyCnAqPjn0LAqAxqrgUdjqyB9bOLQWHDB
+ 2dXYZKOq6QmdG/IJn3sjK7cd03jRbruV5my85FKV4aKzrjPW3GYG6FGL+RZyB/y+
+ t9TLS2P2t6B+RSP/htVqcn4gEqDMqhUSBvmImjb2X35VO1m8MPt58dfn2vH3ds61
+ nyWWH8/88j88gR7iD4jvA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:date:feedback-id:feedback-id:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; t=1725454713; x=1725541113; bh=nv0xbhGWiRX7u
- 7gz9SGKHEd/5MDr79jm+xvr16IY/JI=; b=ltS7OTqyJOWvehqap0/5jCo8HxetL
- Ggjo/uy1yEAm3OHNWdPz/nu5Wz+yxZ97pctQgzR1SA2u0ri44w46Q4XYbl/RrNie
- FN92CKwIgvJDtcIZSvDGRpYd8dDu/B472hjqai1F+IBKphk57FysQHmkZpO0HzCQ
- mcQQ7r+ag2CUocl6f8ctjRWpnKclAL/QR2toihXQusO+qgxm1FmQhpJHYMnCkpWW
- wCNk5xFL5nycVpN7tPd/OiLIuT98dgYe3OtTUWF+HmFqjNArjCznXvqsdlIanXSA
- 08eaY2+HKgaYAeFIz4jf0DO/T1AU8e0atoAMDiK3eZYi4NoezvV2VNnrw==
-X-ME-Sender: <xms:eVnYZst4ZzU8mkrcAwgmoFGaM9pYhEMJoYUntnH9qtj4XCgEacGQCQ>
- <xme:eVnYZpfsrmAPEPmoB8tpX8tcwhDSQvgd8snL52QG6gawq_oWwVOqSZdeq2kjq-_Fs
- nvnfpo9sCbCJzhvt9g>
-X-ME-Received: <xmr:eVnYZny-nld1Xl4olS074AoJdnMgx3kOOAzRLYRyYd-ysuk4RciEQjpsOUaTogvdUyQ5IHOlQaIy3nDXZY-yiXw1Met-L8cOskXl4pb4ZeJ2bA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehjedgheekucetufdoteggodetrfdotf
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm1; t=1725524301; x=1725610701; bh=WtwEAKrZrYNRLzgPZ4AVqDwICtzL
+ dQID0hX5HloQEWA=; b=Z8BONe1tT4yBkhN2aUY2c4mI2fQdAPdHb/xDOne4EMGD
+ SBOs6ZhitVGIlTM/p67+hYIhws9v55oW0uZ9/1e9R1GexCSa5POKBmn5OIcrlDfi
+ kKUOrB4HE/MEgZmBcuWR2qMFU39UX+hTs9wanEmp68c3Brsf54cp7Tm10iT1+7vJ
+ irjZpbTJDybY6d2CABgTofum8KUPdTdnZhcJ5tgaNjaLHZUIqCa+e1rMqXMQvdto
+ 4AjqZefMOgQkcW4T3GNW6+T4afYLbKIJofF+//UMrNla3rUNCZ7vZch9zY1HaFNB
+ W1EwRa0yVN1T2f4+W+5Yxvl98OZbKQ7+fJRKqN1CTQ==
+X-ME-Sender: <xms:TWnZZumR37ykvPpir5EHJJmOk126_GJQg5GyWeX0LRLBdXRAm94vVg>
+ <xme:TWnZZl2SCiHw1PoHuL44iOElqGFmcr7-otr01jImQKwZpaOgR7KGJSM3hG5ABy20k
+ EpV2mfnvZcOcAWOR48>
+X-ME-Received: <xmr:TWnZZso3HByT3ORO2aWsPehBW1_ZZSq3E4szd5o4MjZ5s9yg8oWzjOySIxjQJ9zWZNnOMJhL4_ZONOdnobjQdhUgtjl291g2MBo>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehledgtddvucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
- rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucenucfjughrpefhvffuff
- fkofgjfhgggfestdekredtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhho
- thhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrth
- htvghrnhepveefffefkeetgfevgeefleehfffhueejtdejveethfekveektdejjedvtdej
- hfejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepoh
- dqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtohepuddp
- mhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlh
- eslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvth
-X-ME-Proxy: <xmx:eVnYZvPu7VT1Aj8vWAAYhisoac5A-qYhYHkX2IFK4VWZLkElhsYOhA>
- <xmx:eVnYZs_TRCwkrDUg5rurI6jyaf4Bk-UZkD7ChEFuYc3QYEI7Wb_adQ>
- <xmx:eVnYZnXFVPV9UQzZ0XNWog-iQSMmvDIX88rvUVyUcuEJj6xm2-jOhA>
- <xmx:eVnYZlfC-I5lXWToWhXdTIgDwcDbWJy2G23OqfGWABr7BoEr96LpVg>
- <xmx:eVnYZqnFiktAxBTScinF7I94oL5MFWjxh51Y9mixdjNS-BaZywErcSBS>
+ rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnh
+ htshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvden
+ ucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihessh
+ grkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepueeiueevleefvedttefg
+ vdeutdekveduheevffdvhfeluefhgfdtgeeutedtudejnecuffhomhgrihhnpehkvghrnh
+ gvlhdrohhrghdpghhithhhuhgsrdgtohhmnecuvehluhhsthgvrhfuihiivgeptdenucfr
+ rghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhird
+ hjphdpnhgspghrtghpthhtohepjedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohep
+ vggumhhunhgurdhrrghilhgvsehprhhothhonhhmrghilhdrtghomhdprhgtphhtthhope
+ grphgrihhssehlihhnuhigrdhmihgtrhhoshhofhhtrdgtohhmpdhrtghpthhtoheplhhi
+ nhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplh
+ hinhhugidqmhgvughirgesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehl
+ ihhnuhigqdhsohhunhgusehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplh
+ hinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgv
+ thdprhgtphhtthhopehnvghtuggvvhesvhhgvghrrdhkvghrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:TWnZZimpPjErUb-PX7e37cNm4G2_5vHHy5fvyCWjHbx4NXjmHP6nrQ>
+ <xmx:TWnZZs2guP9gekben1zbRpXN8leD9-48kUsmzENVuKM66e-RnSa1WQ>
+ <xmx:TWnZZptB90Wh407iaVDtp_tzH9BKaPdf_7pPo-4VgEgMD-DgfNOp9w>
+ <xmx:TWnZZoXCuUbGB3vrG6SrQ9rvXqUNT6PZ1O1EbsKfYvhgQSMIejTV3Q>
+ <xmx:TWnZZtltYZ3GNZzUZFZINzsr1jCQaeYMYXPSK8ALWPnmJXpkuPtz9fTh>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA for
- <linux1394-devel@lists.sourceforge.net>; Wed,
- 4 Sep 2024 08:58:32 -0400 (EDT)
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 5 Sep 2024 04:18:19 -0400 (EDT)
+Date: Thu, 5 Sep 2024 17:18:17 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 5/5] ALSA: firewire: use nonatomic PCM operation
-Date: Wed,  4 Sep 2024 21:58:24 +0900
-Message-ID: <20240904125824.462786-6-o-takashi@sakamocchi.jp>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240904125824.462786-1-o-takashi@sakamocchi.jp>
-References: <20240904125824.462786-1-o-takashi@sakamocchi.jp>
+To: Edmund Raile <edmund.raile@protonmail.com>
+Subject: Re: firewire: use sleepable workqueue to handle 1394 OHCI IT/IR
+ context events: test 1
+Message-ID: <20240905081817.GC486563@workstation.local>
+Mail-Followup-To: Edmund Raile <edmund.raile@protonmail.com>,
+ apais@linux.microsoft.com, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-sound@vger.kernel.org,
+ linux1394-devel@lists.sourceforge.net, netdev@vger.kernel.org
+References: <20240901110642.154523-1-o-takashi@sakamocchi.jp>
+ <20240904204531.154290-1-edmund.raile@protonmail.com>
 MIME-Version: 1.0
-X-Spam-Score: 0.1 (/)
+Content-Disposition: inline
+In-Reply-To: <20240904204531.154290-1-edmund.raile@protonmail.com>
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
- running on the system "util-spamd-2.v13.lw.sourceforge.com", 
+ running on the system "util-spamd-1.v13.lw.sourceforge.com", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  In the former commits, the callback of isochronous context
- runs on usual work process. In the case, ALSA PCM device has a flag, nonatomic,
- to acquire mutex lock instead of spin lock for PCM substream [...] 
- Content analysis details:   (0.1 points, 6.0 required)
+ Content preview:  Hi, Thanks for your test. On Wed, Sep 04, 2024 at 08:45:51PM
+ +0000, Edmund Raile wrote: > Hello Sakamoto-San, I very much appreciate the
+ idea and effort to take on the tasklet conversion in small steps instead
+ of all-at-once! [...] 
+ Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [103.168.172.159 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ low trust [103.168.172.155 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- 1.0 PDS_OTHER_BAD_TLD      Untrustworthy TLDs
- [URI: a.work (work)]
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  -0.0 T_SCC_BODY_TEXT_LINE   No description available.
-X-Headers-End: 1slpau-0000SZ-26
+X-Headers-End: 1sm7hH-0004D1-R7
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -141,205 +151,127 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-sound@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
+ apais@linux.microsoft.com, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-In the former commits, the callback of isochronous context runs on usual
-work process. In the case, ALSA PCM device has a flag, nonatomic, to
-acquire mutex lock instead of spin lock for PCM substream group.
+Hi,
 
-This commit uses the flag. It has an advantage in the case that ALSA PCM
-application uses the large size of intermediate buffer, since it takes
-too long time even in tasklet softIRQ to process many of isochronous
-packets, then result in the delay of system event due to disabled IRQ so
-long. It is avertible to switch to nonatomic operation.
+Thanks for your test.
 
-Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
----
- sound/firewire/amdtp-stream.c            | 34 +++++++++++++++++++-----
- sound/firewire/bebob/bebob_pcm.c         |  1 +
- sound/firewire/dice/dice-pcm.c           |  1 +
- sound/firewire/digi00x/digi00x-pcm.c     |  1 +
- sound/firewire/fireface/ff-pcm.c         |  1 +
- sound/firewire/fireworks/fireworks_pcm.c |  1 +
- sound/firewire/isight.c                  |  1 +
- sound/firewire/motu/motu-pcm.c           |  1 +
- sound/firewire/oxfw/oxfw-pcm.c           |  1 +
- sound/firewire/tascam/tascam-pcm.c       |  1 +
- 10 files changed, 36 insertions(+), 7 deletions(-)
+On Wed, Sep 04, 2024 at 08:45:51PM +0000, Edmund Raile wrote:
+> Hello Sakamoto-San, I very much appreciate the idea and effort to take on the tasklet conversion in small steps instead of all-at-once!
+> 
+> I also thank you for the CC, I'd like to be the testing canary for the coal mine of firewire ALSA with RME FireFace!
+> The ALSA mailing list is a bit overwhelming and I'll likely unsubscribe so a direct CC for anything I can test is a good idea.
+> 
+> Trying to apply patch 1 of 5 to mainline, your kernel tree appears to be out of sync with mainline!
+> It was missing b171e20 from 2009 and a7ecbe9 from 2022!
+> I hope nothing else important is missing!
+ 
+Yes. The series of changes is prepared for the next merge window to
+v6.12 kernel. It is on the top of for-next branch in linux1394 tree.
+You can see some patches on v6.12-rc2 tag.
 
-diff --git a/sound/firewire/amdtp-stream.c b/sound/firewire/amdtp-stream.c
-index c827d7d8d800..c72b2a754775 100644
---- a/sound/firewire/amdtp-stream.c
-+++ b/sound/firewire/amdtp-stream.c
-@@ -615,6 +615,22 @@ static void update_pcm_pointers(struct amdtp_stream *s,
- 		// The program in user process should periodically check the status of intermediate
- 		// buffer associated to PCM substream to process PCM frames in the buffer, instead
- 		// of receiving notification of period elapsed by poll wait.
-+		//
-+		// Use another work item for period elapsed event to prevent the following AB/BA
-+		// deadlock:
-+		//
-+		//             thread 1                            thread 2
-+		// =================================   =================================
-+		//       A.work item (process)                pcm ioctl (process)
-+		//                 v                                   v
-+		//       process_rx_packets()                  B.PCM stream lock
-+		//       process_tx_packets()                          v
-+		//                 v                        callbacks in snd_pcm_ops
-+		//       update_pcm_pointers()                         v
-+		//         snd_pcm_elapsed()           fw_iso_context_flush_completions()
-+		//  snd_pcm_stream_lock_irqsave()             disable_work_sync()
-+		//                 v                                   v
-+		//     wait until release of B                wait until A exits
- 		if (!pcm->runtime->no_period_wakeup)
- 			queue_work(system_highpri_wq, &s->period_work);
- 	}
-@@ -1055,8 +1071,15 @@ static void generate_rx_packet_descs(struct amdtp_stream *s, struct pkt_desc *de
- 
- static inline void cancel_stream(struct amdtp_stream *s)
- {
-+	struct work_struct *work = current_work();
-+
- 	s->packet_index = -1;
--	if (in_softirq())
-+
-+	// Detect work items for any isochronous context. The work item for pcm_period_work()
-+	// should be avoided since the call of snd_pcm_period_elapsed() can reach via
-+	// snd_pcm_ops.pointer() under acquiring PCM stream(group) lock and causes dead lock at
-+	// snd_pcm_stop_xrun().
-+	if (work && work != &s->period_work)
- 		amdtp_stream_pcm_abort(s);
- 	WRITE_ONCE(s->pcm_buffer_pointer, SNDRV_PCM_POS_XRUN);
- }
-@@ -1856,12 +1879,9 @@ unsigned long amdtp_domain_stream_pcm_pointer(struct amdtp_domain *d,
- 	struct amdtp_stream *irq_target = d->irq_target;
- 
- 	if (irq_target && amdtp_stream_running(irq_target)) {
--		// use wq to prevent AB/BA deadlock competition for
--		// substream lock:
--		// fw_iso_context_flush_completions() acquires
--		// lock by ohci_flush_iso_completions(),
--		// amdtp-stream process_rx_packets() attempts to
--		// acquire same lock by snd_pcm_elapsed()
-+		// The work item to call snd_pcm_period_elapsed() can reach here by the call of
-+		// snd_pcm_ops.pointer(), however less packets would be available then. Therefore
-+		// the following call is just for user process contexts.
- 		if (current_work() != &s->period_work)
- 			fw_iso_context_flush_completions(irq_target->context);
- 	}
-diff --git a/sound/firewire/bebob/bebob_pcm.c b/sound/firewire/bebob/bebob_pcm.c
-index ce49eef0fcba..360ebf3c4ca2 100644
---- a/sound/firewire/bebob/bebob_pcm.c
-+++ b/sound/firewire/bebob/bebob_pcm.c
-@@ -367,6 +367,7 @@ int snd_bebob_create_pcm_devices(struct snd_bebob *bebob)
- 		goto end;
- 
- 	pcm->private_data = bebob;
-+	pcm->nonatomic = true;
- 	snprintf(pcm->name, sizeof(pcm->name),
- 		 "%s PCM", bebob->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &playback_ops);
-diff --git a/sound/firewire/dice/dice-pcm.c b/sound/firewire/dice/dice-pcm.c
-index d64366217d57..2cf2adb48f2a 100644
---- a/sound/firewire/dice/dice-pcm.c
-+++ b/sound/firewire/dice/dice-pcm.c
-@@ -441,6 +441,7 @@ int snd_dice_create_pcm(struct snd_dice *dice)
- 		if (err < 0)
- 			return err;
- 		pcm->private_data = dice;
-+		pcm->nonatomic = true;
- 		strcpy(pcm->name, dice->card->shortname);
- 
- 		if (capture > 0)
-diff --git a/sound/firewire/digi00x/digi00x-pcm.c b/sound/firewire/digi00x/digi00x-pcm.c
-index 3bd1575c9d9c..85e65cbc00c4 100644
---- a/sound/firewire/digi00x/digi00x-pcm.c
-+++ b/sound/firewire/digi00x/digi00x-pcm.c
-@@ -350,6 +350,7 @@ int snd_dg00x_create_pcm_devices(struct snd_dg00x *dg00x)
- 		return err;
- 
- 	pcm->private_data = dg00x;
-+	pcm->nonatomic = true;
- 	snprintf(pcm->name, sizeof(pcm->name),
- 		 "%s PCM", dg00x->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &playback_ops);
-diff --git a/sound/firewire/fireface/ff-pcm.c b/sound/firewire/fireface/ff-pcm.c
-index ec915671a79b..63457d24a288 100644
---- a/sound/firewire/fireface/ff-pcm.c
-+++ b/sound/firewire/fireface/ff-pcm.c
-@@ -390,6 +390,7 @@ int snd_ff_create_pcm_devices(struct snd_ff *ff)
- 		return err;
- 
- 	pcm->private_data = ff;
-+	pcm->nonatomic = true;
- 	snprintf(pcm->name, sizeof(pcm->name),
- 		 "%s PCM", ff->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &pcm_playback_ops);
-diff --git a/sound/firewire/fireworks/fireworks_pcm.c b/sound/firewire/fireworks/fireworks_pcm.c
-index c3c21860b245..eaf7778211de 100644
---- a/sound/firewire/fireworks/fireworks_pcm.c
-+++ b/sound/firewire/fireworks/fireworks_pcm.c
-@@ -397,6 +397,7 @@ int snd_efw_create_pcm_devices(struct snd_efw *efw)
- 		goto end;
- 
- 	pcm->private_data = efw;
-+	pcm->nonatomic = true;
- 	snprintf(pcm->name, sizeof(pcm->name), "%s PCM", efw->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &playback_ops);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_CAPTURE, &capture_ops);
-diff --git a/sound/firewire/isight.c b/sound/firewire/isight.c
-index 806f82c9ceee..b1e059f0d473 100644
---- a/sound/firewire/isight.c
-+++ b/sound/firewire/isight.c
-@@ -454,6 +454,7 @@ static int isight_create_pcm(struct isight *isight)
- 	if (err < 0)
- 		return err;
- 	pcm->private_data = isight;
-+	pcm->nonatomic = true;
- 	strcpy(pcm->name, "iSight");
- 	isight->pcm = pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream;
- 	isight->pcm->ops = &ops;
-diff --git a/sound/firewire/motu/motu-pcm.c b/sound/firewire/motu/motu-pcm.c
-index d410c2efbde5..f3b48495acae 100644
---- a/sound/firewire/motu/motu-pcm.c
-+++ b/sound/firewire/motu/motu-pcm.c
-@@ -360,6 +360,7 @@ int snd_motu_create_pcm_devices(struct snd_motu *motu)
- 	if (err < 0)
- 		return err;
- 	pcm->private_data = motu;
-+	pcm->nonatomic = true;
- 	strcpy(pcm->name, motu->card->shortname);
- 
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_CAPTURE, &capture_ops);
-diff --git a/sound/firewire/oxfw/oxfw-pcm.c b/sound/firewire/oxfw/oxfw-pcm.c
-index 5f43a0b826d2..8ca9dde54ec6 100644
---- a/sound/firewire/oxfw/oxfw-pcm.c
-+++ b/sound/firewire/oxfw/oxfw-pcm.c
-@@ -440,6 +440,7 @@ int snd_oxfw_create_pcm(struct snd_oxfw *oxfw)
- 		return err;
- 
- 	pcm->private_data = oxfw;
-+	pcm->nonatomic = true;
- 	strcpy(pcm->name, oxfw->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &playback_ops);
- 	if (cap > 0)
-diff --git a/sound/firewire/tascam/tascam-pcm.c b/sound/firewire/tascam/tascam-pcm.c
-index f6da571707ac..a73003ac11e6 100644
---- a/sound/firewire/tascam/tascam-pcm.c
-+++ b/sound/firewire/tascam/tascam-pcm.c
-@@ -279,6 +279,7 @@ int snd_tscm_create_pcm_devices(struct snd_tscm *tscm)
- 		return err;
- 
- 	pcm->private_data = tscm;
-+	pcm->nonatomic = true;
- 	snprintf(pcm->name, sizeof(pcm->name),
- 		 "%s PCM", tscm->card->shortname);
- 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK, &playback_ops);
--- 
-2.43.0
+https://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git/log/?h=for-next
 
+> Since in fw_card_initialize, ret is tested to be 0 we'd need an else instead, is this correct?
+> 
+> I edited these functions of patch 1, now everything applies just fine:
+> 
+> @@ -571,11 +571,28 @@ void fw_card_initialize(struct fw_card *card,
+>  }
+>  EXPORT_SYMBOL(fw_card_initialize);
+>  
+> -int fw_card_add(struct fw_card *card,
+> -		u32 max_receive, u32 link_speed, u64 guid)
+> +int fw_card_add(struct fw_card *card, u32 max_receive, u32 link_speed, u64 guid,
+> +		unsigned int supported_isoc_contexts)
+>  {
+> +	struct workqueue_struct *isoc_wq;
+>  	int ret;
+>  
+> +	// This workqueue should be:
+> +	//  * != WQ_BH			Sleepable.
+> +	//  * == WQ_UNBOUND		Any core can process data for isoc context. The
+> +	//				implementation of unit protocol could consumes the core
+> +	//				longer somehow.
+> +	//  * != WQ_MEM_RECLAIM		Not used for any backend of block device.
+> +	//  * == WQ_HIGHPRI		High priority to process semi-realtime timestamped data.
+> +	//  * == WQ_SYSFS		Parameters are available via sysfs.
+> +	//  * max_active == n_it + n_ir	A hardIRQ could notify events for multiple isochronous
+> +	//				contexts if they are scheduled to the same cycle.
+> +	isoc_wq = alloc_workqueue("firewire-isoc-card%u",
+> +				  WQ_UNBOUND | WQ_HIGHPRI | WQ_SYSFS,
+> +				  supported_isoc_contexts, card->index);
+> +	if (!isoc_wq)
+> +		return -ENOMEM;
+> +
+>  	card->max_receive = max_receive;
+>  	card->link_speed = link_speed;
+>  	card->guid = guid;
+> @@ -584,9 +601,13 @@ int fw_card_add(struct fw_card *card,
+>  
+>  	generate_config_rom(card, tmp_config_rom);
+>  	ret = card->driver->enable(card, tmp_config_rom, config_rom_length);
+>  	if (ret == 0)
+>  		list_add_tail(&card->link, &card_list);
+> +	else
+> +		destroy_workqueue(isoc_wq);
+> +
+> +	card->isoc_wq = isoc_wq;
+> 
+>  	mutex_unlock(&card_mutex);
+> 
+>  	return ret;
+> @@ -709,7 +729,9 @@ void fw_core_remove_card(struct fw_card *card)
+>  {
+>  	struct fw_card_driver dummy_driver = dummy_driver_template;
+>  	unsigned long flags;
+>  
+> +	might_sleep();
+> +
+>  	card->driver->update_phy_reg(card, 4,
+>  				     PHY_LINK_ACTIVE | PHY_CONTENDER, 0);
+>  	fw_schedule_bus_reset(card, false, true);
+> @@ -719,6 +741,7 @@ void fw_core_remove_card(struct fw_card *card)
+>  	dummy_driver.free_iso_context	= card->driver->free_iso_context;
+>  	dummy_driver.stop_iso		= card->driver->stop_iso;
+>  	card->driver = &dummy_driver;
+> +	drain_workqueue(card->isoc_wq);
+>  
+>  	spin_lock_irqsave(&card->lock, flags);
+>  	fw_destroy_nodes(card);
+> 
+> Building a kernel with the patch produced 6.11.0-rc6-1-mainline-00019-g67784a74e258-dirty.
+> Testing it with TI XIO2213B and RME Fireface 800 so far > 1 hour reveals no issues at all.
+> ALSA streaming works fine:
+>   mpv --audio-device=alsa/sysdefault:CARD=Fireface800 Spor-Ignition.flac
+> 
+> Though I haven't the faintest clue how to measure CPU usage impact of the patch, it looks like it would be neglible.
+> 
+> As of finishing this, I noticed you released [2] https://lore.kernel.org/lkml/20240904125155.461886-1-o-takashi@sakamocchi.jp/T/
+> I'll get around to testing that one too, but tomorrow at the earliest.
+> 
+> Kind regards,
+> Edmund Raile.
+> 
+> Signed-off-by: Edmund Raile <edmund.raile@protonmail.com>
+> Tested-by: Edmund Raile <edmund.raile@protonmail.com>
+
+If using v6.11 kernel, it is convenient to use my remote repository to
+backport changes for v6.12. But let you be careful to the history of
+changes anyway.
+
+* https://github.com/takaswie/linux-firewire-dkms/
+
+
+Thanks
+
+Takashi Sakamoto
 
 
 _______________________________________________
