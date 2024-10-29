@@ -2,105 +2,107 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1CF339B1C57
-	for <lists+linux1394-devel@lfdr.de>; Sun, 27 Oct 2024 08:04:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9D209B3FAC
+	for <lists+linux1394-devel@lfdr.de>; Tue, 29 Oct 2024 02:19:56 +0100 (CET)
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1t4xJu-0008SK-KZ;
-	Sun, 27 Oct 2024 07:04:14 +0000
+	id 1t5atb-0007Vp-L1;
+	Tue, 29 Oct 2024 01:19:43 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1t4xJq-0008S8-Gm
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1t5atZ-0007Vh-PA
  for linux1394-devel@lists.sourceforge.net;
- Sun, 27 Oct 2024 07:04:10 +0000
+ Tue, 29 Oct 2024 01:19:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
- From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=K9B3+On1seQtdoA5l3dwUONjZSYYv1Xr9X/2UyZuerE=; b=A+LLFc6e0nSqueAO2nHCglvzUX
- hMZJj7iu1/bMkrepfJ8gtkaA1qxBCsjJRACqAwl364RuiXfDhHnTZjfXWcKC30wG7NrptlebQJNtE
- l3ZMg2fRxkTCURAptQkq6TmqXezbu0vlOxuwGPQkwp0JNyMwqo9vah/Xx2iq50rQLrus=;
+ bh=DFZvUn3BP1CH8W8twa67vrPGh9GQ/uWPY5MPWnm3GKQ=; b=R68t3IsTQyM0nESuggKlXmn4Dl
+ /Vkiv+5NVyev1bQU42pAswTQVhsia/5Cg9v4k5ygPRaQz3aYrujIOwEupXIUYUQ2tyKLibKeHdkb4
+ lOWGNzWwH7madUJnx46G3Mc2Hn7LSNkD47pq0qhknt/wtpAqYubDsZMPoQ6Vkl8KIwuI=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:
- Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=K9B3+On1seQtdoA5l3dwUONjZSYYv1Xr9X/2UyZuerE=; b=V
- aEp+GmOny8Urot0gUbHXOqf9KZon2Q0xeXtkpsMaGjxVOYb8vHuJYnekm8Cu2jo3IpKbPAXyjN0LZ
- uU3gOQfrn4830My5G9CJ9DOi0zMwvQpbdEVGKLCGGbQyt/69IyWWv5GH9kzEqLNEhpY+EIEw8um0O
- jaPecWhDl+gu+M6M=;
-Received: from fhigh-a4-smtp.messagingengine.com ([103.168.172.155])
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=DFZvUn3BP1CH8W8twa67vrPGh9GQ/uWPY5MPWnm3GKQ=; b=LGKSaNy1O9PfLwwn4PD9Efe97i
+ UgduUPaMQtwMIlzgynH0Q+icDw74jCPKkxq4BnhN8PLw6sjP0IV+Dvx/tBq/BbzKGnJol3wyBJFAq
+ QIPc0EJQcQpw1qBAN6KAjK5COMsatGAtYaszHJ24NrIL+/ZyTE+PzRj781LdWlvJHHcg=;
+Received: from fhigh-a6-smtp.messagingengine.com ([103.168.172.157])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1t4xJp-0001gZ-Gj for linux1394-devel@lists.sourceforge.net;
- Sun, 27 Oct 2024 07:04:10 +0000
-Received: from phl-compute-01.internal (phl-compute-01.phl.internal
- [10.202.2.41])
- by mailfhigh.phl.internal (Postfix) with ESMTP id C8838114013F;
- Sun, 27 Oct 2024 03:03:58 -0400 (EDT)
+ id 1t5atY-00059F-DY for linux1394-devel@lists.sourceforge.net;
+ Tue, 29 Oct 2024 01:19:41 +0000
+Received: from phl-compute-12.internal (phl-compute-12.phl.internal
+ [10.202.2.52])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id AB231114019A;
+ Mon, 28 Oct 2024 21:19:29 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-01.internal (MEProxy); Sun, 27 Oct 2024 03:03:58 -0400
+ by phl-compute-12.internal (MEProxy); Mon, 28 Oct 2024 21:19:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
- :to; s=fm3; t=1730012638; x=1730099038; bh=K9B3+On1seQtdoA5l3dwU
- ONjZSYYv1Xr9X/2UyZuerE=; b=M4skfE0eWcWAT8YruVT65zaAzm5NAa38Etqi6
- z2kmgivDB+5CCtfw/iLI8euPHAVCMhl+m2g6osDIPqlKRwQFVS/CwCJQKp6A3Ntn
- t1DNN8lVXRWJJrBMJwllrAZUukT8QXggaYdvAWnsByJ5si/ca9TewDwZPDkWWNS+
- GOqRgQ/GPxLPB+ZnYrSwwXdfOmZiR2BcznVGZCm5LYpNH7eOALh5TykpnJWoQ5mk
- k4zRkK/3vQsneUkrGEHLDBffAF7zqKV5+mZT0UHI9FAgm8WSLguI+5+CtbQFuzNz
- 6xhITSbNCQ1nxQB6FkX32B0qLszHiibnYM+JtEimnmOM6BdqA==
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=fm3; t=1730164769; x=
+ 1730251169; bh=DFZvUn3BP1CH8W8twa67vrPGh9GQ/uWPY5MPWnm3GKQ=; b=R
+ brvQtuQNXOyWPf/F2Rm2IBo1L9v2GCuGjn7qxnD1PouF2i5Cjj3hZ80jo8xrc3lj
+ Z0hydBCd1ssb3iZPctSURCN6CJmgyJU3YR0zP2xbyF78uF/4HyJQotrMiAUMIe5n
+ W4LAHBWj4DO12oe+4ALsRri1ujgrmiTwZk0c/BrmUzsLowoJE7aThBdZBXG1lXjT
+ oh0VktUQlMEhmORKBjwPeOWVXn1vFeMS6646yOgTiY3AbZF0jQQY96wXmJkkF3pz
+ IT1aiKmF69n4BSYtAmB5sFin/MG/yNkra1+v9i7UZJ4ynlL7ZzTTU2gzftglwuZs
+ 4tGM5l6DGBB73sbDwDgXA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:message-id
- :mime-version:reply-to:subject:subject:to:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
- 1730012638; x=1730099038; bh=K9B3+On1seQtdoA5l3dwUONjZSYYv1Xr9X/
- 2UyZuerE=; b=FGJiSSumW4do0A1A98zd1Y20Oocr4PYr6Z0hTRdGW5aRzxYaVz/
- i0oPuC9tyTlqfQ/oeV1wE9791eqY2pdfr6nRQTkdQWbNJ7KGPEC/9gB7x0N4uPx+
- wb+mwqm8lDCA9ZIq5uNI063cOHpnrXBXD/jni5oVL7O2AzR5U5vloUNMvMARwPkc
- 4Mne3GsnixQlFInunmdbhHSA2DCxrzL1s9T1a6dyeBsTaLGVZYoVyrb/jTNIwN1f
- 8fFtNkQQ6uSArY3cZXwjfj73ukTrZamj3jFpDu5GVNZpmBGmiA8Q5aa1avfRH6j4
- h8FFSeReRTufsHw28xpw5rKdOpKnJGW7leA==
-X-ME-Sender: <xms:3uUdZ-w5-3fYwV5If3QYeWGdwTdcDleHb18u1rK4_Pcpmv6lKsNnIQ>
- <xme:3uUdZ6TNhyFNueqS00N6BtACfKk_jxMb6u9mev8e7EsjMYijXEiWTNseIlbp4OtEZ
- RgtdPu1Ce7ld2czDsI>
-X-ME-Received: <xmr:3uUdZwU_JAzAUn9MH62F-eTVxi6ivXLR5v3Z97P0EIX1wGDU4cGr7DpWPsHAeQ5cciyyleHQZ7NJHSQ0BQV5-QDRUqh5ezLHTLs>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrvdejhedguddugecutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpggftfghnshhusghstghrihgsvgdp
- uffrtefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecunecujfgurhepfffhvf
- evuffkgggtugesthdtredttddtvdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhho
- thhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrth
- htvghrnhepteefieetfeevgedvgfegffehteeljeekkeelueegfffftdfgtdetteekvedv
- vdfgnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpe
- dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgt
- tghhihdrjhhppdhnsggprhgtphhtthhopeefpdhmohguvgepshhmthhpohhuthdprhgtph
- htthhopehtohhrvhgrlhgusheslhhinhhugidqfhhouhhnuggrthhiohhnrdhorhhgpdhr
- tghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgpd
- hrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtggv
- fhhorhhgvgdrnhgvth
-X-ME-Proxy: <xmx:3uUdZ0i_jG_PoPGyHhICJemo5PpO7yhlsE550nyA-jjxjtakQ8mCAw>
- <xmx:3uUdZwDma_Uh10sC1X19aFBsc9PMnowKtdBOpJDdzeIwi7dwwPfKhA>
- <xmx:3uUdZ1KKe_jOyY7rbfORhqoSnJ-_dHHbzpkWZfjDPiYAAFMuwjauow>
- <xmx:3uUdZ3AiFd37in125Y-KiVZmtGOh4fD-IF6b237s5jjGIAalICgqDg>
- <xmx:3uUdZzMoWJRVWbtVRqMCvKTVUbw2WXG-uka6rpCiXJN2wjUJsUeuSO7x>
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
+ 1730164769; x=1730251169; bh=DFZvUn3BP1CH8W8twa67vrPGh9GQ/uWPY5M
+ PWnm3GKQ=; b=gI0i/TCLghkUKGeCa9UQJpmeB8r557gUV+GJMXTil9ji3/I5erJ
+ XbWhyBB5ktCHO9fVEU9hLEHuMq1URxGd+Gm8bnY0qbIJomkR7vzegTBqJDbNMRGU
+ lkJu+2xFJUSEmCB+P/RZGruAD0oOQUKz7J3/LZ+9ND+s7wrJVcn7mgpiso7uHAnr
+ qZf4yWySOTCUPorliwbKjzB/8kfZokTpIby4FWzhXim8jPkTE+TxQq++gPFqtIGe
+ K6AtnwsNvre1QzqdBEDHvFjfRelORb49B0V8cd+Sklzb//yjvsgGSvVi4vFnFANU
+ drpypgsq9KBy8K1wkrXr1ykW+/QalI2gkVw==
+X-ME-Sender: <xms:ITggZ7FgsIreILCi1bsrgdbeyOgWTpN4D1eQ7jvypdQ6-G2_npnqhQ>
+ <xme:ITggZ4VNGm24TVHdN4_6-BYSxuYT7tKBLPMKOjwfLFOa1C3UF67kU_ceoRY1ywPSf
+ d_6McQrNV4pzTnMLeo>
+X-ME-Received: <xmr:ITggZ9LX1NlEPs_wQBHmF5tDr_OOdWuXa8XcFJnRiNY7jspZuO8jY_NUEZbkjUXGlQWCR5D0zstgM9ZCapkaFCwbQUZXYsT_Yrc>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrvdektddgfedvucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
+ rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnh
+ htshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvden
+ ucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihessh
+ grkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhephefhhfettefgkedvieeu
+ ffevveeufedtlefhjeeiieetvdelfedtgfefuedukeeunecuvehluhhsthgvrhfuihiivg
+ eptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhho
+ tggthhhirdhjphdpnhgspghrtghpthhtohepfedpmhhouggvpehsmhhtphhouhhtpdhrtg
+ hpthhtohepphhsthgrnhhnvghrsehrvgguhhgrthdrtghomhdprhgtphhtthhopehlihhn
+ uhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurhgtvghfohhrghgvrdhnvghtpd
+ hrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
+X-ME-Proxy: <xmx:ITggZ5H8AVDwHhj5XWaKwjmlz4Ht4VuPmoE5GweB3AtvQBrzjUWwZQ>
+ <xmx:ITggZxWUsqmUFpMqhTLx0jzajltPB21Cv3d7XAnmHbJRmb0bMirVdQ>
+ <xmx:ITggZ0OHVuyp8I4HKusz-foPr-KlAUgOwyEbH0k8jlyG7FCJSrtOIw>
+ <xmx:ITggZw1bv5wasf2IawOpCt5r64xKim9t4kmV3uJXXGPlrPajq2XpqQ>
+ <xmx:ITggZ0RygUTP7uD6NmFgkw7E07dwizLIMSOzEcuf_6DSuX1x3XF5Cduu>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 27 Oct 2024 03:03:57 -0400 (EDT)
-Date: Sun, 27 Oct 2024 16:03:55 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 28 Oct 2024 21:19:28 -0400 (EDT)
+Date: Tue, 29 Oct 2024 10:19:24 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: torvalds@linux-foundation.org
-Subject: [GIT PULL] firewire fixes for 6.12-rc5
-Message-ID: <20241027070355.GA146113@workstation.local>
-Mail-Followup-To: torvalds@linux-foundation.org,
- linux-kernel@vger.kernel.org, linux1394-devel@lists.sourceforge.net
+To: Philipp Stanner <pstanner@redhat.com>
+Subject: Re: [PATCH] firewire: ohci: Replace deprecated PCI functions
+Message-ID: <20241029011924.GA260237@workstation.local>
+Mail-Followup-To: Philipp Stanner <pstanner@redhat.com>,
+ linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
+References: <20241028094440.19115-3-pstanner@redhat.com>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <20241028094440.19115-3-pstanner@redhat.com>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
@@ -108,24 +110,24 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi Linus, Please accept this PR from firewire subsystem to
- fix a regression. The following changes since commit
- 42f7652d3eb527d03665b09edac47f85fb600924:
+ Content preview:  Hi, On Mon, Oct 28, 2024 at 10:44:42AM +0100, Philipp Stanner
+ wrote: > pcim_iomap_regions() and pcim_iomap_table() have been deprecated
+ in > commit e354bb84a4c1 ("PCI: Deprecate pcim_iomap_table(), > pcim [...]
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [103.168.172.155 listed in list.dnswl.org]
+ low trust [103.168.172.157 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1t4xJp-0001gZ-Gj
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+X-Headers-End: 1t5atY-00059F-DY
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -143,46 +145,25 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi Linus,
+Hi,
 
-Please accept this PR from firewire subsystem to fix a regression.
+On Mon, Oct 28, 2024 at 10:44:42AM +0100, Philipp Stanner wrote:
+> pcim_iomap_regions() and pcim_iomap_table() have been deprecated in
+> commit e354bb84a4c1 ("PCI: Deprecate pcim_iomap_table(),
+> pcim_iomap_regions_request_all()").
+> 
+> Replace these functions with pcim_iomap_region().
+> 
+> Signed-off-by: Philipp Stanner <pstanner@redhat.com>
+> ---
+>  drivers/firewire/ohci.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 
-
-The following changes since commit 42f7652d3eb527d03665b09edac47f85fb600924:
-
-  Linux 6.12-rc4 (2024-10-20 15:19:38 -0700)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git tags/firewire-fixes-6.12-rc5
-
-for you to fetch changes up to f6a6780e0b9bbcf311a727afed06fee533a5e957:
-
-  firewire: core: fix invalid port index for parent device (2024-10-27 11:14:35 +0900)
-
-----------------------------------------------------------------
-firewire fixes for 6.12-rc5
-
-This update includes a single commit to resolve a regression existing in
-v6.11 or later.
-
-The change in 1394 OHCI driver in v6.11 kernel could cause general
-protection faults when rediscovering nodes in IEEE 1394 bus while holding
-a spin lock. Consequently, watchdog checks can report a hard lockup.
-
-Currently, this issue is observed primarily during the system resume phase
-when using an extra node with three ports or more is used. However, it
-could potentially occur in the other cases as well.
-
-----------------------------------------------------------------
-Takashi Sakamoto (1):
-      firewire: core: fix invalid port index for parent device
-
- drivers/firewire/core-topology.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Oh, the API has been made available outside of PCI subsystem, great.
+Applied to for-next branch.
 
 
-Regards
+Thanks
 
 Takashi Sakamoto
 
