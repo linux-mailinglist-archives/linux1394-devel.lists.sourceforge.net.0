@@ -2,28 +2,28 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02FB3A5E8F5
-	for <lists+linux1394-devel@lfdr.de>; Thu, 13 Mar 2025 01:21:31 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id 514EEA64DDB
+	for <lists+linux1394-devel@lfdr.de>; Mon, 17 Mar 2025 13:06:15 +0100 (CET)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1tsWK5-0007yv-8c;
-	Thu, 13 Mar 2025 00:21:18 +0000
+	id 1tu9EG-0006QH-WB;
+	Mon, 17 Mar 2025 12:06:01 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1tsWK3-0007yb-7Q
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1tu9EE-0006Pv-Jh
  for linux1394-devel@lists.sourceforge.net;
- Thu, 13 Mar 2025 00:21:16 +0000
+ Mon, 17 Mar 2025 12:05:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
  Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=ivul6aIvs6HSo9qOyouoHkt7QFmrzjtgI/MDUv4pG6o=; b=OjcvO7rG6b8Id3Caa8GrfSR7aU
- nI7iD6kTg3NiNj2arqd/GkgtkK4/Tr5/1jgnc36ct4HX6sMU9JkvxshizQ1f/C9xOR4jn8g7EaEEO
- HcTF29I3YovuLdF2sBTqNZ38WFE7HK516xSPNfRwEfdyHs/fYw2xdM7BVj+EpOVXv0aU=;
+ bh=VlE2aCu2dxScBu+S/YF4VoV7bWcPS836pUf9gH4Te88=; b=eGMkyejNPOjg04FkHnZCxypPSK
+ ZDqAfzAc/JImmRBb2N6HCEQZQbBTjb1is9O1skreQiqbvGQyxnZBHg7+c+jA2R+KujWamjc30Zcni
+ i6zLhhAJgSe8SIsn6O88Ic/0BXJrg6wlAahE2WY2x21qn4CYaKOzRAcdnDdePv+Oa69Y=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
@@ -31,81 +31,82 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=ivul6aIvs6HSo9qOyouoHkt7QFmrzjtgI/MDUv4pG6o=; b=brkIdFNjsAtdmvUrF7+xk7RyWM
- DjBf+Aj996jx/laZCjcnuD1kVHnYuFLG2RTNV/nq+kz/+phRW9H1XwV/5+4fJ3Fo/u1Gm0G+evVLe
- c1XpqTMWYND972LvRcxbOaze6RzvYh9YsMbwdsjzRx17eLejtj29FBYgGPKSJiNe1eXA=;
-Received: from fhigh-b1-smtp.messagingengine.com ([202.12.124.152])
+ bh=VlE2aCu2dxScBu+S/YF4VoV7bWcPS836pUf9gH4Te88=; b=fl8mlldOIvaQnaqns6Tcur2UHN
+ 88Lt4eVQeyzqI90Z8hRnclNfWbu3fV/T0gMXsgYJB2Tpfuqz8N5t0FbLooMbIl0TiijqGMkjYbmpU
+ pgJIIyf42vv3abCxxYvZk3dvsib/Nvz9/VjiD2yMoQ2xosew/Njv0MKeSsUtpnpDG8R0=;
+Received: from fout-a2-smtp.messagingengine.com ([103.168.172.145])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1tsWK2-0006Ax-DB for linux1394-devel@lists.sourceforge.net;
- Thu, 13 Mar 2025 00:21:15 +0000
-Received: from phl-compute-08.internal (phl-compute-08.phl.internal
- [10.202.2.48])
- by mailfhigh.stl.internal (Postfix) with ESMTP id 1A93B25401B8;
- Wed, 12 Mar 2025 20:03:40 -0400 (EDT)
+ id 1tu9ED-0001Gh-KP for linux1394-devel@lists.sourceforge.net;
+ Mon, 17 Mar 2025 12:05:59 +0000
+Received: from phl-compute-02.internal (phl-compute-02.phl.internal
+ [10.202.2.42])
+ by mailfout.phl.internal (Postfix) with ESMTP id F370A1382CE9;
+ Mon, 17 Mar 2025 08:05:46 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-08.internal (MEProxy); Wed, 12 Mar 2025 20:03:40 -0400
+ by phl-compute-02.internal (MEProxy); Mon, 17 Mar 2025 08:05:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1741824219; x=
- 1741910619; bh=ivul6aIvs6HSo9qOyouoHkt7QFmrzjtgI/MDUv4pG6o=; b=L
- Z304NhKmwGdc5rucdjKPOPi52lbHQJMxfn1SZkgvxEBOrVY/1DEUPCnIPeMpum8p
- RdP6JmJVd9p6KkSTAtIIrutR1DwTFJm/rWxmdrjL/J2pZ5sZnyAKLAuQzTkQG0xC
- X9vmxY1OsXIJ0mKlOIrt0tYqrmJLpyF5VGcBv1i7RL3vaYBDf82I44dwC9W/QcvO
- 30ydPh2NPPrb9LLNF5bqEgdk55H1qo9PS96qpNQ92HkPnR8kLvIkQzkPZHnfIIP8
- 3cIvAG3YKFwVtHJDAy/BXt+9KFz9Rf6mhLW+qFvf0TRgQ087XOaXbbo3b7rFqThT
- dbC6tfJYHVxwhJ3qTI9og==
+ :reply-to:subject:subject:to:to; s=fm1; t=1742213146; x=
+ 1742299546; bh=VlE2aCu2dxScBu+S/YF4VoV7bWcPS836pUf9gH4Te88=; b=C
+ oAHs0q+RRJPO2YWgoZosSIfMyU4Qso45A2junUU37g8fKEat5bmbiPEi5+H/7paz
+ seE18t77/FVuVnaPcVGCORp5Tjz6ZQ67jM4iC7VnEpNG0iNinBOTkklvsw/4+LnS
+ 2jHcIlRSMQ0Rs6w7KM3eL90qqSKEx961m/KmzFwViJJZwjwMxJ2x9Anv2qNaFkMx
+ XVc/KZwEhAncC5wzDJdmOX/1DisWr4nbcEBv+qTxvr3YSc9HyCo6fICsamVIkXN1
+ 3BZbBe5JDOW6hBWYRdYOztWWaPPmEoZmcWCTSxdVBYbIV2j9aAB+sz7tGryNSaDY
+ WN1WVnFXOKeWpivw98xIw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1741824219; x=1741910619; bh=ivul6aIvs6HSo9qOyouoHkt7QFmrzjtgI/M
- DUv4pG6o=; b=CHrjBbMrj5KOoW9wgEdlWeW5yzK9764GQV0WRT3M1nRqe7kbN9K
- TDWf+Vgygmn0gjkimSIp8vgmOJ38zyc5Ec9mQFqSK7pBnzDy+X5TF3L734VvXLD3
- HFOSpy6lBycHZ/wfvZ3YHz5l+lmusn6x/Nja+h6bQApZJx93cYluu/BOgUvdStUi
- t0bnfbXJsYsSuHOCtQK0QR9/s6XLhYTu9whj2nCrRKnppr12fRbuVNhzr84BqTwh
- p26YEZkeNXoPolv1DzKqg1wMjG9FfpM4edmptpVEPeGz36GGBLMmG5uJDvSizoyh
- 7iQdb+B/pj2eV6LTw6Icl9HvXft2k9KKnsQ==
-X-ME-Sender: <xms:2yDSZy4cVe9o23idBt2K14fYyLxDHbDHR0KOlFr_aLrCmxtUxLX5BQ>
- <xme:2yDSZ75v7ITufVpYM6UWMXsfL9XSaNB_vQCsSeZcK4pxwI6OxmtoWWFAb4ileXeEP
- uLYT-tSyGCyT-1bYAY>
-X-ME-Received: <xmr:2yDSZxegmMPqwZd84hjELVjpwsLtSxLcLzAzevO8ddQVj-fDFCUQNGW-aIaxt7qTcnNGnxl1lwQN5Bdta4e34Md71GU2Q8I5UyI>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdduvdeigeeiucetufdoteggodetrf
+ 1742213146; x=1742299546; bh=VlE2aCu2dxScBu+S/YF4VoV7bWcPS836pUf
+ 9gH4Te88=; b=w61/GzQk9h/ygcwh/I4B076fiEoJhQYMfcmWTglEeHPBgIeG4t/
+ 6+Vt1z/BIvCzu2/0iIYgtdruQvP+++z2zZeKMuWVceG/0Dxr300JeXfVv+7gNYMb
+ JOwSnXJR9u+mQ3s/tQjDWC6mKRqmQ3YYE2qsy1CiFMjxFZOd4QlUlBasNBGI+Lam
+ sumEoxR6vQRJWAZrLEVZhULyso5MRi9cnWE0gd3pKh43iPDqY1mLNDz2yFIwJXBC
+ oBzVseoEf4d4pqQDTI8fXNdnOis84Ziny4QjfRrhPtdVu6i/whl/NkfRdJ2pkIuq
+ 07qE4lFOxbieSYiB9KibINWAKMySVI72SEA==
+X-ME-Sender: <xms:GhDYZzEz6KbBo2txi4gEEm-oi1L83slCf8ZWsWX2rInvgLZfYCt_fQ>
+ <xme:GhDYZwXu_aXHgvxHHhNhp7092YAUFI9rWKZmWNqD7UPYHED_wcaNyIqgVPWQy-Gij
+ f-nxxkKBC7gjoLohGA>
+X-ME-Received: <xmr:GhDYZ1Iu84qeOpULqdsU13vqzHDOTMl_Nh4-pDM5WfeS04CtenZhz2Y4HLItooOOOOWMc3VLIlvLnThQpV7IR3nan_zfGRZ0Dcc>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddufeelgeeiucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
  pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucenucfjughrpeffhf
  fvvefukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefvrghkrghshhhiucfurghk
  rghmohhtohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtf
- frrghtthgvrhhnpeehhffhteetgfekvdeiueffveevueeftdelhfejieeitedvleeftdfg
- feeuudekueenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
- hmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgtphhtthho
- peegpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehguhhsthgrvhhorghrsheskh
- gvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhi
- shhtshdrshhouhhrtggvfhhorhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvg
- hrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigqdhh
- rghruggvnhhinhhgsehvghgvrhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:2yDSZ_I_6DOc7d5OeZSTgKgcTBUsHpiXlCaA1WtbiiQw1gykBKPhiA>
- <xmx:2yDSZ2Jqss4ZBDKBjJA1qCQwIduyQxfWKA1sJHGxrrGXR1sAmkP3vg>
- <xmx:2yDSZwz0ydw3T1PGBV_Em6scwqblBu4ZG8GbjUvrgdol0wlY9LZsyg>
- <xmx:2yDSZ6JC7UjNpSviQPhqhd4Mg6x2KMqcFoqe69ITHX2BpnBtPvh-jQ>
- <xmx:2yDSZ7HDU1cWI4dqPqrCQ1pQ3xf9QZm4ohUATzFvzidyE0-pQenGDrGe>
+ frrghtthgvrhhnpeevieelhfdukeffheekffduudevvdefudelleefgeeileejheejuedv
+ gefhteevvdenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuih
+ iivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgr
+ mhhotggthhhirdhjphdpnhgspghrtghpthhtohepgedpmhhouggvpehsmhhtphhouhhtpd
+ hrtghpthhtohepghhushhtrghvohgrrhhssehkvghrnhgvlhdrohhrghdprhgtphhtthho
+ pehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurhgtvghfohhrghgvrd
+ hnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghl
+ rdhorhhgpdhrtghpthhtoheplhhinhhugidqhhgrrhguvghnihhnghesvhhgvghrrdhkvg
+ hrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:GhDYZxHRo7nWHO_ukohRWpNe9goED6A_0_2RFXs8wGPGcRKSGH4BEQ>
+ <xmx:GhDYZ5UOhe7d7I675IjzPb7yU8RfyfFKQWDNvBk1YyZHKZ2CsA9iKg>
+ <xmx:GhDYZ8OvA0JAxqvNUPjXF-awDYfEPWG25GHbZssFVB_B9cLImSeUHw>
+ <xmx:GhDYZ42Z3P-y2Hu2Q4Gn-mIKUwi5fUyMJ2WkvGl65dQlK6NFtDFEgw>
+ <xmx:GhDYZ_zsIBjfWHvqkvV3sRoPwSBb3nlzXy3ZHlaGbjDsxKlVCGhC-MjQ>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 12 Mar 2025 20:03:38 -0400 (EDT)
-Date: Thu, 13 Mar 2025 09:03:35 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 17 Mar 2025 08:05:45 -0400 (EDT)
+Date: Mon, 17 Mar 2025 21:05:41 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-Subject: Re: [PATCH][next] firewire: core: avoid
+Subject: Re: [PATCH v2][next] firewire: core: avoid
  -Wflex-array-member-not-at-end warning
-Message-ID: <20250313000335.GA320863@workstation.local>
+Message-ID: <20250317120541.GA6070@workstation.local>
 Mail-Followup-To: "Gustavo A. R. Silva" <gustavoars@kernel.org>,
  linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
  linux-hardening@vger.kernel.org
-References: <Z9AA9tAbcIcz6BMO@kspp>
+References: <Z9NcB81yfPo-8o0h@kspp>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <Z9AA9tAbcIcz6BMO@kspp>
+In-Reply-To: <Z9NcB81yfPo-8o0h@kspp>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-1.v13.lw.sourceforge.com", 
@@ -113,34 +114,36 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Tue, Mar 11, 2025 at 07:53:02PM +1030, Gustavo A. R.
+ Content preview:  Hi, On Fri, Mar 14, 2025 at 08:58:23AM +1030, Gustavo A. R.
  Silva wrote: > Use the `DEFINE_RAW_FLEX()` helper for an on-stack definition
  of > a flexible structure where the size of the flexible-array memb [...]
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [202.12.124.152 listed in list.dnswl.org]
- 0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
- query to Validity was blocked.  See
- https://knowledge.validity.com/hc/en-us/articles/20961730681243
- for more information.
- [202.12.124.152 listed in bl.score.senderscore.com]
+ low trust [103.168.172.145 listed in list.dnswl.org]
  0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE:
  The query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [202.12.124.152 listed in sa-accredit.habeas.com]
+ [103.168.172.145 listed in sa-trusted.bondedsender.org]
+ 0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
+ query to Validity was blocked.  See
+ https://knowledge.validity.com/hc/en-us/articles/20961730681243
+ for more information.
+ [103.168.172.145 listed in bl.score.senderscore.com]
+ 0.0 RCVD_IN_MSPIKE_H5      RBL: Excellent reputation (+5)
+ [103.168.172.145 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
-X-Headers-End: 1tsWK2-0006Ax-DB
+ valid 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+X-Headers-End: 1tu9ED-0001Gh-KP
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -161,7 +164,7 @@ Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
 Hi,
 
-On Tue, Mar 11, 2025 at 07:53:02PM +1030, Gustavo A. R. Silva wrote:
+On Fri, Mar 14, 2025 at 08:58:23AM +1030, Gustavo A. R. Silva wrote:
 > Use the `DEFINE_RAW_FLEX()` helper for an on-stack definition of
 > a flexible structure where the size of the flexible-array member
 > is known at compile-time, and refactor the rest of the code,
@@ -173,50 +176,16 @@ On Tue, Mar 11, 2025 at 07:53:02PM +1030, Gustavo A. R. Silva wrote:
 > 
 > Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 > ---
+> Changes in v2:
+>  - Adjust COUNT argument for DEFINE_RAW_FLEX() to 64. (Takashi)
+> 
+> v1:
+>  - Link: https://lore.kernel.org/linux-hardening/Z9AA9tAbcIcz6BMO@kspp/
+> 
 >  drivers/firewire/core-cdev.c | 42 ++++++++++++++++--------------------
 >  1 file changed, 19 insertions(+), 23 deletions(-)
 
-Thanks for the improvement, however I think it includes a slight concern
-about the calculation for the length of array.
-
-> diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-> index b360dca2c69e..706b9037faac 100644
-> --- a/drivers/firewire/core-cdev.c
-> +++ b/drivers/firewire/core-cdev.c
-> @@ -1137,10 +1137,7 @@ static int ioctl_queue_iso(struct client *client, union ioctl_arg *arg)
->  	unsigned long payload, buffer_end, transmit_header_bytes = 0;
->  	u32 control;
->  	int count;
-> -	struct {
-> -		struct fw_iso_packet packet;
-> -		u8 header[256];
-> -	} u;
-> +	DEFINE_RAW_FLEX(struct fw_iso_packet, u, header, 8);
-
-The definition of 'struct fw_iso_packet' is in 'include/linux/firewire.h':
-
-```
-$ cat include/linux/firewire.h
-...
-460 struct fw_iso_packet {
-461         u16 payload_length;     /* Length of indirect payload           */
-462         u32 interrupt:1;        /* Generate interrupt on this packet    */
-463         u32 skip:1;             /* tx: Set to not send packet at all    */
-464                                 /* rx: Sync bit, wait for matching sy   */
-465         u32 tag:2;              /* tx: Tag in packet header             */
-466         u32 sy:4;               /* tx: Sy in packet header              */
-467         u32 header_length:8;    /* Size of immediate header             */
-468         u32 header[];           /* tx: Top of 1394 isoch. data_block    */
-469 };
-```
-
-The size of element of 'header' array is 4 byte (= 32 / 8). The original code keeps
-256 bytes storage following to the structure. Therefore the 'COUNT' argument of DEFINE_RAW_FLEX()
-macro should be 64 (= 256 / 4).
-
-Although the header field is not rarely used by userspace applications
-actually and the reduction of kernel stack usage is preferable itself,
-it is preferable to keep the compatibility.
+Applied to for-next branch.
 
 
 Thanks
