@@ -2,116 +2,64 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id A39CCA753CE
-	for <lists+linux1394-devel@lfdr.de>; Sat, 29 Mar 2025 02:08:04 +0100 (CET)
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	by mail.lfdr.de (Postfix) with ESMTPS id B211AA78190
+	for <lists+linux1394-devel@lfdr.de>; Tue,  1 Apr 2025 19:35:29 +0200 (CEST)
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1tyKfu-0003GM-K3;
-	Sat, 29 Mar 2025 01:07:51 +0000
+	id 1tzfWA-0003Zy-Bg;
+	Tue, 01 Apr 2025 17:35:18 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1tyKfs-0003Fz-Jm
+ (envelope-from <areyouloco@paranoici.org>) id 1tzfW8-0003Zq-Qt
  for linux1394-devel@lists.sourceforge.net;
- Sat, 29 Mar 2025 01:07:49 +0000
+ Tue, 01 Apr 2025 17:35:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
+ :Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=wKO8nLwVZ/c6d2peXPF8XkbDrw0UaTn7gMMaej/9ejg=; b=cyrgCfZGnzqwzbFJ1E/REooSBm
- Wpcc9gQdwmjHSAbdee65E3khlMmB8681fclDMze3bEwc6Ir8CoF8DUeE0ABWA6IHeUNpVP6VxOu6a
- bDBiGjITJflxfr1Qd3wIRZpru9E98rj2YiUp+fZlm3bvpmAuVwMH1Iw4Z4dAJRyOYqDY=;
+ bh=1sTFzCIUjY3ylMXnoTX9QSktmU9dCvQD1hxFf7SkrpA=; b=eM+9Yfusqk4LfnrtVN6C7cOR54
+ QzZ5vhMsML5DfpoeX9qfncrr02aPj7wD7lLbX0AoDLbBLvd2aS4PVKH+tdjYtK4QEA0mcH41ucRm4
+ h+BiW0+VrS87x3fxuUZTGdx/+JconH+kKayZ8w9SJblB8T4t2q7ycSxcmrFbO3B9TIz0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=wKO8nLwVZ/c6d2peXPF8XkbDrw0UaTn7gMMaej/9ejg=; b=jjwFaht4wZ86p8bWUknUvw9khu
- i3mpTWGCyLhBwzO4Kc+u5WNnhLN+qJF0TL3OMRQsHj3+GqwLPCIc7EA05sSmhLWFwzOXhYn49QEn9
- 4YC6APmalKbCgDkNsRL4s/rY5vr/dlz2BpchbQEeDroLNW1As3xNmPA+u4ei68ZySfQk=;
-Received: from fhigh-b4-smtp.messagingengine.com ([202.12.124.155])
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:To
+ :From:Date:Sender:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=1sTFzCIUjY3ylMXnoTX9QSktmU9dCvQD1hxFf7SkrpA=; b=N
+ 4FU6matcFRRgMJRVmlNaM7rPkgRmUZoV0lBPCpNB7I/ohmQI88K0NNDSvLQeMUpKP6ZGGGCKwhEat
+ Zzljd32n63Zb9FFfyz6lb2w/6jNu7lfganNbj5toPT7NgOsuRbxhpz6pXiAU7deu350FyIIn0/SlR
+ 3/VV4QlzsjzhInjY=;
+Received: from devianza.investici.org ([198.167.222.108])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1tyKfi-0000Jw-3B for linux1394-devel@lists.sourceforge.net;
- Sat, 29 Mar 2025 01:07:49 +0000
-Received: from phl-compute-07.internal (phl-compute-07.phl.internal
- [10.202.2.47])
- by mailfhigh.stl.internal (Postfix) with ESMTP id 3BAF125401CC;
- Fri, 28 Mar 2025 21:07:27 -0400 (EDT)
-Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-07.internal (MEProxy); Fri, 28 Mar 2025 21:07:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1743210447; x=
- 1743296847; bh=wKO8nLwVZ/c6d2peXPF8XkbDrw0UaTn7gMMaej/9ejg=; b=b
- aHwbji8vf+26Z3AhA/3BOLPo/6KL/u1O6ZQ9sgVTT1ZIMQQIdC65DWB2ksyOLFuv
- e+Zyjdo+V9IZhPHd2WI3sRF3S6JefkeezDN4r2ubtSeD4H/uNzTI2h1+WQZnkN64
- MPyyoI1G0uuT5+q1HppvbjOtBCZe07Fs4tn/FYbV4zfSV4pKlqRfkYoChz199cnV
- 7Uptv60tU5WxjZK/g8D2CuwZwpOp6Vv5cgPhqrG+ZGYfjHcVuq1R7n9FicOHOt+C
- Wba6lMfAb8MNEcaZP9+avFL4Wqn/L2wBGmHdrFD4Z2N5tQyDNSbT5HmbYLWjphTB
- dFQMFfJkBKyvsznRl9LAw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
- 1743210447; x=1743296847; bh=wKO8nLwVZ/c6d2peXPF8XkbDrw0UaTn7gMM
- aej/9ejg=; b=F4ngpkAKSoehP3OLsF/lxLU0TZmnIpoyTC+9EeeZ2cTRWwPf8Kl
- cJRlLd5djqHUayoozyF2W8oU8EX1fyP1kGNaQLt99Id93137/AhAHbTJEyn+Nq7U
- x7h/5Lt1J3FFLZ/BuuUdnucZ0JHbZuHPZGNEb0TmrNH1mlbRKmfg/86TLdRizwBi
- 9rZUjkt8Tp0ph3DoxQZnGC12hNzZJy2x+5bz7vFBs+g8Vd3DLqRPQYKOkSsE+qh/
- N6EATpXXu9h7+M2P5ZpaYNOxfFz2N2qK8AWfpJkQt3bTWhjqH2eCM0OiN/ETNbnX
- DmljxKUOf4sou+ntsh7MbWa8mg0qwTmdYfA==
-X-ME-Sender: <xms:zkfnZ5cv0tN7H6h2b0G8kIC-F1SM83Tdr4kvIT266XcRHosBJSvPBw>
- <xme:zkfnZ3MJaiAkJKzPMdvFuFhVRNuscMZPGgKH89d880-yDO5xjuQbxPmcxWM-leK7H
- wBwmvizMHbxEj7EC7M>
-X-ME-Received: <xmr:zkfnZyiwB3mb2sXBjbeH0Yvk1tYzndaq7o_l1ONTx1MUySF-yllp6RwoggJzPGxdc1IvM684cJ3bWLTnCGtWNLVyqrErFph94GQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddujedvkeduucetufdoteggodetrf
- dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
- pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
- gvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesthdtredttddt
- vdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhih
- esshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhephefhhfettefgkedv
- ieeuffevveeufedtlefhjeeiieetvdelfedtgfefuedukeeunecuvehluhhsthgvrhfuih
- iivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgr
- mhhotggthhhirdhjphdpnhgspghrtghpthhtohepledpmhhouggvpehsmhhtphhouhhtpd
- hrtghpthhtoheplhhurhhifigvnheskhihlhhinhhoshdrtghnpdhrtghpthhtoheprhgr
- fhgrvghlsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehlvghnsgeskhgvrhhnvghlrd
- horhhgpdhrtghpthhtoheprhhosggvrhhtrdhmohhorhgvsehinhhtvghlrdgtohhmpdhr
- tghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfh
- horhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhk
- vghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigqdgrtghpihesvhhgvghrrdhkvg
- hrnhgvlhdrohhrghdprhgtphhtthhopegrtghpihgtrgdquggvvhgvlheslhhishhtshdr
- lhhinhhugidruggvvhdprhgtphhtthhopehkvghrnhgvlhdqsghotheskhihlhhinhhosh
- drtghn
-X-ME-Proxy: <xmx:zkfnZy9dTcq5_GooPo6FBhesS3-eTeFA9FJ5mnYztXhSZoT7VaLZwQ>
- <xmx:zkfnZ1urQIo1HtXOxIXOyfszpprewy-pWXPkxDHpNYkpabXocAaBiQ>
- <xmx:zkfnZxFUR1qUFUbRj_KHGKjaWLsMGdSkr4jIRd7_rc0e3cefm0YmFw>
- <xmx:zkfnZ8OiLzZxmWIFGXvxyjOt9IjSqjrlNng4W8_-dzycsaWRKNtDtg>
- <xmx:z0fnZ7InwO7RsxXU6AfioiRJ9a1GHj4X_mbER07cpjox-XHj7BV4djb1>
-Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 28 Mar 2025 21:07:23 -0400 (EDT)
-Date: Sat, 29 Mar 2025 10:07:21 +0900
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Riwen Lu <luriwen@kylinos.cn>
-Subject: Re: [PATCH v1] tools: Fix compile error of pfrut/firewire
-Message-ID: <20250329010721.GA11319@workstation.local>
-Mail-Followup-To: Riwen Lu <luriwen@kylinos.cn>, rafael@kernel.org,
- lenb@kernel.org, robert.moore@intel.com,
- linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
- linux-acpi@vger.kernel.org, acpica-devel@lists.linux.dev,
- k2ci <kernel-bot@kylinos.cn>
-References: <20250328074750.3524280-1-luriwen@kylinos.cn>
+ id 1tzfVr-0007sq-9q for linux1394-devel@lists.sourceforge.net;
+ Tue, 01 Apr 2025 17:35:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=paranoici.org;
+ s=stigmate; t=1743527768;
+ bh=1sTFzCIUjY3ylMXnoTX9QSktmU9dCvQD1hxFf7SkrpA=;
+ h=Date:From:To:Subject:From;
+ b=H3UVi1x93bFBLTE/YMJD3PTpWjX4vKE6R5h+VwmDH3CVFEZRz/65nXtSMd395x79q
+ F8Ih2yWVsQE7yCBsjuJZbeohKJZPx5G1O/RrTq+/sI6zFSjoOE1RNw34AbtVvdpmcU
+ QrGbwRRKeynUWOzB6KLQRdbWK/8HQumhKfJqzSUE=
+Received: from mx2.investici.org (unknown [127.0.0.1])
+ by devianza.investici.org (Postfix) with ESMTP id 4ZRvm872Bxz6v8h
+ for <linux1394-devel@lists.sourceforge.net>;
+ Tue,  1 Apr 2025 17:16:08 +0000 (UTC)
+Received: from [198.167.222.108] (mx2.investici.org [198.167.222.108])
+ (Authenticated sender: orest@paranoici.org) by localhost (Postfix) with
+ ESMTPSA id 4ZRvm85gQFz6v61
+ for <linux1394-devel@lists.sourceforge.net>;
+ Tue,  1 Apr 2025 17:16:08 +0000 (UTC)
+Date: Tue, 01 Apr 2025 17:12:26 +0000
+To: linux1394-devel@lists.sourceforge.net
+Subject: New Vendor PHY device ID: Ricoh Controller
+Message-ID: <27A478E0-A18C-43DC-A490-8C8FA34E18D4@paranoici.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250328074750.3524280-1-luriwen@kylinos.cn>
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: Spam detection software,
  running on the system "util-spamd-2.v13.lw.sourceforge.com", 
@@ -119,28 +67,30 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Fri, Mar 28, 2025 at 03:47:50PM +0800, Riwen Lu wrote:
- > The value -rR of MAKEFLAGS implicit do not use make's built-in rules and
- > variables. Previous commit d1d096312176 ("tools: fix annoying "mk [...]
+ Content preview:  Hi Takashi, hi other maintainers if any, I wanted to report
+ another PHY device IDs. But commands failed with timeout. Willing to build
+ and test in case of changes. Its Ricoh controller integrated with OHCI
+ controller
+ on one chip: FireWire (IEEE 1394): Ricoh Co Ltd R5C832 PCIe IEEE 1394
+ Controller (rev 04) [1180:e832] 
  Content analysis details:   (-0.9 points, 6.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE:
- The query to Validity was blocked.  See
- https://knowledge.validity.com/hc/en-us/articles/20961730681243
- for more information.
- [202.12.124.155 listed in sa-accredit.habeas.com]
  0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The
  query to Validity was blocked.  See
  https://knowledge.validity.com/hc/en-us/articles/20961730681243
  for more information.
- [202.12.124.155 listed in bl.score.senderscore.com]
+ [198.167.222.108 listed in bl.score.senderscore.com]
+ 0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE:
+ The query to Validity was blocked.  See
+ https://knowledge.validity.com/hc/en-us/articles/20961730681243
+ for more information.
+ [198.167.222.108 listed in sa-trusted.bondedsender.org]
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [202.12.124.155 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H5      RBL: Excellent reputation (+5)
- [202.12.124.155 listed in wl.mailspike.net]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ low trust [198.167.222.108 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 HTML_MESSAGE           BODY: HTML included in message
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -148,8 +98,7 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1tyKfi-0000Jw-3B
+X-Headers-End: 1tzfVr-0007sq-9q
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -162,42 +111,85 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: rafael@kernel.org, acpica-devel@lists.linux.dev,
- linux-kernel@vger.kernel.org, robert.moore@intel.com,
- linux-acpi@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
- k2ci <kernel-bot@kylinos.cn>, lenb@kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+From: AreYouLoco? via linux1394-devel <linux1394-devel@lists.sourceforge.net>
+Reply-To: AreYouLoco? <areyouloco@paranoici.org>
+Content-Type: multipart/mixed; boundary="===============2271187246085412091=="
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+--===============2271187246085412091==
+Content-Type: multipart/alternative;
+ boundary=----18JL8KQNZ07WW4XSOOKXFRGEC90Z6X
+Content-Transfer-Encoding: 7bit
 
-On Fri, Mar 28, 2025 at 03:47:50PM +0800, Riwen Lu wrote:
-> The value -rR of MAKEFLAGS implicit do not use make's built-in rules and
-> variables. Previous commit d1d096312176 ("tools: fix annoying "mkdir -p
-> ..." logs when building tools in parallel") removed the MAKEFLAGS=
-> command for tools and caused the built-in rules for pfrut/firewire
-> failed to take effect.
-> 
-> Reported-by: k2ci <kernel-bot@kylinos.cn>
-> Signed-off-by: Riwen Lu <luriwen@kylinos.cn>
-> ---
->  tools/firewire/Makefile               | 7 +++++++
->  tools/power/acpi/tools/pfrut/Makefile | 2 +-
->  2 files changed, 8 insertions(+), 1 deletion(-)
+------18JL8KQNZ07WW4XSOOKXFRGEC90Z6X
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-As long as testing with v6.14 release, I can not find such failure. I
-guess that some one has fixed the issue between the commit and the
-release.
+Hi Takashi, hi other maintainers if any,
 
-Would you please recheck the issue?
+I wanted to report another PHY device IDs=2E But commands failed with time=
+out=2E Willing to build and test in case of changes=2E
+
+Its Ricoh controller integrated with OHCI controller on one chip:
+FireWire (IEEE 1394): Ricoh Co Ltd R5C832 PCIe IEEE 1394 Controller (rev 0=
+4) [1180:e832]
+
+Target having it is Lenovo Thinkpad T420=2E And other models as well=2E
+
+# lsfirewirephy
+timeout
+
+$ lsfirewire -v
+device fw0:
+  vendor ID: 0x001f11
+  model ID: 0x023901
+  vendor: Linux Firewire
+  model: Juju
+  guid: 0x0021cc20060f508e
+
+So its submitted to:
+<https://ieee1394=2Edocs=2Ekernel=2Eorg/en/latest/phy=2Ehtml#phy-device-id=
+s>
+
+Cheers
+------18JL8KQNZ07WW4XSOOKXFRGEC90Z6X
+Content-Type: text/html;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><body><div dir=3D"auto">Hi Takashi, hi other maintaine=
+rs if any,<br><br>I wanted to report another PHY device IDs=2E But commands=
+ failed with timeout=2E Willing to build and test in case of changes=2E<br>=
+<br>Its Ricoh controller integrated with OHCI controller on one chip:<br>Fi=
+reWire (IEEE 1394): Ricoh Co Ltd R5C832 PCIe IEEE 1394 Controller (rev 04) =
+[1180:e832]<br><br>Target having it is Lenovo Thinkpad T420=2E And other mo=
+dels as well=2E<br><br># lsfirewirephy<br>timeout<br><br>$ lsfirewire -v<br=
+>device fw0:<br>=C2=A0 vendor ID: 0x001f11<br>=C2=A0 model ID: 0x023901<br>=
+=C2=A0 vendor: Linux Firewire<br>=C2=A0 model: Juju<br>=C2=A0 guid: 0x0021c=
+c20060f508e<br><br>So its submitted to:<br>&lt;<a href=3D"https://ieee1394=
+=2Edocs=2Ekernel=2Eorg/en/latest/phy=2Ehtml#phy-device-ids">https://ieee139=
+4=2Edocs=2Ekernel=2Eorg/en/latest/phy=2Ehtml#phy-device-ids</a>&gt;<br><br>=
+Cheers</div></body></html>
+------18JL8KQNZ07WW4XSOOKXFRGEC90Z6X--
 
 
-Thanks
+--===============2271187246085412091==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-Takashi Sakamoto
 
+--===============2271187246085412091==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 mailing list linux1394-devel@lists.sourceforge.net
 https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+
+--===============2271187246085412091==--
+
