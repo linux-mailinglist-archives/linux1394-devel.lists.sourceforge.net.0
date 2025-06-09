@@ -2,122 +2,127 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14675AD1617
-	for <lists+linux1394-devel@lfdr.de>; Mon,  9 Jun 2025 01:56:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B169AD2A40
+	for <lists+linux1394-devel@lfdr.de>; Tue, 10 Jun 2025 01:05:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:Message-ID:Date:Subject:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Nol3i3AYPkDGl2z+JEfgQ4LLWu2utUiW19SlU2Tftys=; b=mTOGlYKSUttqAkUpWZP/m5MwOS
-	QEvmKe1BD2JWgULEn0/3updH+/CrdikygcrJsqBawoSqoQm5pLMAMt8R2ct8epxeMvNDl3W6h2rmE
-	5RMo758rhnn8s2LVnZwsIEwmIhmg1XN/9nNwf88J7COAdVer6g/nS3ZiMwuYmzaYcGtk=;
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/SBT7U7k5wipD6pJqty6o2Jw4ehZmPbRExp0hQxtaZ0=; b=PlyzW5wOGeYpWOzjLM79Pbmgwo
+	2gCV37mp/t3lZ8nO2qmcJ5IgwGM35XygJkyALyvlcE3Lie7+pJHoIiR3QdSs1+Ntapx6WHerOetwN
+	pFP8ewfO0owSDiterWEPK45uN7hlncqxX8TWkRsqP5pIunz18d9L1O9wbTLiCVLCeMCo=;
 Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
 	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1uOPsA-0003t9-Tp;
-	Sun, 08 Jun 2025 23:56:18 +0000
+	id 1uOlXw-0006Ir-SM;
+	Mon, 09 Jun 2025 23:04:52 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1uOPs9-0003t1-V4
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1uOlXv-0006Ij-95
  for linux1394-devel@lists.sourceforge.net;
- Sun, 08 Jun 2025 23:56:17 +0000
+ Mon, 09 Jun 2025 23:04:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=GbIGUnPtCO9kjBkbLFb+AInQm9K2WKd09jQ0+zdJnfE=; b=YBZ8ZX8FEO3TrFDFRJubBFvncI
- CPqH0PeAZWLn0LtkhxhH8Xvm6NKuVmV6szzsLLdat6nH6qAv167X1th3VFK3aYVXkcPpLTbsA4RWY
- Gz/R6iVmOZEAcBesHP2HeEWia5zKDiJx3ffOF/n9mA2bT3bbqYqtBZePmot2x6SN22mI=;
+ bh=k0uJ+LCSai8jTgkwXDZp2XvJHcOSKF00RO3GVFcycTA=; b=SlpdwyiKqA/bNuJtgMiWpyWxXY
+ 9NkiYS+RhAk9UmxxGlq/dYpKpzcXkodUlYQaeoE2IaVgY+AZeFQgcbbS+nQ72iRhJg2kQf/x7ZAoq
+ zzeJ5ayifEu+sJ/fvMV/eVypy7pzV5AP4GB2ILuoKb24X5vHJYQo3dg8ORAQxjqEOvfM=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
- :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=GbIGUnPtCO9kjBkbLFb+AInQm9K2WKd09jQ0+zdJnfE=; b=n
- B6o//NLE8ynjtM+q3/ijAsEzv/TVEI+V0lixs7cDL6BdSPR91tkv9Wc0vV7Z3Bz9d9eUPgAvrVHz6
- X8POZxbB5cjqIUra2ec0rzcxuaE27hLM0bdspwQ6S7Cb/AAPWfVcuwCsibncmlLODyWqwmtZTNv8Q
- zI+lHFUiWDxIKOh8=;
-Received: from fhigh-b1-smtp.messagingengine.com ([202.12.124.152])
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=k0uJ+LCSai8jTgkwXDZp2XvJHcOSKF00RO3GVFcycTA=; b=bEk9FNDaMbW6ZieHP9RmqBzI1N
+ PqNIrWoj2PVox4zU3oav/g5/iFq5byR2ax/c/825S/Kg3IWyTEhkrqH02s0GBaL5Ijhw0cqACsRPI
+ X0y/yVHa9qb4Fcz6l5m9bab1TQWJMGDsffYeJf/979jcEuyyqWZ6MBi8U+u4xlkxlH9U=;
+Received: from fout-b1-smtp.messagingengine.com ([202.12.124.144])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1uOPs9-0001aw-Dt for linux1394-devel@lists.sourceforge.net;
- Sun, 08 Jun 2025 23:56:17 +0000
-Received: from phl-compute-05.internal (phl-compute-05.phl.internal
- [10.202.2.45])
- by mailfhigh.stl.internal (Postfix) with ESMTP id E2E12254012F;
- Sun,  8 Jun 2025 19:38:16 -0400 (EDT)
+ id 1uOlXu-0002eu-GQ for linux1394-devel@lists.sourceforge.net;
+ Mon, 09 Jun 2025 23:04:51 +0000
+Received: from phl-compute-11.internal (phl-compute-11.phl.internal
+ [10.202.2.51])
+ by mailfout.stl.internal (Postfix) with ESMTP id D1B781140344;
+ Mon,  9 Jun 2025 19:04:39 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-05.internal (MEProxy); Sun, 08 Jun 2025 19:38:16 -0400
+ by phl-compute-11.internal (MEProxy); Mon, 09 Jun 2025 19:04:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:message-id:mime-version:reply-to:subject
- :subject:to:to; s=fm1; t=1749425896; x=1749512296; bh=GbIGUnPtCO
- 9kjBkbLFb+AInQm9K2WKd09jQ0+zdJnfE=; b=jYkJvtpG5y8Lvq03+GYZLBSNsC
- v16hGQ0f38/s88I29yTeLebUgBf5os/VHkujQkdRZtzVOvis0pDv/c+UuF2w4Pf+
- r3cXYdZzTqEuhrCsV0smrt1VgLZrBVw4JnafK1WXeBx21rKabkrvHE4gKDsGpNyW
- FXWtkkC0nvKSWZS/qH0Sosb4wI0uzcrUCviczwVQndjMUNRi9uFUzxevkBRfVHaJ
- q2Em8dJgkEn37XPkBT6MRW4oRpwQGKqdgYKGp7wgw4ZKWL1dd4ZIAg3cbH0X/uhv
- cl1qGKD1DAqE1y7hhk+zh1MZnBAoQ1cCXdBM4MwtOgeL57QZhuZ9zvYZACdQ==
+ h=cc:cc:content-type:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=fm1; t=1749510279; x=
+ 1749596679; bh=k0uJ+LCSai8jTgkwXDZp2XvJHcOSKF00RO3GVFcycTA=; b=n
+ 5X+yCJ52eeJtMf/hCgnWlXaoI7n5kKwg70aGZEagDIfhiP15Cj4uCZkOVQK42Lcb
+ h8YuzfM+ktKtpntaz65jqMzMk/130Te558EBoxIDT3nkSJEtrDWohJ4fU0VzKi4T
+ IJRh78UoVvmHxAsjGPD8wHmuLvMg6tMNabIjprdourxZmBplxrUFYiySZTDIAto+
+ iDdlXir+dY6c4cyVgD45ocwUeokavtOQZ3kge9ECeOT8jsZ6/DLc9Z2mdQnsRpY2
+ X/VX634FxVrJcrG3XluA9KnqFaj8Dc6S7tx5D48RC1MEvYlFJi7IK+svCcnW6atP
+ Ha5FLoQeifOXwzOYUDDUw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1749425896; x=1749512296; bh=GbIGUnPtCO9kjBkbLFb+AInQm9K2WKd09jQ
- 0+zdJnfE=; b=QWKzXxd6VEtBrrJlo8z/lweKkHFWfl4GpabBQSAVR197rYK/h2t
- Xh/2jVxueKRGMbcYJdg1KlOOn7AUA2gMGsGJ9oxCydJ7AZTVP6vnEL1XUYE/U0I6
- bYSWw35GNuTnFtyV6rZeMaA8QtLkLGzB5XLx9TsRP2n4ZHuNde7HMhP9yq56OJeI
- JkaSmhXDCvTUokrgOVDv/WuwSYIFa9RRoK+iK9A987kbwngB3+pz6O0EDJaLVIi/
- c06xlBr5XMgDdQnTBl70AwjUoDLSyOvuhUIiDeEY/0XzkswDBa2pU91DfFvMPXTx
- TnC+1FW3uDHftioKvFMkVK89OnLEurdpeWg==
-X-ME-Sender: <xms:6B5GaIGJYR00TUpwxsEkyxyfgQWofkk8WAPAGJtGAa-46CXG9E2vFQ>
- <xme:6B5GaBWO8wwMKZAiwzQ_ehzl9Zh6hhDCq-_QQS4Kj6k3Gr8B7FY_CmVoGl955LZal
- YfHDPB5X3EqmCSwOYE>
-X-ME-Received: <xmr:6B5GaCK1Fn6L8EPVtKEey3d1d6Sbu7rGHJ4iVqYDw8O1ovzHq4DEPWiaXx3x1inyf5bQijSa3A60MMvqccmqolGU4Lg4TzvyEo6Y6EpNu7TXUcA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddugdekhedvucetufdoteggodetrfdotf
+ 1749510279; x=1749596679; bh=k0uJ+LCSai8jTgkwXDZp2XvJHcOSKF00RO3
+ GVFcycTA=; b=hO1X/2HfUOL+PLc/2VnGN0SKAqTbgO9BYlKm8tpdear8J3wvkqv
+ AP8rcUKK1ze+VbHi+sYdmSrWCJsIUTmWN/tmv6zPzy+pLI2qC8GO98KUoTcY3xhX
+ saCL9oIv9JhHuggAH8lJfMSb19Orf7SHhmDQFNnbJfhoHWCuYTwviNhmWqGVWC9O
+ BP7qrkveTuIeIEioxSgrGAFZhvSe4G2pK4oukGXgU8zUGyQOS2Mxr+QpH/cHjbrr
+ KvQ81keg2t3R4dhARF/ILbyLFAliOukbMZY383Rqp8ns0R+99ZJB74o5hDMTIGm9
+ hqmgiSjg3AyVnIkfu7HHPjWiwjGpzrqSY1w==
+X-ME-Sender: <xms:h2hHaFYkXBpfNyYob6XZ94yxJh_9DY5a5nLxK2uIF7Nrk2PB5xnM2Q>
+ <xme:h2hHaMbYHl1YXyCbWflM0NdAaKwS1lEEbtWHw3JvxDnn11tTMdpJGAKkR9yJk2pkL
+ YFOUzx3xXg9iwFViw0>
+X-ME-Received: <xmr:h2hHaH-IzN7-tPU5u2uiKs73eea2RF_15yC_enDT7aLBfIRnHF7YLImKkh6_F0h7SWxucUb1MN8rqEbIICr7pbEKWSwWEpnoSUOU>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddugdelleefucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
- rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevuf
- ffkffoggfgsedtkeertdertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohht
- ohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtth
- gvrhhnpeffvdeuleffveekudfhteejudffgefhtedtgfeutdfgvdfgueefudehveehveek
- keenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqd
- htrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgtphhtthhopedvpdhm
- ohguvgepshhmthhpohhuthdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlse
- hlihhsthhsrdhsohhurhgtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidq
- khgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:6B5GaKEXo9JcnWtKpF6f0jx_Wwh-MYXBAciMDGo5pRs9P1u4g13sAw>
- <xmx:6B5GaOV5W9mL4Vp9OWFsvNSjuzNGwRJkuYhhuWHZzQ_XKZpEa4ijMA>
- <xmx:6B5GaNNAeTFbc20iayuFtl0zQnVWeabc-KfOwKw7nzi5abJikVJGng>
- <xmx:6B5GaF29_y--jvbFofcwPzRKtdVh8_8igl8sMio6EXaWG8ylUOp3LQ>
- <xmx:6B5GaKnv0kmuXZykbuzcpMUxoXxyTfW49UF8PEYHmWtY5qNM2eFqjXPR>
+ rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvve
+ fukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghm
+ ohhtohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrg
+ htthgvrhhnpeehhffhteetgfekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeu
+ udekueenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgtphhtthhopedv
+ pdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvg
+ hlsehlihhsthhsrdhsohhurhgtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhu
+ gidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
+X-ME-Proxy: <xmx:h2hHaDqkr9szpPxNztVJZN-9CdDodlr131oRbqQSO9G9d-RAcj35AA>
+ <xmx:h2hHaArNEEWyf2v9kvVK0mQ2e_03Tl1c9zRCNJpVJnCj5m_xEp-c5A>
+ <xmx:h2hHaJTlfLKzmvH5_jyDNWoRuXqn_S6_99WXKy2Acn3dJtvt6pC59g>
+ <xmx:h2hHaIpJfqS6qNwNmPkIdPb2mj9CM7pWUh0dhT22iK4BEQ2hoyjj-A>
+ <xmx:h2hHaOZqo1_LuTNQ_UrdAXbl6yNoTo5IRO128fUGw8kJ1Vvj1Zjzv3w3>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 8 Jun 2025 19:38:15 -0400 (EDT)
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 9 Jun 2025 19:04:38 -0400 (EDT)
+Date: Tue, 10 Jun 2025 08:04:35 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH] firewire: core: use from_work() macro to expand parent
- structure of work_struct
-Date: Mon,  9 Jun 2025 08:38:08 +0900
-Message-ID: <20250608233808.202355-3-o-takashi@sakamocchi.jp>
-X-Mailer: git-send-email 2.48.1
+Subject: Re: [PATCH] firewire: ohci: correct code comments about bus_reset
+ tasklet
+Message-ID: <20250609230435.GA229165@workstation.local>
+Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
+References: <20250608233808.202355-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250608233808.202355-1-o-takashi@sakamocchi.jp>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
+ running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: A commit 60b2ebf48526 ("workqueue: Introduce from_work()
- helper
- for cleaner callback declarations") introduces a new macro to retrieve a
- poiner for the parent structure of the work item. It is conveni [...] 
+ Content preview:  Hi, On Mon, Jun 09, 2025 at 08:38:06AM +0900,
+ Takashi Sakamoto
+ wrote: > The tasklet for bus reset event has been replaced with work item,
+ while > some code comments still address to the tasklet. > > This [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -125,10 +130,10 @@ X-Spam-Report: Spam detection software,
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
-X-Headers-End: 1uOPs9-0001aw-Dt
+X-Headers-End: 1uOlXu-0002eu-GQ
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -146,112 +151,26 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-A commit 60b2ebf48526 ("workqueue: Introduce from_work() helper for cleaner
-callback declarations") introduces a new macro to retrieve a poiner for the
-parent structure of the work item. It is convenient to reduce input text.
+Hi,
 
-This commit uses the macro in core functionalities.
+On Mon, Jun 09, 2025 at 08:38:06AM +0900, Takashi Sakamoto wrote:
+> The tasklet for bus reset event has been replaced with work item, while
+> some code comments still address to the tasklet.
+> 
+> This commit corrects them.
+> 
+> Fixes: 2d7a36e23300 ("firewire: ohci: Move code from the bus reset tasklet into a workqueue")
+> Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+> ---
+>  drivers/firewire/ohci.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
----
- drivers/firewire/core-card.c   |  4 ++--
- drivers/firewire/core-cdev.c   |  3 +--
- drivers/firewire/core-device.c | 15 +++++----------
- 3 files changed, 8 insertions(+), 14 deletions(-)
+Applied to for-next branch.
 
-diff --git a/drivers/firewire/core-card.c b/drivers/firewire/core-card.c
-index 01354b9de8b2..2b6ad47b6d57 100644
---- a/drivers/firewire/core-card.c
-+++ b/drivers/firewire/core-card.c
-@@ -237,7 +237,7 @@ EXPORT_SYMBOL(fw_schedule_bus_reset);
- 
- static void br_work(struct work_struct *work)
- {
--	struct fw_card *card = container_of(work, struct fw_card, br_work.work);
-+	struct fw_card *card = from_work(card, work, br_work.work);
- 
- 	/* Delay for 2s after last reset per IEEE 1394 clause 8.2.1. */
- 	if (card->reset_jiffies != 0 &&
-@@ -286,7 +286,7 @@ void fw_schedule_bm_work(struct fw_card *card, unsigned long delay)
- 
- static void bm_work(struct work_struct *work)
- {
--	struct fw_card *card = container_of(work, struct fw_card, bm_work.work);
-+	struct fw_card *card = from_work(card, work, bm_work.work);
- 	struct fw_device *root_device, *irm_device;
- 	struct fw_node *root_node;
- 	int root_id, new_root_id, irm_id, bm_id, local_id;
-diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-index bd04980009a4..78b10c6ef7fe 100644
---- a/drivers/firewire/core-cdev.c
-+++ b/drivers/firewire/core-cdev.c
-@@ -1313,8 +1313,7 @@ static int ioctl_get_cycle_timer(struct client *client, union ioctl_arg *arg)
- static void iso_resource_work(struct work_struct *work)
- {
- 	struct iso_resource_event *e;
--	struct iso_resource *r =
--			container_of(work, struct iso_resource, work.work);
-+	struct iso_resource *r = from_work(r, work, work.work);
- 	struct client *client = r->client;
- 	unsigned long index = r->resource.handle;
- 	int generation, channel, bandwidth, todo;
-diff --git a/drivers/firewire/core-device.c b/drivers/firewire/core-device.c
-index ec3e21ad2025..aeacd4cfd694 100644
---- a/drivers/firewire/core-device.c
-+++ b/drivers/firewire/core-device.c
-@@ -853,8 +853,7 @@ static void fw_schedule_device_work(struct fw_device *device,
- 
- static void fw_device_shutdown(struct work_struct *work)
- {
--	struct fw_device *device =
--		container_of(work, struct fw_device, work.work);
-+	struct fw_device *device = from_work(device, work, work.work);
- 
- 	if (time_before64(get_jiffies_64(),
- 			  device->card->reset_jiffies + SHUTDOWN_DELAY)
-@@ -921,8 +920,7 @@ static int update_unit(struct device *dev, void *data)
- 
- static void fw_device_update(struct work_struct *work)
- {
--	struct fw_device *device =
--		container_of(work, struct fw_device, work.work);
-+	struct fw_device *device = from_work(device, work, work.work);
- 
- 	fw_device_cdev_update(device);
- 	device_for_each_child(&device->device, NULL, update_unit);
-@@ -1002,8 +1000,7 @@ static int compare_configuration_rom(struct device *dev, const void *data)
- 
- static void fw_device_init(struct work_struct *work)
- {
--	struct fw_device *device =
--		container_of(work, struct fw_device, work.work);
-+	struct fw_device *device = from_work(device, work, work.work);
- 	struct fw_card *card = device->card;
- 	struct device *found;
- 	u32 minor;
-@@ -1184,8 +1181,7 @@ static int reread_config_rom(struct fw_device *device, int generation,
- 
- static void fw_device_refresh(struct work_struct *work)
- {
--	struct fw_device *device =
--		container_of(work, struct fw_device, work.work);
-+	struct fw_device *device = from_work(device, work, work.work);
- 	struct fw_card *card = device->card;
- 	int ret, node_id = device->node_id;
- 	bool changed;
-@@ -1251,8 +1247,7 @@ static void fw_device_refresh(struct work_struct *work)
- 
- static void fw_device_workfn(struct work_struct *work)
- {
--	struct fw_device *device = container_of(to_delayed_work(work),
--						struct fw_device, work);
-+	struct fw_device *device = from_work(device, to_delayed_work(work), work);
- 	device->workfn(work);
- }
- 
--- 
-2.48.1
 
+Regards
+
+Takashi Sakamoto
 
 
 _______________________________________________
