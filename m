@@ -2,122 +2,127 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7888EAD9C95
-	for <lists+linux1394-devel@lfdr.de>; Sat, 14 Jun 2025 13:52:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 27CCEAD9C97
+	for <lists+linux1394-devel@lfdr.de>; Sat, 14 Jun 2025 13:52:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:Message-ID:Date:Subject:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bet1AQkQAvgORijneQ4N2bEDOJvlp3oq5o2+rJm0wTc=; b=TUmfrFXvgbuycD7ycJuUOQE0gW
-	Y/CfBIluIJZU9RIpIuSer1hCNx/rFtMuB3Mo16N/chQvCMQscXQTCR7haTpwTxMFI9+jsDVgomluV
-	9Q8etilfTQOxbRv53LP40rti0w8GrEJoNG5GxoVNyqHVixMTXQl37EhdWyXTZkpkQzio=;
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l7WRFMNaefn5mbBF5rav4ww79+q0OFzhR/+qzkpmMyA=; b=HFwufZwlEJVCWPAWPNRQaVdXyZ
+	Cs957bmu4fvJ71UOWdmr98GLe/TorcY0LmnTQdxcA/8aRorukmoaQhh9Juln+lfx0L0N5FU6UmxTw
+	rDVADJfpx913KpmYx5cYUKe3k0VMSEecHLqG1E1zPs3nr9yPCIpYJaBCOGUSLa8bxsvM=;
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1uQPQg-0002bc-TV;
-	Sat, 14 Jun 2025 11:52:10 +0000
+	id 1uQPQc-0007qC-DF;
+	Sat, 14 Jun 2025 11:52:06 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1uQPQe-0002bS-VV
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1uQPQa-0007q1-F6
  for linux1394-devel@lists.sourceforge.net;
- Sat, 14 Jun 2025 11:52:08 +0000
+ Sat, 14 Jun 2025 11:52:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
+ In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=IK/XiAot4OKLe1kIw2zSimDrO+1Oe6vk5F7XGo0YnsQ=; b=DH9ku80m5lJG2BoCZ1DV/GBCIc
- BI7GaO0KvrdFdnMgHprfJjHSxMWVaKu1soO09AZ6R/5UOGOV2Rq9uWhVYZgfi1Ls6fP8q7tZRwqxN
- a3VUpPaT99bp3bavhSynY5zPEroFTEO2WBi9Nad5N1+jNX62jKJ1JtLvcG7RIp+4w46o=;
+ bh=6xLU0HqKW2HQImmVnnNgGa5HUcIsGUZk+o6aTIYe1Ks=; b=mxX073KsU1jT8qCXCHaYQl0u18
+ xtd8z3AxJCQJt6fgbAKIBMbNiZU9ARnkKrEdrU8sQwxpwGJ99w9iHbZlpJe2sVmi1cSlu2TuH8yV4
+ +ROOtw5lynQqNCeUr5uNtCVH2xVq3Bw1GK43Ty2xJevFBswoulAZEBQSe5lYzG5l+pW0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
- :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=IK/XiAot4OKLe1kIw2zSimDrO+1Oe6vk5F7XGo0YnsQ=; b=m
- tc0nMzAWCOOT8/moeIR6SGeEoqsLT9CgvNrBvyei6vvx1Z2QhygYSa2q2VjrToRqFCaWLAscUEwZD
- SrMQy8JvQcRfHp4Cn3u72YgoD3nMVuwC0oLrl6rrKCmJ4EL4EzYX/dxRZ+vF00Oe8e7IEKWAwdYuE
- Jxsc48bal62e7CQY=;
+ h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=6xLU0HqKW2HQImmVnnNgGa5HUcIsGUZk+o6aTIYe1Ks=; b=lb+XszP7xqVO3OEi5bKNNsj5a2
+ qjo+7GfXNlbKBscss1WyVFo94zkHUyyKuvwIvTuVAjZSMPDr7Uxgi1n+PKoX7ttpqmwaDTtdze4TG
+ X1jsUZK7TBMDAT+cBdh+IZxnUr0rSj7MC1i/pBf9XwxAFyx1wgz4rgLtMHdpL2kjwJ8w=;
 Received: from fhigh-a8-smtp.messagingengine.com ([103.168.172.159])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1uQPQe-0000WT-9c for linux1394-devel@lists.sourceforge.net;
- Sat, 14 Jun 2025 11:52:08 +0000
-Received: from phl-compute-05.internal (phl-compute-05.phl.internal
- [10.202.2.45])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 0F7921140155;
- Sat, 14 Jun 2025 07:34:54 -0400 (EDT)
+ id 1uQPQZ-0000WJ-9m for linux1394-devel@lists.sourceforge.net;
+ Sat, 14 Jun 2025 11:52:04 +0000
+Received: from phl-compute-01.internal (phl-compute-01.phl.internal
+ [10.202.2.41])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id 68F16114011D;
+ Sat, 14 Jun 2025 07:34:55 -0400 (EDT)
 Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-05.internal (MEProxy); Sat, 14 Jun 2025 07:34:54 -0400
+ by phl-compute-01.internal (MEProxy); Sat, 14 Jun 2025 07:34:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:message-id:mime-version:reply-to:subject
- :subject:to:to; s=fm1; t=1749900894; x=1749987294; bh=IK/XiAot4O
- KLe1kIw2zSimDrO+1Oe6vk5F7XGo0YnsQ=; b=SEsDU1aQn+1CDfMEK0hj/CX4GB
- eZ6nN+4vYE9MitioiAh8GbQ1PTwbJ4hzt5L0Ap3dEdg4eFfBnUI94rK3ZrVVRt6M
- toSfkbrSafy186QCWQcQGWVeRmHcRPK5X/EQkmtgAHBHAFxo0O2QOP8HtMQYa+OB
- 9IvYGQqHVkedgVyquvZ0dnXEeZeOfB2VsXYKKwIk6kA0PXS7ATOfkQidfASzBlf1
- r0UIrm+aekOj2kG6QJTAwXvTMsCRWURVfKokFB/Zy1S5wa1CIXtwLdUTyvTAF+L7
- UStDVVTjEuqqVZrVcSj+Z/aHTKz5a+nZVXMTyPLTzRSE9AmD3ZsrYliITC+w==
+ :from:in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=fm1; t=1749900895; x=
+ 1749987295; bh=6xLU0HqKW2HQImmVnnNgGa5HUcIsGUZk+o6aTIYe1Ks=; b=Y
+ 9v7mtbC7TeFi+d5hrg9MKw6hQ2G1AXCOrd3UXH0ar8Y372cld8OjCFmQNiY/ftHZ
+ CeIUoWK1x/m7nPthJt5atkQPsrxawDje6UkRgDhlyqfjX9+YN7gES+hI47C+bhoY
+ WEkTuKFzGlekU4biW6kiwLPL7DB53/1DkLo5aS4/8rBxcllunpkcKYjnwUA/rG7z
+ umZP++66Ij7Uv5Al33r6o5yNaC7BoLdgPSP4l9ff3KXtJ+XG+5miZoPqPWEherOt
+ sc79+gcvh4NacsIaGRS5LGoPNArcB1jUkcNOzxvlT69Npn8Irq1ku5ZLHslaVeqJ
+ e7Lt6ttLQiV6zyKDinnwg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1749900894; x=1749987294; bh=IK/XiAot4OKLe1kIw2zSimDrO+1Oe6vk5F7
- XGo0YnsQ=; b=kJ6P0+1gALJg4urdltWbGwVyqKKV31uFyP2GH3NYwqMft+/rprs
- 3EipsebVR/s94815z5TNf8CBgb4RkKRTHchpq3C+hIY2TKIMKYznOxJSFkkJecR9
- sE/eCNQq3z04xnb0JchWskSvLIxfgYGB5udRvvrhrjy8bplPMxHdpw4XLarlPwH6
- h9unvRPc2AE40j/lqFyPP656Sf+x43vlroPkTDb0b2d7AM2ZVlLVVFQ3cOZRZvPt
- wUFMRm1nPuhTB9JhpldgjbwMfKmRn9xq67gEWYqE7ZiQhsVLzQIFAesZC8VOVAfp
- M28wLtKJz3soy+z24J9pn6LNGLsr7Dh+mPg==
-X-ME-Sender: <xms:XV5NaANmuE8i43i2vBfglnhZLExr_CzdMf25QiMRov8-6Ix-_6UwTQ>
- <xme:XV5NaG895IlYwHooHAZhXeldexNdn4y10vG423eQ_LbSCyvvjdpCo0_l4Cet7WrGZ
- 9GvpjGKWTEpKGBi2-8>
-X-ME-Received: <xmr:XV5NaHQ6FKF8_8CkX8XLt6nvoHYAC2FhhFRS18uX6QlMPnwcKuq90oUxfjHQtCYauQmXN3puDL5mfb8KjHRUURux2jos768HkxRdu8UHgWz8>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddugddvtdejfecutefuodetggdotefrod
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+ :x-me-sender:x-sasl-enc; s=fm1; t=1749900895; x=1749987295; bh=6
+ xLU0HqKW2HQImmVnnNgGa5HUcIsGUZk+o6aTIYe1Ks=; b=qh0Qky5mZDRMS674P
+ ZlbpkoiE1M0exVSO23LmZxtoOa0bu28U1OndqwYTsY4d5thiF53tVkFxbBRb0EW2
+ H8VaV21P0Vt22+yiubjfBpZAgZx7lMFqiAwy/Og28MXZOWSUBPuTanCd7wVLUyeq
+ yg4w8uWS1BG0erumBOImBe7QdCJixSVMmNHqM/fFZR2isl+7HPA2seNM+FKaQ6WE
+ +7mLLOuwiA3kx1sNAgMrbgdE9V/zt7lh3QbSSsrmxBXOhgHvF5ugvy362Rx7E4qC
+ bAaaZuKti1jlvwW1LEJVtE/eDSiHacNk+wWgDOhfQszCtjQaKC+Sl5fuxak0uUpc
+ H/sWQ==
+X-ME-Sender: <xms:X15NaCI_5nK05hsyAPL2fQwlwZ_sXVHAd1m70VnGdnQ0vkI9WWPqqA>
+ <xme:X15NaKKJD8Ap_W-dT5RnqEv1Y0o_hQcCF2zOknlTdYW_MdvlcVWlxBwM7RXnfz2Qf
+ uV2v2kglx0sSmxBufE>
+X-ME-Received: <xmr:X15NaCt-_RDYRCCAb3lj2touix-WD-K7jUKc7dL-3cy0IcKhoI97-Pmr7n9pWHeqb_DoXVgTF_vHP2FPYj6VGYeqsuGRhY_n5XRBJZyfy1El>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddugddvtdejvdcutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpggftfghnshhusghstghrihgsvgdp
  uffrtefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecunecujfgurhephffvve
- fufffkofgggfestdekredtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhho
- thhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrth
- htvghrnhepgefgheelheejieelheevfeekhfdtfeeftdefgefhkeffteduveejgeekvefh
- vdeunecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpe
- dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgt
- tghhihdrjhhppdhnsggprhgtphhtthhopedvpdhmohguvgepshhmthhpohhuthdprhgtph
- htthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurhgtvghfohhr
- ghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrh
- hnvghlrdhorhhg
-X-ME-Proxy: <xmx:XV5NaIuH9IGpJog-Wq-DYDBGVyu8i87UTsYHJbc0n93ChAKhySK0gQ>
- <xmx:XV5NaIdcTMG6VsElEtgeM-FksqQ1_wxaRHARdK4rpV3bUP_xMoqxHw>
- <xmx:XV5NaM1L_8d53uPOU1LWKiD27LS8EEHt-CnUpb7ajvlP8_gP1qGbHw>
- <xmx:XV5NaM8FZ59dEyPSq_C5FzV8mSnYGTebgGeTRnq3OpB5XipRRZudOw>
- <xmx:Xl5NaLuVEx0GaXwpzYPs6htP3HZ5sB0MKvT9C5Ylerv00k6kFqvFc8Cp>
+ fufffkofgjfhgggfestdekredtredttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgr
+ mhhothhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrf
+ grthhtvghrnhepvdejgfejuedvgfduudekleevtefgtdevhfdtffefiefgveeuteffiedv
+ ffekvddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+ epohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghrtghpthhtohep
+ vddpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheplhhinhhugidufeelgedquggvvh
+ gvlheslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvthdprhgtphhtthhopehlihhn
+ uhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:X15NaHbG0NnMhMRjVTHoj6mxWaliOYI0-sI9XqMQM_05VblCZHyg3w>
+ <xmx:X15NaJZIPtWiTM4oXxT_lD-_8zNV6UGjY5w-hCGMPyY6eF0b9jtqYA>
+ <xmx:X15NaDBI6j8vELqHYudaNX16PwHSBvOQhZlxQNQxDJXLjttecDP09A>
+ <xmx:X15NaPZteVLmHL9op065jVdQD5eRL0c4Zn-49mmS29g4hd64btAHvw>
+ <xmx:X15NaBINs-neI-i3n87DnvpL0jN2Yh7XMLcINEVMbyOqHKx0T8egWTYo>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 14 Jun 2025 07:34:52 -0400 (EDT)
+ 14 Jun 2025 07:34:54 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 0/3] firewire: ohci: use regular workqueue to handle 1394 OHCI
- AT/AR context events
-Date: Sat, 14 Jun 2025 20:34:46 +0900
-Message-ID: <20250614113449.388758-1-o-takashi@sakamocchi.jp>
+Subject: [PATCH 1/3] firewire: core: allocate workqueue for AR/AT
+ request/response contexts
+Date: Sat, 14 Jun 2025 20:34:47 +0900
+Message-ID: <20250614113449.388758-2-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250614113449.388758-1-o-takashi@sakamocchi.jp>
+References: <20250614113449.388758-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
+ running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, Last year, in Linux kernel v6.12, the bottom-halves for
- isochronous contexts of 1394 OHCI PCI driver were changed to use workqueue
- instead of tasklet (softIRQ). I have received no reports of any issue [...]
+ Content preview: Some tasklets (softIRQs) are still used as bottom-halves to
+ handle events for 1394 OHCI AR/AT contexts. However, using softIRQs for IRQ
+ bottom halves is generally discouraged today. This commit adds a per-fw_card
+ workqueue to accommodate the behaviour specified by the 1394 OHCI
+ specification.
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -125,10 +130,10 @@ X-Spam-Report: Spam detection software,
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
-X-Headers-End: 1uQPQe-0000WT-9c
+X-Headers-End: 1uQPQZ-0000WJ-9m
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -146,39 +151,141 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+Some tasklets (softIRQs) are still used as bottom-halves to handle
+events for 1394 OHCI AR/AT contexts. However, using softIRQs for IRQ
+bottom halves is generally discouraged today.
 
-Last year, in Linux kernel v6.12, the bottom-halves for isochronous
-contexts of 1394 OHCI PCI driver were changed to use workqueue instead of
-tasklet (softIRQ). I have received no reports of any issues related to the
-change until today. Therefore, I believe it's time to move on to the next
-step.
+This commit adds a per-fw_card workqueue to accommodate the behaviour
+specified by the 1394 OHCI specification.
 
-This patchset updates the driver to use a regular workqueue (not WQ_BH) to
-handle 1394 OHCI AT/AR context events. Unlike isochronous contexts, the
-asynchronous contexts are used by the implementation of the SCSI over
-IEEE 1394 protocol (sbp2). The workqueue is allocated with WQ_MEM_RECLAIM
-flag so that it can still participate in memory reclaim paths.
+According to the 1394 OHCI specification, system memory pages are
+reserved for each asynchronous DMA context. This allows concurrent
+operation across contexts. In the 1394 OHCI PCI driver implementation,
+the hardware generates IRQs either upon receiving asynchronous packets
+from other nodes (incoming) or after completing transmission to them
+(outgoing). These independent events can occur in the same transmission
+cycle, therefore the max_active parameter for the workqueue is set to the
+total number of AR/AT contexts (=4). The WQ_UNBOUND flag is used to
+allow the work to be scheduled on any available core, since there is
+little CPU cache affinity benefit for the data.
 
-With this change, all remaining uses of tasklets in the subsystem are
-completely removed.
+Each DMA context uses a circular descriptor list in system memory,
+allowing deferred data processing in software as long as buffer overrun
+are avoided. Since the overall operation is sleepable except for small
+atomic regions, WQ_BH is not used. As the descriptors contain
+timestamps, WQ_HIGHPRI is specified to support semi-real-time
+processing.
 
-[1] https://lore.kernel.org/lkml/20240904125155.461886-1-o-takashi@sakamocchi.jp/
+The asynchronous context is also used by the SCSI over IEEE 1394
+protocol implementation (sbp2), which can be part of memory reclaim paths.
+Therefore, WQ_MEM_RECLAIM is required.
 
-Takashi Sakamoto (3):
-  firewire: core: allocate workqueue for AR/AT request/response contexts
-  firewire: ohci: use workqueue to handle events of AR request/response
-    contexts
-  firewire: ohci: use workqueue to handle events of AT request/response
-    contexts
+To allow uses to adjust CPU affinity according to workload, WQ_SYSFS is
+specified so that workqueue attributes are exposed to user space.
 
- drivers/firewire/core-card.c        | 40 ++++++++++++-----
- drivers/firewire/core-transaction.c |  7 +--
- drivers/firewire/net.c              |  4 +-
- drivers/firewire/ohci.c             | 67 +++++++++++++++--------------
- include/linux/firewire.h            | 12 +++++-
- 5 files changed, 81 insertions(+), 49 deletions(-)
+Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+---
+ drivers/firewire/core-card.c | 40 +++++++++++++++++++++++++++---------
+ include/linux/firewire.h     |  1 +
+ 2 files changed, 31 insertions(+), 10 deletions(-)
 
+diff --git a/drivers/firewire/core-card.c b/drivers/firewire/core-card.c
+index 2b6ad47b6d57..df0bb5b96ddc 100644
+--- a/drivers/firewire/core-card.c
++++ b/drivers/firewire/core-card.c
+@@ -574,7 +574,6 @@ EXPORT_SYMBOL(fw_card_initialize);
+ int fw_card_add(struct fw_card *card, u32 max_receive, u32 link_speed, u64 guid,
+ 		unsigned int supported_isoc_contexts)
+ {
+-	struct workqueue_struct *isoc_wq;
+ 	int ret;
+ 
+ 	// This workqueue should be:
+@@ -589,12 +588,29 @@ int fw_card_add(struct fw_card *card, u32 max_receive, u32 link_speed, u64 guid,
+ 	//  * == WQ_SYSFS		Parameters are available via sysfs.
+ 	//  * max_active == n_it + n_ir	A hardIRQ could notify events for multiple isochronous
+ 	//				contexts if they are scheduled to the same cycle.
+-	isoc_wq = alloc_workqueue("firewire-isoc-card%u",
+-				  WQ_UNBOUND | WQ_FREEZABLE | WQ_HIGHPRI | WQ_SYSFS,
+-				  supported_isoc_contexts, card->index);
+-	if (!isoc_wq)
++	card->isoc_wq = alloc_workqueue("firewire-isoc-card%u",
++					WQ_UNBOUND | WQ_FREEZABLE | WQ_HIGHPRI | WQ_SYSFS,
++					supported_isoc_contexts, card->index);
++	if (!card->isoc_wq)
+ 		return -ENOMEM;
+ 
++	// This workqueue should be:
++	//  * != WQ_BH			Sleepable.
++	//  * == WQ_UNBOUND		Any core can process data for asynchronous context.
++	//  * == WQ_MEM_RECLAIM		Used for any backend of block device.
++	//  * == WQ_FREEZABLE		The target device would not be available when being freezed.
++	//  * == WQ_HIGHPRI		High priority to process semi-realtime timestamped data.
++	//  * == WQ_SYSFS		Parameters are available via sysfs.
++	//  * max_active == 4		A hardIRQ could notify events for a pair of requests and
++	//				response AR/AT contexts.
++	card->async_wq = alloc_workqueue("firewire-async-card%u",
++					 WQ_UNBOUND | WQ_MEM_RECLAIM | WQ_FREEZABLE | WQ_HIGHPRI | WQ_SYSFS,
++					 4, card->index);
++	if (!card->async_wq) {
++		ret = -ENOMEM;
++		goto err_isoc;
++	}
++
+ 	card->max_receive = max_receive;
+ 	card->link_speed = link_speed;
+ 	card->guid = guid;
+@@ -603,15 +619,17 @@ int fw_card_add(struct fw_card *card, u32 max_receive, u32 link_speed, u64 guid,
+ 
+ 	generate_config_rom(card, tmp_config_rom);
+ 	ret = card->driver->enable(card, tmp_config_rom, config_rom_length);
+-	if (ret < 0) {
+-		destroy_workqueue(isoc_wq);
+-		return ret;
+-	}
++	if (ret < 0)
++		goto err_async;
+ 
+-	card->isoc_wq = isoc_wq;
+ 	list_add_tail(&card->link, &card_list);
+ 
+ 	return 0;
++err_async:
++	destroy_workqueue(card->async_wq);
++err_isoc:
++	destroy_workqueue(card->isoc_wq);
++	return ret;
+ }
+ EXPORT_SYMBOL(fw_card_add);
+ 
+@@ -744,6 +762,7 @@ void fw_core_remove_card(struct fw_card *card)
+ 	dummy_driver.stop_iso		= card->driver->stop_iso;
+ 	card->driver = &dummy_driver;
+ 	drain_workqueue(card->isoc_wq);
++	drain_workqueue(card->async_wq);
+ 
+ 	scoped_guard(spinlock_irqsave, &card->lock)
+ 		fw_destroy_nodes(card);
+@@ -753,6 +772,7 @@ void fw_core_remove_card(struct fw_card *card)
+ 	wait_for_completion(&card->done);
+ 
+ 	destroy_workqueue(card->isoc_wq);
++	destroy_workqueue(card->async_wq);
+ 
+ 	WARN_ON(!list_empty(&card->transaction_list));
+ }
+diff --git a/include/linux/firewire.h b/include/linux/firewire.h
+index b632eec3ab52..c55b8e30e700 100644
+--- a/include/linux/firewire.h
++++ b/include/linux/firewire.h
+@@ -136,6 +136,7 @@ struct fw_card {
+ 	__be32 maint_utility_register;
+ 
+ 	struct workqueue_struct *isoc_wq;
++	struct workqueue_struct *async_wq;
+ };
+ 
+ static inline struct fw_card *fw_card_get(struct fw_card *card)
 -- 
 2.48.1
 
