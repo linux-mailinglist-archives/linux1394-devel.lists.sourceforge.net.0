@@ -2,83 +2,75 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C7B5AE1C47
-	for <lists+linux1394-devel@lfdr.de>; Fri, 20 Jun 2025 15:32:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 95B17AE224B
+	for <lists+linux1394-devel@lfdr.de>; Fri, 20 Jun 2025 20:35:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.sourceforge.net; s=beta; h=Content-Type:Reply-To:From:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Message-ID:References:In-Reply-To:Subject:To:Date:Sender:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0gvadbu1613NX+pHjbWQJgpOUsyBPtdKF9HWcmhop3A=; b=f8MhjXP3P66PbRSvCKUfZIj47p
-	MZPicA31i8lYEhmUjcjrMwf4G3ZolaxLvsdgDq62EdSOiGU+Cp/J9qs5ydfng88NlLgP/aNhuZSKO
-	RRbM+pllgVAVpx6X4lhg42vz/6wNxViS2Bp4cKxyklFL1RaL7KGVVRYWXgQSpzDFEFDM=;
+	d=lists.sourceforge.net; s=beta; h=Content-Type:Content-Transfer-Encoding:
+	Reply-To:From:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:To:Subject:MIME-Version:Date:
+	Message-ID:Sender:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RVLdnMB9ycZOEXiu1yvrgcYXTvn2QHFa2Rc4i3e03BY=; b=bVxxLLBby9ElfEt1dPoJrNeiFz
+	XLlZCVMEhyHpll10xw90EhZ/0wBJ1gWj/ZeL2z7yDkc5QPS15wu72KBIfGpIILYVRrdbIe8onHRSb
+	eUlsRQXfMtiloho4DOUaLE/yhSgryD0Qv+3y6F6Sibd5AVwZRoCse/X4urYjl22wwsuk=;
 Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
 	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1uSbrG-0000pL-2i;
-	Fri, 20 Jun 2025 13:32:42 +0000
+	id 1uSgZg-00079r-SM;
+	Fri, 20 Jun 2025 18:34:52 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <areyouloco@paranoici.org>) id 1uSbrD-0000pC-8y
+ (envelope-from <areyouloco@paranoici.org>) id 1uSgZf-00079j-IB
  for linux1394-devel@lists.sourceforge.net;
- Fri, 20 Jun 2025 13:32:39 +0000
+ Fri, 20 Jun 2025 18:34:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
- :Message-ID:References:In-Reply-To:Subject:To:From:Date:Sender:Reply-To:Cc:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ From:References:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=B2NU5zs+qMSEFKHhBS6DO8dUxEsWV8nNoqbzo8xPbn8=; b=OrAbxPDY2hT4oAJHSC411E2B46
- f4GRNmZH4sEvv+y/HKiVvrJHIrpcL7kuG8Cvz8hDzaxfYkKSMTn8YCFE+2/m1UrOCQbmgXM2vv23Q
- O/NyWgfhBlD4hZhjCsiDR19CizC1UUPDZpo4bBaITsc26mwPVLppYM2reyzF88pROkoY=;
+ bh=ivJocPFcpfAhQ6aMBUb47LRgCR7fSoTqP1a4cOe+4oE=; b=encSRh8uNcPnY8Cf62xwwg0U4m
+ +6Ex0X6bquNDgDIXmAYjuAed/GWndIOu5RUbB4+HlgzuWukS/oPwJjbbLYK7rBAH5+U6TkfHdrChB
+ Qf1JwbydjTujUpzzSGQle1JWiJc3DZtUJK35ddKC7klNVSP4Qc1auo2Hi8TlD2QEN6WQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References
- :In-Reply-To:Subject:To:From:Date:Sender:Reply-To:Cc:Content-ID:
+ h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:
+ Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=B2NU5zs+qMSEFKHhBS6DO8dUxEsWV8nNoqbzo8xPbn8=; b=l/SYdt+DvsjccDA5yaaDWagZVV
- +Iix2BJjUGSpftX/MD9fazT5BwPMn9v9JMUrMGqQ8UjplVNWsSin+iVwkjYPeANFOTwjsnL0tmPVy
- /lX5K6cbJwv8chBLd3GwnrLEDO/T+CkjrwzYPz4OWWZBpGlyCi62QlIqitQwMr3xYngw=;
+ bh=ivJocPFcpfAhQ6aMBUb47LRgCR7fSoTqP1a4cOe+4oE=; b=bGH99nIaqRjMx0G9jy96oE5IX3
+ 1zpDSeUfXEN1Wu1PZI55pPVSGd4juWjPCKj92a8EIevetzOQ4GDDSlcRdJohxywNLb4mhZRGeX9bu
+ oE40W1gI2pqjNK1Z0Tb3c/z4Q2QcQuoofweKzV6sztVr17CnK6JxZbEyGxHjVPsbyv0Q=;
 Received: from confino.investici.org ([93.190.126.19])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1uSbrB-0005Cn-C4 for linux1394-devel@lists.sourceforge.net;
- Fri, 20 Jun 2025 13:32:39 +0000
+ id 1uSgZe-00070q-GO for linux1394-devel@lists.sourceforge.net;
+ Fri, 20 Jun 2025 18:34:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=paranoici.org;
- s=stigmate; t=1750426345;
- bh=B2NU5zs+qMSEFKHhBS6DO8dUxEsWV8nNoqbzo8xPbn8=;
- h=Date:From:To:Subject:In-Reply-To:References:From;
- b=aRCaJnowgvfr4hkbkGIVHEfmliQkMq8Zk8RwtWYXvFbAtVwxq1M4RsKRycQnPbkgY
- ANoWha2Y3YrVWAAZpscjJ0YR5/7FyalvyF3LLps/yyKk5iLT/EmXVCPZDbUofiEW6H
- 11+DlK7MiI11A9+pVzP9hT7/mx9BD5ScMfVPbiho=
+ s=stigmate; t=1750444483;
+ bh=ivJocPFcpfAhQ6aMBUb47LRgCR7fSoTqP1a4cOe+4oE=;
+ h=Date:Subject:To:References:From:In-Reply-To:From;
+ b=jIoCjyEopOagOu2Jp/Bc/6DcyPUS2/nX904baHzzN1Q6Kusxs2H06KZWJ16Wbr5WK
+ gxpHFovyWmdhM8qUBwJ9yeIDEX2b3/9lbcJnEkYc72Z5pM9iIfjedSi/QBmnnbe5cp
+ BHVPPhgPvNINO09BH6t5mZVRQgdTLI43JX/MGXlg=
 Received: from mx1.investici.org (unknown [127.0.0.1])
- by confino.investici.org (Postfix) with ESMTP id 4bNz153C1lz110X;
- Fri, 20 Jun 2025 13:32:25 +0000 (UTC)
+ by confino.investici.org (Postfix) with ESMTP id 4bP5jv4t0Sz10vX;
+ Fri, 20 Jun 2025 18:34:43 +0000 (UTC)
 Received: from [93.190.126.19] (mx1.investici.org [93.190.126.19])
  (Authenticated sender: orest@paranoici.org) by localhost (Postfix) with
- ESMTPSA id 4bNz151Lttz110J; Fri, 20 Jun 2025 13:32:25 +0000 (UTC)
-Date: Fri, 20 Jun 2025 13:32:26 +0000
-To: linux1394-devel@lists.sourceforge.net,
- Takashi Sakamoto <o-takashi@sakamocchi.jp>,
- Jonathan Woithe <jwoithe@just42.net>
+ ESMTPSA id 4bP5jv3Ql3z10s5; Fri, 20 Jun 2025 18:34:43 +0000 (UTC)
+Message-ID: <4d69abc5-2f0e-485a-b109-5a4c6dc3ce8b@paranoici.org>
+Date: Fri, 20 Jun 2025 20:34:42 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: Possible regression with the FW643 chipset
-In-Reply-To: <20250620131249.GA5617@workstation.local>
+To: Jonathan Woithe <jwoithe@just42.net>, linux1394-devel@lists.sourceforge.net
 References: <aFSbwoRkxkISumSk@marvin.atrad.com.au>
  <20250620131249.GA5617@workstation.local>
-Message-ID: <E740AC57-6DAE-4659-84DB-598355A97C49@paranoici.org>
-MIME-Version: 1.0
-Autocrypt: addr=areyouloco@paranoici.org; prefer-encrypt=mutual; keydata=
- mDMEaA4TfBYJKwYBBAHaRw8BAQdA1Lu1FLVEpzdciB7kiHZ0gV3EXeLkhmVC7I5rCr6aaQq0JkFy
- ZVlvdUxvY28/IDxhcmV5b3Vsb2NvQHBhcmFub2ljaS5vcmc+iHIEExYIABoECwkIBwIVCAIWAQIZ
- AQWCaA4TfAKeAQKbAwAKCRDX3bQSIXXRBtUyAQDp2BxmuW0ywJWS9zB6Qx7SCKqVzVQ0IrH+RPzn
- VMONggD+L4G6IuGqWX9gKoIGteK78xyyO/K5ZaI9fUrf6EY3fgi4OARoDhN8EgorBgEEAZdVAQUB
- AQdA0rtHT93xcoMSipYUarYeSYImj6Dbrl/FsSZqjLZ1lU8DAQgHiHgEGBYIAAkFgmgOE3wCmwwA
- IQkQ1920EiF10QYWIQTKljMOut0PM5DWzeLX3bQSIXXRBouoAQDCVsZz3AF8kos+UIsxz2nF8qjI
- XoR/EH7qlmNdXmETYAD/TjGFZ93Dpek2RaZPlXanfruudh+oBm1qJjGwP5ddOQQ=
+Content-Language: en-US
+In-Reply-To: <20250620131249.GA5617@workstation.local>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
@@ -86,11 +78,11 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi Takashi, Bit its not pci firewire controller itself not
- getting detected but root /dev/fw0 sometimes wont appear and thus connected
- devices /dev/fw1 /dev/fw2 because of that. Please if you could check dmesg
- log few times if GUID for device is there in dmesg. Cold boot and soft boot
- might be a difference here. 
+ Content preview:  So here it happened again. Kernel 6.12.32-rt-amd64 (Debian
+ Trixie): Here is log after soft reboot: ``` areyouloco@studio:~$ sudo dmesg
+ -w | grep -i firewire [ 1.120409] firewire_ohci 0000:03:00.0: added OHCI
+ v1.10 device as card 0, 8 IR + 8 IT contexts, quirks 0x0, physUB [ 17.057643]
+ libahci sha256_ss [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -100,8 +92,8 @@ X-Spam-Report: Spam detection software,
  not necessarily valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain 0.0 HTML_MESSAGE           BODY: HTML included in message
-X-Headers-End: 1uSbrB-0005Cn-C4
+ domain
+X-Headers-End: 1uSgZe-00070q-GO
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,290 +108,154 @@ List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>,
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
 From: AreYouLoco? via linux1394-devel <linux1394-devel@lists.sourceforge.net>
 Reply-To: AreYouLoco? <areyouloco@paranoici.org>
-Content-Type: multipart/mixed; boundary="===============1524993243889497843=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
---===============1524993243889497843==
-Content-Type: multipart/alternative;
- boundary=----SWEQCUBIFX7BB79RDOW0X50YAQ8HRC
-Content-Transfer-Encoding: 7bit
-
-------SWEQCUBIFX7BB79RDOW0X50YAQ8HRC
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-Hi Takashi,
-
-Bit its not pci firewire controller itself not getting detected but root /=
-dev/fw0 sometimes wont appear and thus connected devices /dev/fw1 /dev/fw2 =
-because of that=2E
-
-Please if you could check dmesg log few times if GUID for device is there =
-in dmesg=2E Cold boot and soft boot might be a difference here=2E
-
-Good that you have this chipset around=2E Hope you can reproduce it=2E
-
-Cheers
-
-On June 20, 2025 1:12:49 PM UTC, Takashi Sakamoto <o-takashi@sakamocchi=2E=
-jp> wrote:
->Hi,
->
->On Fri, Jun 20, 2025 at 08:52:42AM +0930, Jonathan Woithe wrote:
->> Alternatively, are there any FW643 users who have no problem with devic=
-e
->> detection under a 6=2E12=2Ex (or later) kernel?  If so this would concl=
-usively
->> rule out a kernel issue=2E
->
->I can not regenerate the issue with the kernel modules provided by the
->stock kernel in Ubuntu 25=2E04 amd64 (v6=2E14)=2E The machine consists of
->
->* ASUSTeK COMPUTER INC=2E TUF GAMING X570-PLUS
->* AMD Ryzen=E2=84=A2 7 5700G with Radeon=E2=84=A2 Graphics =C3=97 16
->
->
->```
->$ dpkg -S /lib/modules/6=2E14=2E0-15-generic/kernel/drivers/firewire/*
->linux-modules-extra-6=2E14=2E0-15-generic: /lib/modules/6=2E14=2E0-15-gen=
-eric/kernel/drivers/firewire/firewire-core=2Eko=2Ezst
->linux-modules-extra-6=2E14=2E0-15-generic: /lib/modules/6=2E14=2E0-15-gen=
-eric/kernel/drivers/firewire/firewire-net=2Eko=2Ezst
->linux-modules-extra-6=2E14=2E0-15-generic: /lib/modules/6=2E14=2E0-15-gen=
-eric/kernel/drivers/firewire/firewire-ohci=2Eko=2Ezst
->linux-modules-extra-6=2E14=2E0-15-generic: /lib/modules/6=2E14=2E0-15-gen=
-eric/kernel/drivers/firewire/firewire-sbp2=2Eko=2Ezst
->linux-modules-extra-6=2E14=2E0-15-generic: /lib/modules/6=2E14=2E0-15-gen=
-eric/kernel/drivers/firewire/nosy=2Eko=2Ezst
->
->$ sudo lspci -vvnn
->06:00=2E0 FireWire (IEEE 1394) [0c00]: LSI Corporation FW643 [TrueFire] P=
-CIe 1394b Controller [11c1:5901] (rev 06) (prog-if 10 [OHCI])
->        Subsystem: LSI Corporation FW643 [TrueFire] PCIe 1394b Controller=
- [11c1:5900]
->        Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParEr=
-r- Stepping- SERR- FastB2B- DisINTx-
->        Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=3Dfast >TAbort- =
-<TAbort- <MAbort- >SERR- <PERR- INTx-
->        Latency: 0, Cache Line Size: 64 bytes
->        Interrupt: pin A routed to IRQ 40
->        IOMMU group: 20
->        Region 0: Memory at fc600000 (64-bit, non-prefetchable) [size=3D4=
-K]
->        Capabilities: [44] Power Management version 3
->                Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=3D375mA PME(D0+,D1=
-+,D2+,D3hot+,D3cold+)
->                Status: D0 NoSoftRst- PME-Enable- DSel=3D0 DScale=3D0 PME=
-+
->        Capabilities: [4c] MSI: Enable- Count=3D1/1 Maskable- 64bit+
->                Address: 0000000000000000  Data: 0000
->        Capabilities: [60] Express (v1) Endpoint, IntMsgNum 0
->                DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s <4=
-us, L1 <64us
->                        ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset- S=
-lotPowerLimit 0W TEE-IO-
->                DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
->                        RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop-
->                        MaxPayload 128 bytes, MaxReadReq 512 bytes
->                DevSta: CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr+=
- TransPend-
->                LnkCap: Port #0, Speed 2=2E5GT/s, Width x1, ASPM L0s L1, =
-Exit Latency L0s <512ns, L1 <64us
->                        ClockPM+ Surprise- LLActRep- BwNot- ASPMOptComp-
->                LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
->                        ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
->                LnkSta: Speed 2=2E5GT/s, Width x1
->                        TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
->        Capabilities: [100 v1] Advanced Error Reporting
->                UESta:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt=
-- RxOF- MalfTLP-
->                        ECRC- UnsupReq- ACSViol- UncorrIntErr- BlockedTLP=
-- AtomicOpBlocked- TLPBlockedErr-
->                        PoisonTLPBlocked- DMWrReqBlocked- IDECheck- MisID=
-ETLP- PCRC_CHECK- TLPXlatBlocked-
->                UEMsk:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt=
-- RxOF- MalfTLP-
->                        ECRC- UnsupReq- ACSViol- UncorrIntErr- BlockedTLP=
-- AtomicOpBlocked- TLPBlockedErr-
->                        PoisonTLPBlocked- DMWrReqBlocked- IDECheck- MisID=
-ETLP- PCRC_CHECK- TLPXlatBlocked-
->                UESvrt: DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt=
-- RxOF+ MalfTLP+
->                        ECRC- UnsupReq- ACSViol- UncorrIntErr- BlockedTLP=
-- AtomicOpBlocked- TLPBlockedErr-
->                        PoisonTLPBlocked- DMWrReqBlocked- IDECheck- MisID=
-ETLP- PCRC_CHECK- TLPXlatBlocked-
->                CESta:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNon=
-FatalErr- CorrIntErr- HeaderOF-
->                CEMsk:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNon=
-FatalErr+ CorrIntErr- HeaderOF-
->                AERCap: First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- E=
-CRCChkCap+ ECRCChkEn-
->                        MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCa=
-p-
->                HeaderLog: 00000000 00000000 00000000 00000000
->        Capabilities: [140 v1] Virtual Channel
->                Caps:   LPEVC=3D0 RefClk=3D100ns PATEntryBits=3D1
->                Arb:    Fixed- WRR32- WRR64- WRR128-
->                Ctrl:   ArbSelect=3DFixed
->                Status: InProgress-
->                VC0:    Caps:   PATOffset=3D00 MaxTimeSlots=3D1 RejSnoopT=
-rans-
->                        Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR=
-256-
->                        Ctrl:   Enable+ ID=3D0 ArbSelect=3DFixed TC/VC=3D=
-01
->                        Status: NegoPending- InProgress-
->                VC1:    Caps:   PATOffset=3D00 MaxTimeSlots=3D1 RejSnoopT=
-rans-
->                        Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR=
-256-
->                        Ctrl:   Enable- ID=3D1 ArbSelect=3DFixed TC/VC=3D=
-00
->                        Status: NegoPending- InProgress-
->        Capabilities: [170 v1] Device Serial Number 12-34-56-10-12-30-00-=
-86
->        Kernel driver in use: firewire_ohci
->        Kernel modules: firewire_ohci
->
->```
->
->My Phonic FireFly 808 Universal is detected successfully even after the
->reported steps=2E
->
->
->Thanks
->
->Takashi Sakamoto
->
->
->_______________________________________________
->mailing list linux1394-devel@lists=2Esourceforge=2Enet
->https://lists=2Esourceforge=2Enet/lists/listinfo/linux1394-devel
-
-------SWEQCUBIFX7BB79RDOW0X50YAQ8HRC
-Content-Type: text/html;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<html><head></head><body><div dir=3D"auto">Hi Takashi,<br><br>Bit its not p=
-ci firewire controller itself not getting detected but root /dev/fw0 someti=
-mes wont appear and thus connected devices /dev/fw1 /dev/fw2 because of tha=
-t=2E<br><br>Please if you could check dmesg log few times if GUID for devic=
-e is there in dmesg=2E Cold boot and soft boot might be a difference here=
-=2E<br><br>Good that you have this chipset around=2E Hope you can reproduce=
- it=2E<br><br>Cheers</div><br><br><div class=3D"gmail_quote"><div dir=3D"au=
-to">On June 20, 2025 1:12:49 PM UTC, Takashi Sakamoto &lt;o-takashi@sakamoc=
-chi=2Ejp&gt; wrote:</div><blockquote class=3D"gmail_quote" style=3D"margin:=
- 0pt 0pt 0pt 0=2E8ex; border-left: 1px solid rgb(204, 204, 204); padding-le=
-ft: 1ex;">
-<pre class=3D"k9mail"><div dir=3D"auto">Hi,<br><br>On Fri, Jun 20, 2025 at=
- 08:52:42AM +0930, Jonathan Woithe wrote:<br></div><blockquote class=3D"gma=
-il_quote" style=3D"margin: 0pt 0pt 1ex 0=2E8ex; border-left: 1px solid #729=
-fcf; padding-left: 1ex;"><div dir=3D"auto">Alternatively, are there any FW6=
-43 users who have no problem with device<br>detection under a 6=2E12=2Ex (o=
-r later) kernel?  If so this would conclusively<br>rule out a kernel issue=
-=2E<br></div></blockquote><div dir=3D"auto"><br>I can not regenerate the is=
-sue with the kernel modules provided by the<br>stock kernel in Ubuntu 25=2E=
-04 amd64 (v6=2E14)=2E The machine consists of<br><br>* ASUSTeK COMPUTER INC=
-=2E TUF GAMING X570-PLUS<br>* AMD Ryzen=E2=84=A2 7 5700G with Radeon=E2=84=
-=A2 Graphics =C3=97 16<br><br><br>```<br>$ dpkg -S /lib/modules/6=2E14=2E0-=
-15-generic/kernel/drivers/firewire/*<br>linux-modules-extra-6=2E14=2E0-15-g=
-eneric: /lib/modules/6=2E14=2E0-15-generic/kernel/drivers/firewire/firewire=
--core=2Eko=2Ezst<br>linux-modules-extra-6=2E14=2E0-15-generic: /lib/modules=
-/6=2E14=2E0-15-generic/kernel/drivers/firewire/firewire-net=2Eko=2Ezst<br>l=
-inux-modules-extra-6=2E14=2E0-15-generic: /lib/modules/6=2E14=2E0-15-generi=
-c/kernel/drivers/firewire/firewire-ohci=2Eko=2Ezst<br>linux-modules-extra-6=
-=2E14=2E0-15-generic: /lib/modules/6=2E14=2E0-15-generic/kernel/drivers/fir=
-ewire/firewire-sbp2=2Eko=2Ezst<br>linux-modules-extra-6=2E14=2E0-15-generic=
-: /lib/modules/6=2E14=2E0-15-generic/kernel/drivers/firewire/nosy=2Eko=2Ezs=
-t<br><br>$ sudo lspci -vvnn<br>06:00=2E0 FireWire (IEEE 1394) [0c00]: LSI C=
-orporation FW643 [TrueFire] PCIe 1394b Controller [11c1:5901] (rev 06) (pro=
-g-if 10 [OHCI])<br>        Subsystem: LSI Corporation FW643 [TrueFire] PCIe=
- 1394b Controller [11c1:5900]<br>        Control: I/O- Mem+ BusMaster+ Spec=
-Cycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx-<br>    =
-    Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=3Dfast &gt;TAbort- &lt=
-;TAbort- &lt;MAbort- &gt;SERR- &lt;PERR- INTx-<br>        Latency: 0, Cache=
- Line Size: 64 bytes<br>        Interrupt: pin A routed to IRQ 40<br>      =
-  IOMMU group: 20<br>        Region 0: Memory at fc600000 (64-bit, non-pref=
-etchable) [size=3D4K]<br>        Capabilities: [44] Power Management versio=
-n 3<br>                Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=3D375mA PME(D=
-0+,D1+,D2+,D3hot+,D3cold+)<br>                Status: D0 NoSoftRst- PME-Ena=
-ble- DSel=3D0 DScale=3D0 PME+<br>        Capabilities: [4c] MSI: Enable- Co=
-unt=3D1/1 Maskable- 64bit+<br>                Address: 0000000000000000  Da=
-ta: 0000<br>        Capabilities: [60] Express (v1) Endpoint, IntMsgNum 0<b=
-r>                DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s &l=
-t;4us, L1 &lt;64us<br>                        ExtTag- AttnBtn- AttnInd- Pwr=
-Ind- RBE+ FLReset- SlotPowerLimit 0W TEE-IO-<br>                DevCtl: Cor=
-rErr+ NonFatalErr+ FatalErr+ UnsupReq+<br>                        RlxdOrd+ =
-ExtTag- PhantFunc- AuxPwr- NoSnoop-<br>                        MaxPayload 1=
-28 bytes, MaxReadReq 512 bytes<br>                DevSta: CorrErr- NonFatal=
-Err- FatalErr- UnsupReq- AuxPwr+ TransPend-<br>                LnkCap: Port=
- #0, Speed 2=2E5GT/s, Width x1, ASPM L0s L1, Exit Latency L0s &lt;512ns, L1=
- &lt;64us<br>                        ClockPM+ Surprise- LLActRep- BwNot- AS=
-PMOptComp-<br>                LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisab=
-le- CommClk+<br>                        ExtSynch- ClockPM- AutWidDis- BWInt=
-- AutBWInt-<br>                LnkSta: Speed 2=2E5GT/s, Width x1<br>       =
-                 TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-<br>     =
-   Capabilities: [100 v1] Advanced Error Reporting<br>                UESta=
-:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP-<br>   =
-                     ECRC- UnsupReq- ACSViol- UncorrIntErr- BlockedTLP- Ato=
-micOpBlocked- TLPBlockedErr-<br>                        PoisonTLPBlocked- D=
-MWrReqBlocked- IDECheck- MisIDETLP- PCRC_CHECK- TLPXlatBlocked-<br>        =
-        UEMsk:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- Ma=
-lfTLP-<br>                        ECRC- UnsupReq- ACSViol- UncorrIntErr- Bl=
-ockedTLP- AtomicOpBlocked- TLPBlockedErr-<br>                        Poison=
-TLPBlocked- DMWrReqBlocked- IDECheck- MisIDETLP- PCRC_CHECK- TLPXlatBlocked=
--<br>                UESvrt: DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCm=
-plt- RxOF+ MalfTLP+<br>                        ECRC- UnsupReq- ACSViol- Unc=
-orrIntErr- BlockedTLP- AtomicOpBlocked- TLPBlockedErr-<br>                 =
-       PoisonTLPBlocked- DMWrReqBlocked- IDECheck- MisIDETLP- PCRC_CHECK- T=
-LPXlatBlocked-<br>                CESta:  RxErr- BadTLP- BadDLLP- Rollover-=
- Timeout- AdvNonFatalErr- CorrIntErr- HeaderOF-<br>                CEMsk:  =
-RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+ CorrIntErr- Head=
-erOF-<br>                AERCap: First Error Pointer: 00, ECRCGenCap+ ECRCG=
-enEn- ECRCChkCap+ ECRCChkEn-<br>                        MultHdrRecCap- Mult=
-HdrRecEn- TLPPfxPres- HdrLogCap-<br>                HeaderLog: 00000000 000=
-00000 00000000 00000000<br>        Capabilities: [140 v1] Virtual Channel<b=
-r>                Caps:   LPEVC=3D0 RefClk=3D100ns PATEntryBits=3D1<br>    =
-            Arb:    Fixed- WRR32- WRR64- WRR128-<br>                Ctrl:  =
- ArbSelect=3DFixed<br>                Status: InProgress-<br>              =
-  VC0:    Caps:   PATOffset=3D00 MaxTimeSlots=3D1 RejSnoopTrans-<br>       =
-                 Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR256-<br> =
-                       Ctrl:   Enable+ ID=3D0 ArbSelect=3DFixed TC/VC=3D01<=
-br>                        Status: NegoPending- InProgress-<br>            =
-    VC1:    Caps:   PATOffset=3D00 MaxTimeSlots=3D1 RejSnoopTrans-<br>     =
-                   Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR256-<br=
->                        Ctrl:   Enable- ID=3D1 ArbSelect=3DFixed TC/VC=3D0=
-0<br>                        Status: NegoPending- InProgress-<br>        Ca=
-pabilities: [170 v1] Device Serial Number 12-34-56-10-12-30-00-86<br>      =
-  Kernel driver in use: firewire_ohci<br>        Kernel modules: firewire_o=
-hci<br><br>```<br><br>My Phonic FireFly 808 Universal is detected successfu=
-lly even after the<br>reported steps=2E<br><br><br>Thanks<br><br>Takashi Sa=
-kamoto<hr>mailing list linux1394-devel@lists=2Esourceforge=2Enet<br><a href=
-=3D"https://lists=2Esourceforge=2Enet/lists/listinfo/linux1394-devel">https=
-://lists=2Esourceforge=2Enet/lists/listinfo/linux1394-devel</a><br></div></=
-pre></blockquote></div></body></html>
-------SWEQCUBIFX7BB79RDOW0X50YAQ8HRC--
-
-
---===============1524993243889497843==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============1524993243889497843==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-mailing list linux1394-devel@lists.sourceforge.net
-https://lists.sourceforge.net/lists/listinfo/linux1394-devel
-
---===============1524993243889497843==--
-
+U28gaGVyZSBpdCBoYXBwZW5lZCBhZ2Fpbi4gS2VybmVsIDYuMTIuMzItcnQtYW1kNjQgKERlYmlh
+biBUcml4aWUpOgoKSGVyZSBpcyBsb2cgYWZ0ZXIgc29mdCByZWJvb3Q6CmBgYAoKYXJleW91bG9j
+b0BzdHVkaW86fiQgc3VkbyBkbWVzZyAtdyB8IGdyZXAgLWkgZmlyZXdpcmUKW8KgwqDCoCAxLjEy
+MDQwOV0gZmlyZXdpcmVfb2hjaSAwMDAwOjAzOjAwLjA6IGFkZGVkIE9IQ0kgdjEuMTAgZGV2aWNl
+IGFzIApjYXJkIDAsIDggSVIgKyA4IElUIGNvbnRleHRzLCBxdWlya3MgMHgwLCBwaHlzVUIKW8Kg
+wqAgMTcuMDU3NjQzXcKgIGxpYmFoY2kgc2hhMjU2X3Nzc2UzIHNoYTFfc3NzZTMgeGhjaV9wY2kg
+bGliYXRhIHhoY2lfaGNkIAplaGNpX3BjaSBpVENPX3dkdCBzZGhjaV9wY2kgaW50ZWxfcG1jX2J4
+dCBmaXJld2lyZV9vaGNpIGVoY2lfaGNkIGNxaGNpIAppVENPX3ZlbmRvcl9zdXBwb3J0IGFlc25p
+X2ludGVsIHRnMyBzZGhjaSBmaXJld2lyZV9jb3JlIHNjc2lfbW9kIApnZjEyOG11bCB1c2Jjb3Jl
+IHdhdGNoZG9nIHRodW5kZXJib2x0IGNyeXB0b19zaW1kIGkyY19pODAxIG1tY19jb3JlIApsaWJw
+aHkgY3J5cHRkIGkyY19zbWJ1cyBjcmNfaXR1X3QgbHBjX2ljaCBzY3NpX2NvbW1vbiB1c2JfY29t
+bW9uIHZpZGVvIHdtaQoKYGBgCgpBbmQgdGhhdHMgaXQgcmVsYXRlZCB0byBmaXJld2lyZS4gTm90
+aWNlLiBObyBtZW50aW9uIG9mIGZ3MCBvciBPSENJIApkZXZpY2UgYWRkZWQuIE5vdyBJIGRvOgoK
+YGBgCgphcmV5b3Vsb2NvQHN0dWRpbzp+JCBzdWRvIG1vZHByb2JlIC1yIGZpcmV3aXJlX29oY2kK
+YXJleW91bG9jb0BzdHVkaW86fiQgc3VkbyBtb2Rwcm9iZSAtciBmaXJld2lyZV9jb3JlCmFyZXlv
+dWxvY29Ac3R1ZGlvOn4kIHNsZWVwIDIKYXJleW91bG9jb0BzdHVkaW86fiQgc3VkbyBtb2Rwcm9i
+ZSBmaXJld2lyZS1vaGNpCgpgYGAKCkFuZCB0aGVuIGluIGRtZXNnIEkgZ2V0OgoKYGBgCgpbwqAg
+MTQxLjY2MTE2NV0gZmlyZXdpcmVfb2hjaSAwMDAwOjAzOjAwLjA6IHJlbW92aW5nIGZ3LW9oY2kg
+ZGV2aWNlClvCoCAxNDEuNjYxMjYxXSBmaXJld2lyZV9vaGNpIDAwMDA6MDM6MDAuMDogcmVtb3Zl
+ZCBmdy1vaGNpIGRldmljZQpbwqAgMTU1LjcyMTc4NF0gZmlyZXdpcmVfb2hjaSAwMDAwOjAzOjAw
+LjA6IGFkZGVkIE9IQ0kgdjEuMTAgZGV2aWNlIGFzIApjYXJkIDAsIDggSVIgKyA4IElUIGNvbnRl
+eHRzLCBxdWlya3MgMHgwLCBwaHlzVUIKW8KgIDE1Ni4yNDU5NzJdIGZpcmV3aXJlX2NvcmUgMDAw
+MDowMzowMC4wOiBjcmVhdGVkIGRldmljZSBmdzA6IEdVSUQgCjAwM2VlMWZmZmU4NzMxOTQsIFM4
+MDAKW8KgIDE1Ni4yNDU5OTJdIGZpcmV3aXJlX2NvcmUgMDAwMDowMzowMC4wOiBwaHkgY29uZmln
+OiBuZXcgcm9vdD1mZmMxLCAKZ2FwX2NvdW50PTUKW8KgIDE1OS4yOTM0NzRdIGZpcmV3aXJlX2Nv
+cmUgMDAwMDowMzowMC4wOiBjcmVhdGVkIGRldmljZSBmdzE6IEdVSUQgCjAwMGZmMjA1MDAwMDE0
+NWIsIFM0MDAKCmBgYAoKVGhpcyBpcyBhbGwgSSBnb3QgZm9yIG5vdy4gRm9yIGZpcmV3aXJlLW9o
+Y2kgbW9kdWxlIGluIG15IGtlcm5lbCBJIHNlZSAKcGFyYW1ldGVyIHBvc3NpYmxlIHRvIHNldDoK
+InBhcm06wqDCoMKgwqDCoMKgwqDCoMKgwqAgZGVidWc6VmVyYm9zZSBsb2dnaW5nLCBkZXByZWNh
+dGVkIGluIHY2LjExIGtlcm5lbCBvciAKbGF0ZXIuIChkZWZhdWx0ID0gMCwgQVQvQVIgZXZlbnRz
+ID0gMSwgc2VsZi1JRHMgPSAyLCBJUlFzID0gNCwgb3IgYSAKY29tYmluYXRpb24sIG9yIGFsbCA9
+IC0xKSAoaW50KSIKCklzIGl0IHN0aWxsIGEgd2F5IHRvIGRlYnVnIGZ1cnRoZXI/IEkndmUgcmVh
+ZCBzb21ld2hlcmUgdGhlcmUgd2FzIGEgCnJlcGxhY2VtZW50IGZvciB0aGlzIGRlYnVnIHBhcmFt
+ZXRlciB2aWEgc29tZSBjYWxscy4KCk1hY2hpbmUgaXMgTWFjQm9vayBQcm8gTWlkLTIwMTIgMTMn
+Jy4KCkJ1dCBJIGFsc28gZ290IG90aGVyIE1CUCBhbmQgc29tZSBmdWxsLXNpemUgUENJZSBjYXJk
+IGFsc28gd2l0aCB0aGF0IApzYW1lIGNoaXBzZXQuIE9uIHRoZSBvdGhlciBNQlAgYmVoYXZpb3Ig
+aXMgc2ltaWxhciBJIGRpZG4ndCBjaGVjayB3aXRoIApQQyB5ZXQuIEkgbWlnaHQgZG8gdGhhdCBp
+ZiByZXF1ZXN0ZWQuIEhvcGUgaXQgaGVscHMgYW55aG93LgoKSSBhbSBnZXR0aW5nIGtlcm5lbCA2
+LjE1IHRvIHRyeSBvdXQuCgpPbiA2LzIwLzI1IDM6MTIgUE0sIFRha2FzaGkgU2FrYW1vdG8gd3Jv
+dGU6Cj4gSGksCj4KPiBPbiBGcmksIEp1biAyMCwgMjAyNSBhdCAwODo1Mjo0MkFNICswOTMwLCBK
+b25hdGhhbiBXb2l0aGUgd3JvdGU6Cj4+IEFsdGVybmF0aXZlbHksIGFyZSB0aGVyZSBhbnkgRlc2
+NDMgdXNlcnMgd2hvIGhhdmUgbm8gcHJvYmxlbSB3aXRoIGRldmljZQo+PiBkZXRlY3Rpb24gdW5k
+ZXIgYSA2LjEyLnggKG9yIGxhdGVyKSBrZXJuZWw/ICBJZiBzbyB0aGlzIHdvdWxkIGNvbmNsdXNp
+dmVseQo+PiBydWxlIG91dCBhIGtlcm5lbCBpc3N1ZS4KPiBJIGNhbiBub3QgcmVnZW5lcmF0ZSB0
+aGUgaXNzdWUgd2l0aCB0aGUga2VybmVsIG1vZHVsZXMgcHJvdmlkZWQgYnkgdGhlCj4gc3RvY2sg
+a2VybmVsIGluIFVidW50dSAyNS4wNCBhbWQ2NCAodjYuMTQpLiBUaGUgbWFjaGluZSBjb25zaXN0
+cyBvZgo+Cj4gKiBBU1VTVGVLIENPTVBVVEVSIElOQy4gVFVGIEdBTUlORyBYNTcwLVBMVVMKPiAq
+IEFNRCBSeXplbuKEoiA3IDU3MDBHIHdpdGggUmFkZW9u4oSiIEdyYXBoaWNzIMOXIDE2Cj4KPgo+
+IGBgYAo+ICQgZHBrZyAtUyAvbGliL21vZHVsZXMvNi4xNC4wLTE1LWdlbmVyaWMva2VybmVsL2Ry
+aXZlcnMvZmlyZXdpcmUvKgo+IGxpbnV4LW1vZHVsZXMtZXh0cmEtNi4xNC4wLTE1LWdlbmVyaWM6
+IC9saWIvbW9kdWxlcy82LjE0LjAtMTUtZ2VuZXJpYy9rZXJuZWwvZHJpdmVycy9maXJld2lyZS9m
+aXJld2lyZS1jb3JlLmtvLnpzdAo+IGxpbnV4LW1vZHVsZXMtZXh0cmEtNi4xNC4wLTE1LWdlbmVy
+aWM6IC9saWIvbW9kdWxlcy82LjE0LjAtMTUtZ2VuZXJpYy9rZXJuZWwvZHJpdmVycy9maXJld2ly
+ZS9maXJld2lyZS1uZXQua28uenN0Cj4gbGludXgtbW9kdWxlcy1leHRyYS02LjE0LjAtMTUtZ2Vu
+ZXJpYzogL2xpYi9tb2R1bGVzLzYuMTQuMC0xNS1nZW5lcmljL2tlcm5lbC9kcml2ZXJzL2ZpcmV3
+aXJlL2ZpcmV3aXJlLW9oY2kua28uenN0Cj4gbGludXgtbW9kdWxlcy1leHRyYS02LjE0LjAtMTUt
+Z2VuZXJpYzogL2xpYi9tb2R1bGVzLzYuMTQuMC0xNS1nZW5lcmljL2tlcm5lbC9kcml2ZXJzL2Zp
+cmV3aXJlL2ZpcmV3aXJlLXNicDIua28uenN0Cj4gbGludXgtbW9kdWxlcy1leHRyYS02LjE0LjAt
+MTUtZ2VuZXJpYzogL2xpYi9tb2R1bGVzLzYuMTQuMC0xNS1nZW5lcmljL2tlcm5lbC9kcml2ZXJz
+L2ZpcmV3aXJlL25vc3kua28uenN0Cj4KPiAkIHN1ZG8gbHNwY2kgLXZ2bm4KPiAwNjowMC4wIEZp
+cmVXaXJlIChJRUVFIDEzOTQpIFswYzAwXTogTFNJIENvcnBvcmF0aW9uIEZXNjQzIFtUcnVlRmly
+ZV0gUENJZSAxMzk0YiBDb250cm9sbGVyIFsxMWMxOjU5MDFdIChyZXYgMDYpIChwcm9nLWlmIDEw
+IFtPSENJXSkKPiAgICAgICAgICBTdWJzeXN0ZW06IExTSSBDb3Jwb3JhdGlvbiBGVzY0MyBbVHJ1
+ZUZpcmVdIFBDSWUgMTM5NGIgQ29udHJvbGxlciBbMTFjMTo1OTAwXQo+ICAgICAgICAgIENvbnRy
+b2w6IEkvTy0gTWVtKyBCdXNNYXN0ZXIrIFNwZWNDeWNsZS0gTWVtV0lOVi0gVkdBU25vb3AtIFBh
+ckVyci0gU3RlcHBpbmctIFNFUlItIEZhc3RCMkItIERpc0lOVHgtCj4gICAgICAgICAgU3RhdHVz
+OiBDYXArIDY2TUh6LSBVREYtIEZhc3RCMkItIFBhckVyci0gREVWU0VMPWZhc3QgPlRBYm9ydC0g
+PFRBYm9ydC0gPE1BYm9ydC0gPlNFUlItIDxQRVJSLSBJTlR4LQo+ICAgICAgICAgIExhdGVuY3k6
+IDAsIENhY2hlIExpbmUgU2l6ZTogNjQgYnl0ZXMKPiAgICAgICAgICBJbnRlcnJ1cHQ6IHBpbiBB
+IHJvdXRlZCB0byBJUlEgNDAKPiAgICAgICAgICBJT01NVSBncm91cDogMjAKPiAgICAgICAgICBS
+ZWdpb24gMDogTWVtb3J5IGF0IGZjNjAwMDAwICg2NC1iaXQsIG5vbi1wcmVmZXRjaGFibGUpIFtz
+aXplPTRLXQo+ICAgICAgICAgIENhcGFiaWxpdGllczogWzQ0XSBQb3dlciBNYW5hZ2VtZW50IHZl
+cnNpb24gMwo+ICAgICAgICAgICAgICAgICAgRmxhZ3M6IFBNRUNsay0gRFNJLSBEMSsgRDIrIEF1
+eEN1cnJlbnQ9Mzc1bUEgUE1FKEQwKyxEMSssRDIrLEQzaG90KyxEM2NvbGQrKQo+ICAgICAgICAg
+ICAgICAgICAgU3RhdHVzOiBEMCBOb1NvZnRSc3QtIFBNRS1FbmFibGUtIERTZWw9MCBEU2NhbGU9
+MCBQTUUrCj4gICAgICAgICAgQ2FwYWJpbGl0aWVzOiBbNGNdIE1TSTogRW5hYmxlLSBDb3VudD0x
+LzEgTWFza2FibGUtIDY0Yml0Kwo+ICAgICAgICAgICAgICAgICAgQWRkcmVzczogMDAwMDAwMDAw
+MDAwMDAwMCAgRGF0YTogMDAwMAo+ICAgICAgICAgIENhcGFiaWxpdGllczogWzYwXSBFeHByZXNz
+ICh2MSkgRW5kcG9pbnQsIEludE1zZ051bSAwCj4gICAgICAgICAgICAgICAgICBEZXZDYXA6IE1h
+eFBheWxvYWQgMjU2IGJ5dGVzLCBQaGFudEZ1bmMgMCwgTGF0ZW5jeSBMMHMgPDR1cywgTDEgPDY0
+dXMKPiAgICAgICAgICAgICAgICAgICAgICAgICAgRXh0VGFnLSBBdHRuQnRuLSBBdHRuSW5kLSBQ
+d3JJbmQtIFJCRSsgRkxSZXNldC0gU2xvdFBvd2VyTGltaXQgMFcgVEVFLUlPLQo+ICAgICAgICAg
+ICAgICAgICAgRGV2Q3RsOiBDb3JyRXJyKyBOb25GYXRhbEVycisgRmF0YWxFcnIrIFVuc3VwUmVx
+Kwo+ICAgICAgICAgICAgICAgICAgICAgICAgICBSbHhkT3JkKyBFeHRUYWctIFBoYW50RnVuYy0g
+QXV4UHdyLSBOb1Nub29wLQo+ICAgICAgICAgICAgICAgICAgICAgICAgICBNYXhQYXlsb2FkIDEy
+OCBieXRlcywgTWF4UmVhZFJlcSA1MTIgYnl0ZXMKPiAgICAgICAgICAgICAgICAgIERldlN0YTog
+Q29yckVyci0gTm9uRmF0YWxFcnItIEZhdGFsRXJyLSBVbnN1cFJlcS0gQXV4UHdyKyBUcmFuc1Bl
+bmQtCj4gICAgICAgICAgICAgICAgICBMbmtDYXA6IFBvcnQgIzAsIFNwZWVkIDIuNUdUL3MsIFdp
+ZHRoIHgxLCBBU1BNIEwwcyBMMSwgRXhpdCBMYXRlbmN5IEwwcyA8NTEybnMsIEwxIDw2NHVzCj4g
+ICAgICAgICAgICAgICAgICAgICAgICAgIENsb2NrUE0rIFN1cnByaXNlLSBMTEFjdFJlcC0gQndO
+b3QtIEFTUE1PcHRDb21wLQo+ICAgICAgICAgICAgICAgICAgTG5rQ3RsOiBBU1BNIERpc2FibGVk
+OyBSQ0IgNjQgYnl0ZXMsIExua0Rpc2FibGUtIENvbW1DbGsrCj4gICAgICAgICAgICAgICAgICAg
+ICAgICAgIEV4dFN5bmNoLSBDbG9ja1BNLSBBdXRXaWREaXMtIEJXSW50LSBBdXRCV0ludC0KPiAg
+ICAgICAgICAgICAgICAgIExua1N0YTogU3BlZWQgMi41R1QvcywgV2lkdGggeDEKPiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgVHJFcnItIFRyYWluLSBTbG90Q2xrKyBETEFjdGl2ZS0gQldNZ210
+LSBBQldNZ210LQo+ICAgICAgICAgIENhcGFiaWxpdGllczogWzEwMCB2MV0gQWR2YW5jZWQgRXJy
+b3IgUmVwb3J0aW5nCj4gICAgICAgICAgICAgICAgICBVRVN0YTogIERMUC0gU0RFUy0gVExQLSBG
+Q1AtIENtcGx0VE8tIENtcGx0QWJydC0gVW54Q21wbHQtIFJ4T0YtIE1hbGZUTFAtCj4gICAgICAg
+ICAgICAgICAgICAgICAgICAgIEVDUkMtIFVuc3VwUmVxLSBBQ1NWaW9sLSBVbmNvcnJJbnRFcnIt
+IEJsb2NrZWRUTFAtIEF0b21pY09wQmxvY2tlZC0gVExQQmxvY2tlZEVyci0KPiAgICAgICAgICAg
+ICAgICAgICAgICAgICAgUG9pc29uVExQQmxvY2tlZC0gRE1XclJlcUJsb2NrZWQtIElERUNoZWNr
+LSBNaXNJREVUTFAtIFBDUkNfQ0hFQ0stIFRMUFhsYXRCbG9ja2VkLQo+ICAgICAgICAgICAgICAg
+ICAgVUVNc2s6ICBETFAtIFNERVMtIFRMUC0gRkNQLSBDbXBsdFRPLSBDbXBsdEFicnQtIFVueENt
+cGx0LSBSeE9GLSBNYWxmVExQLQo+ICAgICAgICAgICAgICAgICAgICAgICAgICBFQ1JDLSBVbnN1
+cFJlcS0gQUNTVmlvbC0gVW5jb3JySW50RXJyLSBCbG9ja2VkVExQLSBBdG9taWNPcEJsb2NrZWQt
+IFRMUEJsb2NrZWRFcnItCj4gICAgICAgICAgICAgICAgICAgICAgICAgIFBvaXNvblRMUEJsb2Nr
+ZWQtIERNV3JSZXFCbG9ja2VkLSBJREVDaGVjay0gTWlzSURFVExQLSBQQ1JDX0NIRUNLLSBUTFBY
+bGF0QmxvY2tlZC0KPiAgICAgICAgICAgICAgICAgIFVFU3ZydDogRExQKyBTREVTKyBUTFAtIEZD
+UCsgQ21wbHRUTy0gQ21wbHRBYnJ0LSBVbnhDbXBsdC0gUnhPRisgTWFsZlRMUCsKPiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgRUNSQy0gVW5zdXBSZXEtIEFDU1Zpb2wtIFVuY29yckludEVyci0g
+QmxvY2tlZFRMUC0gQXRvbWljT3BCbG9ja2VkLSBUTFBCbG9ja2VkRXJyLQo+ICAgICAgICAgICAg
+ICAgICAgICAgICAgICBQb2lzb25UTFBCbG9ja2VkLSBETVdyUmVxQmxvY2tlZC0gSURFQ2hlY2st
+IE1pc0lERVRMUC0gUENSQ19DSEVDSy0gVExQWGxhdEJsb2NrZWQtCj4gICAgICAgICAgICAgICAg
+ICBDRVN0YTogIFJ4RXJyLSBCYWRUTFAtIEJhZERMTFAtIFJvbGxvdmVyLSBUaW1lb3V0LSBBZHZO
+b25GYXRhbEVyci0gQ29yckludEVyci0gSGVhZGVyT0YtCj4gICAgICAgICAgICAgICAgICBDRU1z
+azogIFJ4RXJyLSBCYWRUTFAtIEJhZERMTFAtIFJvbGxvdmVyLSBUaW1lb3V0LSBBZHZOb25GYXRh
+bEVycisgQ29yckludEVyci0gSGVhZGVyT0YtCj4gICAgICAgICAgICAgICAgICBBRVJDYXA6IEZp
+cnN0IEVycm9yIFBvaW50ZXI6IDAwLCBFQ1JDR2VuQ2FwKyBFQ1JDR2VuRW4tIEVDUkNDaGtDYXAr
+IEVDUkNDaGtFbi0KPiAgICAgICAgICAgICAgICAgICAgICAgICAgTXVsdEhkclJlY0NhcC0gTXVs
+dEhkclJlY0VuLSBUTFBQZnhQcmVzLSBIZHJMb2dDYXAtCj4gICAgICAgICAgICAgICAgICBIZWFk
+ZXJMb2c6IDAwMDAwMDAwIDAwMDAwMDAwIDAwMDAwMDAwIDAwMDAwMDAwCj4gICAgICAgICAgQ2Fw
+YWJpbGl0aWVzOiBbMTQwIHYxXSBWaXJ0dWFsIENoYW5uZWwKPiAgICAgICAgICAgICAgICAgIENh
+cHM6ICAgTFBFVkM9MCBSZWZDbGs9MTAwbnMgUEFURW50cnlCaXRzPTEKPiAgICAgICAgICAgICAg
+ICAgIEFyYjogICAgRml4ZWQtIFdSUjMyLSBXUlI2NC0gV1JSMTI4LQo+ICAgICAgICAgICAgICAg
+ICAgQ3RybDogICBBcmJTZWxlY3Q9Rml4ZWQKPiAgICAgICAgICAgICAgICAgIFN0YXR1czogSW5Q
+cm9ncmVzcy0KPiAgICAgICAgICAgICAgICAgIFZDMDogICAgQ2FwczogICBQQVRPZmZzZXQ9MDAg
+TWF4VGltZVNsb3RzPTEgUmVqU25vb3BUcmFucy0KPiAgICAgICAgICAgICAgICAgICAgICAgICAg
+QXJiOiAgICBGaXhlZC0gV1JSMzItIFdSUjY0LSBXUlIxMjgtIFRXUlIxMjgtIFdSUjI1Ni0KPiAg
+ICAgICAgICAgICAgICAgICAgICAgICAgQ3RybDogICBFbmFibGUrIElEPTAgQXJiU2VsZWN0PUZp
+eGVkIFRDL1ZDPTAxCj4gICAgICAgICAgICAgICAgICAgICAgICAgIFN0YXR1czogTmVnb1BlbmRp
+bmctIEluUHJvZ3Jlc3MtCj4gICAgICAgICAgICAgICAgICBWQzE6ICAgIENhcHM6ICAgUEFUT2Zm
+c2V0PTAwIE1heFRpbWVTbG90cz0xIFJlalNub29wVHJhbnMtCj4gICAgICAgICAgICAgICAgICAg
+ICAgICAgIEFyYjogICAgRml4ZWQtIFdSUjMyLSBXUlI2NC0gV1JSMTI4LSBUV1JSMTI4LSBXUlIy
+NTYtCj4gICAgICAgICAgICAgICAgICAgICAgICAgIEN0cmw6ICAgRW5hYmxlLSBJRD0xIEFyYlNl
+bGVjdD1GaXhlZCBUQy9WQz0wMAo+ICAgICAgICAgICAgICAgICAgICAgICAgICBTdGF0dXM6IE5l
+Z29QZW5kaW5nLSBJblByb2dyZXNzLQo+ICAgICAgICAgIENhcGFiaWxpdGllczogWzE3MCB2MV0g
+RGV2aWNlIFNlcmlhbCBOdW1iZXIgMTItMzQtNTYtMTAtMTItMzAtMDAtODYKPiAgICAgICAgICBL
+ZXJuZWwgZHJpdmVyIGluIHVzZTogZmlyZXdpcmVfb2hjaQo+ICAgICAgICAgIEtlcm5lbCBtb2R1
+bGVzOiBmaXJld2lyZV9vaGNpCj4KPiBgYGAKPgo+IE15IFBob25pYyBGaXJlRmx5IDgwOCBVbml2
+ZXJzYWwgaXMgZGV0ZWN0ZWQgc3VjY2Vzc2Z1bGx5IGV2ZW4gYWZ0ZXIgdGhlCj4gcmVwb3J0ZWQg
+c3RlcHMuCj4KPgo+IFRoYW5rcwo+Cj4gVGFrYXNoaSBTYWthbW90bwo+Cj4KPiBfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IG1haWxpbmcgbGlzdCBsaW51
+eDEzOTQtZGV2ZWxAbGlzdHMuc291cmNlZm9yZ2UubmV0Cj4gaHR0cHM6Ly9saXN0cy5zb3VyY2Vm
+b3JnZS5uZXQvbGlzdHMvbGlzdGluZm8vbGludXgxMzk0LWRldmVsCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbWFpbGluZyBsaXN0IGxpbnV4MTM5NC1k
+ZXZlbEBsaXN0cy5zb3VyY2Vmb3JnZS5uZXQKaHR0cHM6Ly9saXN0cy5zb3VyY2Vmb3JnZS5uZXQv
+bGlzdHMvbGlzdGluZm8vbGludXgxMzk0LWRldmVsCg==
