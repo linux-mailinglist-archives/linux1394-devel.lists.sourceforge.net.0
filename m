@@ -2,7 +2,7 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA9D4B19405
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FB36B19404
 	for <lists+linux1394-devel@lfdr.de>; Sun,  3 Aug 2025 14:20:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
@@ -10,29 +10,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YIwmOfnF5sCvx1p4uJt75DSpdsJHsZSMfp91IrAKwzw=; b=VsVtWL2eoBabmdtAM1CZT+eyMl
-	wibUwhrFdl2f7Uj3aV2Arc/YvedqZKrZpASeGwwTAHRN4oP8x8gvYx27fXBvOzHjT8L6MSa6epFO4
-	k1qOw7i4+ngoiZGebZ/r0QusqGp6SdnnzhfiRH9yA+aGjGwkAFop2BoiAYemAkjc3Lq4=;
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=a52jussf4FqhBGx1IP4xJmB4/yKtsan3L/Jd5Mny6Ss=; b=UnhW1k/DF8hQF8ykfOT4fZxPyv
+	I6+fCe0uh3vbqZXXhmPKUYWrLiRFzvUz7ioLTKU2D8M58UsA29CFzzubrNvcK0OZzJLYMRgFLghnF
+	4bMvDf4aeQC4/PK6vhYVz8k65w1bJA3rTR6S/u/LzEwjHznKg6GkkPfQWHIjsK+RfPlk=;
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1uiXhb-0008Qf-7N;
-	Sun, 03 Aug 2025 12:20:35 +0000
+	id 1uiXhc-0005hK-Uh;
+	Sun, 03 Aug 2025 12:20:36 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1uiXha-0008QX-BX
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1uiXhb-0005hB-7g
  for linux1394-devel@lists.sourceforge.net;
- Sun, 03 Aug 2025 12:20:34 +0000
+ Sun, 03 Aug 2025 12:20:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=+8FHm5cpc8lKA672iypagCkCcR1rLrfb6Rvi70Ol9DI=; b=iNIkJuqflUtD78zxRO3kGOrny4
- EylIpPFnRQYblKXR00cMD0RfM86NZl5PFDLiuPTwp+u0wZ/d+8yUqPxxke/RjolqoGhN+E2b0Qni4
- zAEzRcr1tSwJ1z0fkH5YHr06Ye+hdLhlmuCINT981cDiqrKYc/kZqQBxDTT7mGAhblNE=;
+ bh=b2fyZFzRWVmgOWs4mun/1WkdQS/q7qojuVcYuOgaoDg=; b=XK5Rm2us+XiFb7H7YvOrke2bVQ
+ LhhWs9cHg9AGugf2CKMDmq/Y2t1LaNlOYKZRNGmAx6epdIpAIRTYwg2zZZLiGhcu5HrIzlmjAlM3Y
+ vDsO6uSWk3RcGWioMVzkqAHyedCd52qsnwu4boEYsFuiU2yrGQwRSP4+iA3N2iBDVLP4=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -40,48 +40,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=+8FHm5cpc8lKA672iypagCkCcR1rLrfb6Rvi70Ol9DI=; b=AV/aQpPP9UmxtnNAkMmi48anGB
- RCGKuiP67JYOw9ZEfpP0a8aY80QOG3sbeCJmWU+cRw4zZztylEA+f15Iyhj1sOePRHh0hYl1DqrWB
- 1S2Z9KKKMzI4VQ/J9KefAoOS9ctOv4xk2eBQHPvpUP6P8p7uzeBQVzd6n04kWcAyQ6j8=;
+ bh=b2fyZFzRWVmgOWs4mun/1WkdQS/q7qojuVcYuOgaoDg=; b=ZYn9epdZvmlnzR+qAmBam+odM/
+ eOv50sjPfSwGTRVU/VAHQcrdbHfb+tb3tLGYPNPLjuQaSPmu3SOX7wmvKtpxekMU9AJXnI6/CLCri
+ NEF7bgvh4WL+0Yu+YJTd8+Mgu640U6BdrfzGoeH85hF/BN33KgjX0WGeyK8Hvt2Qq5gk=;
 Received: from fout-b6-smtp.messagingengine.com ([202.12.124.149])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1uiXhY-00054r-OG for linux1394-devel@lists.sourceforge.net;
- Sun, 03 Aug 2025 12:20:34 +0000
-Received: from phl-compute-07.internal (phl-compute-07.phl.internal
- [10.202.2.47])
- by mailfout.stl.internal (Postfix) with ESMTP id 1F3B61D0004C;
- Sun,  3 Aug 2025 08:20:22 -0400 (EDT)
+ id 1uiXha-00054y-Jf for linux1394-devel@lists.sourceforge.net;
+ Sun, 03 Aug 2025 12:20:35 +0000
+Received: from phl-compute-01.internal (phl-compute-01.phl.internal
+ [10.202.2.41])
+ by mailfout.stl.internal (Postfix) with ESMTP id A35F01D0004E;
+ Sun,  3 Aug 2025 08:20:23 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-07.internal (MEProxy); Sun, 03 Aug 2025 08:20:22 -0400
+ by phl-compute-01.internal (MEProxy); Sun, 03 Aug 2025 08:20:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1754223621; x=
- 1754310021; bh=+8FHm5cpc8lKA672iypagCkCcR1rLrfb6Rvi70Ol9DI=; b=E
- FjJa2WKC2efYXAsmUbJpRK1PHDrnQEHbEv5Mul2lZsGasTbJEwElpWagTqULd9B3
- JdCR7QmLotJyMLtguCCsxWBweoj87llVV3NMHl+tsZpp8QcaXp/CqFIOCAdXJq1P
- hGUeCgmCF9WA/NHinsJF6/SAhxRdQ/vz7EYjpM20BNF2p9/3lEVmCgvD95a38oZK
- 3Bm9AkASeD6omywJZYK5xUmaHEn1quNm+bdD1/a76BhPji0qAiDB3EeUec6ORFN1
- HmkYGcGNx1wCnrxamM/iNeQmOGzlaRc/kiwmUon/n9nBTvYMLS5aMjVI/yHMkgJ2
- RiRJJx/bXhkEfK8fsDshg==
+ :reply-to:subject:subject:to:to; s=fm3; t=1754223623; x=
+ 1754310023; bh=b2fyZFzRWVmgOWs4mun/1WkdQS/q7qojuVcYuOgaoDg=; b=S
+ qJN1OvcFMlMwBV21lwkixIW4D1GSXL44Wqlmlq1OfHMCJUSZFbD08m71Oe+CYwPX
+ SFVVyitY1OVVJiZ3tUoJ+wbMls+bywvT3o1XIzLDAZs14T5L/kkF/d4GcU0UJkgG
+ w7lTsTapRHFzYpSArIy/Cl+SH0mEtzdTVmlz//MkJZhtJTHuhOH2l7NWQsT1Exo+
+ 1lJ8tEb/b2iQqXLuwQUjSmP/vS0nwiFyrRxVLgVW6v0LlEuhOcBuIR6YzoHW1vW/
+ 1Uyv3uOtBN07fQHw8L4MwT6DdKty1ydYHdsR0yish7BaLJnuJVVm0FUc/edO7ivS
+ 5NE3SFF32nKQ+4dFVxgiQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm3; t=1754223621; x=1754310021; bh=+
- 8FHm5cpc8lKA672iypagCkCcR1rLrfb6Rvi70Ol9DI=; b=UloJUCq12LQQy46f5
- nhHhgaAiQ/fy5dMsZIae1FbI3nyhGA1uLv3rs73L3hDi4qsl+juzo/9njanVaWf0
- qKFEViQag0b+bYIBr84At4tJbNFnCz5CVq+5q46W6EPZ80XfTZp+KLNEdC6b3RB4
- alsHFVaSpkm/sqUVzVvYgk3x0MdJr4+nNHlclKWrx3MVzSrLelobnLkHA+dQhHRS
- +6JVmY3jwyxRG2AxkWlwd4iK5H3hod666/CxXiASUWb75GXyUee5Gab6QJgsl2CY
- 1POtQvDwTDu13DGRaQrUDT/hgZZJ2TFCidPM4XhGrcjG86TB/ruKkJ0No+/yOxmi
- 3zcTQ==
-X-ME-Sender: <xms:BVSPaGgdks8Ara4jZGXZzoHJ7NzpykhMHCPLFoA5lp-YXjF9TxVE1A>
- <xme:BVSPaP9ySN0GFuCDavJGLIyXOm_aEBkGWhDTgN2tfrw4nN2H86iTNnDrsYl0G3nUl
- mBqdpsFg8-2u4MmLVU>
-X-ME-Received: <xmr:BVSPaAD81RFHAFLI9bSAQPeSTaE4dCl84FHqISTg66iBja5sMxaRV7tCjr2aSPlllRo-ow0dLEq90I5gdYAFwzg6oWdvOjNFFZIuNR5lQSkc>
+ :x-me-sender:x-sasl-enc; s=fm3; t=1754223623; x=1754310023; bh=b
+ 2fyZFzRWVmgOWs4mun/1WkdQS/q7qojuVcYuOgaoDg=; b=SUvDXZI9IT9kzXlJc
+ G2e0QapDA08pKPXriDP3wjgr4+tlHC+QZhByvuU6dlcPfIOTh4tdrk2sjWLzralB
+ nRj24BDPkHxvhl2TXnpAkf1X98hssSIOO28kyW9xC8cConKE+OaXspv9NyGjiRj4
+ 6Jzt9OCsMNDe9gGQLRtUTEyT1r2AxyORxbvgQ1FBG/I+GmB4m05kE7+56baHP/4K
+ B7nEbGFgCfa5aiSGKpJijyjPlSaMeHoE2G8SIHlexiGDL7bTYa9vGME8yKxzuuu6
+ K1zUiN0+o8H3HS/F52EMhsmfmZGf8tb0A0qEqXUivIbFg7vDunnxmS3S4aVQAXfg
+ vTIIw==
+X-ME-Sender: <xms:B1SPaBzUA-sObdltYyN9ptCXx7VTr_axiHllT8wP7aHYgmOHLecraA>
+ <xme:B1SPaKP1yDwt3EucO8UVXOZVmU1UL23kv7m-ogiQTVTT7lfUeEYj-tnZwkKRl4Wpf
+ ZlvFMb5rGcYkdkz9MM>
+X-ME-Received: <xmr:B1SPaNTzHNhQNP4gmee3wBCzb6Gtpw4DfIjOvMhkqH3gXeqZUvUgJ1r56UE98AkfAGyWUSE9k3SUyduT2-ulbGh7-KBV1uUiTRyGzioX4YN1>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddutdelgeegucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
  rghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtkeertd
@@ -93,45 +93,47 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddutdelgeegucetufdote
  thdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurh
  gtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgv
  rhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:BVSPaML-GATCtVYT6LnuLKVBAq6BUEUaqtoeYwwLYC2ZtWz64L55Uw>
- <xmx:BVSPaDm8MPxLQhUkEuak-kLa84TyOBDxxE3q19ljFmDpDUAwqVcMeg>
- <xmx:BVSPaKFi5VDpEqpy4GHHvSnT8kmiIK8CibKcm6b05ZyWscbzqBbzXQ>
- <xmx:BVSPaDEofvtO5F1x9b32D8qZxHxuaDksILFytht2z7txFerHzNfReA>
- <xmx:BVSPaNnJAEA1h8WCB38_vOvC1LQMgNF0VRtUIdPkZQ1URBC2VDsYVdzR>
+X-ME-Proxy: <xmx:B1SPaAb8aIIWKIdv3o3aXqlQt8N6j_BTOinMbSNHJm5q3hCN6rnzbw>
+ <xmx:B1SPaC2qehSqc9T4Qq7Hkoaq4yvzcZzMMb4ixgYmXB7UEYhcLASMug>
+ <xmx:B1SPaIXrGAlHOFoKiGEN-ktbRXNQSbfZD7TE6L06Dk-Sa9g-HI2X7Q>
+ <xmx:B1SPaEVJnKDLsROMPTYkMl1XyqgKEqhlcCR1vaaY7pSCuTQ1M7qdyw>
+ <xmx:B1SPaC2lqznvNXfK4efS31NHz1w-k8F92dX1BKlczux5LTQJqQoqaKis>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 3 Aug 2025 08:20:20 -0400 (EDT)
+ 3 Aug 2025 08:20:22 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH v2 1/4] firewire: core: use reference counting to invoke
- address handlers safely
-Date: Sun,  3 Aug 2025 21:20:12 +0900
-Message-ID: <20250803122015.236493-2-o-takashi@sakamocchi.jp>
+Subject: [PATCH v2 2/4] firewire: core: call handler for exclusive regions
+ outside RCU read-side critical section
+Date: Sun,  3 Aug 2025 21:20:13 +0900
+Message-ID: <20250803122015.236493-3-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250803122015.236493-1-o-takashi@sakamocchi.jp>
 References: <20250803122015.236493-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
+ running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  The lifetime of address handler has been managed by linked
- list and RCU. This approach was introduced in commit 35202f7d8420 ("firewire:
- remove global lock around address handlers, convert to RCU"). T [...] 
+ Content preview: The previous commit added reference counting to ensure safe
+ invocations of address handlers. This commit moves the invocation of handlers
+ for exclusive regions outside of the RCU read-side critical section. The
+ address handler for the requested region is selected within the critical
+ section, [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1uiXhY-00054r-OG
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+X-Headers-End: 1uiXha-00054y-Jf
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -149,121 +151,50 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The lifetime of address handler has been managed by linked list and RCU.
-This approach was introduced in commit 35202f7d8420 ("firewire: remove
-global lock around address handlers, convert to RCU"). The invocations of
-address handler are performed within RCU read-side critical sections.
+The previous commit added reference counting to ensure safe invocations of
+address handlers.
 
-In commit 57e6d9f85fff ("firewire: ohci: use workqueue to handle events
-of AR request/response contexts"), the invocations are in a workqueue
-context. The approach still imposes limitation that sleeping is not
-allowed within RCU read-side critical sections. However, since sleeping
-is not permitted within RCU read-side critical sections, this approach
-still has a limitation.
-
-This commit adds reference counting to decouple handler invocation from
-handler discovery. The linked list and RCU is used to discover the
-handlers, while the reference counting is used to invoke them safely.
+This commit moves the invocation of handlers for exclusive regions outside
+of the RCU read-side critical section. The address handler for the
+requested region is selected within the critical section, then invoked
+outside of it.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/core-transaction.c | 32 +++++++++++++++++++++++++++--
- include/linux/firewire.h            |  4 ++++
- 2 files changed, 34 insertions(+), 2 deletions(-)
+ drivers/firewire/core-transaction.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/firewire/core-transaction.c b/drivers/firewire/core-transaction.c
-index d28477d84697..29ca9f3f14ce 100644
+index 29ca9f3f14ce..a742971c65fa 100644
 --- a/drivers/firewire/core-transaction.c
 +++ b/drivers/firewire/core-transaction.c
-@@ -550,6 +550,23 @@ const struct fw_address_region fw_unit_space_region =
- 	{ .start = 0xfffff0000900ULL, .end = 0x1000000000000ULL, };
- #endif  /*  0  */
- 
-+static void complete_address_handler(struct kref *kref)
-+{
-+	struct fw_address_handler *handler = container_of(kref, struct fw_address_handler, kref);
-+
-+	complete(&handler->done);
-+}
-+
-+static void get_address_handler(struct fw_address_handler *handler)
-+{
-+	kref_get(&handler->kref);
-+}
-+
-+static int put_address_handler(struct fw_address_handler *handler)
-+{
-+	return kref_put(&handler->kref, complete_address_handler);
-+}
-+
- /**
-  * fw_core_add_address_handler() - register for incoming requests
-  * @handler:	callback
-@@ -596,6 +613,8 @@ int fw_core_add_address_handler(struct fw_address_handler *handler,
- 		if (other != NULL) {
- 			handler->offset += other->length;
- 		} else {
-+			init_completion(&handler->done);
-+			kref_init(&handler->kref);
- 			list_add_tail_rcu(&handler->link, &address_handler_list);
- 			ret = 0;
- 			break;
-@@ -621,6 +640,9 @@ void fw_core_remove_address_handler(struct fw_address_handler *handler)
- 		list_del_rcu(&handler->link);
- 
- 	synchronize_rcu();
-+
-+	if (!put_address_handler(handler))
-+		wait_for_completion(&handler->done);
- }
- EXPORT_SYMBOL(fw_core_remove_address_handler);
- 
-@@ -913,10 +935,13 @@ static void handle_exclusive_region_request(struct fw_card *card,
+@@ -935,17 +935,19 @@ static void handle_exclusive_region_request(struct fw_card *card,
  	scoped_guard(rcu) {
  		handler = lookup_enclosing_address_handler(&address_handler_list, offset,
  							   request->length);
--		if (handler)
-+		if (handler) {
-+			get_address_handler(handler);
- 			handler->address_callback(card, request, tcode, destination, source,
- 						  p->generation, offset, request->data,
- 						  request->length, handler->callback_data);
-+			put_address_handler(handler);
-+		}
+-		if (handler) {
++		if (handler)
+ 			get_address_handler(handler);
+-			handler->address_callback(card, request, tcode, destination, source,
+-						  p->generation, offset, request->data,
+-						  request->length, handler->callback_data);
+-			put_address_handler(handler);
+-		}
  	}
  
- 	if (!handler)
-@@ -952,10 +977,13 @@ static void handle_fcp_region_request(struct fw_card *card,
- 
- 	scoped_guard(rcu) {
- 		list_for_each_entry_rcu(handler, &address_handler_list, link) {
--			if (is_enclosing_handler(handler, offset, request->length))
-+			if (is_enclosing_handler(handler, offset, request->length)) {
-+				get_address_handler(handler);
- 				handler->address_callback(card, request, tcode, destination, source,
- 							  p->generation, offset, request->data,
- 							  request->length, handler->callback_data);
-+				put_address_handler(handler);
-+			}
- 		}
- 	}
- 
-diff --git a/include/linux/firewire.h b/include/linux/firewire.h
-index cceb70415ed2..d38c6e538e5c 100644
---- a/include/linux/firewire.h
-+++ b/include/linux/firewire.h
-@@ -341,7 +341,11 @@ struct fw_address_handler {
- 	u64 length;
- 	fw_address_callback_t address_callback;
- 	void *callback_data;
+-	if (!handler)
++	if (!handler) {
+ 		fw_send_response(card, request, RCODE_ADDRESS_ERROR);
++		return;
++	}
 +
-+	// Only for core functions.
- 	struct list_head link;
-+	struct kref kref;
-+	struct completion done;
- };
++	// Outside the RCU read-side critical section. Without spinlock. With reference count.
++	handler->address_callback(card, request, tcode, destination, source, p->generation, offset,
++				  request->data, request->length, handler->callback_data);
++	put_address_handler(handler);
+ }
  
- struct fw_address_region {
+ static void handle_fcp_region_request(struct fw_card *card,
 -- 
 2.48.1
 
