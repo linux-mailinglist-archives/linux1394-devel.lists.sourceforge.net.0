@@ -2,37 +2,37 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE10FB20A30
-	for <lists+linux1394-devel@lfdr.de>; Mon, 11 Aug 2025 15:28:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ADC03B20A42
+	for <lists+linux1394-devel@lfdr.de>; Mon, 11 Aug 2025 15:33:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+IPT6MocOOD6scgFDjf0qYlvyg61QexmLHQXfHp/ENY=; b=M/9QS898t3AmEhCOTCVXnHSN/S
-	ICHXGykDVe2oqa2TKNIik+0UIlP/Y5qIzLuPgaLQ7QYDVyXSb1Bsj3w1KFE4wtQVSFU/e/yML+gE4
-	1BPmh3lvO7RWa2bJ5SJhM4AbTHtWQTlldl8dK6/xmePIe8746YZnobmDSwz2m3j7gJpk=;
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=n9ZWORMVlP16GWFg97fKIOkbnpJSGqaTWrm0a870MbE=; b=WOclmIqWoDXr5/P4pcHkkJWigm
+	7JEcdK1lA5KY96iierCye8mU9CpvRu2bo+MTh/YS5CRl/ivlQBBwfrBqpucKS0d735NITpas1iwBx
+	QmXhIbwzZ3/8BQJ5utX2h5qYtF2S/PrTimGnDV/7Bk22Ea2dK7rnVQVLKXUQrabeXrPA=;
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1ulSZn-0004JG-Uo;
-	Mon, 11 Aug 2025 13:28:35 +0000
+	id 1ulSeN-0000Wx-BY;
+	Mon, 11 Aug 2025 13:33:19 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1ulSZl-0004J7-Vw
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1ulSeK-0000Wn-FO
  for linux1394-devel@lists.sourceforge.net;
- Mon, 11 Aug 2025 13:28:34 +0000
+ Mon, 11 Aug 2025 13:33:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
  Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=DaKM1MT2vnhDEwshxSnQdmlixM5+zD2EhgIAWWaUiYc=; b=CiBDVbasw8iWNLnUMrI33qZCUQ
- OyRPaxmqbOZSGFgmK6w59W0D90B2JRmVIOc8Vyc8+gcz4wOoOmMX+t7b5XLESiVZUn5aeoGbfAMvx
- yvg3nlkQA9oUD/D3SJXSPwLwZGuyaQrh+ApZ7GeI2BCM/zr77HcyU1BNjtGpy5ctbQ9E=;
+ bh=gctimxa54HqQNQrX29F+qPQpcXdjoL5nPuvFUUnFTC4=; b=jsUA2J7sY0md2gCLRm31Eec9qj
+ ZK7HKkSQ5LKtTAQf0w4svi4r+sReZh/q+Dim7N/E1Zh3FfOA2t1Qri1+bj1AHSEdVA5OO9HqkszQ+
+ V7UsABAWrNMcg6Ua1dl/AYCOZB0tzw5SHL4BeoIz0cPZsSNEGsUnq3sAwKDFCx7IqEJQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
@@ -40,47 +40,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=DaKM1MT2vnhDEwshxSnQdmlixM5+zD2EhgIAWWaUiYc=; b=nML//mMRCmr8pEE4a6oGyebTsc
- Mi0gABDoapYqy37Wdq7rKQrMm37YdLHk9N0hOYhzarzRboCY7n+qaWm0J9uTF4SH697RBEwd+FogV
- RUPB0qOHpIacPq1Qpcj+9gRlapN6EqrwTW/P6nsJFjvQIOcGLk5l81bHNWzP55p/AWDY=;
+ bh=gctimxa54HqQNQrX29F+qPQpcXdjoL5nPuvFUUnFTC4=; b=Sa3Pww7p34sa5lgN5bfpUTe7y9
+ AuI713jCYYo69K9/YKEdwzckGjuDuu9SLamWc37Tpt7fxOY2Hi7GNHcK2rDZ1VcqMud4FXm95YAiP
+ qlD0N3CBRGh06so/c+2KrP4GljUcLgvopQ7r5LFMfWLDToTIduQFcwB+rJU6vPeN2HiI=;
 Received: from fout-a4-smtp.messagingengine.com ([103.168.172.147])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1ulSZk-0003LH-E7 for linux1394-devel@lists.sourceforge.net;
- Mon, 11 Aug 2025 13:28:33 +0000
-Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
- by mailfout.phl.internal (Postfix) with ESMTP id A9382EC00C3;
- Mon, 11 Aug 2025 09:28:21 -0400 (EDT)
+ id 1ulSeJ-0004Db-UI for linux1394-devel@lists.sourceforge.net;
+ Mon, 11 Aug 2025 13:33:16 +0000
+Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
+ by mailfout.phl.internal (Postfix) with ESMTP id 60613EC0013;
+ Mon, 11 Aug 2025 09:33:05 -0400 (EDT)
 Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-06.internal (MEProxy); Mon, 11 Aug 2025 09:28:21 -0400
+ by phl-compute-04.internal (MEProxy); Mon, 11 Aug 2025 09:33:05 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1754918901; x=
- 1755005301; bh=DaKM1MT2vnhDEwshxSnQdmlixM5+zD2EhgIAWWaUiYc=; b=J
- bPlwjVFkrwY0jLRmL1BsZxkTSSlp2xpTQL3okJqASrhxQZuIpXXj9tBS57LZ6qEV
- CxQShUmjYzc/KoOPL2quo2qCO3MlPtLu5h0MIQOS+1GDhyMFYjKDRTcoThewIUMQ
- C/r7dDjUQmpisfvOIva4jZ6jHR4Bu2DjvZuqGYTwba8wMliFlMCsNXngGctw0knQ
- ijvV/fcwmwgIR6AVCALhYy2F9DgxH86M/68TQTEwc34t9k1EXxH4uo+TFDhSRFl4
- u+tDp+VhvooDR5ZRcZchlBr/3EAvmvsAiB2p+BBrcIYbu4PuA+V3aLvuzjaozQBt
- wH6EK7YGTQoL0AW5pmvOA==
+ :reply-to:subject:subject:to:to; s=fm3; t=1754919185; x=
+ 1755005585; bh=gctimxa54HqQNQrX29F+qPQpcXdjoL5nPuvFUUnFTC4=; b=D
+ aoG2BtZ/ICU0i4bY2O7xY+utMpleQ6+0Ne1EpD04p7ARiqnTIxTIpLUUuNEMYL4E
+ 7SqERMY4L7zepf3ktv3w8AaE3IJocxlpGBhvI0auV4lnm7ikj/hiae7cqaf+GcK6
+ 5JnR/8RHWEplr1fZCr460gsS9Ohb1dAJ1LwkSArY7wOVe3xWq+d4SvRk7SKxr5w2
+ G5gH49fnd5lxucgEym4sLsw6srClhp7pvNjnynuVTzeIemDjjSiq7knzwSqH/rg/
+ tkrwRmW8MXGl7+hwmoTVqpsWu9HIHzPtrj2HghQEO0tKr5cZrCK8wmXnG9JPI43o
+ o5MLfEhWh6BUQ5wagr+aQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
- 1754918901; x=1755005301; bh=DaKM1MT2vnhDEwshxSnQdmlixM5+zD2EhgI
- AWWaUiYc=; b=PAxLtR7iZtdTtVduVi1HNR5i/gDmjGAvNH9jq7dHe7eOxoMdnuI
- Dt4yyv/nhr5U2pzpW7QVAVWQJy06xSRQmpZRMoO0Jv8WVnsmlJL80DlmEc9mU+iF
- B5bIINz4jgaFChKYUpFgG5k2y2g1A+3udugo9pPjMoSDHI1h3Uh5I2pjwKsKvmPb
- 8cZmhyjFfpWBinkYzzl6ECcy4tVDblHxj7QpjylkFQMTJB2nNAe5i/wi3M8znD3/
- QTeRhAkPCNytffdpQIY5/ASPleeZGN65vuYefrAlAphgwtkwAD1y9Lu6+kP9RNN+
- EnDTzkAvjgXIHAiGooXIoQlvu8U5+fsbs0w==
-X-ME-Sender: <xms:9e-ZaMaB5oX0LPoLJq9pR9A3JoTDd_U9QV994Of9cMcSOnfJAAQSjw>
- <xme:9e-ZaAWjC1yt-qxNLMSNbn_JT5ulGwZBUHNSC8qpZLe1phsopHYfYdoAQy_gXdEh5
- DFDTrexb0ym7FvvVes>
-X-ME-Received: <xmr:9e-ZaI7SnuE2jv8yxOz3HZDUszFhOFb_ZMANnM0WBVYlWByANNExutfcpWuLnuy0HXBwkvxOxlMbc66AeUoxCFvCnyFD05FgtRM>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddufedvheejucetufdoteggodetrf
+ 1754919185; x=1755005585; bh=gctimxa54HqQNQrX29F+qPQpcXdjoL5nPuv
+ FUUnFTC4=; b=l5kV/e4x5bY/nQoZ+5xj8bmP4ioXgMsr0Det//KAAz2bVNpuodj
+ GMsK2a2lp+9JUJPAFQg7kB3icwq/Y8moEfZLDuoSk7/LW7zYp1KsT8/76EGbkGOf
+ 5HNfxzjeyyeFGdh0mlIYZ4wGByARxNwQLkYTLpRrZQ3O3O2iHGqs6ARLH0Tev/Ii
+ QMLaCeAnUvNRj9EE7wlnLhDDbaCxBPcg6xoFWehuuX7q77RRXrVrd8z4wZ+lFXSJ
+ AXMvQObRcJvtYxeCWE0wTy05yXorntefgVFaLQvI/yilHF6+pJe1T17eMHI+2wY1
+ +Le+o4HS4CfYQvRt8pdhIBECzMKTc3n1KgQ==
+X-ME-Sender: <xms:EfGZaDrY4q21TojA8ECLFgZKaNPXWKXyrOwMWN5OnpUnsTE3Agjt3Q>
+ <xme:EfGZaEios-NQx1YSMmjX7UZfslqjhxcM3VTFTikFEcUkEcEQOJ1sye1wq-krgCmvA
+ pvo5p-MfnFjoRavDW0>
+X-ME-Received: <xmr:EfGZaNLXoPlb8lD7HZagK7e9vKSFEfDxnbRSiBi-XwoKEG5mMtkdh1XHCTdvJLCm7Is8pD7rLicHKIVFGd1nLjnHCN9dxVyVRaI>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddufedvheekucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
  rghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttdertd
  dttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
@@ -88,29 +88,32 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddufedvheejucetufdote
  ffheekffduudevvdefudelleefgeeileejheejuedvgefhteevvdenucffohhmrghinhep
  khgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrg
  hilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghr
- tghpthhtohepvddpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheplhhinhhugidufe
- elgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvthdprhgtphht
- thhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:9e-ZaDjtR9xyaCeYzCuI6BuGQ-ZGp_e0KUmpRMzkBczXwcfY1IbGSg>
- <xmx:9e-ZaHdIMlscw-FF6eEwSBkEISaBgFV5Q3ppXhZSwQ85hC1zIlLq0w>
- <xmx:9e-ZaAfNtTVsTB2MC2Rk2q4MYrmmwkeALKDN9-jsWvAj5YM1vijHww>
- <xmx:9e-ZaJ8Z2zH-85nQfALPkFXOUIJtFcLCcwesHNOdvHbPoz638K_1MA>
- <xmx:9e-ZaKfTryjU9WI-itiMcE2sr7r6oDaeT74X55JzvTL17_Lb7eZOksoU>
+ tghpthhtohepfedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepvggumhhunhgurd
+ hrrghilhgvsehprhhothhonhdrmhgvpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghl
+ sehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidufeelgedqug
+ gvvhgvlheslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvth
+X-ME-Proxy: <xmx:EfGZaECazUry70UhWLDFtdCDjfo-hnJpXz4jvDZbo2gpq0Am0DcU8A>
+ <xmx:EfGZaNjtTqgtFTWngQU0EFIs1TQulQHVCMdHKTHpqupiUY6ySiHSFg>
+ <xmx:EfGZaMliVZTV31-wnr4ppumS_VWOENL7EthTntR3YX4uQIvLEvwQWg>
+ <xmx:EfGZaJqzhxdZeYHjMLfvBZJKyDwuFFbr93k7_g5iJZAgKC3j2WtvPw>
+ <xmx:EfGZaK8W80BE9KCTxAFWrOmbwLttLVarzCiPK9nOZUZnn4cJK1o1nJXd>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 11 Aug 2025 09:28:20 -0400 (EDT)
-Date: Mon, 11 Aug 2025 22:28:17 +0900
+ 11 Aug 2025 09:33:03 -0400 (EDT)
+Date: Mon, 11 Aug 2025 22:33:02 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: linux1394-devel@lists.sourceforge.net
-Subject: Re: [PATCH v2 0/4] firewire: core: call address handlers ouside RCU
- read-side critical section
-Message-ID: <20250811132817.GA267817@workstation.local>
-Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
- linux-kernel@vger.kernel.org
-References: <20250803122015.236493-1-o-takashi@sakamocchi.jp>
+To: "edmund.raile" <edmund.raile@proton.me>
+Subject: Re: [GIT PULL] firewire updates for v6.17 kernel
+Message-ID: <20250811133302.GB267817@workstation.local>
+Mail-Followup-To: "edmund.raile" <edmund.raile@proton.me>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux1394-devel@lists.sourceforge.net"
+ <linux1394-devel@lists.sourceforge.net>
+References: <20250802054917.GA127374@workstation.local>
+ <pTURxXSK4yF5-FlMBbpWLMW5JUC2s1BvSYdYGKBAgEOpI9z4RhnQsLrrRj7E2Iu02sOznG5ysKRVpXR4ZWFp-CSeSebIP1YGQl7gbFLGeEo=@proton.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250803122015.236493-1-o-takashi@sakamocchi.jp>
+In-Reply-To: <pTURxXSK4yF5-FlMBbpWLMW5JUC2s1BvSYdYGKBAgEOpI9z4RhnQsLrrRj7E2Iu02sOznG5ysKRVpXR4ZWFp-CSeSebIP1YGQl7gbFLGeEo=@proton.me>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
@@ -118,9 +121,10 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Sun, Aug 03, 2025 at 09:20:11PM +0900, Takashi Sakamoto
- wrote: > Hi, > > This is an updated version of my previous patchset[1]. >
- > In the earlier version, XArray was used to collect FCP address ha [...]
+ Content preview:  Hi Edmund, On Fri, Aug 08, 2025 at 01:50:44PM +0000,
+ edmund.raile
+ wrote: > Dear Mr. Sakamoto, > thank you for including me in the pull request, 
+ I am honored! > > I tested the combination of this pull request and [...]
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -131,7 +135,7 @@ X-Spam-Report: Spam detection software,
  domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1ulSZk-0003LH-E7
+X-Headers-End: 1ulSeJ-0004Db-UI
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,48 +148,47 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org
+Cc: "linux1394-devel@lists.sourceforge.net"
+ <linux1394-devel@lists.sourceforge.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Sun, Aug 03, 2025 at 09:20:11PM +0900, Takashi Sakamoto wrote:
-> Hi,
+Hi Edmund,
+
+On Fri, Aug 08, 2025 at 01:50:44PM +0000, edmund.raile wrote:
+> Dear Mr. Sakamoto,
+> thank you for including me in the pull request, I am honored!
 > 
-> This is an updated version of my previous patchset[1].
-> 
-> In the earlier version, XArray was used to collect FCP address handlers.
-> However, in typical system, only a few handlers are registered, and
-> using XArray for this purpose was unnecessarily complex and inefficient.
-> A simpler and faster approach is more appropriate here.
-> 
-> In this v2 patchset, the kernel stack is used initially to store up to 4
-> handlers. If more than 4 handlers are registered in the system, a buffer
-> is dynamically allocated from the kernel heap.
+> I tested the combination of this pull request and your fix patches [1]
+> on arch 6.16.0-1-mainline (based on "Linux 6.16" 038d61fd6422)
+> with TI XIO2213B and RME FireFace 800.
 > 
 > [1] https://lore.kernel.org/lkml/20250728015125.17825-1-o-takashi@sakamocchi.jp/
 > 
-> Takashi Sakamoto (4):
->   firewire: core: use reference counting to invoke address handlers
->     safely
->   firewire: core: call handler for exclusive regions outside RCU
->     read-side critical section
->   firewire: core: call FCP address handlers outside RCU read-side
->     critical section
->   firewire: core: reallocate buffer for FCP address handlers when more
->     than 4 are registered
+> So far audio playback seems perfectly stable:
+> days with varying CPU load, compiles, even mprime.
+> Suspend also seems fine, even without first powering down / disconnecting
+> the FireFace.
+> Direct ALSA streaming or pipewire, no issues so far.
 > 
->  drivers/firewire/core-transaction.c | 91 +++++++++++++++++++++++++----
->  include/linux/firewire.h            |  4 ++
->  2 files changed, 85 insertions(+), 10 deletions(-)
+> Tested-by: Edmund Raile (edmund.raile@proton.me)
 > 
-> 
-> base-commit: 7061835997daba9e73c723c85bd70bc4c44aef77
+> Thank you for keeping FireWire alive and even developing it!
 
-Applied to for-linus branch.
+Thanks for your test, however it is my previous proposal. The latest one
+is "[PATCH v2 0/4] firewire: core: call address handlers outside RCU
+read-side critical section"[1]. The difference between two proposals is
+just to use kalloc helpers instead of XArray for FCP handlers allocation,
+thus not effects to your device.
+
+Anyway, thanks.
+
+[1] https://lore.kernel.org/lkml/20250803122015.236493-1-o-takashi@sakamocchi.jp/
 
 
-Thanks
+Regards
 
 Takashi Sakamoto
 
