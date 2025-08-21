@@ -2,115 +2,110 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id C74D7B27548
-	for <lists+linux1394-devel@lfdr.de>; Fri, 15 Aug 2025 04:06:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 685F3B2E96A
+	for <lists+linux1394-devel@lfdr.de>; Thu, 21 Aug 2025 02:30:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:Message-ID:Subject:To:From:Date:Sender:Reply-To:Content-ID:
+	MIME-Version:Message-ID:Date:Subject:To:From:Sender:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dSgwLtzkrIeLQHfD5DuFqeufgdjbwUud+hAIe7ElfFY=; b=V9z0qJ2ctH5ysVr/HYREIVqMcN
-	v8ia24Fhy6rDRS7EQQBqSXagqaRx4XI2eT9OIcsMJjeeoYgH2Lpk3IrWQKGVo7+RO0QPgzcrxSlJh
-	CFyp40TtL1jLrQTF+GewybzCaNJYuhpEuH8ZJ9Qd54fZsDMEl5aES0DuCI3V25k7Dc7U=;
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=QQtqqZI9kEofhT1SW6OL4mMmUprFGXshdJNBV3EfWbE=; b=Lb48IeVqXDi218dWsl3x7HZeZw
+	Vqpm0FIEfAMWkoOR8Udcycp9Ln2QONu8YOaZbDebK2ei7UOjrDi6nlr/QDxXhsAXMkPZ+Gmww2IG3
+	hdGj2ociLKxxJgmTxHNOEsRGSqtnANpFhJ8qIE7KV8QLy35HFsKAR7DzjM3rw9hkALcA=;
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1umjp5-0005V9-FE;
-	Fri, 15 Aug 2025 02:05:39 +0000
+	id 1uotCP-0003Xw-7z;
+	Thu, 21 Aug 2025 00:30:37 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1umjp3-0005V1-QS
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1uotCL-0003Xc-18
  for linux1394-devel@lists.sourceforge.net;
- Fri, 15 Aug 2025 02:05:38 +0000
+ Thu, 21 Aug 2025 00:30:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
- From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=nsVOmspME9O+t8vj6HrlrcesarieFdua4vvDy3VQTiE=; b=MDUKKSHnYbafP7/P/NE+RA9Io4
- 9s66RRHwpj2u+TkvHuf4/ixTOwZzqO0Nhy1Ydv/9Q7p3UOUxqSEDaBq66RFpPWkDm3mgdsI0xrS1t
- Bo8M8CPK1PL64g9H0rhGUX2ld5MQxpiDEjFipF2CouACDbAVQAmSJ2XyC/RKjvTnWbzU=;
+ bh=+gwwzlTlXIaDfV8qx23NRaBErl4HGvjnbBhXkigbWZA=; b=XJzGG2iPzhYs/PPCJPozrKuAAO
+ iQKptcFiAn2X+9L29xMtr+1UV9T6Z8UNBcE957AtEpo3ky+InSgy16PHs+VGN3aVJe89w2cqKtddw
+ GHXOX612QVXQ38/rp8pRrx5VvcD0fdWviy5vunkgzVbNOmXLd6Sri4cVUEpkoRpeEAj0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:
- Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
- :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
  References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=nsVOmspME9O+t8vj6HrlrcesarieFdua4vvDy3VQTiE=; b=C
- LdjGiJW7DyM7++UjAiN08U4y8axU86+00K73KTwbw2ZtSmiQFImZYug4RvBzXj4qQ9V2a0kLlMTq8
- BHKLX/GDMRrb8FWSYkL39J8J08N6igSjP1KkYjKkYYzw4LvuXrhvHNDt7H4dsX8dBjgznK08mHY19
- pp6i4aGo2YHzaZu0=;
+ List-Owner:List-Archive; bh=+gwwzlTlXIaDfV8qx23NRaBErl4HGvjnbBhXkigbWZA=; b=n
+ Byb3DDjWkquv1Czh9mloLvOUMssr+e+f0Hig0pPgQxr/uyaBpgiXYIfsK6pT9r457glW1vAluMGWW
+ VBc1m+h3AZ+JevsT9u0ZQTYOf4ETyq+dqlC0QkSuDykxev8/CrJ2dPOL/NOb+9qgO8mHkyStK75tm
+ gq19e5dhe/Zi21Yg=;
 Received: from fhigh-a6-smtp.messagingengine.com ([103.168.172.157])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1umjp2-0007Se-SK for linux1394-devel@lists.sourceforge.net;
- Fri, 15 Aug 2025 02:05:37 +0000
-Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 3F73D140011E;
- Thu, 14 Aug 2025 22:05:26 -0400 (EDT)
-Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-06.internal (MEProxy); Thu, 14 Aug 2025 22:05:26 -0400
+ id 1uotCK-0005BO-LB for linux1394-devel@lists.sourceforge.net;
+ Thu, 21 Aug 2025 00:30:32 +0000
+Received: from phl-compute-10.internal (phl-compute-10.internal [10.202.2.50])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id 0116014000C0;
+ Wed, 20 Aug 2025 20:30:22 -0400 (EDT)
+Received: from phl-mailfrontend-02 ([10.202.2.163])
+ by phl-compute-10.internal (MEProxy); Wed, 20 Aug 2025 20:30:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
- :to; s=fm3; t=1755223526; x=1755309926; bh=nsVOmspME9O+t8vj6Hrlr
- cesarieFdua4vvDy3VQTiE=; b=qUpvBFj77igJ86dOLNa+mjlQT54hc+4TKU8Ut
- OuuqPP5CeeMbxKDeVv4VB5RjjADLqV9QUMPGAnIUNMDou7b4kZ5FxZDZ7aSJOuHW
- fV4shuDMwI13RbqIQ6k0Hl8mAmS6YRakW/gmt8LRb+FQwjvyzAMGz1gcStrrI0uI
- bSVSbU6dtBZugv0YdtiG75CHctuZZMMsiyvs/Ux3tyTP56N5kqt1+RPccBWaqeQw
- PIrLKBa89fhY2wC3DjTRNrO2GgtRe6AcGHGhtjgm0ZDZ01tyF/ZKEg5voyzUvv0p
- l8a5UUUfsritTIrP6rAg1J+tS6H4S0aZrUdVji/7hkrB3+6CQ==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm3; t=1755736221; x=1755822621; bh=+gwwzlTlXI
+ aDfV8qx23NRaBErl4HGvjnbBhXkigbWZA=; b=ijfPv1HUZZXvDkTjiO5co5spJ7
+ SjGlw+4GiV12AUIk53/dPl/CJTui9xG9phpHzqa7HkuwptUbnWA643bkYAwfNGNh
+ 0QV+q/358LsXjpXPqFI9m6fJqTJCoLlPS45PsfUgTvKiHTHefoDGgT+6+bRn17X5
+ fLtkz12AzLbBA4ngoenFKfMTJOAqw0qr4y4CxTKo45lQCa5QkoXj3wMabYpzl0lG
+ ZaQ3VDiGPtG6qKU5n+ONJqvf7Zxkb1KF/Wc6gUX20nvMUj6t1FOUkZFCtNfUxpnG
+ w7VWrQqR0XhqzPBFlZGwZA4iMWksAlV5z5/EcJGTdIJJ+Zwma3f3J2RVDUyA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:message-id
- :mime-version:reply-to:subject:subject:to:to:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1755223526; x=
- 1755309926; bh=nsVOmspME9O+t8vj6HrlrcesarieFdua4vvDy3VQTiE=; b=S
- QgHu6lg/GVnxHri2e75Ehl5jpWoNezu9VIoTdQzplWb1JAaom2XNVa8TyAXn2jG1
- IJ9SsJpV97tZV9LyCxh3HcZwzI1YmkCBvXX9Z1W4VSO+8nQ0yqhkp5QAf+fIDe32
- gQpG47FDF6QiNv6dVKF+wvloxaQAJ/ix91LTWmXJijL5sNrD+hNcwtEwVxBr92Kh
- n3Mk3yKHZ22ydZcp0eO6aqGm3TgL4knpVUKPr6t7YhwajjHuqromAcP+PlsaExVC
- pd5pQaZFTYN93sq1O+E/dm4TSuQELFYFrwNzp1+QykGhBv6DKr3Y8R6siRBAQnYu
- LGS1QazFSXDZkeEQU6dfA==
-X-ME-Sender: <xms:5ZWeaMS6i8wKrxunwh7UrYBXukKNK02tHPeHwAzL28EZ1HKEtUe1NQ>
- <xme:5ZWeaHvlMxzvEnqmse-mm-qR6shcnDjjyNxyu6rAyGDvUVQPAHFi-SwD_9CeITSC9
- Twq4_nV3pJGBGggrvY>
-X-ME-Received: <xmr:5ZWeaMJ4GtE0Zwz3PR1Nqt-XpwCVFJKwZ0qBBQ8O8i__RQs1XcFYV5JvqIfUl5ybB1awkcKV5k7oj756nu9B7MlcBkOwJ9MNITU>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddugedvjedvucetufdoteggodetrf
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
+ 1755736221; x=1755822621; bh=+gwwzlTlXIaDfV8qx23NRaBErl4HGvjnbBh
+ XkigbWZA=; b=Cadbmps/Pnkg5QA3rQXuQ/qmW2lIh5PmDlAxWIn04wy7bwEUj7n
+ XxJKbglAQI1XAzKlmQVVEmE5I3UqW5akUM168Amluv60BB0pN046PrAX1aIyxuds
+ EbFWMxPl71hHhjmSqGJq/TtxZDb5oB3pUGMEZB1d8Lx5dOMBz5tT5ZYMcHVHwX4c
+ gOYzowNEeERCuo4fMg8nVWFKPvEaXn3Z4EgrcSCAdm0QytaSfPyHyEYpX84oVSeO
+ N4og84uI9WxMnys/jWIdEfDz/P0D9BJBQnsPqYmRAJCuRWW1w18vgbY/ES/gDDnv
+ GfK7aX8rfcI6kHCaXUTjhP2DR1NG4ZKMLUw==
+X-ME-Sender: <xms:nWimaLWla7ZzEToFMewG0TCnrhPzaIhhHTeodNZzkltTRIcSIPtCsA>
+ <xme:nWimaMipWAU43t_12zk7-lWT0neMUQ6FWwpFvoiXyNoTl7c0PyXIUmg6EV8ufQT7J
+ RW7l5yhRRf5B9XkTEQ>
+X-ME-Received: <xmr:nWimaJXlQYEo_4Cv-shWnlsUe75FK97ufjckbCR0Eb7wvgtEKZcBllsXXx4svZTBv_uyY4iZB-Z-uhbWroe5R_YU5M8ygQh0RSbgSNeVwjSinw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgdduheelkedtucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfggtggusehttdertddttd
- dvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhi
- sehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeetfeeiteefveegvd
- fggeffheetleejkeekleeugeffffdtgfdtteetkeevvddvgfenucffohhmrghinhepkhgv
- rhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
- hfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghrtghp
- thhtohephedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepthhorhhvrghlughsse
- hlihhnuhigqdhfohhunhgurghtihhonhdrohhrghdprhgtphhtthhopehlihhnuhigqdhk
- vghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigud
- efleegqdguvghvvghlsehlihhsthhsrdhsohhurhgtvghfohhrghgvrdhnvghtpdhrtghp
- thhtohepvggumhhunhgurdhrrghilhgvsehprhhothhonhhmrghilhdrtghomhdprhgtph
- htthhopegrphgrihhssehlihhnuhigrdhmihgtrhhoshhofhhtrdgtohhm
-X-ME-Proxy: <xmx:5ZWeaEkRX6hFQYVtpZXWPbeVvdci4d0abX7ZdI7DyIT6BnHrCMVzCA>
- <xmx:5ZWeaNJhOztuc1mCBBDKZwwN_xsAIm8EQ4gVwRMPclFIhIwZrUW3Fg>
- <xmx:5ZWeaJ4hOULOioiS4JeSubP50WKadpsW1GmLJouQH952q_UeHA0L3w>
- <xmx:5ZWeaB1jXxem6_gdIJBl2bpGaWjmZtx2bPvJUWs9GbSOgZ3q-HqUHw>
- <xmx:5pWeaBhNAisNtJyo9_3UsJ6c7-W3j8AliqQ7nIP23lcQwVSbKVSbKdfu>
+ rghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertdertd
+ dtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhi
+ sehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeffvdeuleffveekud
+ fhteejudffgefhtedtgfeutdfgvdfgueefudehveehveekkeenucevlhhushhtvghrufhi
+ iigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrg
+ hmohgttghhihdrjhhppdhnsggprhgtphhtthhopedvpdhmohguvgepshhmthhpohhuthdp
+ rhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurhgtvg
+ hfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdr
+ khgvrhhnvghlrdhorhhg
+X-ME-Proxy: <xmx:nWimaDNRQ_RED8YqgTQpYQR6OfGPswVcGAXIaEVkPm4je5uxyfoa7w>
+ <xmx:nWimaFZcc0Lvzlb-LH49IJpebw1_Yufb1lL5gZWl8Q23yFN9LlVCKw>
+ <xmx:nWimaPqc2ddVNr7FRD4y3W16JF3aXkCkVXiKHfSf4gt-bgRYJCsqOg>
+ <xmx:nWimaBb28tXbHxlgEJMkZRY86P7VFBxxSb2y6QEvY9MsrhCTRmbMPA>
+ <xmx:nWimaE6oQsH_kr7e2GLFfIkeiuSltKzPRikijzaPjDzbCPNY6R6pOBDk>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 14 Aug 2025 22:05:24 -0400 (EDT)
-Date: Fri, 15 Aug 2025 11:05:21 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 20 Aug 2025 20:30:20 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: torvalds@linux-foundation.org
-Subject: [GIT PULL] firewire fixes for v6.17-rc1 kernel
-Message-ID: <20250815020521.GA349651@workstation.local>
-Mail-Followup-To: torvalds@linux-foundation.org,
- linux-kernel@vger.kernel.org, linux1394-devel@lists.sourceforge.net,
- edmund.raile@protonmail.com, apais@linux.microsoft.com
+To: linux1394-devel@lists.sourceforge.net
+Subject: [PATCH 0/4] firewire: ohci: remove obsolete module-level debug
+ parameter
+Date: Thu, 21 Aug 2025 09:30:13 +0900
+Message-ID: <20250821003017.186752-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Disposition: inline
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
@@ -118,12 +113,19 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi Linus,
- Please accept the following changes from the subsystem.
- The following changes since commit 8f5ae30d69d7543eee0d70083daf4de8fe15d585:
+ Content preview:  Hi, The "firewire-ohci" module has long provided a "debug"
+ parameter that enabled debug logging by calling printk() from hardIRQ context.
+ Between v6.11 and v6.12, a series of tracepoints events have been added as
+ a more suitable alternative. Since v6.12, a commit cd7023729877 ("firewire:
+ ohci: deprecate debug parameter") has already mar [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+ See
+ http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+ for more information. [URI: messagingengine.com]
+ [URI: sakamocchi.jp]
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -131,7 +133,7 @@ X-Spam-Report: Spam detection software,
  domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1umjp2-0007Se-SK
+X-Headers-End: 1uotCK-0005BO-LB
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,55 +146,38 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, apais@linux.microsoft.com,
- linux-kernel@vger.kernel.org, edmund.raile@protonmail.com
+Cc: linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi Linus,
+Hi,
 
-Please accept the following changes from the subsystem.
+The "firewire-ohci" module has long provided a "debug" parameter that
+enabled debug logging by calling printk() from hardIRQ context.
 
+Between v6.11 and v6.12, a series of tracepoints events have been added as
+a more suitable alternative. Since v6.12, a commit cd7023729877
+("firewire: ohci: deprecate debug parameter") has already marked the
+parameter as deprecated.
 
-The following changes since commit 8f5ae30d69d7543eee0d70083daf4de8fe15d585:
+This series removes the parameter, as its functionality is now fully
+covered by tracepoints.
 
-  Linux 6.17-rc1 (2025-08-10 19:41:16 +0300)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git tags/firewire-fixes-6.17-rc1
-
-for you to fetch changes up to 0342273e14c25971f2916de2b598db2e9cfeec15:
-
-  firewire: core: reallocate buffer for FCP address handlers when more than 4 are registered (2025-08-03 21:20:15 +0900)
-
-----------------------------------------------------------------
-firewire fixes for v6.17-rc1
-
-This set of fixes includes a solution for the issue described in the tag
-annotation for v6.17 updates.
-
-The issue involved a potential call to schedule() within an RCU read-side
-critical section. The solution applies reference counting to ensure that
-handlers which may call schedule() are invoked safely outside of the
-critical section.
-
-----------------------------------------------------------------
 Takashi Sakamoto (4):
-      firewire: core: use reference counting to invoke address handlers safely
-      firewire: core: call handler for exclusive regions outside RCU read-side critical section
-      firewire: core: call FCP address handlers outside RCU read-side critical section
-      firewire: core: reallocate buffer for FCP address handlers when more than 4 are registered
+  firewire: ohci: remove obsolete debug logging for IRQ events
+  firewire: ohci: remove obsolete debug logging for selfID sequence
+  firewire: ohci: remove obsolete debug logging for AT/AR results
+  firewire: ohci: remove obsolete module-level debug parameter
 
- drivers/firewire/core-transaction.c | 91 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++----------
- include/linux/firewire.h            |  4 ++++
- 2 files changed, 85 insertions(+), 10 deletions(-)
+ drivers/firewire/ohci.c | 248 ++++------------------------------------
+ 1 file changed, 20 insertions(+), 228 deletions(-)
 
 
-Regards
+base-commit: c17b750b3ad9f45f2b6f7e6f7f4679844244f0b9
+-- 
+2.48.1
 
-Takashi Sakamoto
 
 
 _______________________________________________
