@@ -2,37 +2,37 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28045B2E96D
-	for <lists+linux1394-devel@lfdr.de>; Thu, 21 Aug 2025 02:30:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE36EB2E96B
+	for <lists+linux1394-devel@lfdr.de>; Thu, 21 Aug 2025 02:30:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hGABkfPSNKGAJ3qSUibf+dmJ+CpUWOvKFPtNdIm+xqs=; b=XvfUwVTl13FueFSRMymxGIyy49
-	ToY2/2W7cTTBdD5jK0Ef5jKaU0xy/LX6VRLZy4HmbHuPs+wPPowzvH7xd6Ii5hK7yajRaVNTz+1Cd
-	Or52Wa/IxpDpwmBcDzs38w/5ZquINSUsrhkKqtwz5xyXJIlDfeGomgVJfnvuPvC2bDbQ=;
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=b5RtbxytnGtk9GA6gtBHRx6CYJQ2UkdLkwb/U1iul+o=; b=F3RpvVspkgkZNIoIgDPErBz9nM
+	VWNxK+3ghhyBI+cIj2LL+tOUFfiH0AF9IfGTCUnNp6benaV6vqKpg/UKEW7s8LA1d+jvHuHa+eGXK
+	+LE4zHexeTaHiBhrCSDw9V4A6JTafb/x9Un9Wt4hffsZKMiT4aQtebsEnNDjsF6IWV7Q=;
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1uotCN-0003Im-RB;
-	Thu, 21 Aug 2025 00:30:36 +0000
+	id 1uotCP-0003Y0-I6;
+	Thu, 21 Aug 2025 00:30:37 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1uotCL-0003IP-Sm
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1uotCN-0003Xm-SR
  for linux1394-devel@lists.sourceforge.net;
- Thu, 21 Aug 2025 00:30:34 +0000
+ Thu, 21 Aug 2025 00:30:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=q8zu4VWXyIevjukySC25gkI6lGHvLvrvS0El5rB82bQ=; b=Q7iCPFR6StN7G3uX9w5CLEj61y
- OWgejW7YFNqUHznFYylES/ywtgWOz0s25xx2U4VaB2U8B7DvpKnuWJg8eEvJcfwx28Yfw8XCBWnCz
- Mo7LnD8U5+VThWvvj8tqXkqe1XpQSGYPkBLR5v/TdcmVRFfAMHaUDW3fIdoGClpLLqUM=;
+ bh=MJhbiDHxyLrwI3F474o+zyXCEkS3G232mRdv3WRIJMk=; b=P0+YsGydMn4gISbNqB8/s5czXB
+ GZ41bSEPcj6h5czp2s0BzJ8tzrsH0z9SYYN6og7LSd7UM9sTqx5TruSNvZzZfg0U+tgsXfmxjAsnV
+ iSIj177n6/8/vNOnrqu4TqElxKQ3eoWwVwZ1/nlIMH4XEhMcdoZXR9bj4uVJ7RxCtJFY=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -40,48 +40,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=q8zu4VWXyIevjukySC25gkI6lGHvLvrvS0El5rB82bQ=; b=CIABYrhGdSdQCjS2wPL3HhgIEE
- AVQew+SOmIMbR6+E2lV/gsOo8owYKdbPlTcz85AwP/131WxvyPLurnOvY3wH/QkPpqGzDtHGCPMaY
- K8FgEG/1CdTZMidwH8Y8Z6fjQPEuqF7qOQoEhyCBnYqSYT5lf4qyfoQXsJJV+z5kzYak=;
-Received: from fout-a7-smtp.messagingengine.com ([103.168.172.150])
+ bh=MJhbiDHxyLrwI3F474o+zyXCEkS3G232mRdv3WRIJMk=; b=LUp1ffwIBiFyqO+zEh+o24hWuN
+ 90c2YFHKRDLstOBQee84wmCWtEGbiuC3nTOiz9NEwJnjYqKCOqRPd8c9Jt5TtlasvBmWo4sOB6XCp
+ hPdXDDz5Llygaj2VBMtDaXEo2PiN9S4DklMwG/ZE3KE5hX0ypJIw2hoR57LUqRxDSGEw=;
+Received: from fhigh-a6-smtp.messagingengine.com ([103.168.172.157])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1uotCL-0005BR-Tk for linux1394-devel@lists.sourceforge.net;
- Thu, 21 Aug 2025 00:30:34 +0000
-Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
- by mailfout.phl.internal (Postfix) with ESMTP id 5F9DDEC012D;
- Wed, 20 Aug 2025 20:30:23 -0400 (EDT)
+ id 1uotCN-0005BU-Ai for linux1394-devel@lists.sourceforge.net;
+ Thu, 21 Aug 2025 00:30:35 +0000
+Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id C451F14000B7;
+ Wed, 20 Aug 2025 20:30:24 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-01.internal (MEProxy); Wed, 20 Aug 2025 20:30:23 -0400
+ by phl-compute-03.internal (MEProxy); Wed, 20 Aug 2025 20:30:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1755736223; x=
- 1755822623; bh=q8zu4VWXyIevjukySC25gkI6lGHvLvrvS0El5rB82bQ=; b=P
- gGioA746gOHDK6lr7f9AxhREk2c0WjEBv2uVmfoX3ytkRxeQ4IcqNz+57DvXJjlE
- ucIiNOHLt+vBWvXvLxdc4ImtnHPS/rSuFsz9nmheGEDnfHPnHSEizP4kn8ElarCf
- uvsKUZ3lgRFVVD/En/ZwV8Xgb5h2qRzWQ23R3Vn5Xgwva190rWGeRcAN/muc0LvH
- kIa/iQe+zDbFHfs+9k2TAJE/CgzqtQosWQ4Ihvfb09kxAl9l4FoJfQE2EpyG6i85
- 7tR3Uvdx2dB4v7sNiWmTZalkEdqbfcNIT7NTXp+xDEMIQsH5nI59raoPqNSXayDH
- brQSFlztfmayazfqnhQBg==
+ :reply-to:subject:subject:to:to; s=fm3; t=1755736224; x=
+ 1755822624; bh=MJhbiDHxyLrwI3F474o+zyXCEkS3G232mRdv3WRIJMk=; b=q
+ 2D3eIPIvlLHx34rzFZKsBk5A09NOgI4vF6vgLTE4jcb7fI0cGLtNprkNdpZomdtR
+ oN+RXbaOFecv6Cg/cIf9ZU3EEQtRtRAVum/7YHCN+qJFvI24CYwJTx7rExcARzx+
+ 9HNr+2IJ8/SB/C5RvpUXoKwsppwfa508Z1KDek2nxv4eDZ6oqhaUIVA43xfleTJp
+ zLyI+N+uwK0azfg0M0lJRM7T/15+515jRV+SLmzsScNI/0nAPBNUqP9N00NqSTe6
+ yfxDYWRlqm7QXlQOUuLkHF9hW6aaPUNx+duMtzZ49A5aAqWfowWkOitfOAY+OFif
+ BaWT5OvNd3FQwNbqnAlyA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm3; t=1755736223; x=1755822623; bh=q
- 8zu4VWXyIevjukySC25gkI6lGHvLvrvS0El5rB82bQ=; b=Sj0OllW5zy9N6GScC
- 2QUxt9BQy60pk5+aCSHpn21QTJKbDftSk1YxZmcmTiPbDU1PS7jPRm67LL4Ff9od
- 4fZj+ExdHrII6zKY/qhnlYu3Mk59epXsHes3Tc1S6Sr9p7bXmj04Mx/4u+BoaqJ7
- AaO4fV5yAIvA/yDEpChy+cwFagj1XME8nYTdedgqCMCbY3DbuHahR0OFir7LsnDc
- X821dkIOBmx1bmjtuRwwUZOCNEeQdT6kexFzc3rqXyPmmLKqRFA405WiUGl/sFQP
- /RVuZRKTZkknvGEplRpKHxmAFI2LBDDs+dZMK0cu9PernNEaiCunwQKG6MPoKP50
- DFdPg==
-X-ME-Sender: <xms:n2imaAZyeblFLCOw_7MFp8msBm0g-1L3ZLXjGIGkOamhcLp8RmFLKA>
- <xme:n2imaEVudVC35FLGxGe4E53cNrakGwQledP-xBYVYRyhbHFAoWH8s6vAew0JGF2AA
- LWY3Oe-bKiV1WdvYfQ>
-X-ME-Received: <xmr:n2imaM7cRd4RdBR5eGCM53UD_ZBE5Vt49pOO1XOdlQPCvaFAIfSJQFWAy_-v-Th_t2PSMQZvHSaH_T1lVYHok0X1IWUYrdvhjDIOhQPy_5-E4g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgdduheelkedtucetufdoteggodetrf
+ :x-me-sender:x-sasl-enc; s=fm3; t=1755736224; x=1755822624; bh=M
+ JhbiDHxyLrwI3F474o+zyXCEkS3G232mRdv3WRIJMk=; b=Kchenfq+JPrn/393P
+ Ee/3nP1BrOjKwIO3BU1bf0gr+ZajN2gWjQuhk4n8KhZYeFeSmJ9bRHt/WgnZSSYr
+ lDA48v79T3TCPUYC0iGUAmnY/SaNkdv8PV4MAqUF7FXJ88Ff8lxhbpALyYT2wFx7
+ LDyaK72WUbuENW65geuvBkr7Xx3c4K4esUWQK1a9rvIUS0UVLUNsioZH522AMEAm
+ YPoVnCuvbo5kOU+NMdqU0nVvIsG43KH/E7eYxfSPCIUYQlk96f5l4wYkS57lcnyW
+ Q3v70DqK9ag3022nX6mCjVswoPNZFPbZYKkIM2uG9XzgwmWebZ2LorHh5E8tUGaI
+ MmTAw==
+X-ME-Sender: <xms:oGimaFZn_g0_DBle3zmRLdWlHI1GMr5pnneKSNqYLQ7ol8tzNgUwdw>
+ <xme:oGimaFXBN0dt0B-9DzBsM0pBwK7ytt29ku1qNIa2JcOoKNDMudItjygQOYeZ3MNFa
+ CIxBt6nTvAw7ijmQ2g>
+X-ME-Received: <xmr:oGimaJ6aY_hZBsfEPxNF94B7IC_BubwM_tz_h-AxUD_ZsxyQ1HRtKGlK2xJP5lHx3uvJW_tN_9QaQU4YNErsS4m-huOSFi8cWXgclw4aAN0KyQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgdduheelkeduucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
  rghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtkeertd
  ertddtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
@@ -92,20 +92,20 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgdduheelkedtucetufdote
  thdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurh
  gtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgv
  rhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:n2imaHjKnHWxg3_ViRLxwm08iRoTcn1h8ZL9fTKRJsRiqE7wj024TA>
- <xmx:n2imaLf8G1rdDVm97YrnwHStiJQeXMg_kxRVrrwuf4XW-pWRxS8fNg>
- <xmx:n2imaEcMKWLcPFFxGBMzPPXOlvEhSQjZZqNjmw7KHw9JU-leXPAY0A>
- <xmx:n2imaN-HwHim1vA4N2sz01OmO7VFp5Q8VljkvPCbIJp1XpRPX3B5KA>
- <xmx:n2imaOf1fk99YAcJK-hh4VNFo2MUMftIvTWn203WrM9beYHYde8cL0Ru>
+X-ME-Proxy: <xmx:oGimaAh8j6h7b0UH2Ruf13cw3L-V_IVXwiILqG_M1ns8-KFZy-L61g>
+ <xmx:oGimaAf3uKftMQfZjRX9HOwRcYdrjuFzDibpvuGtFkGm58Mn-LUtdw>
+ <xmx:oGimaFeAo5gykirQLllbkCOjUV1fptcASjTVaHWKUNGDZfCgBn3CHQ>
+ <xmx:oGimaK9S6o0-lkK5RuiGxY3uSdBw-O0D2cIC2Y8EZYr2IOw14ofzPw>
+ <xmx:oGimaLcxQtUSn2WQQM9Np0kNrYzI42e3TFMN5sfbyftztfBsI_akNonN>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 20 Aug 2025 20:30:22 -0400 (EDT)
+ 20 Aug 2025 20:30:23 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 1/4] firewire: ohci: remove obsolete debug logging for IRQ
- events
-Date: Thu, 21 Aug 2025 09:30:14 +0900
-Message-ID: <20250821003017.186752-2-o-takashi@sakamocchi.jp>
+Subject: [PATCH 2/4] firewire: ohci: remove obsolete debug logging for selfID
+ sequence
+Date: Thu, 21 Aug 2025 09:30:15 +0900
+Message-ID: <20250821003017.186752-3-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250821003017.186752-1-o-takashi@sakamocchi.jp>
 References: <20250821003017.186752-1-o-takashi@sakamocchi.jp>
@@ -117,10 +117,9 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: A commit 0d8914165dd1 ("firewire: ohci: add tracepoints event
- for hardIRQ event") added "firewire_ohci:irqs" event in v6.11, which can
- provide equivalent information to the existing debug logging. This commit
- removes the logging. 
+ Content preview: A commit 677ceae19073 ("firewire: core: add tracepoints event
+ for self_id_sequence") added the "firewire:self_id_sequence" event in v6.11.
+ A commit 526e21a2aa6f ("firewire: ohci: add tracepoints event [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -131,7 +130,7 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1uotCL-0005BR-Tk
+X-Headers-End: 1uotCN-0005BU-Ai
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -149,81 +148,121 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-A commit 0d8914165dd1 ("firewire: ohci: add tracepoints event for hardIRQ
-event") added "firewire_ohci:irqs" event in v6.11, which can provide
-equivalent information to the existing debug logging.
+A commit 677ceae19073 ("firewire: core: add tracepoints event for
+self_id_sequence") added the "firewire:self_id_sequence" event in v6.11.
+A commit 526e21a2aa6f ("firewire: ohci: add tracepoints event for data
+of Self-ID DMA") added the "firewire_ohci:self_id_complete" event in
+v6.12.
 
-This commit removes the logging.
+These tracepoints replace the equivalent debug logging. This commit
+removes the logging.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/ohci.c | 34 +---------------------------------
- 1 file changed, 1 insertion(+), 33 deletions(-)
+ drivers/firewire/ohci.c | 72 -----------------------------------------
+ 1 file changed, 72 deletions(-)
 
 diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
-index 5d8301b0f3aa..d3ed43f4d0c3 100644
+index d3ed43f4d0c3..8cecdf4c6572 100644
 --- a/drivers/firewire/ohci.c
 +++ b/drivers/firewire/ohci.c
-@@ -395,50 +395,18 @@ MODULE_PARM_DESC(quirks, "Chip quirks (default = 0"
+@@ -394,87 +394,17 @@ MODULE_PARM_DESC(quirks, "Chip quirks (default = 0"
+ 	")");
  
  #define OHCI_PARAM_DEBUG_AT_AR		1
- #define OHCI_PARAM_DEBUG_SELFIDS	2
--#define OHCI_PARAM_DEBUG_IRQS		4
+-#define OHCI_PARAM_DEBUG_SELFIDS	2
  
  static int param_debug;
  module_param_named(debug, param_debug, int, 0644);
  MODULE_PARM_DESC(debug, "Verbose logging, deprecated in v6.11 kernel or later. (default = 0"
  	", AT/AR events = "	__stringify(OHCI_PARAM_DEBUG_AT_AR)
- 	", self-IDs = "		__stringify(OHCI_PARAM_DEBUG_SELFIDS)
--	", IRQs = "		__stringify(OHCI_PARAM_DEBUG_IRQS)
+-	", self-IDs = "		__stringify(OHCI_PARAM_DEBUG_SELFIDS)
  	", or a combination, or all = -1)");
  
  static bool param_remote_dma;
  module_param_named(remote_dma, param_remote_dma, bool, 0444);
  MODULE_PARM_DESC(remote_dma, "Enable unfiltered remote DMA (default = N)");
  
--static void log_irqs(struct fw_ohci *ohci, u32 evt)
+-static void log_selfids(struct fw_ohci *ohci, int generation, int self_id_count)
 -{
--	if (likely(!(param_debug & OHCI_PARAM_DEBUG_IRQS)))
+-	static const char *const speed[] = {
+-		[0] = "S100", [1] = "S200", [2] = "S400",    [3] = "beta",
+-	};
+-	static const char *const power[] = {
+-		[0] = "+0W",  [1] = "+15W", [2] = "+30W",    [3] = "+45W",
+-		[4] = "-3W",  [5] = " ?W",  [6] = "-3..-6W", [7] = "-3..-10W",
+-	};
+-	static const char port[] = {
+-		[PHY_PACKET_SELF_ID_PORT_STATUS_NONE] = '.',
+-		[PHY_PACKET_SELF_ID_PORT_STATUS_NCONN] = '-',
+-		[PHY_PACKET_SELF_ID_PORT_STATUS_PARENT] = 'p',
+-		[PHY_PACKET_SELF_ID_PORT_STATUS_CHILD] = 'c',
+-	};
+-	struct self_id_sequence_enumerator enumerator = {
+-		.cursor = ohci->self_id_buffer,
+-		.quadlet_count = self_id_count,
+-	};
+-
+-	if (likely(!(param_debug & OHCI_PARAM_DEBUG_SELFIDS)))
 -		return;
 -
--	ohci_notice(ohci, "IRQ %08x%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n", evt,
--	    evt & OHCI1394_selfIDComplete	? " selfID"		: "",
--	    evt & OHCI1394_RQPkt		? " AR_req"		: "",
--	    evt & OHCI1394_RSPkt		? " AR_resp"		: "",
--	    evt & OHCI1394_reqTxComplete	? " AT_req"		: "",
--	    evt & OHCI1394_respTxComplete	? " AT_resp"		: "",
--	    evt & OHCI1394_isochRx		? " IR"			: "",
--	    evt & OHCI1394_isochTx		? " IT"			: "",
--	    evt & OHCI1394_postedWriteErr	? " postedWriteErr"	: "",
--	    evt & OHCI1394_cycleTooLong		? " cycleTooLong"	: "",
--	    evt & OHCI1394_cycle64Seconds	? " cycle64Seconds"	: "",
--	    evt & OHCI1394_cycleInconsistent	? " cycleInconsistent"	: "",
--	    evt & OHCI1394_regAccessFail	? " regAccessFail"	: "",
--	    evt & OHCI1394_unrecoverableError	? " unrecoverableError"	: "",
--	    evt & OHCI1394_busReset		? " busReset"		: "",
--	    evt & ~(OHCI1394_selfIDComplete | OHCI1394_RQPkt |
--		    OHCI1394_RSPkt | OHCI1394_reqTxComplete |
--		    OHCI1394_respTxComplete | OHCI1394_isochRx |
--		    OHCI1394_isochTx | OHCI1394_postedWriteErr |
--		    OHCI1394_cycleTooLong | OHCI1394_cycle64Seconds |
--		    OHCI1394_cycleInconsistent |
--		    OHCI1394_regAccessFail | OHCI1394_busReset)
--						? " ?"			: "");
+-	ohci_notice(ohci, "%d selfIDs, generation %d, local node ID %04x\n",
+-		    self_id_count, generation, ohci->node_id);
+-
+-	while (enumerator.quadlet_count > 0) {
+-		unsigned int quadlet_count;
+-		unsigned int port_index;
+-		const u32 *s;
+-		int i;
+-
+-		s = self_id_sequence_enumerator_next(&enumerator, &quadlet_count);
+-		if (IS_ERR(s))
+-			break;
+-
+-		ohci_notice(ohci,
+-		    "selfID 0: %08x, phy %d [%c%c%c] %s gc=%d %s %s%s%s\n",
+-		    *s,
+-		    phy_packet_self_id_get_phy_id(*s),
+-		    port[self_id_sequence_get_port_status(s, quadlet_count, 0)],
+-		    port[self_id_sequence_get_port_status(s, quadlet_count, 1)],
+-		    port[self_id_sequence_get_port_status(s, quadlet_count, 2)],
+-		    speed[*s >> 14 & 3], *s >> 16 & 63,
+-		    power[*s >> 8 & 7], *s >> 22 & 1 ? "L" : "",
+-		    *s >> 11 & 1 ? "c" : "", *s & 2 ? "i" : "");
+-
+-		port_index = 3;
+-		for (i = 1; i < quadlet_count; ++i) {
+-			ohci_notice(ohci,
+-			    "selfID n: %08x, phy %d [%c%c%c%c%c%c%c%c]\n",
+-			    s[i],
+-			    phy_packet_self_id_get_phy_id(s[i]),
+-			    port[self_id_sequence_get_port_status(s, quadlet_count, port_index)],
+-			    port[self_id_sequence_get_port_status(s, quadlet_count, port_index + 1)],
+-			    port[self_id_sequence_get_port_status(s, quadlet_count, port_index + 2)],
+-			    port[self_id_sequence_get_port_status(s, quadlet_count, port_index + 3)],
+-			    port[self_id_sequence_get_port_status(s, quadlet_count, port_index + 4)],
+-			    port[self_id_sequence_get_port_status(s, quadlet_count, port_index + 5)],
+-			    port[self_id_sequence_get_port_status(s, quadlet_count, port_index + 6)],
+-			    port[self_id_sequence_get_port_status(s, quadlet_count, port_index + 7)]
+-			);
+-
+-			port_index += 8;
+-		}
+-	}
 -}
 -
- static void log_selfids(struct fw_ohci *ohci, int generation, int self_id_count)
- {
- 	static const char *const speed[] = {
-@@ -2226,7 +2194,7 @@ static irqreturn_t irq_handler(int irq, void *data)
- 	reg_write(ohci, OHCI1394_IntEventClear,
- 		  event & ~(OHCI1394_busReset | OHCI1394_postedWriteErr));
- 	trace_irqs(ohci->card.index, event);
--	log_irqs(ohci, event);
-+
- 	// The flag is masked again at bus_reset_work() scheduled by selfID event.
- 	if (event & OHCI1394_busReset)
- 		reg_write(ohci, OHCI1394_IntMaskClear, OHCI1394_busReset);
+ static const char *evts[] = {
+ 	[0x00] = "evt_no_status",	[0x01] = "-reserved-",
+ 	[0x02] = "evt_long_packet",	[0x03] = "evt_missing_ack",
+@@ -2163,8 +2093,6 @@ static void bus_reset_work(struct work_struct *work)
+ 	if (free_rom)
+ 		dmam_free_coherent(ohci->card.device, CONFIG_ROM_SIZE, free_rom, free_rom_bus);
+ 
+-	log_selfids(ohci, generation, self_id_count);
+-
+ 	fw_core_handle_bus_reset(&ohci->card, ohci->node_id, generation,
+ 				 self_id_count, ohci->self_id_buffer,
+ 				 ohci->csr_state_setclear_abdicate);
 -- 
 2.48.1
 
