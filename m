@@ -2,37 +2,37 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7E9EB33364
-	for <lists+linux1394-devel@lfdr.de>; Mon, 25 Aug 2025 02:28:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7DF43B42120
+	for <lists+linux1394-devel@lfdr.de>; Wed,  3 Sep 2025 15:21:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iuQ9w9WBQRP8S9RoNPHeoxTSaKoDq4TfdE1VD5pSh2c=; b=l8qWbDF1KX6l5rZLYvia5P+s9K
-	zthNMxLHxqaIbMx5/CKKbjPiXbVw2PvyjhImcZiQ3UQgeO7OVxbkw62AYXlpK9NrqunQzw32PucPb
-	VR+ft0bdYjqNnaJL/gqPEOQeYCI8vzukyiefEI/rRDHq7TNgg2GF3niEqXJ335T6Pq5w=;
+	bh=v2cIOK65hY9iPfI32v3JawkfbwIHLeCuh+AxmnE6S5M=; b=KKm1qGF4Wg4UJEdHDbbZuNAzhE
+	hQA848usO64vLAzwczTR42JgR+/4Ea9Fjoc5a048xnn/rTcLGFT2wxEQ3r+HE5k2q2rmaeN45nQXI
+	zJha0+k/2EZGdYJJdr6UM/kjp+fXa9jzr65+fWgyq9dvs5TeT3DK9bT+TU1tCXduunpM=;
 Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
 	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1uqL4L-0002mF-1A;
-	Mon, 25 Aug 2025 00:28:17 +0000
+	id 1utnQE-00010u-0V;
+	Wed, 03 Sep 2025 13:21:10 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1uqL4J-0002m6-4X
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1utnQC-00010l-G3
  for linux1394-devel@lists.sourceforge.net;
- Mon, 25 Aug 2025 00:28:15 +0000
+ Wed, 03 Sep 2025 13:21:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
  Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=7assxD8rK9CczJ5BGjPadwI9gaAFx3RtST678EbjCo0=; b=WEe7nQ1UehhiWA7ZsAtB5oRSNb
- wOc/4qzWAlr09l+e5nwSEN6MV7AcL4J0Rg6WVs45cHyjTBEI2n2MfL5vsWBCZFrMem6K9ri/x2ALu
- C3e43uznQP/ityfKpKzfCwJ8cSuxSyE3USy16u7apTCEmqsWKJ+PkxdY2tTWeBqbWsYc=;
+ bh=gjSVmTZLOc7Cyb4WoSyeBbKN9tzEG7g1y0LgWwPh1pw=; b=b3la/fur4wAhDe6qfjfcsF4wFD
+ yzeSAoDDEdMXoS6nIeNWGDv9OUknfhDFG+x0oYmB4dN9SqKu9aYE+PljGNnZfm97dsoxKGzkxYPs7
+ H6LFFeaOlFnlMp9GRdHJN4j0SOzHMfT0wIWgzWGxgF7HOnKjuxIq8B85F3t8k6p8utYQ=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
@@ -40,77 +40,80 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=7assxD8rK9CczJ5BGjPadwI9gaAFx3RtST678EbjCo0=; b=Y29wcUU9uco/TFS6Ye3zpIvTgM
- +J/OqKWxz0I7YA88oxG6ngJDsY/FrAjZ0JhUAj7ephNUIIqKL3dHVs7wp13VKcIapDTXTnSf0YOAj
- MQ0YmLjG2TQFO7356FGUWHxCACOt771K1bZjahwSrwxSq433rxXHTuhKBWeFh+uQUCa4=;
-Received: from fout-b2-smtp.messagingengine.com ([202.12.124.145])
+ bh=gjSVmTZLOc7Cyb4WoSyeBbKN9tzEG7g1y0LgWwPh1pw=; b=ERG2ch+2PhAqRbXbV6aRXSh2R2
+ jKtTLyrmPgJJNmxggItTZDrCdZBeSQjzu3d6ee2VmItEMahNDKt32AyS/RblNUrEfXEhvmgh+Gdlo
+ 70qoMhQe7BFvA3JSfL81JSUBV4RiZKi4/XdjY1iucHSArDXnFy+KPoa6FYDSzuNxocOw=;
+Received: from fhigh-a6-smtp.messagingengine.com ([103.168.172.157])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1uqL4H-0007Xq-CV for linux1394-devel@lists.sourceforge.net;
- Mon, 25 Aug 2025 00:28:15 +0000
-Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
- by mailfout.stl.internal (Postfix) with ESMTP id B47731D00045;
- Sun, 24 Aug 2025 20:28:07 -0400 (EDT)
-Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-04.internal (MEProxy); Sun, 24 Aug 2025 20:28:07 -0400
+ id 1utnQ8-0003zs-Ex for linux1394-devel@lists.sourceforge.net;
+ Wed, 03 Sep 2025 13:21:08 +0000
+Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id C54A2140040E;
+ Wed,  3 Sep 2025 09:20:53 -0400 (EDT)
+Received: from phl-mailfrontend-02 ([10.202.2.163])
+ by phl-compute-06.internal (MEProxy); Wed, 03 Sep 2025 09:20:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1756081687; x=
- 1756168087; bh=7assxD8rK9CczJ5BGjPadwI9gaAFx3RtST678EbjCo0=; b=n
- /fPLQRVTWHbw6qx+X/pUqQ1OKLtzmfGAugnv/2aHGa0QE6bGKzkmuQDvNy4ZQJEn
- XwnYLxKq+GBdE8TS1APt25O6CMQ1mw8XhugK4PuYEAM275+l7VCkwX6r7O75z2+5
- lJeWGWaiO/n+mkR0uxIlJBe5+55wRt6a19yIvntl2ilg9e/7dHqccixFy+7n5/Rg
- hsdcyJjPGO7TcwOyVj/Io2yeibQIAEaScBNUkBsaQjsueX7nK2NvRFTXrC4QJhsH
- n/IvzE1WvthWgsGKLm9jxJHPuLx/IQuU0hAGzUyibuakOXxUZfZu1q/gWNOmKrcc
- W2Kiy5PP8IE0KYF9VNaHA==
+ :reply-to:subject:subject:to:to; s=fm1; t=1756905653; x=
+ 1756992053; bh=gjSVmTZLOc7Cyb4WoSyeBbKN9tzEG7g1y0LgWwPh1pw=; b=u
+ OWaxw/G3Dc/BtZSjEZj3nE7VeUh40qhoedOs2WLwJ21+7beugkSC9hzyJBNm47z/
+ GFP+DEmODwVpD52hOl4YVbcRrsOYVH5LHT+RKN8rMM3G2DrBHzJhQ40sQrzjWOjq
+ VtRFtv6mGp25WkJSg6AzTsPE5kjIAdqKGbfybEwMc1imhWHzURzxCzohkfW0UKQz
+ JO8o7hq+xp2rur/o8kXFdw5f5q9iu8DJWaeqSJiygIR/NTjKmVhNK8ExB4EsLssT
+ tp9Uzx3AvRAkNBizYHTx5Z9TdCjhTQgKB2+F1vlkEAcAx2TgJRSuKhuuFgwxIVkj
+ cEvdpxRe8InYGyJ8Io0eg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
- 1756081687; x=1756168087; bh=7assxD8rK9CczJ5BGjPadwI9gaAFx3RtST6
- 78EbjCo0=; b=G0JY6ni1d1D4Y1fkLFOvSq8r1ed4zyAU1kOv7hjvrriWz7/Ni7o
- kUJcX+MBb4vEovrnSHtM4MF4ga0HU3nsqOG6zWADuWZ3WyRLpSsNMtExLFJ/vtFF
- eo86PKlOFNA9SbC1ligiJ6Rqy2XwInU5HVYfiwWAhj3z5o3Gj5x2ocKSfrvz2yLk
- W8eB7VdXaEJLMPEbNUyZXcJ7uLuqtb8UyDrFJ9R6mT2/ZSi5jNyWdDY1yxrgxg3P
- hvGH7uYJvx0KYAsPW4iZkTl/LoAJiv439DT+VFL43nEu73/fEWTFqDqWlvs6HHd8
- pT+ZP/tq5zpgNp8/Y5hmBHifU/JRFxHo5Bg==
-X-ME-Sender: <xms:F66raBX-Lvl1LrfwkYusHIiJKYnkBijmNzb_LLOf0V5f3ghfjBFDRQ>
- <xme:F66raLO_OZ6ou_GfV_SpKXt9UJEcHMGJpK3NxQr_k1XlaqidCBidPPumy3nZRtx0A
- MvygTRf6zcJvW5bcfs>
-X-ME-Received: <xmr:F66raNZop-V36G48-0dRFZd4Km9ot3zmBG7zwFZ2vvqk_00DaR7w8b1O3kX4lzTpAPPZJAWMuMRoaauhtDpIgtIvzk5-ZU9McxM>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddujedtleehucetufdoteggodetrf
- dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttdertd
- dttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
- hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhteetgf
- ekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushhtvghr
- ufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrg
- hkrghmohgttghhihdrjhhppdhnsggprhgtphhtthhopedvpdhmohguvgepshhmthhpohhu
- thdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurh
- gtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgv
- rhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:F66raHrvPZ72se5zwgihtCYOoumcnZI9is8n6XGTX5XH_4EFweeDFA>
- <xmx:F66raJYWyX4LaPHvbfvqsJHOPtoWnrmInEdK2sjAT9HxnN8HaRjB6w>
- <xmx:F66raHTdkvalkR8MAZBmOemXhEplHLNjUpTNxzujKEe_dO0LiFn9tQ>
- <xmx:F66raI4DALnKRSOuY_YQiidYpo1_J_M4ajCG53BMiueDT9hopveIkg>
- <xmx:F66raBDKRUu1cGIym56y35IF6LeMI8SFa9DaPHN2c_NB5MmKx2RsV_gl>
+ :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+ 1756905653; x=1756992053; bh=gjSVmTZLOc7Cyb4WoSyeBbKN9tzEG7g1y0L
+ gWwPh1pw=; b=LHwVWWlVofGwBRWzJ7s7qLelajjRh4pq92A5ib2nCE7Fo2oY+19
+ 07fk0gcOkIoOeBr4pEbBfWxQgjYF+5Z4VrZZqG9/T/xB5eBzLAvqt6yrTLViuMQZ
+ BcaMa2EaSt0v0aDbRNLGmtYtv9KAKt9eQ+biPB8jSSg5sWgPdr37mHQn02Ia2xnT
+ IiU0A+xf3+88bNwReHJNzPEzsbgIfqAVTpzthDo4ugGgipf2JIYHP/btaBZ2L/SA
+ AlOk+uLXmWWlsXVxpt/Y6FW/MKsBZaMqN8gjRpyeZDFcaoM4iBWu950RuzsqA14X
+ 4DSzaCZs1YCVD19wbQ0lyDwPxJCpab2JBMA==
+X-ME-Sender: <xms:tUC4aJ5LMuGH5bgwh6elT6SFvIHH-E2tWf22cOrZdY1rAqI-DPa_MA>
+ <xme:tUC4aAVcQ3nF3s7paJ1C5ez4lDtK9vGBghKOGvk7bGsTZz0PuhwNXbLgos67Xs-CM
+ 3pa9xU9iumuykmyPlg>
+X-ME-Received: <xmr:tUC4aAD6jJ8ILBoOkRNhAJXQBcWxSFFArObrQN9cryyTFGhGNLl-MBeL-PFTzH7Hvr4ryEvhOZnMV1JpYGMFYVLTm6u0bnDWtNM>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdefvdehucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceurghi
+ lhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttd
+ dvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhi
+ sehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeevieelhfdukeffhe
+ ekffduudevvdefudelleefgeeileejheejuedvgefhteevvdenucffohhmrghinhepkhgv
+ rhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
+ hfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghrtghp
+ thhtohepgedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepmhhishhtvghrmhhiug
+ hisehgmhgrihhlrdgtohhmpdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlhes
+ lhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhigqd
+ hkvghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehgrhgvghhk
+ hheslhhinhhugihfohhunhgurghtihhonhdrohhrgh
+X-ME-Proxy: <xmx:tUC4aH6FjZdpFkP0e2kOK8FA1iTAeF4S2TyySOdftEoZFMlKHJuOgg>
+ <xmx:tUC4aDzxhRyL9qy7nvxkv-JmESpFmm5riSYsLDxw0N53FIX2N2L_vg>
+ <xmx:tUC4aGwxJoqjbOElErINWszDdJMybQwyaY-kKOo9XkURT2NTotO3uA>
+ <xmx:tUC4aDw9299g_a2jnibR_0CP3p_MCov6VtX9rMKIFR9lH7hO45ozWQ>
+ <xmx:tUC4aFz0UJaLsWNOVwa0g_sqAUFAkI4Li-pq7SIQQC-8VEZDNY31DBdK>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 24 Aug 2025 20:28:06 -0400 (EDT)
-Date: Mon, 25 Aug 2025 09:28:03 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 3 Sep 2025 09:20:52 -0400 (EDT)
+Date: Wed, 3 Sep 2025 22:20:48 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: linux1394-devel@lists.sourceforge.net
-Subject: Re: [PATCH 0/3] firewire: ohci: switch to threaded IRQ handler for
- SelfIDComplete event
-Message-ID: <20250825002803.GA283774@workstation.local>
-Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
- linux-kernel@vger.kernel.org
-References: <20250823030954.268412-1-o-takashi@sakamocchi.jp>
+To: Aleksandr Shabelnikov <mistermidi@gmail.com>
+Subject: Re: [PATCH v2] firewire: core: bound traversal stack in
+ read_config_rom()
+Message-ID: <20250903132048.GA77442@workstation.local>
+Mail-Followup-To: Aleksandr Shabelnikov <mistermidi@gmail.com>,
+ linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
+ gregkh@linuxfoundation.org
+References: <20250902092745.8326-1-mistermidi@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250823030954.268412-1-o-takashi@sakamocchi.jp>
+In-Reply-To: <20250902092745.8326-1-mistermidi@gmail.com>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
@@ -118,9 +121,10 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Sat, Aug 23, 2025 at 12:09:51PM +0900, Takashi Sakamoto
- wrote: > Hi, > > This patchset replaces the module-local workqueue with a
- threaded IRQ > handler for handling the SelfIDComplete event in the [...]
+ Content preview:  Hi, Thanks for the patch. On Tue, Sep 02, 2025 at 11:27:45AM
+ +0200, Aleksandr Shabelnikov wrote: > read_config_rom() walks Configuration
+ ROM directories using an explicit > stack but pushes new entries without
+ a bound check: > [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -131,7 +135,7 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1uqL4H-0007Xq-CV
+X-Headers-End: 1utnQ8-0003zs-Ex
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,40 +148,140 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org
+Cc: gregkh@linuxfoundation.org, linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Sat, Aug 23, 2025 at 12:09:51PM +0900, Takashi Sakamoto wrote:
-> Hi,
-> 
-> This patchset replaces the module-local workqueue with a threaded IRQ
-> handler for handling the SelfIDComplete event in the 1394 OHCI PCI driver.
-> 
-> The SelfIDComplete event is the first step in maintaining bus topology.
-> It occurs after a bus reset or when the topology changes, and must be
-> processed outside the hard IRQ context due to the latency involved in
-> enumerating the SelfID sequence. Historically, this was handled by a
-> module-local workqueue with the WQ_MEM_RECLAIM flag. A threaded IRQ
-> handler offers a cleaner and more reliable solution, leveraging the
-> kernel's common infrastructure and eliminating the need for maintaining
-> a custom workqueue.
-> 
-> Takashi Sakamoto (3):
->   firewire: ohci: move self_id_complete tracepoint after validating
->     register
->   firewire: ohci: use threaded IRQ handler to handle SelfIDComplete
->     event
->   firewire: ohci: remove module-local workqueue
-> 
->  drivers/firewire/ohci.c | 61 +++++++++++++++++------------------------
->  1 file changed, 25 insertions(+), 36 deletions(-)
+Hi,
 
-Applied to for-next branch.
+Thanks for the patch.
+
+On Tue, Sep 02, 2025 at 11:27:45AM +0200, Aleksandr Shabelnikov wrote:
+> read_config_rom() walks Configuration ROM directories using an explicit
+> stack but pushes new entries without a bound check:
+> 
+>     stack[sp++] = i + rom[i];
+> 
+> A malicious or malformed Configuration ROM can construct in-range cyclic
+> directory references so that the traversal keeps enqueueing, growing the
+> stack past its allocated depth. rom[] and stack[] are allocated adjacent
+> in a single kmalloc() block, so this leads to a heap out-of-bounds write.
+> 
+> Add a hard bound check before every push. While this does not itself
+> implement cycle detection, it prevents memory corruption and limits the
+> impact to a clean failure (-EOVERFLOW).
+> 
+> Signed-off-by: Aleksandr Shabelnikov <mistermidi@gmail.com>
+> ---
+> v2:
+>   - Drop Reported-by / Suggested-by trailers (per Greg KH)
+> ---
+>  drivers/firewire/core-device.c | 13 +++++++++++--
+>  1 file changed, 11 insertions(+), 2 deletions(-)
+
+For this kind of issue, I always hesitate to accept such changes, since
+they addresses to an unreal problem. Moreover, IEEE 1394 is already a
+legacy technology, and has been abandoned by vendors and manufacturers.
+It is hardly plausible that such malicious content of configuration ROM
+would be spread widely in recent years.
+
+Nevertheless, from the perspective of building a robust software stack,
+I can recognize the merit of your proposal. For this aim, I suggest you
+consider working with KUnit[1].
+
+The following change allows us to provide a customized read function to
+the relevant function in any KUnit test suite. You can find some existing
+examples of Kunit tests in the following files:
+
+* drivers/firewire/device-attribute-test.c
+* drivers/firewire/ohci-serdes-test.c
+* drivers/firewire/packet-serdes-test.c
+* drivers/firewire/self-id-sequence-helper-test.c
+* drivers/firewire/uapi-test.c
+
+Contributions to this subsystem may not provide a strong advantage to
+your career as a software engineer. However, knowledge and experience
+with the KUnit framework will certainly be valuable and beneficial. If
+you are still motivated, I encourage you to give it a try.
+
+[1] https://docs.kernel.org/dev-tools/kunit/index.html
+
+```
+$ git diff
+diff --git a/drivers/firewire/core-device.c b/drivers/firewire/core-device.c
+index 4125e9e8..0987f7fe 100644
+--- a/drivers/firewire/core-device.c
++++ b/drivers/firewire/core-device.c
+@@ -575,7 +575,8 @@ static int read_rom(struct fw_device *device,
+  * are reading the ROM may have changed the ROM during the reset.
+  * Returns either a result code or a negative error code.
+  */
+-static int read_config_rom(struct fw_device *device, int generation)
++static int read_config_rom(struct fw_device *device, int generation,
++                          int (*read_fn)(struct fw_device *, int, int, u32 *))
+ {
+        struct fw_card *card = device->card;
+        const u32 *old_rom, *new_rom;
+@@ -595,7 +596,7 @@ static int read_config_rom(struct fw_device *device, int generation)
+
+        /* First read the bus info block. */
+        for (i = 0; i < 5; i++) {
+-               ret = read_rom(device, generation, i, &rom[i]);
++               ret = read_fn(device, generation, i, &rom[i]);
+                if (ret != RCODE_COMPLETE)
+                        goto out;
+                /*
+@@ -633,7 +634,7 @@ static int read_config_rom(struct fw_device *device, int generation)
+                        device->max_speed = card->link_speed;
+
+                while (device->max_speed > SCODE_100) {
+-                       if (read_rom(device, generation, 0, &dummy) ==
++                       if (read_fn(device, generation, 0, &dummy) ==
+                            RCODE_COMPLETE)
+                                break;
+                        device->max_speed--;
+@@ -665,7 +666,7 @@ static int read_config_rom(struct fw_device *device, int generation)
+                }
+
+                /* Read header quadlet for the block to get the length. */
+-               ret = read_rom(device, generation, i, &rom[i]);
++               ret = read_fn(device, generation, i, &rom[i]);
+                if (ret != RCODE_COMPLETE)
+                        goto out;
+                end = i + (rom[i] >> 16) + 1;
+@@ -689,7 +690,7 @@ static int read_config_rom(struct fw_device *device, int generation)
+                 * it references another block, and push it in that case.
+                 */
+                for (; i < end; i++) {
+-                       ret = read_rom(device, generation, i, &rom[i]);
++                       ret = read_fn(device, generation, i, &rom[i]);
+                        if (ret != RCODE_COMPLETE)
+                                goto out;
+
+@@ -1014,7 +1015,7 @@ static void fw_device_init(struct work_struct *work)
+         * device.
+         */
+
+-       ret = read_config_rom(device, device->generation);
++       ret = read_config_rom(device, device->generation, read_rom);
+        if (ret != RCODE_COMPLETE) {
+                if (device->config_rom_retries < MAX_RETRIES &&
+                    atomic_read(&device->state) == FW_DEVICE_INITIALIZING) {
+@@ -1207,7 +1208,7 @@ static void fw_device_refresh(struct work_struct *work)
+         */
+        device_for_each_child(&device->device, NULL, shutdown_unit);
+
+-       ret = read_config_rom(device, device->generation);
++       ret = read_config_rom(device, device->generation, read_rom);
+        if (ret != RCODE_COMPLETE)
+                goto failed_config_rom;
+
+``
 
 
-Regards
+Thanks
 
 Takashi Sakamoto
 
