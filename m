@@ -2,7 +2,7 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 648CEB481FE
+	by mail.lfdr.de (Postfix) with ESMTPS id 5ED68B481FD
 	for <lists+linux1394-devel@lfdr.de>; Mon,  8 Sep 2025 03:21:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
@@ -10,29 +10,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W8vDH+EHqvE+0dU0ogEMhiD7Z0pOMxVrVsJXH6RQYpQ=; b=WkrGSwEvLgddkvqARRZavArn+M
-	GQQmIPc3gWixxKVyzAcdVR1RMKMKVZ35be9lgklZcBUOKF8PkICTVr2VEcB/jzDQrhj+ktooeLvf0
-	5gH3Is6S/8NvhCzwSmTQgNLALbbenKU9hZ/n0TPsbp0Ner6DpoQpoCWqcK4udQkr3NPc=;
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=KAW+r6/9QSXzQ+0kTmCrmjE6V2wJIzn6NL9P+8z8T/M=; b=En6uP7qz0EPMGFqU4TSdpfQ1Op
+	PfbVga+gR8Tg1MzQjdevQQCgAIKdsefzMCD8UheeVeyivbkumdZ0zSkvF2+rgQKvAd/HleKgwHNLL
+	VrvjNH//WCLO9JPyb0xQMR9EprusYgQAegnrtDTUuMI3nC2Kp/yj4n14XcrExlzgd80U=;
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1uvQZV-0003oZ-VJ;
+	id 1uvQZV-0008BA-94;
 	Mon, 08 Sep 2025 01:21:29 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1uvQZS-0003o0-V0
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1uvQZT-0008Aw-05
  for linux1394-devel@lists.sourceforge.net;
- Mon, 08 Sep 2025 01:21:26 +0000
+ Mon, 08 Sep 2025 01:21:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=VnQqzEe4MIZzE9rsM4hqaAJTPrsvj4NXRFbWU+fyj6g=; b=SoEggM+bI/Ial92g4riLw7p3NP
- 5+7Z3zCLFCorbpgigUK9l/0brRTtKvbVK8nyeOWolCLXdKuM9QT0TkhTUdZtYNpkvfBttcVHI0XJD
- 4UzxGtxI3BICvv2XNhAoF5ri1u5HiJXwMi6XEVXQ/P5IWdCosH0jKUHBhhecdS5IzgaQ=;
+ bh=H7DOpTJkIKamZnnlkDD1SFk3tG3wPCtz+PxOLCk1rJA=; b=bIPD6gUiPGu3XPTrSBwmI+Fe7E
+ UUn5ZlaBZ+PW9sWLum8ORFUpQTdaBYjzlF6oCA2mZyfOTzjlLaQxJHqKs3BUCqQ0n3X7I0mRNOvAQ
+ JU81Wu0g7wE/o3AS/Ee/Zkq79JqVfDEQnsA7Aeg8oq40g/nueHj7j2e2G4dCIh1Ebau0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -40,72 +40,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=VnQqzEe4MIZzE9rsM4hqaAJTPrsvj4NXRFbWU+fyj6g=; b=VUQYhu7PgOG36XIm81XZF7RfF2
- LFy+1JkZlySPKjd/6qXiRBZ0pr8TWqMZC4ru/EGKdGrAVT5zMs1xheqHdJKaTohPeIfWlHdaFtWWY
- rtzwWcu8Ubjs2FFt+L6UHCxXHv0dybp20bdH3+6orQ6s9ZBPR7oKAfo/bIeJRzAMuDTs=;
-Received: from fout-a3-smtp.messagingengine.com ([103.168.172.146])
+ bh=H7DOpTJkIKamZnnlkDD1SFk3tG3wPCtz+PxOLCk1rJA=; b=aNPLzy9omAx0aCSEoknD/c0SWh
+ QB+cKvN6Lq7/P+89gQCwbAWT1cJeuJjMxpN7/G38F22XOxzQ0+DY8w82x7Pc/kkD39Pqihl39/IvF
+ yX60gr1MTBk4kyZ0B+nmiOJb4hTg3m0iRv1mRxb5orffyqdzauRci6WujZIdF4x4gqvM=;
+Received: from fhigh-a2-smtp.messagingengine.com ([103.168.172.153])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1uvQZR-0001ig-0o for linux1394-devel@lists.sourceforge.net;
- Mon, 08 Sep 2025 01:21:25 +0000
-Received: from phl-compute-11.internal (phl-compute-11.internal [10.202.2.51])
- by mailfout.phl.internal (Postfix) with ESMTP id 7A0E1EC007B;
- Sun,  7 Sep 2025 21:21:19 -0400 (EDT)
+ id 1uvQZS-0001im-FZ for linux1394-devel@lists.sourceforge.net;
+ Mon, 08 Sep 2025 01:21:26 +0000
+Received: from phl-compute-09.internal (phl-compute-09.internal [10.202.2.49])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id EA0301400031;
+ Sun,  7 Sep 2025 21:21:20 -0400 (EDT)
 Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-11.internal (MEProxy); Sun, 07 Sep 2025 21:21:19 -0400
+ by phl-compute-09.internal (MEProxy); Sun, 07 Sep 2025 21:21:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1757294479; x=
- 1757380879; bh=VnQqzEe4MIZzE9rsM4hqaAJTPrsvj4NXRFbWU+fyj6g=; b=L
- UbNN6nYXHbf8e8gxRWAsbkmQJhBC1+f/l21su8w4hWVoTfF88WMwgKFxHMiN+ns0
- LXcTq1/oOgR3YEBpZZ8Hquu/+XfL+l26EWV9rKSkOdM3ZZlMcUQvcG90z7B/ES2m
- AxEuFK+pZaVAIE1pL7+U2qGuDnSTQswUe01KbZcj1dWtqpJBVapxA5xh0IZCc5kM
- GNiANm/4ezkVLX7DXlAuqs5ZIlwXYbCd3z3RyISDJTjtmGi39TDoKGSeJQRDeSsn
- suyUgyzBmS6SR9DpWk7RMDvk4S9oQZKW2rzgZ/2gk4yIHdv5vkqR9iphghKkpalM
- p3P4QDb1ECrcrJKNW4mXA==
+ :reply-to:subject:subject:to:to; s=fm1; t=1757294480; x=
+ 1757380880; bh=H7DOpTJkIKamZnnlkDD1SFk3tG3wPCtz+PxOLCk1rJA=; b=g
+ ZJHO4D0taD6mqOFuMbyNxqUv3ayiE4OGADR1Zl79iNhuahUTtiFSn2pgX5O5+C10
+ WVubXjw02/hbyh3kZihjTnqH9Jz800bpAOHyoseoM30U1ylIAI26LNnADfSCYGkh
+ ece6k/pZRXkOktfexQZWXuMFDr3Etm+KXS5Tk7IBWZXSnkv/H//AjdPkzECfQ1Hf
+ 5mJDkHJObzA4KM32JrbA/DN9eR2g12+LM2F170MhSjwmY3e3zsiWavJi/8XaW/T0
+ yOAfElZx4Vp6BFE3bCJUDpbOi910sgzBqLSfoMmKO/9aAULeV43QrORa4tCE66xf
+ qu6UsjTN6qWX8XCJc752A==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm1; t=1757294479; x=1757380879; bh=V
- nQqzEe4MIZzE9rsM4hqaAJTPrsvj4NXRFbWU+fyj6g=; b=NrAEHOZGBrACcP2ji
- i/S/QWBzQrlw+Tbb5tlHvGeV4qTmovOSINBFqbo/4h+ubcDhoq/Pw4O9h9KocsGZ
- RqRor/VxLh6No6QOvmI47RO+QioxGeXGvnq9bHpJ6ZDrOI5NXonAi7jvL78S2VPD
- UHMUN65M4TAcBhsdTImCFpzoBuiTRzMDTRvAYczd6mGnGpdegxTr5xw0gzaOjbtd
- H9C81GrzLrCEnV45I3pDgRpMREQpBi+5xidt8cTAfIOHTtr32Y63FtdBHgPBSatx
- RCRzdv2nzLKQBpLO729JmWQZsAPXiK0ZuW2q2vdDOAD+W3OAdma9BX/KHgS4uwLU
- HsIWg==
-X-ME-Sender: <xms:jy--aCya6PGMMwKLrbrLGJyQj2eIggqXdcVxtBsJOkYQ6uxaTtEHMA>
- <xme:jy--aHOq4yxWymP1ybzb5VzxC8AgnTfThXoGBMelV4By1ZKueUfHN3aTN5FEcI5NQ
- VbGe7-iMK8q05BvO10>
-X-ME-Received: <xmr:jy--aGTQriEd4LweV8uribvlJSVXCnqebFzUuoJFB6oHVKeSj9uGkNRApJLxv6U2ZSOKN6K2EGW8YUB9hwUlQRB_b5EQLP-hnO-PB5kLtd8>
+ :x-me-sender:x-sasl-enc; s=fm1; t=1757294480; x=1757380880; bh=H
+ 7DOpTJkIKamZnnlkDD1SFk3tG3wPCtz+PxOLCk1rJA=; b=Iscf8s9ugpTeE2bIo
+ Mr+nk6pxOKJF+PshEI92Til+A5+QvU7R2t8eOQQnNp5z3GNTjXJizfpUPI+BNOBc
+ vZnLdzQrXu47toE4X3b+hiLsKCYDBAfgAttZeIM7ut7RCQGBKV9OzE+5Wt5DKZMZ
+ sVWPFMOoJzwAm641M4C7doggo2FiwaZbXkQyRx1Suqgd7hbBcjRkt4ywN3y9+uDQ
+ 0ulTG6t72FHFPC0eS6hLXNyllDK+Ynqp61lJT8Sg27Y1YvMHmnrKIBt4aCvIX7h3
+ JjxoZy0s9GPDDbjA6vMFI3sFw2nC2pvesDm3h7IMewBhFhgkh0W+WYn8h998NrCK
+ s3oIw==
+X-ME-Sender: <xms:kC--aNudcNueJvJQ3lZkptwGmdoKoQmDBGBvcYQCv2_eDbWcyMnrBA>
+ <xme:kC--aPZ1cPbOHMvPIEVU26nYNjSrAa3Ea6wlKBnEu0k_a2-d7wNPxaNn6NVKhqnsq
+ L5eHTciAdDq8IMr1jo>
+X-ME-Received: <xmr:kC--aCspPahR5kIwNC7zcdGImEGPWdIBbMoMj4LuFR_uVDlZ0u0NeEk7hYBrVEW6lQaw1MsPyrn-5tshj0oAf0IzkTNoDVM1Nm0M9mKcQ-0>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdduiedulecutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
  ihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekredtre
  dttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhh
  ihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepvdejgfejuedvgf
  duudekleevtefgtdevhfdtffefiefgveeuteffiedvffekvddtnecuvehluhhsthgvrhfu
- ihiivgepudenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkh
+ ihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkh
  grmhhotggthhhirdhjphdpnhgspghrtghpthhtohepvddpmhhouggvpehsmhhtphhouhht
  pdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtg
  gvfhhorhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghr
  rdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:jy--aFZFbRYXy6xFLUcsLKE2QRLO5QoVAF1Nw1Y1ehu-Bo9oYZjt7Q>
- <xmx:jy--aD3B6-lBxCZ3PSMI5q04Ysehz5Sq-6IbhXIXXCy3GM6BR49Sfw>
- <xmx:jy--aFUduKdIX3pqogj-VIyNeH6JeqsbgHMtDSeQvKkmyDH6zqIoNw>
- <xmx:jy--aNVe5XxawolN7UqXJsWY113kVZ1m2VavWkNkXeExLBTDyj0k2w>
- <xmx:jy--aL1H-9PEEO24ySkQGXcCR87MByYgyhKMMWlzoUPpq46zMQxDoxnv>
+X-ME-Proxy: <xmx:kC--aBHcP65zhaAFLALZjAeHR6Qh1Y2_YsPb1ib1leeuzIpgca35AQ>
+ <xmx:kC--aNzwZeDor2aqyF0q1cuVCZ6obFK6BR45s2abmuJkhctKYRNNTA>
+ <xmx:kC--aAg-Gym3NZNiXnVEyeAZk6qIu61lP_9yILCul_XGxwu54B3IBA>
+ <xmx:kC--aAwdfwKwu6RQnbh1VLNvasykuU4g6OKg3QCz40i2HnyTzpkMAQ>
+ <xmx:kC--aCRK_8Zs3MtUY-M7pCc5YMi5ttth149UcA8gi5-_SycUP4OcfSPl>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 7 Sep 2025 21:21:18 -0400 (EDT)
+ 7 Sep 2025 21:21:19 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 04/11] firewire: core: add helper functions to access to
- fw_device data in fw_node structure
-Date: Mon,  8 Sep 2025 10:21:01 +0900
-Message-ID: <20250908012108.514698-5-o-takashi@sakamocchi.jp>
+Subject: [PATCH 05/11] firewire: core: use cleanup function in bm_work
+Date: Mon,  8 Sep 2025 10:21:02 +0900
+Message-ID: <20250908012108.514698-6-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250908012108.514698-1-o-takashi@sakamocchi.jp>
 References: <20250908012108.514698-1-o-takashi@sakamocchi.jp>
@@ -117,11 +116,10 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  The data mbmer in fw_node structure is an opaque pointer,
- while nowadays it is just used to refer to fw_device associated with the
- fw_node.
- This commit redefines the opaque pointer to a pointer to fw_device structure, 
- and adds some helper functions to set/get it. 
+ Content preview:  In "bm_work" function, the references to fw_card and fw_node
+ are released at last. This is achieved by using goto statements. For this
+ case, the kernel cleanup framework is available. This commit uses the framework
+ to remove these statements. 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -132,7 +130,7 @@ X-Spam-Report: Spam detection software,
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1uvQZR-0001ig-0o
+X-Headers-End: 1uvQZS-0001im-FZ
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -150,149 +148,132 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The data mbmer in fw_node structure is an opaque pointer, while nowadays
-it is just used to refer to fw_device associated with the fw_node.
+In "bm_work" function, the references to fw_card and fw_node are
+released at last. This is achieved by using goto statements. For this
+case, the kernel cleanup framework is available.
 
-This commit redefines the opaque pointer to a pointer to fw_device
-structure, and adds some helper functions to set/get it.
+This commit uses the framework to remove these statements.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/core-card.c   |  4 ++--
- drivers/firewire/core-device.c | 18 +++++++++---------
- drivers/firewire/core.h        | 14 ++++++++++++--
- 3 files changed, 23 insertions(+), 13 deletions(-)
+ drivers/firewire/core-card.c | 33 ++++++++++++++++-----------------
+ 1 file changed, 16 insertions(+), 17 deletions(-)
 
 diff --git a/drivers/firewire/core-card.c b/drivers/firewire/core-card.c
-index 41902dcc10a0..4a4210cda571 100644
+index 4a4210cda571..5bd89ddf5018 100644
 --- a/drivers/firewire/core-card.c
 +++ b/drivers/firewire/core-card.c
-@@ -307,12 +307,12 @@ static void bm_work(struct work_struct *work)
- 	generation = card->generation;
- 
- 	root_node = fw_node_get(card->root_node);
--	root_device = root_node->data;
-+	root_device = fw_node_get_device(root_node);
- 	root_device_is_running = root_device &&
- 			atomic_read(&root_device->state) == FW_DEVICE_RUNNING;
- 	root_device_is_cmc = root_device && root_device->cmc;
- 
--	irm_device = card->irm_node->data;
-+	irm_device = fw_node_get_device(card->irm_node);
- 	irm_is_1394_1995_only = irm_device && irm_device->config_rom &&
- 			(irm_device->config_rom[2] & 0x000000f0) == 0;
- 
-diff --git a/drivers/firewire/core-device.c b/drivers/firewire/core-device.c
-index aeacd4cfd694..6a04a0014694 100644
---- a/drivers/firewire/core-device.c
-+++ b/drivers/firewire/core-device.c
-@@ -887,7 +887,7 @@ static void fw_device_release(struct device *dev)
- 	 * bus manager work looks at this node.
- 	 */
- 	scoped_guard(spinlock_irqsave, &card->lock)
--		device->node->data = NULL;
-+		fw_node_set_device(device->node, NULL);
- 
- 	fw_node_put(device->node);
- 	kfree(device->config_rom);
-@@ -1007,7 +1007,7 @@ static void fw_device_init(struct work_struct *work)
- 	int ret;
- 
- 	/*
--	 * All failure paths here set node->data to NULL, so that we
-+	 * All failure paths here call fw_node_set_device(node, NULL), so that we
- 	 * don't try to do device_for_each_child() on a kfree()'d
- 	 * device.
- 	 */
-@@ -1051,9 +1051,9 @@ static void fw_device_init(struct work_struct *work)
- 				struct fw_node *obsolete_node = reused->node;
- 
- 				device->node = obsolete_node;
--				device->node->data = device;
-+				fw_node_set_device(device->node, device);
- 				reused->node = current_node;
--				reused->node->data = reused;
-+				fw_node_set_device(reused->node, reused);
- 
- 				reused->max_speed = device->max_speed;
- 				reused->node_id = current_node->node_id;
-@@ -1292,7 +1292,7 @@ void fw_node_event(struct fw_card *card, struct fw_node *node, int event)
- 		 * FW_NODE_UPDATED callbacks can update the node_id
- 		 * and generation for the device.
- 		 */
--		node->data = device;
-+		fw_node_set_device(node, device);
- 
- 		/*
- 		 * Many devices are slow to respond after bus resets,
-@@ -1307,7 +1307,7 @@ void fw_node_event(struct fw_card *card, struct fw_node *node, int event)
- 
- 	case FW_NODE_INITIATED_RESET:
- 	case FW_NODE_LINK_ON:
--		device = node->data;
-+		device = fw_node_get_device(node);
- 		if (device == NULL)
- 			goto create;
- 
-@@ -1324,7 +1324,7 @@ void fw_node_event(struct fw_card *card, struct fw_node *node, int event)
- 		break;
- 
- 	case FW_NODE_UPDATED:
--		device = node->data;
-+		device = fw_node_get_device(node);
- 		if (device == NULL)
- 			break;
- 
-@@ -1339,7 +1339,7 @@ void fw_node_event(struct fw_card *card, struct fw_node *node, int event)
- 
- 	case FW_NODE_DESTROYED:
- 	case FW_NODE_LINK_OFF:
--		if (!node->data)
-+		if (!fw_node_get_device(node))
- 			break;
- 
- 		/*
-@@ -1354,7 +1354,7 @@ void fw_node_event(struct fw_card *card, struct fw_node *node, int event)
- 		 * the device in shutdown state to have that code fail
- 		 * to create the device.
- 		 */
--		device = node->data;
-+		device = fw_node_get_device(node);
- 		if (atomic_xchg(&device->state,
- 				FW_DEVICE_GONE) == FW_DEVICE_RUNNING) {
- 			device->workfn = fw_device_shutdown;
-diff --git a/drivers/firewire/core.h b/drivers/firewire/core.h
-index 9b298af1cac0..083e39034c37 100644
---- a/drivers/firewire/core.h
-+++ b/drivers/firewire/core.h
-@@ -194,8 +194,8 @@ struct fw_node {
- 	/* For serializing node topology into a list. */
- 	struct list_head link;
- 
--	/* Upper layer specific data. */
--	void *data;
-+	// The device when already associated, else NULL.
-+	struct fw_device *device;
- 
- 	struct fw_node *ports[] __counted_by(port_count);
- };
-@@ -219,6 +219,16 @@ static inline void fw_node_put(struct fw_node *node)
- 	kref_put(&node->kref, release_node);
+@@ -280,14 +280,17 @@ void fw_schedule_bm_work(struct fw_card *card, unsigned long delay)
+ 		fw_card_put(card);
  }
  
-+static inline struct fw_device *fw_node_get_device(struct fw_node *node)
-+{
-+	return node->device;
-+}
++DEFINE_FREE(node_unref, struct fw_node *, if (_T) fw_node_put(_T))
++DEFINE_FREE(card_unref, struct fw_card *, if (_T) fw_card_put(_T))
 +
-+static inline void fw_node_set_device(struct fw_node *node, struct fw_device *device)
-+{
-+	node->device = device;
-+}
+ static void bm_work(struct work_struct *work)
+ {
+ 	static const char gap_count_table[] = {
+ 		63, 5, 7, 8, 10, 13, 16, 18, 21, 24, 26, 29, 32, 35, 37, 40
+ 	};
+-	struct fw_card *card = from_work(card, work, bm_work.work);
++	struct fw_card *card __free(card_unref) = from_work(card, work, bm_work.work);
+ 	struct fw_device *root_device, *irm_device;
+-	struct fw_node *root_node;
++	struct fw_node *root_node __free(node_unref) = NULL;
+ 	int root_id, new_root_id, irm_id, bm_id, local_id;
+ 	int gap_count, generation, grace, rcode;
+ 	bool do_reset = false;
+@@ -297,11 +300,13 @@ static void bm_work(struct work_struct *work)
+ 	bool keep_this_irm;
+ 	__be32 transaction_data[2];
+ 
++	lockdep_assert_held(&card->lock);
 +
- void fw_core_handle_bus_reset(struct fw_card *card, int node_id,
- 	int generation, int self_id_count, u32 *self_ids, bool bm_abdicate);
- void fw_destroy_nodes(struct fw_card *card);
+ 	spin_lock_irq(&card->lock);
+ 
+ 	if (card->local_node == NULL) {
+ 		spin_unlock_irq(&card->lock);
+-		goto out_put_card;
++		return;
+ 	}
+ 
+ 	generation = card->generation;
+@@ -366,9 +371,9 @@ static void bm_work(struct work_struct *work)
+ 				CSR_REGISTER_BASE + CSR_BUS_MANAGER_ID,
+ 				transaction_data, 8);
+ 
++		// Another bus reset, BM work has been rescheduled.
+ 		if (rcode == RCODE_GENERATION)
+-			/* Another bus reset, BM work has been rescheduled. */
+-			goto out;
++			return;
+ 
+ 		bm_id = be32_to_cpu(transaction_data[0]);
+ 
+@@ -382,8 +387,7 @@ static void bm_work(struct work_struct *work)
+ 			/* Somebody else is BM.  Only act as IRM. */
+ 			if (local_id == irm_id)
+ 				allocate_broadcast_channel(card, generation);
+-
+-			goto out;
++			return;
+ 		}
+ 
+ 		if (rcode == RCODE_SEND_ERROR) {
+@@ -393,7 +397,7 @@ static void bm_work(struct work_struct *work)
+ 			 * that the problem has gone away by then.
+ 			 */
+ 			fw_schedule_bm_work(card, DIV_ROUND_UP(HZ, 8));
+-			goto out;
++			return;
+ 		}
+ 
+ 		spin_lock_irq(&card->lock);
+@@ -417,7 +421,7 @@ static void bm_work(struct work_struct *work)
+ 		 */
+ 		spin_unlock_irq(&card->lock);
+ 		fw_schedule_bm_work(card, DIV_ROUND_UP(HZ, 8));
+-		goto out;
++		return;
+ 	}
+ 
+ 	/*
+@@ -455,7 +459,7 @@ static void bm_work(struct work_struct *work)
+ 		 * and let's try again once that's done.
+ 		 */
+ 		spin_unlock_irq(&card->lock);
+-		goto out;
++		return;
+ 	} else if (root_device_is_cmc) {
+ 		/*
+ 		 * We will send out a force root packet for this
+@@ -512,7 +516,7 @@ static void bm_work(struct work_struct *work)
+ 		 */
+ 		reset_bus(card, card->gap_count != 0);
+ 		/* Will allocate broadcast channel after the reset. */
+-		goto out;
++		return;
+ 	}
+ 
+ 	if (root_device_is_cmc) {
+@@ -525,16 +529,11 @@ static void bm_work(struct work_struct *work)
+ 				CSR_REGISTER_BASE + CSR_STATE_SET,
+ 				transaction_data, 4);
+ 		if (rcode == RCODE_GENERATION)
+-			goto out;
++			return;
+ 	}
+ 
+ 	if (local_id == irm_id)
+ 		allocate_broadcast_channel(card, generation);
+-
+- out:
+-	fw_node_put(root_node);
+- out_put_card:
+-	fw_card_put(card);
+ }
+ 
+ void fw_card_initialize(struct fw_card *card,
 -- 
 2.48.1
 
