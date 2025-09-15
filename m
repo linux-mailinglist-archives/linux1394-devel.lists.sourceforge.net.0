@@ -2,139 +2,136 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83575B56E5F
-	for <lists+linux1394-devel@lfdr.de>; Mon, 15 Sep 2025 04:43:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 84802B58825
+	for <lists+linux1394-devel@lfdr.de>; Tue, 16 Sep 2025 01:21:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eBnZxoCwwWdBsVEH7ZY5TIpX1CfilvWzz7GcFkb2QC8=; b=VN5RD/KxxgjLKg2MXvWWbfmY8j
-	ZzIiTRh5RqzcaByWz3G6BCJ8MO5Lr/xYjAGLDXCsx/X3TiCJ8sjGHuxb5AlletKzqUw8GvyLAWC8t
-	/9MueeXgJ0fah0zCSN/HOcPulNJoz4c3fPnQ114QUh1B3RrHNSFNUeebmb9cEbNb0rF0=;
+	bh=6MNVcNMkB9lfHbmEM6MOpHsS+yYrgEbA1k8DB2yGsQY=; b=GgEsdIGnnI4n7tLzOVSkXgBjRW
+	TO8ttxKM8HTApD7sWzhFOg0L5jfALnr6wRsn9P8lQRxcPUE6yPW1cTXDDulYahUOdeiVyIsF+wsLL
+	Io52usjqFOssm+EejaQPV2W1dIpec7lxcEFQk0VLeJEqS7hzmn8H/8SuYrogMGmacngs=;
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1uxzB6-0001m1-Oc;
-	Mon, 15 Sep 2025 02:42:52 +0000
+	id 1uyIVT-0007YN-Op;
+	Mon, 15 Sep 2025 23:21:11 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1uxzB4-0001lt-M4
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1uyIVR-0007YD-T0
  for linux1394-devel@lists.sourceforge.net;
- Mon, 15 Sep 2025 02:42:50 +0000
+ Mon, 15 Sep 2025 23:21:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
- In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=k+1xFx1bqcSZnjU5LG3bHBbaKfjqK+CEGtY+X0biaxM=; b=XxgSqOXJzGfUydV+ENOgG4BGy9
- yTF8Xd7+9ZXjLo/QmCshg21QmdbHIl3c5nLnM6ag7HHFYCltbdiGkf0BEUJIJoY2vnvtTFpyom9CE
- aIlFldO7lEjmJamT8YzAfCN26FO2Dkf1zikjPAT6c2QJm34+jYBBNWKq8wB5Du/s0FxM=;
+ bh=1LXqTPY11l8JZLVarayLcFLq/t8wdK1l2Fcr6BFWVL8=; b=U88g5DBVE0I19lrINSJa3vptRH
+ MNSyPI04Hvmrv3VGFEFL6hmb/kemsxAjRhbrrdq33yidRmGj2mscb1jGKj2yCzryxuTVasIb2299U
+ HZ/iMYWsOy0jPkzdBRUy8dk3dMtU3eyTJI5wMzWhiTgXftsyywmAgq3vL/sWryCgMr1w=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=k+1xFx1bqcSZnjU5LG3bHBbaKfjqK+CEGtY+X0biaxM=; b=kaa+//aFZSTS2oWQpSmpkUAB7T
- 9mvCOePSDpTabVdYsy/eP8OjUevEX94G6XhMDgVMKii9NIEGrfCR2xaxWGmvrdt+yXuQHgArCL9ue
- HZolnavrWRyG+zbBO7hBvnfA4zpWTUeggUs2dW/V4JuD4jrd0ySufEPafP4rviYeKvR4=;
-Received: from fout-b8-smtp.messagingengine.com ([202.12.124.151])
+ bh=1LXqTPY11l8JZLVarayLcFLq/t8wdK1l2Fcr6BFWVL8=; b=ObBr1GBw1/7YpDUjzJfcxj+0Av
+ 94PWNLpfP4telUXKasMyTJTnOHs7sEtUNgYej1d/7DoTBNQW2QqYqbtB/ksVB0uIqi88p/bwNW/mK
+ 56vwPKESO6zS74+CgKre7mUZuUM2Xd6dtKlKqI3OBskVpbkFt7rINXtYLW8QoKuKnMbo=;
+Received: from fhigh-b5-smtp.messagingengine.com ([202.12.124.156])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1uxzB4-00010j-81 for linux1394-devel@lists.sourceforge.net;
- Mon, 15 Sep 2025 02:42:50 +0000
-Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
- by mailfout.stl.internal (Postfix) with ESMTP id BBFF91D0008A;
- Sun, 14 Sep 2025 22:42:39 -0400 (EDT)
+ id 1uyIVQ-0000vv-5U for linux1394-devel@lists.sourceforge.net;
+ Mon, 15 Sep 2025 23:21:09 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+ by mailfhigh.stl.internal (Postfix) with ESMTP id 84BF47A01AD;
+ Mon, 15 Sep 2025 19:21:02 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-01.internal (MEProxy); Sun, 14 Sep 2025 22:42:39 -0400
+ by phl-compute-05.internal (MEProxy); Mon, 15 Sep 2025 19:21:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1757904159; x=
- 1757990559; bh=k+1xFx1bqcSZnjU5LG3bHBbaKfjqK+CEGtY+X0biaxM=; b=h
- XyEE6uU2fDkbHtpEbrH/F6TaG9tSdecQ4fB/e31kidDiR1VaqcsMRfwIrdfV9jb7
- SfCbrZUrlFDWmI3DErKNq6PiI4ZnZpaJzkNSkiLaMOJWv9dgqNkmFqFCeYhnp826
- teMG+wLOg1ioyurqjDuTzQRiCDqKT4UzGVzgB5ipu3OAD7hgBL4lM1cDbnqyv/gT
- sxHM83bxTmpntM5ydAR/zA4AWIfm7HGncR8RmdfUNqXnIysf+iUNPc44l7mP7Umd
- He62BhxTITbZ+gIQ0jrBF35u+FU1bv0eGfCbe2fAawsoBeiE0cVLACH/Bm4H1YNw
- z2WThQWWDg5jGJtkQOLRA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
+ h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm1; t=1757904159; x=1757990559; bh=k
- +1xFx1bqcSZnjU5LG3bHBbaKfjqK+CEGtY+X0biaxM=; b=eK/uq/e/FOepIoZGo
- 5JUxvpmnMqLVqpCgvWn1VHSxgbr7nXfP7RXr9lYTfBL9f/AyQYPlX8gKY2IxxoLt
- WUO3ifyiibgrX/v3JeyY8DhxNFYqcHC24VbmyQNQGPacuy7wZz8QxTbSuxzwbr5l
- ocZ0ruf0ij14hsnMZT6y7MzhY2wtKt9Gg00rRRuFxZyNl6ZyDYELlivIZrmp9I+A
- wIFWIXZcbxj0VwiEdnFIQzsNKIhd410zw3Z10D2asi32meP3SMZVBasPEuZDj3yV
- BzfdzU3gZIG00+Zz8WztXL79otJDXJjNY47eYMe7OwS0UYiLcKkpmvGflwLybfy0
- T4PDg==
-X-ME-Sender: <xms:H33HaN7itsyfQarjCqUzbRX1GmZ1mS7FxdptH1fIKkTyKCPP-ioFzg>
- <xme:H33HaD2KIAxPNx5iit58ElHXnC1fnhjyQ5R-a21urZ5Yp9WdvSKnir4Daz8_w5jrH
- -0FxlVlUWzvd0wGeHU>
-X-ME-Received: <xmr:H33HaGaV4Vk37wH5E31PexkfnHEqe_g6qP0N4-cBEZSSMFdLqsru3b79Qa5JeKqJDL0ffyj5ykqWekXJuisPrpRM6uQjPBJN1KXJw8-VEvhxp9U>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdefieehvdcutefuodetggdotefrod
+ :reply-to:subject:subject:to:to; s=fm1; t=1757978462; x=
+ 1758064862; bh=1LXqTPY11l8JZLVarayLcFLq/t8wdK1l2Fcr6BFWVL8=; b=g
+ n6PHu6fmgArr0b19PdA6w/6O09Rb7I9mqqUYhueiwePkjyP3HkH5GK4wG7+sqd6e
+ vxFgJxMByO+/s8Rrgwh4m1NCrMJryypsNiXv+x2/aFW/MUmX0M16RYKlPeo7o0vG
+ mTrrf6AIvfIKNZ1qO8FcSpsaD2Q5USshxI9ZU+CzN4P+sQBmgoiYPkp0Bd657ZD1
+ C/Bz17PYTQkPzb5zqVkQS+lkXG5h+GfBKNC28U32LhqRUdy3KQ2Ga2gFXjsS7FFP
+ GccEt4xsKwWf+EcgSjF1jHVQO7KvCxgefcNVT9YbGp9i715zdNoaUUhAEd4W09QJ
+ 7hMOFunPclJ8YBTq7OvPA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+ 1757978462; x=1758064862; bh=1LXqTPY11l8JZLVarayLcFLq/t8wdK1l2Fc
+ r6BFWVL8=; b=kulsHm3hYwaUTyZFU3FgDe2K8V5V6riZxWDReSBWgH8D73HUqC3
+ lMSiJ3yG1ItlkRoGlCQR2sfc/x6QOGRQ3zYkRoZ+n3O0BxgyC79igO7L22NrdiWn
+ 0SHlZmvBOOjHwzxhyPPH7XUt9IKsVW7o+BihGndrZWdhbbRpGCThzEag7LRrSPFC
+ bpAKr5BblnfOkSB9/26EOCoq3K7yHq9EO0Z4WgLsKfOylP9AUFPZ0x4P05F8gAcZ
+ 5sN0RwEC7bsY9uhp3mdXBeW0D2o6JrZkDbteye8/Bhye2CClfMCnIq99vMc2lHg1
+ CHtxM0678veuYWd787zy1ysOwgIFOsAQa3A==
+X-ME-Sender: <xms:Xp_IaNolkzSCx2sKbSi-MaPTsELnKAMhQMt2ADNCN_dH41r2jL-r5A>
+ <xme:Xp_IaIl3Z3H8HihOPK49BotNKSI_xNegR1PddG5NHnyIIKuzcN5-ka6EoIIwVAiNr
+ jYrpc1Av9u7Rce9L9M>
+X-ME-Received: <xmr:Xp_IaMLmVtw73Q_Z9xDjejU6LEiY9RjEsSl-jm6UJxHXVvOpzhdC-dHdhjVYEN3vGh6hZC21Mijq0827FuzlURjMSQaprB5pLF4>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdefkeellecutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
- ihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekredtre
- dttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhh
- ihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepvdejgfejuedvgf
- duudekleevtefgtdevhfdtffefiefgveeuteffiedvffekvddtnecuvehluhhsthgvrhfu
- ihiivgepudenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkh
+ ihhlohhuthemuceftddtnecunecujfgurhepfffhvfevuffkfhggtggujgesthdtredttd
+ dtvdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhh
+ ihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhephefhhfettefgke
+ dvieeuffevveeufedtlefhjeeiieetvdelfedtgfefuedukeeunecuvehluhhsthgvrhfu
+ ihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkh
  grmhhotggthhhirdhjphdpnhgspghrtghpthhtohepvddpmhhouggvpehsmhhtphhouhht
  pdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtg
  gvfhhorhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghr
  rdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:H33HaDDz4voQURn3JTiLWaHOxR9UW2dlkhle1WAnlmspNEUynBtOTw>
- <xmx:H33HaA-jMDu8YCmLjjsP7wjd9_-MXxsOQ7TLz5KfOMBrsCuaBtsDmg>
- <xmx:H33HaL_vhm4EoD4hYAnbDAyOCYcUrDBHbXnHsPPRVPo_Dsp4EcS9Ww>
- <xmx:H33HaPcxuNmQNDHraVVk_oSEp_AuY_Z7uOBjN-dxQKU4ZQLmHiV1ug>
- <xmx:H33HaH8_xPt9KiUWxm6Wa9tvbxJKKByefxZl09KOUmgVCxy0B8jMSyHw>
+X-ME-Proxy: <xmx:Xp_IaFw_v7aidRh1gcBV9-OUUsUZFJzPF0ASWwbp2B35xkJNAUPMrw>
+ <xmx:Xp_IaMuZ_IRWc43NpOhjupEUabPWixc56jdYNm8azPlFSq8qaKmkRw>
+ <xmx:Xp_IaMvlW5fiwNRG-OJ0-Q_eJ_suw_I8_IzIYQz9t7LH-BoL0bXPRw>
+ <xmx:Xp_IaBO9g8wbGBeA_cm9Idb4-NXTsLnR4KppdqbWKalzpT64-tbn3A>
+ <xmx:Xp_IaFvPkRiJviVFa2B6TiSAsHWT5nvyBeKFugEn1iVPb33LCbkIrsNj>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 14 Sep 2025 22:42:38 -0400 (EDT)
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 15 Sep 2025 19:21:01 -0400 (EDT)
+Date: Tue, 16 Sep 2025 08:20:58 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 2/2] firewire: core: use helper macro to compare against
- current jiffies
-Date: Mon, 15 Sep 2025 11:42:32 +0900
-Message-ID: <20250915024232.851955-3-o-takashi@sakamocchi.jp>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250915024232.851955-1-o-takashi@sakamocchi.jp>
+Subject: Re: [PATCH 0/2] firewire: core: use helper macro to calculate
+ jiffies count
+Message-ID: <20250915232058.GA908915@workstation.local>
+Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
 References: <20250915024232.851955-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250915024232.851955-1-o-takashi@sakamocchi.jp>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
+ running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: The pattern of calling either time_before64() or
- time_after64()
- with get_jiffies_64() can be replaced with the corresponding helper macros.
- Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp> ---
- drivers/firewire/core-card.c
- | 4 ++-- drivers/firewire/core-cdev.c | 2 +- drivers/firewire/core-device.c
- | 3 +-- 3 files changed, 4 insert [...] 
+ Content preview:  On Mon, Sep 15, 2025 at 11:42:30AM +0900, Takashi Sakamoto
+ wrote: > Hi, > > In this subsystem, all types of timeouts are managed using
+ kernel timer > wheel, thus they are based on jiffies grain. Some [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1uxzB4-00010j-81
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+X-Headers-End: 1uyIVQ-0000vv-5U
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -152,68 +149,33 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The pattern of calling either time_before64() or time_after64() with
-get_jiffies_64() can be replaced with the corresponding helper macros.
+On Mon, Sep 15, 2025 at 11:42:30AM +0900, Takashi Sakamoto wrote:
+> Hi,
+> 
+> In this subsystem, all types of timeouts are managed using kernel timer
+> wheel, thus they are based on jiffies grain. Some macros are available
+> to calculate jiffies count, and they have some advantages, For example,
+> no need to access to HZ macro or jiffies itself directly.
+> 
+> This patchset replaces several lines with these macros.
+> 
+> Takashi Sakamoto (2):
+>   firewire: core: use helper macros instead of direct access to HZ
+>   firewire: core: use helper macro to compare against current jiffies
+> 
+>  drivers/firewire/core-card.c        | 17 +++++++----------
+>  drivers/firewire/core-cdev.c        |  4 ++--
+>  drivers/firewire/core-device.c      |  9 ++++-----
+>  drivers/firewire/core-transaction.c |  4 ++--
+>  drivers/firewire/core.h             |  2 ++
+>  5 files changed, 17 insertions(+), 19 deletions(-)
 
-Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
----
- drivers/firewire/core-card.c   | 4 ++--
- drivers/firewire/core-cdev.c   | 2 +-
- drivers/firewire/core-device.c | 3 +--
- 3 files changed, 4 insertions(+), 5 deletions(-)
+Applied to for-next branch.
 
-diff --git a/drivers/firewire/core-card.c b/drivers/firewire/core-card.c
-index 2541e8bb4b75..b5e01a711145 100644
---- a/drivers/firewire/core-card.c
-+++ b/drivers/firewire/core-card.c
-@@ -240,7 +240,7 @@ static void br_work(struct work_struct *work)
- 
- 	/* Delay for 2s after last reset per IEEE 1394 clause 8.2.1. */
- 	if (card->reset_jiffies != 0 &&
--	    time_before64(get_jiffies_64(), card->reset_jiffies + secs_to_jiffies(2))) {
-+	    time_is_after_jiffies64(card->reset_jiffies + secs_to_jiffies(2))) {
- 		trace_bus_reset_postpone(card->index, card->generation, card->br_short);
- 
- 		if (!queue_delayed_work(fw_workqueue, &card->br_work, secs_to_jiffies(2)))
-@@ -308,7 +308,7 @@ static void bm_work(struct work_struct *work)
- 	irm_id   = card->irm_node->node_id;
- 	local_id = card->local_node->node_id;
- 
--	grace = time_after64(get_jiffies_64(), card->reset_jiffies + msecs_to_jiffies(125));
-+	grace = time_is_before_jiffies64(card->reset_jiffies + msecs_to_jiffies(125));
- 
- 	if ((is_next_generation(generation, card->bm_generation) &&
- 	     !card->bm_abdicate) ||
-diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-index 9e90c79becdb..1be8f5eb3e17 100644
---- a/drivers/firewire/core-cdev.c
-+++ b/drivers/firewire/core-cdev.c
-@@ -1324,7 +1324,7 @@ static void iso_resource_work(struct work_struct *work)
- 		todo = r->todo;
- 		// Allow 1000ms grace period for other reallocations.
- 		if (todo == ISO_RES_ALLOC &&
--		    time_before64(get_jiffies_64(), client->device->card->reset_jiffies + secs_to_jiffies(1))) {
-+		    time_is_after_jiffies64(client->device->card->reset_jiffies + secs_to_jiffies(1))) {
- 			schedule_iso_resource(r, msecs_to_jiffies(333));
- 			skip = true;
- 		} else {
-diff --git a/drivers/firewire/core-device.c b/drivers/firewire/core-device.c
-index 7d5821cd9b37..457a0da024a7 100644
---- a/drivers/firewire/core-device.c
-+++ b/drivers/firewire/core-device.c
-@@ -855,8 +855,7 @@ static void fw_device_shutdown(struct work_struct *work)
- {
- 	struct fw_device *device = from_work(device, work, work.work);
- 
--	if (time_before64(get_jiffies_64(),
--			  device->card->reset_jiffies + SHUTDOWN_DELAY)
-+	if (time_is_after_jiffies64(device->card->reset_jiffies + SHUTDOWN_DELAY)
- 	    && !list_empty(&device->card->link)) {
- 		fw_schedule_device_work(device, SHUTDOWN_DELAY);
- 		return;
--- 
-2.48.1
 
+Regards
+
+Takashi Sakamoto
 
 
 _______________________________________________
