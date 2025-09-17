@@ -2,135 +2,131 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2178B8119E
-	for <lists+linux1394-devel@lfdr.de>; Wed, 17 Sep 2025 19:02:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D4858B7EBBB
+	for <lists+linux1394-devel@lfdr.de>; Wed, 17 Sep 2025 14:58:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tmxv3wKk/KRABgk/IhhIAzUVHZn9z6sViSD7pLm9g+c=; b=KgLs+ATazG6sQOAkXouMcq8usN
-	DtmBSsMOK+AhT3on7f/h0GBbPwYPF27vKOyrwOlJxn39Vf+SxBOx2MTd1hrMQ7XKLQHX/jPA8y5Us
-	2pDixvQD8BvcM47OpNbCSOoIzZvtNQFz7Q0dRl3P0PVKnPTzd+365+97U7XfllXNjcxc=;
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	MIME-Version:Message-ID:Date:Subject:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=R1SMN/ViMwUJDSkPaUGDIn2PupH2i7ZZHAIyRZFID44=; b=dpoaBpmbRzkQwSelt+CuvI1mZn
+	clVgazko5NDW00BRZZ/uaip7iyXoOWrJxIiA+5WtvdsWCvru9pRLd1RzMFgxqICr9Rgkj60v95RtH
+	28qOBCqzUojJSaGW0T04dHNYOvyTeS9jYGplrYxwweAZN/Asm/ruCAMlMJrMTqsQ3BVI=;
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1uyfE2-0004Y0-Of;
-	Tue, 16 Sep 2025 23:36:42 +0000
+	id 1uyfeW-0007Az-9S;
+	Wed, 17 Sep 2025 00:04:04 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1uyfE1-0004Xr-Az
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1uyfeU-0007Ar-9u
  for linux1394-devel@lists.sourceforge.net;
- Tue, 16 Sep 2025 23:36:41 +0000
+ Wed, 17 Sep 2025 00:04:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=v/7bsuJ2HDoW8gCF5BfNsIwx/iJmBM1UZ2htl17Nptk=; b=GDXuZ8ZjfbMEVESml1LkIPU6s+
- toaRjSCaUz77R5knYe+0Ghr+ZOqA/+RJeqEjDSlXHXckHV/bZmlEoQgPta5uaUszX0TpTELmWneza
- 9tX1yIewuyxu3dPIXBl60Fd69szT3A8C0P4tLidgO/dk0uOlEfC3IMXN6rbTmblXc5/I=;
+ bh=lAtbokD6hXmqQ1ZHRl3dNvhzvAtOyz0DHK3MaRgY6AM=; b=M+S6mQ0Cirgj/iIuHKvZLHR/TU
+ dicRpVb+dXORU2znyKMzuKrHAKQq0ksm21WVBwDFIB4UUhpwLY0e0h4/DaYyEsXLO192ghvUiJJk8
+ GkgNLR2zKWBw8AgkMHGjsovtPFGH2yjNYfsqf1NdLaxuQjOeuaA8C0IXRjkVgUpP6ld0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=v/7bsuJ2HDoW8gCF5BfNsIwx/iJmBM1UZ2htl17Nptk=; b=eMzHEBo6oBH9O7uRfG+4N+9vKz
- /aRJbNhccg2IgBoFWJP8yMgiw3o07/PU4WECGXWXKwn5OuCgCJid3ns+b86yiulOxOuMzTcR1SA5i
- 3s+JmbCn/2HibCoeN/K7z3ouFY5BYyI6ZrZlCJgOFFivACL4O05iAfiZv4tDCyyVPlyI=;
-Received: from fhigh-a6-smtp.messagingengine.com ([103.168.172.157])
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=lAtbokD6hXmqQ1ZHRl3dNvhzvAtOyz0DHK3MaRgY6AM=; b=a
+ DffhWY7exYvC288XS94MWcYYRD6alfXnU7xcsRm3hVInLJ+IXaUZvHmeFa3ED8jVOOWFd6Tgc8b9b
+ FG0i0rrv+SUDkvAs+8YOaNGtc3z7Z76HEMtbgytLwUUWh5Asfby1EYLXbCBM+tyQY2lk4kXLqbU8Q
+ JWQPYoz96HDZ7WfM=;
+Received: from fout-b4-smtp.messagingengine.com ([202.12.124.147])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1uyfE0-00037L-14 for linux1394-devel@lists.sourceforge.net;
- Tue, 16 Sep 2025 23:36:41 +0000
-Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 59E9A14000B2;
- Tue, 16 Sep 2025 19:36:29 -0400 (EDT)
-Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-05.internal (MEProxy); Tue, 16 Sep 2025 19:36:29 -0400
+ id 1uyfeT-00046U-Ps for linux1394-devel@lists.sourceforge.net;
+ Wed, 17 Sep 2025 00:04:02 +0000
+Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
+ by mailfout.stl.internal (Postfix) with ESMTP id 4508D1D001BB;
+ Tue, 16 Sep 2025 20:03:51 -0400 (EDT)
+Received: from phl-mailfrontend-01 ([10.202.2.162])
+ by phl-compute-01.internal (MEProxy); Tue, 16 Sep 2025 20:03:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1758065789; x=
- 1758152189; bh=v/7bsuJ2HDoW8gCF5BfNsIwx/iJmBM1UZ2htl17Nptk=; b=u
- 7/bzHVmsrmurauMcO+ztmhfcci3nj/q49Eo9Op/7AyNalSeBpfGWhyTjjMSI4vAi
- m21yLgsLdnQFUwLAhPQbt4YQL5uvgCzXslM7jWh83xBgp3vGSLNe7U/wmpb0eW44
- QJqWwpNUgTga2Gr3VmWVbqgHGu+vhGdbwzBzC48vAzJIcOCIUvMN7DJ59lNYEj2a
- uZ0OtiHIw18fjTTSlVJaiSGOVIMvjxUqcIhzJdtgR6V9uCr+IGiJxuD4iBYR8vBG
- HgR/dywvmrulkA5R+LcKNCdF/LizxoNnFDWplo5ANI5AExn3dreYBZhAjpfaIsZA
- gEsQK9I8k5XkA7rxwlfXg==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm1; t=1758067431; x=1758153831; bh=lAtbokD6hX
+ mqQ1ZHRl3dNvhzvAtOyz0DHK3MaRgY6AM=; b=mCvSAdwqFLcKeKVBKSWPSKhJQI
+ PckNgn+bl11efE/reWEmn9NEfPBoQKcrryQdb9kETP+deuq8AQYZ+CT5Tp5Ltj9L
+ USNnT2aAUEYtmE0T423oeVTiWrlpdor92IacWwhBK+dk/ZP0snzydG+uPJUGbKIJ
+ Lk4rjWRrN0NDn1NYk3BJs9O9VZXQ/ze79Uf2gRoT538BLmsz2M+O1IV1R6yWonmK
+ YYmzoBp6JdtuCpvNLSN/NjJzwFfVWHKA4SY/w73mtYaKgUEljeNjf/3bhj1/Y9ni
+ NvLlRTNT+yxCHxt0sf/a/PAYobgN3bhQuknrQe72DEzQvDsBRp/yL+zdTGGQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1758065789; x=1758152189; bh=v/7bsuJ2HDoW8gCF5BfNsIwx/iJmBM1UZ2h
- tl17Nptk=; b=Ru/Ed0NFJYiYU9gfdCYcytBAmhuuptMg0vQkUdeVwB6iBHnEE1V
- C1bJBz87YmEGYnkqUY2qkwe1IO+YL0LcVoYqNP+hBVwwhuP1aAyr+BYMNS7cVRH0
- 2FuPYEJv6uMIDkehL3QaqBDMNaxgeuZJCZk8YWESFakluWNfm7/E9XAzUiDsReRf
- k+ReMOADvKWVZ/9y0SPRq2Tdv2bHwzqhsMNTTDFSAEV/V/dPVJPnIT48gjYtwe6J
- 9bEcJ3tAQOYSS2vuKq1xD3gSoyXlWgLS6dDPc95SdvlS7kcXkbFlZBrdA2gR203q
- nxyIMOwNxFKFoUj7HFNHgTqYAJ66tfOImNA==
-X-ME-Sender: <xms:ffTJaO1OK6w72gZkZ41QxWmbe3_YocVWKni1o2FNSk1yguI6TNEbmw>
- <xme:ffTJaKAGnGmjEiGidSrEpto_XnUQeMXoO3mH_QhHgQK4bDzQsf8lzZeygeqggfaek
- RpUDAWtO5d1_v5O8fQ>
-X-ME-Received: <xmr:ffTJaI19ep6E0HKtCHSR5Ddi07FVSNnhuB22gTBMOQrPgQuw-ia7ZIYt80Y-bdNMaI6KP9S3K3wAFQZ782FlgKEo_869-uHbmiY>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdegudeltdcutefuodetggdotefrod
+ 1758067431; x=1758153831; bh=lAtbokD6hXmqQ1ZHRl3dNvhzvAtOyz0DHK3
+ MaRgY6AM=; b=ZWU1nGRWga8oR6MPKkkClc1hmPc2FF2sK11A2AqXnqZBYhwOJNP
+ a4wIaKFMnqunF8pVE01EchDIQ/gzYg1TwUsoGxjZ2uArdbdyJ77+0kZ+LXoykb4n
+ l+vs0fTSrJ4SEZR3o0j5GSOv0QfSWdtZquGjupWaF7m+hWib4xUCeC8klrZH9H4e
+ mSurxWl3FlRIMbTibKj+MkICxVn1yp6pr6QVIEOIYOVcNfulUBt2a0W+DdpbbUJ8
+ 6hu7dWjFNDW2XgMgxQ5JiqV3ssqlwIXi5aeZ0aSr4YNZVkp/rqgcEA+uPXarZIqh
+ EefrGmq0FUmHRN1RZZOk8Df2I6HQmzOI05Q==
+X-ME-Sender: <xms:5_rJaEodO2REVcAuxa2YDaTfxZy375ZmXMd0iNG1SYN09o-AOCxPjw>
+ <xme:5_rJaDlyet8qcZekTIPFyVB3KJdOLK4iXMYnrLR5XmMbf8XGZllCodfEN4vFhDcEU
+ HOHrujgVEQkMsJDK54>
+X-ME-Received: <xmr:5_rJaLLD5YFnhsm5YxL04ToHBZAY2HZQ50W8vIOBP0hsU8pFImUsraNh-LeLI5Tf3oaXI5CpYGsEnGib8cImbZp_YPfFHykslRBk9VnS8w6JJA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdegudeliecutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
- ihhlohhuthemuceftddtnecunecujfgurhepfffhvfevuffkfhggtggujgesthdtredttd
- dtvdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhh
- ihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhephefhhfettefgke
- dvieeuffevveeufedtlefhjeeiieetvdelfedtgfefuedukeeunecuvehluhhsthgvrhfu
- ihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkh
- grmhhotggthhhirdhjphdpnhgspghrtghpthhtohepvddpmhhouggvpehsmhhtphhouhht
- pdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtg
- gvfhhorhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghr
- rdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:ffTJaMvVhGaPHGr50Gi-UDpAVk_yYswexwt_i1fVbHg0ZeE6cPv2ng>
- <xmx:ffTJaA5hmdFjEOpBYCuEQvrnoYLd2qIB0u_CHuUkm9VczJ_7p1c6-A>
- <xmx:ffTJaFLv5txD5hPRME3K0s-OiZRdruzmEWIeFJJnuHP1ek2Km5bRrg>
- <xmx:ffTJaI4Vui2i3r0xaFmak0xZjItMufZQpa0nIt-5BIIzvX-JP078VA>
- <xmx:ffTJaEb1DiKaMvdSpgRNgtqfgRgBO5Ji_YKgHmuVReNr2GvyE3SIWizx>
+ ihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgggfestdekredtredttd
+ enucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihes
+ shgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepffdvueelffevkeduhf
+ etjeduffeghfettdfguedtgfdvgfeufeduheevheevkeeknecuvehluhhsthgvrhfuihii
+ vgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmh
+ hotggthhhirdhjphdpnhgspghrtghpthhtohepvddpmhhouggvpehsmhhtphhouhhtpdhr
+ tghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfh
+ horhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhk
+ vghrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:5_rJaIzxUlzGPB5w8_7LEH2a2PCt7LWBnyadfAm4bAuS0CGcXHLy3Q>
+ <xmx:5_rJaDuYNptMqipURH9m1PDxUEix_IAEJbjrNNbhjYUTbMUCZ1s8LA>
+ <xmx:5_rJaHvb5dfj2PUI7F4DSQXWY42EkhAtULq_IMQUIFeDowFz0skl2Q>
+ <xmx:5_rJaAN5PViHcrhT0YSHAfEAErozZSBehgQHRMGPk0WYOvJQZb_C8Q>
+ <xmx:5_rJaEv2nRplGbEpIqRBLOiF9-qw7TZS2VpBI3LCZ9UL4dcnJmyWHhML>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 16 Sep 2025 19:36:28 -0400 (EDT)
-Date: Wed, 17 Sep 2025 08:36:25 +0900
+ 16 Sep 2025 20:03:49 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: Re: [PATCH 0/6] firewire: core: partition fw_card spinlock
-Message-ID: <20250916233625.GA50598@workstation.local>
-Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
- linux-kernel@vger.kernel.org
-References: <20250915234747.915922-1-o-takashi@sakamocchi.jp>
+Subject: [PATCH 0/3] firewire: core: serialize topology building and bus
+ manager work
+Date: Wed, 17 Sep 2025 09:03:44 +0900
+Message-ID: <20250917000347.52369-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250915234747.915922-1-o-takashi@sakamocchi.jp>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
+ running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Tue, Sep 16, 2025 at 08:47:41AM +0900, Takashi Sakamoto
- wrote: > Hi, > > The current implementation uses the fw_card spinlock for
- a wide range of > purposes, which goes against the theory that the [...] 
+ Content preview:  Hi, Two functions, fw_core_handle_bus_reset() and bm_work(), 
+ acquire fw_card spin lock, however each purpose is different. The former
+ function manages to update some members of fw_card, and the latter fun [...]
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
+ not necessarily valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
- not necessarily valid
-X-Headers-End: 1uyfE0-00037L-14
+X-Headers-End: 1uyfeT-00046U-Ps
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -148,38 +144,41 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Tue, Sep 16, 2025 at 08:47:41AM +0900, Takashi Sakamoto wrote:
-> Hi,
-> 
-> The current implementation uses the fw_card spinlock for a wide range of
-> purposes, which goes against the theory that the type of lock should
-> protect critical sections as narrowly as possible.
-> 
-> This patchset adds some spinlocks for specific purposes, therefore
-> partitioning the existing wide-purpose lock.
-> 
-> Takashi Sakamoto (6):
->   firewire: core: use scoped_guard() to manage critical section to
->     update topology
->   firewire: core: maintain phy packet receivers locally in cdev layer
->   firewire: core: use spin lock specific to topology map
->   firewire: core: use spin lock specific to transaction
->   firewire: core: use spin lock specific to timer for split transaction
->   firewire: core: annotate fw_destroy_nodes with must-hold-lock
-> 
->  drivers/firewire/core-card.c        |  23 +++--
->  drivers/firewire/core-cdev.c        |  27 ++++--
->  drivers/firewire/core-topology.c    |  92 ++++++++++----------
->  drivers/firewire/core-transaction.c | 128 ++++++++++++++++++----------
->  include/linux/firewire.h            |  33 ++++---
->  5 files changed, 185 insertions(+), 118 deletions(-)
+Hi,
 
-Applied to for-next branch.
+Two functions, fw_core_handle_bus_reset() and bm_work(), acquire fw_card
+spin lock, however each purpose is different.  The former function manages
+to update some members of fw_card, and the latter function manages just to
+access these members of fw_card. This reflects that the members are valid
+during current bus generation once determined by the former function.
+
+Current implementation schedules a work item for the latter function under
+acquiring the spin lock in the former function. This could causes the
+latter function to be stalled by spinning until the former function
+finishes, depending on the timing to invoke the work item.
+
+This patchset suppresses the stalling by serializing these two
+functions. In former commits, the former function is invoked by IRQ
+thread, thus sleep-able. The former function disables the work item
+synchronously, then acquires the spin lock to update the members of
+fw_card. After that, it releases the spin lock, then enable and schedule
+the work item. The latter function is free from the spin lock.
+
+Takashi Sakamoto (3):
+  firewire: core: schedule bm_work item outside of spin lock
+  firewire: core: disable bus management work temporarily during
+    updating topology
+  firewire: core: shrink critical section of fw_card spinlock in bm_work
+
+ drivers/firewire/core-card.c     | 30 ++++++++----------------------
+ drivers/firewire/core-topology.c | 11 ++++++++++-
+ 2 files changed, 18 insertions(+), 23 deletions(-)
 
 
-Regards
+base-commit: e0cda0dd12e08ecb8d26b8d78dc63e67e7069510
+-- 
+2.48.1
 
-Takashi Sakamoto
 
 
 _______________________________________________
