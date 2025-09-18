@@ -2,37 +2,37 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD40CB876D4
-	for <lists+linux1394-devel@lfdr.de>; Fri, 19 Sep 2025 01:55:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F06DB876D9
+	for <lists+linux1394-devel@lfdr.de>; Fri, 19 Sep 2025 01:55:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tc6qbicegFU/IBJFAzGEEHF8mY4dtXRhueEeeaJUONo=; b=JNA5t6YNAXyDebsRsb5esOriEV
-	Js5gbpkpSBCfl8f87Bd7swxoio080vwDocwkY6h4joNY7gWbVG27+Iuz8PHoEY/Q1d17vjHr1zuUh
-	m4hB9GEvvp9magXLKk+u/NMfnZXlVoQQjeIsdPppEIMRvs/au/1Tg2uXEbHU4QMNrqgY=;
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=a7/A2oJb0rWDQE4cDnSMXZvVOM1+wl6QLRGIsTNzGeE=; b=WlU71OJWKbUZ11dDYzKXsyuwiE
+	AC8EGR4Mo/2aQEIsHDi+J0dom1Brg9a+FOJbtkfePaCCfHwzdF8O/dDLE10X9lkKIyABMDR8n0NaS
+	eOlli2pE5fu2s9lFcTj19GxufASG0KhgLG7hJD66T5+fvJeb4LfIYras28vEkx9gHVc4=;
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1uzOSp-0005TI-ES;
-	Thu, 18 Sep 2025 23:55:00 +0000
+	id 1uzOSr-0008LI-BQ;
+	Thu, 18 Sep 2025 23:55:01 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1uzOSn-0005Sx-AW
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1uzOSp-0008LA-S3
  for linux1394-devel@lists.sourceforge.net;
- Thu, 18 Sep 2025 23:54:58 +0000
+ Thu, 18 Sep 2025 23:54:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=JXjjbUEqhHDFtZPE4qxfZxl67VIDcJ7T0Luenviwv8U=; b=UgrAvrrpcmcAU/M59dH5ZziKGf
- F/zVA1JDZnKbkgPzP+ULNDnb3pptyV3QZ9LjZzznDZY992sKtdZNOuwEyYKNa2jGMQrNGCqh92YFz
- ZmS2zmCB7oIAi9J4p9OJqLozBULou04C5r71fxXYznBFafQl3jqtk9CwQHkd5rQTCFZg=;
+ bh=ejd4z6Y74LQMHrIhXYwar2zF5r9qzO6yTwePlxELzOg=; b=KC4be6KivncxEbvZmoqzZyxGLP
+ YtcFkhL/wfkriFbRZooIAJ4DK/lZwSoVQFYikVb6O+vBd9V7WALEj9e2Qgt0X5LKAq++7H1LfW7YX
+ fNAUBdM2p0Cug4Q0PrnP4+MHSpnoJhqTzS3uWC7immnRuKnNJOm6xW/n5oY/pWDNEv9w=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -40,72 +40,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=JXjjbUEqhHDFtZPE4qxfZxl67VIDcJ7T0Luenviwv8U=; b=bzpcoCMG3BX6C96W6aX9hcSikO
- 4urr+jka6abWthrUlLmkzC1zxSmfF348ooGhgawSqRLyUMFGEPdi64naZWm1Uou16muQkPrF1D/LZ
- FoK+Av+cCnAUjNgRTqGKhrWHQtb9dBCpIkPA+A20cyWUItwv9Fig/HNSXudX5B2ayc4E=;
-Received: from fhigh-b2-smtp.messagingengine.com ([202.12.124.153])
+ bh=ejd4z6Y74LQMHrIhXYwar2zF5r9qzO6yTwePlxELzOg=; b=JPLUHRdpbGlee+Hztbrnmfd6vy
+ i0G+ZBNiCRK8cVoMAfrkohXBkaip03QUhL+PFdnuoitJTKq7NgdG68Fqo8d9Dgy+uwrOaKPWLBUem
+ iVXZnRMaCSP8yCehdHUR6TxbDpAqBb1bT97/S0iG/ELj0ql3Xy3LNsy2t/NcgxNZ5IJ8=;
+Received: from fout-b1-smtp.messagingengine.com ([202.12.124.144])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1uzOSn-0003RR-Iz for linux1394-devel@lists.sourceforge.net;
- Thu, 18 Sep 2025 23:54:58 +0000
-Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
- by mailfhigh.stl.internal (Postfix) with ESMTP id E3A527A02EB;
- Thu, 18 Sep 2025 19:54:51 -0400 (EDT)
+ id 1uzOSp-0003Ra-1S for linux1394-devel@lists.sourceforge.net;
+ Thu, 18 Sep 2025 23:54:59 +0000
+Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
+ by mailfout.stl.internal (Postfix) with ESMTP id 8B8EA1D0028E;
+ Thu, 18 Sep 2025 19:54:53 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-04.internal (MEProxy); Thu, 18 Sep 2025 19:54:51 -0400
+ by phl-compute-06.internal (MEProxy); Thu, 18 Sep 2025 19:54:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1758239691; x=
- 1758326091; bh=JXjjbUEqhHDFtZPE4qxfZxl67VIDcJ7T0Luenviwv8U=; b=L
- 2dmJe8Um0BT+/9U2qhQxqSez86kh86SfHLxStcFYGlvxWiqFj1deztTmp+qvW+oG
- kkbMOgD3ap5wgczOabVTByNl+tE5cKplNN/OeHgJ7d2U4T32lOQfoPLl10ykjamn
- h9OeaxHQMOxbahwfdJVaECDeo7BdC0ejJH0X/GotK7jhdk6pXnv/T9o6ol9iV3bM
- SRthV4H/lN20w7moVK00IRHISzq1iwB+Ze6jKS9EwdAfrHFGntPWOMunSKJMskri
- EI5bCABaYSq81yEk51zOxeELPk/h7SzNnkAYlkbiJ1/CtSzTIHFSU3/3QdGideex
- dQAv9siljt4bQ+ujGpDmA==
+ :reply-to:subject:subject:to:to; s=fm1; t=1758239693; x=
+ 1758326093; bh=ejd4z6Y74LQMHrIhXYwar2zF5r9qzO6yTwePlxELzOg=; b=c
+ 38uZGiBuk9pBkBw+iaAnut3EnYTKzdvVVb3R/OcQOckbqcphKU/xGyk9a8pnKkkI
+ S/OgPJpfN2Lrf2AO0jH80hati/Fv9ZnX79uWirpeHM/UO1OA/jdKpxv4jtXEgTDO
+ tdNyO9qXjSh42XTBrE5kLK+lPf3mSf8VoJZC08AgjdS9YjSgQ5KdFLwT5kNknFhg
+ GWlVQhxLbvCBuAt4iLYoaiDTSWSXFfzqXBB9s2szSEcw7IOWLV5U8QgzRKI5KT2t
+ kBxcTc7gFK0Kq3yq1ZO8RouXj4ghpuFViG13MG9ITqDIV2k9BTToRYmQL/fKqP8q
+ RwLCYnV4VEEUtOr0r54jQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm1; t=1758239691; x=1758326091; bh=J
- XjjbUEqhHDFtZPE4qxfZxl67VIDcJ7T0Luenviwv8U=; b=mdDt1WGCA+Su6241R
- syfDPSP+fgfwksDtLGY2PH6vrqX8dGnlMplZPvfZ8ZuzMJj1z28fx/gCrxhwgOOM
- owU1IpopgPo2neJrJsmPfmgI0qZzUamL//i6Qx3rCuT17ZS7372JCdk+jwPAjc2o
- y6ovDmhiY4TrQ05dPzCWnWMqvZ3qoSIxvjkIqnvcmlzPPwzKi3fTJIqquZQXOSuS
- FoLVgfI6+duGO211AtsiKgJnAhOaIi2CA7134SS4HDwjjpYcDuCqx1ns7bTGr4tt
- p2mU2mzaI2B9eOt3z0InIaNycAuqJZGhDV+rVKRaEUXSNjQIIQe3QGt5G9eCfov8
- 0HMGA==
-X-ME-Sender: <xms:y5vMaNnCyvvo4FaxFg_ds3ouViuepLzkbPHL1tD5Fuh7BD6p_A_9qA>
- <xme:y5vMaBxqNhgMvRYLKoG6jfpJzNeajCdWGSh_hDc9_vqa7QwGP-vkhWFXJ0qe_pxFE
- REhCbU_6yJUj7BzH14>
-X-ME-Received: <xmr:y5vMaFlB6Ol5Ig56o7q74hM2pPcSEeyJUpW-8s86KdvtRtU2ASUSUADyCT9aW5Bg-MiTWX4nV28AUm8ibqNAzfrhdwSsohyIpLXIOdNK8tFnw0M>
+ :x-me-sender:x-sasl-enc; s=fm1; t=1758239693; x=1758326093; bh=e
+ jd4z6Y74LQMHrIhXYwar2zF5r9qzO6yTwePlxELzOg=; b=B37X+xSf/fCZHX8Yu
+ ZKNFow/EfEiZgXng1bJaRC8zg8enbQkoJtjbdg3GOpZ2IPshgiQ967QhqWvf+zXA
+ TkAPoqqVb7jDBLLn1MsZcdzaTuljNefjsrj3CrKHLPB1Pgd7JJBwNy+OgLql79UL
+ Hd1diPewM4sOTOJN7yi/U8DINeoAsv0ORQUd0CRNYZa5RG3OrXSf3gTgwM6BY7k3
+ MwM3Bfw4Nwm5hEHXucLtoHGv4nrSuQMoNsgUAZKltdvydEYkELmn0ldzyNT0qa3I
+ 3YENndllSCHZ9EXYmQ/emHdMuGtfT9GBwhYBrNC91bg6/D8vtksa/z2uJjg6Rzdv
+ OMo6g==
+X-ME-Sender: <xms:zZvMaJchoTj2n98wXG6-oRoYNdoL4Jo8TeWwZ4_JE1jy-FXLBEdIHg>
+ <xme:zZvMaAJ1w7OIsjVFECZeBl5yxVLKJoP2RaGiqxJiKlY3dbVB1dpu1o4oaD6RsVa2T
+ KnR1Uqua1lcEefKQrk>
+X-ME-Received: <xmr:zZvMaEeJyFzw2qe14aeiWwAQkCCNrRjwTEo_Up8Gfd10ex1P-LzABeBDi5VxxUX-fhikEE-NyPzG553s7RcMx1v2L8RfWL6dDPJhaKGzEwOjgyk>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdegjeejtdcutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
  ihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekredtre
  dttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhh
- ihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepjedvteetudfhie
- dvheegiedvkefgkedtleeftdetleejkedvueekheekvdfggfevnecuffhomhgrihhnpehk
- vghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrih
- hlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgt
- phhtthhopedvpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehlihhnuhigudefle
- egqdguvghvvghlsehlihhsthhsrdhsohhurhgtvghfohhrghgvrdhnvghtpdhrtghpthht
- oheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:y5vMaKd7OopXATFBDZp3aMjIf19MM24K_RIyJYi0qLIPNl5cjyl_aQ>
- <xmx:y5vMaLqnxOcdPH57yZYzxX1PmSNAHN7hRULm1M738Gf9xb2o_079VQ>
- <xmx:y5vMaI6OYn1pZ3Ce67bGcWpWKOepK01dndwaRIcqWrHAtVHla65q4A>
- <xmx:y5vMaBrKvGYXYuv7-kajUSXGpEIS1ftQORq9KM_G3VGRzK2JvhihUw>
- <xmx:y5vMaJLRG-oKs6buMbnA3Ppelr0_32pSdmzJ3_RJV8LHWvtLAGcuip8K>
+ ihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepvdejgfejuedvgf
+ duudekleevtefgtdevhfdtffefiefgveeuteffiedvffekvddtnecuvehluhhsthgvrhfu
+ ihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkh
+ grmhhotggthhhirdhjphdpnhgspghrtghpthhtohepvddpmhhouggvpehsmhhtphhouhht
+ pdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtg
+ gvfhhorhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghr
+ rdhkvghrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:zZvMaP3vwKc1XDjKJNp1z3u1bECAYlpFrJwxuNCKp1ONEcO-X8eSsw>
+ <xmx:zZvMaFh00RlyU6ZAO42_4h4HMj_XnP1LwCY3BPYh8W7MUEr6U1xbwQ>
+ <xmx:zZvMaNShU_KA4hEFUyaX8b39_Rgw6g6LZF_7OCtaPLHy1a-Du2f__g>
+ <xmx:zZvMaOjiOkHoOWcY7qYSojcYKdBlo4zwB0hMFr34l1b-dIVENpfRag>
+ <xmx:zZvMaMAwJe93aoU7oJQoiL7LnUt4UBkNujVaKKUatf4soVX-i7ig9Byv>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 18 Sep 2025 19:54:50 -0400 (EDT)
+ 18 Sep 2025 19:54:52 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH v2 0/6] firewire: core: code refactoring for work item of bus
- manager
-Date: Fri, 19 Sep 2025 08:54:42 +0900
-Message-ID: <20250918235448.129705-1-o-takashi@sakamocchi.jp>
+Subject: [PATCH v2 1/6] firewire: core: remove useless generation check
+Date: Fri, 19 Sep 2025 08:54:43 +0900
+Message-ID: <20250918235448.129705-2-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250918230857.127400-1-o-takashi@sakamocchi.jp>
 References: <20250918230857.127400-1-o-takashi@sakamocchi.jp>
@@ -117,9 +116,9 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, This patchset is the revised version of my previous one:
- https://lore.kernel.org/lkml/20250918230857.127400-1-o-takashi@sakamocchi.jp/
- Changes from v1: * Ensure to initialize local variable 
+ Content preview:  Two functions, fw_core_handle_bus_reset() and bm_work(), are
+ serialized by a commit 3d91fd440cc7 ("firewire: core: disable bus management
+ work temporarily during updating topology"). Therefore the gen [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -130,7 +129,7 @@ X-Spam-Report: Spam detection software,
  domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1uzOSn-0003RR-Iz
+X-Headers-End: 1uzOSp-0003Ra-1S
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -148,30 +147,43 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+Two functions, fw_core_handle_bus_reset() and bm_work(), are serialized
+by a commit 3d91fd440cc7 ("firewire: core: disable bus management work
+temporarily during updating topology"). Therefore the generation member
+of fw_card is immutable in bm_work().
 
-This patchset is the revised version of my previous one:
-https://lore.kernel.org/lkml/20250918230857.127400-1-o-takashi@sakamocchi.jp/
+This commit removes useless generation check in bm_work().
 
-Changes from v1:
-* Ensure to initialize local variable
+Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+---
+ drivers/firewire/core-card.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
 
-Takashi Sakamoto (6):
-  firewire: core: remove useless generation check
-  firewire: core: use switch statement to evaluate transaction result to
-    CSR_BUS_MANAGER_ID
-  firewire: core: code refactoring for the case of generation mismatch
-  firewire: core: code refactoring to split contention procedure for bus
-    manager
-  firewire: core; eliminate pick_me goto label
-  firewire: core: minor code refactoring to delete useless local
-    variable
-
- drivers/firewire/core-card.c | 335 ++++++++++++++++++-----------------
- 1 file changed, 177 insertions(+), 158 deletions(-)
-
-
-base-commit: e6d2338b6f3e522872f3a14fcc5e5de2f58bf23b
+diff --git a/drivers/firewire/core-card.c b/drivers/firewire/core-card.c
+index 4fcd5ce4b2ce..ef00125fb01a 100644
+--- a/drivers/firewire/core-card.c
++++ b/drivers/firewire/core-card.c
+@@ -362,14 +362,12 @@ static void bm_work(struct work_struct *work)
+ 		if (rcode == RCODE_COMPLETE) {
+ 			int bm_id = be32_to_cpu(data[0]);
+ 
+-			if (generation == card->generation) {
+-				// Used by cdev layer for "struct fw_cdev_event_bus_reset".
+-				scoped_guard(spinlock, &card->lock) {
+-					if (bm_id != BUS_MANAGER_ID_NOT_REGISTERED)
+-						card->bm_node_id = 0xffc0 & bm_id;
+-					else
+-						card->bm_node_id = local_id;
+-				}
++			// Used by cdev layer for "struct fw_cdev_event_bus_reset".
++			scoped_guard(spinlock, &card->lock) {
++				if (bm_id != BUS_MANAGER_ID_NOT_REGISTERED)
++					card->bm_node_id = 0xffc0 & bm_id;
++				else
++					card->bm_node_id = local_id;
+ 			}
+ 
+ 			if (bm_id != BUS_MANAGER_ID_NOT_REGISTERED) {
 -- 
 2.48.1
 
