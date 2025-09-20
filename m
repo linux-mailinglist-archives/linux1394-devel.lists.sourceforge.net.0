@@ -2,114 +2,116 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 44B59B876E8
-	for <lists+linux1394-devel@lfdr.de>; Fri, 19 Sep 2025 01:55:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EAE16B8BD21
+	for <lists+linux1394-devel@lfdr.de>; Sat, 20 Sep 2025 03:54:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S18LFI0VYbEkvB6wHOvFxKIZoVa3UfKCBRSxydJFVRI=; b=IB0MiI3ldRqY//wLUcWilLr5fl
-	2Qbvxipda9ZPmS9iLPqNm9fijHghSdGaQ1K/vv1wEigAYU6WK1+vYGCrN6QeKCO2AzywiJwsZo0wP
-	RoReLkylaD3hg8Sn1HJcd5r/7m6g8C1L1c4cLX+BY4G5YbV0kAE7esZEx14yal0pWOAQ=;
+	bh=fspKXGCJnG6fXQyYEdmAqOyBGEk/8jByeEm/R6XebY0=; b=OGYyVud8NhAVt2EjeabtIQCQci
+	4prWQ3ufbSYtH1eb8D4t6rnS7BA7uLt65q4xUnNxhkPsR+mPdc9aX3DBoYA20mgknvUrqYYkPnTnI
+	huXEP6yTnGm8d8H27yxeHdI0K3kfJYW7xqiT1FGqaNdQv+jO6LMj93GCnHz7Ka1GwW78=;
 Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
 	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1uzOT4-0000UQ-3d;
-	Thu, 18 Sep 2025 23:55:14 +0000
+	id 1uzmo1-0005hP-Uz;
+	Sat, 20 Sep 2025 01:54:29 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1uzOT2-0000UF-Hs
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1uzmnz-0005hG-QI
  for linux1394-devel@lists.sourceforge.net;
- Thu, 18 Sep 2025 23:55:12 +0000
+ Sat, 20 Sep 2025 01:54:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
- In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=xzYwZqfvPW6KOoTt5TjmQYlp4Q4mwY00/jLyNK2kg1E=; b=RtUG+qBjwirJvr+v/Ib59cB0zz
- Then0fj3XgcRt7uIJWsQjd0b7SdP4gZ9L19H1ZS6/FY4G2J1Y6JLmdseYMfigmJ7/hbU7jeaU5wwR
- MfY7Eee9hFNPLJqnpM5D9PU45BAn8wSJSdm32SkmiHFzqjPZxPOEIJrw6ZYgCgw/LlAc=;
+ bh=m02STYeb81DNYyGDzqxnmWzmGa2H34wClLueodVTXS0=; b=gNNoR8lgA/N3q78tR/5p4R93Gn
+ Z+8Cm0HFp94h6EhW8NXfbz/84iWwiZLDryLx30SCSFy4IbPL6E6oA6B1XlTDkE5jTDmJtGuPvoCrQ
+ DETtkzy97tPnQZs+R28Uy8ccjAPHRHGqzLoMvZtkhbZB6AIz0jrOH095zYivINGKmNog=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=xzYwZqfvPW6KOoTt5TjmQYlp4Q4mwY00/jLyNK2kg1E=; b=eRsiqzKSvI7n6RRPktMk2+oaZn
- 19YMuhOQ6gWnbF4TUUnxuNip0cXoxGEm2a26bYeGzF7/ZSfDzBeC8a8cnMwF/C2VVLXAnjLkysnWz
- iffE5Z2hULDQoubsnfoTJ16AimgYeSoQqPUycDkEv2P4WbAuEc7P2p0sNuzDVM5FqRNs=;
-Received: from fhigh-b2-smtp.messagingengine.com ([202.12.124.153])
+ bh=m02STYeb81DNYyGDzqxnmWzmGa2H34wClLueodVTXS0=; b=AwpxqQGeUHTmZ0yM5Ihi7UwzbF
+ JHNQDdsW3Q1Z+9HO6nwmBrGDytgrNWRPwnpmuzoWTl3x7g7blyyht9gyRBrKtC3Xr5aZ94quQ9pdk
+ a5tJqoXBMeRyWrQdyBYZmyn35rLku/CbQ9gmTyyj6DLJaMzRHIDxmHDlNajxqWBokzBs=;
+Received: from fhigh-a4-smtp.messagingengine.com ([103.168.172.155])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1uzOT2-0003Sd-3f for linux1394-devel@lists.sourceforge.net;
- Thu, 18 Sep 2025 23:55:12 +0000
-Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
- by mailfhigh.stl.internal (Postfix) with ESMTP id 96D997A02DF;
- Thu, 18 Sep 2025 19:55:01 -0400 (EDT)
-Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-06.internal (MEProxy); Thu, 18 Sep 2025 19:55:01 -0400
+ id 1uzmny-0000yG-GE for linux1394-devel@lists.sourceforge.net;
+ Sat, 20 Sep 2025 01:54:27 +0000
+Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id DA99C1400179;
+ Fri, 19 Sep 2025 21:54:15 -0400 (EDT)
+Received: from phl-mailfrontend-01 ([10.202.2.162])
+ by phl-compute-02.internal (MEProxy); Fri, 19 Sep 2025 21:54:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1758239701; x=
- 1758326101; bh=xzYwZqfvPW6KOoTt5TjmQYlp4Q4mwY00/jLyNK2kg1E=; b=k
- B3PAg9qsv6oNBrBk+UkeJv18rGi1MwzulVq9eQVeGb/yjm72NDVV/kn86qs09Sbt
- tP5LY8iEVEBCa8hdsrTVk7phpuhh4g2zt6suBkJvWAfzNQ9WvGH/wrXiwSHm+Qpw
- TbV5x8y8c44E0y7+UDqXYnUp0pR8ubqrikEJYPI7fHYCLOhXk4zv0HYvGagZ2zT4
- GYK+JT1ksZrkPmZDNibObQr19/GkNoN3fcaFCLdHXD4vAiUlkrhL4eKY533/o2Qo
- tLyNb5MJ5dvdyeKhrKNagb8AmzizJe73aQJBt+i/GbAxzkk8GRPfuiolLss/ij+S
- EURCvhlPX6RbHbv/ILHRw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
+ h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm1; t=1758239701; x=1758326101; bh=x
- zYwZqfvPW6KOoTt5TjmQYlp4Q4mwY00/jLyNK2kg1E=; b=PmSWAcG2BqkDxrtKL
- oIUplyKeBbFVNH+Y3CFCW3GBLERXYu8hK4Lg+fkaR3mzM6VJdH7Dat/8s20CDx3V
- fHN2p2IDsRvsQnIGDtR26ujjxa3cV9B0FOoyTd5tkONf/ZpaqRR7KB+jzVi/iFZe
- bKcBL06/Zsn79uF5cjHv6Z4hSGO5iSsxYIqlyhU8brgWes/fCM1gD9pkIH/YtkHG
- hq64ClGoLxh/akk0Ur2HnrKi8iK9DqWxYcZz1Mf44XiZ84T8WJMIBavh9FwyI6xC
- tn54H1cUTa6xwJrQk1QJXq7HSMl/1gp65+PcVqXmpKstyZmk3sZliQmU1vK4g0jw
- R7YBQ==
-X-ME-Sender: <xms:1ZvMaJBDXmhlO1GueoBayFyDvGPSifRWrOAY9du3hvLt1dymny4zTg>
- <xme:1ZvMaAeiXDPFB_--A-UoyY4mRtwelsst38mjbgDfawTEpa7d_WxAfKJlyGepJZaab
- ZQoSDs_qkiubMtL5-Q>
-X-ME-Received: <xmr:1ZvMaGgyDyZNOFqyF02yRXbt5qkOlGKDgVs8FKzSzxKUVvxE5WyAhESeV0-mVqUaJDFH6rNOpfV_0UJfi6S0lE53rBgrya3JUOZINCFT_YJd01I>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdegjeejtdcutefuodetggdotefrod
+ :reply-to:subject:subject:to:to; s=fm1; t=1758333255; x=
+ 1758419655; bh=m02STYeb81DNYyGDzqxnmWzmGa2H34wClLueodVTXS0=; b=C
+ MjMv6qkhKfq7QeulqRhFawcAuJrM33bg2j7mMM2xmRNgfywwa/003T8wZr6BipNG
+ b4XnHIOSPHy3sqgzhz0r3bMqoHdJBJ+Oomr1WwDWwMFZbZ9pUqIMuVUXK5nxIOLW
+ axBf16s/GG6T3EKL69qf15mAMovRb/93swqAm5MYKjRphqzEonLjthaDqXuaDBAv
+ CYi5J8U0woLKMhS/e5Xb94sjqaXT76z51aIYYzzYEbpuiCrhp3dnpy7D3DXyBifF
+ epdZ4rqV2RL5PCE5QZ3jSkdGbUZk8JBFNQE+P4wf6geglUfn8TSbM7Gz/MGmJCsx
+ jlL/HYvYbNLakFljs+Kgw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+ 1758333255; x=1758419655; bh=m02STYeb81DNYyGDzqxnmWzmGa2H34wClLu
+ eodVTXS0=; b=B+2OHteRw0OBYag9Mtpv3V343ChK4H+gu9UVDQLLAE/hc0WZ1lv
+ h8k0pfEL0+HHoQZE9BvZq5cHuZ1kT0pcGnTqvyinsfjdFARmXlHhBnZs1onbxIbW
+ Jsp34YZ9RzEODKsAQoLVyZKEkqXpB0Oh/f2HaBxCXb3LZT5k2QMUkvs8urJLytkk
+ k8z2S1Uwzys2UaGw3GfP5FAFdJSTggihj1IUXp6X8p2Ki32ZPK3+GC8bp9sOlkM2
+ SRmOBWJ9NgjVwqVWsstAHIlrgsJbGzAO1Hpb/cjaplZ/Bxrx1xhX1/LdBI7FcYAO
+ x87KLwQIb6wugox5YPxyHnjkWnkmO82SJWw==
+X-ME-Sender: <xms:RwnOaNc0LMe4hRE7Oda7YIqKuA3bTXjPyu-iWinREO4GdYAQqTT06g>
+ <xme:RwnOaPiUF0tQ7GgnfysAwNNTDC8alhH6ksbpPNyUXRcgP1NyuH_-7wN4axAxwLaUr
+ jFJ9jLegSIy5vIvEmg>
+X-ME-Received: <xmr:RwnOaFrwFWlKI1n9Pbo5m4MR8aR7rvklTzf-i99SQuih4l2h7hGWstC61FU2IllngMgzhUw91ER0dv0Eo6QIpix9oJVJcg7mEjE>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdehtdekvdcutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
- ihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekredtre
- dttdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhh
- ihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepvdejgfejuedvgf
- duudekleevtefgtdevhfdtffefiefgveeuteffiedvffekvddtnecuvehluhhsthgvrhfu
- ihiivgepudenucfrrghrrghmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkh
- grmhhotggthhhirdhjphdpnhgspghrtghpthhtohepvddpmhhouggvpehsmhhtphhouhht
- pdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtg
- gvfhhorhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghr
- rdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:1ZvMaAqZNl-3NH2alHB2jC8bJk7-JmdSKkZjqU3g_7lQYiUP5XvG5g>
- <xmx:1ZvMaOEcyAp1MXpQ0iCgUf91a3bVdJFLPjcWOlQKX7fYxpt1XWb6tw>
- <xmx:1ZvMaCl6EFMfIVtLpZNCdcbW-frGIOwOj5g_qONUenjL13-i5Cbt8A>
- <xmx:1ZvMaBldW0DFDQnVOHqJBP9IgllgfQf5xxfzCC7fCH0GYA304ggxqQ>
- <xmx:1ZvMaEEPMfbTp4J8z48-62ION6oIqn-JZ30GDEvB6mqPx-APd20k07kI>
+ ihhlohhuthemuceftddtnecunecujfgurhepfffhvfevuffkfhggtggujgesthdtredttd
+ dtvdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhh
+ ihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepveeilefhudekff
+ ehkeffudduvedvfeduleelfeegieeljeehjeeuvdeghfetvedvnecuffhomhgrihhnpehk
+ vghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrih
+ hlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgt
+ phhtthhopedvpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehlihhnuhigudefle
+ egqdguvghvvghlsehlihhsthhsrdhsohhurhgtvghfohhrghgvrdhnvghtpdhrtghpthht
+ oheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
+X-ME-Proxy: <xmx:RwnOaPEpEsUlmPq-ycCWre1arnrx-IqU2Y16AtS13S7Q57aTvZRg7Q>
+ <xmx:RwnOaPlpFBcfJJaMmHKYqcD0Ilp--zGTkc8KU7-c0RDsPPVwjmXE1g>
+ <xmx:RwnOaKlYPbNGiMBpg-fuRhXTxcQL0lLWtqQPFYt2jH6OblznIvLw6w>
+ <xmx:RwnOaIsR9CIay6aG8jzvvpj-5PoeT5LXdvfc5YCRhWtKSKVD1ndrUA>
+ <xmx:RwnOaJtAgBVZ-5DKhlqMqVxNGOhQkajbGCzLMiTs2-vjXAm-NDpe5NNz>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 18 Sep 2025 19:55:00 -0400 (EDT)
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 19 Sep 2025 21:54:14 -0400 (EDT)
+Date: Sat, 20 Sep 2025 10:54:11 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH v2 6/6] firewire: core: minor code refactoring to delete
- useless local variable
-Date: Fri, 19 Sep 2025 08:54:48 +0900
-Message-ID: <20250918235448.129705-7-o-takashi@sakamocchi.jp>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250918230857.127400-1-o-takashi@sakamocchi.jp>
+Subject: Re: [PATCH v2 0/6] firewire: core: code refactoring for work item of
+ bus manager
+Message-ID: <20250920015411.GA155278@workstation.local>
+Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
 References: <20250918230857.127400-1-o-takashi@sakamocchi.jp>
+ <20250918235448.129705-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250918235448.129705-1-o-takashi@sakamocchi.jp>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
@@ -117,10 +119,9 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: The do_reset local variable has less merit. Let's remove it.
- Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp> ---
- drivers/firewire/core-card.c
- | 15 ++++ 1 file changed, 4 insertions(+), 11 deletions(-) 
+ Content preview:  On Fri, Sep 19, 2025 at 08:54:42AM +0900, Takashi Sakamoto
+ wrote: > Hi, > > This patchset is the revised version of my previous one:
+ > https://lore.kernel.org/lkml/20250918230857.127400-1-o-takashi@sa [...]
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -131,7 +132,7 @@ X-Spam-Report: Spam detection software,
  domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1uzOT2-0003Sd-3f
+X-Headers-End: 1uzmny-0000yG-GE
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -149,49 +150,35 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-The do_reset local variable has less merit. Let's remove it.
+On Fri, Sep 19, 2025 at 08:54:42AM +0900, Takashi Sakamoto wrote:
+> Hi,
+> 
+> This patchset is the revised version of my previous one:
+> https://lore.kernel.org/lkml/20250918230857.127400-1-o-takashi@sakamocchi.jp/
+> 
+> Changes from v1:
+> * Ensure to initialize local variable
+> 
+> Takashi Sakamoto (6):
+>   firewire: core: remove useless generation check
+>   firewire: core: use switch statement to evaluate transaction result to
+>     CSR_BUS_MANAGER_ID
+>   firewire: core: code refactoring for the case of generation mismatch
+>   firewire: core: code refactoring to split contention procedure for bus
+>     manager
+>   firewire: core; eliminate pick_me goto label
+>   firewire: core: minor code refactoring to delete useless local
+>     variable
+> 
+>  drivers/firewire/core-card.c | 335 ++++++++++++++++++-----------------
+>  1 file changed, 177 insertions(+), 158 deletions(-)
 
-Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
----
- drivers/firewire/core-card.c | 15 ++++-----------
- 1 file changed, 4 insertions(+), 11 deletions(-)
+Applied to for-next branch.
 
-diff --git a/drivers/firewire/core-card.c b/drivers/firewire/core-card.c
-index 58d1f58a4a0f..4a5459696093 100644
---- a/drivers/firewire/core-card.c
-+++ b/drivers/firewire/core-card.c
-@@ -387,7 +387,6 @@ static void bm_work(struct work_struct *work)
- 	struct fw_node *root_node __free(node_unref) = NULL;
- 	int root_id, new_root_id, irm_id, local_id;
- 	int expected_gap_count, generation;
--	bool do_reset = false;
- 	bool stand_for_root = false;
- 
- 	if (card->local_node == NULL)
-@@ -499,16 +498,10 @@ static void bm_work(struct work_struct *work)
- 	else
- 		expected_gap_count = 63;
- 
--	/*
--	 * Finally, figure out if we should do a reset or not.  If we have
--	 * done less than 5 resets with the same physical topology and we
--	 * have either a new root or a new gap count setting, let's do it.
--	 */
--
--	if (card->bm_retries++ < 5 && (card->gap_count != expected_gap_count || new_root_id != root_id))
--		do_reset = true;
--
--	if (do_reset) {
-+	// Finally, figure out if we should do a reset or not. If we have done less than 5 resets
-+	// with the same physical topology and we have either a new root or a new gap count
-+	// setting, let's do it.
-+	if (card->bm_retries++ < 5 && (card->gap_count != expected_gap_count || new_root_id != root_id)) {
- 		int card_gap_count = card->gap_count;
- 
- 		fw_notice(card, "phy config: new root=%x, gap_count=%d\n",
--- 
-2.48.1
 
+Regards
+
+Takashi Sakamoto
 
 
 _______________________________________________
