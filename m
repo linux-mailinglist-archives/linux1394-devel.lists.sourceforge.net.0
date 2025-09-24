@@ -2,26 +2,26 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1060DB9A007
-	for <lists+linux1394-devel@lfdr.de>; Wed, 24 Sep 2025 15:18:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C3AF8B9A006
+	for <lists+linux1394-devel@lfdr.de>; Wed, 24 Sep 2025 15:18:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=obhSw3tjH2X5/+WpK9oSAJnURiG7HD9IPJ/aH0sq4SM=; b=OOLqJWqB1p5cqla6ZvmNGMA2Fn
-	UZdSebp5A/y2Rfa7eAv4ZdCMXVcWwvoB1zHTCZvW/IVhISWFsdscvWy0PdT15IPUCl2iqcEglKi3l
-	M9/FktOMQeFGiOO1cKD2YQsvMHCBSOsxNWhGE6cDugAAQWsG0qY+MnBaCDJql/a2KgPg=;
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=6jLg8Ny8exOslRN/efPxBx54o1PZqfbnWea9h5U5SeE=; b=Vn8POTLjZm5zxov7x7ZUGD/mAX
+	m3uhNH6/vBaz8cGMZdJ+yJF8BXU7vQHZTKwRiEC/DeKty7y7tDq7x1KcScYGb0IvJsQG+tT7Her1m
+	ms8Og8DYQcF4KFAYyDk4q8VD1Y5lk7kMMO3B6NO6SW9sRvHtrIc/5tS/VBcK3JEcJI4U=;
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1v1POG-0007DG-Oq;
-	Wed, 24 Sep 2025 13:18:36 +0000
+	id 1v1POH-0004f3-9n;
+	Wed, 24 Sep 2025 13:18:37 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1v1POE-0007D4-PK
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1v1POF-0004eu-Ob
  for linux1394-devel@lists.sourceforge.net;
  Wed, 24 Sep 2025 13:18:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -30,9 +30,9 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=yztnsZNz/Ql9CaSufGVYpt4NZipaq0Pnwdmnfv9ujsM=; b=NYGZWqo7XwtfciL7kvBkNLGV/I
- NenMvkR6rtsysyKdudrOfUyzGAQeRKL+lgg2J12a3UqYlb9xssRxXx07ltktPm8LQ/Ly02pqiFckb
- Y7g2GDLuqHMK49iOJm7XeXC0K21UY6AKbZYqDWHpPBHcdYS7/T+nhW6DC9UkkatiIRCs=;
+ bh=YZTE+1HoIfy758ZocvG1+0WaCqinIXSMBBaXpX5YQGs=; b=JMdzoILl9yxt4OMSFWIM7JE8xz
+ FoKcCxmkcKqGBj8V3v5l5OyGiyxuyId9+OkCOiCVAo6L4HEXNc9iVgHIQNBhKmYxjF0Ic+OdzxZAA
+ W6nw00elkW0uYyAvvDPfpz3DfsbQRB2ttb6H0Kxm44Schls8UxLE9Vjznz0WzggT5300=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -40,47 +40,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=yztnsZNz/Ql9CaSufGVYpt4NZipaq0Pnwdmnfv9ujsM=; b=M0XibIQiDrrTs/7WtYGjay7CzZ
- IIRg4DSzPJ+xL167fEJpLfl/yL3GT35DCX1G4cUypIsNK+pBGjaDkzNsysuaDvKT2VBagPRkxxehK
- +m4YMyOdu8/7MTU1cMYFWvXBhkWIwIOsHocxrI+mop7ZW5zRQtZl7ESHP+Ri5DSZYBxw=;
-Received: from fout-a7-smtp.messagingengine.com ([103.168.172.150])
+ bh=YZTE+1HoIfy758ZocvG1+0WaCqinIXSMBBaXpX5YQGs=; b=Z18T2mO5Yg0C8+tJNh4iZirfl9
+ FhkqHTYi2AyRgXfwoC/Fk+NHVACfgPSoXJcR0Z/p4q4SafdX5pwPf4by2Arul/OgFnEvJ0Uto8cKi
+ yq1tsG6EaEGFouBzV3dCd3q+tUA6gFpp55a4dGYjXLawMEUNaBqce2s20AJI+KuY2wc8=;
+Received: from fhigh-a5-smtp.messagingengine.com ([103.168.172.156])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1v1POD-0003Li-V6 for linux1394-devel@lists.sourceforge.net;
- Wed, 24 Sep 2025 13:18:34 +0000
-Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
- by mailfout.phl.internal (Postfix) with ESMTP id 6B057EC018E;
- Wed, 24 Sep 2025 09:18:28 -0400 (EDT)
+ id 1v1POF-0003Lv-Bt for linux1394-devel@lists.sourceforge.net;
+ Wed, 24 Sep 2025 13:18:35 +0000
+Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id CC7C9140013C;
+ Wed, 24 Sep 2025 09:18:29 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-03.internal (MEProxy); Wed, 24 Sep 2025 09:18:28 -0400
+ by phl-compute-04.internal (MEProxy); Wed, 24 Sep 2025 09:18:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1758719908; x=
- 1758806308; bh=yztnsZNz/Ql9CaSufGVYpt4NZipaq0Pnwdmnfv9ujsM=; b=G
- Bi2dQtWdwuAP9x1fmcj4ISgUIj+7jaM+yDl92s0OKXyZrSWTZ0NchodA+T+pUO2k
- gpAFaUmmpJ0l9sFULVeikt3+3AJsch19X6BnivBpy1AUP9Zo/prDvtJ8Sj7yP4p7
- I2Fw7v0xAgFOVHlDzk+iCdQxmjXzDthokiBQcLzaPV0YZOKufa+Jgywa7iv5/6x0
- nYTUVNxyvQwgpII3NOZLd6u4+wu9JU5dqAreqiHMhcYtsS8VOIfk3rnie/01U3PJ
- uIuOcquFWgk511xIg83bUZEVDyv56dIJlYT7KZGUNe4FpmoZ4uh2sdowvilSzVaq
- puZa5ESmOO8aoMFVeDIGA==
+ :reply-to:subject:subject:to:to; s=fm1; t=1758719909; x=
+ 1758806309; bh=YZTE+1HoIfy758ZocvG1+0WaCqinIXSMBBaXpX5YQGs=; b=V
+ pdKojZM5CyqIwc1iAHP7az1rOh3s0Gw91sk7BkBtU8bHP35Jg31h2aFpAwzcSfcR
+ 3rlmmC1GalJOuyabRN3VDc402PyuoSjW79ugVEvKImfmybKCIJN7xY6tvw5W7N6P
+ SW3WZTh/2LEtvwOgjzCEAKJvA09SNb55D32+197AuIzJ785ZDB1ivv77oLsDl991
+ MT0/Y6OOD36xyMNehz1lOB+mSXmUWaEqhEWMQnionGde/yINLj0blpxKAyD4C1rI
+ aO99TRJanEJcJ+fCqifYHvkb5p9k1FA1IISuVshuFXhKIMy02bso7/rM+wbZeqf7
+ 9CoO+2nkL/D3neZj3nW5g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm1; t=1758719908; x=1758806308; bh=y
- ztnsZNz/Ql9CaSufGVYpt4NZipaq0Pnwdmnfv9ujsM=; b=mb9kwKPlht1HIuZ6g
- VIXXxf2leaIMfW/vZvWlW8KjHoGnhcl5Nkq1OKc2Tt28lhbBqQMvhPR9+v+Vz+cD
- +roZpe/8KrxMQ9Z1Zc4DLvuIwSvBrcoWbMwXxLbYrUYG8mYZBRSszmYlnS/nS+Jp
- uTRxK5R2sEfGz45AE2cPPEqg67gtdVRWWkaZd+7ZYzDogaCzi0PyXgy0vqwqUDo7
- uaYoAramyD8pqI/n7JeDVJxtBlIlmKK15fWyhdgjzT8+Zq7KZzJkEG+/mfDyXMYu
- hVatCLk78r23jRN3K7mXuA0OmhiLMn+Zpzja36RskJFDUm5a1iGobDNRpVxuSjDW
- MfBAw==
-X-ME-Sender: <xms:pO_TaJ3FvgU6bfRvAzU-2IdQAx3U5ENNXGa-uI3A-T68UD28aOaFKg>
- <xme:pO_TaOB6W1L9pPuxwmRFYPUpTwXVWafbdXzhFsHiA5kGt9oYdTMqeFV36zqW4j9Io
- LEey3yd2Kt7WBf79WXcr93a5JgN-swjC4GgufAUErGAoP2Of2s9bIM>
-X-ME-Received: <xmr:pO_TaBcPn7FNTIdJAGyKG5M89DxjZF7wC8aKAtcEfBzkQbiMkxvA_2wGcSLQgMvxAVIQU9fiNcyB10wIsMs-feoVZSnDa6gA3DB6JeRiV4xb2A>
+ :x-me-sender:x-sasl-enc; s=fm1; t=1758719909; x=1758806309; bh=Y
+ ZTE+1HoIfy758ZocvG1+0WaCqinIXSMBBaXpX5YQGs=; b=FU5wBtC48d0SlKa0E
+ Y+DYx7p7FXxJGnvBFhAu73+RMwXIzR5kRyf4jmHGwSPexFSk7Y8jH8TX5zh8wwzM
+ r1fJL4dgIvlMkA/RjUOaWCvXIwzbU7SNCSn1rMewTHNoojunBEvQi8s/e6LKSKZ/
+ yiYjw3hNbvP0EfuvHbULfem7LkxHjkXG/xbh84PG+f6XjcBE63GpsSJpW2nnSuOU
+ 4Ht1KFmEqLlWzLfjPpEK3ReAqO1AODqKF1Uh7yXL7MXbCrE91Ht+hJooed+7BqtR
+ 7p+VRkU5C2lZobKHPwguEvBbT4VKd0dxOckrWu4fWGelRpOmq8EoQxaiVpcTav+e
+ NAY0w==
+X-ME-Sender: <xms:pe_TaAIFXfWj7vAyCpZI9gEOjyaINeSHgy99GlnoO0vIOzrLswp9yA>
+ <xme:pe_TaOE2zYzTD_T7-duQE0Zv-qa9VhRd74P2N-At2Vk0dyKco0NEGsV5nz2K0dwzA
+ ChhjLFt6eegCPp3pr55LmPv6qfplvGTd3UeEqsa-_X1C2CEB6q04-k>
+X-ME-Received: <xmr:pe_TaIQB4fEr62Y4gzPKa8f5U0gAWSnMi5JaufcJcp_fuPArFBIg3U1CrdoyRKYXFwS6pntY2eXnz1fMUno-OdwbMziA5XQ-f6TSK8xhSwQCXg>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdeifeejudcutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
  ihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekredtre
@@ -92,20 +92,20 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdeifeejudcutefuodetgg
  pdhrtghpthhtoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtg
  gvfhhorhhgvgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghr
  rdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:pO_TaDgCFAEzIM0tN8aE9f8rIoOo1GIBPNUmMOis9cGJVWzKQDO-nA>
- <xmx:pO_TaJr0t-Y6n_gI-HFiRpKenExTQSNpONf3UDg74aA463CS0fMguw>
- <xmx:pO_TaDF53z0zJo393X_0XTmolp1daFF8YzMujwvq-qeRvwNDdlk2eg>
- <xmx:pO_TaDmosorclzh9qoc9CrbKjIRkx0dlq4hOivevToKdpIBc4PWYMA>
- <xmx:pO_TaOKaX_dfJH6WXkn3Ts7tD4r9q1BmF9M3xJ-S3NNP6Bnxl2__rLyB>
+X-ME-Proxy: <xmx:pe_TaKEocp9ceqDFfhIx6huwMZJOZi5uE7P_lmAE_5CC_KTuodlNcQ>
+ <xmx:pe_TaE-lHGLGRLgdasipfmVYqpetmN6saLQTSPbpliQK5jJs0b1QvQ>
+ <xmx:pe_TaEJUXRuH-THkd3WsICOq8GpaHFK_FGwffBnNj04jGGsb1FaZ2g>
+ <xmx:pe_TaHY0xp1vRuQWMfnPTHBqGmSXIyM0oewvj5W_UEqC9q1UxIyGRg>
+ <xmx:pe_TaC9ruU7ggltGTnGeScIaSBpf3Y04Hr8DwJYMuwjJTOkCL5ujwRxH>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 24 Sep 2025 09:18:27 -0400 (EDT)
+ 24 Sep 2025 09:18:28 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH v2 1/2] Revert "firewire: core: shrink critical section of
- fw_card spinlock in bm_work"
-Date: Wed, 24 Sep 2025 22:18:22 +0900
-Message-ID: <20250924131823.262136-2-o-takashi@sakamocchi.jp>
+Subject: [PATCH v2 2/2] Revert "firewire: core: disable bus management work
+ temporarily during updating topology"
+Date: Wed, 24 Sep 2025 22:18:23 +0900
+Message-ID: <20250924131823.262136-3-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250924131823.262136-1-o-takashi@sakamocchi.jp>
 References: <20250924131823.262136-1-o-takashi@sakamocchi.jp>
@@ -117,10 +117,12 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: This reverts commit 582310376d6e9a8d261b682178713cdc4b251af6.
- The bus manager work has the race condition against fw_destroy_nodes() called
- by fw_core_remove_card(). The acquition of spin lock of fw_card is left as
- is again. 
+ Content preview: This reverts commit abe7159125702c734e851bc0c52b51cd446298a5.
+ The bus manager work item acquires the spin lock of fw_card again, thus no
+ need to serialize it against fw_core_handle_bus_reset(). Signed-off-by:
+ Takashi
+ Sakamoto <o-takashi@sakamocchi.jp> --- drivers/firewire/core-topology.c |
+ 8 -------- 1 file changed, 8 deletions(-) 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -131,7 +133,7 @@ X-Spam-Report: Spam detection software,
  domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1v1POD-0003Li-V6
+X-Headers-End: 1v1POF-0003Lv-Bt
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -149,147 +151,44 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-This reverts commit 582310376d6e9a8d261b682178713cdc4b251af6.
+This reverts commit abe7159125702c734e851bc0c52b51cd446298a5.
 
-The bus manager work has the race condition against fw_destroy_nodes()
-called by fw_core_remove_card(). The acquition of spin lock of fw_card
-is left as is again.
+The bus manager work item acquires the spin lock of fw_card again, thus
+no need to serialize it against fw_core_handle_bus_reset().
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/core-card.c | 38 ++++++++++++++++++++++++++++--------
- 1 file changed, 30 insertions(+), 8 deletions(-)
+ drivers/firewire/core-topology.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/drivers/firewire/core-card.c b/drivers/firewire/core-card.c
-index 4a5459696093..e5e0174a0335 100644
---- a/drivers/firewire/core-card.c
-+++ b/drivers/firewire/core-card.c
-@@ -299,6 +299,7 @@ enum bm_contention_outcome {
- };
- 
- static enum bm_contention_outcome contend_for_bm(struct fw_card *card)
-+__must_hold(&card->lock)
+diff --git a/drivers/firewire/core-topology.c b/drivers/firewire/core-topology.c
+index 90b988035a2a..2f73bcd5696f 100644
+--- a/drivers/firewire/core-topology.c
++++ b/drivers/firewire/core-topology.c
+@@ -460,14 +460,8 @@ void fw_core_handle_bus_reset(struct fw_card *card, int node_id, int generation,
  {
- 	int generation = card->generation;
- 	int local_id = card->local_node->node_id;
-@@ -311,8 +312,11 @@ static enum bm_contention_outcome contend_for_bm(struct fw_card *card)
- 	bool keep_this_irm = false;
- 	struct fw_node *irm_node;
- 	struct fw_device *irm_device;
-+	int irm_node_id;
- 	int rcode;
+ 	struct fw_node *local_node;
  
-+	lockdep_assert_held(&card->lock);
-+
- 	if (!grace) {
- 		if (!is_next_generation(generation, card->bm_generation) || card->bm_abdicate)
- 			return BM_CONTENTION_OUTCOME_WITHIN_WINDOW;
-@@ -338,10 +342,16 @@ static enum bm_contention_outcome contend_for_bm(struct fw_card *card)
- 		return BM_CONTENTION_OUTCOME_IRM_COMPLIES_1394_1995_ONLY;
+-	might_sleep();
+-
+ 	trace_bus_reset_handle(card->index, generation, node_id, bm_abdicate, self_ids, self_id_count);
+ 
+-	// Disable bus management work during updating the cache of bus topology, since the work
+-	// accesses to some members of fw_card.
+-	disable_delayed_work_sync(&card->bm_work);
+-
+ 	scoped_guard(spinlock, &card->lock) {
+ 		// If the selfID buffer is not the immediate successor of the
+ 		// previously processed one, we cannot reliably compare the
+@@ -501,8 +495,6 @@ void fw_core_handle_bus_reset(struct fw_card *card, int node_id, int generation,
+ 		}
  	}
  
--	rcode = fw_run_transaction(card, TCODE_LOCK_COMPARE_SWAP, irm_node->node_id, generation,
-+	irm_node_id = irm_node->node_id;
-+
-+	spin_unlock_irq(&card->lock);
-+
-+	rcode = fw_run_transaction(card, TCODE_LOCK_COMPARE_SWAP, irm_node_id, generation,
- 				   SCODE_100, CSR_REGISTER_BASE + CSR_BUS_MANAGER_ID, data,
- 				   sizeof(data));
+-	enable_delayed_work(&card->bm_work);
+-
+ 	fw_schedule_bm_work(card, 0);
  
-+	spin_lock_irq(&card->lock);
-+
- 	switch (rcode) {
- 	case RCODE_GENERATION:
- 		return BM_CONTENTION_OUTCOME_AT_NEW_GENERATION;
-@@ -352,12 +362,10 @@ static enum bm_contention_outcome contend_for_bm(struct fw_card *card)
- 		int bm_id = be32_to_cpu(data[0]);
- 
- 		// Used by cdev layer for "struct fw_cdev_event_bus_reset".
--		scoped_guard(spinlock, &card->lock) {
--			if (bm_id != BUS_MANAGER_ID_NOT_REGISTERED)
--				card->bm_node_id = 0xffc0 & bm_id;
--			else
--				card->bm_node_id = local_id;
--		}
-+		if (bm_id != BUS_MANAGER_ID_NOT_REGISTERED)
-+			card->bm_node_id = 0xffc0 & bm_id;
-+		else
-+			card->bm_node_id = local_id;
- 
- 		if (bm_id != BUS_MANAGER_ID_NOT_REGISTERED)
- 			return BM_CONTENTION_OUTCOME_IRM_HOLDS_ANOTHER_NODE_AS_BM;
-@@ -389,8 +397,12 @@ static void bm_work(struct work_struct *work)
- 	int expected_gap_count, generation;
- 	bool stand_for_root = false;
- 
--	if (card->local_node == NULL)
-+	spin_lock_irq(&card->lock);
-+
-+	if (card->local_node == NULL) {
-+		spin_unlock_irq(&card->lock);
- 		return;
-+	}
- 
- 	generation = card->generation;
- 
-@@ -405,6 +417,7 @@ static void bm_work(struct work_struct *work)
- 
- 		switch (result) {
- 		case BM_CONTENTION_OUTCOME_WITHIN_WINDOW:
-+			spin_unlock_irq(&card->lock);
- 			fw_schedule_bm_work(card, msecs_to_jiffies(125));
- 			return;
- 		case BM_CONTENTION_OUTCOME_IRM_HAS_LINK_OFF:
-@@ -415,10 +428,12 @@ static void bm_work(struct work_struct *work)
- 			break;
- 		case BM_CONTENTION_OUTCOME_AT_NEW_GENERATION:
- 			// BM work has been rescheduled.
-+			spin_unlock_irq(&card->lock);
- 			return;
- 		case BM_CONTENTION_OUTCOME_LOCAL_PROBLEM_AT_TRANSACTION:
- 			// Let's try again later and hope that the local problem has gone away by
- 			// then.
-+			spin_unlock_irq(&card->lock);
- 			fw_schedule_bm_work(card, msecs_to_jiffies(125));
- 			return;
- 		case BM_CONTENTION_OUTCOME_IRM_IS_NOT_CAPABLE_FOR_IRM:
-@@ -428,7 +443,9 @@ static void bm_work(struct work_struct *work)
- 		case BM_CONTENTION_OUTCOME_IRM_HOLDS_ANOTHER_NODE_AS_BM:
- 			if (local_id == irm_id) {
- 				// Only acts as IRM.
-+				spin_unlock_irq(&card->lock);
- 				allocate_broadcast_channel(card, generation);
-+				spin_lock_irq(&card->lock);
- 			}
- 			fallthrough;
- 		case BM_CONTENTION_OUTCOME_IRM_HOLDS_LOCAL_NODE_AS_BM:
-@@ -469,6 +486,7 @@ static void bm_work(struct work_struct *work)
- 				if (!root_device_is_running) {
- 					// If we haven't probed this device yet, bail out now
- 					// and let's try again once that's done.
-+					spin_unlock_irq(&card->lock);
- 					return;
- 				} else if (!root_device->cmc) {
- 					// Current root has an active link layer and we
-@@ -504,6 +522,8 @@ static void bm_work(struct work_struct *work)
- 	if (card->bm_retries++ < 5 && (card->gap_count != expected_gap_count || new_root_id != root_id)) {
- 		int card_gap_count = card->gap_count;
- 
-+		spin_unlock_irq(&card->lock);
-+
- 		fw_notice(card, "phy config: new root=%x, gap_count=%d\n",
- 			  new_root_id, expected_gap_count);
- 		fw_send_phy_config(card, new_root_id, generation, expected_gap_count);
-@@ -524,6 +544,8 @@ static void bm_work(struct work_struct *work)
- 	} else {
- 		struct fw_device *root_device = fw_node_get_device(root_node);
- 
-+		spin_unlock_irq(&card->lock);
-+
- 		if (root_device && root_device->cmc) {
- 			// Make sure that the cycle master sends cycle start packets.
- 			__be32 data = cpu_to_be32(CSR_STATE_BIT_CMSTR);
+ 	// Just used by transaction layer.
 -- 
 2.48.1
 
