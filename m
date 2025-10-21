@@ -2,110 +2,115 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D0CABF0F64
-	for <lists+linux1394-devel@lfdr.de>; Mon, 20 Oct 2025 13:58:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 39C14BF8EC1
+	for <lists+linux1394-devel@lfdr.de>; Tue, 21 Oct 2025 23:17:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:Message-ID:Date:Subject:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sJUS6h8cBlQk8CbQzj9fNkXv1+HNA4F37WTFKvmLKpE=; b=F4H4ZRWBqvLgWqHRVmloYqhKEw
-	fd5+ieJkZ2gpaE6V+48RYIkUr5U3ZW2dRAprJj+veicAceENGY8Z5nTfkoz83foVnk3DdFcWrnp/Z
-	qsDYMek//5A8wGJ8FfVsz0uhbeQ/UiYKM5Vs9WVtvsuybZstlg37YRTi/QQSWXCzBWTA=;
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7/8PEYmqx+6QZVGB8zWRt6iQcdj4lhfkz1M1Ofpq+y4=; b=ie5a7nwSwyWZgXI0j9rtyONWQt
+	hagp9GBQFm4+wME15ycLKx5KP9NmiMS8csESB106iO28VuaDCk4XNgLR50TsyhYvz606ldt9wSUfz
+	d8/vzbQHd3Yriyf8B2kriTBKWIbSMY/jnm/M/HbjTEoAXxPMjpxgIrAjCuxKDVfQc6nI=;
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1vAoWx-0003rl-JC;
-	Mon, 20 Oct 2025 11:58:27 +0000
+	id 1vBJjN-0006Jo-Dl;
+	Tue, 21 Oct 2025 21:17:21 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1vAoWw-0003rb-7x
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1vBJjL-0006Je-MH
  for linux1394-devel@lists.sourceforge.net;
- Mon, 20 Oct 2025 11:58:26 +0000
+ Tue, 21 Oct 2025 21:17:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
- Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
+ Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Ww9DvCfxJ93mFFiHtNCtI5RjcFbBSgRKT6N64U8sLJY=; b=Q0lLuTWYOUMW8ljKprpx68ZzN8
- QQY+LDcyqlmaVsQHPtwlrWCDsyO+svV8pSVlhWrbTodNFl4YgyelkxB32w2bWR46vX2PjM6qiIE+E
- NtzCO2YUjlxVF0XmHwAHtueo7efzvqJ5+Cgr7S2NWJhFa3dMj2ZX5INvBKg7vA/aqoK0=;
+ bh=HruvpjJEz3WJJK8LfCW0sjYuuW7dan0UrL1gfqBV1TE=; b=CjxHaGyWQQsH4UDgvYC+XLbcen
+ DUfzrUrHn5pWJPNVTzUhcQJVD4ZBRo/vd1SYCgpuKSBHeHskEdTHIS/JlfDZ5pi4aFUROSbN9bl8U
+ 71NC7vC0pdY8MlonIzos6SfmxicWQj6NPd0E1bzfezcamEiDdITEnaI3xieKWd1khkeY=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
- :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
- References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
- List-Owner:List-Archive; bh=Ww9DvCfxJ93mFFiHtNCtI5RjcFbBSgRKT6N64U8sLJY=; b=M
- ef/cN00+jFUCYH4qnePI4kAvmE4wTjvw4RqxsQJKDwFM90r0wYKbRFsBBfvXCAIbJbzsim2A5ZXE3
- 8RApLD+IzlTHPxbp1qMP+BxwfCONr7HlZml0bUoM/ToQWrUXjc8TQaW9dc5ybxmtRMeErUx9scwan
- 0eHuIPuVkeLryaTU=;
-Received: from fout-a5-smtp.messagingengine.com ([103.168.172.148])
+ h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
+ :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=HruvpjJEz3WJJK8LfCW0sjYuuW7dan0UrL1gfqBV1TE=; b=QaixoA1pXDtUDx18blSrPcMHFT
+ 5P84xR8TtBgKzkqXVIAdh0bBc+kIUG0zO2L/ejx5VmU5AB8sFu5vfI+HQmgHm0z5fbK2i7Y8wF80d
+ Kog+1NGP/U/qEPwOuUTiNj1GD5C1uGqT4g8hy8h5/3zkgl7E9LGy8puCJ3nhNabZFh80=;
+Received: from fout-b4-smtp.messagingengine.com ([202.12.124.147])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1vAoWv-0001BV-AI for linux1394-devel@lists.sourceforge.net;
- Mon, 20 Oct 2025 11:58:26 +0000
+ id 1vBJjK-0001X8-Hu for linux1394-devel@lists.sourceforge.net;
+ Tue, 21 Oct 2025 21:17:19 +0000
 Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
- by mailfout.phl.internal (Postfix) with ESMTP id 97C24EC02E2;
- Mon, 20 Oct 2025 07:58:14 -0400 (EDT)
-Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-05.internal (MEProxy); Mon, 20 Oct 2025 07:58:14 -0400
+ by mailfout.stl.internal (Postfix) with ESMTP id D01DB1D00156;
+ Tue, 21 Oct 2025 17:17:07 -0400 (EDT)
+Received: from phl-mailfrontend-02 ([10.202.2.163])
+ by phl-compute-05.internal (MEProxy); Tue, 21 Oct 2025 17:17:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:message-id:mime-version:reply-to:subject
- :subject:to:to; s=fm2; t=1760961494; x=1761047894; bh=Ww9DvCfxJ9
- 3mFFiHtNCtI5RjcFbBSgRKT6N64U8sLJY=; b=KkCHc70t1mgu3nMMGEfvIM0gIe
- HmVPe+7wdWD0rlxBalyrB7ui1NT+yEKishMnun/sHHGFGYuSNArr71nk+h7P+Fa5
- gFMxqNq2QkEW/4dtgFYRoL8YDlmJwG/nfrL6heRMqbwC1QDjLcdqEcXDBHEOk+UD
- MfAOndw5/AgqmCDAhKcdBhi3hjccQM6Xi8HDkpaLyH1qVu4nVT+4dP+6offJkWek
- /5GbbQmtNha3bDSJvoH+G5O3Ysx90zw57Vy4Ss+MmcWCVBr6fX8aMuEstfMZ8EJK
- 9VOepqPdcjaBLhNjF3BdgljnT+2CKzJ8DUTaY7yiI1xQAvf33p5OWKyqXYvw==
+ h=cc:cc:content-type:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=fm2; t=1761081427; x=
+ 1761167827; bh=HruvpjJEz3WJJK8LfCW0sjYuuW7dan0UrL1gfqBV1TE=; b=v
+ CoP2JV3dL+GKSsUY5ulLv//IxJ9QXViqfRxGVzt2M3hCwGddwVVVHhj2WSJhbRmO
+ dSXwZhXqJVs2XTLPFD5ajaID6msUaR92sRtPYQ/fSVnAdHCXm6uffTqUT/w3gYdv
+ yNshAzsyIxf9Pfa8rc8RBYBxLzD/Z9IgP6c43LitxoisC7awZzVh+IFhc6lWlR8F
+ PYTCyMNeAhcXBmZqCu3e1L29NFnnicr8pVZ/EOg4ZTjYr/21kWSeEcijz9q364BG
+ 0RRgjo3V6rACp/5ZhS/fsSTjoZIdDzulsSlGcmxQ+Mqj4wvW4SN4fstU7JAkXIDV
+ Tvplb+biVwFf8E3kjZMTQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
- 1760961494; x=1761047894; bh=Ww9DvCfxJ93mFFiHtNCtI5RjcFbBSgRKT6N
- 64U8sLJY=; b=pUKEzKghSifSQJs8BJXSEnSskU/UK9uojnvGTZrryBagWXR4NP8
- PHQmBfD1QTa1LCKmaLuSIx+mX3FZ7i+BrswGdL05vv0sd178OT4r/JSN5MuWvT4e
- mGhDR1jY4ptlss00Y8SGkn1BWzjzEcfjQLbv1CxODKCfJOZfX+7Ms3Ktcotn6Gnl
- RrD8OSdICckzWEZndu/KX5mY6y7Y4d1XslaVkEDTfTf+twAGHKfygMavxeoyIf/+
- KF5tSHFSkbvXf2oU0k/qCctcPs0nTH1rtmboEvtRo8l2561GEh651ayDIFy4yOBd
- hYZx3YJvX7dQASGKRwYTonqTz4Icl1WkIag==
-X-ME-Sender: <xms:1iP2aHqqyTsbJWXhtkH69dJe-78IllZLRTxMXEnecsHAgJYCGXrVAg>
- <xme:1iP2aPl6WcCsitzEVwlCrYqdWbAGg5wYUeOfIKFFQOsf27q3vq-pICS6QGLSNvNsV
- 1Jbb4G4XCDj-wAMYQKoYESSyXkd0Xmeopp-Alk-bKScmjEZyV-u3u0>
-X-ME-Received: <xmr:1iP2aLyP538O7lnNRV-9NHMjS36khcpAVQW3vZjJG60jFJ--RwYiOiMFb83Ix3hlPhb-idcEbDgdWUWbggLrnd3R-r5eHnZzMPG7FkYY00Dx>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggddufeejjeeiucetufdoteggodetrf
+ 1761081427; x=1761167827; bh=HruvpjJEz3WJJK8LfCW0sjYuuW7dan0UrL1
+ gfqBV1TE=; b=gDyegl9H96DLFQPk9VVi4c/unnny7+ExL8mwOTy8KirJacabvqW
+ /x4ppKH4IElZN4qYQ9vaG505ogXbsGofVST7QqmwTHhRJuqSijz9sdqiK0v62wLc
+ iprk3zdtJtHVBv9F6M/E7C08jHaBau+vvtcGWjy8/C62XqJHDL7xv44WD/BnN1Zg
+ EeslA5c0sEtNDaVfal0Q+gA5q+k6rekJA2ZyAfVz7Otljhc5EE8CScn40e+Xhar8
+ Iaodr2M12cV4Z2ZAxiCyALAstYXNDMh5l4SPNleqlNBOZYGrzAlLRE6O/93BNRIp
+ BnLMAJqYTFwkxMBRBCkQ7UK6ec7TW/fFZUw==
+X-ME-Sender: <xms:U_j3aGdVQZVa4MU00d8BVSLkHth3zkBKx-27JdLoI4BpYarkMI0XUA>
+ <xme:U_j3aOIvWnQbPJSP6DWIfTEDtAKj7RACmC5jgSdXRMIqJFVPimGdAkzpTmDQwmZLZ
+ z79xdMb0PT3XMbRMoKN3_mX6mZ4ksjDWOtdHQ5EZzBpBMPBdyfT3KE>
+X-ME-Received: <xmr:U_j3aPHsiZuBWZGHJF6z0B0VHsUgkgiBSITonemxQyupznMx1ckPTg7GBZAcFn5Zdt48wWXgYXBcY0S9qofAXJnPOnrz7I38ww>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggddugedujeeiucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertdertd
- dtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhi
- sehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeffvdeuleffveekud
- fhteejudffgefhtedtgfeutdfgvdfgueefudehveehveekkeenucevlhhushhtvghrufhi
- iigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrg
- hmohgttghhihdrjhhppdhnsggprhgtphhtthhopedvpdhmohguvgepshhmthhpohhuthdp
- rhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurhgtvg
- hfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdr
- khgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:1iP2aHkGo6cgYWqDnkiRWm6kepPwmFP2sRoMDJID3vhGrsQfKGLp-A>
- <xmx:1iP2aEcqW5mqSURk2TKLMMogdzaGqk9rKWOnH7apNapd_dkVHYpbjA>
- <xmx:1iP2aNrBEnF7JgFzZO0blPcTx2QyP0DpBARMm5tE4tqKA-b6xCOnWA>
- <xmx:1iP2aC5unPTOy87JzbZn_muOwHwM_XKpACvsj2lzjlyXZDBaSNMu8Q>
- <xmx:1iP2aGdG4J73XGDqZyQTm35zaDr2wpGZBWnJZvo1QPziuAlgdM31yUI1>
+ rghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttdertd
+ dttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
+ hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhteetgf
+ ekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushhtvghr
+ ufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrg
+ hkrghmohgttghhihdrjhhppdhnsggprhgtphhtthhopedvpdhmohguvgepshhmthhpohhu
+ thdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurh
+ gtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgv
+ rhdrkhgvrhhnvghlrdhorhhg
+X-ME-Proxy: <xmx:U_j3aApUXi6pYbzEJTZ3p2QUDs8EHMCkJ2tdWqtTFB2Dk2qkCVX8wA>
+ <xmx:U_j3aAR3d37lwUKzH0b-LK5tb9FcKo847lPDlw_vK4iiAIyOw5LvHQ>
+ <xmx:U_j3aFM8TQ-Do5jPhMryBrgaAwAcz0cCYBu8uMhPGMABrDPForBKXw>
+ <xmx:U_j3aLNJF7NUmc8fHE-nY5ghPF1n7uYYRDCa_naVQv1eUNXIfOnw9g>
+ <xmx:U_j3aHyUeFcG013xUTu6gCA3zsdG6Xts9h2Y9SKmcd-HfKTWpigLO-qo>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 20 Oct 2025 07:58:13 -0400 (EDT)
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 21 Oct 2025 17:17:06 -0400 (EDT)
+Date: Wed, 22 Oct 2025 06:17:04 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH] firewire: core: use cleanup function to release cached
+Subject: Re: [PATCH] firewire: core: use cleanup function to release cached
  configuration ROM
-Date: Mon, 20 Oct 2025 20:58:10 +0900
-Message-ID: <20251020115810.92839-1-o-takashi@sakamocchi.jp>
-X-Mailer: git-send-email 2.51.0
+Message-ID: <20251021211704.GA210874@workstation.local>
+Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
+ linux-kernel@vger.kernel.org
+References: <20251020115810.92839-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20251020115810.92839-1-o-takashi@sakamocchi.jp>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
@@ -113,10 +118,9 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  When returning from read_config_rom() function, the allocated
- buffer and the previous buffer for configuration ROM should be released.
- The cleanup function is useful in the case. This commit uses the cleanup
- function to remove goto statements. 
+ Content preview:  On Mon, Oct 20, 2025 at 08:58:10PM +0900, Takashi Sakamoto
+ wrote: > When returning from read_config_rom() function, the allocated buffer
+ and > the previous buffer for configuration ROM should be relea [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
@@ -127,7 +131,7 @@ X-Spam-Report: Spam detection software,
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
-X-Headers-End: 1vAoWv-0001BV-AI
+X-Headers-End: 1vBJjK-0001X8-Hu
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -145,116 +149,24 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-When returning from read_config_rom() function, the allocated buffer and
-the previous buffer for configuration ROM should be released. The cleanup
-function is useful in the case.
+On Mon, Oct 20, 2025 at 08:58:10PM +0900, Takashi Sakamoto wrote:
+> When returning from read_config_rom() function, the allocated buffer and
+> the previous buffer for configuration ROM should be released. The cleanup
+> function is useful in the case.
+> 
+> This commit uses the cleanup function to remove goto statements.
+> 
+> Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+> ---
+>  drivers/firewire/core-device.c | 34 ++++++++++++----------------------
+>  1 file changed, 12 insertions(+), 22 deletions(-)
 
-This commit uses the cleanup function to remove goto statements.
+Applied to for-next branch.
 
-Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
----
- drivers/firewire/core-device.c | 34 ++++++++++++----------------------
- 1 file changed, 12 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/firewire/core-device.c b/drivers/firewire/core-device.c
-index 1674de477852..9b0080397154 100644
---- a/drivers/firewire/core-device.c
-+++ b/drivers/firewire/core-device.c
-@@ -653,8 +653,8 @@ static int read_rom(struct fw_device *device, int generation, int speed, int ind
- static int read_config_rom(struct fw_device *device, int generation)
- {
- 	struct fw_card *card = device->card;
--	const u32 *old_rom, *new_rom;
--	u32 *rom, *stack;
-+	const u32 *new_rom, *old_rom __free(kfree) = NULL;
-+	u32 *stack, *rom __free(kfree) = NULL;
- 	u32 sp, key;
- 	int i, end, length, ret, speed;
- 	int quirks;
-@@ -673,7 +673,7 @@ static int read_config_rom(struct fw_device *device, int generation)
- 	for (i = 0; i < 5; i++) {
- 		ret = read_rom(device, generation, speed, i, &rom[i]);
- 		if (ret != RCODE_COMPLETE)
--			goto out;
-+			return ret;
- 		/*
- 		 * As per IEEE1212 7.2, during initialization, devices can
- 		 * reply with a 0 for the first quadlet of the config
-@@ -682,10 +682,8 @@ static int read_config_rom(struct fw_device *device, int generation)
- 		 * harddisk).  In that case we just fail, and the
- 		 * retry mechanism will try again later.
- 		 */
--		if (i == 0 && rom[i] == 0) {
--			ret = RCODE_BUSY;
--			goto out;
--		}
-+		if (i == 0 && rom[i] == 0)
-+			return RCODE_BUSY;
- 	}
- 
- 	quirks = detect_quirks_by_bus_information_block(rom);
-@@ -712,15 +710,13 @@ static int read_config_rom(struct fw_device *device, int generation)
- 		 */
- 		key = stack[--sp];
- 		i = key & 0xffffff;
--		if (WARN_ON(i >= MAX_CONFIG_ROM_SIZE)) {
--			ret = -ENXIO;
--			goto out;
--		}
-+		if (WARN_ON(i >= MAX_CONFIG_ROM_SIZE))
-+			return -ENXIO;
- 
- 		/* Read header quadlet for the block to get the length. */
- 		ret = read_rom(device, generation, speed, i, &rom[i]);
- 		if (ret != RCODE_COMPLETE)
--			goto out;
-+			return ret;
- 		end = i + (rom[i] >> 16) + 1;
- 		if (end > MAX_CONFIG_ROM_SIZE) {
- 			/*
-@@ -744,7 +740,7 @@ static int read_config_rom(struct fw_device *device, int generation)
- 		for (; i < end; i++) {
- 			ret = read_rom(device, generation, speed, i, &rom[i]);
- 			if (ret != RCODE_COMPLETE)
--				goto out;
-+				return ret;
- 
- 			if ((key >> 30) != 3 || (rom[i] >> 30) < 2)
- 				continue;
-@@ -804,25 +800,19 @@ static int read_config_rom(struct fw_device *device, int generation)
- 
- 	old_rom = device->config_rom;
- 	new_rom = kmemdup(rom, length * 4, GFP_KERNEL);
--	if (new_rom == NULL) {
--		ret = -ENOMEM;
--		goto out;
--	}
-+	if (new_rom == NULL)
-+		return -ENOMEM;
- 
- 	scoped_guard(rwsem_write, &fw_device_rwsem) {
- 		device->config_rom = new_rom;
- 		device->config_rom_length = length;
- 	}
- 
--	kfree(old_rom);
--	ret = RCODE_COMPLETE;
- 	device->max_rec	= rom[2] >> 12 & 0xf;
- 	device->cmc	= rom[2] >> 30 & 1;
- 	device->irmc	= rom[2] >> 31 & 1;
-- out:
--	kfree(rom);
- 
--	return ret;
-+	return RCODE_COMPLETE;
- }
- 
- static void fw_unit_release(struct device *dev)
+Regards
 
-base-commit: dbd0cf204fe6ba7ba226153d1d90369019b90164
--- 
-2.51.0
-
+Takashi Sakamoto
 
 
 _______________________________________________
