@@ -2,118 +2,112 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26052C0875B
-	for <lists+linux1394-devel@lfdr.de>; Sat, 25 Oct 2025 02:46:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A710BC08F42
+	for <lists+linux1394-devel@lfdr.de>; Sat, 25 Oct 2025 12:42:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UIGNt6MQxR91uYyWtGeO0bq7Al+YjjtMRzLI6LoGFDE=; b=i3VKvTKUY0nk6eZeFEGvPrAO81
-	u/P846pw5D1J+W+x2fZP8gHB3bvFhmWlqlO8XqrwtCaGnxzOKw5mDrImdkMf2deWtDxgZjbemZC9d
-	YvLdcywUuGyz6ipskMF8aX8i1cGZlFetPV/3KgognnLeObmuHVDMiIO6t6XBrbc80QvY=;
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	MIME-Version:Message-ID:Subject:To:From:Date:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Xulug3oHELQgJ5X8oBGG9zbwlcWo0JUhJE6pL0AijAE=; b=TL0LG+YZE+uRNjFBCv07/0BivB
+	sWTU/G8/CDKjHz8DA+93PQ5owrH5jOvJ+mmyiPnUZLP6lCsMCvOi3jfsLKZC2QDwg3bcZsKGVFICD
+	6B86su0yqcwfX3Thba6Q4WyefTiY5M+6MKIO1F379nQ8moaFLMy5T+w683E+dCHpkJKI=;
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1vCSQe-0003Ox-UP;
-	Sat, 25 Oct 2025 00:46:45 +0000
+	id 1vCbir-000837-LL;
+	Sat, 25 Oct 2025 10:42:09 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1vCSQd-0003Oo-Sl
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1vCbiq-00082z-7u
  for linux1394-devel@lists.sourceforge.net;
- Sat, 25 Oct 2025 00:46:44 +0000
+ Sat, 25 Oct 2025 10:42:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+ From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=SFV0pZbv0KPv9MeNrACm33gyVFBL9B+sFcPT2QNEOMY=; b=gL2ZI1C2n/s3aSlc4BZH8P5VHb
- irM/hr+k3AT6Tv5YZ+2o/AQ9uW1x+D2BA49+No+2A8AJiiFD5aMB2syFUeZSVib+GwQLprXl+I/GP
- 6xV9Q1XiL8ZEPjElbm2WPMIcHIqQlcw2wioVTWJaBb21+C3ev85kMZQ8NeAuFQeqqoDE=;
+ bh=WQNINHc2Q8TwWbkVBwbzvaanh6MshyTqFyrHjqMLAAA=; b=gUlE+VU5krovThC09Ud2I9k6CD
+ 1FuOZZu007SmVAzpuKkLq57P9ttNuFEy1HnCj8B0dj95Q/DGGR93hvlj91RlynZ4DxLJBFxpdH8uA
+ dFUQc5FZaXJzC3eMqLpQxDqd0ad28xzqtNiS6+feHBHIyjcnhEEx3mJuxkb11HE8tt3A=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=SFV0pZbv0KPv9MeNrACm33gyVFBL9B+sFcPT2QNEOMY=; b=LLOzzWWBgeeOf/oYdwklNPNpPD
- g4aZ8tHBEfPWpJgew6WO0RMeOho97fKcVjwy/7QLTQ/dgsNzmvW4mBYh/rB3mq1CyrPFJTA9YPKhP
- TGVdKDX+dT11TFNWtg8fxNX7YCwjCKwMUGFVK/uFyw0Dq+2jwgW9hGx3SV2ZDupjKuyw=;
-Received: from fout-b1-smtp.messagingengine.com ([202.12.124.144])
+ h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:
+ Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=WQNINHc2Q8TwWbkVBwbzvaanh6MshyTqFyrHjqMLAAA=; b=R
+ 2Z9YaowY/SSC/LE6r4J4xcRxV9j2Ga/MLEZJE2xvOWSixK4lxgRP33wuomqOQYF3DukZkWOt8ihdD
+ PslAk8wugviWtBup4wBrlb8ShoKj/CedQIz9LB1ivUD+PtCo5r5Fim6ORXzgkOnUQt/nBBXjfyE9x
+ RWLWb8BzTx2QrKAY=;
+Received: from fhigh-a2-smtp.messagingengine.com ([103.168.172.153])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1vCSQd-0007Fj-LX for linux1394-devel@lists.sourceforge.net;
- Sat, 25 Oct 2025 00:46:44 +0000
-Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
- by mailfout.stl.internal (Postfix) with ESMTP id EDC7F1D00192;
- Fri, 24 Oct 2025 20:46:32 -0400 (EDT)
-Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-03.internal (MEProxy); Fri, 24 Oct 2025 20:46:33 -0400
+ id 1vCbio-0005Ru-RT for linux1394-devel@lists.sourceforge.net;
+ Sat, 25 Oct 2025 10:42:07 +0000
+Received: from phl-compute-12.internal (phl-compute-12.internal [10.202.2.52])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id 2FDC2140010B;
+ Sat, 25 Oct 2025 06:41:56 -0400 (EDT)
+Received: from phl-mailfrontend-02 ([10.202.2.163])
+ by phl-compute-12.internal (MEProxy); Sat, 25 Oct 2025 06:41:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1761353192; x=
- 1761439592; bh=SFV0pZbv0KPv9MeNrACm33gyVFBL9B+sFcPT2QNEOMY=; b=B
- xY1zJIHfvqcHYgIgHfVHrkSUn/4CNsvL7ixiaaBsxOv2bbO+hXOGaZWgJ7Z+1fI+
- OleVg1Ifwk19kh/6eJlmwPG6psSksOsJ3LXDuSB9yAmMJXO6/BfNFggffFLU3RKG
- c1NI7WQdiuPJ6MbSA44HA/DWR+E8OalMdNSDAoATilOGhVC33e75So9Vzp8IbFb3
- uQFkUv2u+0cKjPC7agsdJvKbElNcLYzwnO7o9TlqMHEH7QhIcveg3ITF6qw0WTpX
- 64zAODumLldKVZUMUsEFVWBy9d54LLBDr9gh816lri1B/Qtgd7TYpuXQK7b0MRTl
- pWorM+fUns+armKcr7esA==
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+ :to; s=fm2; t=1761388916; x=1761475316; bh=WQNINHc2Q8TwWbkVBwbzv
+ aanh6MshyTqFyrHjqMLAAA=; b=Nv4Wov5wKXUxKxlA4duqP/05myrvEVenrSGER
+ 2cslKA7Bm4rab7pf3afGV80IZsgXrQ1OW+gy/s4V7cMG8J5XzF/wxgBSxkaeDL7v
+ sdJLyDk7N4KLZWCXrfuTb1ONWjlB+y2Al3txd5cHcnkxdVEi1u0TT4pUoP+2I3ln
+ Df8g8+lS8POg5bH8GbXB2Fwfr8M6fCqD26nhj/cYtAeHpZQLd1lpRzovPnkx6/Ii
+ XWL5jpWMwTjCWX8oF9EkMH2SEHmf7C/tG6TPH4+Ai89SN4f+uToa6qrxJy2mgnlt
+ 9RM8hfR+YgvJVr3JargC+ciNERKMdd0dnx3fLZmk6WeofeqHQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
- 1761353192; x=1761439592; bh=SFV0pZbv0KPv9MeNrACm33gyVFBL9B+sFcP
- T2QNEOMY=; b=PlaIPQVEJFl8KncgNZO/Ro3pC9k+KaJEseYUDQY8sCYeJvY4wGj
- QjMH4sRmkToYKDfDsrwp+LNRelixh0a0rYfrXkOpT0pK5nwMQo7WNU3OIQ45dHpv
- UNq5fQi8J7rSZIKx+N1/Nm0r0GwQS/mt8SoyCC87SSWevToizJl0VoBN3ZjBTifG
- dytknAfg8NtNauZqyysSuF0IZvkstLcfv6NQTX8C914EFRAC9rS04+Xh7nlVxASd
- AgRb/LNaA1vMNJSeE50w5E85buFjFuPN5B8Yejhfjbntb7P++lAdHjz0Jvm67e+u
- wur+gSbvW0UpUPOF0XjszEX6EMB76qmmQIA==
-X-ME-Sender: <xms:6B38aHW7wq_EgkcUWIWXFf6Ei-1OAaEH9RohNUo80AT04eaTxF5uQw>
- <xme:6B38aFmOxOghPJJZmTv2G-flGu2iKHJysFD60TSAFXG1fiGifNAhznSN11HpWN4D8
- FhNZlrY20Ak-CAbD7cztkteOfs59cVcrmttz8SjC_wFbxvRVht7Xek>
-X-ME-Received: <xmr:6B38aBCI6U9Ec142QlZWbtJzdfIAfsMpioFCgSkg2_Qmy8bpInJqmdq1GVSFLJicyy7bcx8YKKG8KHl4GEsT0z29CILW-WXDYMQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdduhedtkedvucetufdoteggodetrf
+ :feedback-id:feedback-id:from:from:in-reply-to:message-id
+ :mime-version:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1761388916; x=
+ 1761475316; bh=WQNINHc2Q8TwWbkVBwbzvaanh6MshyTqFyrHjqMLAAA=; b=F
+ PRksBb0Tw6jYN+KjCP3XeUvp9vQnI02Qa0UeYBoh08kSXxnvobCu7gVAv5xRefrb
+ B8Ag2GAKmUoyyCfiS7/K1yyUosUVcSEpajGtKPJCh/lfVJZnBDDW6YnaJXg7gRN6
+ CoqVp1HR3qrS5+8pkpFJ38ZB/9RoLRbkFyxpqDW4iwHG7mqASvgIn57/XBvXM04F
+ T66YlaSHNsFMRRKwx+ykDDTNsion/70lX6iGRJ65QTuo2eJblaaNqz00K4w5rtp7
+ 8+7G2FrF04x4ipaNlJZYete/F/u1x3PvC3fXhtYSMM47Y7EPl9wl3F/2P9U/hvyv
+ MzTKEnrLU1+0B33MHw9Vw==
+X-ME-Sender: <xms:c6n8aPtCmES8tkIpZd6mLFrZUXoKngNzFO1U5W2WAwBA0ERavpXxUw>
+ <xme:c6n8aIOKMFOG8eSqFVuA-5Fku6tUwgc2Hf9MqfX9mxWIRuutK3LQ095OK9Q9ujURo
+ bkQAOE86mg7x1K7Wk820gCnjt77FxKbP8sZKEay1CQAIrAbOEzRBAo>
+X-ME-Received: <xmr:c6n8aF0nQr02SKgSIcFf-H5AmlsJw0FGao8DOKmTgGLIBsMzHxJyy_DyVRfIU5QHxHAhOamGxo8ZnYQDsJ9QRGee-88QUPVfUxo>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdduhedvtdduucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegouf
- hushhpvggtthffohhmrghinhculdegledmnecujfgurhepfffhvfevuffkfhggtggujges
- thdtredttddtvdenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqth
- grkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnheptddu
- feevjeeuveektedvjedufeegiefhlefgtddvhfejgefgleejveffudeiudegnecuffhomh
- grihhnpegsuhhffhgvrhdrtggrthdpghhithhhuhgsrdhiohdpthhrrggtvgdqtghmugdr
- ohhrghdpkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrg
- hmpehmrghilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdp
- nhgspghrtghpthhtohepvddpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheprggurg
- hmghesphhosghogidrtghomhdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvghl
- sehlihhsthhsrdhsohhurhgtvghfohhrghgvrdhnvght
-X-ME-Proxy: <xmx:6B38aNeXR02tFK00gcch9nkh6T-172WXkKfYPRewqikFiMvGiW-pRA>
- <xmx:6B38aEJO4Y9BkxB_-s7N0L3G16YoPF1yA9e3f6EX3jcfldTCtvySmA>
- <xmx:6B38aIeJra1Nvz0hF47eWFg6j-dxG1xbQGc--xMH_jUe6OM0rdvwZQ>
- <xmx:6B38aD2Le5JUtt9ltpqRYubi1TRcbKhS2BITKSDs1Z_dKpq8E77Fpw>
- <xmx:6B38aJ7LnDFXYxuXJJpw8w9CGwG0vhiIfpNSjGiSroWX2fkkPkJcyNuX>
+ rghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfggtggusehttdertddttd
+ dvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhi
+ sehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeetfeeiteefveegvd
+ fggeffheetleejkeekleeugeffffdtgfdtteetkeevvddvgfenucffohhmrghinhepkhgv
+ rhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
+ hfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghrtghp
+ thhtohepfedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepthhorhhvrghlughsse
+ hlihhnuhigqdhfohhunhgurghtihhonhdrohhrghdprhgtphhtthhopehlihhnuhigqdhk
+ vghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigud
+ efleegqdguvghvvghlsehlihhsthhsrdhsohhurhgtvghfohhrghgvrdhnvght
+X-ME-Proxy: <xmx:c6n8aMPR1f77Cu3I8wkFRdwRVp0yDKCZPdSz_VmIuasjGJN1imkdvw>
+ <xmx:c6n8aN2LFoOm-a-1B0fje-Vfc1_QLLYDYmSyw6LTxiYTQnPOynkYDA>
+ <xmx:c6n8aLHbLAuRG9T6JFnYD9m2YBOfsb8QsUgIJM6NxIwON_uWvUR7Tg>
+ <xmx:c6n8aC6ekIJEEhQ6GIaSQNCeV0JRW9l_58P2pwKgHMzlPcW-mg1EnQ>
+ <xmx:dKn8aOb86HEbHQ2oeLR0QsBCghYH0P25IXpfyJoC-97aWOeF-sal4NOe>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 24 Oct 2025 20:46:31 -0400 (EDT)
-Date: Sat, 25 Oct 2025 09:46:29 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 25 Oct 2025 06:41:54 -0400 (EDT)
+Date: Sat, 25 Oct 2025 19:41:52 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Adam Goldman <adamg@pobox.com>
-Subject: Re: [PATCH 0/4] firewire: ohci: remove obsolete module-level debug
- parameter
-Message-ID: <20251025004629.GC463024@workstation.local>
-Mail-Followup-To: Adam Goldman <adamg@pobox.com>,
- linux1394-devel@lists.sourceforge.net
-References: <20250821003017.186752-1-o-takashi@sakamocchi.jp>
- <aPh7euUDRQFGeMkz@iguana.24-8.net>
+To: torvalds@linux-foundation.org
+Subject: [GIT PULL] firewire fixes for v6.18-rc3
+Message-ID: <20251025104152.GA501617@workstation.local>
+Mail-Followup-To: torvalds@linux-foundation.org,
+ linux-kernel@vger.kernel.org, linux1394-devel@lists.sourceforge.net
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aPh7euUDRQFGeMkz@iguana.24-8.net>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
@@ -121,15 +115,12 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi Adam, On Tue, Oct 21, 2025 at 11:36:42PM -0700,
- Adam Goldman
- wrote: > On Thu, Aug 21, 2025 at 09:30:13AM +0900, Takashi Sakamoto wrote:
- > > The "firewire-ohci" module has long provided a "debug" parameter t [...]
+ Content preview:  Hi Linus, Please apply the following fixes to your tree for
+ FireWire subsystem. The following changes since commit
+ 211ddde0823f1442e4ad052a2f30f050145ccada:
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 RCVD_IN_MSPIKE_H5      RBL: Excellent reputation (+5)
- [202.12.124.144 listed in wl.mailspike.net]
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -137,8 +128,7 @@ X-Spam-Report: Spam detection software,
  not necessarily valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
-X-Headers-End: 1vCSQd-0007Fj-LX
+X-Headers-End: 1vCbio-0005Ru-RT
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -151,113 +141,44 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net
+Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi Adam,
+Hi Linus,
 
-On Tue, Oct 21, 2025 at 11:36:42PM -0700, Adam Goldman wrote:
-> On Thu, Aug 21, 2025 at 09:30:13AM +0900, Takashi Sakamoto wrote:
-> > The "firewire-ohci" module has long provided a "debug" parameter that
-> > enabled debug logging by calling printk() from hardIRQ context.
-> > 
-> > Between v6.11 and v6.12, a series of tracepoints events have been added as
-> > a more suitable alternative. Since v6.12, a commit cd7023729877
-> > ("firewire: ohci: deprecate debug parameter") has already marked the
-> > parameter as deprecated.
-> > 
-> > This series removes the parameter, as its functionality is now fully
-> > covered by tracepoints.
-> 
-> Hi Takashi,
-> 
-> Now that the "debug" parameter has been removed, can you provide 
-> instructions for using tracepoints? For example, what is the new 
-> procedure instead of adding "debug=7" to the module command line? What 
-> is the equivalent to 
-> "echo -1 > /sys/module/firewire_ohci/parameters/debug"?
-> 
-> -- Adam
-
-In my opinion, using tracepoints means to leave from the message buffer
-for printk once. There are several ways to retrieve the content of ring
-buffer for tracepoints events in userspace, and we have some userspace
-applications to utilize them.
-
-1. By debugfs
-2. By file descriptor returned from perf_event_open(2) system call
-3. By tracefs
-4. By printk message buffer
-5. By BPF
-
-For the 1st option, it is required to mount 'debugfs' into anywhere in
-your root file system. In my environment:
-
-```
-$ mount | grep debugfs
-debugfs on /sys/kernel/debug type debugfs (rw,nosuid,nodev,noexec,relatime)
-```
-
-Then you can see many directories for events under
-'/sys/kernel/debug/tracing/events/'. For the events specific to this
-subsystem:
-
-* /sys/kernel/debug/tracing/events/firewire_ohci
-  * irq
-  * self_id_complete
-* /sys/kernel/debug/tracing/events/firewire
-  * bus_reset_handle
-  * self_id_sequence
-  * bus_reset_schedule
-  * bus_reset_postpone
-  * bus_reset_initiate
-  * async_phy_inbound
-  * async_phy_outbound_initiate
-  * async_phy_outbound_complete
-  * etc...
-
-Each of the above directory includes 'enable' file. By writing 1 to the
-file, the corresponding event is enabled.
-
-```
-$ echo 1 > /sys/kernel/debug/tracing/events/firewire/self_id_sequence/enable
-```
-
-The read operation to '/sys/kernel/debug/tracing/trace' retrieves the event
-content from the ring buffer.
-
-```
-$ cat /sys/kernel/debug/tracing/trace
- irq/121-firewir-73902   [000] ...1. 114132.060856: self_id_sequence: card_index=0 generation=4 phy_id=0x00 link_active=true gap_count=63 scode=3 contender=true power_class=4 initiated_reset=true port_status={0x1,0x1,0x1} self_id_sequence={0x807fcc56}
-```
-
-I think this is the most-straightforward way to use the tracepoints
-framework. Using cat and shell-builtin echo commands satisfies our aim.
+Please apply the following fixes to your tree for FireWire subsystem.
 
 
-For the 2nd option, perf(1) command would be a good fontend application.
-For tracepoints events, 'list', 'record', and 'script' subcommands are
-available to enumerate events, record events, and report. In
-detail, see https://perfwiki.github.io/main/.
+The following changes since commit 211ddde0823f1442e4ad052a2f30f050145ccada:
 
+  Linux 6.18-rc2 (2025-10-19 15:19:16 -1000)
 
-For the 3rd option, trace-cmd(1) would be a good frontend application.
-For tracepoints events, 'list', 'record', and 'report' subcommands are
-available. In detail, see https://www.trace-cmd.org/.
+are available in the Git repository at:
 
+  git://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git tags/firewire-fixes-6.18-rc3
 
-For the 4th option, we need to use either some kernel command-line options
-or corresponding sysctl configurations:
-* tp_printk
-* trace_event
+for you to fetch changes up to 73ba88fb04081372a69f0395958ac6b65d53d134:
 
-This way has an advantage at boot time analysis. In detail, see:
-* https://docs.kernel.org/admin-guide/kernel-parameters.html
+  firewire: init_ohci1394_dma: add missing function parameter documentation (2025-10-25 08:29:56 +0900)
 
+----------------------------------------------------------------
+firewire fixes for 6.18-rc3
 
-I have never used the 5th option, since it is relatively new,
+A small collection of FireWire fixes. This includes collections to sparse
+and API documentation.
+
+----------------------------------------------------------------
+Nirbhay Sharma (1):
+      firewire: init_ohci1394_dma: add missing function parameter documentation
+
+Takashi Sakamoto (1):
+      firewire: core: fix __must_hold() annotation
+
+ drivers/firewire/core-transaction.c  |  2 +-
+ drivers/firewire/init_ohci1394_dma.c | 10 ++++++++++
+ 2 files changed, 11 insertions(+), 1 deletion(-)
 
 
 Regards
