@@ -2,115 +2,113 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7222C614B5
-	for <lists+linux1394-devel@lfdr.de>; Sun, 16 Nov 2025 13:31:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 95B94C6150F
+	for <lists+linux1394-devel@lfdr.de>; Sun, 16 Nov 2025 13:51:41 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=28ZqfsQsMW0mKyTmbCCE2yv7peUY6m0UHACg/sVZ9IU=; b=U3sT5KJlcqgoIYkf6R4vNUqJNd
-	qP+z9UqWrJToC+jq3A0cKx7a9nWS6yzogm9GLUEP5XZ9TyoHBgG8QDXBQviSfCJ7ntLDLkNhsajhk
-	fOUPBWzmJIU0vBQ+PmRp/J8e/LRexysrpooVnnLG5jcecVJuL5aWrlf8dkL+bZjvITls=;
-Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
-	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	MIME-Version:Message-ID:Subject:To:From:Date:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+OYdcx3uOtYHUmh4fFCrt2HZmtqu5o1w/8KxnAk6REE=; b=TghFM59kEp9WSd9mVr0pywOLF6
+	w+n1gXPCqLCiWdEWA6o5QnDj8kjGbkouARUtO3exGKBI4vXs6WOHQcQrsyOsrqeuIGuUoM5ISpZRr
+	B6ya6h3L8XyNtzhhwkg5TCnMR6ljXA8EvC0C/HEDmZQ3oJhMa5bIZDuESW7yQZFtAX3E=;
+Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
+	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1vKbuH-0003zO-A7;
-	Sun, 16 Nov 2025 12:31:01 +0000
+	id 1vKcE9-0001u9-Jm;
+	Sun, 16 Nov 2025 12:51:33 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1vKbtp-0003yl-BZ
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1vKcE6-0001ty-E4
  for linux1394-devel@lists.sourceforge.net;
- Sun, 16 Nov 2025 12:30:33 +0000
+ Sun, 16 Nov 2025 12:51:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:MIME-Version
+ :Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=uxC9pM3cZF/CjUUd1dvay5FUET9Y6MOVQLwFNe+GFAY=; b=jaHg0ZlpiGdUoQg9qQdaRpwY7K
- sd6iVZK3wVjqC/L2k4++doYKuLxgjxWMaYL5tUhEpaex65DVVj2syTJuF8j8mP7SYE/PXP571bTlc
- 6oyYgSiFZI4dvIdfMjVS4FDtbh5fd/Dg2pXEF495fsHML6YzScsKBKix4BhveT1xBTLw=;
+ bh=OfIaPufCrWWr2HRdk3y6IJspYdmlePykqKhtuKe5D6I=; b=LUpc/VDr2ivJGdZyDoKUtmhbI8
+ CJu1NHipNx8JmN+osq/6nJV9+uvFTnJGJmpfBo9dDS7ogrcRw1ubXo74eMzhsaF874Ha2dS6ajl80
+ cNh71zi5inXVaG90eqk/iV5D2XlOldOmG59UvkJajEzjkElhlfQFD/L5W07FFdL7xgX0=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=uxC9pM3cZF/CjUUd1dvay5FUET9Y6MOVQLwFNe+GFAY=; b=LWWQgP7IM7YNnAjO5hqBpiqTTF
- L+KWDM7/R4rNERpNv1gTOkOkpKYA0D9OMYTBJIzNsqMKUZ4nchv7N2o1CiE5ooLkU/pkQnhvJf6bk
- ox3w/GVAnqmx65qePG9idULZn+uVXCLQIszu1Kso2+OWAImfPKrptaUnTmbfW8XGJh0o=;
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc
+ :To:From:Date:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=OfIaPufCrWWr2HRdk3y6IJspYdmlePykqKhtuKe5D6I=; b=g
+ AGOjlhYjSwZafC3K/W/GVtJ7Sz3mvG8Hgd8Ez9U/jA5tbRZqpp225YpfUz0BOGJZHfGQq/gCs/hXt
+ 2+7JPWhIZAgtDmCDcCgc3FHQGguS+ZPQv5AMWQNKGzqiSuWLnIMQMjjZP6D6ND4/sAI8VWnZQyw1A
+ fULL/Pnll1dxGKNI=;
 Received: from fout-b3-smtp.messagingengine.com ([202.12.124.146])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1vKbtc-000420-IY for linux1394-devel@lists.sourceforge.net;
- Sun, 16 Nov 2025 12:30:21 +0000
-Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
- by mailfout.stl.internal (Postfix) with ESMTP id C38F71D000BF;
- Sun, 16 Nov 2025 07:30:14 -0500 (EST)
-Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-04.internal (MEProxy); Sun, 16 Nov 2025 07:30:14 -0500
+ id 1vKcE6-0004Xw-1l for linux1394-devel@lists.sourceforge.net;
+ Sun, 16 Nov 2025 12:51:30 +0000
+Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
+ by mailfout.stl.internal (Postfix) with ESMTP id 772311D00094;
+ Sun, 16 Nov 2025 07:51:24 -0500 (EST)
+Received: from phl-mailfrontend-01 ([10.202.2.162])
+ by phl-compute-06.internal (MEProxy); Sun, 16 Nov 2025 07:51:24 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1763296214; x=
- 1763382614; bh=uxC9pM3cZF/CjUUd1dvay5FUET9Y6MOVQLwFNe+GFAY=; b=d
- 71c5kLKuEhqG1gE2TJSYIImx9P11ZtAVlo20BO3pfS24X7tHoncIkknDEKC+3nnv
- 4ZYjaB718Vfy+wukph+/oqCUz93hPj5vVdbib/UlZOkytN4nIAHXM6cJrUYZmc4T
- 3fLI7Br78T9AIygOy6aapSsuLA87PvYimbMHl4CJn2RxcoeTI4sIjisUx2rroRk6
- W+SLXCAUhxct7Ib8XdZAHaYdC2xexyee/j/nmNGBsr68jpL+ozXNV3n5bDTQCyqB
- vaaHvwgOflb4rGPDhIHqwaXmq7e8+fjUT4Sk2pATxIterk4TBj2z5bNnUw4boa+Y
- 9WR+WvePg4CD/2Ibv4jWQ==
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:message-id:mime-version
+ :reply-to:subject:subject:to:to; s=fm3; t=1763297484; x=
+ 1763383884; bh=OfIaPufCrWWr2HRdk3y6IJspYdmlePykqKhtuKe5D6I=; b=j
+ fu/uFylASZFp9UDzh4/h4GBvuyOqh92cYG1wLTMoiapRtLe4AHA1Bj4S1jq5mx4a
+ depMIaoNME4uiX28JwjojF04VcuMwgqtEGgTJFLZYLGrjqMN3KtzA6W0BwOUItnx
+ sdGcCHd4Zfjb9aCnwVPOrTvNsG4olxMhlTrrlOZLY4atZYYEkKHUdszjW+orfTK1
+ LLOYi8tCHgUchIt9lJYlcN3cbF9N2askYEoDkZbNsSRDDJT2y690K0roVVR8pXWE
+ 7v2a4iLLaD/ipGdz92IjSYnP/+gx7oRQT+Cwx/ZCj/RwWjNFnMHqVYOydR1nTr0G
+ iP9N/rP4hllQZPuboH3uQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
- 1763296214; x=1763382614; bh=uxC9pM3cZF/CjUUd1dvay5FUET9Y6MOVQLw
- FNe+GFAY=; b=2aLXubQ9t5dcyv9zdR7ZDhg4mGNwuRZzor28CIRYCFvRaQNMMQU
- W5q98hMfoXwpE9Ooujr9Fm22I7URHHIvwM1v3y7XC6SEziI69YtS1lgiI55dTk48
- JuSJzUP9tv1M8G0fA/JeKahYVaNLZX0QlUh7KIBw5qyVUk5y+p0EPPAgdojGoYjL
- R2g6RS5mecbzoTrrBlXxvzf1wj9ShTUThhjv9kBW6c5ti2wBxroCOMMRjzFUHehV
- AqzeYH6ZQbLhiONi+xlwzhlqWrrYU6ByoPQumEQHQPM7sPJmvg4xcy+Z8VRreXbF
- jOJl7nZFErqUcCWWMTiYAngQ7SefILDKT/g==
-X-ME-Sender: <xms:1sMZadCZccTezj3VBdnc1QwNGs8EbwB4DQ2VeZnxKdys28ViDlLGZQ>
- <xme:1sMZaZemKQh8P3OGhijwdeQ0W5P8WtV9Co5xWKmAeJE-8HxR1Vn9GCzWbqpDUujqo
- lojgD3vCAOjRTifaTuDo2S6d5VuGqBqI1Kcn4rqcBr_kQT9TW_7RxI>
-X-ME-Received: <xmr:1sMZaQIWYlR93IdzYkRatYCXPC5g8_1aXdNgJvgRnFx6-p0A3D0d9v_Yl0GISihRJoZWEEjYiCT5GidUDaNohDKG9x0_lVS_I38>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggddvudehheelucetufdoteggodetrf
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+ fm3; t=1763297484; x=1763383884; bh=OfIaPufCrWWr2HRdk3y6IJspYdml
+ ePykqKhtuKe5D6I=; b=o5ukq+ZNPeQ3b3DGzMU/gyH62ouOv0pLy0Cj51VAjFKH
+ szQ7pXppmk0WTe/L2qOMit2pxRPexbrBv3mRmtZBRLooMyMwbX6P51sSDnsEORsH
+ kdcnKtxl3ocYTnzZmvynNtmW0NGFio2oY00Dh7/mLiiATjf+5tIfR4lkvOvdPQbo
+ e+bwcbCPLMS6YYz0vqAVuzqiKLeRJwPMCKmb/aNNkIwAwBhp9l632QHcc03k7qah
+ MkwttvZlTUQ+UATjTfvY8Kwux1J8nywAcTh5SbkzRArFvQP5v/SlL7F20UFHAmAx
+ 338ml+L/ct+8YMG00jvHPBcoycFP5sKsLsSlQAYTFQ==
+X-ME-Sender: <xms:y8gZaTZupiR21POTcfAU3OpERICFdBJaEEOliBfxHkUnwFKGVQbhzg>
+ <xme:y8gZaaL0c3jLVfUtwuZ-hhwxQd_vPniaQ_2mzixosmxE5DHb_jCPz4fLFcdLbEuZt
+ gWOh8SyffuMf0hvBBk7e6HyJqdUodBCdf8sF_yJ0vXd84X7a00lA5w>
+X-ME-Received: <xmr:y8gZaZAw4uK1gGNXS_mUwWXeQ-3vu28CruXNusd-JaQjv7kabJ26juzEm0kwiBk-iJ2eHSFQWAmySfN_GOND2dKMOUFNj-TWh6Q>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggddvudehiedvucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttdertd
- dttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
- hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhteetgf
- ekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushhtvghr
- ufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrg
- hkrghmohgttghhihdrjhhppdhnsggprhgtphhtthhopedvpdhmohguvgepshhmthhpohhu
- thdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurh
- gtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgv
- rhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:1sMZaUcW-bBeR1HGdgB2utDSdSfvYryoDc3v_dXpv2AAzjmykofymw>
- <xmx:1sMZaf34GhvvrNm05RJgJetcPdc0cDkVwH3r-QUPBANeQdivmgyVKQ>
- <xmx:1sMZaVhJPWdLuhgdW7A4aJIsaqBwHOpG6Z8BE__QWb_Trn29rdarxw>
- <xmx:1sMZadRSmyZ4ZEnISSviqPaAt7q47FPRaGWEFaNuCwXxRCaCVj1Z9A>
- <xmx:1sMZacCdnxVA9hsjIQfCce7mVqWdT7B1yYbXKphbbW5ymiTaRZXuocrB>
+ rghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfggtggugfesthekredttd
+ dtudenucfhrhhomhepvfgrkhgrshhhihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhh
+ ihesshgrkhgrmhhotggthhhirdhjpheqnecuggftrfgrthhtvghrnhepledtteefteehue
+ ejueelvdekveegheefteeiueelleeggfelheeiuddvteehieelnecuffhomhgrihhnpehk
+ vghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrih
+ hlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgt
+ phhtthhopeefpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehtohhrvhgrlhgush
+ eslhhinhhugidqfhhouhhnuggrthhiohhnrdhorhhgpdhrtghpthhtoheplhhinhhugidq
+ khgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugi
+ dufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvth
+X-ME-Proxy: <xmx:y8gZaXqOQYHK5-4kx9ErQ2pNeP4JaqykTdECJYUMzxJxnmdldE9iwA>
+ <xmx:y8gZachPNoEDUEa4Q8u1-13a7PyB3Lrl8KEwXYheJgDQMMNn3YYbDw>
+ <xmx:y8gZacBoXC8YHNU19UFDiq3taQDbUlM9SsLrvh5-2xRQBevRb7Lrcw>
+ <xmx:y8gZaZEnX6_1QkZGdzgTeGCt-yOoJccIUyFGUxCv8qiVUgyMvO9H0g>
+ <xmx:zMgZaX3oYGzPVbgB4oh_8biPYbXmPOZPd2imeiEVD6wkH3qIZEP7-sFA>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 16 Nov 2025 07:30:13 -0500 (EST)
-Date: Sun, 16 Nov 2025 21:30:11 +0900
+ 16 Nov 2025 07:51:22 -0500 (EST)
+Date: Sun, 16 Nov 2025 21:51:20 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: linux1394-devel@lists.sourceforge.net
-Subject: Re: [PATCH] firewire: core: fix to update generation field in
- topology map
-Message-ID: <20251116123011.GA646745@workstation.local>
-Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
- linux-kernel@vger.kernel.org
-References: <20251114144421.415278-1-o-takashi@sakamocchi.jp>
+To: torvalds@linux-foundation.org
+Subject: [GIT PULL] firewire fixes for v6.18-rc6
+Message-ID: <20251116125120.GA650456@workstation.local>
+Mail-Followup-To: torvalds@linux-foundation.org,
+ linux-kernel@vger.kernel.org, linux1394-devel@lists.sourceforge.net
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20251114144421.415278-1-o-takashi@sakamocchi.jp>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
@@ -118,17 +116,11 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Fri, Nov 14, 2025 at 11:44:21PM +0900, Takashi Sakamoto
- wrote: > The generation field of topology map is updated after initialized
- by zero. > The updated value of generation field is always zero, a [...] 
+ Content preview:  Hi Linus, Please apply the fixes for FireWire subsystem. The
+ following changes since commit e9a6fb0bcdd7609be6969112f3fbfcce3b1d4a7c: 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 URIBL_BLOCKED ADMINISTRATOR NOTICE: The query to URIBL was blocked.
- See
- http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
- for more information. [URI: sakamocchi.jp]
- [URI: messagingengine.com]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
@@ -136,7 +128,7 @@ X-Spam-Report: Spam detection software,
  domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1vKbtc-000420-IY
+X-Headers-End: 1vKcE6-0004Xw-1l
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -149,25 +141,45 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Fri, Nov 14, 2025 at 11:44:21PM +0900, Takashi Sakamoto wrote:
-> The generation field of topology map is updated after initialized by zero.
-> The updated value of generation field is always zero, and is against
-> specification.
-> 
-> This commit fixes the bug.
-> 
-> Fixes: 7d138cb269db ("firewire: core: use spin lock specific to topology map")
-> Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-> ---
->  drivers/firewire/core-topology.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+Hi Linus,
 
-Applied to for-linus branch.
+Please apply the fixes for FireWire subsystem.
+
+The following changes since commit e9a6fb0bcdd7609be6969112f3fbfcce3b1d4a7c:
+
+  Linux 6.18-rc5 (2025-11-09 15:10:19 -0800)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git tags=
+/firewire-fixes-6.18-rc6
+
+for you to fetch changes up to 1107aac1ad7f445a83604b14af7be47f1a795c66:
+
+  firewire: core: fix to update generation field in topology map (2025-11-1=
+6 21:30:26 +0900)
+
+----------------------------------------------------------------
+firewire fixes for 6.18-rc6
+
+This includes some fixes for bugs to generate topology map, newly
+introduced in v6.18 kernel.
+
+----------------------------------------------------------------
+Takashi Sakamoto (1):
+      firewire: core: fix to update generation field in topology map
+
+Ville Syrj=E4l=E4 (1):
+      firewire: core: Initialize topology_map.lock
+
+ drivers/firewire/core-card.c     | 2 ++
+ drivers/firewire/core-topology.c | 3 ++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
 
 Regards
