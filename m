@@ -2,120 +2,113 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49630C63D20
-	for <lists+linux1394-devel@lfdr.de>; Mon, 17 Nov 2025 12:31:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E6CB8C99930
+	for <lists+linux1394-devel@lfdr.de>; Tue, 02 Dec 2025 00:23:09 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fYJmEQp8KwPwSKN+YuPnOkq7ze+U1w/pUXV9/P2GmTY=; b=kzxyUOfQdvHs0lRCGjab8YoU7w
-	u4lxCOEHM6S7980GPL4wS9m+WeD2Z2y1Eu9PLcCNBAqRdkUCcwo188WbVWa/B3HYONA2YGszHVYSy
-	Ctjc1wN7PBh8DWA6q319YKenmuoG1Z8aUvwI0mHb4OSPPI7atK9moXhxAmJFalcLHfzM=;
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	MIME-Version:Message-ID:Subject:To:From:Date:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iEyN3jEWq3PRZorbgBVGzEs7cO7j+eV9lahIeWTsi6c=; b=OQ817X4HYAd0dF+07U4ZIjQujz
+	Ok/iz7+C8mHdwkpTashPaTRVnjNIkH+V+PBLgNuhanjtLjTJ3t28b5v5G7zCH4qUAWCyTtTX/Uh2Y
+	SJ3PSn20ZLVzPMw/CiXxaPh7yuQK/LxojLfjZX5cRhqNsFgI/focVbJzidB9TsKcWKnQ=;
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1vKxS5-0003pB-Ah;
-	Mon, 17 Nov 2025 11:31:21 +0000
+	id 1vQDEP-0002BY-4m;
+	Mon, 01 Dec 2025 23:22:57 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1vKxS2-0003p1-I6
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1vQDEM-0002BL-7w
  for linux1394-devel@lists.sourceforge.net;
- Mon, 17 Nov 2025 11:31:19 +0000
+ Mon, 01 Dec 2025 23:22:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+ From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Od/LzLdNDLGB9BaWnjY2NsLBwJgTXzPdpv02meqtZL8=; b=BUjxR/n5Ooo/mluIcUreI6ngNY
- A52B27XULIuAAWnaeORolzMzYBceY8VDB7azaGosoGNli7uEFGEwKpPMafVvWS7OkCkkFRQvg3GLA
- 6VDmNJv0APZaorF7/kZfyRaCAeWoC9jAJBRDlNnjfYlPjDz4pvjq24CqI65gviWy7spc=;
+ bh=4PFpy0HH4F5BuF7KA7iBuwUQOMQ32FEWDx/KhX2zfQ0=; b=MIknrzDN2Eai//YEnwqZ7pTTm+
+ 4TGnl2TaXOZOYV6/AQ0T6/ReUuQmpbbrLcbRKO1lFEe0gPr9lT+CsDDaCjMqEghZTZueWKOgveAwT
+ T99cwB+VxeS0shZwMj6ppKUTDmt3sHNH5gfDLO1AB3g3X2tiLC74PK2X5F91j0nMt2qU=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=Od/LzLdNDLGB9BaWnjY2NsLBwJgTXzPdpv02meqtZL8=; b=Wt8C++HAQDtVt0cOmxNb8AixzO
- g3NgaXs+Ycj20yozNtwUD5hk3m6jN/bRw+raLyvlIfIXTMz0E5g2furcD/pJr3loT87YR94B+r31Z
- xFFxZjDIs5K2JZi+90+qQvgVwUSKYe+ITQoEqCkDDrL4bkBbaceTMAozehkvWFm+eLG4=;
-Received: from fhigh-a3-smtp.messagingengine.com ([103.168.172.154])
+ h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:
+ Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+ :Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=4PFpy0HH4F5BuF7KA7iBuwUQOMQ32FEWDx/KhX2zfQ0=; b=Q
+ SFO5zjS+7ejjBcTBxGmpX9S/IkALzZAulJ1yfxNHRQDUNvy1nWQoPbl5f2wuEF4fbtVvbTTpTS5pZ
+ zk6TgVsxZcEjZv3+RvPr1EgeEhH4lrH0Vo7GZHU+2jBxTAtAZX+/azGYxNeQ3MeAP83UcRuB0L0qb
+ 4N36v3CQpNyps984=;
+Received: from fhigh-b7-smtp.messagingengine.com ([202.12.124.158])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1vKxS1-00007s-Mu for linux1394-devel@lists.sourceforge.net;
- Mon, 17 Nov 2025 11:31:18 +0000
+ id 1vQDEK-0008GZ-N7 for linux1394-devel@lists.sourceforge.net;
+ Mon, 01 Dec 2025 23:22:54 +0000
 Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 08F2214000D3;
- Mon, 17 Nov 2025 06:31:12 -0500 (EST)
+ by mailfhigh.stl.internal (Postfix) with ESMTP id 138AC7A00EF;
+ Mon,  1 Dec 2025 18:22:47 -0500 (EST)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-06.internal (MEProxy); Mon, 17 Nov 2025 06:31:12 -0500
+ by phl-compute-06.internal (MEProxy); Mon, 01 Dec 2025 18:22:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm3; t=1763379072; x=
- 1763465472; bh=Od/LzLdNDLGB9BaWnjY2NsLBwJgTXzPdpv02meqtZL8=; b=e
- NEWDzBpnsvJT+o5L9OSIk7t0Yy5mfR/78nWkjOS2KKA8ACtwf0Pfg1rX+PuUWTir
- w/XynM07ikaQgWHmUQQe7qOl3EnGboheRXD+kh9lssNb4K4cRy/jQdwooiKVjubz
- 9kG9sxbp6SYXAUvBTz+G9+xdV984gRVxWsQ7t8XE6Na+7s//+Gyt+KkBODoCR3xN
- xyCHnYZkERD1T1JLVqG++TETFqGzjVUS6bCJMIIXtiE4UGS3MY5eX1c1whEZqnqo
- v2Nu8xvxqFY09Ac69AAzb5MB/zb0m0qe4XUGE/blEPplvzTvBW9TtrmcZ2OBw/j1
- baDZlVXGI/wm4qk+/ND/w==
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+ :to; s=fm1; t=1764631366; x=1764717766; bh=4PFpy0HH4F5BuF7KA7iBu
+ wUQOMQ32FEWDx/KhX2zfQ0=; b=gCuKkVEpaO1h+KEFxnbvYgazZzbEoRFMfRFlE
+ A8PfOg1ulZUngj7Qz2oJIJAqtClRVfdfbWyHM1OQxkcs3xYXK9KROgdhTMBltTc9
+ lMgaXVF7s/hV4yqK1oxArAFVKdPKVCI1kR/5k8xwqka4Zx5y71032ogES9+ZiFQ2
+ 3furNrQ2QvbT4H3xY8a1ymwM8CPSqZDDuFjQZcE6gxnFCBUUtVbQ1SeHGCUv4/DJ
+ IwhDI0UP2fsXzFv5i04awTff4KDmVcN5gJWvlyVghgO8BwOZA/YpAHMxQ1EuOx4+
+ GHhh10uikTr572RXtD8zuC6NW3BRLmkH9IEf2cbADGe0B6dUA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
- 1763379072; x=1763465472; bh=Od/LzLdNDLGB9BaWnjY2NsLBwJgTXzPdpv0
- 2meqtZL8=; b=v2gdH2dZGiqIIDuCKd6o30bhBgJ3PaxKZBiFG6jOOAkblHN9b6h
- odKEhqrOBq9SrZgksH6jz7O6NnaNUZuj+WPLOdEIulRotIFJsx4LtnjDqTKqjqC2
- 6JdwHsWARYULBXkpI2zx4Nb2tNGfa8KvICCtpMtk9D14VVIA51AJqCoQgjaoaqXE
- 8h+GLq4H4LQJbYHYvJ+vmFczgzew2/PDrnhHwv/jtia90czs3xA0qZdGbKZNsRrB
- TO7eRMVNFlIy1WhXfpvOEsjZ8AJAQHSCsjuYzFxq7CjfXVOESaUI3BXTyreoRx4R
- du5oNoHgJxpkywVyEkIK/LaWl/VHUHo0pfw==
-X-ME-Sender: <xms:fwcbaY5CVpLu38cVxyEmWKGM3GcMkB4VH_5R54KVYK6HMvchnmjhYQ>
- <xme:fwcbaU0JntyJkiS4rCRYrvqSy3ro2qjlHZpXZpcXQJv4MMrQdUYeqB03WxFnf78Nh
- bZNNSGEg-3_NN7qLFGRU9PyIA8IIbdJtyJuxL0gk67gyOaaUjcsN6bW>
-X-ME-Received: <xmr:fwcbaWeaqVLHOWgO4qCEu_kVwmmvZRtosIQKU7BCHWFGXxp4RRgYM915krsdPV671WibykY0pnIjAGPwfeRH7ugUUhvuEUzerg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggddvudekfeegucetufdoteggodetrf
+ :feedback-id:feedback-id:from:from:in-reply-to:message-id
+ :mime-version:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1764631366; x=
+ 1764717766; bh=4PFpy0HH4F5BuF7KA7iBuwUQOMQ32FEWDx/KhX2zfQ0=; b=r
+ Hjf2jE6HVDZkINVMTJ5jQtv+ZUKtAeTfgu73LsRyLG3QE0xybrvgVTGN5yZ+acrv
+ 6bhr9Fn1hJEcy84tN+ueDnYs1m2DLWOteTK0L7UVvR1BlO/HsmUqUDqf4bOB7KlD
+ 6OT0GtnjFjJf4yBGjC1Gifmr/bgHbUqm9Ww5l6cVDKVwk3YWRHgQXxxrR9VcH0XC
+ Kqgx42TW9iHAiJ7feRF5gwtWWxso1bRwNx6/RRdwoWgG0/HF8TDAV80K82nVd1O6
+ 4TTpGFU4uqxEEhbqj2oT1sS6j5R0V+auWh2QyjgsNRto5E3HjV/MBr81SESo+qgE
+ jknrqNafuNJ+iir3+IHbw==
+X-ME-Sender: <xms:RiMuaVz3l1d-MqfmfjhDmo3eshuAFy390qw_suyBX80ORX52_o-9SQ>
+ <xme:RiMuadB9i406HpjjJluK-96actJT6IKXxULwBLWF-NRKhB00ifGTjAvonQWtFiCiu
+ X_687C9KiH13I3dFggWhTNuHy0uTwXwy9RMUj0O9KvAMj5bOGGzAg>
+X-ME-Received: <xmr:RiMuaSbtjl1LqvS1uLJIu2a5VTs03WczHunQWutYCq63UcRCxX_86V0cvKhgPF-ZNgDdyMyfJXbnmrcaXCDXq5sleHG2j7KsyY2H>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggddvheeltddvucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttdertd
- dttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
- hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhteetgf
- ekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushhtvghr
- ufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrg
- hkrghmohgttghhihdrjhhppdhnsggprhgtphhtthhopeeipdhmohguvgepshhmthhpohhu
- thdprhgtphhtthhopehnihhrsghhrgihrdhlkhgusehgmhgrihhlrdgtohhmpdhrtghpth
- htoheplhhinhhugidufeelgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfhhorhhg
- vgdrnhgvthdprhgtphhtthhopehlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnh
- gvlhdrohhrghdprhgtphhtthhopehskhhhrghnsehlihhnuhigfhhouhhnuggrthhiohhn
- rdhorhhgpdhrtghpthhtohepuggrvhhiugdrhhhunhhtvghrrdhlihhnuhigsehgmhgrih
- hlrdgtohhmpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlqdhmvghnthgvvghssehl
- ihhsthhsrdhlihhnuhigfhhouhhnuggrthhiohhnrdhorhhg
-X-ME-Proxy: <xmx:fwcbaSdMsTqGljbocT6Y14kGzu1rpwSXoAelZbH2C4ZQdEeKCXJ1Pg>
- <xmx:fwcbaZxSIDkC371Im2vnrj_R0X0_bIJiJI-vi3-W74Wll2sNGyMB9w>
- <xmx:fwcbaZ_CeluSrNp7ie51PKXhkeU0PS-G-XPMOaCrcnVFbnvFLN2riQ>
- <xmx:fwcbaRiMaNKn5ByvYSigv1uhtsq3GhwQnjcnZSzkqlav4ZOdZCsBAw>
- <xmx:gAcbacS5QX8FKfwJSKjqUVCefai2_gtKpBvOQWVbkUK9h7TtnZegb3B5>
+ rghilhhouhhtmecufedttdenucgoufhushhpvggtthffohhmrghinhculdegledmnecujf
+ gurhepfffhvfevuffkgggtugesthdtredttddtvdenucfhrhhomhepvfgrkhgrshhhihcu
+ ufgrkhgrmhhothhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjpheqne
+ cuggftrfgrthhtvghrnhepgeeltddufedtfeeuveekffeijedtteffgffhgefgfeefiedu
+ leeftddvieefiedunecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpshhouhhrtggvfh
+ horhhgvgdrnhgvthenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhl
+ fhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgtph
+ htthhopeefpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehtohhrvhgrlhgushes
+ lhhinhhugidqfhhouhhnuggrthhiohhnrdhorhhgpdhrtghpthhtoheplhhinhhugidqkh
+ gvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidu
+ feelgedquggvvhgvlheslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvth
+X-ME-Proxy: <xmx:RiMuaViehNwW3wEwc-tQQoIH3g9rhrLq46mDVyrjFwSkngMNGe5ywg>
+ <xmx:RiMuaU6FrcFJZBffrESeRw302IZsVvSMcNzY4Kuv5wBt6oMRzS2xtA>
+ <xmx:RiMuac6WvEf-N0l-GtkhqGsvOOtYOsza9S7Epp3KLGwc9JRJ3Ju8hg>
+ <xmx:RiMuaYdXmxLpGxOdIZofMfsaNfd-Q89zHj-EnQ5dMDKBfUfCXR7-dw>
+ <xmx:RiMuaRukMN6Ugm7JiVInqPzv2CxIzn2JpPInuOyYpLZ2hmI-d53Bfv2u>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 17 Nov 2025 06:31:09 -0500 (EST)
-Date: Mon, 17 Nov 2025 20:31:07 +0900
+ 1 Dec 2025 18:22:45 -0500 (EST)
+Date: Tue, 2 Dec 2025 08:22:43 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Nirbhay Sharma <nirbhay.lkd@gmail.com>
-Subject: Re: [PATCH] firewire: Replace ENOSYS with appropriate error codes
-Message-ID: <20251117113107.GA663208@workstation.local>
-Mail-Followup-To: Nirbhay Sharma <nirbhay.lkd@gmail.com>,
- linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
- skhan@linuxfoundation.org, david.hunter.linux@gmail.com,
- linux-kernel-mentees@lists.linuxfoundation.org
-References: <20251117110901.686828-1-nirbhay.lkd@gmail.com>
+To: torvalds@linux-foundation.org
+Subject: [GIT PULL] firewire updates for v6.19
+Message-ID: <20251201232243.GA293104@workstation.local>
+Mail-Followup-To: torvalds@linux-foundation.org,
+ linux-kernel@vger.kernel.org, linux1394-devel@lists.sourceforge.net
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20251117110901.686828-1-nirbhay.lkd@gmail.com>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
@@ -123,20 +116,20 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Mon, Nov 17, 2025 at 04:39:01PM +0530, Nirbhay Sharma
- wrote: > ENOSYS is reserved for "invalid syscall number" and should not be
- used > for other error conditions. Replace incorrect usages with mor [...]
+ Content preview:  Hi Linus, Please pull the updates for firewire subsystem to
+ your tree. It includes core function changes, and all users get affects from
+ them. I would appreciate receiving any test report from the users. 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1vKxS1-00007s-Mu
+X-Headers-End: 1vQDEK-0008GZ-N7
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -149,49 +142,85 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: david.hunter.linux@gmail.com, linux1394-devel@lists.sourceforge.net,
- linux-kernel-mentees@lists.linuxfoundation.org, linux-kernel@vger.kernel.org,
- skhan@linuxfoundation.org
+Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
+Hi Linus,
 
-On Mon, Nov 17, 2025 at 04:39:01PM +0530, Nirbhay Sharma wrote:
-> ENOSYS is reserved for "invalid syscall number" and should not be used
-> for other error conditions. Replace incorrect usages with more
-> appropriate error codes:
- 
-Yes. The newly-written code should not use ENOSYS for cadual use, indeed.
+Please pull the updates for firewire subsystem to your tree. It includes
+core function changes, and all users get affects from them. I would
+appreciate receiving any test report from the users.
 
-> - In sbp2.c: Use -EOPNOTSUPP for unsupported operation (re-adding
->   logical units via SCSI stack).
-> 
-> - In ohci.c: Use -EINVAL for invalid ISO context types in switch
->   statements, and -EOPNOTSUPP for unsupported Pinnacle MovieBoard
->   hardware.
-> 
-> - In core-cdev.c: Use -EACCES for access policy violations when
->   operations are restricted to local nodes' device files.
->
-> Signed-off-by: Nirbhay Sharma <nirbhay.lkd@gmail.com>
-> ---
->  drivers/firewire/core-cdev.c | 6 +++---
->  drivers/firewire/ohci.c      | 8 ++++----
->  drivers/firewire/sbp2.c      | 2 +-
->  3 files changed, 8 insertions(+), 8 deletions(-)
- 
-There is a rest to discuss when changing existing code in respect to
-this topic, since it brings loss of backward-compatibility to userspace
-software. In this reason, I've left them as is.
+The following changes since commit 3a8660878839faadb4f1a6dd72c3179c1df56787:
 
-If there are any strong and specific reasons to correct them, let us
-change them. Do you have such reasons? For example, Linux kernel
-developer have shared the consensus and decision to ostracize such codes?
+  Linux 6.18-rc1 (2025-10-12 13:42:36 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git tags/firewire-updates-6.19
+
+for you to fetch changes up to 036176d9dba74e23e3ef358e171a77b75837fee0:
+
+  firewire: core: abort pending transactions at card removal (2025-11-14 04:30:58 +0900)
+
+----------------------------------------------------------------
+firewire updates for v6.19
+
+This release includes two changes for core functions, which affects all
+use cases of this subsystem.
+
+ - Handle per-device interoperability quirks
+   It is well known that some devices have quirks affecting
+   interoperability. To identify such quirks at an early stages of
+   device detection, the step for reading the configuration ROM contents
+   has been changed. As a side effect, the entire detection process is
+   now performed at the basic transaction speed (S100), without no trial
+   to probe higher supported speeds.
+   With this change, the following devices should now work with fewer
+   issues:
+   - TASCAM FW-1884, FW-1804, and FW-1082
+   - MOTU Audio Express
+
+ - Safer removals of host card
+   There was a race condition between host card removal and handling of
+   bus reset events in the workqueue. This appears to be a long standing
+   issue (for a dozen years or so[1]), and recent changes to use more
+   workqueues escalate it. To solve it, a new callback has been added to
+   the 1394 OHCI PCI driver to unregister the interrupt sources and wait
+   for workqueue completions when removing a card instance.
+
+[1] https://sourceforge.net/p/linux1394/mailman/linux1394-devel/thread/20250629024836.GA16759%40workstation.local/#msg59200628
+
+----------------------------------------------------------------
+Marco Crivellari (1):
+      firewire: core: add WQ_UNBOUND to alloc_workqueue users
+
+Takashi Sakamoto (11):
+      firewire: core: detect device quirk when reading configuration ROM
+      firewire: core: handle device quirk of MOTU Audio Express
+      firewire: core: code refactoring to compute transaction speed
+      firewire: core: determine transaction speed after detecting quirks
+      firewire: core: handle device quirk of TASCAM FW-1884/FW-1804/FW-1082
+      ALSA: firewire-tascam: reserve resources for transferred isochronous packets at S400
+      firewire: core: use cleanup function to release cached configuration ROM
+      firewire: core: code refactoring to remove transaction entry
+      firewire: core: code refactoring to find and pop transaction entry
+      firewire: core: clear sources of hardware interrupt at card removal
+      firewire: core: abort pending transactions at card removal
+
+ drivers/firewire/core-card.c          |  25 +++++++++-----------
+ drivers/firewire/core-device.c        | 194 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-----------------------------------------------
+ drivers/firewire/core-transaction.c   |  88 +++++++++++++++++++++++++++++++++++++++++++++++-----------------------
+ drivers/firewire/core.h               |   5 ++++
+ drivers/firewire/ohci.c               |  78 +++++++++++++++++++++++++++++++++++++++++++++++++++-----------
+ include/linux/firewire.h              |  17 ++++++++++++++
+ sound/firewire/tascam/tascam-stream.c |  21 +++++++++--------
+ 7 files changed, 304 insertions(+), 124 deletions(-)
 
 
-Thanks
+Regards
 
 Takashi Sakamoto
 
