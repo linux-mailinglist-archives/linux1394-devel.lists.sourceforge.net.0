@@ -2,141 +2,142 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76D1CCBBB3F
-	for <lists+linux1394-devel@lfdr.de>; Sun, 14 Dec 2025 14:50:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AB723CD0393
+	for <lists+linux1394-devel@lfdr.de>; Fri, 19 Dec 2025 15:17:21 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
+	Subject:References:In-Reply-To:Message-Id:To:From:Date:MIME-Version:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1dIG/4pSEW+E1VuG6HKpnRKNMu8kQYyFBKjudf0bZmI=; b=TEfxN0p85J1awCB1hRJFLsJoFL
-	ivX5FHgHmnBtG+xjdeTC8klIaaw0/BXbHBzS3XOn2W8qD1Mjq0kgQ+SNm7+HnKsiC0wALDRKNY6ZM
-	KVy9XQE4zYysOlMBRcNKTbnMiGMXEGKsrGP+9hwN9R5qLtvY+bBZKHsLVfRkZt46ggno=;
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=YmUSus7wjuICWk613CFf+M+dr1BhIm+dzKagCU81y0s=; b=ZCh3sAiCTjTgi8HbmAG//s+0xX
+	jH1z9utAap87A39LgaEWT1CbkzDTGctxk+XJlMvefR4GCFOwScbny9ol5BEnuP65Vuhq0LSOA+TPd
+	kv8N+4DwDFEQeryWmgbeonhyrBYEhIdNTLj6ZM0axPonn7wcV9ZTRIeIRM1jGkb/QOnA=;
+Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
+	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1vUmTg-0001Cv-9h;
-	Sun, 14 Dec 2025 13:49:36 +0000
+	id 1vWbI4-00068V-3b;
+	Fri, 19 Dec 2025 14:17:08 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1vUmTd-0001Cl-Kb
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1vWbI2-00068E-2R
  for linux1394-devel@lists.sourceforge.net;
- Sun, 14 Dec 2025 13:49:34 +0000
+ Fri, 19 Dec 2025 14:17:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:Content-Type:Subject:
+ References:In-Reply-To:Message-Id:Cc:To:From:Date:MIME-Version:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=/hQIkABHefmJ0nLENLlM4Y1Q5Tc8530QPcl7Xf91WPI=; b=aTzicRM0ZtNPrRaDIXLs9NB+iD
- z9Hvvz5zvwA9QIVo/kSPi4F83e64MAfMZK8iqQCicqP2y+pLwe80wELt+0Uhbb85r7ArKm5LSvFRP
- fp+kfKl0GmHwyaqqGFD+6A3PIcf4gKKDHpDmjXoo/SLbRWFSlt8qEM/uZoup4lcTVfHI=;
+ bh=7mQ5O7urY4OAN8MS8OZdVBoWsY2f4uUeniiUVdrvKPw=; b=kxtRfJeQlOQnFDt4YhA65WPXiT
+ HzMmFHoAlUfehtOjvYf6GlrHhF1xDYaBznxImLPp2TffSIcssMF43VmhiBappnxZKk2n5e5pbkLcf
+ J88cV1JZ0iU663Z0/ee4ckRVW9ciE6Q+Y5EMkCRlNcnBfPzOyq/+qDGMBau0OYCezlI4=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ h=Content-Transfer-Encoding:Content-Type:Subject:References:In-Reply-To:
+ Message-Id:Cc:To:From:Date:MIME-Version:Sender:Reply-To:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=/hQIkABHefmJ0nLENLlM4Y1Q5Tc8530QPcl7Xf91WPI=; b=DMRxk90LvrRfZVL9JRV2EJv/mt
- LFNigZrVbbQqnZn7yCEUU28osK5QKjeP28+rK2A79LqfYgldBZqp82ebfPRGMTJa/oqO3O64o/SDo
- 6uVt0C5/HzYYiso0jfyBkkJ3QJn/TzszuyOi8H767Ly4Bm9Ax3JZ8D87z6xjDp9nNvgs=;
-Received: from fout-a1-smtp.messagingengine.com ([103.168.172.144])
+ bh=7mQ5O7urY4OAN8MS8OZdVBoWsY2f4uUeniiUVdrvKPw=; b=RyXYKQ/vNzDNFo6oyBlCc6DpFu
+ +5USyvJFe5pMpxKkLuD9wYm3Ljtcu1zoQQgwaLOS/MW4B69Ev9ueo/1A6jm3W1eO93C8EAd148ggB
+ /hXzTsIRn7w7Dca0NgeH0YUMSxvRaVUWhW3LH2OCT0QQACZFll/SqYCEtqGNQmbMRyTk=;
+Received: from fhigh-a4-smtp.messagingengine.com ([103.168.172.155])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1vUmTc-0004L1-4q for linux1394-devel@lists.sourceforge.net;
- Sun, 14 Dec 2025 13:49:33 +0000
-Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
- by mailfout.phl.internal (Postfix) with ESMTP id 73EB5EC060D;
- Sun, 14 Dec 2025 08:49:26 -0500 (EST)
-Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-06.internal (MEProxy); Sun, 14 Dec 2025 08:49:26 -0500
+ id 1vWbI1-0005QJ-2X for linux1394-devel@lists.sourceforge.net;
+ Fri, 19 Dec 2025 14:17:06 +0000
+Received: from phl-compute-10.internal (phl-compute-10.internal [10.202.2.50])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id 5871E14000C0;
+ Fri, 19 Dec 2025 09:16:59 -0500 (EST)
+Received: from phl-imap-06 ([10.202.2.83])
+ by phl-compute-10.internal (MEProxy); Fri, 19 Dec 2025 09:16:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1765720166; x=
- 1765806566; bh=/hQIkABHefmJ0nLENLlM4Y1Q5Tc8530QPcl7Xf91WPI=; b=k
- 8+nilarePcjTKlhCdIPghp332y+tYyUk29jZAd9DqbMcg8LDc6EpbTCMPPjOopai
- h9VWoQcFj7KhsJ7Z2s0YceutRdGf+WrQsX0T11hsdr5E3rC3sy5m8ZAP4/jQI878
- TOLXb7+RIVYuzfmrN3wYiFD++Pd5+n9Ss+z2cEH2xIbIpDHMzqexiJskYrVfXAtB
- N2IKXBUZXI5MXEPrTJJtKoeaI96xwJbkOSIGIICXd+GJNctdgTP25RGvlH2jwSQp
- jLHzkYhXipm2OSuwjYGu5h1KOSdxbNQT6FxAX5JWS1IkM9zOUhAxBhFoLT6AHdbo
- DReLF/QcWFDIPiit8HJkA==
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:subject:subject:to:to; s=fm1;
+ t=1766153819; x=1766240219; bh=7mQ5O7urY4OAN8MS8OZdVBoWsY2f4uUe
+ niiUVdrvKPw=; b=eHQ65buQf9ofmvMHu1RUg6KK/YUlRCYlHg3IgLJ1WolQwCkV
+ LBDZGU8ODAbiw91LY95xUDg+DvMSqgVh/X2vjNyBzqbKKpo5jYTBwXC1LP+oRk4Q
+ 4vlQtMA4emTBxgkUF8egD/pzTxOptkpCXhPhE4EjLVKTEMdBvopBi51rI3TQz0ZL
+ kSQm5ztkh+YPQ9nOlsSuxe9etbFKL6RT3h+8vUY0y/q/9BIY8/ZYaJFmwxbIKwij
+ AfL2ptm2URtydZ5zdsOtNA/uVfGwekagaFNEOj4syWHgfhyF5CG64Ex2Fn8ETyNd
+ +BgaZ+RHFjolV4KwMTyWKudZGR+j3HuHUWEeMg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1765720166; x=1765806566; bh=/hQIkABHefmJ0nLENLlM4Y1Q5Tc8530QPcl
- 7Xf91WPI=; b=H6br/L/uBohcicEcrqA7yyQUfwaAxkqnqxxtSiVodD07SYV32rR
- Nsm30RM4VliDMG4s0qH9goiw2bUvaeGQa0XKQ38u6vZrsLwvc+gW63e3kChFmgMl
- MNHZVdHXe0F+mM4DLvi4PEE4Y4ey6iSzoEYatfu3fyPMiXp5eIvPEigb4WJCJlvN
- G+8B/NHkNT0+uC8tsg2yw8lrZVsEA0V5ZucmRX5SSH1Xv/N57jX5uSUEIGteVa0r
- w1WVEK7zT5zL/xErqLIprf0zvJ7dAL/wtRxQJ109GItAdC6vCoSxyLBZDPt5ew6E
- OhX54JRUnwUADP4Eakw9v2SN66heAYpw5eg==
-X-ME-Sender: <xms:ZsA-aeGGimFia15d2ExuBGhiAhxH1DTRbLbb1EdvrmWLa4MeKu644w>
- <xme:ZsA-adKhtUvxqquSMTAITqjxu6oDb3h_o0tYJa7_pIZ1Cyb1TDoU3H1Yur50EldF0
- XvJ-vOiGzcxTaiSBmX8MhkoHNUq1oCeHMmC34SXOGyX3IOPmPzdTmM1>
-X-ME-Received: <xmr:ZsA-aSnIkWJkyH0mOLvG-IUcWiajqY5v8t9ZRZ9nQO_3lb_3dRV0ogSbiLfX3msy9KAdi7xuOyANPYuI0lGbqqGtdZvaw3a_wPLH>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdefgedtlecutefuodetggdotefrod
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1766153819; x=
+ 1766240219; bh=7mQ5O7urY4OAN8MS8OZdVBoWsY2f4uUeniiUVdrvKPw=; b=S
+ ObleORpPGgGwVHvqmZQASN9RSDl5X6eE63POQJO+kXuyL8/P6RHA4eWBqXdgT4tg
+ UZWlwxancNyJbHp1jiiJ/GwjTVzrAe5+tvpPJsI5+IMQIAPgv3SFYc7ORKAAb9mu
+ NqXj4UK3AYepq0y2Nh12PSnKGC/kc7Eoxv+yQXr8SEwvLnrZYWkIz8VmIZEmp+z2
+ G85NO+iCBYAeyCHprQE3s1ROKmwbKsixHurBLJXN1o1L8h5fU8Oow2i6WzeE6HII
+ kwNPBdoa+pGfv1/ghQ0yScW5KerNpNQP2zKyZKcpgLzsJzDkz32UsKA2kPAtVJco
+ UHyp2fWeBVFbpLlSyrgEg==
+X-ME-Sender: <xms:Wl5FaSYP0qwCu43vEQ9fCZVrNrq_wkl_rXdZ6vOJHNMJD4FViykw6w>
+ <xme:Wl5FaQNroxXY3LhbLC0T9DuUqP0-za9h6NPhWQGkwj7pINKCr_vWl2b-50Na33dNU
+ bCt86ukKe4jX6KcmvznOks23xOQOtt783hN3CsCoOD4ljJe_E6A1xY>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdegkeehudcutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
  ihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjug
- hrpeffhffvvefukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefvrghkrghshhhi
- ucfurghkrghmohhtohcuoehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhpqe
- enucggtffrrghtthgvrhhnpeehhffhteetgfekvdeiueffveevueeftdelhfejieeitedv
- leeftdfgfeeuudekueenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrih
- hlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgt
- phhtthhopeegpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehmohhonhgrfhhtvg
- hrrhgrihhnsehouhhtlhhoohhkrdgtohhmpdhrtghpthhtoheplhhinhhugidufeelgedq
- uggvvhgvlheslhhishhtshdrshhouhhrtggvfhhorhhgvgdrnhgvthdprhgtphhtthhope
- hlihhnuhigqdhkvghrnhgvlhesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthho
- pegurghnihhsjhhirghnghesghhmrghilhdrtghomh
-X-ME-Proxy: <xmx:ZsA-aVRdSVTy1GEjvtViARZxJ5c5REOh-ZVaCBW-yFE12KOP0p_J1A>
- <xmx:ZsA-aUJIcTYttru4qYzbaPQmcbyZB3iANuenUSK7lki7c0U97qIjpg>
- <xmx:ZsA-abD2K-kNzvC5jCypjLljq_x--3enhAIQzaOXMdSZw7W14HD_jg>
- <xmx:ZsA-adC7rHRr4tpawyZnU76ZCw_fhx04kB0QofDYZrkYGAyrAjvsmw>
- <xmx:ZsA-aVUBEuur-bT059A1rWCQLXIlGEhqwX4LI63o1r4vYvrMFnAnkNHh>
+ hrpefoggffhffvvefkjghfufgtgfesthhqredtredtjeenucfhrhhomhepfdfvrghkrghs
+ hhhiucfurghkrghmohhtohdfuceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhird
+ hjpheqnecuggftrfgrthhtvghrnhepkefhtefftdelieekteevfeegkeeivedugedtudek
+ udejvdetvdefffefteduueegnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlh
+ hushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghs
+ hhhisehsrghkrghmohgttghhihdrjhhppdhnsggprhgtphhtthhopeegpdhmohguvgepsh
+ hmthhpohhuthdprhgtphhtthhopehfohhurhhivghrrdhthhhomhgrshesghhmrghilhdr
+ tghomhdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsoh
+ hurhgtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehv
+ ghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheptghhrhhishhtohhphhgvrdhjrg
+ hilhhlvghtseifrghnrgguohhordhfrh
+X-ME-Proxy: <xmx:Wl5FadAa-2HGrtpiTfydANPxRJhen-uadX4dh_BnPXrWRGn0OvupvA>
+ <xmx:Wl5FaW-YV7hZ5JlJ4dJxDWPjCIPykM6Z-KEchSDhKGY9tl6gYkXxlw>
+ <xmx:Wl5FacG0foBANCMl7WSjQ_75sgoQY6CUNMplH9m0_BzwFN1c8p70Fg>
+ <xmx:Wl5FacNCcaesH0_V5b57U8iQKT5Ut-WZBsFVL9cI41Igdf1XdOqQRw>
+ <xmx:W15FaY_FrK9p4E1EqTh_zCO_53tTIXPLpxUw3PB_fkCerUsag9HUjFhm>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 14 Dec 2025 08:49:25 -0500 (EST)
-Date: Sun, 14 Dec 2025 22:49:23 +0900
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Junrui Luo <moonafterrain@outlook.com>
-Subject: Re: [PATCH] firewire: core: validate response length to prevent
- buffer overflow
-Message-ID: <20251214134923.GA737872@workstation.local>
-Mail-Followup-To: Junrui Luo <moonafterrain@outlook.com>,
- linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
- Yuhao Jiang <danisjiang@gmail.com>
-References: <SYBPR01MB7881ABA3D4B9129FC2E6A3E4AFD9A@SYBPR01MB7881.ausprd01.prod.outlook.com>
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+ id D31F72400098; Fri, 19 Dec 2025 09:16:58 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <SYBPR01MB7881ABA3D4B9129FC2E6A3E4AFD9A@SYBPR01MB7881.ausprd01.prod.outlook.com>
+X-ThreadId: AWjw7c8DSKJo
+Date: Fri, 19 Dec 2025 23:16:37 +0900
+From: "Takashi Sakamoto" <o-takashi@sakamocchi.jp>
+To: "Christophe JAILLET" <christophe.jaillet@wanadoo.fr>,
+ "Thomas Fourier" <fourier.thomas@gmail.com>
+Message-Id: <f62dc6e5-12e0-414f-8a7b-0675d95938cb@app.fastmail.com>
+In-Reply-To: <7ffdcfff-0f2f-4563-9051-d398f3c5c6a7@wanadoo.fr>
+References: <20251216165420.38355-2-fourier.thomas@gmail.com>
+ <7ffdcfff-0f2f-4563-9051-d398f3c5c6a7@wanadoo.fr>
+Subject: Re: [PATCH] firewire: nosy: Fix dma_free_coherent() size
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
+ running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, Sorry to be late for reply, but I always postpone patch
- review during merge window. Now 6.19-rc1 has been released, and we can start
- working to fix it. On Wed, Dec 03, 2025 at 10:22:32AM +0800, Junrui Luo wrote:
- > The FireWire core transaction handling code does not validate that > the
- length of a READ_BLOCK_RESPONSE matches the length originally > r [...] 
+ Content preview:  Hi, I'm sorry to be late for reply, but I'm in travel and
+ could not process the reviewed patches for my tree. Please wait for the next
+ weekend. It's our misfortune that Christophe's first proposal has been
+ overlooked.
+ (The patch was posted before 2023, when I took over the role...) Let us put
+ it for next merge window to v6.20 kernel. 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
-X-Headers-End: 1vUmTc-0004L1-4q
+X-Headers-End: 1vWbI1-0005QJ-2X
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -149,107 +150,58 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org,
- Yuhao Jiang <danisjiang@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Hi,
-
-Sorry to be late for reply, but I always postpone patch review during
-merge window. Now 6.19-rc1 has been released, and we can start working
-to fix it.
-
-On Wed, Dec 03, 2025 at 10:22:32AM +0800, Junrui Luo wrote:
-> The FireWire core transaction handling code does not validate that
-> the length of a READ_BLOCK_RESPONSE matches the length originally
-> requested in the READ_BLOCK_REQUEST. A malicious FireWire device
-> could respond with more data than requested, causing a buffer overflow
-> in the callback handler when the response data is copied into the
-> caller's buffer.
-> 
-> This issue has been acknowledged by a FIXME comment:
->   "FIXME: sanity check packet, is length correct, does tcodes
->    and addresses match to the transaction request queried later."
-> 
-> Fix this by validating the response length against the original request
-> length before passing data to the callback.
-> 
-> Reported-by: Yuhao Jiang <danisjiang@gmail.com>
-> Reported-by: Junrui Luo <moonafterrain@outlook.com>
-> Fixes: 3038e353cfaf ("firewire: Add core firewire stack.")
-> Signed-off-by: Junrui Luo <moonafterrain@outlook.com>
-> ---
->  drivers/firewire/core-transaction.c | 22 +++++++++++++++++++---
->  1 file changed, 19 insertions(+), 3 deletions(-)
- 
-Thanks for your trial to fix the TODO, however I can still find an issue
-in your patch.
-
-> diff --git a/drivers/firewire/core-transaction.c b/drivers/firewire/core-transaction.c
-> index c65f491c54d0..52f05e8f3798 100644
-> --- a/drivers/firewire/core-transaction.c
-> +++ b/drivers/firewire/core-transaction.c
-> @@ -1095,11 +1095,23 @@ void fw_core_handle_request(struct fw_card *card, struct fw_packet *p)
->  }
->  EXPORT_SYMBOL(fw_core_handle_request);
->  
-> +static size_t get_request_data_length(const struct fw_packet *request)
-> +{
-> +	int request_tcode = async_header_get_tcode(request->header);
-> +
-> +	if (request_tcode == TCODE_READ_QUADLET_REQUEST)
-> +		return 4;
-> +	else if (request_tcode == TCODE_READ_BLOCK_REQUEST)
-> +		return async_header_get_data_length(request->header);
-> +	return 0;
-> +}
-> +
-
-The response for lock transaction request can include data. We need to
-check in this case here.
-
->  void fw_core_handle_response(struct fw_card *card, struct fw_packet *p)
->  {
->  	struct fw_transaction *t = NULL, *iter;
->  	u32 *data;
->  	size_t data_length;
-> +	size_t request_length;
->  	int tcode, tlabel, source, rcode;
->  
->  	tcode = async_header_get_tcode(p->header);
-> @@ -1107,9 +1119,6 @@ void fw_core_handle_response(struct fw_card *card, struct fw_packet *p)
->  	source = async_header_get_source(p->header);
->  	rcode = async_header_get_rcode(p->header);
->  
-> -	// FIXME: sanity check packet, is length correct, does tcodes
-> -	// and addresses match to the transaction request queried later.
-> -	//
->  	// For the tracepoints event, let us decode the header here against the concern.
->  
->  	switch (tcode) {
-> @@ -1160,6 +1169,13 @@ void fw_core_handle_response(struct fw_card *card, struct fw_packet *p)
->  		return;
->  	}
->  
-> +	request_length = get_request_data_length(&t->packet);
-> +	if (request_length > 0 && data_length > request_length) {
-> +		fw_notice(card, "response length (%zu) exceeds request length (%zu) from node %x, truncating\n",
-> +			  data_length, request_length, source);
-> +		data_length = request_length;
-> +	}
-> +
->  	/*
->  	 * The response handler may be executed while the request handler
->  	 * is still pending.  Cancel the request handler.
-
-
-Thanks
-
-Takashi Sakamoto
-
-
-_______________________________________________
-mailing list linux1394-devel@lists.sourceforge.net
-https://lists.sourceforge.net/lists/listinfo/linux1394-devel
+SGksCgpJJ20gc29ycnkgdG8gYmUgbGF0ZSBmb3IgcmVwbHksIGJ1dCBJJ20gaW4gdHJhdmVsIGFu
+ZCBjb3VsZCBub3QgcHJvY2VzcyB0aGUKcmV2aWV3ZWQgcGF0Y2hlcyBmb3IgbXkgdHJlZS4gUGxl
+YXNlIHdhaXQgZm9yIHRoZSBuZXh0IHdlZWtlbmQuCgpJdCdzIG91ciBtaXNmb3J0dW5lIHRoYXQg
+Q2hyaXN0b3BoZSdzIGZpcnN0IHByb3Bvc2FsIGhhcyBiZWVuIG92ZXJsb29rZWQuCihUaGUgcGF0
+Y2ggd2FzIHBvc3RlZCBiZWZvcmUgMjAyMywgd2hlbiBJIHRvb2sgb3ZlciB0aGUgcm9sZS4uLikK
+TGV0IHVzIHB1dCBpdCBmb3IgbmV4dCBtZXJnZSB3aW5kb3cgdG8gdjYuMjAga2VybmVsLgoKT24g
+V2VkLCBEZWMgMTcsIDIwMjUsIGF0IDAyOjQ3LCBDaHJpc3RvcGhlIEpBSUxMRVQgd3JvdGU6Cj4g
+TGUgMTYvMTIvMjAyNSDDoCAxNzo1NCwgVGhvbWFzIEZvdXJpZXIgYSDDqWNyaXTCoDoKPj4gSXQg
+bG9va3MgbGlrZSB0aGUgYnVmZmVyIGFsbG9jYXRlZCBhbmQgbWFwcGVkIGluIGFkZF9jYXJkKCkg
+aXMgZG9uZQo+PiB3aXRoIHNpemUgUkNWX0JVRkZFUl9TSVpFIHdoaWNoIGlzIDE2IEtCIGFuZCA0
+S0IuCj4+IAo+PiBGaXhlczogMjg2NDY4MjEwZDgzICgiZmlyZXdpcmU6IG5ldyBkcml2ZXI6IG5v
+c3kgLSBJRUVFIDEzOTQgdHJhZmZpYyBzbmlmZmVyIikKPj4gU2lnbmVkLW9mZi1ieTogVGhvbWFz
+IEZvdXJpZXIgPGZvdXJpZXIudGhvbWFzQGdtYWlsLmNvbT4KPgo+IFJldmlld2VkLWJ5OiBDaHJp
+c3RvcGhlIEpBSUxMRVQgPGNocmlzdG9waGUuamFpbGxldEB3YW5hZG9vLmZyPgo+Cj4gQW5kIGZv
+ciB0aGUgcmVjb3Jkcywgc2VlIFsxXS4KPgo+IENKCj4KPiBbMV06IAo+IGh0dHBzOi8vbG9yZS5r
+ZXJuZWwub3JnL2xrbWwvMjAyMDA2MjUxOTE1NTQuOTQxNjE0LTEtY2hyaXN0b3BoZS5qYWlsbGV0
+QHdhbmFkb28uZnIvCj4KPj4gLS0tCj4+ICAgZHJpdmVycy9maXJld2lyZS9ub3N5LmMgfCAxMCAr
+KysrKy0tLS0tCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlv
+bnMoLSkKPj4gCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2ZpcmV3aXJlL25vc3kuYyBiL2RyaXZl
+cnMvZmlyZXdpcmUvbm9zeS5jCj4+IGluZGV4IGVhMzFhYzdhYzFjYS4uZjU2MmU4MmU1NDM4IDEw
+MDY0NAo+PiAtLS0gYS9kcml2ZXJzL2ZpcmV3aXJlL25vc3kuYwo+PiArKysgYi9kcml2ZXJzL2Zp
+cmV3aXJlL25vc3kuYwo+PiBAQCAtNDk0LDYgKzQ5NCw4IEBAIGlycV9oYW5kbGVyKGludCBpcnEs
+IHZvaWQgKmRldmljZSkKPj4gICAJcmV0dXJuIElSUV9IQU5ETEVEOwo+PiAgIH0KPj4gICAKPj4g
+KyNkZWZpbmUgUkNWX0JVRkZFUl9TSVpFICgxNiAqIDEwMjQpCj4KPiBNYXliZSB0aGlzIGNvdWxk
+IGJlIG1vdmVkIGF0IHRoZSB0b3Agb2YgdGhlIGZpbGUgd2hlbiAjZGVmaW5lIGFyZSAKPiB1c3Vh
+bGx5IHBsYWNlZC4KPgo+PiArCj4+ICAgc3RhdGljIHZvaWQKPj4gICByZW1vdmVfY2FyZChzdHJ1
+Y3QgcGNpX2RldiAqZGV2KQo+PiAgIHsKPj4gQEAgLTUxNywxNiArNTE5LDE0IEBAIHJlbW92ZV9j
+YXJkKHN0cnVjdCBwY2lfZGV2ICpkZXYpCj4+ICAgCQkJICBseW54LT5yY3Zfc3RhcnRfcGNsLCBs
+eW54LT5yY3Zfc3RhcnRfcGNsX2J1cyk7Cj4+ICAgCWRtYV9mcmVlX2NvaGVyZW50KCZseW54LT5w
+Y2lfZGV2aWNlLT5kZXYsIHNpemVvZihzdHJ1Y3QgcGNsKSwKPj4gICAJCQkgIGx5bngtPnJjdl9w
+Y2wsIGx5bngtPnJjdl9wY2xfYnVzKTsKPj4gLQlkbWFfZnJlZV9jb2hlcmVudCgmbHlueC0+cGNp
+X2RldmljZS0+ZGV2LCBQQUdFX1NJWkUsIGx5bngtPnJjdl9idWZmZXIsCj4+IC0JCQkgIGx5bngt
+PnJjdl9idWZmZXJfYnVzKTsKPj4gKwlkbWFfZnJlZV9jb2hlcmVudCgmbHlueC0+cGNpX2Rldmlj
+ZS0+ZGV2LCBSQ1ZfQlVGRkVSX1NJWkUsCj4+ICsJCQkgIGx5bngtPnJjdl9idWZmZXIsIGx5bngt
+PnJjdl9idWZmZXJfYnVzKTsKPj4gICAKPj4gICAJaW91bm1hcChseW54LT5yZWdpc3RlcnMpOwo+
+PiAgIAlwY2lfZGlzYWJsZV9kZXZpY2UoZGV2KTsKPj4gICAJbHlueF9wdXQobHlueCk7Cj4+ICAg
+fQo+PiAgIAo+PiAtI2RlZmluZSBSQ1ZfQlVGRkVSX1NJWkUgKDE2ICogMTAyNCkKPj4gLQo+PiAg
+IHN0YXRpYyBpbnQKPj4gICBhZGRfY2FyZChzdHJ1Y3QgcGNpX2RldiAqZGV2LCBjb25zdCBzdHJ1
+Y3QgcGNpX2RldmljZV9pZCAqdW51c2VkKQo+PiAgIHsKPj4gQEAgLTY4MCw3ICs2ODAsNyBAQCBh
+ZGRfY2FyZChzdHJ1Y3QgcGNpX2RldiAqZGV2LCBjb25zdCBzdHJ1Y3QgcGNpX2RldmljZV9pZCAq
+dW51c2VkKQo+PiAgIAkJZG1hX2ZyZWVfY29oZXJlbnQoJmx5bngtPnBjaV9kZXZpY2UtPmRldiwg
+c2l6ZW9mKHN0cnVjdCBwY2wpLAo+PiAgIAkJCQkgIGx5bngtPnJjdl9wY2wsIGx5bngtPnJjdl9w
+Y2xfYnVzKTsKPj4gICAJaWYgKGx5bngtPnJjdl9idWZmZXIpCj4+IC0JCWRtYV9mcmVlX2NvaGVy
+ZW50KCZseW54LT5wY2lfZGV2aWNlLT5kZXYsIFBBR0VfU0laRSwKPj4gKwkJZG1hX2ZyZWVfY29o
+ZXJlbnQoJmx5bngtPnBjaV9kZXZpY2UtPmRldiwgUkNWX0JVRkZFUl9TSVpFLAo+PiAgIAkJCQkg
+IGx5bngtPnJjdl9idWZmZXIsIGx5bngtPnJjdl9idWZmZXJfYnVzKTsKPj4gICAJaW91bm1hcChs
+eW54LT5yZWdpc3RlcnMpOwoKCkNoZWVycwoKVGFrYXNoaSBTYWthbW90bwoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCm1haWxpbmcgbGlzdCBsaW51eDEz
+OTQtZGV2ZWxAbGlzdHMuc291cmNlZm9yZ2UubmV0Cmh0dHBzOi8vbGlzdHMuc291cmNlZm9yZ2Uu
+bmV0L2xpc3RzL2xpc3RpbmZvL2xpbnV4MTM5NC1kZXZlbAo=
