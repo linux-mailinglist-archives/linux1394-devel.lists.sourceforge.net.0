@@ -2,115 +2,110 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CDA9D1064F
-	for <lists+linux1394-devel@lfdr.de>; Mon, 12 Jan 2026 03:55:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E0331D1F063
+	for <lists+linux1394-devel@lfdr.de>; Wed, 14 Jan 2026 14:17:54 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GDTXImy1YN6w8oTtFCBML4l5/5Uj0aXgFu9nXjouTy8=; b=MshQwIzaZbz6xnSLHTeuT4bEWg
-	V0Uf7TjWqLu2QDFQ3/ctrRSQQkVA4/uernz3vBCUJkI0R6K1nEWo2J1OESy466CsxOQZN2K/QyQuj
-	LGURq91nmLS2zlfn1aUjftgNeK84kOxhWVLZFU44kKAMshNgg4lkXKSWhaUJJ5SjK8rE=;
+	MIME-Version:Message-ID:Date:Subject:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3KPWoH1tRmNQFDv3PWylpqXqoVNfD1ieyyH3EcozjZ4=; b=TPLh+a75JP0tEP4kv0OCsJili6
+	nIAWQjbodkMO8aoM9micqvLZUbsyGhS3GNlR9cvuNDbNbxvZQI+B7tSxM3WgrgIcLGTUHxFbFwN8K
+	ZykRnnTrgeAY6zsPlStxou8SrTBvbI2LEeVKXYkaEuqyqbTVTv3VrL+Jh+0yVeTd3nh4=;
 Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
 	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1vf85T-00037Q-BU;
-	Mon, 12 Jan 2026 02:55:24 +0000
+	id 1vg0km-0005on-PR;
+	Wed, 14 Jan 2026 13:17:41 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
  by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1vf85R-00037A-8D
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1vg0kk-0005oU-OS
  for linux1394-devel@lists.sourceforge.net;
- Mon, 12 Jan 2026 02:55:22 +0000
+ Wed, 14 Jan 2026 13:17:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=jJJxuKZz5NiSj1XjjEu24jUB2R/7xqltlSlp1txsE0w=; b=X8gau2cNZa6HvG96RdGJ2NABzW
- uuBJJYhqMvMKpwdB/BdYz8OQWFRt0ANucDY4KQm326KRSVliPOQ65rcKQxZ1oWRQM+A4Z55sDcXgw
- hNV+oMcg22sA92dxFNSFbghoPu/Q/J8ruVVWpIYBK8J5Law8fJF9QJTptwrYTEpy+/X8=;
+ bh=IpASM2p6E0rzakcqtdz79OURDdED2p0UzZCg5lKRIeg=; b=KuM21u9prIEViDcCxrGUqjPKhI
+ xgMZchHBGBECN1QaEGcX4RbeG5OkM3MQxhngRxKOCc1ntgQZ8/m62b/anONo/FygBJ4sARMDZf/nb
+ GGNTB1EsEg5bCocnd3jfW7cPS1Bz/+tHmA0SQ3lEVwo4bIZVNGsxTr20pJ7/HJODoOiE=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=jJJxuKZz5NiSj1XjjEu24jUB2R/7xqltlSlp1txsE0w=; b=UfXfRERK/R2X/QkIAeWl7FQNi5
- lbS4CRy3CBshuPFM5DfbuyKTP8a+58gkOCbAVRP7/QzAAyVfsF5VxeMKBZsrGoQ31BnXQcOcs+JBM
- z2Y94E2Tdt0pXeO8i5+/lPSTFH59pOFkraja+Qe9BJILJrT4oUPkytagrNgqLbzzXOXY=;
-Received: from fhigh-a4-smtp.messagingengine.com ([103.168.172.155])
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=IpASM2p6E0rzakcqtdz79OURDdED2p0UzZCg5lKRIeg=; b=E
+ McH/v9xTTOYpLI/13gVlTEB2/LqpGmTldb6GbtmtsJ5mc4A3hEILb85ENapYHYJu3XLCblsDZbPFI
+ F4Lc9CnifxzF7BjigCUTAWMpbwzOf8DRSEJH6Usk4s/9HRPdOHsLXED/N56MettunslMBS8Zdi1QX
+ NcXr3wOo8d8YM04o=;
+Received: from fhigh-b1-smtp.messagingengine.com ([202.12.124.152])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1vf85Q-0005K4-Iw for linux1394-devel@lists.sourceforge.net;
- Mon, 12 Jan 2026 02:55:21 +0000
-Received: from phl-compute-09.internal (phl-compute-09.internal [10.202.2.49])
- by mailfhigh.phl.internal (Postfix) with ESMTP id DEB8D14000C3;
- Sun, 11 Jan 2026 21:55:09 -0500 (EST)
-Received: from phl-frontend-04 ([10.202.2.163])
- by phl-compute-09.internal (MEProxy); Sun, 11 Jan 2026 21:55:09 -0500
+ id 1vg0kk-0006Bk-6s for linux1394-devel@lists.sourceforge.net;
+ Wed, 14 Jan 2026 13:17:39 +0000
+Received: from phl-compute-08.internal (phl-compute-08.internal [10.202.2.48])
+ by mailfhigh.stl.internal (Postfix) with ESMTP id 8E62F7A0088;
+ Wed, 14 Jan 2026 08:17:32 -0500 (EST)
+Received: from phl-frontend-03 ([10.202.2.162])
+ by phl-compute-08.internal (MEProxy); Wed, 14 Jan 2026 08:17:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1768186509; x=
- 1768272909; bh=jJJxuKZz5NiSj1XjjEu24jUB2R/7xqltlSlp1txsE0w=; b=g
- 63iZ1ULD8uD6hwAmmJQnPiJxYdXERCcA0FolP+y820enSLXC3GIuxtBtbG4o03Wj
- xWqfR/UTjuFeK9qsZ6cISQGQsQDVgNLWn9EQVNzzflw3szyC/9R5h0wx6uyUxYPZ
- cSfkT95BG+s0N1/JUrToPBtO5KFGT7BhfuxnfTYRL89rNGU4faEaNz2XvWHiOlFU
- XzLvwjzolqX5EcKWlrPF746TrSR3ECGV3gFHTLdbxtxkyXDQ+r2ztUym5DyyTHMo
- 5vUwMxwTCK2aSdp2XlBBXJ1tziYGpUmSPltLqC1MAWVUJG/aQBMB1qLyO85+YTL5
- 7odh8RkkCjxB19GVUaDqQ==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm2; t=1768396652; x=1768483052; bh=IpASM2p6E0
+ rzakcqtdz79OURDdED2p0UzZCg5lKRIeg=; b=pBCqGR2zoYxnBBN8Ts4I6T9BaO
+ x61+TkY6ycx7/AgpTBfadMkEfphft7FGzaRaDPqvZQnMOvtv0IyioFSejFaGa2UT
+ 6zO32USTk08kCvlCYQLf2LvdMfRvxST27UoOFowNAU++wbF3H/SfGthVwgGGVu0f
+ AH/ZYOAQbIiuSACgOQVz18iaRJTqgIZfsQUaP2o8e0EhSPkcXb4IKWZ05cM3DkZO
+ b0O8RFqolUXv+g1inez5qdHW5cK/jGaURG5+PDn6TrDVYcInGnFA6Tr0iOaiYwNs
+ 3eRof+LLSs4xPJPJBC8eJS0jRk92IXwfSit6D/yAmApIeqmpIYPVK7Lw56hA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
- 1768186509; x=1768272909; bh=jJJxuKZz5NiSj1XjjEu24jUB2R/7xqltlSl
- p1txsE0w=; b=DW1Z3fG8b9MSsaSF8i5KQ6zCnQXheY7gbG6DzV5SaDKQHoQda/2
- lHl3NDycs5UAbD01jU9D9Wxqupwd4oCycgE04QvImVg41ZUns+hc7uuthcBGzMN3
- hSOjKi+F85Ni7qPfMTNLf/HRY5d5gszQdxMgvclrS60GVOnjJJddMeIZeHrSfki4
- muGj6Bm/uz9K191cmDUPo+deEoJAcBTddDZcxepDnNPEwITXeSATxCBwQVK6QK26
- Ysm/0Il9O232e8+kBclRcppqGNpt8M1ARfamcTrF7fQGUcHQxT5i/7nl+ZAOfkAY
- qmIK4YBpFm9moBkLKQx3I3EkBZhw4OAPeaw==
-X-ME-Sender: <xms:jWJkaXvd8TG4qCqfNAr6VCZaF-2zYLkdKzdFNo0KDC26IW2nMnkCeg>
- <xme:jWJkaQNTJlEj30Da2WJyGLNkJL_zxMbsNZhrlbKcrnmVopqDJoMZ9sQs5u_hKkoWI
- 1qIzWNlHgUXe3U4s3HEucfv0lBtTtVExEDrMFVTYcnU5PkFCiZiv4k>
-X-ME-Received: <xmr:jWJkad2FC4cB8t3meP4SSePV_9dg1wTrnWQRQoI6ayvybWvQu38SCu2MfNftv938--3tm3ij4Yxg14q0qijDyQCTKY5J54cUl44>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdduudeifedtucetufdoteggodetrf
+ 1768396652; x=1768483052; bh=IpASM2p6E0rzakcqtdz79OURDdED2p0UzZC
+ g5lKRIeg=; b=NNlheITc/WFBe6p/sxIBe5/inRVJMP4tXBCIiVknqnOvR3kOJ+l
+ ie/nfXlE8mDUyiZUJG0VS78KZsQOgYV8i2n7OrY+K/LQIqjGU+ilRFXBxm4YWvNg
+ NDoNHcZ5LLcJdbcV3QSJFLXfe94Tssdjcr+WmvJ9FtX00GpLmJ61yjweuQ0AE5au
+ B/8yu8VI8KOMLGGN9YnEaIvcC/KWU0LhtUeNAPPxouAS34gg6KRpx8JxOuGpjgNw
+ 2pLzgH1vBKhjAQXs27ZgN8RdyizWoEQ/Ik8+l9fQGa2iBZGCigU/BniWB4CUkYYh
+ j/c954xDEMCZ0n1lGufdewIYyKYnJJjS0hg==
+X-ME-Sender: <xms:bJdnaQBTgDmPwAy4b5jPrWz0A_kjpPTM46zteyyEsxBQSZ1YMfu_XQ>
+ <xme:bJdnaQegD3IGt0uTiHLtLMc1olPJhBs0qG4xDxUN-tuNbyMFVIo5mWZkSrCUIQKER
+ 6DBDeomM97hxNjUpkDbEPC54qzyj6soeJQfK2O48C_FJUr6phxJFg>
+X-ME-Received: <xmr:bJdnabLqpxz4ni19F41dB-M60T0WEwaKe7v7DMoy60UAjSxWpgeO18gp6nLLfhNbC4rXTntqMAsTNOopC88i1eqpjb3ih8sl0v6MCo7PLpqT3A>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdduvdefvdekucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttdertd
- dttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
- hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhteetgf
- ekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushhtvghr
- ufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrg
- hkrghmohgttghhihdrjhhppdhnsggprhgtphhtthhopeefpdhmohguvgepshhmthhpohhu
- thdprhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurh
- gtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgv
- rhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtohepjhhgghesnhhvihguihgrrdgtohhm
-X-ME-Proxy: <xmx:jWJkaUMOevJvrz54jx4rpcjTO22BG853KwiMEqg8iEGcJGb89G9uhQ>
- <xmx:jWJkaV1OX5TyuTNyg0zKYDbGLpdONPGxEf0nm92itOjnyELfIZV2nw>
- <xmx:jWJkaTGs5hPBephVQb5CayvwYS2mtAXcXv1sVBWQPlrRL5A9-EPLBA>
- <xmx:jWJkaa5kAWGZmiCk2Y2wXxv-r27d50VAhAloIpcqmeHn-ickGjbNpQ>
- <xmx:jWJkaZ5FnyHq1ZfTNylAYxroO0zqirasb9lR3wPZZSpNCKtVm-_ilSC7>
+ rghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertdertd
+ dtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhi
+ sehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeffvdeuleffveekud
+ fhteejudffgefhtedtgfeutdfgvdfgueefudehveehveekkeenucevlhhushhtvghrufhi
+ iigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrg
+ hmohgttghhihdrjhhppdhnsggprhgtphhtthhopedvpdhmohguvgepshhmthhpohhuthdp
+ rhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurhgtvg
+ hfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdr
+ khgvrhhnvghlrdhorhhg
+X-ME-Proxy: <xmx:bJdnaTfFCmbkAmKcrsSnO-IQJyIbyj0rmp_RvOO6cKA4aFAYDpbCPQ>
+ <xmx:bJdnaS0VDnwwvTF460Mm3NY_vUqqCUkbPb2MbonLik8FRyFTmPVWiA>
+ <xmx:bJdnachpU7ZxzB9n6-3sRcGHBesrMAgsFmKSpbbZijZ1t9WhA3yhkg>
+ <xmx:bJdnaYTCa7uDwOMXfDyw4uiU5EqLCMHcYvhTPrHY85doNtBB2C9tOA>
+ <xmx:bJdnaZ0jWRFsEopXS6_NBtPBITwpRIEdU1vnWbdAuDdBTQyW8Syy-FB7>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 11 Jan 2026 21:55:08 -0500 (EST)
-Date: Mon, 12 Jan 2026 11:55:06 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 14 Jan 2026 08:17:31 -0500 (EST)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: Re: [PATCH 0/8] firewire: core/ohci: code refactoring for pages
- dedicated to DMA
-Message-ID: <20260112025506.GA245601@workstation.local>
-Mail-Followup-To: linux1394-devel@lists.sourceforge.net,
- linux-kernel@vger.kernel.org, jgg@nvidia.com
-References: <20260110013911.19160-1-o-takashi@sakamocchi.jp>
+Subject: [PATCH] firewire: ohci: fix index of pages for dma address to 1394
+ OHCI IT context
+Date: Wed, 14 Jan 2026 22:17:29 +0900
+Message-ID: <20260114131729.16133-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260110013911.19160-1-o-takashi@sakamocchi.jp>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
@@ -118,20 +113,22 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  On Sat, Jan 10, 2026 at 10:39:03AM +0900, Takashi Sakamoto
- wrote: > Hi, > > This patchset is to refactor current codes handling pages
- dedicated to > DMA. > > There are two cases to acquires pages dedi [...] 
+ Content preview: The index of pages for dma address was changed wrongly. This
+ commit corrents it. Fixes: ef6bdffbb88d ("firewire: core: stop using page
+ private to store DMA mapping address") Signed-off-by: Takashi Sakamoto
+ <o-takashi@sakamocchi.jp>
+ --- drivers/firewire/ohci.c | 2 +- 1 file changed [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1vf85Q-0005K4-Iw
+X-Headers-End: 1vg0kk-0006Bk-6s
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,66 +141,38 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, jgg@nvidia.com
+Cc: linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-On Sat, Jan 10, 2026 at 10:39:03AM +0900, Takashi Sakamoto wrote:
-> Hi,
-> 
-> This patchset is to refactor current codes handling pages dedicated to
-> DMA.
-> 
-> There are two cases to acquires pages dedicated to DMA; isochronous
-> contexts and AR contexts. The reason of page acquisition is the need to map
-> them into VMA. In the former case, they are mapped into userspace VMA. In
-> the latter case, they are mapped into kernel VMA with continuous address
-> to access to packet content across the page boundaries, especially between
-> the end and the beginning of pages. The allocated pages are
-> discontiguous, and their cache coherency is managed by DMA streaming
-> APIs.
-> 
-> 1394 OHCI has no restriction about the size and alignment of memory
-> registered for DMA, while the registered DMA address should be within
-> 32 bit. The DMA mapped addresses can be discontiguous between descriptor,
-> thus the above subsystem design is due to the convenience of system side.
-> 
-> I think the recent convention of driver programming relies on DMA-coherent
-> buffers, while this code refactoring keeps the uses of DMA streaming
-> APIs as is. Also, the acquisition per page is kept as is, even if there
-> are some ways to allocate memories wider than the page size. They would be
-> future works since it requires to change how to handle the packet content
-> across the pages.
-> 
-> 
-> Takashi Sakamoto (8):
->   firewire: core: move private function declaration from public header
->     to internal header
->   firewire: core: use mutex instead of spinlock for client isochronous
->     context
->   firewire: core: code refactoring with cleanup function for isoc pages
->   firewire: core: use common kernel API to allocate and release a batch
->     of pages
->   firewire: core: stop using page private to store DMA mapping address
->   firewire: ohci: use MAX macro to guarantee minimum count of pages for
->     AR contexts
->   firewire: ohci: split page allocation from dma mapping
->   firewire: ohci: stop using page private to store DMA mapping address
-> 
->  drivers/firewire/core-cdev.c |  41 ++++++------
->  drivers/firewire/core-iso.c  |  86 +++++++++++++-----------
->  drivers/firewire/core.h      |   1 +
->  drivers/firewire/ohci.c      | 124 ++++++++++++++++++++---------------
->  include/linux/firewire.h     |   3 +-
->  5 files changed, 141 insertions(+), 114 deletions(-)
+The index of pages for dma address was changed wrongly. This commit
+corrents it.
 
-Applied to for-next branch.
+Fixes: ef6bdffbb88d ("firewire: core: stop using page private to store DMA mapping address")
+Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
+---
+ drivers/firewire/ohci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
+index a43fe680d508..339047a2e768 100644
+--- a/drivers/firewire/ohci.c
++++ b/drivers/firewire/ohci.c
+@@ -3272,7 +3272,7 @@ static int queue_iso_transmit(struct iso_context *ctx,
+ 			min(next_page_index, payload_end_index) - payload_index;
+ 		pd[i].req_count    = cpu_to_le16(length);
+ 
+-		dma_addr_t dma_addr = buffer->dma_addrs[i];
++		dma_addr_t dma_addr = buffer->dma_addrs[page];
+ 		pd[i].data_address = cpu_to_le32(dma_addr + offset);
+ 
+ 		dma_sync_single_range_for_device(ctx->context.ohci->card.device,
 
-Regards
+base-commit: 993ab48006b3016cdd3f2b33905e8e167f955495
+-- 
+2.51.0
 
-Takashi Sakamoto
 
 
 _______________________________________________
