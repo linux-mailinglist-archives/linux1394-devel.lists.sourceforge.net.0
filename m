@@ -2,146 +2,133 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 206ADD24C38
-	for <lists+linux1394-devel@lfdr.de>; Thu, 15 Jan 2026 14:38:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 02346D38F0F
+	for <lists+linux1394-devel@lfdr.de>; Sat, 17 Jan 2026 15:28:53 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2eylM1rE/NxJMn6sqVFyAIetxTHKokdjstZ0h4sliMo=; b=OnhQhbvOqMTcLO/bWxhlmgOCsb
-	+puY3SxktnCgEFBn23OXt5VuR3EK1fHjo1abEoIuJE9nGfbkxSzw6VK+4V7BQ8b6n70sIhXLadXh1
-	lCir1EQOzYAsx9iJlRJlVC0D1wrjw/zY068LE9yIzHt650EXZ7dJLT4/LnOoJUZ88T3k=;
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	MIME-Version:Message-ID:Date:Subject:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/jrWCpgcHNMYKaluRMfkGhNDWUrWZPkTKkNtP4ZvAnY=; b=g5+4VQS3ctjiPsEKjgp2uoaSy9
+	oiBkg2TSGhg2gUGSg9Fu/v8xsyZ/+Ah2DG1Hl6pqmFgLvrEOO6tULdwFv379h5XG3Ru7VdRc36baS
+	tWCVPSwJOv+w9KD1MbpKvqJveSs/D8ImoohXQXToKwsKRlez3wITYNRCu4dddTWBBVNo=;
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1vgNY7-0003Yl-4L;
-	Thu, 15 Jan 2026 13:38:07 +0000
+	id 1vh7IE-00030f-Dx;
+	Sat, 17 Jan 2026 14:28:46 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1vgNY6-0003Yb-16
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1vh7I2-00030E-Fz
  for linux1394-devel@lists.sourceforge.net;
- Thu, 15 Jan 2026 13:38:06 +0000
+ Sat, 17 Jan 2026 14:28:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
- Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:Message-ID:
+ Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=+UJr4IFUNmYAblxJ541k41GqqOweQL3KyW+Obe39FiE=; b=NJk3aNILDEFKXye+hfZR9smIH4
- HpuDqvQQ+h3lzvo0RKW5/ss3GYiOUVI82AmIaGiJOL0FtPN+it5Gt1w7Xj+DBpNYj6t18vyeRxyOq
- GBIfAHE1p37QUJjAxEKROBFatly9hVHR4pnH5c76H2yZRKgM1c8b4N0M8j5oOyEzGMyg=;
+ bh=VxGIvxEnlMyLJw1AXQ5i8GRHQcqLmhfOwo0BLQWHxO4=; b=QjPqWyc/wYpBWOBWdWkEi2Uus8
+ 6owaw1aZEaHbCbot/tGONIIJ8l5T9e1WX3nNfUVj2aWKAyud7szqwh63R7pE2AHdCemOP0OgJvFBj
+ KCJ8S94gze5w0iuWII2KsWQjD6e2ASnEaPJPS9AfiuNGeUo0RBJWZJljqbiBNkWLNuiI=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
- h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
- :From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=+UJr4IFUNmYAblxJ541k41GqqOweQL3KyW+Obe39FiE=; b=NJUm5XpDQ/5bNTJIF1TNR1wa6u
- rncRYmGvf9VAB9NSnGMd6KT3l0rTg8hrbpUoJJIMQ77zcONiB4r7nXCqMrjj2uC08YSt1I6+95duq
- gUYjceOUk3ePJOTEf06OE/Zn2WUdITLcJtCwRteAU4yXsPvu/qpcq6HpjmPU+qC2AVJ0=;
-Received: from fhigh-a6-smtp.messagingengine.com ([103.168.172.157])
+ h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From
+ :Sender:Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+ References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+ List-Owner:List-Archive; bh=VxGIvxEnlMyLJw1AXQ5i8GRHQcqLmhfOwo0BLQWHxO4=; b=N
+ 18F+p7n0cnJg80ciKQLJYJ2eqlSR20DmtgKCZ+SG5SUWkbi3G0odc5T8Ibpf19bpGrrVLE8tfHajc
+ yWhDiGMzJmVyLWSq8ihjhgIdi4JJCHZgShJMrd9YK+f6Cx81SAJ5YhNP5M4BBaNdApxYOnKLO7R/9
+ iU5Jq7To+mcxrW78=;
+Received: from fout-b6-smtp.messagingengine.com ([202.12.124.149])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1vgNY5-00007D-0H for linux1394-devel@lists.sourceforge.net;
- Thu, 15 Jan 2026 13:38:05 +0000
+ id 1vh7I0-0001Vm-S9 for linux1394-devel@lists.sourceforge.net;
+ Sat, 17 Jan 2026 14:28:34 +0000
 Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 57A9B1400126;
- Thu, 15 Jan 2026 08:37:59 -0500 (EST)
+ by mailfout.stl.internal (Postfix) with ESMTP id 2B7621D00318;
+ Sat, 17 Jan 2026 09:28:27 -0500 (EST)
 Received: from phl-frontend-04 ([10.202.2.163])
- by phl-compute-04.internal (MEProxy); Thu, 15 Jan 2026 08:37:59 -0500
+ by phl-compute-04.internal (MEProxy); Sat, 17 Jan 2026 09:28:27 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1768484279; x=
- 1768570679; bh=+UJr4IFUNmYAblxJ541k41GqqOweQL3KyW+Obe39FiE=; b=H
- Cgi+Xw2esONyCVd04pup45/8O5tod3tGTPRLhpnJTRC6deHV/HbvhUrQsGkFYc3L
- uPLikgHLG2y3GK2wr7ii667rIRhYrFdlMzcqKF07SiNsEtBfh8SE4Gfx8WDi0Gka
- 9NyZOIgaQPBnuDT6fBLuIOBrdFUSWlk4xr2orp3jW334WTFhq6pyi6oGt0rHlLHW
- ngLrcaSJyiuYXHb4sET9VToWlq79u3WO+0tUV0Pi/y/YSkU1485A45OkMnGNepVH
- RQLof8lHbpWZlSrvB/LlZMlySFqsVr6Z5W2hFv7HKgB2tMoInEyEgy8kH6OyTTyG
- runxRwFN31zcuZCJdnBeg==
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:subject
+ :subject:to:to; s=fm2; t=1768660107; x=1768746507; bh=VxGIvxEnlM
+ yLJw1AXQ5i8GRHQcqLmhfOwo0BLQWHxO4=; b=YHhYN5lFu9zBO4pkoKnrLOKxAE
+ XpGXfFVlW/VvjP7FvQ5ns6tqpIfY2MHyBaY3KFEVjlAabPLE9N9HJ4qs2Vpbr0TJ
+ /zVYA4Q6CYashcrHmsjBRgHNPmKrRd7Qzt4tR8iAr5BwDp6xOBtUji/skhmTepGr
+ ja1D9H5D2Y4rQJA+J+SjNTISSImnszRMKpHA8NKqxJKp0npRcvOBbFTyAKUNmDne
+ d7Noo2k/8netQtAdYzGnzRHz8CJ9yH4wJTVF/MyljnQtS8I2ot7G/s0r8lrxB4U7
+ vJ4C2knLRzoELc731Glvd1EXzvDtxn5cTLocuOCwHWdkQtyw5tqbezFNIH5g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:subject:subject:to
  :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
- 1768484279; x=1768570679; bh=+UJr4IFUNmYAblxJ541k41GqqOweQL3KyW+
- Obe39FiE=; b=fz4lH4hY8ijchCc+c7dAQhDaZOUD1YWXFHRD0fOm6CX55ynxiSC
- jJM61xIfH9VZRo+Snc+pEeScBEUsN/CD4H2nWavbFu8hPuG0hCecuLEeclOlunJl
- cfL6eXT12PcVHCqCNQMngbSh6YOsrAbxoLr/DSfEpyrEtCRKcWH3xDNn9aXtxm9i
- GPrpdT1iySDg9F73Q4WSCUL2IN8mcf6Sl4bz82eqYtcQQ4AFWZe6EZfLTk/jrXnT
- YvnxUuvNpbkQpi18pAhaQlZE3DI38yRdmG06Yd3tsbsuO/HnzKnajuVkeMyiPX6Y
- yzBiH3PELE7JWL4aEW9h6qjR3gVF3CYzBRg==
-X-ME-Sender: <xms:tu1oabv4ZwC3-YdNfesaKjN-VMzho3iaTwniE-cZLt3TE_6w09c-0w>
- <xme:tu1oaSeJtOSRoALzA56cJ2707ohnnSUQ3g7D08Q3TEbImay_6yqfvi1ptAeB6BCyi
- Vsbe-jJfA6N1el21zKxyymtsg8DnzxzrQw6elp6H8Y6tnSfvNplCcVD>
-X-ME-Received: <xmr:tu1oacZlVArhF5Z6LfMiWdef48yXooZ55noreL8YM67fK0WC-fobx88xyveZKg01DIsXnWF4rQcPNr8XwDMRR8sJpTQ0ZuODYA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdduvdeivddtucetufdoteggodetrf
+ 1768660107; x=1768746507; bh=VxGIvxEnlMyLJw1AXQ5i8GRHQcqLmhfOwo0
+ BLQWHxO4=; b=RHgh3uCxHyeOP37dKg67w8RTU3d7/FkvLvGEXWuWyLsN7xCzdMM
+ u4RUy0hClbQPmUbkhZjR6Bg1hWeCHrArPFoRZWU2bHhlcLmyNGOBjo/y4YPXDQID
+ QhWo7W9gyLImtdzme5KU4ZbOI0llDJkRETHSnaBYSBjwUvd8UY00Qy3SeDkGJ5wQ
+ RehzKQxOWvr7xs0rnTb6JqlvcE/Ph6letQ/ipG7aqZzmETDMO1yYFBqbmad/IqFW
+ El15cSzd62dVk0+autlOd4bfPBBMuEfA8VBiyGU5/32T+M7njIfEB59IO6tbRwdD
+ 7naqJeXQo5tlRuiNFqP8ik+n0E4R9k8S/FQ==
+X-ME-Sender: <xms:ipxraRCZCstn2JcGULe4Yh_V0MFpJB0TuWymPfQJlfTTJ4rP0YmMSw>
+ <xme:ipxrafoMWf4C-8kkAAAoj7gSYgIdsD01VeZlUbhPAfJURfAgL2eiJH62pDxvFcio8
+ U7soAwVyXHNIvWK9VrtYGs732oPJcmdyqKhD_rrOW8z0d4MlRSlwA>
+X-ME-Received: <xmr:ipxraUgs3n16poBmY9xiXM16vdq0n66nfrTtaZ0_-7F895h-m4d0SelgjA3zmcW8clvdsAzq9cy7EZT7PB85b6sNcMll5JPzyQ__nPlyxjS5bA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddufedvtdehucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttdertd
- dttddvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghs
- hhhisehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhteetgf
- ekvdeiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushhtvghr
- ufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrg
- hkrghmohgttghhihdrjhhppdhnsggprhgtphhtthhopedvpdhmohguvgepshhmthhpohhu
- thdprhgtphhtthhopegrrhgvhihouhhlohgtohesphgrrhgrnhhoihgtihdrohhrghdprh
- gtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurhgtvghf
- ohhrghgvrdhnvght
-X-ME-Proxy: <xmx:tu1oaVWCwecazPEC04_M_c0uMK3AtLx4WWzpcqspx3UGVmPPSRkLzg>
- <xmx:tu1oaehZn07APDaSQ1YiJpRIva2bVyWw7Jy9XxuMSz5V3qmbYwW_EQ>
- <xmx:tu1oaTWjF1RgepgNEP8zpOi0MtZIDYLvVVC88dF2uY0ddVCRTCLwTA>
- <xmx:tu1oaVPOIlGdO9gIYR_4-24RLL971zYXX4uqrJFZ_ebETo7h7tD-Bg>
- <xmx:t-1oaTS2MH6xb-oN6p-NSlA1HXyFVL5p6NyOxRXH4Z6OSSIZSyfTU4dy>
+ rghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertdertd
+ dtnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhi
+ sehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeffvdeuleffveekud
+ fhteejudffgefhtedtgfeutdfgvdfgueefudehveehveekkeenucevlhhushhtvghrufhi
+ iigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrg
+ hmohgttghhihdrjhhppdhnsggprhgtphhtthhopeefpdhmohguvgepshhmthhpohhuthdp
+ rhgtphhtthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurhgtvg
+ hfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdr
+ khgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidqshhouhhnugesvhhgvghrrd
+ hkvghrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:ipxraUBL8NiS7o5bDDQvuaqqpPIsEmoKvUSwKJ6u3rlleSc1EdF2FA>
+ <xmx:ipxraRGY1Y6G3gIJobvKoUmBWeIjciGR6VUBu6IwH0ufkirn7Qgz4A>
+ <xmx:ipxraUITXX7CVspNI-LQ1e7dpdScGK_evM69aCrwoG4Kb0FUcWEbYg>
+ <xmx:ipxradm0BxcN1cSO9osiRvRFitSRQtunP3uKW_qWt01dbM3Ca8z1sg>
+ <xmx:i5xraenPVQBee2bP7KxQz9RtASRisJ92JXFs6w8Z1hL_jEUySU6amXy9>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 15 Jan 2026 08:37:57 -0500 (EST)
-Date: Thu, 15 Jan 2026 22:37:55 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 17 Jan 2026 09:28:25 -0500 (EST)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: AreYouLoco? <areyouloco@paranoici.org>
-Subject: Re: [PATCH] firewire: ohci: fix index of pages for dma address to
- 1394 OHCI IT context
-Message-ID: <20260115133755.GA384327@workstation.local>
-Mail-Followup-To: AreYouLoco? <areyouloco@paranoici.org>,
- linux1394-devel@lists.sourceforge.net
-References: <20260114131729.16133-1-o-takashi@sakamocchi.jp>
- <20260115123523.GA179174@workstation.local>
- <A01763CF-665C-4215-9FD2-F6686AECC6F0@paranoici.org>
+To: linux1394-devel@lists.sourceforge.net
+Subject: [PATCH 0/9] firewire: core: add fw_iso_context() variant with
+ configurable isoc header size
+Date: Sat, 17 Jan 2026 23:28:13 +0900
+Message-ID: <20260117142823.440811-1-o-takashi@sakamocchi.jp>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <A01763CF-665C-4215-9FD2-F6686AECC6F0@paranoici.org>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
+ running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, On Thu, Jan 15, 2026 at 12:38:11PM +0000, AreYouLoco?
- via linux1394-devel wrote: > So kernel tree 6.19 is already going to contain
- that fix soon? > > Or for-next branch is some future release? The issued
- commit is only in for-next branch, which I maintain for next merge window.
- The issue is not included in Any release candidate of v6.19 kernel. 
+ Content preview:  Hi,
+ Currently ALSA IEC 61883-1/6 packet streaming engine provides
+ the maximum PCM buffer size constraints to drivers for audio and music units
+ in IEEE 1394 bus, due to hard-coded size of isochronous conte [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 RCVD_IN_DNSWL_BLOCKED  RBL: ADMINISTRATOR NOTICE: The query to DNSWL
- was blocked.  See
- http://wiki.apache.org/spamassassin/DnsBlocklists#DnsBlocklists-dnsbl-block
- for more information. [103.168.172.157 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [103.168.172.157 listed in wl.mailspike.net]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1vgNY5-00007D-0H
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
+X-Headers-End: 1vh7I0-0001Vm-S9
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -154,26 +141,53 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net
+Cc: linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
 Hi,
 
-On Thu, Jan 15, 2026 at 12:38:11PM +0000, AreYouLoco? via linux1394-devel wrote:
-> So kernel tree 6.19 is already going to contain that fix soon?
-> 
-> Or for-next branch is some future release?
+Currently ALSA IEC 61883-1/6 packet streaming engine provides the maximum
+PCM buffer size constraints to drivers for audio and music units in
+IEEE 1394 bus, due to hard-coded size of isochronous context header for
+1394 OHCI IR context.
 
-The issued commit is only in for-next branch, which I maintain for next
-merge window. The issue is not included in Any release candidate of v6.19
-kernel.
+The limitation is inconvenient a bit, and this patchset removes it by
+allowing the drivers to configure the size of isochronous context
+header.
+
+To sound subsystem maintainer, I'd like to send the last patch to
+mainline in my side.
+
+Takashi Sakamoto (9):
+  firewire: core: add function variants for isochronous context creation
+  firewire: ohci: refactor isoc single-channel state using a union
+  firewire: ohci: code refactoring to use union for isoc multiple
+    channel state
+  firewire: ohci: use cleanup helper for isoc context header allocation
+  firewire: core: add flags member for isochronous context structure
+  firewire: ohci: allocate isoc context header by kvmalloc()
+  firewire: core: provide isoc header buffer size outside card driver
+  firewire: core: add fw_iso_context_create() variant with header
+    storage size
+  ALSA: firewire: remove PCM buffer size constraint from isoc context
+    header
+
+ drivers/firewire/core-card.c  |   4 +-
+ drivers/firewire/core-cdev.c  |  30 ++--------
+ drivers/firewire/core-iso.c   |  16 ++---
+ drivers/firewire/core.h       |  13 +++-
+ drivers/firewire/ohci.c       | 110 +++++++++++++++++++---------------
+ include/linux/firewire.h      |  33 ++++++++--
+ sound/firewire/amdtp-stream.c |  31 +++-------
+ 7 files changed, 125 insertions(+), 112 deletions(-)
 
 
-Regards
+base-commit: a4cd9860fa085f0d04d2065f4c151fcde9fcdf4a
+-- 
+2.51.0
 
-Takashi Sakamoto
 
 
 _______________________________________________
