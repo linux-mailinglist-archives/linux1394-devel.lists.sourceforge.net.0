@@ -2,37 +2,37 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 X-Original-To: lists+linux1394-devel@lfdr.de
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id C87EED38F13
-	for <lists+linux1394-devel@lfdr.de>; Sat, 17 Jan 2026 15:28:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E3E0AD38F0E
+	for <lists+linux1394-devel@lfdr.de>; Sat, 17 Jan 2026 15:28:53 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H0nDpVE1TRcly9LZOCoukqVo+zvVZalqwwgfFrsLfBI=; b=ivImbnk9Of2Yp8upd0sHn81tYM
-	QhPwtSUSPzuwe95lxCaGvYA5gycSDCoZKxJ/mg8dV9zF41DNXGou5h+cRUrkEUGpx2jTbogyrS+iP
-	qwYYSxP3fJQYTd78RZHv/36EVGYBNi7gwbRqIIKwa1GwedzZre17RQO3Wmyfve5aFBSc=;
-Received: from [127.0.0.1] (helo=sfs-ml-4.v29.lw.sourceforge.com)
-	by sfs-ml-4.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=wB7Q98mVES3UkIXSP90vZhQq3cBzkW1suW2ID7w4ofU=; b=bkgdjfdLHZHJkko2lFc3ePRe5r
+	5S1I5LHqhoOGwQwauxWjuLBgBEl99iWquQQSon1mhBUVVCy8SArt372NoHeT4DfJcGJ98V6beZXWC
+	XgHXm+k0UtWWS9b3goqorR8DtD3X5WPjU76LDjgCDEVTz72vYdkc2Ue92qupaRTteIKw=;
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1vh7II-00052F-2v;
-	Sat, 17 Jan 2026 14:28:50 +0000
+	id 1vh7IB-0005dC-Qb;
+	Sat, 17 Jan 2026 14:28:43 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-4.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1vh7ID-00051b-Dg
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1vh7IA-0005d2-Lp
  for linux1394-devel@lists.sourceforge.net;
- Sat, 17 Jan 2026 14:28:45 +0000
+ Sat, 17 Jan 2026 14:28:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=IbJBZ5DJy42Pr9Dh1QiqdxTjMOBG5eXgGleQ0l9+Tew=; b=KQrG/rDymwlSI9z+fhKNpx5bIe
- ZJwZTqSkYNtz1jiI6wuTvNfkISDQgMFqEY0pJBV2zaJC+L5sOlLtfkdlCcBhNsKeJPKyf5raU/hsP
- +k7Qwi3tjoIeQxMhO1ps4ePw+xu427iuieqS7o1oP87EgfA5AXwmqHS5GBkvp4DNeVqU=;
+ bh=0o98L6X7Ww81vUo8K0bKIgUHwJe62JrsMwr69W87+Ws=; b=hVgjUlqsY8pCk9iArL/h1eGjAY
+ Nq2y55lWzj60jG5wR6Zv3qfVqSAWHb5v8R/ZUrjtLzC8Zcr++bgT0hXusm7+gev+ii2BBBhGyU59o
+ 9hoJ0L6L9JJMsNuPM4G1qocxwGIQSClznmmN0piL6N1D/miXDL8A3uo4cqjlqsevc6I4=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -40,47 +40,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=IbJBZ5DJy42Pr9Dh1QiqdxTjMOBG5eXgGleQ0l9+Tew=; b=nVmsXz+xcTdDhAqffVode1R2rm
- GJSgwhLrEWKWSXu7p/NFep+BEDSIrYqXSR60R3NWdQ1zZEEl4rbNiQLenU6n5S4fg6s2AjTWZOSsW
- mZhDUiurHGgWBpRwh/JqXRsTBIc7IL+FlBgzm3Xc+UFtp/U2UyTUnzEsAg03HQIgSbfA=;
+ bh=0o98L6X7Ww81vUo8K0bKIgUHwJe62JrsMwr69W87+Ws=; b=jdne0A0dqfjvy5ukdzrUaIIxyQ
+ VK96dJC/L1cbE4b9z3KV/EqKcWGvbrLmltuAYjOz7GsPHCpVySCjVRzPV0lsdZye7Zi2k98kooW/0
+ vq/Y6q/xF2S0dpwj8lMN8/laZ4+9G3GaN8TaFpb/IrVvXkI1VP2fOOE4fhxd6tt5D0io=;
 Received: from fhigh-b6-smtp.messagingengine.com ([202.12.124.157])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1vh7IC-0001WJ-8Q for linux1394-devel@lists.sourceforge.net;
- Sat, 17 Jan 2026 14:28:44 +0000
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
- by mailfhigh.stl.internal (Postfix) with ESMTP id B7F6C7A0325;
- Sat, 17 Jan 2026 09:28:33 -0500 (EST)
+ id 1vh7I8-0001W6-Si for linux1394-devel@lists.sourceforge.net;
+ Sat, 17 Jan 2026 14:28:41 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+ by mailfhigh.stl.internal (Postfix) with ESMTP id 58BC97A0333;
+ Sat, 17 Jan 2026 09:28:35 -0500 (EST)
 Received: from phl-frontend-04 ([10.202.2.163])
- by phl-compute-02.internal (MEProxy); Sat, 17 Jan 2026 09:28:33 -0500
+ by phl-compute-05.internal (MEProxy); Sat, 17 Jan 2026 09:28:35 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1768660113; x=
- 1768746513; bh=IbJBZ5DJy42Pr9Dh1QiqdxTjMOBG5eXgGleQ0l9+Tew=; b=F
- e3DTnyw9a5IeQEngaBqLMwIwiSzFSmfmPJDdl+pDPmj4igv6lQwrB02bDTOlEHHq
- JKl4GsTLKz3VkHtSNGYb0UF3JmCnZwOIL6zRgGCOOkc1YIWGysGHDhTo3+FS8aCh
- VoVQdU+UTd1f7gqSSsjtH6Hc3o8b71AaX6uPEeGybBOWwdC40R0/ssvSAgwh+P0W
- 7K7PZXGMm7VaJ9+RHNn7cZnRGIUUiQe50n8sYwAuBmUMsJZzG6QSb8bKlA4k5iyI
- 8f5fCSM0q1Sp15ZzYW3G/BYkXDeegBlRGQMosko74Vv9f/U8BMCB8GRuDZmfHpP9
- UCqx6oZ8CY71ydGAbfdqg==
+ :reply-to:subject:subject:to:to; s=fm2; t=1768660115; x=
+ 1768746515; bh=0o98L6X7Ww81vUo8K0bKIgUHwJe62JrsMwr69W87+Ws=; b=d
+ 5FnrnQwCbfIu2IKsAbOzm0N65IIEjnYjSQlx7BEFWrry1vveaB0DlQRmLPhZ5S+6
+ JzJ2/WTsoZnyIM4dLn8OznI5s3NloK1V/o8ltEEZLkiyEoLyld0NlHU2Y/S39vw3
+ QHYFvKhhkDuSJlIGw7mJg5mUBl0+Fn0bB9ib2yMXU+lCghIamAvIB2m1oxOZPkpo
+ dz/jqNKd2V4EnSs3UKCRKj25hWIk3N/jsQpoohWtqkWUaR0q/ggtWSvZy/soM3SN
+ CAuzmucrYjRXICOqJgsAehGgfo0e6094oDxtuM+pO+l+iC4SpBW8kP9AgwXQiqBs
+ ta4Q4SUhVFHg/bYuoBNvA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm2; t=1768660113; x=1768746513; bh=I
- bJBZ5DJy42Pr9Dh1QiqdxTjMOBG5eXgGleQ0l9+Tew=; b=uWQoWBsU4Xsuvt+tV
- HGelxHPO6snXd8CVeoay3pLGwALGQ/sZaWNhcZilaEzJ3Zt/3OVrUCNanTr6WBXS
- rSEjx6F8y+hXVIrk7HArCz7h8TTuze4kQknpv+kH+Qo1lEo0Hnw4eVfCDyJLdZmm
- 1xK4FKe3XxEHdTlnp1+y8A/O/7a1Vvfa62hg5AfxLZ/vLYVF8LhXy9O/q5l4Hug5
- /7zN/LNRqCQ7vcZo1GXCANMBYivGfelK00tSy6RMsFDNQ5Lnhyz3y7PdDculcT63
- 3g5kpbkLIgSF8Ydo8fAw9yvkCKKdisXVmyz/fsthM8HHq1Zxpah/ckwwztDWgTnD
- ZHVIQ==
-X-ME-Sender: <xms:kZxraU9U70cHEgyTJbWKqEGiBNOsFFlOw9e7OIpfoeD_pD0LJXduJw>
- <xme:kZxrac1gC-wQ6R3R0bsWFBKm5jNGL5OkO92HZNX1SHSojEQdXsLq5489pFt56ZN4Y
- UZ5Bkz-AmJ5PUOu8FVx5m3T5w_furzFDDg0rbWgypyogjrQiLXV5jc>
-X-ME-Received: <xmr:kZxraR9vnyotZLFbiZckH5msyM8BGzPX7KmuwJWeUezoNxYi719KPEEDepTxkqk2bYPoaCviOfcHcREZQYPi3niVPJ84ToRLfr0QaME-NHWvdA>
+ :x-me-sender:x-sasl-enc; s=fm2; t=1768660115; x=1768746515; bh=0
+ o98L6X7Ww81vUo8K0bKIgUHwJe62JrsMwr69W87+Ws=; b=YQF4BhNt/vzyJC7Hb
+ GQGfb6gkBAmUCRnkCmnjGiNBonFCkSeta/fmmrfS9hO1Se8dSspi9DOR18FncD+J
+ 95RIoSkncTK37n4VHyY+wGxm4BLVbEFFFbCGT3MnmHS2mXw5rOgDbAOfX2xDQDq9
+ g3EKC18KhzcDDHDCdPdpqXuf07F98ykm3t4gu88aYJHEqLCpGZNaeEafCdXma38e
+ Iajyz8Di+YqKOqie72My0UKussGei1nRbxsOWcyBq4yKdjso94nsAcWjGaxwLQ3+
+ 0d4Y3ARys1kj/EScX+J6SYCK9RKTq7aQX4mYEXCQ0aB7zSWyYT+9Cr8ZtYy9v11X
+ WY+Bw==
+X-ME-Sender: <xms:k5xradd7crDU-P4Xw2_LpZBX0Mst7-99HwdWf4hpBCHXvsmEYI8z1Q>
+ <xme:k5xrabVlx6LL6QPNn1SwLHBDuhlwh8ElG8e3MxQ8x8ExvPk-5kjQRyY3avSjpFCtx
+ -AilxgCyayOlIIMbYVY8xY3Uw8HLcLRsoiY6gYZ8H1NtWlRUhf4kA>
+X-ME-Received: <xmr:k5xraef19ZocEcFuqXRxNg9y0KxFgksX5_ojUPD-NNyuTOPMpUQpdlQXufNm7EfEzxUGsONeHr-GIuJiEYxrMpWbbT3Dk6W3P-A1BIGMxs7ehw>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddufedvtdehucetufdoteggodetrf
  dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
  rghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffojghfggfgsedtkeertd
@@ -93,47 +93,48 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddufedvtdehucetufdote
  gtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplhhinhhugidqkhgvrhhnvghlsehvghgv
  rhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhinhhugidqshhouhhnugesvhhgvg
  hrrdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:kZxracvqehkTDMS3iJi8GdtFzXpAkJsGBrQYaKW_GqZ5aPsTlP6soQ>
- <xmx:kZxraUBoVjME88a8i9jNdkrocmybZF51wtDTVFrH2TjxxxywGyi0Gg>
- <xmx:kZxraUXxk_ER-gw6UrfmrKa9feCsTbo9_PY0SFMTF7qn6p_6t7Aq6A>
- <xmx:kZxraSDunrUYImPFDbyrbDNiPhq_e-o6MHgGiFfhvPmSL_Jf-pSd8A>
- <xmx:kZxraZQG5PpoXfDwBQBMNAzfAJ1-aE12dNPce3vopieot0F8ql80lJeX>
+X-ME-Proxy: <xmx:k5xrafP9yVv5dUOS6Ov4PAaZ9AlZ3S8Ee8k_HHM0DFlYbVj6cOP2-Q>
+ <xmx:k5xraUiAF9PUwoIC57Q8h4-pXBGFeDTsK-8ZZrSknEbDbyTCn375Tw>
+ <xmx:k5xraa1cwokvpVoEBqDmV1GleQiRquKehwpmPoonzLIf9HnYrNxP9A>
+ <xmx:k5xraWgZwmn9cEnt5m_o1e4iOZOLBU2-IIvDYy3ZtL-zc_cjZKiIiA>
+ <xmx:k5xrabywV8mrummUGq-8zBrAnHKqhFXEkwmNkcS6t0-K39Nz2IoTdQeH>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 17 Jan 2026 09:28:32 -0500 (EST)
+ 17 Jan 2026 09:28:34 -0500 (EST)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 4/9] firewire: ohci: use cleanup helper for isoc context
- header allocation
-Date: Sat, 17 Jan 2026 23:28:17 +0900
-Message-ID: <20260117142823.440811-5-o-takashi@sakamocchi.jp>
+Subject: [PATCH 5/9] firewire: core: add flags member for isochronous context
+ structure
+Date: Sat, 17 Jan 2026 23:28:18 +0900
+Message-ID: <20260117142823.440811-6-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20260117142823.440811-1-o-takashi@sakamocchi.jp>
 References: <20260117142823.440811-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
+ running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Some cleanup helpers are useful in error path after memory
- allocation for header storage. Signed-off-by: Takashi Sakamoto
- <o-takashi@sakamocchi.jp>
- --- drivers/firewire/ohci.c | 17 +++++++ 1 file changed, 7 insertions(+),
- 10 deletions(-) 
+ Content preview:  This is minor code refactoring to add a flag member to the
+ isochronous context structure. At present, it is used only for the option
+ to drop packets when the context header overflows. Signed-off-by: Takashi
+ Sakamoto <o-takashi@sakamocchi.jp> --- drivers/firewire/core-cdev.c | 2 +-
+ drivers/firewire/core-iso.c | 1 + drivers/firewire/ohci.c | 4 ++--
+ include/linux/firewire.h | 6 +++++- [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
-X-Headers-End: 1vh7IC-0001WJ-8Q
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+X-Headers-End: 1vh7I8-0001W6-Si
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -151,63 +152,88 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
 
-Some cleanup helpers are useful in error path after memory allocation for
-header storage.
+This is minor code refactoring to add a flag member to the isochronous
+context structure. At present, it is used only for the option to drop
+packets when the context header overflows.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/ohci.c | 17 +++++++----------
- 1 file changed, 7 insertions(+), 10 deletions(-)
+ drivers/firewire/core-cdev.c | 2 +-
+ drivers/firewire/core-iso.c  | 1 +
+ drivers/firewire/ohci.c      | 4 ++--
+ include/linux/firewire.h     | 6 +++++-
+ 4 files changed, 9 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
+index c26bea253208..9e964fdd175c 100644
+--- a/drivers/firewire/core-cdev.c
++++ b/drivers/firewire/core-cdev.c
+@@ -1064,7 +1064,7 @@ static int ioctl_create_iso_context(struct client *client, union ioctl_arg *arg)
+ 	if (IS_ERR(context))
+ 		return PTR_ERR(context);
+ 	if (client->version < FW_CDEV_VERSION_AUTO_FLUSH_ISO_OVERFLOW)
+-		context->drop_overflow_headers = true;
++		context->flags |= FW_ISO_CONTEXT_FLAG_DROP_OVERFLOW_HEADERS;
+ 
+ 	// We only support one context at this time.
+ 	scoped_guard(mutex, &client->iso_context_mutex) {
+diff --git a/drivers/firewire/core-iso.c b/drivers/firewire/core-iso.c
+index d9b8896c8ce1..fbbd14d21ca4 100644
+--- a/drivers/firewire/core-iso.c
++++ b/drivers/firewire/core-iso.c
+@@ -151,6 +151,7 @@ struct fw_iso_context *__fw_iso_context_create(struct fw_card *card, int type, i
+ 	ctx->type = type;
+ 	ctx->channel = channel;
+ 	ctx->speed = speed;
++	ctx->flags = 0;
+ 	ctx->header_size = header_size;
+ 	ctx->callback = callback;
+ 	ctx->callback_data = callback_data;
 diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
-index 5d9857cbbd24..6760c8d12637 100644
+index 6760c8d12637..8bba70b65ad7 100644
 --- a/drivers/firewire/ohci.c
 +++ b/drivers/firewire/ohci.c
-@@ -2958,6 +2958,7 @@ static struct fw_iso_context *ohci_allocate_iso_context(struct fw_card *card,
- 				int type, int channel, size_t header_size)
- {
- 	struct fw_ohci *ohci = fw_ohci(card);
-+	void *header __free(free_page) = NULL;
- 	struct iso_context *ctx;
- 	descriptor_callback_t callback;
- 	u64 *channels;
-@@ -3015,8 +3016,8 @@ static struct fw_iso_context *ohci_allocate_iso_context(struct fw_card *card,
+@@ -2756,7 +2756,7 @@ static void copy_iso_headers(struct iso_context *ctx, const u32 *dma_hdr)
+ 	u32 *ctx_hdr;
  
- 	if (type != FW_ISO_CONTEXT_RECEIVE_MULTICHANNEL) {
- 		ctx->sc.header_length = 0;
--		ctx->sc.header = (void *) __get_free_page(GFP_KERNEL);
--		if (!ctx->sc.header) {
-+		header = (void *) __get_free_page(GFP_KERNEL);
-+		if (!header) {
- 			ret = -ENOMEM;
- 			goto out;
- 		}
-@@ -3024,21 +3025,17 @@ static struct fw_iso_context *ohci_allocate_iso_context(struct fw_card *card,
- 
- 	ret = context_init(&ctx->context, ohci, regs, callback);
- 	if (ret < 0)
--		goto out_with_header;
-+		goto out;
- 	fw_iso_context_init_work(&ctx->base, ohci_isoc_context_work);
- 
--	if (type == FW_ISO_CONTEXT_RECEIVE_MULTICHANNEL) {
-+	if (type != FW_ISO_CONTEXT_RECEIVE_MULTICHANNEL) {
-+		ctx->sc.header = no_free_ptr(header);
-+	} else {
- 		set_multichannel_mask(ohci, 0);
- 		ctx->mc.completed = 0;
+ 	if (ctx->sc.header_length + ctx->base.header_size > PAGE_SIZE) {
+-		if (ctx->base.drop_overflow_headers)
++		if (ctx->base.flags & FW_ISO_CONTEXT_FLAG_DROP_OVERFLOW_HEADERS)
+ 			return;
+ 		flush_iso_completions(ctx, FW_ISO_CONTEXT_COMPLETIONS_CAUSE_HEADER_OVERFLOW);
  	}
+@@ -2925,7 +2925,7 @@ static int handle_it_packet(struct context *context,
+ 	sync_it_packet_for_cpu(context, d);
  
- 	return &ctx->base;
--
-- out_with_header:
--	if (type != FW_ISO_CONTEXT_RECEIVE_MULTICHANNEL) {
--		free_page((unsigned long)ctx->sc.header);
--		ctx->sc.header = NULL;
--	}
-  out:
- 	scoped_guard(spinlock_irq, &ohci->lock) {
- 		switch (type) {
+ 	if (ctx->sc.header_length + 4 > PAGE_SIZE) {
+-		if (ctx->base.drop_overflow_headers)
++		if (ctx->base.flags & FW_ISO_CONTEXT_FLAG_DROP_OVERFLOW_HEADERS)
+ 			return 1;
+ 		flush_iso_completions(ctx, FW_ISO_CONTEXT_COMPLETIONS_CAUSE_HEADER_OVERFLOW);
+ 	}
+diff --git a/include/linux/firewire.h b/include/linux/firewire.h
+index 68161b8a8a58..71d5cc8f28ce 100644
+--- a/include/linux/firewire.h
++++ b/include/linux/firewire.h
+@@ -546,13 +546,17 @@ union fw_iso_callback {
+ 	fw_iso_mc_callback_t mc;
+ };
+ 
++enum fw_iso_context_flag {
++	FW_ISO_CONTEXT_FLAG_DROP_OVERFLOW_HEADERS = BIT(0),
++};
++
+ struct fw_iso_context {
+ 	struct fw_card *card;
+ 	struct work_struct work;
+ 	int type;
+ 	int channel;
+ 	int speed;
+-	bool drop_overflow_headers;
++	int flags;
+ 	size_t header_size;
+ 	union fw_iso_callback callback;
+ 	void *callback_data;
 -- 
 2.51.0
 
