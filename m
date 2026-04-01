@@ -2,42 +2,42 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 2G/eC+TNyWm62gUAu9opvQ
+	id SNOyLAXCzGkWWgYAu9opvQ
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	for <lists+linux1394-devel@lfdr.de>; Mon, 30 Mar 2026 03:12:04 +0200
+	for <lists+linux1394-devel@lfdr.de>; Wed, 01 Apr 2026 08:58:13 +0200
 X-Original-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5AEA93548B6
-	for <lists+linux1394-devel@lfdr.de>; Mon, 30 Mar 2026 03:12:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A2E937578E
+	for <lists+linux1394-devel@lfdr.de>; Wed, 01 Apr 2026 08:58:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ng/MhHYcrHX7DZXNNYhkChD/I0KacSowm6gc9JCjLvE=; b=dl4ezff9291GJu1oRTy3d5F9Eu
-	26UYiTQUVhF1sGZdF+WKyisA7T2jal2yrrO6wFHuNxeWP3Q10C6Vrm8T9WY8qNZt/h1QhSqipPULn
-	jK5EAi8NPpKn64RQLkfmkM8w87FIAayyI/J6apVO49xmdJ32ogY9/jIsC/Vic33xh5nQ=;
-Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
-	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=+aaM4o0WvP3fuwMrDzbUTIpgZgKoPgRAXQGCBcLYzMY=; b=RCumFFb38WAsktvKJMZo8ii4Jk
+	uAsHQlvGK8OvbEB5ksOh5i9phUysuHcg4eAM7hfcXTGbXaVmidv9cG7rdtYwTczHU8fdvrlMOm+hj
+	uT/mEkGw2FJeSpAao0SkIm2/Y6I1rjByz3lh0WtbS/ExnGU6piQ16UOdyeaS+14g05Sw=;
+Received: from [127.0.0.1] (helo=sfs-ml-1.v29.lw.sourceforge.com)
+	by sfs-ml-1.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1w71AU-0005Tk-O7;
-	Mon, 30 Mar 2026 01:11:50 +0000
+	id 1w7pWZ-0004E1-7i;
+	Wed, 01 Apr 2026 06:57:59 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-1.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1w71AS-0005Ta-53
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1w7pWX-0004Dq-8g
  for linux1394-devel@lists.sourceforge.net;
- Mon, 30 Mar 2026 01:11:48 +0000
+ Wed, 01 Apr 2026 06:57:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
  Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=jmojO+KXhf6ANjb3kyM3+4AA8cWt+mkVS822IT4EINI=; b=GEgvh6k5T0p9eFgnH6CKJqGlh3
- kDHj9BLiVhp6KUVHxVH3dGjIGzLGjlBqUAWD3M91IRNJKH3o9fDErYk2dfzqyb3Xdw1KJ+dCBCCcR
- M/0B8+89+iVuDikvCfECneFU3l2Le2ZWmR6IjkNaduRbC/sVxVonO6Pc1sVmndP26qzw=;
+ bh=lDbN4i1mpbsyhvkc5OFgn6ktb4xwtcyiJDmkj/KsKE8=; b=YsiRV5fkqywBGDGnx0XrlcLo0w
+ kh4zCDLyDaHH/b/KEBs0FYi2WNhqlE7NoYQ0ye2W/IWoyFSTfmBUGfRLm+dDncyk3ALBWN5ksXx8F
+ Vw8/bXUx4G5vePUMRfpmvfAmtasqK5OMi25ap6YDgxG44HrXTce2S3SEXGGI20hvd9UU=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To
@@ -45,77 +45,78 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=jmojO+KXhf6ANjb3kyM3+4AA8cWt+mkVS822IT4EINI=; b=Qi7nk5ZlTfqoX6hDY6cqBZgl8i
- hvaiYtfIzyMZ6JUJuQEVp0PIf0Q9s4RZ43r2FFTF1Ae5sVYcoY0ALBmyG6In8bAilU7pdXtJWOxmO
- h0OJoxcB9mdrYzp5qmnXmaTriqXn/klDKS2sB0PASIMlrI+UIrAvKqLX30Q8lbxjmMlQ=;
-Received: from fout-a8-smtp.messagingengine.com ([103.168.172.151])
+ bh=lDbN4i1mpbsyhvkc5OFgn6ktb4xwtcyiJDmkj/KsKE8=; b=QIwj+0bxWL5iknFYfZ1NhQkRIk
+ XnpxEaORdL+7t19q4NACS+hjxCECXgsARZ/MTod/Kw9LSd9pMmAhzWJ++jq3KpZKnn4NUNUViKFg2
+ /u1aXG2ft6T/UnmvkZvASGatR9hUqZ4D7gwEO0L6zI0uTAzTDKdtRhfNJZMzmlT8+QjQ=;
+Received: from fhigh-b7-smtp.messagingengine.com ([202.12.124.158])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1w71AR-0000oE-5A for linux1394-devel@lists.sourceforge.net;
- Mon, 30 Mar 2026 01:11:48 +0000
-Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
- by mailfout.phl.internal (Postfix) with ESMTP id BEED1EC0096;
- Sun, 29 Mar 2026 20:57:51 -0400 (EDT)
+ id 1w7pWV-0001tj-M6 for linux1394-devel@lists.sourceforge.net;
+ Wed, 01 Apr 2026 06:57:57 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+ by mailfhigh.stl.internal (Postfix) with ESMTP id F35C37A0335;
+ Wed,  1 Apr 2026 02:57:44 -0400 (EDT)
 Received: from phl-frontend-03 ([10.202.2.162])
- by phl-compute-06.internal (MEProxy); Sun, 29 Mar 2026 20:57:51 -0400
+ by phl-compute-05.internal (MEProxy); Wed, 01 Apr 2026 02:57:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-type:content-type:date:date:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm1; t=1774832271; x=
- 1774918671; bh=jmojO+KXhf6ANjb3kyM3+4AA8cWt+mkVS822IT4EINI=; b=B
- AoKATqOjm64qqcR1a8chiRSa/iYG2C3y8MP3icAlVJIEeJwNMcLbdbefB671WCDX
- snCYc2cRY4+JmR5KaH2fbMpz4peM5loE9wSB9Jc3uTap0BhlfjEQN8OlFtLaTo0Y
- 2ju5yISUJguhZZ9B3lStSl6jbkRY9RcrusYcFpPAapjsc0edwWw2u4Ic2qrSY+cx
- Q46vXCA1YemL6RlqrITnWQyy+tXXIlDCR8zxV/QMkkS9lL0WEk/o+YL5OSx1IC9t
- a7OA1Az3mm/HPte8c0YDIBUq1WpRq/asW01rwLomn4oJZyQdvjzCsDxz8AKUVzNd
- Z7+RPUIjn++Lno0aS2LFA==
+ :reply-to:subject:subject:to:to; s=fm2; t=1775026664; x=
+ 1775113064; bh=lDbN4i1mpbsyhvkc5OFgn6ktb4xwtcyiJDmkj/KsKE8=; b=J
+ A6nojPwnfbQvEy/wB0jWhPZFcUFAwlMgRbPvgA0Yw9wUiNTHZGXYCHiUZVkzBHYN
+ QJINrJTDpBoAwxUy7vxLgegvzzCS6EZf0r2UZxQkxnS/vsVFhL3rPVwOeAxcDDH8
+ O0TMwdhLsC/PIK5dkgm6xWdjMKUMoJq76lIRDBisvoL56wft0fTcIlinB90lXcDc
+ TUS/5qCf6/1yzf2NKqp7qBPQOC0KClUCYkrTTG+7kkKWk9PgdOoiODZPE3KYx80x
+ T9vHqarGO9YwLUa59/DfMDzO0Iy+rPATCSWvyx+uaR4MNK8NzFCkVIZDA/BHIJeR
+ cwU5apHCQU5In4uWXj3Wg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1774832271; x=1774918671; bh=jmojO+KXhf6ANjb3kyM3+4AA8cWt+mkVS82
- 2IT4EINI=; b=x2PsDnR2zcvEg6TxW/d/M/JPc0aFiqtGvZpLEp3wTW0EhrXtXZE
- vVvuSt/xYh4kHo6IOnztFEBEc8afpl2cdX5zxfR1mLc4jaSdbFHPBbeiv1fI4fH7
- R5ZloKD+FzcCeyVNC5d02jHZaZDDj0ncPT/4pRr18Kp6EDlQWPXQDGvABFnBl2mg
- yP5Cc8eNzjwxsPziqvHtUdxUrT1/0qPyJo9/F0H4AV1l7b3uyYivx//icnM/WF4y
- YS7E2ZFRmJgENGOW/tWNd3XDEQj9WYXfFrIlohNzaOeg2YJlVgP+RNEr9yABndWj
- 4Qn4fZ8ec9JM0WMNwdukUHlmB2C+slXxNOQ==
-X-ME-Sender: <xms:j8rJaR-HxZGABn_lOfs8LkpdT8LRuT23eFG_sWmrOYvzyIu8BjHYSA>
- <xme:j8rJadfl3uP9GtnqfGla7nGQTsKiaCw6sFyuvPiH4q4U2n9vSnX9ZCc3tbbqDDo7A
- BT3SRPGwqirQoXe_eQ5ORL4HhLR6CbPvnEELlIPybXKkcbxejqwUEM>
-X-ME-Received: <xmr:j8rJaSGC_AZrDr1xst49zpVtQ0MliXy0RPPb6Opp_DmXSQTIUZpEG5u2RUHCpj64a6d3p4gGs4fgFUdpozgMlS2UlbQX>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdeffeejheelucetufdoteggodetrf
- dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
- gurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepvfgrkhgrshhh
- ihcuufgrkhgrmhhothhouceoohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjph
- eqnecuggftrfgrthhtvghrnhephefhhfettefgkedvieeuffevveeufedtlefhjeeiieet
- vdelfedtgfefuedukeeunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrg
- hilhhfrhhomhepohdqthgrkhgrshhhihesshgrkhgrmhhotggthhhirdhjphdpnhgspghr
- tghpthhtohepfedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepthhhohhrshhtvg
- hnrdgslhhumheslhhinhhugidruggvvhdprhgtphhtthhopehlihhnuhigudefleegqdgu
- vghvvghlsehlihhsthhsrdhsohhurhgtvghfohhrghgvrdhnvghtpdhrtghpthhtoheplh
- hinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:j8rJaTePanVcb_neIyjmLTj8D34B_vqQBOeRRrrGnEhwBoBQ96Gv8w>
- <xmx:j8rJaUFukeG6gCx6I-GuJIHKLuUdiCb1SqghzDpS_WKDEe3OnekEiA>
- <xmx:j8rJaUUYFRloGl-Y_ehq3n4BFukCsDQW8tDqz5wmU6nNAWlDMXsjtw>
- <xmx:j8rJaTJhT0Wp6TuaxmX7Kuktg0c26oxK6gtwwdHH-ENryjjlvhpq2g>
- <xmx:j8rJaZu-uZM5lVISQygGOnHv-38eFPxD4laI0bbYE3O75cnNH96HJEOl>
+ :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+ 1775026664; x=1775113064; bh=lDbN4i1mpbsyhvkc5OFgn6ktb4xwtcyiJDm
+ kj/KsKE8=; b=NDgqKKIx/ftw6lU+auUyOQVOTJ/Bt+wjoyrWHllKyHeRX6vV80z
+ EEssIue+a0j5Mx8QPd1FLoq1rja6eWInWkSa3nyrEQM5iSwsGjHr6GvuiQdj/6tB
+ l6+NcqaSrZCfTkxqmjYgpH/G1KvvmcqynmZBYalWYrrik4tdYleVOafPGivygsS1
+ jPvpkD4910WMk6s+wfDTCdg9V5rxs/LN9ra2YP1s6NN6xFb9dpt/fc5TeYG744SX
+ w7N+5WSLZKNLBzM9jVOd7qRHz9Y4nc1beb4USg2bxQXZnZAY7D8QtB8bwiRdub9y
+ pKhffkSDFATRXVD3Ud6ixPIH1O7hqmfCIcQ==
+X-ME-Sender: <xms:6MHMaTNQ_HuUIkgQmA-ASzOb4CRXl0qpTtrNueJWPimnRwNQAav_zA>
+ <xme:6MHMaVbvUVWMTDVy0PDqQ-SIgTDJ1HPFgSQoQ1mXM_5zdV-yipk9ePRAYsGqmr9fI
+ b3KRygFcPBL9kBzFFlHCCw4GgYNbYbdmQOmGwRxZ81tU2eQAH8Ylg>
+X-ME-Received: <xmr:6MHMafozsFys3plV6Djkcyhz4Edl_OeZ4pRvKtovgeOwr9MN3IA-WQxiPjS-C7ltNU9rAwOEK6GM2ZOBup7Y8eC-Iv15>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefhedrtddtgddvgeehucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceurghi
+ lhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttd
+ dvnecuhfhrohhmpefvrghkrghshhhiucfurghkrghmohhtohcuoehoqdhtrghkrghshhhi
+ sehsrghkrghmohgttghhihdrjhhpqeenucggtffrrghtthgvrhhnpeehhffhteetgfekvd
+ eiueffveevueeftdelhfejieeitedvleeftdfgfeeuudekueenucevlhhushhtvghrufhi
+ iigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehoqdhtrghkrghshhhisehsrghkrg
+ hmohgttghhihdrjhhppdhnsggprhgtphhtthhopeefpdhmohguvgepshhmthhpohhuthdp
+ rhgtphhtthhopeguihhnghhishhordhkvghrnhgvlhesghhmrghilhdrtghomhdprhgtph
+ htthhopehlihhnuhigudefleegqdguvghvvghlsehlihhsthhsrdhsohhurhgtvghfohhr
+ ghgvrdhnvghtpdhrtghpthhtohepshhhuhgrnhhgphgvnhhgrdhkvghrnhgvlhesghhmrg
+ hilhdrtghomh
+X-ME-Proxy: <xmx:6MHMaRZB-2S7O4DojUHP2JRtLMnwRIxb4_bgrM6DMoNEr13j2LPzIQ>
+ <xmx:6MHMafT1HTop8nfo2p_35CD-dDE9EUKtHA7KkhmfaLmqrO9Or9NJWQ>
+ <xmx:6MHMaQ5yPAmU77UfxR3u6qJs7crtfM6Rfq3Uhp46CXx70317LH8Ing>
+ <xmx:6MHMacwt8PPjCcGQ0rXK9tmCOH3AyBqxnCktuT9HpmeZKF82k6wupw>
+ <xmx:6MHMaaZCGjhxr3pAa95bFtKCYFn2P3dKyCC845HMeb4Kab7fH2g-nqn_>
 Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 29 Mar 2026 20:57:50 -0400 (EDT)
-Date: Mon, 30 Mar 2026 09:57:48 +0900
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 1 Apr 2026 02:57:43 -0400 (EDT)
+Date: Wed, 1 Apr 2026 15:57:41 +0900
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Thorsten Blum <thorsten.blum@linux.dev>
-Subject: Re: [PATCH] firewire: core: clean up modalias buffer handling
-Message-ID: <20260330005748.GA115569@sakamocchi.jp>
-Mail-Followup-To: Thorsten Blum <thorsten.blum@linux.dev>,
- linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
-References: <20260329211940.371395-2-thorsten.blum@linux.dev>
+To: Dingisoul <dingiso.kernel@gmail.com>
+Subject: Re: [BUG] firewire: core-cdev: refcount leak in iso_resource_work
+ during resource cleanup
+Message-ID: <20260401065741.GA99710@sakamocchi.jp>
+Mail-Followup-To: Dingisoul <dingiso.kernel@gmail.com>,
+ linux1394-devel@lists.sourceforge.net, shuangpeng.kernel@gmail.com
+References: <20260331194818.291061-1-dingiso.kernel@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260329211940.371395-2-thorsten.blum@linux.dev>
+In-Reply-To: <20260331194818.291061-1-dingiso.kernel@gmail.com>
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
  running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
@@ -123,21 +124,21 @@ X-Spam-Report: Spam detection software,
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview:  Hi, Thanks for sending your patch. On Sun, Mar 29, 2026 at
- 11:19:40PM +0200, Thorsten Blum wrote: > Use scnprintf() in get_modalias()
- to return the number of characters > actually written to the destination
- buffer. > > Also reserve spa [...] 
+ Content preview:  Hi, On Tue, Mar 31, 2026 at 03:48:18PM -0400,
+ Dingisoul wrote: > Hi Kernel maintainers,
+ > > We found a possible refcount leak in iso_resource_work.
+ > > When an iso_resource is being freed in iso_resource_ [...] 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
+ domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
- -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
- domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
-X-Headers-End: 1w71AR-0000oE-5A
+X-Headers-End: 1w7pWV-0001tj-M6
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -150,7 +151,7 @@ List-Post: <mailto:linux1394-devel@lists.sourceforge.net>
 List-Help: <mailto:linux1394-devel-request@lists.sourceforge.net?subject=help>
 List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux1394-devel>, 
  <mailto:linux1394-devel-request@lists.sourceforge.net?subject=subscribe>
-Cc: linux1394-devel@lists.sourceforge.net, linux-kernel@vger.kernel.org
+Cc: linux1394-devel@lists.sourceforge.net, shuangpeng.kernel@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
@@ -162,65 +163,94 @@ X-Spamd-Result: default: False [-1.01 / 15.00];
 	MIME_GOOD(-0.10)[text/plain];
 	DMARC_POLICY_SOFTFAIL(0.10)[sakamocchi.jp : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
+	FORGED_RECIPIENTS(0.00)[m:dingiso.kernel@gmail.com,m:linux1394-devel@lists.sourceforge.net,m:shuangpeng.kernel@gmail.com,m:dingisokernel@gmail.com,m:shuangpengkernel@gmail.com,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
 	DKIM_MIXED(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:thorsten.blum@linux.dev,m:linux1394-devel@lists.sourceforge.net,m:linux-kernel@vger.kernel.org,s:lists@lfdr.de];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FREEMAIL_TO(0.00)[gmail.com];
 	FORGED_SENDER(0.00)[o-takashi@sakamocchi.jp,linux1394-devel-bounces@lists.sourceforge.net];
-	ARC_NA(0.00)[];
 	TO_DN_SOME(0.00)[];
-	R_DKIM_REJECT(0.00)[sourceforge.net:s=x,sf.net:s=x,sakamocchi.jp:s=fm1,messagingengine.com:s=fm1];
-	MIME_TRACE(0.00)[0:+];
-	FORWARDED(0.00)[linux1394-devel@lists.sourceforge.net];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_THREE(0.00)[3];
+	MIME_TRACE(0.00)[0:+];
+	ARC_NA(0.00)[];
+	FORWARDED(0.00)[linux1394-devel@lists.sourceforge.net];
+	R_DKIM_REJECT(0.00)[sourceforge.net:s=x,sf.net:s=x,sakamocchi.jp:s=fm2,messagingengine.com:s=fm2];
+	DKIM_TRACE(0.00)[lists.sourceforge.net:+,sourceforge.net:-,sf.net:-,sakamocchi.jp:-,messagingengine.com:-];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	RCVD_COUNT_FIVE(0.00)[6];
 	NEURAL_HAM(-0.00)[-1.000];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FROM_HAS_DN(0.00)[];
 	FROM_NEQ_ENVFROM(0.00)[o-takashi@sakamocchi.jp,linux1394-devel-bounces@lists.sourceforge.net];
-	DKIM_TRACE(0.00)[lists.sourceforge.net:+,sourceforge.net:-,sf.net:-,sakamocchi.jp:-,messagingengine.com:-];
+	FREEMAIL_CC(0.00)[lists.sourceforge.net,gmail.com];
 	MID_RHS_MATCH_FROM(0.00)[];
 	TAGGED_RCPT(0.00)[linux1394-devel];
-	MISSING_XM_UA(0.00)[];
+	RCPT_COUNT_THREE(0.00)[3];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:11320, ipnet:216.105.32.0/21, country:US];
+	MISSING_XM_UA(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.dev:email,sakamocchi.jp:mid]
-X-Rspamd-Queue-Id: 5AEA93548B6
+	ASN(0.00)[asn:11320, ipnet:216.105.32.0/21, country:US];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[lists.sourceforge.net:helo,lists.sourceforge.net:rdns,lists.sourceforge.net:dkim,sakamocchi.jp:mid]
+X-Rspamd-Queue-Id: 9A2E937578E
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
 Hi,
 
-Thanks for sending your patch.
-
-On Sun, Mar 29, 2026 at 11:19:40PM +0200, Thorsten Blum wrote:
-> Use scnprintf() in get_modalias() to return the number of characters
-> actually written to the destination buffer.
+On Tue, Mar 31, 2026 at 03:48:18PM -0400, Dingisoul wrote:
+> Hi Kernel maintainers,
 > 
-> Also reserve space for the trailing newline in modalias_show() and
-> append it explicitly, instead of using strcpy() and relying on the
-> formatted modalias to fit within PAGE_SIZE.
+> We found a possible refcount leak in iso_resource_work.
 > 
-> While the current code is safe, this makes the sysfs buffer handling
-> more explicit and consistent.
+> When an iso_resource is being freed in iso_resource_work,
+> cancel_delayed_work is called. If this call successfully 
+> cancels a pending work item, the client reference acquired
+> when that work was scheduled is never released.
 > 
-> Signed-off-by: Thorsten Blum <thorsten.blum@linux.dev>
-> ---
->  drivers/firewire/core-device.c | 11 ++++++-----
->  1 file changed, 6 insertions(+), 5 deletions(-)
+> static void schedule_iso_resource(struct iso_resource *r,
+>                                    unsigned long delay)
+> {
+>     client_get(r->client); // 1. Reference taken
+>     if (!queue_delayed_work(fw_workqueue, &r->work, delay))
+>         client_put(r->client);
+> }
+> 
+> 
+> static void iso_resource_work(struct work_struct *work)
+> {
+>     struct iso_resource *r = from_work(r, work, work.work);
+>     if (free) {
+>         cancel_delayed_work(&r->work); // 2. Potential leak
+>         kfree(r->e_alloc);
+>         kfree(r->e_dealloc);
+>         kfree(r);
+>     }
+> }
 
-I previously considered using sysfs_emit(_at)() in the code, but decided
-against it because the code is called in both sysfs and the workqueue
-context of firewire devices. The buffer size differs between these cases
-(either PAGE_SIZE or 64).
+We could see the "client_put()" at the line after "out" label.
 
-In any case, as you already noted, the current code is enough safe. The
-total length of formatted string is fixed (= 41 + 1) by the format
-template, so it is unlikely to cause issues. I have little motivation to
-change it.
+$ git show v6.19:drivers/firewire/core-cdev.c | cat -n
+      ...
+1317  static void iso_resource_work(struct work_struct *work)
+1318  {
+          ...
+1321      struct client *client = r->client;
+          ...
+	  (no return statements)
+          ...
+1401      if (free) {
+1402          cancel_delayed_work(&r->work);
+1403          kfree(r->e_alloc);
+1404          kfree(r->e_dealloc);
+1405          kfree(r);
+1406      }
+1407   out:
+1408      client_put(client);
+1409  }
+
+I guess the above lines are not necessarily friendly to any of your
+tools. I would be glad to receive any patches or ideas inspired by your
+testing mindset.
 
 
 Thanks
