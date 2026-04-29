@@ -2,42 +2,42 @@ Return-Path: <linux1394-devel-bounces@lists.sourceforge.net>
 Delivered-To: lists+linux1394-devel@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id GFj7ID2s8WmGjgEAu9opvQ
+	id UBYpOT2s8WmwjgEAu9opvQ
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
 	for <lists+linux1394-devel@lfdr.de>; Wed, 29 Apr 2026 08:59:09 +0200
 X-Original-To: lists+linux1394-devel@lfdr.de
 Received: from lists.sourceforge.net (lists.sourceforge.net [216.105.38.7])
-	by mail.lfdr.de (Postfix) with ESMTPS id 484C6490138
-	for <lists+linux1394-devel@lfdr.de>; Wed, 29 Apr 2026 08:59:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8562249013B
+	for <lists+linux1394-devel@lfdr.de>; Wed, 29 Apr 2026 08:59:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.sourceforge.net; s=beta; h=Content-Transfer-Encoding:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OboE64aPRiHzufW4uRATxXAnticJyu3UiaRH9rndYzU=; b=cPw4JV6OKXM/OOipHl/+L4MUF+
-	YEC6eOV/IMWNgOid9pcu4duRmaE4K6UG8wCmlst19nUu67RJhRqaodk8t4yNR+fe05DY6dnJu8mgG
-	GT/T/4I2mwF1GPusDe3MQWtvxsCWuVni8WlJ5ppJc2KYWaeGWsWdyy7E7de7S2okodsU=;
-Received: from [127.0.0.1] (helo=sfs-ml-2.v29.lw.sourceforge.com)
-	by sfs-ml-2.v29.lw.sourceforge.com with esmtp (Exim 4.95)
+	bh=6WButRMJEcSf2CyPznq/4Cbb+yCuK02GZn8qluZi6Cg=; b=E8E3YYI21YSx5uWz6GmtjtLwIC
+	UBNF8w5ANHxfoPXFWfkAHHNBKun27m72qseCoPM6Z39fEOBr/UGiqzGMsPMn/wrKXzf+/9GIwgWDu
+	Y93GZV/QMn3o1BKQFA5dIy1+syZIuR08bt5yaOvX5YYi1j2fWadGh3gHNuZB9PZhZCb0=;
+Received: from [127.0.0.1] (helo=sfs-ml-3.v29.lw.sourceforge.com)
+	by sfs-ml-3.v29.lw.sourceforge.com with esmtp (Exim 4.95)
 	(envelope-from <linux1394-devel-bounces@lists.sourceforge.net>)
-	id 1wHyst-0000vu-Fv;
-	Wed, 29 Apr 2026 06:59:00 +0000
+	id 1wHysr-0000sV-E8;
+	Wed, 29 Apr 2026 06:58:57 +0000
 Received: from [172.30.29.66] (helo=mx.sourceforge.net)
- by sfs-ml-2.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
+ by sfs-ml-3.v29.lw.sourceforge.com with esmtps (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <o-takashi@sakamocchi.jp>) id 1wHyso-0000vF-7S
+ (envelope-from <o-takashi@sakamocchi.jp>) id 1wHysq-0000sH-7T
  for linux1394-devel@lists.sourceforge.net;
- Wed, 29 Apr 2026 06:58:55 +0000
+ Wed, 29 Apr 2026 06:58:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=sourceforge.net; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
  In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=xnJHF3q0EV3mTcRvsT29Ye1XRknJ05vRFufwjT8gOdk=; b=fk5+j/UqhlUOkZk8F6ZomewHxU
- wn92tWyjzgiZjRcqERm9ZYShSfcXHBR5SnJdq4mY6TvXW4g7mR1KqXineVCVKQHSwgQty9HdKiVEW
- pdSb7P8YzWMCHT4OA08dEQrlIgugu44Ixy5X8+6y4Bot8YuYN4rbzwzCx/Dndyfbfyg4=;
+ bh=N62dO2IkgYEvWkqr+r1yC3Y9QmJvm4a9il4UNRzq2B4=; b=UtphbKrQt6JEQL8s0jMb7AFlqE
+ fElxBZ/JHLUQyuzOKT+itYxc2FJDo8UHNziWITqQ4JwizNEkPnrOPTBsVBynR1ki1PDo+LK2BYpf0
+ BhOICePqD7L7JwHaaVGMp6wJhf8zHcSggZcc0Q8M17XTPjlaKQhdFDMoKynAXiwcTGkY=;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  ;
  h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
@@ -45,47 +45,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sf.net; s=x
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=xnJHF3q0EV3mTcRvsT29Ye1XRknJ05vRFufwjT8gOdk=; b=kroo7ejM19rhcHZEB0kiF9J1yp
- OwVJ9HGB1AWWRBiSPj9ni0isyyW5JN0BNF2BxJ2F9kslF8+KM4pTi4ZPudSHz9LDFWC69kcI2le0i
- oYmYFb2pD+/SUvFSyjJv1oF7NyYQZx1Ua+mmGxuZvnL16wWKyekSFlJYVGLZ+4SBFlDk=;
+ bh=N62dO2IkgYEvWkqr+r1yC3Y9QmJvm4a9il4UNRzq2B4=; b=dHyMIbpw9Q8KGrSHh0awtBGG6A
+ 1G27x/EfhXx8mIQV4yrvlC5ijZ22+AMiHBAOjGhtW7taojBC652uY7nYNaP2uqpq5LP3JShIsbjiT
+ ZY6t+WUcOPiDWveFFW+qKhQzTzQDFMLFfRp6GxQ5Ig1Ubumw5D1sWh4+pzSWhHoIVpKE=;
 Received: from fout-a8-smtp.messagingengine.com ([103.168.172.151])
  by sfi-mx-2.v28.lw.sourceforge.com with esmtps
  (TLS1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.95)
- id 1wHyso-0004XY-BB for linux1394-devel@lists.sourceforge.net;
- Wed, 29 Apr 2026 06:58:54 +0000
-Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
- by mailfout.phl.internal (Postfix) with ESMTP id 85276EC0184;
- Wed, 29 Apr 2026 02:58:43 -0400 (EDT)
+ id 1wHysp-0004Xb-KJ for linux1394-devel@lists.sourceforge.net;
+ Wed, 29 Apr 2026 06:58:56 +0000
+Received: from phl-compute-08.internal (phl-compute-08.internal [10.202.2.48])
+ by mailfout.phl.internal (Postfix) with ESMTP id 024AEEC00D4;
+ Wed, 29 Apr 2026 02:58:45 -0400 (EDT)
 Received: from phl-frontend-04 ([10.202.2.163])
- by phl-compute-05.internal (MEProxy); Wed, 29 Apr 2026 02:58:43 -0400
+ by phl-compute-08.internal (MEProxy); Wed, 29 Apr 2026 02:58:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
  h=cc:cc:content-transfer-encoding:content-type:date:date:from
  :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1777445923; x=
- 1777532323; bh=xnJHF3q0EV3mTcRvsT29Ye1XRknJ05vRFufwjT8gOdk=; b=u
- S5BV5mL0/GarmqQ2falJBSJHPWSHyVPR+ptMnJUk5kD2hJpeRCYh7cYTXhLzjlLi
- FvEpvjwsAxyc7UeplL+OdewaOKyNOuysof1jSk1jWSUcLcTk64kgFl7x0Ci7t6lk
- W34g7oZC4lHwRlyoruJdfJAQaORlVH+uyU/MvMWNkh+DRswl8MMWzmT4/gxPAQCL
- 3aEZvI2ZxlryJk8ns9RtPLPNpyRcl+V+P1OeVXxSIYbpKxISTtXW1lZr7xtsrTuw
- WbMlBBFRWvtRTJNml07Jf0SG4FXYRhF6k1dLbJeuOhQ7CfrTuQz7A1osY6YkV+o/
- ZE8JHD+BltPSy2XCYXM3g==
+ :reply-to:subject:subject:to:to; s=fm2; t=1777445924; x=
+ 1777532324; bh=N62dO2IkgYEvWkqr+r1yC3Y9QmJvm4a9il4UNRzq2B4=; b=j
+ vOW0hyU3EqOUz3X0CtUcpSbYK3SmeeLihLo9tipKnDRCO7geOtTyvxRZtRICIKF3
+ znoKM4PdraOs+KKbIEZhURxbE2f3c0PF/hEHrwIItaJshAArYI4POuwWw29rAXQ0
+ 3uvcJFzrNDeDZHQWI2VUNWKtUB7dvWa7TERLmfuulpgIR/boanhyRaZfd+1zDnWO
+ dPKjzxWo43Ek7dAYsVq8sVRziu8/+FJfz3GgPkz+FGIF0KsJjiNPAB430Z5JxLqW
+ z6UnGw0a6s4g3uVcvZREJ4Y9b4IBtJTtDFJWZU5UMkDunAb+bb0Xz+duIXf0sc/+
+ WbW22dem8uYxtgjxEi5Vw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:date:date:feedback-id:feedback-id:from:from
  :in-reply-to:in-reply-to:message-id:mime-version:references
  :reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm2; t=1777445923; x=1777532323; bh=x
- nJHF3q0EV3mTcRvsT29Ye1XRknJ05vRFufwjT8gOdk=; b=OGGoIPq6iweRMbn2C
- FeZGtexxSq++/luwtXkn8ooZf8Ku+DqkYIxNaR22RC5ZK95lRbmjfxjoFwj1bio3
- 5/zNpv4+10YNXFiNE7XrdtpN+MV3aEjGe4fDVolDDIYJWw83F2jMmismtocTxgzd
- nuV1pPyG+1PqTWbtDb4SM0/dDhJh0m/UlS9ofWp/bqu1TA+uh7kYC179x/e0MVsX
- yS3fl6jLnKZxUUPaubh8EppmnWiebKXvUfbA790gbHESpFCEms1rt6/u+NMts980
- Szpdce9nhdUYtyh0p4Xp0EOG58qK/GqBc4J4UGhk5cSMVFO6FpECFxAZvuLWhhc8
- OTtxQ==
-X-ME-Sender: <xms:I6zxaTrjyw8MoZ6RxJuj0QI9k5DBd5mBAhIui0f-1JCqv5Ubw9IFAg>
- <xme:I6zxaVHTP18NDz-AnvEBBQv52vlYwDp6JNQ2rH3guL8U0t6wTSFPjPwm0mX-qJxB0
- NZ5SIGt-64TTnbJde4bUdVklE0vM_nDMHM3bWIlZZQhsV1XhcggaV0>
-X-ME-Received: <xmr:I6zxadnHMScWKknPxgdc6HTV2Y0KyfIHakl63uUkEolCqPg0ESeQZNS_Y8faH8KCP7njrR4nqn0oZ5ikM4SzDmqPL4ybyV-Sg6Lr33uZQX3QdA>
+ :x-me-sender:x-sasl-enc; s=fm2; t=1777445924; x=1777532324; bh=N
+ 62dO2IkgYEvWkqr+r1yC3Y9QmJvm4a9il4UNRzq2B4=; b=ItYi8wCNSiCZLJDlv
+ eNJHmSQvJ5o39+HpgkEx7EQrKp+a5QzWP0qDwrFd1t7DeWlbxh3fONOzV7olpF/t
+ Txd8VRN6BzoqBoWdwejNAYOInsuKOALWOtrU2ssiaVQJ98ZUHX6KpXWiXouL8vkP
+ pr/RJ9PhLF1VfKlRlChbCPv5LkDAxIWmq5S8KEwoVuC04PrEi6FpOq5NzHjkGNjI
+ 4yhW5OSRahtIP7vh+xCn6OKOC3lIh8uyQ7eaftilhX3Wl3jCXOMaWfIoLaxHZ/J8
+ VWpFgwfZb9PDtnjn9EUZkvrbYaRQAG/s+7oNl7jIf7fRfCZNE1YZSrzcN0Fxi47K
+ rkuRw==
+X-ME-Sender: <xms:JKzxaS91CijPQ9_LsAiPEl-i2tOMJunbw8aD3wLRBH_Rw90cl1x5JA>
+ <xme:JKzxaaIW4uyNjxPQtKt9ibsEbjSQaeYEKwBPBilOjUccE5jt2xpB9nFThtrPl6ALQ
+ NN05fTgpXvMu-at2KqTmpVAbvtIMlH1QcmT14TS1f6YAXhGJcsRmaN6>
+X-ME-Received: <xmr:JKzxaVY3b4o_Nk2ToAzZAqPVLs0AbdBPpv59KmgnbLSsWVzdyCaqo_rp5k1_0pyKcG-T9h24sneqjp8VXOK3ZF4iCvt_t8PXa_X6ZS_nWbyMvw>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefhedrtddtgdekfeejkecutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
  ihhlohhuthemuceftddtnecunecujfgurhephffvvefufffkofgjfhgggfestdekredtre
@@ -98,47 +98,48 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefhedrtddtgdekfeejkecutefuodetgg
  gvfhhorhhgvgdrnhgvthdprhgtphhtthhopehshhhurghnghhpvghnghdrkhgvrhhnvghl
  sehgmhgrihhlrdgtohhmpdhrtghpthhtohepughinhhgihhsohdrkhgvrhhnvghlsehgmh
  grihhlrdgtohhm
-X-ME-Proxy: <xmx:I6zxaQmRlbx1BLEsQW3_gAP7yEbQabV-JMI7ylX3pgMeHjjOF1wGlA>
- <xmx:I6zxaWtSqpi5CUXQF9rNDaTKYF91xx_zJdejaFnCaLRV1YyfiObWRQ>
- <xmx:I6zxabm6xtWBsyqEii5B-fdA82Lya__P-fzXzVLoX0n-LSuoGOc1Zw>
- <xmx:I6zxaZvAvo9jwp8uAw8L1CEUig6PK7qOBfhjaKI6aYMMNzFKsCTh2g>
- <xmx:I6zxaZk9GRhF7gWkq0kNzfAc2lfqBFcZnjisE46PpE5z3qPqZEIYJAsK>
+X-ME-Proxy: <xmx:JKzxaUJXJF3I89iym15zQL40Ry0t1c_k2hhzuDVOFbpgRZgxAK7Wtw>
+ <xmx:JKzxabDuF2akkBnk5nhwbN5eK2q6H9c6ejSCqvGPt8JVDS_iqvluIg>
+ <xmx:JKzxaRpCdK1VrtjcF2gtmcbyuB4tAzeeevxFDEHbX29EEIsMlKx1ZA>
+ <xmx:JKzxaeiKrjdhy3F8HyZ3Kram_4dc-rnE_Txjwds3571upkWf-IwmPw>
+ <xmx:JKzxadJkAwRYYvKudG1mPzmsOU0UDG-NFcNlXI5k-Sv4nncRVDCOBQVk>
 Feedback-ID: ie8e14432:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 29 Apr 2026 02:58:42 -0400 (EDT)
+ 29 Apr 2026 02:58:43 -0400 (EDT)
 From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 To: linux1394-devel@lists.sourceforge.net
-Subject: [PATCH 2/7] firewire: core: code refactoring to queue work item for
- iso_resource
-Date: Wed, 29 Apr 2026 15:58:31 +0900
-Message-ID: <20260429065836.155820-3-o-takashi@sakamocchi.jp>
+Subject: [PATCH 3/7] firewire: core: code refactoring for helper function to
+ fill iso_resource parameters
+Date: Wed, 29 Apr 2026 15:58:32 +0900
+Message-ID: <20260429065836.155820-4-o-takashi@sakamocchi.jp>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260429065836.155820-1-o-takashi@sakamocchi.jp>
 References: <20260429065836.155820-1-o-takashi@sakamocchi.jp>
 MIME-Version: 1.0
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: Spam detection software,
- running on the system "sfi-spamd-1.hosts.colo.sdot.me", 
+ running on the system "sfi-spamd-2.hosts.colo.sdot.me", 
  has NOT identified this incoming email as spam.  The original
  message has been attached to this so you can view it or label
  similar future email.  If you have any questions, see
  the administrator of that system for details.
- Content preview: The add_client_resource() function checks the type of client
- resource every time to be called. If the type is for iso_resource, it schedules
- work item. However, the iso_resource client resource is only added by the
- call of init_iso_resource(). There is no need to check the type every time
- adding any client resource. 
+ Content preview:  This change is a preparation for future changes. The added
+ helper function will be reused in the changes to fill iso_resource parameters
+ according to the users' request. Signed-off-by: Takashi Sakamoto
+ <o-takashi@sakamocchi.jp>
+ --- drivers/firewire/core-cdev.c | 45 ++++++++++++++++++++++++ 1 file changed, 
+ 30 insertions(+), 15 deletions(-) 
  Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU Message has a valid DKIM or DK signature from author's
  domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature,
  not necessarily valid
-X-Headers-End: 1wHyso-0004XY-BB
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+X-Headers-End: 1wHysp-0004Xb-KJ
 X-BeenThere: linux1394-devel@lists.sourceforge.net
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -155,24 +156,24 @@ Cc: dingiso.kernel@gmail.com, shuangpeng.kernel@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: linux1394-devel-bounces@lists.sourceforge.net
-X-Rspamd-Queue-Id: 484C6490138
+X-Rspamd-Queue-Id: 8562249013B
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [-0.01 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
 	RWL_MAILSPIKE_EXCELLENT(-0.40)[216.105.38.7:from];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+ip4:216.105.38.7];
 	R_DKIM_ALLOW(-0.20)[lists.sourceforge.net:s=beta];
-	DMARC_POLICY_SOFTFAIL(0.10)[sakamocchi.jp : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_SPF_ALLOW(-0.20)[+ip4:216.105.38.7:c];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[sakamocchi.jp : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	MIME_TRACE(0.00)[0:+];
-	RCVD_TLS_LAST(0.00)[];
-	FREEMAIL_CC(0.00)[gmail.com];
-	R_DKIM_REJECT(0.00)[sourceforge.net:s=x,sf.net:s=x,sakamocchi.jp:s=fm2,messagingengine.com:s=fm2];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FREEMAIL_CC(0.00)[gmail.com];
+	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	R_DKIM_REJECT(0.00)[sourceforge.net:s=x,sf.net:s=x,sakamocchi.jp:s=fm2,messagingengine.com:s=fm2];
+	MIME_TRACE(0.00)[0:+];
 	DKIM_MIXED(0.00)[];
 	ARC_NA(0.00)[];
 	RCPT_COUNT_THREE(0.00)[3];
@@ -188,43 +189,127 @@ X-Spamd-Result: default: False [-0.01 / 15.00];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	DBL_BLOCKED_OPENRESOLVER(0.00)[lists.sourceforge.net:helo,lists.sourceforge.net:dkim,lists.sourceforge.net:rdns]
 
-The add_client_resource() function checks the type of client resource
-every time to be called. If the type is for iso_resource, it schedules
-work item.
-
-However, the iso_resource client resource is only added by the call of
-init_iso_resource(). There is no need to check the type every time adding
-any client resource.
+This change is a preparation for future changes. The added helper function
+will be reused in the changes to fill iso_resource parameters according to
+the users' request.
 
 Signed-off-by: Takashi Sakamoto <o-takashi@sakamocchi.jp>
 ---
- drivers/firewire/core-cdev.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/firewire/core-cdev.c | 45 ++++++++++++++++++++++++------------
+ 1 file changed, 30 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/firewire/core-cdev.c b/drivers/firewire/core-cdev.c
-index 144625c34be2..8391c7efab2c 100644
+index 8391c7efab2c..effa03739679 100644
 --- a/drivers/firewire/core-cdev.c
 +++ b/drivers/firewire/core-cdev.c
-@@ -526,8 +526,6 @@ static int add_client_resource(struct client *client, struct client_resource *re
+@@ -128,6 +128,12 @@ struct descriptor_resource {
+ 	u32 data[];
+ };
  
- 		resource->handle = index;
- 		client_get(client);
--		if (is_iso_resource(resource))
--			schedule_iso_resource(to_iso_resource(resource), 0);
- 	}
- 
- 	return 0;
-@@ -1438,8 +1436,9 @@ static int init_iso_resource(struct client *client,
- 	} else {
- 		r->resource.release = NULL;
- 		r->resource.handle = -1;
--		schedule_iso_resource(r, 0);
- 	}
-+	schedule_iso_resource(r, 0);
++struct iso_resource_params {
++	int generation;
++	u64 channels;
++	s32 bandwidth;
++};
 +
- 	request->handle = r->resource.handle;
+ struct iso_resource {
+ 	struct client_resource resource;
+ 	struct client *client;
+@@ -135,9 +141,7 @@ struct iso_resource {
+ 	struct delayed_work work;
+ 	enum {ISO_RES_ALLOC, ISO_RES_REALLOC, ISO_RES_DEALLOC,
+ 	      ISO_RES_ALLOC_ONCE, ISO_RES_DEALLOC_ONCE,} todo;
+-	int generation;
+-	u64 channels;
+-	s32 bandwidth;
++	struct iso_resource_params params;
+ 	struct iso_resource_event *e_alloc, *e_dealloc;
+ };
  
+@@ -1290,6 +1294,20 @@ static int ioctl_get_cycle_timer(struct client *client, union ioctl_arg *arg)
  	return 0;
+ }
+ 
++static int fill_iso_resource_params(struct iso_resource_params *params,
++				    struct fw_cdev_allocate_iso_resource *request)
++{
++	if ((request->channels == 0 && request->bandwidth == 0) ||
++	    request->bandwidth > BANDWIDTH_AVAILABLE_INITIAL)
++		return -EINVAL;
++
++	params->generation = -1;
++	params->channels = request->channels;
++	params->bandwidth = request->bandwidth;
++
++	return 0;
++}
++
+ static void iso_resource_work(struct work_struct *work)
+ {
+ 	struct iso_resource_event *e;
+@@ -1310,21 +1328,21 @@ static void iso_resource_work(struct work_struct *work)
+ 		} else {
+ 			// We could be called twice within the same generation.
+ 			skip = todo == ISO_RES_REALLOC &&
+-			       r->generation == generation;
++			       r->params.generation == generation;
+ 		}
+ 		free = todo == ISO_RES_DEALLOC ||
+ 		       todo == ISO_RES_ALLOC_ONCE ||
+ 		       todo == ISO_RES_DEALLOC_ONCE;
+-		r->generation = generation;
++		r->params.generation = generation;
+ 	}
+ 
+ 	if (skip)
+ 		goto out;
+ 
+-	bandwidth = r->bandwidth;
++	bandwidth = r->params.bandwidth;
+ 
+ 	fw_iso_resource_manage(client->device->card, generation,
+-			r->channels, &channel, &bandwidth,
++			r->params.channels, &channel, &bandwidth,
+ 			todo == ISO_RES_ALLOC ||
+ 			todo == ISO_RES_REALLOC ||
+ 			todo == ISO_RES_ALLOC_ONCE);
+@@ -1355,7 +1373,7 @@ static void iso_resource_work(struct work_struct *work)
+ 	}
+ 
+ 	if (todo == ISO_RES_ALLOC && channel >= 0)
+-		r->channels = 1ULL << channel;
++		r->params.channels = 1ULL << channel;
+ 
+ 	if (todo == ISO_RES_REALLOC && success)
+ 		goto out;
+@@ -1402,10 +1420,6 @@ static int init_iso_resource(struct client *client,
+ 	struct iso_resource *r;
+ 	int ret;
+ 
+-	if ((request->channels == 0 && request->bandwidth == 0) ||
+-	    request->bandwidth > BANDWIDTH_AVAILABLE_INITIAL)
+-		return -EINVAL;
+-
+ 	r = kmalloc_obj(*r);
+ 	e1 = kmalloc_obj(*e1);
+ 	e2 = kmalloc_obj(*e2);
+@@ -1414,12 +1428,13 @@ static int init_iso_resource(struct client *client,
+ 		goto fail;
+ 	}
+ 
++	ret = fill_iso_resource_params(&r->params, request);
++	if (ret < 0)
++		goto fail;
++
+ 	INIT_DELAYED_WORK(&r->work, iso_resource_work);
+ 	r->client	= client;
+ 	r->todo		= todo;
+-	r->generation	= -1;
+-	r->channels	= request->channels;
+-	r->bandwidth	= request->bandwidth;
+ 	r->e_alloc	= e1;
+ 	r->e_dealloc	= e2;
+ 
 -- 
 2.53.0
 
